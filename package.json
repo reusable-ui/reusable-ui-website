@@ -9,11 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cssfn/core": "^2.0.1",
+    "@cssfn/cssfn-dom": "^2.0.7",
+    "@loadable/component": "^5.15.2",
+    "@reusable-ui/components": "^5.0.0",
+    "@reusable-ui/core": "^5.0.0",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-router": "^6.4.1",
+    "sass": "^1.55.0"
   },
   "devDependencies": {
+    "@types/loadable__component": "^5.13.4",
     "@types/node": "18.7.23",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
