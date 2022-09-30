@@ -1,4 +1,4 @@
-import { styleSheet, cssVars, style, rule, atRoot, vars } from '@cssfn/core'
+import { styleSheet, cssVars, style, rule, atGlobal, atRoot, vars } from '@cssfn/core'
 
 
 interface SiteVars {
@@ -26,26 +26,33 @@ export const [siteVars] = cssVars<SiteVars>({ minify: false });
 
 
 styleSheet(() => style({
-    // ...rule('*', {
-    //     boxSizing : 'border-box',
-    // }),
-    
-    ...rule('html', {
-        blockSize: '100%',
-    }),
-    ...rule(['html', 'body'], {
-        padding : '0px',
-        margin  : '0px',
-    }),
-    ...rule('body>*>header', {
-        zIndex          : 1020,
-        position        : 'sticky',
-        insetBlockStart : '0px',
-    }),
-    
-    ...atRoot([
-        vars({
-            [siteVars.minMainHeight] : `calc(${siteVars.windowHeight} - ${siteVars.headerHeight})`,
+    ...atGlobal({
+        // ...rule('*', {
+        //     boxSizing : 'border-box',
+        // }),
+        
+        ...rule('html', {
+            blockSize: '100%',
         }),
-    ]),
+        ...rule(['html', 'body'], {
+            padding : '0px',
+            margin  : '0px',
+        }),
+        ...rule('body>*>header', {
+            zIndex          : 1020,
+            position        : 'sticky',
+            insetBlockStart : '0px',
+        }),
+        ...rule('.siteNavbar', {
+            boxSizing: 'border-box',
+            minBlockSize: '60px',
+            paddingBlock: '0px',
+        }),
+        
+        ...atRoot([
+            vars({
+                [siteVars.minMainHeight] : `calc(${siteVars.windowHeight} - ${siteVars.headerHeight})`,
+            }),
+        ]),
+    }),
 }));
