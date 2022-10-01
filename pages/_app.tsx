@@ -17,6 +17,11 @@ const Header = () => {
     
     return (
         <>
+            <Head>
+                <link rel="icon" type="image/png" href="/favicon.png" />
+                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+            </Head>
+            
             <header ref={headerRef}>
                 <SiteNavbarLazy fallback={
                     <Container

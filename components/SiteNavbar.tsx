@@ -6,12 +6,12 @@ const SiteLogo = () => {
     return (
         <ActionControl nude={true} mild={false}>
             <Link href='/'>
-                <Icon icon='reusableui' size='lg' />
+                <Icon icon='reusable-ui' size='lg' />
             </Link>
         </ActionControl>
     );
 }
-export default () => {
+const SiteNavbar = () => {
     return (
         <Navbar theme='primary' className='siteNavbar'>{({
             basicVariantProps,
@@ -34,4 +34,8 @@ export default () => {
             </Collapse>
         </>}</Navbar>
     );
+}
+export {
+    SiteNavbar,
+    SiteNavbar as default,
 }

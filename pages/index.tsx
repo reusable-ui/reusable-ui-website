@@ -14,7 +14,6 @@ const Home: NextPage = () => {
         <Head>
             <title>Reusable-UI - A React component library for building sites quickly</title>
             <meta name="description" content="Reusable-UI - A React component library for building sites quickly. Reuse the components, save your time now and later." />
-            <link rel="icon" href="/favicon.ico" />
         </Head>
         
         <GenericSection theme='primary'>

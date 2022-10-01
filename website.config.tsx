@@ -1,4 +1,5 @@
 import { styleSheet, cssVars, style, rule, atGlobal, atRoot, vars } from '@cssfn/core'
+import { iconConfig } from '@reusable-ui/components'
 
 
 interface SiteVars {
@@ -56,3 +57,7 @@ styleSheet(() => style({
         ]),
     }),
 }));
+
+
+
+iconConfig.image.files.push('reusable-ui.svg');
