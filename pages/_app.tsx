@@ -6,6 +6,7 @@ import loadable from '@loadable/component'
 import { Button, ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 import { Section } from '../components/Section';
 import { siteVars } from '../website.config';
+import '@cssfn/cssfn-dom'
 
 const SiteNavbarLazy = loadable(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
 
@@ -43,7 +44,7 @@ const Footer = () => {
                     </p>
                     <p>
                         If you feel our lib is useful for your projects,<br />
-                        please make a donation to avoid our project from extinction.
+                        please make a donation to avoid our project from extinction/unmaintained.
                     </p>
                     <ButtonIcon icon='volunteer_activism' theme='primary' href='https://ko-fi.com/heymarco' target='_blank'>Make a donation</ButtonIcon>
                 </Section>

@@ -25,11 +25,11 @@ export default () => {
             <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
                 <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat'>
                     <NavItem><Link href='/'>Home</Link></NavItem>
-                    <NavItem><Link href='/docs'>Docs</Link></NavItem>
-                    <NavItem><Link href='/download'>Download</Link></NavItem>
+                    <NavItem><Link href='/libs'>Libs</Link></NavItem>
+                    <NavItem><Link href='/install'>Installation</Link></NavItem>
                     <NavItem><Link href='/about'>About</Link></NavItem>
-                    <NavItem href='https://github.com/nodestrap' target='_blank'>GitHub</NavItem>
-                    <NavItem href='https://www.npmjs.com/org/nodestrap' target='_blank'>NPM</NavItem>
+                    <NavItem href='https://github.com/reusable-ui' target='_blank'>GitHub</NavItem>
+                    <NavItem href='https://www.npmjs.com/org/reusable-ui' target='_blank'>NPM</NavItem>
                 </Nav>
             </Collapse>
         </>}</Navbar>
