@@ -168,7 +168,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.hamburgerMenuButton.packageDisplay}>
                         <p>
-                            A toggleable button for showing/hiding menu in Navbar.
+                            A toggleable button for showing/hiding menu in {packages.navbar.packageDisplay}.
                         </p>
                     </AccordionItem>
                 </Accordion>
@@ -251,17 +251,17 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.dropdownButton.packageDisplay}>
                         <p>
-                            A button component with a dropdown UI.
+                            A {packages.button.packageDisplay} component with a custom context menu.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.dropdownList.packageDisplay}>
                         <p>
-                            Overlays a list element (menu).
+                            Overlays a {packages.list.packageDisplay} as context menu.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.dropdownListButton.packageDisplay}>
                         <p>
-                            A button component with a dropdown list UI.
+                            A {packages.button.packageDisplay} component with a {packages.dropdownList.packageDisplay} as context menu.
                         </p>
                     </AccordionItem>
                 </Accordion>
@@ -278,12 +278,64 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.modalCard.packageDisplay}>
                         <p>
-                            Overlays a card dialog to the entire site's page.
+                            Overlays a {packages.card.packageDisplay} as dialog to the entire site's page.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.modalSide.packageDisplay}>
                         <p>
-                            Overlays a card dialog to the side of site's page.
+                            Overlays a {packages.card.packageDisplay} as dialog to the side of site's page.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Dialog Components'>
+                <p>
+                    Represent a complex structured component to perform a specific task.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.progress.packageDisplay}>
+                        <p>
+                            A custom progress bar featuring support for stacked bars, animated backgrounds, text labels, and horizontal/vertical orientation.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.group.packageDisplay}>
+                        <p>
+                            Groups a list of components as a single component.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.nav.packageDisplay}>
+                        <p>
+                            A navigation component to navigate between pages.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.navscroll.packageDisplay}>
+                        <p>
+                            A navigation component to navigate within current page, based on scroll position.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.accordion.packageDisplay}>
+                        <p>
+                            Represents a series of toggleable collapsing content.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.exclusiveAccordion.packageDisplay}>
+                        <p>
+                            Represents a series of toggleable collapsing content with only one expanding content allowed.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.carousel.packageDisplay}>
+                        <p>
+                            A slideshow component for cycling through images, slides, or another elements.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.navbar.packageDisplay}>
+                        <p>
+                            A responsive navigation header. Supports for branding, navigation and more.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.details.packageDisplay}>
+                        <p>
+                            A foldable content widget.
                         </p>
                     </AccordionItem>
                 </Accordion>

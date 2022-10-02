@@ -115,3 +115,18 @@ export const dropdownListButton     = new ComponentInfo('dropdown-list-button')
 export const modal                  = new ComponentInfo('modal')
 export const modalCard              = new ComponentInfo('modal-card')
 export const modalSide              = new ComponentInfo('modal-side')
+
+// composite-components:
+export const progress               = new ComponentInfo('progress')
+export const group                  = new ComponentInfo('group')
+export const nav                    = new ComponentInfo('nav')
+export const navscroll              = new ComponentInfo('navscroll')
+export const accordion              = new ComponentInfo('accordion')
+export const exclusiveAccordion     = new ComponentInfo('exclusive-accordion')
+export const carousel               = new ComponentInfo('carousel')
+export const navbar                 = new ComponentInfo('navbar')
+export const details                = new ComponentInfo('details')
+
+// utility-components:
+export const dimensions             = new ComponentInfo('dimensions')
+export const responsives            = new ComponentInfo('responsives')
