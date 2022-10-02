@@ -103,3 +103,15 @@ export const busy                   = new ComponentInfo('busy')
 // notification-components:
 export const alert                  = new ComponentInfo('alert')
 export const tooltip                = new ComponentInfo('tooltip')
+
+// menu-components:
+export const collapse               = new ComponentInfo('collapse')
+export const dropdown               = new ComponentInfo('dropdown')
+export const dropdownButton         = new ComponentInfo('dropdown-button')
+export const dropdownList           = new ComponentInfo('dropdown-list')
+export const dropdownListButton     = new ComponentInfo('dropdown-list-button')
+
+// dialog-components:
+export const modal                  = new ComponentInfo('modal')
+export const modalCard              = new ComponentInfo('modal-card')
+export const modalSide              = new ComponentInfo('modal-side')

@@ -202,7 +202,7 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.popup.packageDisplay}>
                         <p>
-                            A generic element with dynamic visibility (show/hide).
+                            A generic element with dynamic visibility (show/hide) in popup fashion.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.badge.packageDisplay}>
@@ -230,6 +230,60 @@ const Components: NextPage = () => {
                     <AccordionItem label={packages.tooltip.packageDisplay}>
                         <p>
                             Represents advisory information related to the element it belongs.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Menu Components'>
+                <p>
+                    Displays a context menu.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.collapse.packageDisplay}>
+                        <p>
+                            A generic element with dynamic visibility (show/hide) in sliding fashion.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.dropdown.packageDisplay}>
+                        <p>
+                            Overlays contextual element such as lists, menus, and more.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.dropdownButton.packageDisplay}>
+                        <p>
+                            A button component with a dropdown UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.dropdownList.packageDisplay}>
+                        <p>
+                            Overlays a list element (menu).
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.dropdownListButton.packageDisplay}>
+                        <p>
+                            A button component with a dropdown list UI.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Dialog Components'>
+                <p>
+                    Displays a popup dialog with additionally blocking the UI behind it.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.modal.packageDisplay}>
+                        <p>
+                            Overlays a dialog to the entire site's page.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.modalCard.packageDisplay}>
+                        <p>
+                            Overlays a card dialog to the entire site's page.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.modalSide.packageDisplay}>
+                        <p>
+                            Overlays a card dialog to the side of site's page.
                         </p>
                     </AccordionItem>
                 </Accordion>
