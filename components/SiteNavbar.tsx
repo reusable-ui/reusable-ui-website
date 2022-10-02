@@ -25,7 +25,7 @@ const SiteNavbar = () => {
             <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
                 <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat'>
                     <NavItem><Link href='/'>Home</Link></NavItem>
-                    <NavItem><Link href='/libs'>Libs</Link></NavItem>
+                    <NavItem><Link href='/core'>Core</Link></NavItem>
                     <NavItem><Link href='/components'>Components</Link></NavItem>
                     <NavItem><Link href='/install'>Installation</Link></NavItem>
                     <NavItem><Link href='/about'>About</Link></NavItem>

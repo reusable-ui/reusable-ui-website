@@ -16,9 +16,9 @@ const Components: NextPage = () => {
             <title>About Reusable-UI</title>
             <meta name="description" content="A short history about Reusable-UI libs" />
         </Head>
-        <Section title='Components'>
+        <Section title='Reusable-UI Components'>
             <p>
-                Here the list of Reusable-UI&apos;s <em>official</em> components:
+                This library contains a collection of our <em>official</em> common components.
             </p>
             <SubSection title='Base Components'>
                 <p>

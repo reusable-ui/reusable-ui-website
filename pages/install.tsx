@@ -17,20 +17,20 @@ const Installation: NextPage = () => {
         
         <Section title='Install Reusable-UI'>
             <p>
-                There are 2 major parts of Reusable-UI: <strong>Reusable-UI framework</strong> and <strong>Reusable-UI components</strong>.
+                There are 2 major parts of Reusable-UI: <strong>Reusable-UI core</strong> and <strong>Reusable-UI components</strong>.
             </p>
-            <SubSection title='Reusable-UI Framework'>
+            <SubSection title='Reusable-UI Core'>
                 <p>
-                    <strong>Reusable-UI framework</strong> is a building block for making any Reusable-UI components.
+                    <strong>Reusable-UI core</strong> is a building block (framework) for making any Reusable-UI components.
                     It also governs the interaction between components.
                 </p>
                 <p>
-                    This framework is intended for <em>component developers</em>.
+                    This core is intended for <em>component developers</em>.
                     So, if you want to create <strong>a new kind of component</strong> which is <em>compatible</em> with Reusable-UI components,
-                    this framework is a great starting point.
+                    this core is a great starting point.
                 </p>
                 <p>
-                    To install the <strong>Reusable-UI framework</strong>, open the terminal window on your code editor and type:
+                    To install the <strong>Reusable-UI core</strong>, open the terminal window on your code editor and type:
                 </p>
                 <BashCode collapsable={false}>{`
 # npm:
@@ -57,7 +57,7 @@ pnpm add @reusable-ui/core
                     our component library can help save your time.
                 </p>
                 <p>
-                    Of course, our collection is limited. You may still need <em>Reusable-UI framework</em> to create a more specific component for your needs.
+                    Of course, our collection is limited. You may still need <strong>Reusable-UI core</strong> to create a more specific component for your needs.
                 </p>
                 <SubSection title='Install All Reusable-UI Components' titleTag='h4'>
                     <p>
@@ -79,7 +79,7 @@ pnpm add @reusable-ui/components
                 </SubSection>
                 <SubSection title='Install Specific Reusable-UI Component' titleTag='h4'>
                     <p>
-                        To install a <strong>specific</strong> Reusable-UI component, please browse <Button theme='primary' buttonStyle='link'><Link href='/libs'>Reusable-UI component library</Link></Button> and choose the component you want.
+                        To install a <strong>specific</strong> Reusable-UI component, please browse <Button theme='primary' buttonStyle='link'><Link href='/components'>Reusable-UI component library</Link></Button> and choose the component you want.
                     </p>
                 </SubSection>
             </SubSection>
