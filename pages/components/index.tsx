@@ -345,12 +345,17 @@ const Components: NextPage = () => {
                     Provides non-visual components to perform a specific function.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.dimensions.packageDisplay}>
+                    <AccordionItem label={packages.useElementCssSize.packageDisplay}>
                         <p>
-                            A utility component for fetching the dimension of the target element.
+                            A utility component for fetching the dimension of the target element and then stored to a configured <em>css variable</em>.
                         </p>
                     </AccordionItem>
-                    <AccordionItem label={packages.responsives.packageDisplay}>
+                    <AccordionItem label={packages.useWindowCssSize.packageDisplay}>
+                        <p>
+                            A utility component for fetching the dimension of browser&apos;s window and then stored to a configured <em>css variable</em>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.responsiveProvider.packageDisplay}>
                         <p>
                             A utility component for modifying the child components based on the available space (responsive).
                         </p>

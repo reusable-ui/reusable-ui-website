@@ -93,6 +93,12 @@ export class StateInfo extends PackageInfo {
 }
 
 export class ComponentInfo extends PackageInfo {
+    readonly _packageDisplay : string|undefined;
+    constructor(packageName: string, shortName?: string, packageDisplay?: string) {
+        super(packageName, shortName);
+        this._packageDisplay = packageDisplay;
+    }
+    
     get basePage() : string {
         return 'components';
     }
@@ -100,6 +106,6 @@ export class ComponentInfo extends PackageInfo {
         return '';
     }
     get packageDisplay() : React.ReactNode {
-        return <code>&lt;{pascalCase(this.packageName)}&gt;</code>
+        return <code>&lt;{this._packageDisplay ?? pascalCase(this.packageName)}&gt;</code>
     }
 }

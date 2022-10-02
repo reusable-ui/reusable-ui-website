@@ -128,5 +128,6 @@ export const navbar                 = new ComponentInfo('navbar')
 export const details                = new ComponentInfo('details')
 
 // utility-components:
-export const dimensions             = new ComponentInfo('dimensions')
-export const responsives            = new ComponentInfo('responsives')
+export const useElementCssSize      = new ComponentInfo('dimensions' , undefined, 'UseElementCssSize')
+export const useWindowCssSize      = new ComponentInfo('dimensions' , undefined, 'UseWindowCssSize')
+export const responsiveProvider     = new ComponentInfo('responsives', undefined, 'ResponsiveProvider')
