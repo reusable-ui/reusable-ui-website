@@ -347,7 +347,7 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.useElementCssSize.packageDisplay}>
                         <p>
-                            A utility component for fetching the dimension of the target element and then stored to a configured <em>css variable</em>.
+                            A utility component for fetching the dimension of configured target element and then stored to a configured <em>css variable</em>.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.useWindowCssSize.packageDisplay}>
