@@ -5,7 +5,6 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import { GenericSection } from '../components/Section'
 import { ButtonIcon as Button } from '@reusable-ui/components'
-import '../website.config';
 
 
 

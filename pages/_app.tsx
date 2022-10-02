@@ -6,6 +6,7 @@ import loadable from '@loadable/component'
 import { Button, ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 import { Section } from '../components/Section';
 import { siteVars } from '../website.config';
+import '../website.config';
 import '@cssfn/cssfn-dom'
 
 const SiteNavbarLazy = loadable(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));

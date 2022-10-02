@@ -1,0 +1,66 @@
+import { CapabilityInfo, ComponentInfo, ConfigInfo, FeatureInfo, StateInfo, UtilityInfo, VariantInfo } from './packageInfo'
+
+
+
+export const colors                 = new ConfigInfo('colors')
+export const borders                = new ConfigInfo('borders')
+export const spacers                = new ConfigInfo('spacers')
+export const breakpoints            = new ConfigInfo('breakpoints')
+export const typos                  = new ConfigInfo('typos')
+
+export const numbers                = new UtilityInfo('numbers')
+export const nodes                  = new UtilityInfo('nodes')
+export const stripouts              = new UtilityInfo('stripouts')
+export const layouts                = new UtilityInfo('layouts')
+export const hooks                  = new UtilityInfo('hooks')
+export const semantics              = new UtilityInfo('semantics')
+export const accessibilities        = new UtilityInfo('accessibilities')
+export const validations            = new UtilityInfo('validations')
+export const focuses                = new UtilityInfo('focuses')
+export const clientSides            = new UtilityInfo('client-sides')
+export const navigations            = new UtilityInfo('navigations')
+
+export const background             = new FeatureInfo('background')
+export const foreground             = new FeatureInfo('foreground')
+export const border                 = new FeatureInfo('border')
+export const ring                   = new FeatureInfo('ring')
+export const animation              = new FeatureInfo('animation')
+export const padding                = new FeatureInfo('padding')
+
+export const floatable              = new CapabilityInfo('floatable')
+export const groupable              = new CapabilityInfo('groupable')
+
+export const orientationable        = new VariantInfo('orientationable')
+export const resizable              = new VariantInfo('resizable'   , 'sizes')
+export const themable               = new VariantInfo('themable'    , 'themes')
+export const gradientable           = new VariantInfo('gradientable', 'gradient')
+export const outlineable            = new VariantInfo('outlineable' , 'outlined')
+export const mildable               = new VariantInfo('mildable'    , 'mild')
+export const nudible                = new VariantInfo('nudible'     , 'nude')
+export const colorable              = new VariantInfo('colorable')
+
+export const excitable              = new StateInfo('excitable')
+export const collapsible            = new StateInfo('collapsible')
+export const disableable            = new StateInfo('disableable'       , 'disabled')
+export const activatable            = new StateInfo('activatable'       , 'active')
+export const focusable              = new StateInfo('focusable'         , 'focus feedback')
+export const interactable           = new StateInfo('interactable'      , 'interactive feedback')
+export const clickable              = new StateInfo('clickable'         , 'clicking feedback')
+export const activeAsClick          = new StateInfo('active-as-click')
+export const invalidable            = new StateInfo('invalidable'       , 'valid/invalid indicator')
+export const checkable              = new StateInfo('checkable')
+export const validationIcon         = new StateInfo('validation-icon'   , 'validation icon')
+
+export const reactRouterCompatLink  = new ComponentInfo('react-router-compat-link')
+
+export const generic                = new ComponentInfo('generic')
+export const basic                  = new ComponentInfo('basic')
+export const indicator              = new ComponentInfo('indicator')
+export const control                = new ComponentInfo('control')
+export const actionControl          = new ComponentInfo('action-control')
+export const editableControl        = new ComponentInfo('editable-control')
+export const editableTextControl    = new ComponentInfo('editable-text-control')
+export const editableActionControl  = new ComponentInfo('editable-action-control')
+
+export const container              = new ComponentInfo('container')
+export const content                = new ComponentInfo('content')
