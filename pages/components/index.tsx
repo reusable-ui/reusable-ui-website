@@ -288,7 +288,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                 </Accordion>
             </SubSection>
-            <SubSection title='Dialog Components'>
+            <SubSection title='Composite Components'>
                 <p>
                     Represent a complex structured component to perform a specific task.
                 </p>
@@ -336,6 +336,23 @@ const Components: NextPage = () => {
                     <AccordionItem label={packages.details.packageDisplay}>
                         <p>
                             A foldable content widget.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Utility Components'>
+                <p>
+                    Provides non-visual components to perform a specific function.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.dimensions.packageDisplay}>
+                        <p>
+                            A utility component for fetching the dimension of the target element.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.responsives.packageDisplay}>
+                        <p>
+                            A utility component for modifying the child components based on the available space (responsive).
                         </p>
                     </AccordionItem>
                 </Accordion>
