@@ -25,7 +25,7 @@ const Components: NextPage = () => {
                     Provides a <strong>basic layout</strong> and <strong>interacting feedbacks</strong> for creating <em>real</em> components.
                 </p>
                 <p>
-                    In <em>most cases</em>, you should not to use these component directly. Except for {packages.generic.packageDisplay} and {packages.basic.packageDisplay}.
+                    In <em>most cases</em>, you should not use these component directly. Except for {packages.generic.packageDisplay} and {packages.basic.packageDisplay}.
                 </p>
                 <p>
                     These <em>abstract components</em> are intended for <em>component developers</em> to create their own components.
@@ -33,7 +33,7 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.generic.packageDisplay}>
                         <p>
-                            An unstyled <strong>root element</strong> for all Reusable-UI components. It governs the semantics, classes, refs and more.
+                            An unstyled <strong>generic element</strong>. It governs the semantics, classes, refs and more.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.basic.packageDisplay}>
@@ -70,7 +70,7 @@ const Components: NextPage = () => {
             </SubSection>
             <SubSection title='Base Content Components'>
                 <p>
-                    Provides a <strong>content friendly layout</strong> for containing media elements such as <strong>paragraph</strong>, <strong>images</strong>, <strong>videos</strong>, etc.
+                    Provides a <strong>content friendly layout</strong> for containing media elements such as <strong>paragraph</strong>, <strong>images</strong>, <strong>videos</strong>, etc and dividing the content&apos; sections.
                 </p>
                 <p>
                     You can create your <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, etc by modifying these components.
