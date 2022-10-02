@@ -88,6 +88,152 @@ const Components: NextPage = () => {
                     </AccordionItem>
                 </Accordion>
             </SubSection>
+            <SubSection title='Simple Components'>
+                <p>
+                    Represent a simple structured component to perform simple tasks.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.visuallyHidden.packageDisplay}>
+                        <p>
+                            A wrapper component for hidding its contents (children) while still accessible to assistive technologies.
+                        </p>
+                        <p>
+                            In <em>most cases</em>, you won&apos;t need this component. Use <code>aria-label</code> whenever possible.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.icon.packageDisplay}>
+                        <p>
+                            Displays an emoticon or other icon to attract user&apos; attention.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.label.packageDisplay}>
+                        <p>
+                            Represents a caption for the corresponding neighboring component.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.button.packageDisplay}>
+                        <p>
+                            Represents a caption for the corresponding neighboring component.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.button.packageDisplay}>
+                        <p>
+                            A button component for initiating an action.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.toggleButton.packageDisplay}>
+                        <p>
+                            A button with toggleable {packages.activatable.packageShortDisplay} state.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.navButton.packageDisplay}>
+                        <p>
+                            A clickable button for client-side navigation with automatically {packages.activatable.packageShortDisplay} at correspoding <em>url</em>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.buttonIcon.packageDisplay}>
+                        <p>
+                            A button component with an additional icon.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.closeButton.packageDisplay}>
+                        <p>
+                            A button for dismissing content.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.form.packageDisplay}>
+                        <p>
+                            Represents a document section containing interactive controls for submitting.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.input.packageDisplay}>
+                        <p>
+                            An interactive control in order to accept data from the user.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.range.packageDisplay}>
+                        <p>
+                            An interactive control in order to accept numeric value within a specified range.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.check.packageDisplay}>
+                        <p>
+                            An interactive control in order to select multiple options.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.radio.packageDisplay}>
+                        <p>
+                            An interactive control in order to select single option.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.hamburgerMenuButton.packageDisplay}>
+                        <p>
+                            A toggleable button for showing/hiding menu in Navbar.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Layout Components'>
+                <p>
+                    Displays a complex structural layout.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.list.packageDisplay}>
+                        <p>
+                            Represents a series of content.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.card.packageDisplay}>
+                        <p>
+                            A content container, with optional header and footer.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.masonry.packageDisplay}>
+                        <p>
+                            A container in which the items are laid out one after the other in the inline (or block) direction.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Status Components'>
+                <p>
+                    Conditionally displays a status content.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.popup.packageDisplay}>
+                        <p>
+                            A generic element with dynamic visibility (show/hide).
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.badge.packageDisplay}>
+                        <p>
+                            Represents counters or labels.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.busy.packageDisplay}>
+                        <p>
+                            Indicates a loading state of page.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Notification Components'>
+                <p>
+                    Conditionally displays a message.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.alert.packageDisplay}>
+                        <p>
+                            A UI for displaying feedback messages.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.tooltip.packageDisplay}>
+                        <p>
+                            Represents advisory information related to the element it belongs.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
         </Section>
     </>);
 }
