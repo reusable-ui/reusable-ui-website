@@ -1,4 +1,4 @@
-import { styleSheet, cssVars, style, rule, atGlobal, atRoot, vars } from '@cssfn/core'
+import { styleSheet, cssVars, style, rule, atGlobal, atRoot, vars, descendants } from '@cssfn/core'
 import { iconConfig } from '@reusable-ui/components'
 
 
@@ -51,6 +51,11 @@ styleSheet(() => style({
         }),
         ...rule('a:has(code:only-child)', {
             textDecoration: [['none'], '!important'],
+        }),
+        ...rule(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.h1', '.h2', '.h3', '.h4', '.h5', '.h6'], {
+            ...descendants(['code', '.code'], {
+                fontSize: [['inherit'], '!important'],
+            }),
         }),
         
         ...atRoot([

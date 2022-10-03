@@ -120,10 +120,13 @@ export class PackageInfo {
     }
 }
 export class LibPackageInfo extends PackageInfo {
+    get componentTag() : string {
+        return `<${this.displayName ?? pascalCase(this.packageName)}>`;
+    }
     get packageDisplay() : React.ReactNode {
         return (
             <code>
-                &lt;{this.displayName ?? pascalCase(this.packageName)}&gt;
+                {this.componentTag}
             </code>
         );
     }

@@ -1,10 +1,7 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import { AccordionItem, Button, Accordion, Tooltip } from '@reusable-ui/components'
-import { TypeScriptCode } from '../../components/Code'
-import styles from '../styles/About.module.scss'
+import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { Section, SubSection } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 
