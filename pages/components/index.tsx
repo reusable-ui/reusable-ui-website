@@ -74,6 +74,11 @@ const Components: NextPage = () => {
                             A generic <strong>text editor</strong> layout component with built-in variants, states, and {packages.validationIcon.packageShortLink}.
                         </p>
                     </AccordionItem>
+                    <AccordionItem label={packages.editableActionControl.packageDisplay}>
+                        <p>
+                            A clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.clickable.packageShortLink} and {packages.invalidable.packageShortLink}.
+                        </p>
+                    </AccordionItem>
                 </Accordion>
             </SubSection>
             <SubSection title='Base Content Components'>
@@ -121,11 +126,6 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.button.packageDisplay}>
                         <p>
-                            Represents a caption for the corresponding neighboring component.
-                        </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.button.packageDisplay}>
-                        <p>
                             A button component for initiating an action.
                         </p>
                     </AccordionItem>
@@ -136,7 +136,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.navButton.packageDisplay}>
                         <p>
-                            A clickable button for client-side navigation with automatically toggling-on the {packages.activatable.packageShortLink} at correspoding <em>url</em>.
+                            A button for client-side navigation with automatically toggling-on the {packages.activatable.packageShortLink} at correspoding <em>url</em>.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.buttonIcon.packageDisplay}>
