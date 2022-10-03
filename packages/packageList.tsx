@@ -1,4 +1,4 @@
-import { BarrelComponentInfo, BarrelCoreInfo, CapabilityInfo, ComponentInfo, ConfigInfo, CoreInfo, FeatureInfo, StateInfo, UtilityInfo, VariantInfo } from './packageInfo'
+import { BarrelPackageInfo, CapabilityInfo, ComponentInfo, ConfigInfo, FeatureInfo, StateInfo, UtilityInfo, VariantInfo } from './packageInfo'
 
 
 
@@ -36,12 +36,12 @@ export const groupable              = new CapabilityInfo('groupable')
 
 // reusable-ui variants:
 export const orientationable        = new VariantInfo('orientationable')
-export const resizable              = new VariantInfo('resizable'   , 'sizes')
-export const themable               = new VariantInfo('themable'    , 'themes')
-export const gradientable           = new VariantInfo('gradientable', 'gradient')
-export const outlineable            = new VariantInfo('outlineable' , 'outlined')
-export const mildable               = new VariantInfo('mildable'    , 'mild')
-export const nudible                = new VariantInfo('nudible'     , 'nude')
+export const resizable              = new VariantInfo('resizable'       , 'sizes')
+export const themable               = new VariantInfo('themable'        , 'themes')
+export const gradientable           = new VariantInfo('gradientable'    , 'gradient')
+export const outlineable            = new VariantInfo('outlineable'     , 'outlined')
+export const mildable               = new VariantInfo('mildable'        , 'mild')
+export const nudible                = new VariantInfo('nudible'         , 'nude')
 export const colorable              = new VariantInfo('colorable')
 
 // reusable-ui states:
@@ -128,10 +128,10 @@ export const navbar                 = new ComponentInfo('navbar')
 export const details                = new ComponentInfo('details')
 
 // utility-components:
-export const useElementCssSize      = new ComponentInfo('dimensions' , undefined, 'UseElementCssSize')
-export const useWindowCssSize       = new ComponentInfo('dimensions' , undefined, 'UseWindowCssSize')
-export const responsiveProvider     = new ComponentInfo('responsives', undefined, 'ResponsiveProvider')
+export const useElementCssSize      = new ComponentInfo('dimensions'    , undefined, 'UseElementCssSize')
+export const useWindowCssSize       = new ComponentInfo('dimensions'    , undefined, 'UseWindowCssSize')
+export const responsiveProvider     = new ComponentInfo('responsives'   , undefined, 'ResponsiveProvider')
 
 // barrels:
-export const components             = new BarrelComponentInfo('components' , undefined, 'Reusable-UI Components')
-export const core                   = new BarrelCoreInfo('core' , undefined, 'Reusable-UI Core')
+export const components             = new BarrelPackageInfo('components', undefined, 'Reusable-UI Components')
+export const core                   = new BarrelPackageInfo('core'      , undefined, 'Reusable-UI Core')
