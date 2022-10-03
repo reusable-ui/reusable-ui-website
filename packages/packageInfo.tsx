@@ -54,12 +54,12 @@ const ConditionalLink = (props: ConditionalLinkProps): React.ReactElement => {
 export class PackageInfo {
     readonly packageName : string
     readonly shortName   : string|undefined
-    readonly displayName : string|undefined;
+    readonly displayName : string|undefined
     
     constructor(packageName: string, shortName?: string, displayName?: string) {
-        this.packageName = packageName;
-        this.shortName   = shortName;
-        this.displayName   = displayName;
+        this.packageName = packageName
+        this.shortName   = shortName
+        this.displayName = displayName
     }
     
     // props:
