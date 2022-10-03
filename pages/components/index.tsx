@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
-import { Section, SubSection } from '../../components/Section'
+import { Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 
 
@@ -25,7 +25,7 @@ const Components: NextPage = () => {
             <p>
                 Of course, our collection is limited. You may still need {packages.core.packageLink} to create a more specific component for your needs.
             </p>
-            <SubSection title='Base Components'>
+            <Section title='Base Components'>
                 <p>
                     Provides a <strong>basic layout</strong> and <strong>interacting feedbacks</strong> for creating <em>real</em> components.
                 </p>
@@ -77,8 +77,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Base Content Components'>
+            </Section>
+            <Section title='Base Content Components'>
                 <p>
                     Provides a <strong>content friendly layout</strong> for containing media elements such as <strong>paragraph</strong>, <strong>images</strong>, <strong>videos</strong>, etc and dividing the content&apos; sections.
                 </p>
@@ -97,8 +97,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Simple Components'>
+            </Section>
+            <Section title='Simple Components'>
                 <p>
                     Represent a simple structured component to perform simple tasks.
                 </p>
@@ -177,8 +177,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Layout Components'>
+            </Section>
+            <Section title='Layout Components'>
                 <p>
                     Displays a complex structural layout.
                 </p>
@@ -199,8 +199,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Status Components'>
+            </Section>
+            <Section title='Status Components'>
                 <p>
                     Conditionally displays a status content.
                 </p>
@@ -221,8 +221,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Notification Components'>
+            </Section>
+            <Section title='Notification Components'>
                 <p>
                     Conditionally displays a message.
                 </p>
@@ -238,8 +238,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Menu Components'>
+            </Section>
+            <Section title='Menu Components'>
                 <p>
                     Displays a context menu.
                 </p>
@@ -270,8 +270,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Dialog Components'>
+            </Section>
+            <Section title='Dialog Components'>
                 <p>
                     Displays a popup dialog with additionally blocking the UI behind it.
                 </p>
@@ -292,8 +292,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Composite Components'>
+            </Section>
+            <Section title='Composite Components'>
                 <p>
                     Represent a complex structured component to perform a specific task.
                 </p>
@@ -344,8 +344,8 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Utility Components'>
+            </Section>
+            <Section title='Utility Components'>
                 <p>
                     Provides non-visual components to perform a specific function.
                 </p>
@@ -366,7 +366,7 @@ const Components: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
+            </Section>
         </Section>
     </>);
 }

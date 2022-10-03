@@ -1,4 +1,5 @@
-import { useMergeClasses } from '@reusable-ui/core'
+import { createContext, useContext, useMemo } from 'react'
+import { Tag, useMergeClasses } from '@reusable-ui/core'
 import { Container, ContainerProps, Generic } from '@reusable-ui/components'
 
 
@@ -27,6 +28,16 @@ export function GenericSection(props: GenericSectionProps) {
 
 
 
+
+export interface ISectionContext {
+    level : number
+}
+const SectionContext = createContext<ISectionContext>({
+    level : 1,
+});
+
+
+
 export interface SectionProps extends GenericSectionProps {
     titleTag ?: 'h1'|'h2'|'h3'|'h4'|'h5'|'h6'
     title    ?: React.ReactNode
@@ -36,10 +47,13 @@ export interface SectionProps extends GenericSectionProps {
  * A simple `<section>` with built in `<h2>` and `<article>`.
  */
 export const Section = (props: SectionProps) => {
-    const { titleTag = 'h2', title, children, ...restGenericSectionProps} = props;
+    const { level } = useContext(SectionContext);
+    const { titleTag = `h${level}` as Tag, title, children, ...restGenericSectionProps} = props;
     
     
-    
+    const subContextProp = useMemo<ISectionContext>(() => ({
+        level: (level < 6) ? (level + 1) : 6,
+    }), [level]);
     return (
         <GenericSection {...restGenericSectionProps}>
             <article>
@@ -47,29 +61,10 @@ export const Section = (props: SectionProps) => {
                     { title }
                 </Generic>}
                 
-                { children }
+                <SectionContext.Provider value={subContextProp}>
+                    { children }
+                </SectionContext.Provider>
             </article>
         </GenericSection>
-    );
-}
-
-/**
- * An introduction `<section>` with built in `<h1>` and `<article>`.
- */
-export const IntroSection = (props: SectionProps) => {
-    return (
-        <Section
-            {...props}
-            titleTag={props.titleTag ?? 'h1'}
-        />
-    );
-}
-
-export const SubSection = (props: SectionProps) => {
-    return (
-        <Section
-            {...props}
-            titleTag={props.titleTag ?? 'h3'}
-        />
     );
 }

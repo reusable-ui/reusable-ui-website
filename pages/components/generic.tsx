@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
-import { Section, SubSection } from '../../components/Section'
+import { Section } from '../../components/Section'
 import { generic } from '../../packages/packageList'
 import * as properties from '../../properties/propertyList'
 
@@ -18,11 +18,11 @@ const GenericPage: NextPage = () => {
             <p>
                 {generic.packageDisplay} is an unstyled generic element. It governs the semantics, classes, refs and more.
             </p>
-            <SubSection title='Semantic Properties'>
+            <Section title='Semantic Properties'>
                 <p>
                     Defines <strong>semantic meaning</strong> to the component, allowing <em>screen readers</em> and other tools to present and support <em>interaction</em> with the component in a way that is consistent with user expectations of that type of the component.
                 </p>
-                <SubSection title={<>{properties.tag.propertyDisplay} Property</>}>
+                <Section title={<>{properties.tag.propertyDisplay} Property</>}>
                     <p>
                         Defines the final <strong>rendered tag</strong> of the component.
                     </p>
@@ -36,8 +36,8 @@ const GenericPage: NextPage = () => {
                             </p>
                         </AccordionItem>
                     </Accordion>
-                </SubSection>
-            </SubSection>
+                </Section>
+            </Section>
         </Section>
     </>);
 }

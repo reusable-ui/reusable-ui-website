@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ButtonIcon as Button } from '@reusable-ui/components'
 import { BashCode } from '../components/Code'
 import React from 'react'
-import { Section, SubSection } from '../components/Section'
+import { Section } from '../components/Section'
 import {core, components} from '../packages/packageList'
 
 
@@ -20,7 +20,7 @@ const Installation: NextPage = () => {
             <p>
                 There are 2 major parts of Reusable-UI: {core.packageLink} and {components.packageLink}.
             </p>
-            <SubSection title='Reusable-UI Core'>
+            <Section title='Reusable-UI Core'>
                 <p>
                     {core.packageLink} is a building block (framework) for making any {components.packageLink}.
                     It also governs the interaction between components.
@@ -47,8 +47,8 @@ pnpm add @reusable-ui/core
                     Don&apos;t have an idea to create a Reusable-UI component?
                     Don&apos;t worry, we made <Button theme='primary' buttonStyle='link'><Link href='/guide-create-component'>a tutorial creating a Reusable-UI component</Link></Button> for you.
                 </p>
-            </SubSection>
-            <SubSection title='Reusable-UI Components'>
+            </Section>
+            <Section title='Reusable-UI Components'>
                 <p>
                     {components.packageLink} contains a collection of our official common components.
                 </p>
@@ -60,7 +60,7 @@ pnpm add @reusable-ui/core
                 <p>
                     Of course, our collection is limited. You may still need {core.packageLink} to create a more specific component for your needs.
                 </p>
-                <SubSection title='Install All Reusable-UI Components' titleTag='h4'>
+                <Section title='Install All Reusable-UI Components'>
                     <p>
                         To install the <strong>whole</strong> {components.packageLink}, open the terminal window on your code editor and type:
                     </p>
@@ -77,13 +77,13 @@ pnpm add @reusable-ui/components
                     <p>
                         Any component you don&apos;t use will automatically removed (tree shake) by Webpack/Parcel/Rollup or similar tool when you deploy your (React) app.
                     </p>
-                </SubSection>
-                <SubSection title='Install Specific Reusable-UI Component' titleTag='h4'>
+                </Section>
+                <Section title='Install Specific Reusable-UI Component'>
                     <p>
                         To install a <strong>specific</strong> Reusable-UI component, please browse <Button theme='primary' buttonStyle='link'><Link href='/components'>Reusable-UI component library</Link></Button> and choose the component you want.
                     </p>
-                </SubSection>
-            </SubSection>
+                </Section>
+            </Section>
         </Section>
     </>);
 }

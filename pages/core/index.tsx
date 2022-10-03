@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { AccordionItem, Button, Accordion } from '@reusable-ui/components'
-import { Section, SubSection } from '../../components/Section'
+import { Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 
 
@@ -28,7 +28,7 @@ const Core: NextPage = () => {
                 Don&apos;t have an idea to create a Reusable-UI component?
                 Don&apos;t worry, we made <Button theme='primary' buttonStyle='link'><Link href='/guide-create-component'>a tutorial creating a Reusable-UI component</Link></Button> for you.
             </p>
-            <SubSection title='Reusable-UI Configs'>
+            <Section title='Reusable-UI Configs'>
                 <p>
                     Stores a <strong>global confuguration</strong> to be shared between components.
                 </p>
@@ -59,8 +59,8 @@ const Core: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Reusable-UI Utilities'>
+            </Section>
+            <Section title='Reusable-UI Utilities'>
                 <p>
                     Provides <strong>common utility functions</strong> to be shared between components, so the overall bundle size is minimal.
                 </p>
@@ -121,8 +121,8 @@ const Core: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Reusable-UI Features'>
+            </Section>
+            <Section title='Reusable-UI Features'>
                 <p>
                     Adds a <strong>managed css property</strong> to component&apos;s stylesheet.
                 </p>
@@ -166,8 +166,8 @@ const Core: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Reusable-UI Capabilities'>
+            </Section>
+            <Section title='Reusable-UI Capabilities'>
                 <p>
                     Adds a <strong>particular capability</strong> to component.
                 </p>
@@ -183,8 +183,8 @@ const Core: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Reusable-UI Variants'>
+            </Section>
+            <Section title='Reusable-UI Variants'>
                 <p>
                     The <strong>alternative appearances</strong> of the UI without changing the functionality.
                 </p>
@@ -235,8 +235,8 @@ const Core: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
-            <SubSection title='Reusable-UI States'>
+            </Section>
+            <Section title='Reusable-UI States'>
                 <p>
                     The <strong>specialized state</strong> of the UI.
                 </p>
@@ -297,7 +297,7 @@ const Core: NextPage = () => {
                         </p>
                     </AccordionItem>
                 </Accordion>
-            </SubSection>
+            </Section>
         </Section>
     </>);
 }
