@@ -125,6 +125,120 @@ const Core: NextPage = () => {
                     </AccordionItem>
                 </Accordion>
             </SubSection>
+            <SubSection title='Reusable-UI Features'>
+                <p>
+                    Adds a <strong>managed css property</strong> to component&apos;s stylesheet.
+                </p>
+                <p>
+                    This managed properties allow the system (framework) to <strong>override</strong> them, if needed.
+                    So the appearance is <strong>in sync</strong> with the surrounding components.
+                </p>
+                <p>
+                    Some css properties are <strong>reserved to our system</strong>.
+                    So, please <strong>don&apos;t</strong> write them <strong>directly</strong>, in order to the system to <strong>override</strong> them.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.background.packageDisplay}>
+                        <p>
+                            <strong>Background</strong> stuff of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.foreground.packageDisplay}>
+                        <p>
+                            <strong>Foreground</strong> (text color) stuff of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.border.packageDisplay}>
+                        <p>
+                            <strong>Border</strong> (stroke) stuff of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.ring.packageDisplay}>
+                        <p>
+                            <strong>Ring</strong> (focus indicator) color of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.animation.packageDisplay}>
+                        <p>
+                            <strong>Animation</strong> stuff of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.padding.packageDisplay}>
+                        <p>
+                            <strong>Padding</strong> (inner spacing) stuff of UI.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Reusable-UI Capabilities'>
+                <p>
+                    Adds a <strong>particular capability</strong> to component.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.floatable.packageDisplay}>
+                        <p>
+                            A capability of UI to <strong>float/overlay on the top/beside</strong> the another UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.groupable.packageDisplay}>
+                        <p>
+                            <strong>Groups</strong> a list of UIs as a <strong>single UI</strong>.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
+            <SubSection title='Reusable-UI Variants'>
+                <p>
+                    The <strong>alternative appearances</strong> of the UI without changing the functionality.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.orientationable.packageDisplay}>
+                        <p>
+                            A capability of UI to <strong>rotate its layout</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.resizable.packageDisplay}>
+                        <p>
+                            <strong>Size options</strong> of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.themable.packageDisplay}>
+                        <p>
+                            <strong>Color options</strong> of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.gradientable.packageDisplay}>
+                        <p>
+                            <strong>Gradient variant</strong> of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.outlineable.packageDisplay}>
+                        <p>
+                            <strong>Outlined variant</strong> (background-less) of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.mildable.packageDisplay}>
+                        <p>
+                            <strong>Mild variant</strong> (soft color) of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.nudible.packageDisplay}>
+                        <p>
+                            <strong>Nude variant</strong> (background-less + border-less + padding-less) of UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.colorable.packageDisplay}>
+                        <p>
+                            <strong>Colorize</strong> the UI based on <strong>its theme</strong> or the <strong>parent&apos;s background</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.basicVariants.packageDisplay}>
+                        <p>
+                            Copies the <strong>basic variants</strong> from <strong>related  component</strong>.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
         </Section>
     </>);
 }

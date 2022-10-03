@@ -43,6 +43,7 @@ export const outlineable            = new VariantInfo('outlineable'     , 'outli
 export const mildable               = new VariantInfo('mildable'        , 'mild')
 export const nudible                = new VariantInfo('nudible'         , 'nude')
 export const colorable              = new VariantInfo('colorable')
+export const basicVariants          = new VariantInfo('basic-variants')
 
 // reusable-ui states:
 export const excitable              = new StateInfo('excitable')
