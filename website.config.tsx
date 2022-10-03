@@ -49,6 +49,9 @@ styleSheet(() => style({
             minBlockSize: '60px',
             paddingBlock: '0px',
         }),
+        ...rule('a:has(code)', {
+            textDecoration: [['none'], '!important'],
+        }),
         
         ...atRoot([
             vars({

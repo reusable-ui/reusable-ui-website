@@ -1,5 +1,40 @@
 import React from 'react';
+import Link from 'next/link'
 import { pascalCase } from 'pascal-case'
+import { DetermineCurrentPageProps, useDetermineCurrentPage } from '@reusable-ui/core'
+import { ButtonProps, Button } from '@reusable-ui/components'
+
+
+
+interface ConditionalLinkProps
+    extends
+        ButtonProps,
+        DetermineCurrentPageProps,
+        Pick<PackageInfo, 'packageUrl'>
+{
+}
+const ConditionalLink = (props: ConditionalLinkProps): React.ReactElement => {
+    const {
+        caseSensitive,
+        end,
+        
+        packageUrl,
+        
+        children,
+    ...restButtonProps} = props;
+    
+    const isCurrentPage = useDetermineCurrentPage({ caseSensitive, end, children }) ?? false;
+    if (isCurrentPage) return <>{props.children}</>
+    return (
+        <Button {...restButtonProps} theme={props.theme ?? 'primary'} buttonStyle={props.buttonStyle ?? 'link'}>
+            <Link href={packageUrl}>
+                {children}
+            </Link>
+        </Button>
+    );
+}
+
+
 
 export class PackageInfo {
     readonly packageName : string
@@ -19,93 +54,155 @@ export class PackageInfo {
     }
     get packageUrl() : string {
         return (
-            ['', this.basePage, this.categoryPage, this.packageName]
+            ['', this.basePage, this.packageName]
             .filter((segment) => !!segment)
             .join('/')
         );
     }
     get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName}</code>
+        return (
+            <code>
+                {this.packageName}
+            </code>
+        );
+    }
+    get packageLink() : React.ReactNode {
+        return (
+            <ConditionalLink packageUrl={this.packageUrl}>
+                {this.packageDisplay}
+            </ConditionalLink>
+        );
+    }
+    get packageShortLink() : React.ReactNode {
+        return (
+            <ConditionalLink packageUrl={this.packageUrl}>
+                {this.packageShortName}
+            </ConditionalLink>
+        );
     }
     get packageShortDisplay() : React.ReactNode {
-        return this.shortName ? <code>{this.packageShortName}</code> : this.packageDisplay
+        return this.shortName ? <code>{this.packageShortName}</code> : this.packageLink
     }
     
     // pages:
     get basePage() : string {
         return 'libs';
     }
-    get categoryPage() : string {
-        return '';
-    }
     get segmentPage() : string {
         return this.packageName;
     }
 }
 
-export class ConfigInfo extends PackageInfo {
-    get categoryPage(): string {
-        return 'configs';
+
+
+export class CoreInfo extends PackageInfo {
+    readonly _packageDisplay : string|undefined;
+    constructor(packageName: string, shortName?: string, packageLink?: string) {
+        super(packageName, shortName);
+        this._packageDisplay = packageLink;
     }
+    
+    get basePage() : string {
+        return 'core';
+    }
+    get packageDisplay() : React.ReactNode {
+        return (
+            <code>
+                &lt;{this._packageDisplay ?? pascalCase(this.packageName)}&gt;
+            </code>
+        );
+    }
+}
+
+export class ConfigInfo extends PackageInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} config</code>
     }
 }
 export class UtilityInfo extends PackageInfo {
-    get categoryPage(): string {
-        return 'utilities';
-    }
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} utility</code>
     }
 }
 export class FeatureInfo extends PackageInfo {
-    get categoryPage(): string {
-        return 'features';
-    }
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} feature</code>
     }
 }
 export class CapabilityInfo extends PackageInfo {
-    get categoryPage(): string {
-        return 'capabilities';
-    }
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} capability</code>
     }
 }
 export class VariantInfo extends PackageInfo {
-    get categoryPage(): string {
-        return 'variants';
-    }
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} variant</code>
     }
 }
 export class StateInfo extends PackageInfo {
-    get categoryPage(): string {
-        return 'states';
-    }
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} state</code>
     }
 }
 
+
+
 export class ComponentInfo extends PackageInfo {
     readonly _packageDisplay : string|undefined;
-    constructor(packageName: string, shortName?: string, packageDisplay?: string) {
+    constructor(packageName: string, shortName?: string, packageLink?: string) {
         super(packageName, shortName);
-        this._packageDisplay = packageDisplay;
+        this._packageDisplay = packageLink;
     }
     
     get basePage() : string {
         return 'components';
     }
-    get categoryPage() : string {
+    get packageDisplay() : React.ReactNode {
+        return (
+            <code>
+                &lt;{this._packageDisplay ?? pascalCase(this.packageName)}&gt;
+            </code>
+        );
+    }
+}
+
+
+
+export class BarrelComponentInfo extends ComponentInfo {
+    get basePage() : string {
         return '';
     }
     get packageDisplay() : React.ReactNode {
-        return <code>&lt;{this._packageDisplay ?? pascalCase(this.packageName)}&gt;</code>
+        return (
+            <strong>
+                {this._packageDisplay ?? pascalCase(this.packageName)}
+            </strong>
+        );
+    }
+    get packageLink() : React.ReactNode {
+        return (
+            <ConditionalLink packageUrl={this.packageUrl}>
+                {this._packageDisplay ?? pascalCase(this.packageName)}
+            </ConditionalLink>
+        );
+    }
+}
+export class BarrelCoreInfo extends CoreInfo {
+    get basePage() : string {
+        return '';
+    }
+    get packageDisplay() : React.ReactNode {
+        return (
+            <strong>
+                {this._packageDisplay ?? pascalCase(this.packageName)}
+            </strong>
+        );
+    }
+    get packageLink() : React.ReactNode {
+        return (
+            <ConditionalLink packageUrl={this.packageUrl}>
+                {this._packageDisplay ?? pascalCase(this.packageName)}
+            </ConditionalLink>
+        );
     }
 }

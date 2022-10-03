@@ -1,4 +1,4 @@
-import { CapabilityInfo, ComponentInfo, ConfigInfo, FeatureInfo, StateInfo, UtilityInfo, VariantInfo } from './packageInfo'
+import { BarrelComponentInfo, BarrelCoreInfo, CapabilityInfo, ComponentInfo, ConfigInfo, CoreInfo, FeatureInfo, StateInfo, UtilityInfo, VariantInfo } from './packageInfo'
 
 
 
@@ -47,8 +47,8 @@ export const colorable              = new VariantInfo('colorable')
 // reusable-ui states:
 export const excitable              = new StateInfo('excitable')
 export const collapsible            = new StateInfo('collapsible')
-export const disableable            = new StateInfo('disableable'       , 'disabled')
-export const activatable            = new StateInfo('activatable'       , 'active')
+export const disableable            = new StateInfo('disableable'       , 'disabled state')
+export const activatable            = new StateInfo('activatable'       , 'active state')
 export const focusable              = new StateInfo('focusable'         , 'focus feedback')
 export const interactable           = new StateInfo('interactable'      , 'interactive feedback')
 export const clickable              = new StateInfo('clickable'         , 'clicking feedback')
@@ -129,5 +129,9 @@ export const details                = new ComponentInfo('details')
 
 // utility-components:
 export const useElementCssSize      = new ComponentInfo('dimensions' , undefined, 'UseElementCssSize')
-export const useWindowCssSize      = new ComponentInfo('dimensions' , undefined, 'UseWindowCssSize')
+export const useWindowCssSize       = new ComponentInfo('dimensions' , undefined, 'UseWindowCssSize')
 export const responsiveProvider     = new ComponentInfo('responsives', undefined, 'ResponsiveProvider')
+
+// barrels:
+export const components             = new BarrelComponentInfo('components' , undefined, 'Reusable-UI Components')
+export const core                   = new BarrelCoreInfo('core' , undefined, 'Reusable-UI Core')

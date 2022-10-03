@@ -5,6 +5,7 @@ import { ButtonIcon as Button } from '@reusable-ui/components'
 import { BashCode } from '../components/Code'
 import React from 'react'
 import { Section, SubSection } from '../components/Section'
+import {core, components} from '../packages/packageList'
 
 
 
@@ -17,20 +18,20 @@ const Installation: NextPage = () => {
         
         <Section title='Install Reusable-UI'>
             <p>
-                There are 2 major parts of Reusable-UI: <strong>Reusable-UI core</strong> and <strong>Reusable-UI components</strong>.
+                There are 2 major parts of Reusable-UI: {core.packageLink} and {components.packageLink}.
             </p>
             <SubSection title='Reusable-UI Core'>
                 <p>
-                    <strong>Reusable-UI core</strong> is a building block (framework) for making any Reusable-UI components.
+                    {core.packageLink} is a building block (framework) for making any {components.packageLink}.
                     It also governs the interaction between components.
                 </p>
                 <p>
                     This core is intended for <em>component developers</em>.
-                    So, if you want to create <strong>a new kind of component</strong> which is <em>compatible</em> with Reusable-UI components,
+                    So, if you want to create <strong>a new kind of component</strong> which is <em>compatible</em> with {components.packageLink},
                     this core is a great starting point.
                 </p>
                 <p>
-                    To install the <strong>Reusable-UI core</strong>, open the terminal window on your code editor and type:
+                    To install the {core.packageLink}, open the terminal window on your code editor and type:
                 </p>
                 <BashCode collapsable={false}>{`
 # npm:
@@ -49,7 +50,7 @@ pnpm add @reusable-ui/core
             </SubSection>
             <SubSection title='Reusable-UI Components'>
                 <p>
-                    <strong>Reusable-UI components</strong> contains a collection of our official common components.
+                    {components.packageLink} contains a collection of our official common components.
                 </p>
                 <p>
                     This library (collection) is intended for <em>(react) web developers</em>.
@@ -57,11 +58,11 @@ pnpm add @reusable-ui/core
                     our component library can help save your time.
                 </p>
                 <p>
-                    Of course, our collection is limited. You may still need <strong>Reusable-UI core</strong> to create a more specific component for your needs.
+                    Of course, our collection is limited. You may still need {core.packageLink} to create a more specific component for your needs.
                 </p>
                 <SubSection title='Install All Reusable-UI Components' titleTag='h4'>
                     <p>
-                        To install the <strong>whole</strong> Reusable-UI components, open the terminal window on your code editor and type:
+                        To install the <strong>whole</strong> {components.packageLink}, open the terminal window on your code editor and type:
                     </p>
                     <BashCode collapsable={false}>{`
 # npm:

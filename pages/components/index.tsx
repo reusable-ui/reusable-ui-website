@@ -25,7 +25,7 @@ const Components: NextPage = () => {
                     Provides a <strong>basic layout</strong> and <strong>interacting feedbacks</strong> for creating <em>real</em> components.
                 </p>
                 <p>
-                    In <em>most cases</em>, you should not use these component directly. Except for {packages.generic.packageDisplay} and {packages.basic.packageDisplay}.
+                    In <em>most cases</em>, you should not use these component directly. Except for {packages.generic.packageLink} and {packages.basic.packageLink}.
                 </p>
                 <p>
                     These <em>abstract components</em> are intended for <em>component developers</em> to create their own components.
@@ -38,32 +38,32 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.basic.packageDisplay}>
                         <p>
-                            A <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortDisplay}, {packages.themable.packageShortDisplay}, {packages.gradientable.packageShortDisplay}, {packages.outlineable.packageShortDisplay}, {packages.mildable.packageShortDisplay}, and {packages.nudible.packageShortDisplay}.
+                            A <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.indicator.packageDisplay}>
                         <p>
-                            A <strong>simple box</strong> layout component with built-in variants and indication states: {packages.disableable.packageShortDisplay} and {packages.activatable.packageShortDisplay}.
+                            A <strong>simple box</strong> layout component with built-in variants and indication states: {packages.disableable.packageShortLink} and {packages.activatable.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.control.packageDisplay}>
                         <p>
-                            An interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortDisplay} and {packages.interactable.packageShortDisplay}.
+                            An interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortLink} and {packages.interactable.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.actionControl.packageDisplay}>
                         <p>
-                            A clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortDisplay}.
+                            A clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.editableControl.packageDisplay}>
                         <p>
-                            An editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortDisplay}.
+                            An editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.editableTextControl.packageDisplay}>
                         <p>
-                            A generic <strong>text editor</strong> layout component with built-in variants, states, and {packages.validationIcon.packageShortDisplay}.
+                            A generic <strong>text editor</strong> layout component with built-in variants, states, and {packages.validationIcon.packageShortLink}.
                         </p>
                     </AccordionItem>
                 </Accordion>
@@ -123,12 +123,12 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.toggleButton.packageDisplay}>
                         <p>
-                            A button with toggleable {packages.activatable.packageShortDisplay} state.
+                            A button with toggleable {packages.activatable.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.navButton.packageDisplay}>
                         <p>
-                            A clickable button for client-side navigation with automatically {packages.activatable.packageShortDisplay} at correspoding <em>url</em>.
+                            A clickable button for client-side navigation with automatically toggling on the {packages.activatable.packageShortLink} at correspoding <em>url</em>.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.buttonIcon.packageDisplay}>
@@ -168,7 +168,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.hamburgerMenuButton.packageDisplay}>
                         <p>
-                            A toggleable button for showing/hiding menu in {packages.navbar.packageDisplay}.
+                            A toggleable button for showing/hiding menu in {packages.navbar.packageLink}.
                         </p>
                     </AccordionItem>
                 </Accordion>
@@ -251,17 +251,17 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.dropdownButton.packageDisplay}>
                         <p>
-                            A {packages.button.packageDisplay} component with a custom context menu.
+                            A {packages.button.packageLink} component with a custom context menu.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.dropdownList.packageDisplay}>
                         <p>
-                            Overlays a {packages.list.packageDisplay} as context menu.
+                            Overlays a {packages.list.packageLink} as context menu.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.dropdownListButton.packageDisplay}>
                         <p>
-                            A {packages.button.packageDisplay} component with a {packages.dropdownList.packageDisplay} as context menu.
+                            A {packages.button.packageLink} component with a {packages.dropdownList.packageLink} as context menu.
                         </p>
                     </AccordionItem>
                 </Accordion>
@@ -278,12 +278,12 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.modalCard.packageDisplay}>
                         <p>
-                            Overlays a {packages.card.packageDisplay} as dialog to the entire site's page.
+                            Overlays a {packages.card.packageLink} as dialog to the entire site's page.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.modalSide.packageDisplay}>
                         <p>
-                            Overlays a {packages.card.packageDisplay} as dialog to the side of site's page.
+                            Overlays a {packages.card.packageLink} as dialog to the side of site's page.
                         </p>
                     </AccordionItem>
                 </Accordion>
