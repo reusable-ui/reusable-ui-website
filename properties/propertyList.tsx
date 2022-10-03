@@ -21,6 +21,9 @@ export const id             = new PropertyInfo('id')
 export const style          = new PropertyInfo('style')
 
 export const mainClass      = new PropertyInfo('mainClass')
-export const classes        = new PropertyInfo('classes')
 export const variantClasses = new PropertyInfo('variantClasses')
 export const stateClasses   = new PropertyInfo('stateClasses')
+export const classes        = new PropertyInfo('classes')
+export const className      = new PropertyInfo('className')
+
+export const onEvent        = new PropertyInfo('on*')
