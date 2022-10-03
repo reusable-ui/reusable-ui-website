@@ -136,7 +136,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.navButton.packageDisplay}>
                         <p>
-                            A clickable button for client-side navigation with automatically toggling on the {packages.activatable.packageShortLink} at correspoding <em>url</em>.
+                            A clickable button for client-side navigation with automatically toggling-on the {packages.activatable.packageShortLink} at correspoding <em>url</em>.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.buttonIcon.packageDisplay}>
