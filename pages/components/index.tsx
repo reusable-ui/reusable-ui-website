@@ -13,7 +13,7 @@ import * as packages from '../../packages/packageList'
 const Components: NextPage = () => {
     return (<>
         <Head>
-            <title>About Reusable-UI</title>
+            <title>Reusable-UI Components</title>
             <meta name="description" content="A short history about Reusable-UI libs" />
         </Head>
         <Section title='Reusable-UI Components'>
