@@ -49,7 +49,7 @@ styleSheet(() => style({
             minBlockSize: '60px',
             paddingBlock: '0px',
         }),
-        ...rule('a:has(code)', {
+        ...rule('a:has(code:only-child)', {
             textDecoration: [['none'], '!important'],
         }),
         

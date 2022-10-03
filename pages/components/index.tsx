@@ -18,7 +18,15 @@ const Components: NextPage = () => {
         </Head>
         <Section title='Reusable-UI Components'>
             <p>
-                This library contains a collection of our <em>official</em> common components.
+                {packages.components.packageLink} library contains a collection of our <em>official</em> common components.
+            </p>
+            <p>
+                This library (collection) is intended for <em>(react) web developers</em>.
+                So, if you want to create a website without the hassle of creating the required components,
+                our component library can help save your time.
+            </p>
+            <p>
+                Of course, our collection is limited. You may still need {packages.core.packageLink} to create a more specific component for your needs.
             </p>
             <SubSection title='Base Components'>
                 <p>

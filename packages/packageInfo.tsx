@@ -12,6 +12,8 @@ interface ConditionalLinkProps
         DetermineCurrentPageProps,
         Pick<PackageInfo, 'packageUrl'>
 {
+    currentPageComponent ?: React.ReactElement
+    buttonComponent      ?: React.ReactElement<ButtonProps>
 }
 const ConditionalLink = (props: ConditionalLinkProps): React.ReactElement => {
     const {
@@ -20,17 +22,30 @@ const ConditionalLink = (props: ConditionalLinkProps): React.ReactElement => {
         
         packageUrl,
         
+        currentPageComponent = <></>,
+        buttonComponent      = <Button /> as React.ReactElement<ButtonProps>,
+        
         children,
     ...restButtonProps} = props;
     
-    const isCurrentPage = useDetermineCurrentPage({ caseSensitive, end, children }) ?? false;
-    if (isCurrentPage) return <>{props.children}</>
-    return (
-        <Button {...restButtonProps} theme={props.theme ?? 'primary'} buttonStyle={props.buttonStyle ?? 'link'}>
-            <Link href={packageUrl}>
-                {children}
-            </Link>
-        </Button>
+    const linkWithChildren = (
+        <Link href={packageUrl}>
+            {children}
+        </Link>
+    );
+    const isCurrentPage = useDetermineCurrentPage({ caseSensitive, end, children: linkWithChildren }) ?? false;
+    if (isCurrentPage) return React.cloneElement(currentPageComponent, undefined, props.children);
+    return React.cloneElement(buttonComponent,
+        // props:
+        {
+            ...restButtonProps,
+            
+            theme       : buttonComponent.props.theme       ?? props.theme       ?? 'primary',
+            buttonStyle : buttonComponent.props.buttonStyle ?? props.buttonStyle ?? 'link',
+        },
+        
+        // children:
+        linkWithChildren,
     );
 }
 
@@ -54,8 +69,12 @@ export class PackageInfo {
     }
     get packageUrl() : string {
         return (
-            ['', this.basePage, this.packageName]
-            .filter((segment) => !!segment)
+            [
+                '',
+                
+                ...[this.basePage, this.packageName]
+                .filter((segment) => !!segment)
+            ]
             .join('/')
         );
     }
@@ -86,7 +105,7 @@ export class PackageInfo {
     
     // pages:
     get basePage() : string {
-        return 'libs';
+        return '';
     }
     get segmentPage() : string {
         return this.packageName;
@@ -114,32 +133,38 @@ export class CoreInfo extends PackageInfo {
     }
 }
 
-export class ConfigInfo extends PackageInfo {
+export class PackageCoreInfo extends PackageInfo {
+    get basePage() : string {
+        return 'core';
+    }
+}
+
+export class ConfigInfo extends PackageCoreInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} config</code>
     }
 }
-export class UtilityInfo extends PackageInfo {
+export class UtilityInfo extends PackageCoreInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} utility</code>
     }
 }
-export class FeatureInfo extends PackageInfo {
+export class FeatureInfo extends PackageCoreInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} feature</code>
     }
 }
-export class CapabilityInfo extends PackageInfo {
+export class CapabilityInfo extends PackageCoreInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} capability</code>
     }
 }
-export class VariantInfo extends PackageInfo {
+export class VariantInfo extends PackageCoreInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} variant</code>
     }
 }
-export class StateInfo extends PackageInfo {
+export class StateInfo extends PackageCoreInfo {
     get packageDisplay() : React.ReactNode {
         return <code>{this.packageName} state</code>
     }
@@ -169,9 +194,6 @@ export class ComponentInfo extends PackageInfo {
 
 
 export class BarrelComponentInfo extends ComponentInfo {
-    get basePage() : string {
-        return '';
-    }
     get packageDisplay() : React.ReactNode {
         return (
             <strong>
@@ -181,16 +203,13 @@ export class BarrelComponentInfo extends ComponentInfo {
     }
     get packageLink() : React.ReactNode {
         return (
-            <ConditionalLink packageUrl={this.packageUrl}>
+            <ConditionalLink packageUrl={this.packageUrl} currentPageComponent={<strong />}>
                 {this._packageDisplay ?? pascalCase(this.packageName)}
             </ConditionalLink>
         );
     }
 }
 export class BarrelCoreInfo extends CoreInfo {
-    get basePage() : string {
-        return '';
-    }
     get packageDisplay() : React.ReactNode {
         return (
             <strong>
@@ -200,7 +219,7 @@ export class BarrelCoreInfo extends CoreInfo {
     }
     get packageLink() : React.ReactNode {
         return (
-            <ConditionalLink packageUrl={this.packageUrl}>
+            <ConditionalLink packageUrl={this.packageUrl} currentPageComponent={<strong />}>
                 {this._packageDisplay ?? pascalCase(this.packageName)}
             </ConditionalLink>
         );
