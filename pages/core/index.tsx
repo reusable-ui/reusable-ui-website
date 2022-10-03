@@ -239,6 +239,68 @@ const Core: NextPage = () => {
                     </AccordionItem>
                 </Accordion>
             </SubSection>
+            <SubSection title='Reusable-UI States'>
+                <p>
+                    The <strong>specialized state</strong> of the UI.
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={packages.excitable.packageDisplay}>
+                        <p>
+                            A capability of UI to <strong>highlight itself</strong> to attract user's attention.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.collapsible.packageDisplay}>
+                        <p>
+                            A capability of UI to <strong>expand/reduce its size</strong> or <strong>toggle the visibility</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.disableable.packageDisplay}>
+                        <p>
+                            A capability of UI to be <strong>disabled</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.activatable.packageDisplay}>
+                        <p>
+                            A capability of UI to be <strong>highlighted/selected/activated</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.focusable.packageDisplay}>
+                        <p>
+                            A capability of UI to be <strong>focused</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.interactable.packageDisplay}>
+                        <p>
+                            Adds an <strong>interactive feel</strong> to a UI.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.clickable.packageDisplay}>
+                        <p>
+                            A capability of UI to be <strong>clicked</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.activeAsClick.packageDisplay}>
+                        <p>
+                            Shows the UI as <strong>clicked</strong> (pressed) when <strong>activated</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.invalidable.packageDisplay}>
+                        <p>
+                            A possibility of UI having an <strong>invalid state</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.checkable.packageDisplay}>
+                        <p>
+                            A capability of UI to be <strong>checked</strong>.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={packages.validationIcon.packageDisplay}>
+                        <p>
+                            An <strong>icon</strong> for indicating a <strong>validity status</strong>.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+            </SubSection>
         </Section>
     </>);
 }
