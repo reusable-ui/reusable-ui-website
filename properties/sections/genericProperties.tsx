@@ -109,7 +109,7 @@ export const VariantClassesProperty = () => {
     return (
         <PropertySection property={properties.variantClasses}>
             <p>
-                Defines an array of classes which are <em>responsible</em> for making <strong>styling variants</strong> of the component layout, without changing the component&apos;s functionality.
+                Defines an array of classes which are <em>responsible</em> for making <strong>alternative appearances</strong> of the component layout without changing the component&apos;s functionality.
             </p>
             <p>
                 For example: <code>variantClasses={`{['outlined', 'rounded', 'glassy']}`}</code>.

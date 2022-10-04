@@ -124,7 +124,7 @@ const Core: NextPage = () => {
             </Section>
             <Section title='Reusable-UI Features'>
                 <p>
-                    Adds a <strong>managed css property</strong> to component&apos;s stylesheet.
+                    The <strong>managed css properties</strong> of the component&apos;s stylesheet.
                 </p>
                 <p>
                     This managed properties allow the system (framework) to <strong>override</strong> them, if needed.
@@ -169,7 +169,7 @@ const Core: NextPage = () => {
             </Section>
             <Section title='Reusable-UI Capabilities'>
                 <p>
-                    Adds a <strong>particular capability</strong> to component.
+                    The <strong>capabilities</strong> of the component <strong>appearance</strong> or <strong>behavior</strong>.
                 </p>
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.floatable.packageDisplay}>
@@ -186,7 +186,7 @@ const Core: NextPage = () => {
             </Section>
             <Section title='Reusable-UI Variants'>
                 <p>
-                    The <strong>alternative appearances</strong> of the UI without changing the functionality.
+                    The <strong>alternative appearances</strong> of the component layout without changing the component&apos;s functionality.
                 </p>
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.orientationable.packageDisplay}>
@@ -238,7 +238,7 @@ const Core: NextPage = () => {
             </Section>
             <Section title='Reusable-UI States'>
                 <p>
-                    The <strong>specialized state</strong> of the UI.
+                    The <strong>conditions</strong> of the component <strong>behavior</strong> or <strong>functionality</strong>.
                 </p>
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.excitable.packageDisplay}>
