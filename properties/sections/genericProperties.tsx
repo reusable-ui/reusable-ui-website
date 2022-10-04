@@ -171,7 +171,7 @@ const ParagraphStableReferenceArray = () => {
 
 export const OnProperties = () => {
     return (
-        <PropertySection property={properties.onEvent}>
+        <Section title={<><code>on*</code> Properties</>}>
             <p>
                 Defines a callback of <strong>React synthetic event</strong>.
             </p>
@@ -181,6 +181,6 @@ export const OnProperties = () => {
                     The Documentation of React Synthetic Events
                 </ExtLink>
             </p>
-        </PropertySection>
+        </Section>
     );
 }

@@ -28,8 +28,3 @@ export const variantClasses = new PropertyInfo('variantClasses')
 export const stateClasses   = new PropertyInfo('stateClasses')
 export const classes        = new PropertyInfo('classes')
 export const className      = new PropertyInfo('className')
-
-
-
-// DOMs
-export const onEvent        = new PropertyInfo('on*')
