@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Section } from '../../components/Section'
 import { generic } from '../../packages/packageList'
-import { SemanticProperties } from '../../properties/semanticProperties'
+import { SemanticProperties } from '../../properties/sections/semanticProperties'
 
 
 

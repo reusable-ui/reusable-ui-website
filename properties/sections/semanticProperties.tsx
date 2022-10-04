@@ -1,12 +1,12 @@
 import React from 'react'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
-import { PropertySection, Section } from '../components/Section'
-import { ExtLink } from '../components/ExtLink'
-import * as properties from './propertyList'
+import { PropertySection, Section } from '../../components/Section'
+import { ExtLink } from '../../components/ExtLink'
+import * as properties from '../propertyList'
 
 import loadable from '@loadable/component'
-const TagListLazy = loadable(() => import(/* webpackChunkName: 'TagList' */'../components/TagList'));
-const RoleListLazy = loadable(() => import(/* webpackChunkName: 'RoleList' */'../components/RoleList'));
+const TagListLazy = loadable(() => import(/* webpackChunkName: 'TagList' */'../../components/TagList'));
+const RoleListLazy = loadable(() => import(/* webpackChunkName: 'RoleList' */'../../components/RoleList'));
 
 
 
