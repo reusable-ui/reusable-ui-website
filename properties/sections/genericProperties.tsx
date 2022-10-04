@@ -83,12 +83,12 @@ export const ClassProperties = () => {
     return (
         <Section title='Class Properties'>
             <p>
-                Defines <strong>space-separated classes</strong> as grouping identifiers so that the CSS and JavaScript can select and access specific element via <em>class selectors</em> or <em>special functions</em>.
+                Defines <strong>some classes</strong> as grouping identifiers so that the CSS and JavaScript can select and access specific element via <em>class selectors</em> or <em>special functions</em>.
             </p>
             <p>
                 These class properties below are actually <em>do the same thing</em>.
                 They will be merged at rendering phase.
-                They are divided into <em>specific class names</em> for <em>grouping and code maintenance purpose</em>.
+                They are divided into <em>special class names</em> for <em>grouping and code maintenance purpose</em>.
             </p>
             <MainClassProperty />
             <VariantClassesProperty />
