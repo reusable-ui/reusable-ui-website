@@ -65,6 +65,15 @@ export class PropertyInfo {
     }
     get propertyDisplay() : React.ReactNode {
         return (
+            <span>
+                [<code>
+                    {this.propertyName}
+                </code>]
+            </span>
+        );
+    }
+    get propertyShortDisplay() : React.ReactNode {
+        return (
             <code>
                 {this.propertyName}
             </code>
@@ -88,7 +97,7 @@ export class PropertyInfo {
         if (defaultValueDisplay === undefined) return undefined;
         return (
             <p>
-                This is the <strong>default</strong> value if the {this.propertyDisplay} property is not specified.
+                This is the <strong>default</strong> value if the {this.propertyShortDisplay} property is not specified.
             </p>
         );
     }
@@ -108,14 +117,13 @@ export class PropertyInfo {
         return (
             <ConditionalLink propertyUrl={this.propertyUrl}>
                 {this.propertyDisplay}
-                property
             </ConditionalLink>
         );
     }
     get propertyShortLink() : React.ReactNode {
         return (
             <ConditionalLink propertyUrl={this.propertyUrl}>
-                {this.propertyDisplay}
+                {this.propertyShortDisplay}
             </ConditionalLink>
         );
     }

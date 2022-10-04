@@ -22,6 +22,8 @@ export const SemanticProperties = () => {
             <TagProperty />
             <RoleProperty />
             <AriaProperty />
+            <SemanticTagProperty />
+            <SemanticRoleProperty />
         </Section>
     );
 }
@@ -88,6 +90,32 @@ export const AriaProperty = () => {
                 <ExtLink href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques'>
                     Using ARIA: Roles, states, and properties
                 </ExtLink>
+            </p>
+        </PropertySection>
+    );
+}
+
+export const SemanticTagProperty = () => {
+    return (
+        <PropertySection property={properties.semanticTag}>
+            <p>
+                Defines a default <strong>semantic tag name</strong>(s) for the {properties.tag.propertyDisplay}, if its value is not defined.
+            </p>
+            <p>
+                If the {properties.tag.propertyDisplay} is not defined, we use {properties.semanticTag.propertyDisplay} and {properties.semanticRole.propertyDisplay} to determine the appropriate rendered <strong>tag</strong>.
+            </p>
+        </PropertySection>
+    );
+}
+
+export const SemanticRoleProperty = () => {
+    return (
+        <PropertySection property={properties.semanticRole}>
+            <p>
+                Defines a default <strong>semantic tag name</strong>(s) for the {properties.role.propertyDisplay}, if its value is not defined.
+            </p>
+            <p>
+                If the {properties.role.propertyDisplay} is not defined, we use {properties.semanticTag.propertyDisplay} and {properties.semanticRole.propertyDisplay} to determine the appropriate rendered <code>role='...'</code>.
             </p>
         </PropertySection>
     );

@@ -81,13 +81,13 @@ export const PropertySection = (props: PropertySectionProps) => {
     const {
         property : {
             propertyName,
-            propertyDisplay,
+            propertyShortDisplay,
         },
         children : description,
         possibleValues,
     } = props;
     return (
-        <Section title={<>{propertyDisplay} Property</>}>
+        <Section title={<>{propertyShortDisplay} Property</>}>
             {description}
             {possibleValues && <>
                 <p>
