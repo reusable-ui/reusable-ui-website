@@ -1,12 +1,7 @@
 import React from 'react'
-import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PropertySection, Section } from '../../components/Section'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
-
-import loadable from '@loadable/component'
-const TagListLazy = loadable(() => import(/* webpackChunkName: 'TagList' */'../../components/TagList'));
-const RoleListLazy = loadable(() => import(/* webpackChunkName: 'RoleList' */'../../components/RoleList'));
 
 
 
@@ -169,5 +164,23 @@ const ParagraphStableReferenceArray = () => {
             To further minimize the excess re-render effect, make sure the passed array is a <strong>stable reference</strong>.
             You can wrap the array with <code>useMemo()</code> or declare the array at <em>top level module</em>.
         </p>
+    );
+}
+
+
+
+export const OnProperties = () => {
+    return (
+        <PropertySection property={properties.onEvent}>
+            <p>
+                Defines a callback of <strong>React synthetic event</strong>.
+            </p>
+            <p>
+                For detailed information using React synthetic event, see:<br />
+                <ExtLink href='https://reactjs.org/docs/events.html'>
+                    The Documentation of React Synthetic Events
+                </ExtLink>
+            </p>
+        </PropertySection>
     );
 }
