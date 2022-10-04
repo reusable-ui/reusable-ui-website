@@ -86,7 +86,7 @@ export const ClassProperties = () => {
                 Defines <strong>space-separated classes</strong> as grouping identifiers so that the CSS and JavaScript can select and access specific element via <em>class selectors</em> or <em>special functions</em>.
             </p>
             <p>
-                These classes below are actually <em>do the same thing</em>.
+                These class properties below are actually <em>do the same thing</em>.
                 They will be merged at rendering phase.
                 They are divided into <em>specific class names</em> for <em>grouping and code maintenance purpose</em>.
             </p>
@@ -154,7 +154,7 @@ export const ClassNameProperty = () => {
     return (
         <PropertySection property={properties.className}>
             <p>
-                A traditional React class property.
+                A <strong>traditional</strong> React class property.
                 Defines the desired class(es) as <strong>single string</strong> with <strong>spaces as separators</strong> between the classes.
             </p>
             <p>
