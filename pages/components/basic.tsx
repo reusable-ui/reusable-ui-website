@@ -7,11 +7,12 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, VariantProperties } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { Basic as OriBasic, BasicProps, SizeName } from '@reusable-ui/components'
+import { TypeScriptCode } from '../../components/Code'
 
 
 
 const Basic = (props: BasicProps) => <OriBasic {...props} theme={props.theme ?? 'primary'} />
-
+const sizeOptions : (SizeName|undefined)[] = ['sm', undefined, 'lg'];
 
 
 const BasicPage: NextPage = () => {
@@ -27,7 +28,7 @@ const BasicPage: NextPage = () => {
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
-                        {(['sm', undefined, 'lg'] as (SizeName|undefined)[]).map((sizeName, index) =>
+                        {sizeOptions.map((sizeName, index) =>
                             <Basic
                                 key={index}
                                 size={sizeName}
@@ -36,6 +37,18 @@ const BasicPage: NextPage = () => {
                             </Basic>
                         )}
                     </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {sizeOptions.map((sizeName) =>
+`
+<Basic
+    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+>
+    A {'<Basic>'} with ${sizeName ?? 'default'} size
+</Basic>
+`
+                        ).join('')}
+                    </TypeScriptCode>
                 </SizeProperty>
             </VariantProperties>
         </Section>
