@@ -79,24 +79,7 @@ export const RoleProperty = () => {
 }
 export const AriaProperty = () => {
     return (
-        <PropertySection property={properties.aria} possibleValues={
-            <Accordion>
-                <AccordionItem label={<>empty string (<code>''</code>)</>}>
-                    <p>
-                        Assigning an empty string (<code>''</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
-                    </p>
-                </AccordionItem>
-                <AccordionItem label={<>a valid ARIA role name</>}>
-                    <p>
-                        Assigning a <strong>valid ARIA role name</strong> will rendered to the <code>role='...'</code> at runtime.
-                    </p>
-                    <p>
-                        The valid ARIA role name are:
-                    </p>
-                    <RoleListLazy />
-                </AccordionItem>
-            </Accordion>
-        }>
+        <PropertySection property={properties.aria}>
             <p>
                 Defines a specific <strong>ARIA property</strong> for this component.
             </p>
