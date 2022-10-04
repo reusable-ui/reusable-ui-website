@@ -1,14 +1,10 @@
 import style from './CodeHighlighter.module.scss'
 
-// react:
-import {
-    default as React,
-}                           from 'react'
-
+import React from 'react'
 import type { CodeHighlighterProps } from './CodeHighlighter'
+import { Details } from '@reusable-ui/components'
 
 import loadable from '@loadable/component'
-import { Details } from '@reusable-ui/components'
 const CodeHighlighterLazy = loadable(() => import(/* webpackChunkName: 'CodeHighlighter' */'./CodeHighlighter'))
 
 

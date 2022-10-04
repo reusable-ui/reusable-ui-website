@@ -1,6 +1,7 @@
-import { createContext, useContext, useMemo } from 'react'
+import { default as React, createContext, useContext, useMemo } from 'react'
 import { Tag, useMergeClasses } from '@reusable-ui/core'
-import { Container, ContainerProps, Generic } from '@reusable-ui/components'
+import { AccordionProps, AccordionItem, Accordion, Container, ContainerProps, Generic } from '@reusable-ui/components'
+import { PropertyInfo } from '../properties/propertyInfo';
 
 
 
@@ -66,5 +67,39 @@ export const Section = (props: SectionProps) => {
                 </SectionContext.Provider>
             </article>
         </GenericSection>
+    );
+}
+
+
+
+export interface PropertySectionProps {
+    property        : PropertyInfo
+    children        : React.ReactNode
+    possibleValues ?: React.ReactElement<AccordionProps, typeof Accordion>
+}
+export const PropertySection = (props: PropertySectionProps) => {
+    const {
+        property : {
+            propertyName,
+            propertyDisplay,
+        },
+        children : description,
+        possibleValues,
+    } = props;
+    return (
+        <Section title={<>{propertyDisplay} Property</>}>
+            {description}
+            {possibleValues && <>
+                <p>
+                    The possible values are:
+                </p>
+                {React.cloneElement(possibleValues,
+                    // props:
+                    {
+                        theme : possibleValues.props.theme ?? 'primary',
+                    },
+                )}
+            </>}
+        </Section>
     );
 }

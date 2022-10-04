@@ -69,17 +69,7 @@ export class PackageInfo {
     get packageShortName() : string {
         return this.shortName ?? this.packageName;
     }
-    get packageUrl() : string {
-        return (
-            [
-                '',
-                
-                ...[this.basePage, this.packageName]
-                .filter((segment) => !!segment)
-            ]
-            .join('/')
-        );
-    }
+    
     get packageDisplay() : React.ReactNode {
         return (
             <strong>
@@ -92,6 +82,18 @@ export class PackageInfo {
             <strong>
                 {this.packageShortName}
             </strong>
+        );
+    }
+    
+    get packageUrl() : string {
+        return (
+            [
+                '',
+                
+                ...[this.basePage, this.packageName]
+                .filter((segment) => !!segment)
+            ]
+            .join('/')
         );
     }
     get packageLink() : React.ReactNode {

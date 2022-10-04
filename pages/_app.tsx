@@ -2,13 +2,13 @@ import { useRef } from 'react';
 // import '../styles/Site.global.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import loadable from '@loadable/component'
 import { Button, ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 import { Section } from '../components/Section';
 import { siteVars } from '../website.config';
 import '../website.config';
 import '@cssfn/cssfn-dom'
 
+import loadable from '@loadable/component'
 const SiteNavbarLazy = loadable(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
 
 
