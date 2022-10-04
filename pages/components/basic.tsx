@@ -5,13 +5,14 @@ import { Section } from '../../components/Section'
 import { basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, VariantProperties } from '../../properties/sections/variantProperties'
+import { Preview } from '../../components/Preview'
 
 
 
 const BasicPage: NextPage = () => {
     return (<>
         <Head>
-            <title>{basic.componentTag} Components</title>
+            <title>{`${basic.componentTag} Components`}</title>
             <meta name="description" content={`${basic.componentTag} is a simple box layout component with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, ${packages.gradientable.packageShortName}, ${packages.outlineable.packageShortName}, ${packages.mildable.packageShortName}, and ${packages.nudible.packageShortName}`} />
         </Head>
         <Section title={<>{basic.packageDisplay} Component</>}>
@@ -20,8 +21,10 @@ const BasicPage: NextPage = () => {
             </p>
             <VariantProperties>
                 <SizeProperty>
-                    <p>blah...</p>
-                    <p>blah...</p>
+                    <Preview>
+                        <p>blah...</p>
+                        <p>blah...</p>
+                    </Preview>
                 </SizeProperty>
             </VariantProperties>
         </Section>

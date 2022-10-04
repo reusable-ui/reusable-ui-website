@@ -11,7 +11,7 @@ import { GlobalProperties, ClassProperties, OnProperties } from '../../propertie
 const GenericPage: NextPage = () => {
     return (<>
         <Head>
-            <title>{generic.componentTag} Components</title>
+            <title>{`${generic.componentTag} Components`}</title>
             <meta name="description" content={`${generic.componentTag} is an unstyled generic element. It governs the semantics, classes, refs and more.`} />
         </Head>
         <Section title={<>{generic.packageDisplay} Component</>}>
