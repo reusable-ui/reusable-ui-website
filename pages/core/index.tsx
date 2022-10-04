@@ -1,10 +1,10 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
-import { AccordionItem, Button, Accordion } from '@reusable-ui/components'
+import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
+import { IntLink } from '../../components/IntLink'
 
 
 
@@ -26,7 +26,7 @@ const Core: NextPage = () => {
             </p>
             <p>
                 Don&apos;t have an idea to create a Reusable-UI component?
-                Don&apos;t worry, we made <Button theme='primary' buttonStyle='link'><Link href='/guide-create-component'>a tutorial creating a Reusable-UI component</Link></Button> for you.
+                Don&apos;t worry, we made <IntLink to='/guide-create-component'>a tutorial creating a Reusable-UI component</IntLink> for you.
             </p>
             <Section title='Reusable-UI Configs'>
                 <p>

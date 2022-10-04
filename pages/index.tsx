@@ -5,6 +5,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import { GenericSection } from '../components/Section'
 import { ButtonIcon as Button } from '@reusable-ui/components'
+import { ExtLink } from '../components/ExtLink'
 
 
 
@@ -53,7 +54,7 @@ const Home: NextPage = () => {
                 <section>
                     <h3 className='h5'>Open Source</h3>
                     <p>You can freely to use, modify or re-publish your with your own components.</p>
-                    <p>All our codes are available on <Button buttonStyle='link' theme='primary' href='https://github.com/reusable-ui' target='_blank'>GitHub</Button>.</p>
+                    <p>All our codes are available on <ExtLink dofollow={true} href='https://github.com/reusable-ui'>GitHub</ExtLink>.</p>
                 </section>
                 <section>
                     <h3 className='h5'>Look This Site!</h3>

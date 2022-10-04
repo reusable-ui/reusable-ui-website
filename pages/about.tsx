@@ -2,7 +2,8 @@ import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Button, Tooltip } from '@reusable-ui/components'
+import { Tooltip } from '@reusable-ui/components'
+import { ExtLink } from '../components/ExtLink'
 import { TypeScriptCode } from '../components/Code'
 import styles from '../styles/About.module.scss'
 import { Section } from '../components/Section'
@@ -22,7 +23,7 @@ const About: NextPage = () => {
         
         <Section>
             <p>
-                Reusable-UI is a personal project created by <Button buttonStyle='link' theme='primary' href='https://www.instagram.com/heyyy.marco/' target='_blank'>Hey Marco</Button>.
+                Reusable-UI is a personal project created by <ExtLink dofollow={true} href='https://www.instagram.com/heyyy.marco/'>Hey Marco</ExtLink>.
                 Hopefully in the future the Reusable-UI will be a team project.
             </p>
             <Tooltip floatingOn={profileRef} theme='warning'>

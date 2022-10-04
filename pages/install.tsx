@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
-import { ButtonIcon as Button } from '@reusable-ui/components'
 import { BashCode } from '../components/Code'
 import React from 'react'
 import { Section } from '../components/Section'
 import {core, components} from '../packages/packageList'
+import { IntLink } from '../components/IntLink'
 
 
 
@@ -45,7 +44,7 @@ pnpm add @reusable-ui/core
                 `}</BashCode>
                 <p>
                     Don&apos;t have an idea to create a Reusable-UI component?
-                    Don&apos;t worry, we made <Button theme='primary' buttonStyle='link'><Link href='/guide-create-component'>a tutorial creating a Reusable-UI component</Link></Button> for you.
+                    Don&apos;t worry, we made <IntLink to='/guide-create-component'>a tutorial creating a Reusable-UI component</IntLink> for you.
                 </p>
             </Section>
             <Section title='Reusable-UI Components'>
@@ -80,7 +79,7 @@ pnpm add @reusable-ui/components
                 </Section>
                 <Section title='Install Specific Reusable-UI Component'>
                     <p>
-                        To install a <strong>specific</strong> Reusable-UI component, please browse <Button theme='primary' buttonStyle='link'><Link href='/components'>Reusable-UI component library</Link></Button> and choose the component you want.
+                        To install a <strong>specific</strong> Reusable-UI component, please browse <IntLink to='/components'>Reusable-UI component library</IntLink> and choose the component you want.
                     </p>
                 </Section>
             </Section>

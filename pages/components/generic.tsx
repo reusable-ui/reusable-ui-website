@@ -1,8 +1,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { AccordionItem, Accordion } from '@reusable-ui/components'
+import { AccordionItem, Accordion, Button } from '@reusable-ui/components'
 import { PropertySection, Section, SectionProps } from '../../components/Section'
+import { ExtLink } from '../../components/ExtLink'
 import { generic } from '../../packages/packageList'
 import * as properties from '../../properties/propertyList'
 
@@ -20,6 +21,7 @@ export const SemanticProperties = () => {
             </p>
             <TagProperty />
             <RoleProperty />
+            <AriaProperty />
         </Section>
     );
 }
@@ -71,6 +73,38 @@ export const RoleProperty = () => {
         }>
             <p>
                 Defines the <strong>meaning</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+export const AriaProperty = () => {
+    return (
+        <PropertySection property={properties.aria} possibleValues={
+            <Accordion>
+                <AccordionItem label={<>empty string (<code>''</code>)</>}>
+                    <p>
+                        Assigning an empty string (<code>''</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<>a valid ARIA role name</>}>
+                    <p>
+                        Assigning a <strong>valid ARIA role name</strong> will rendered to the <code>role='...'</code> at runtime.
+                    </p>
+                    <p>
+                        The valid ARIA role name are:
+                    </p>
+                    <RoleListLazy />
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Defines a specific <strong>ARIA property</strong> for this component.
+            </p>
+            <p>
+                For more information using the ARIA properties, see:<br />
+                <ExtLink href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques'>
+                    Using ARIA: Roles, states, and properties
+                </ExtLink>
             </p>
         </PropertySection>
     );

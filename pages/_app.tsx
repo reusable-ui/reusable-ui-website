@@ -2,8 +2,9 @@ import { useRef } from 'react';
 // import '../styles/Site.global.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { Button, ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
+import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 import { Section } from '../components/Section';
+import { ExtLink } from '../components/ExtLink';
 import { siteVars } from '../website.config';
 import '../website.config';
 import '@cssfn/cssfn-dom'
@@ -46,7 +47,7 @@ const Footer = () => {
                 <Section titleTag='h5' title='Support Us' theme='primary'>
                     <p>
                         Reusable-UI is open source project (ISC-licensed).
-                        It&apos;s created and maintained by single person: <Button buttonStyle='link' theme='primary' href='https://www.instagram.com/heyyy.marco/' target='_blank'>Hey Marco</Button>.
+                        It&apos;s created and maintained by single person: <ExtLink dofollow={true} href='https://www.instagram.com/heyyy.marco/'>Hey Marco</ExtLink>.
                     </p>
                     <p>
                         If you feel our lib is useful for your projects,<br />
