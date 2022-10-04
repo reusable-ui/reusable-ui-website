@@ -1,6 +1,6 @@
 import React from 'react'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
-import { PropertySection, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
 
@@ -23,9 +23,9 @@ export const VariantProperties = ({children} : VariantPropertiesProps) => {
         </Section>
     );
 }
-export const SizeProperty = () => {
+export const SizeProperty = ({children: preview}: PreviewProps) => {
     return (
-        <PropertySection property={properties.size} possibleValues={
+        <PropertySection property={properties.size} preview={preview} possibleValues={
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>

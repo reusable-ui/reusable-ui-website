@@ -72,10 +72,15 @@ export const Section = (props: SectionProps) => {
 
 
 
+export interface PreviewProps {
+    children : PropertySectionProps['preview']
+}
+
 export interface PropertySectionProps {
     property        : PropertyInfo
     children        : React.ReactNode
     possibleValues ?: React.ReactElement<AccordionProps, typeof Accordion>
+    preview        ?: React.ReactNode
 }
 export const PropertySection = (props: PropertySectionProps) => {
     const {
@@ -85,6 +90,7 @@ export const PropertySection = (props: PropertySectionProps) => {
         },
         children : description,
         possibleValues,
+        preview,
     } = props;
     return (
         <Section title={<>{propertyShortDisplay} Property</>}>
@@ -99,6 +105,13 @@ export const PropertySection = (props: PropertySectionProps) => {
                         theme : possibleValues.props.theme ?? 'primary',
                     },
                 )}
+            </>}
+            {preview && <>
+                <hr />
+                <p>
+                    Here the preview:
+                </p>
+                {preview}
             </>}
         </Section>
     );

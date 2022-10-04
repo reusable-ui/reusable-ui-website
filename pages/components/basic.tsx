@@ -5,7 +5,6 @@ import { Section } from '../../components/Section'
 import { basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, VariantProperties } from '../../properties/sections/variantProperties'
-import { GlobalProperties, ClassProperties, OnProperties } from '../../properties/sections/genericProperties'
 
 
 
@@ -20,7 +19,10 @@ const BasicPage: NextPage = () => {
                 {basic.packageDisplay} is a <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
             </p>
             <VariantProperties>
-                <SizeProperty />
+                <SizeProperty>
+                    <p>blah...</p>
+                    <p>blah...</p>
+                </SizeProperty>
             </VariantProperties>
         </Section>
     </>);
