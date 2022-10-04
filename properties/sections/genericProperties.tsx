@@ -87,10 +87,14 @@ export const ClassProperties = () => {
             </p>
             <p>
                 These classes below are actually <em>do the same thing</em>.
-                They will be unified at rendering phase.
+                They will be merged at rendering phase.
                 They are divided into <em>specific class names</em> for <em>grouping and code maintenance purpose</em>.
             </p>
             <MainClassProperty />
+            <VariantClassesProperty />
+            <StateClassesProperty />
+            <ClassesProperty />
+            <ClassNameProperty />
         </Section>
     );
 }
@@ -98,13 +102,72 @@ export const MainClassProperty = () => {
     return (
         <PropertySection property={properties.mainClass}>
             <p>
-                Gets the <strong>DOM element reference</strong> to the component.
+                Defines the <strong>main class</strong> which is <em>responsible</em> for constructing the <strong>component layout</strong>.
             </p>
             <p>
-                If the component contains <em>multiple DOM elements</em>, you will get the <strong>most functioning</strong> element.
-                For example: A <strong>custom textbox control</strong> contains some <code>&lt;div&gt;</code>s, <code>&lt;span&gt;</code>s, and an <code>&lt;input type='hidden'&gt;</code>.
-                You will get the reference of <code>&lt;input type='hidden'&gt;</code> because it&apos;s the most functioning element, whereas the others are just for layouting purpose.
+                For example: <code>mainClass='coolButton'</code>.
             </p>
         </PropertySection>
+    );
+}
+export const VariantClassesProperty = () => {
+    return (
+        <PropertySection property={properties.variantClasses}>
+            <p>
+                Defines an array of classes which are <em>responsible</em> for making <strong>styling variants</strong> of the component layout, without changing the component&apos;s functionality.
+            </p>
+            <p>
+                For example: <code>variantClasses={`{['outlined', 'rounded', 'glassy']}`}</code>.
+            </p>
+            <ParagraphStableReferenceArray />
+        </PropertySection>
+    );
+}
+export const StateClassesProperty = () => {
+    return (
+        <PropertySection property={properties.stateClasses}>
+            <p>
+                Defines an array of classes which are <em>responsible</em> for changing the <strong>conditions</strong> of the component <strong>behavior</strong> or <strong>functionality</strong>.
+            </p>
+            <p>
+                For example: <code>stateClasses={`{['toggledOn', 'actived', 'pressed']}`}</code>.
+            </p>
+            <ParagraphStableReferenceArray />
+        </PropertySection>
+    );
+}
+export const ClassesProperty = () => {
+    return (
+        <PropertySection property={properties.classes}>
+            <p>
+                Defines an array of <strong>general purpose</strong> classes.
+                If the classes don&apos;t seem suitable for {properties.variantClasses.propertyDisplay} or {properties.stateClasses.propertyDisplay}, this is the most suitable property to place.
+            </p>
+            <p>
+                For example: <code>classes={`{['boo', 'foo', 'awesome']}`}</code>.
+            </p>
+            <ParagraphStableReferenceArray />
+        </PropertySection>
+    );
+}
+export const ClassNameProperty = () => {
+    return (
+        <PropertySection property={properties.className}>
+            <p>
+                A traditional React class property.
+                Defines the desired class(es) as <strong>single string</strong> with <strong>spaces as separators</strong> between the classes.
+            </p>
+            <p>
+                For example: <code>className='awesomeButton highlighted dark-mode'</code>.
+            </p>
+        </PropertySection>
+    );
+}
+const ParagraphStableReferenceArray = () => {
+    return (
+        <p>
+            To further minimize the excess re-render effect, make sure the passed array is a <strong>stable reference</strong>.
+            You can wrap the array with <code>useMemo()</code> or declare the array at <em>top level module</em>.
+        </p>
     );
 }
