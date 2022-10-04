@@ -6,7 +6,7 @@ import { basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, VariantProperties } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { Basic as OriBasic, BasicProps } from '@reusable-ui/components'
+import { Basic as OriBasic, BasicProps, SizeName } from '@reusable-ui/components'
 
 
 
@@ -27,9 +27,10 @@ const BasicPage: NextPage = () => {
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
-                        {['sm', undefined, 'lg'].map((sizeName, index) =>
+                        {(['sm', undefined, 'lg'] as (SizeName|undefined)[]).map((sizeName, index) =>
                             <Basic
                                 key={index}
+                                size={sizeName}
                             >
                                 A {'<Basic>'} with {sizeName ?? 'default'} size
                             </Basic>
