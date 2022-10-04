@@ -99,7 +99,7 @@ export const SemanticTagProperty = () => {
                 Defines a default <strong>semantic tag name</strong>(s) for the {properties.tag.propertyDisplay}, if its value is not specified.
             </p>
             <p>
-                If the {properties.tag.propertyDisplay} is not specified, we use {properties.semanticTag.propertyDisplay} and {properties.semanticRole.propertyDisplay} to determine the appropriate rendered <strong>tag</strong>.
+                If the {properties.tag.propertyDisplay} is not specified, the system use {properties.semanticTag.propertyDisplay} and {properties.semanticRole.propertyDisplay} to determine the appropriate rendered <strong>tag</strong>.
             </p>
         </PropertySection>
     );
@@ -112,7 +112,7 @@ export const SemanticRoleProperty = () => {
                 Defines a default <strong>semantic tag name</strong>(s) for the {properties.role.propertyDisplay}, if its value is not specified.
             </p>
             <p>
-                If the {properties.role.propertyDisplay} is not specified, we use {properties.semanticTag.propertyDisplay} and {properties.semanticRole.propertyDisplay} to determine the appropriate rendered <code>role='...'</code>.
+                If the {properties.role.propertyDisplay} is not specified, the system use {properties.semanticTag.propertyDisplay} and {properties.semanticRole.propertyDisplay} to determine the appropriate rendered <code>role='...'</code>.
             </p>
         </PropertySection>
     );
