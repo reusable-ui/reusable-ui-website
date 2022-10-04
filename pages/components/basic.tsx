@@ -4,15 +4,17 @@ import Head from 'next/head'
 import { Section } from '../../components/Section'
 import { basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, VariantProperties } from '../../properties/sections/variantProperties'
+import { SizeProperty, ThemeProperty, VariantProperties } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { Basic as OriBasic, BasicProps, SizeName } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
+import { themeOptions } from '@reusable-ui/core'
 
 
 
 const Basic = (props: BasicProps) => <OriBasic {...props} theme={props.theme ?? 'primary'} />
 const sizeOptions : (SizeName|undefined)[] = ['sm', undefined, 'lg'];
+
 
 
 const BasicPage: NextPage = () => {
@@ -50,6 +52,30 @@ const BasicPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </SizeProperty>
+                <ThemeProperty>
+                    <Preview>
+                        {themeOptions().map((themeName, index) =>
+                            <Basic
+                                key={index}
+                                theme={themeName}
+                            >
+                                A {'<Basic>'} with {themeName} theme
+                            </Basic>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions().map((themeName) =>
+`
+<Basic
+    theme='${themeName}'
+>
+    A {'<Basic>'} with ${themeName} theme
+</Basic>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ThemeProperty>
             </VariantProperties>
         </Section>
     </>);
