@@ -1,7 +1,8 @@
 import { default as React, createContext, useContext, useMemo } from 'react'
 import { Tag, useMergeClasses } from '@reusable-ui/core'
-import { AccordionProps, AccordionItem, Accordion, Container, ContainerProps, Generic } from '@reusable-ui/components'
+import { AccordionProps, Accordion, Container, ContainerProps, Generic } from '@reusable-ui/components'
 import { PropertyInfo } from '../properties/propertyInfo';
+import { SeeBaseComponentLinks, TheBaseComponentLinks, TheComponentDisplay, TheComponentTag } from '../packages/componentContext';
 
 
 
@@ -113,6 +114,19 @@ export const PropertySection = (props: PropertySectionProps) => {
                 </p>
                 {preview}
             </>}
+        </Section>
+    );
+}
+
+
+
+export const InheritedProperties = () => {
+    return (
+        <Section title='Inherited Properties'>
+            <p>
+                Because <TheComponentDisplay /> is made from <TheBaseComponentLinks />, so all properties from <TheBaseComponentLinks /> are inherited.
+            </p>
+            <SeeBaseComponentLinks />
         </Section>
     );
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { IntLink } from '../components/IntLink';
 import { ComponentInfo } from './packageInfo';
 import { generic } from './packageList';
 
@@ -54,6 +55,10 @@ export const CommaSeparated = ({components}: CommaSeparatedProps) => (<>{
 
 
 
+export const TheComponentTag = () : React.ReactElement => {
+    const {component} = useComponentInfo();
+    return <>{component.componentTag}</>;
+}
 export const TheComponentDisplay = () : React.ReactElement => {
     const {component} = useComponentInfo();
     return <>{component.packageDisplay}</>;
@@ -82,3 +87,17 @@ export const TheBaseComponentLinks = () : React.ReactElement|null => {
     if (!baseComponents) return null;
     return <CommaSeparated components={[baseComponents].flat().map((baseComponent) => baseComponent.packageLink)} />
 }
+export const SeeBaseComponentLinks = () : React.ReactElement|null => {
+    const {baseComponents} = useComponentInfo();
+    if (!baseComponents) return null;
+    return (
+        <p>
+            You can <CommaSeparated components={[baseComponents].flat().map((baseComponent) => <IntLink to={baseComponent.packageUrl}>
+                see the documentation of {baseComponent.componentTag} here
+            </IntLink>)} />.
+        </p>
+    );
+}
+
+
+

@@ -1,8 +1,8 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Section } from '../../components/Section'
-import { basic } from '../../packages/packageList'
+import { InheritedProperties, Section } from '../../components/Section'
+import { generic, basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
@@ -17,7 +17,7 @@ const Basic = (props: BasicProps) => <OriBasic {...props} theme={props.theme ?? 
 
 
 const BasicPage: NextPage = () => {
-    return (<ComponentContextProvider component={basic}>
+    return (<ComponentContextProvider component={basic} baseComponents={generic}>
         <Head>
             <title>{`${basic.componentTag} Component`}</title>
             <meta name="description" content={`${basic.componentTag} is a simple box layout component with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, ${packages.gradientable.packageShortName}, ${packages.outlineable.packageShortName}, ${packages.mildable.packageShortName}, and ${packages.nudible.packageShortName}`} />
@@ -180,6 +180,7 @@ const BasicPage: NextPage = () => {
                     </TypeScriptCode>
                 </NudeProperty>
             </VariantProperties>
+            <InheritedProperties />
         </Section>
     </ComponentContextProvider>);
 }
