@@ -8,6 +8,7 @@ import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperti
 import { Preview } from '../../components/Preview'  
 import { Basic as OriBasic, BasicProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
+import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 
 
 
@@ -16,14 +17,14 @@ const Basic = (props: BasicProps) => <OriBasic {...props} theme={props.theme ?? 
 
 
 const BasicPage: NextPage = () => {
-    return (<>
+    return (<ComponentContextProvider component={basic}>
         <Head>
             <title>{`${basic.componentTag} Component`}</title>
             <meta name="description" content={`${basic.componentTag} is a simple box layout component with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, ${packages.gradientable.packageShortName}, ${packages.outlineable.packageShortName}, ${packages.mildable.packageShortName}, and ${packages.nudible.packageShortName}`} />
         </Head>
-        <Section title={<>{basic.packageDisplay} Component</>}>
+        <Section title={<><TheComponentDisplay /> Component</>}>
             <p>
-                {basic.packageDisplay} is a <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
+                <TheComponentDisplay /> is a <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
             </p>
             <VariantProperties>
                 <SizeProperty>
@@ -180,7 +181,7 @@ const BasicPage: NextPage = () => {
                 </NudeProperty>
             </VariantProperties>
         </Section>
-    </>);
+    </ComponentContextProvider>);
 }
 
 export default BasicPage
