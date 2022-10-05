@@ -1,12 +1,12 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section } from '../../components/Section'
+import { InheritedProperties, Section, Variables } from '../../components/Section'
 import { generic, basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
-import { Basic as OriBasic, BasicProps } from '@reusable-ui/components'
+import { Accordion, AccordionItem, Basic as OriBasic, BasicProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 
@@ -181,6 +181,157 @@ const BasicPage: NextPage = () => {
                 </NudeProperty>
             </VariantProperties>
             <InheritedProperties />
+            <Variables variables={
+                <Accordion>
+                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>backg</code>
+                                <p>The un-themed background color.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>altBackg</code>
+                                <p>The un-themed alternate (selection) background color.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>backgGrad</code>
+                                <p>The background gradient when <code>{`gradient={true}`}</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>foreg</code>
+                                <p>The un-themed foreground (text) color.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>altForeg</code>
+                                <p>The un-themed alternate (selection) foreground (text) color.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>borderStyle</code>
+                                <p>The shape of border (stroke).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderWidth</code>
+                                <p>The thickness of border (stroke).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderColor</code>
+                                <p>The un-themed color of border (stroke).</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>borderRadius</code>
+                                <p>The default rounded corner radius.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderRadiusSm</code>
+                                <p>The rounded corner radius when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderRadiusLg</code>
+                                <p>The rounded corner radius when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>ring</code>
+                                <p>The un-themed ring (focus indicator) color.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Animations'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>transitionDuration</code>
+                                <p>The default duration of <code>transition</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>transition</code>
+                                <p>The list of css properties to be <code>transition</code>-ed.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Spacings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>paddingInline</code>
+                                <p>The default inner spacing on the left &amp; right.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlock</code>
+                                <p>The default inner spacing on the top &amp; bottom.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingInlineSm</code>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlockSm</code>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingInlineLg</code>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlockLg</code>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Typos'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>fontSize</code>
+                                <p>The default text size.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontSizeSm</code>
+                                <p>The text size when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontSizeLg</code>
+                                <p>The text size when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontFamily</code>
+                                <p>The text appearance.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontWeight</code>
+                                <p>The text thickness.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontStyle</code>
+                                <p>The text style such as <em>italic</em>, <em>oblique</em>, etc.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>textDecoration</code>
+                                <p>The text strokes such as <em>underline</em>, <em>overline</em>, <em>line-through</em>, etc.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>lineHeight</code>
+                                <p>The text height (including the gap between text rows).</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                </Accordion>
+            }>
+                <TypeScriptCode>{
+`
+// put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
+
+import {basics, basicValues} from '@reusable-ui/basic';
+
+basics.paddingInline = '3rem';
+console.log('padding-inline variable name: ', basics.paddingInline);
+console.log('padding-inline variable value: ', basicValues.paddingInline);
+
+basics.fontFamily = 'Arial';
+basics.lineHeight = 2;
+`
+                }</TypeScriptCode>
+            </Variables>
         </Section>
     </ComponentContextProvider>);
 }

@@ -130,3 +130,40 @@ export const InheritedProperties = () => {
         </Section>
     );
 }
+
+export interface VariablesProps {
+    variables ?: React.ReactElement<AccordionProps, typeof Accordion>
+    children  ?: React.ReactNode
+}
+export const Variables = (props: VariablesProps) => {
+    const {
+        variables,
+        children : preview,
+    } = props;
+    return (
+        <Section title='Variables'>
+            <p>
+                There are <strong>several variables</strong> of <TheComponentDisplay /> you can customize.
+                Changing the variables <strong>affects all</strong> <TheComponentDisplay /> instance and <strong>other components</strong> that depend on <TheComponentDisplay />.
+            </p>
+            {variables && <>
+                <p>
+                    Here the exposed variables:
+                </p>
+                {React.cloneElement(variables,
+                    // props:
+                    {
+                        theme : variables.props.theme ?? 'primary',
+                    },
+                )}
+            </>}
+            {preview && <>
+                <hr />
+                <p>
+                    The example of accessing &amp; modifying variables:
+                </p>
+                {preview}
+            </>}
+        </Section>
+    );
+}
