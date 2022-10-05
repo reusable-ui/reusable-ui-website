@@ -1,12 +1,14 @@
 import React from 'react'
+import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
-import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
+import { background, foreground, border, padding, themable } from '../../packages/packageList'
 
-import loadable from '@loadable/component'
-const TagListLazy = loadable(() => import(/* webpackChunkName: 'TagList' */'../../components/TagList'));
-const RoleListLazy = loadable(() => import(/* webpackChunkName: 'RoleList' */'../../components/RoleList'));
+
+
+export const sizeOptions  : (SizeName|undefined)[] = ['sm', undefined, 'lg'];
+export const themeOptions : ThemeName[] = getThemeOptions();
 
 
 
@@ -107,3 +109,135 @@ export const ThemeProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
+export const GradientProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.gradient} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses default gradient setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inherit'</code>}>
+                    <p>
+                        <strong>Inherits</strong> <code>&lt;parent&gt;</code>&apos;s gradient.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Activates</strong> a <strong>3D mode</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Deactivates</strong> a <strong>3D mode</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Activates a <strong>3D mode</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+export const OutlinedProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.outlined} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses default outlined setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inherit'</code>}>
+                    <p>
+                        <strong>Inherits</strong> <code>&lt;parent&gt;</code>&apos;s outlined.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Activates</strong> an <strong>outlined mode</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Deactivates</strong> an <strong>outlined mode</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Activates an <strong>outlined mode</strong> ({background.packageShortLink}-less, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
+            </p>
+        </PropertySection>
+    );
+}
+export const MildProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.mild} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses default mild setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inherit'</code>}>
+                    <p>
+                        <strong>Inherits</strong> <code>&lt;parent&gt;</code>&apos;s mild.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Activates</strong> a <strong>mild mode</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Deactivates</strong> a <strong>mild mode</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
+            </p>
+            <p>
+                Note: <em>mild</em> means <em>light background</em> on <em>light mode</em> or <em>dark background</em> on <em>dark mode</em>.
+                The default {themable.packageShortLink} scheme is light mode, so mild is <em>light background</em>.
+            </p>
+        </PropertySection>
+    );
+}
+export const NudeProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.nude} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses default nude setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Activates</strong> a <strong>nude mode</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Deactivates</strong> a <strong>nude mode</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Activates an <strong>nude mode</strong> ({background.packageShortLink}-less, {padding.packageShortLink}-less, and {border.packageShortLink}-less) of the component.
+            </p>
+            <p>
+                Useful to make a <strong>wrapper</strong> for the <code>&lt;child&gt;</code> component.
+                Only the <code>&lt;child&gt;</code> is visually visible.
+            </p>
+        </PropertySection>
+    );
+}
+

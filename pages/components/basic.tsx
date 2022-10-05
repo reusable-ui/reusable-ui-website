@@ -4,16 +4,14 @@ import Head from 'next/head'
 import { Section } from '../../components/Section'
 import { basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, ThemeProperty, VariantProperties } from '../../properties/sections/variantProperties'
-import { Preview } from '../../components/Preview'
-import { Basic as OriBasic, BasicProps, SizeName } from '@reusable-ui/components'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { Preview } from '../../components/Preview'  
+import { Basic as OriBasic, BasicProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { themeOptions } from '@reusable-ui/core'
 
 
 
 const Basic = (props: BasicProps) => <OriBasic {...props} theme={props.theme ?? 'primary'} />
-const sizeOptions : (SizeName|undefined)[] = ['sm', undefined, 'lg'];
 
 
 
@@ -54,7 +52,7 @@ const BasicPage: NextPage = () => {
                 </SizeProperty>
                 <ThemeProperty>
                     <Preview>
-                        {themeOptions().map((themeName, index) =>
+                        {themeOptions.map((themeName, index) =>
                             <Basic
                                 key={index}
                                 theme={themeName}
@@ -65,7 +63,7 @@ const BasicPage: NextPage = () => {
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
-                        {themeOptions().map((themeName) =>
+                        {themeOptions.map((themeName) =>
 `
 <Basic
     theme='${themeName}'
@@ -76,6 +74,110 @@ const BasicPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </ThemeProperty>
+                <GradientProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Basic
+                                key={index}
+                                theme={themeName}
+                                gradient={true}
+                            >
+                                A {'<Basic>'} with gradient mode
+                            </Basic>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Basic
+    theme='${themeName}'
+    gradient={true}
+>
+    A {'<Basic>'} with gradient mode
+</Basic>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </GradientProperty>
+                <OutlinedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Basic
+                                key={index}
+                                theme={themeName}
+                                outlined={true}
+                            >
+                                A {'<Basic>'} with outlined mode
+                            </Basic>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Basic
+    theme='${themeName}'
+    outlined={true}
+>
+    A {'<Basic>'} with outlined mode
+</Basic>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OutlinedProperty>
+                <MildProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Basic
+                                key={index}
+                                theme={themeName}
+                                mild={true}
+                            >
+                                A {'<Basic>'} with mild mode
+                            </Basic>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Basic
+    theme='${themeName}'
+    mild={true}
+>
+    A {'<Basic>'} with mild mode
+</Basic>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </MildProperty>
+                <NudeProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Basic
+                                key={index}
+                                theme={themeName}
+                                nude={true}
+                            >
+                                A {'<Basic>'} with nude mode
+                            </Basic>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Basic
+    theme='${themeName}'
+    nude={true}
+>
+    A {'<Basic>'} with nude mode
+</Basic>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </NudeProperty>
             </VariantProperties>
         </Section>
     </>);
