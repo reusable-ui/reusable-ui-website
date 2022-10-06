@@ -35,7 +35,7 @@ const ControlPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Control>'} with {sizeName ?? 'default'} size
+                                A {'<Control>'} with {sizeName ?? 'default'} size
                             </Control>
                         )}
                     </Preview>
@@ -46,7 +46,7 @@ const ControlPage: NextPage = () => {
 <Control
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-    An {'<Control>'} with ${sizeName ?? 'default'} size
+    A {'<Control>'} with ${sizeName ?? 'default'} size
 </Control>
 `
                         ).join('')}
@@ -59,7 +59,7 @@ const ControlPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                             >
-                                An {'<Control>'} with {themeName} theme
+                                A {'<Control>'} with {themeName} theme
                             </Control>
                         )}
                     </Preview>
@@ -70,7 +70,7 @@ const ControlPage: NextPage = () => {
 <Control
     theme='${themeName}'
 >
-    An {'<Control>'} with ${themeName} theme
+    A {'<Control>'} with ${themeName} theme
 </Control>
 `
                         ).join('')}
@@ -84,7 +84,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 gradient={true}
                             >
-                                An {'<Control>'} with gradient mode
+                                A {'<Control>'} with gradient mode
                             </Control>
                         )}
                     </Preview>
@@ -96,7 +96,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     gradient={true}
 >
-    An {'<Control>'} with gradient mode
+    A {'<Control>'} with gradient mode
 </Control>
 `
                         ).join('')}
@@ -110,7 +110,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 outlined={true}
                             >
-                                An {'<Control>'} with outlined mode
+                                A {'<Control>'} with outlined mode
                             </Control>
                         )}
                     </Preview>
@@ -122,7 +122,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     outlined={true}
 >
-    An {'<Control>'} with outlined mode
+    A {'<Control>'} with outlined mode
 </Control>
 `
                         ).join('')}
@@ -136,7 +136,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 mild={false}
                             >
-                                An {'<Control>'} without mild mode
+                                A {'<Control>'} without mild mode
                             </Control>
                         )}
                     </Preview>
@@ -148,7 +148,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     mild={false}
 >
-    An {'<Control>'} without mild mode
+    A {'<Control>'} without mild mode
 </Control>
 `
                         ).join('')}
@@ -162,7 +162,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 nude={true}
                             >
-                                An {'<Control>'} with nude mode
+                                A {'<Control>'} with nude mode
                             </Control>
                         )}
                     </Preview>
@@ -174,7 +174,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     nude={true}
 >
-    An {'<Control>'} with nude mode
+    A {'<Control>'} with nude mode
 </Control>
 `
                         ).join('')}
@@ -190,7 +190,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 enabled={false}
                             >
-                                An {'<Control>'} with disabled state
+                                A {'<Control>'} with disabled state
                             </Control>
                         )}
                     </Preview>
@@ -202,7 +202,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     enabled={false}
 >
-    An {'<Control>'} with disabled state
+    A {'<Control>'} with disabled state
 </Control>
 `
                         ).join('')}
@@ -217,7 +217,7 @@ const ControlPage: NextPage = () => {
                                     theme={themeName}
                                     inheritEnabled={true}
                                 >
-                                    An {'<Control>'} with inherit enabled
+                                    A {'<Control>'} with inherit enabled
                                 </Control>
                             </Control>
                         )}
@@ -231,7 +231,7 @@ const ControlPage: NextPage = () => {
         theme='${themeName}'
         inheritEnabled={true}
     >
-        An {'<Control>'} with inherit enabled
+        A {'<Control>'} with inherit enabled
     </Control>
 </Control>
 `
@@ -248,7 +248,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 active={true}
                             >
-                                An {'<Control>'} with active state
+                                A {'<Control>'} with active state
                             </Control>
                         )}
                     </Preview>
@@ -260,7 +260,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     active={true}
 >
-    An {'<Control>'} with active state
+    A {'<Control>'} with active state
 </Control>
 `
                         ).join('')}
@@ -275,7 +275,7 @@ const ControlPage: NextPage = () => {
                                     theme={themeName}
                                     inheritActive={true}
                                 >
-                                    An {'<Control>'} with inherit active
+                                    A {'<Control>'} with inherit active
                                 </Control>
                             </Control>
                         )}
@@ -289,7 +289,7 @@ const ControlPage: NextPage = () => {
         theme='${themeName}'
         inheritActive={true}
     >
-        An {'<Control>'} with inherit active
+        A {'<Control>'} with inherit active
     </Control>
 </Control>
 `
@@ -304,7 +304,7 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 focused={true}
                             >
-                                An {'<Control>'} with focus indicator
+                                A {'<Control>'} with focus indicator
                             </Control>
                         )}
                     </Preview>
@@ -316,7 +316,7 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     focused={true}
 >
-    An {'<Control>'} with focus indicator
+    A {'<Control>'} with focus indicator
 </Control>
 `
                         ).join('')}
@@ -330,21 +330,21 @@ const ControlPage: NextPage = () => {
                                 theme={themeName}
                                 arrived={false}
                             >
-                                An {'<Control>'} without arrive indicator
+                                A {'<Control>'} without arrive indicator
                             </Control>
                             <Control
                                 key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
-                                An {'<Control>'} with arrive indicator
+                                A {'<Control>'} with arrive indicator
                             </Control>
                             <Control
                                 key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
-                                An {'<Control>'} with auto arrive indicator
+                                A {'<Control>'} with auto arrive indicator
                             </Control>
                         </>)}
                     </Preview>
@@ -356,19 +356,19 @@ const ControlPage: NextPage = () => {
     theme='${themeName}'
     arrived={false}
 >
-    An {'<Control>'} without arrive indicator
+    A {'<Control>'} without arrive indicator
 </Control>
 <Control
     theme='${themeName}'
     arrived={true}
 >
-    An {'<Control>'} with arrive indicator
+    A {'<Control>'} with arrive indicator
 </Control>
 <Control
     theme='${themeName}'
     arrived={undefined}
 >
-    An {'<Control>'} with auto arrive indicator
+    A {'<Control>'} with auto arrive indicator
 </Control>
 `
                         ).join('')}
