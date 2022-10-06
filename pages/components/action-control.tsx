@@ -416,12 +416,12 @@ const ActionControlPage: NextPage = () => {
 
 import {actionControls, actionControlValues} from '@reusable-ui/action-control';
 
-actionControls.filterArrive = [[
-    'contrast(80%)',
-    'brightness(80%)',
+actionControls.filterPress = [[
+    'brightness(60%)',
+    'contrast(150%)',
 ]];
-console.log('filterActive variable name: ', actionControls.filterArrive);
-console.log('filterActive variable value: ', actionControlValues.filterArrive);
+console.log('filterPress variable name: ', actionControls.filterPress);
+console.log('filterPress variable value: ', actionControlValues.filterPress);
 `
                 }</TypeScriptCode>
             </Variables>

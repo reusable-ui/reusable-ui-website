@@ -427,8 +427,8 @@ controls.filterArrive = [[
     'contrast(80%)',
     'brightness(80%)',
 ]];
-console.log('filterActive variable name: ', controls.filterArrive);
-console.log('filterActive variable value: ', controlValues.filterArrive);
+console.log('filterArrive variable name: ', controls.filterArrive);
+console.log('filterArrive variable value: ', controlValues.filterArrive);
 `
                 }</TypeScriptCode>
             </Variables>
