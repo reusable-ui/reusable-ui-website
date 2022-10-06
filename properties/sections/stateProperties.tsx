@@ -5,6 +5,7 @@ import { PreviewProps, PropertySection, Section } from '../../components/Section
 import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
+import { icon } from '../../packages/packageList'
 
 
 
@@ -42,7 +43,7 @@ export const EnabledProperty = ({children: preview}: PreviewProps) => {
                         The component is <strong>enabled</strong>.
                     </p>
                     <p>
-                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (configured by default).
+                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
@@ -50,7 +51,7 @@ export const EnabledProperty = ({children: preview}: PreviewProps) => {
                         The component is <strong>disabled</strong>.
                     </p>
                     <p>
-                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (configured by default).
+                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -84,6 +85,75 @@ export const InheritEnabledProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Influences the component&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
+            </p>
+        </PropertySection>
+    );
+}
+
+export const ReadOnlyProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.readOnly} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> readOnly state.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        The component is <strong>readOnly</strong> (locked).
+                    </p>
+                    <p>
+                        Note: The component can be readOnly <em>indirectly</em> by <code>{`<ancestor readOnly={true}>`}</code> if <code>{`inheritReadOnly={true}`}</code> (was configured by default).
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        The component is <strong>mutable</strong> (editable).
+                    </p>
+                    <p>
+                        Note: The component can be readOnly <em>indirectly</em> by <code>{`<ancestor readOnly={true}>`}</code> if <code>{`inheritReadOnly={true}`}</code> (was configured by default).
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Defines the <strong>readOnly/mutable state</strong> of the component.
+            </p>
+            <Warning>
+                <p>
+                    By default, there is <strong>no visual appearance</strong> for indicating {properties.readOnly.propertyShortDisplay} state.
+                </p>
+                <p>
+                    You should add an {icon.packageLink} or another visual appearance for indicating {properties.readOnly.propertyShortDisplay} state.
+                </p>
+            </Warning>
+        </PropertySection>
+    );
+}
+export const InheritReadOnlyProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.inheritReadOnly} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> inheritance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        Influences the component&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        Independent the component&apos;s {properties.readOnly.propertyShortDisplay}.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Influences the component&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
             </p>
         </PropertySection>
     );

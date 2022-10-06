@@ -74,7 +74,7 @@ export const Section = (props: SectionProps) => {
 
 
 export interface PreviewProps {
-    children : PropertySectionProps['preview']
+    children ?: PropertySectionProps['preview']
 }
 
 export interface PropertySectionProps {

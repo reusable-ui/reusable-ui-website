@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { Accordion, AccordionItem, Indicator as OriIndicator, IndicatorProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -238,6 +238,8 @@ const IndicatorPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
+                <ReadOnlyProperty />
+                <InheritReadOnlyProperty />
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
