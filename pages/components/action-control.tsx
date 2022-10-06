@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { InheritedProperties, Section, Variables } from '../../components/Section'
-import { indicator, actionControl } from '../../packages/packageList'
+import { control, actionControl } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
@@ -18,7 +18,7 @@ const ActionControl = (props: ActionControlProps) => <OriActionControl {...props
 
 
 const ActionControlPage: NextPage = () => {
-    return (<ComponentContextProvider component={actionControl} baseComponents={indicator}>
+    return (<ComponentContextProvider component={actionControl} baseComponents={control}>
         <Head>
             <title>{`${actionControl.componentTag} Component`}</title>
             <meta name="description" content={`${actionControl.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
@@ -386,37 +386,25 @@ const ActionControlPage: NextPage = () => {
                     <AccordionItem label='Accessibilities'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>cursorDisable</code>
-                                <p>A <code>cursor</code> to apply when <code>{`enabled={false}`}</code>.</p>
+                                <code>cursor</code>
+                                <p>A default <code>cursor</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
                     <AccordionItem label='Animations'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>boxShadowFocus</code>
-                                <p>A <code>boxShadow</code> (focus indicator) to apply when the control is <strong>in focus</strong> -or- when <code>{`focus={true}`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>filterArrive</code>
-                                <p>A <code>filter</code> to apply when the pointing device <strong>arrives</strong> at the control -or- when <code>{`arrive={true}`}</code>.</p>
+                                <code>filterPress</code>
+                                <p>A <code>filter</code> to apply when the user pressing at the control -or- when <code>{`pressed={true}`}</code>.</p>
                             </ListItem>
                             
                             <ListItem>
-                                <code>animFocus</code>
-                                <p>An animation represents <em>focusing animation</em>, a transition from <strong>out of focus</strong> to <strong>in focus</strong>.</p>
+                                <code>animPress</code>
+                                <p>An animation represents <em>pressing animation</em>, a transition from <strong>released</strong> to <strong>pressed</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>animBlur</code>
-                                <p>An animation represents <em>blurring animation</em>, a transition from <strong>in focus</strong> to <strong>out of focus</strong>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animArrive</code>
-                                <p>An animation represents <em>arriving animation</em>, a transition from <strong>left</strong> to <strong>arrived</strong>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animLeave</code>
-                                <p>An animation represents <em>leaving animation</em>, a transition from <strong>arrived</strong> to <strong>left</strong>.</p>
+                                <code>animRelease</code>
+                                <p>An animation represents <em>releasing animation</em>, a transition from <strong>pressed</strong> to <strong>released</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
