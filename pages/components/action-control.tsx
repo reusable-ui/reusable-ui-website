@@ -10,6 +10,7 @@ import { Accordion, AccordionItem, ActionControl as OriActionControl, ActionCont
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ClientSideLinkProperties } from '../../properties/sections/clientSideLinkProperties'
 
 
 
@@ -32,6 +33,7 @@ const ActionControlPage: NextPage = () => {
                 It already handle the <kbd>enter</kbd> and <kbd>space</kbd> keys for triggering the <code>onClick</code> event for you.
                 It also handle a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
             </p>
+            <ClientSideLinkProperties />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
