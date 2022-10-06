@@ -21,7 +21,7 @@ export const Tips = (props: AlertProps) => {
         <Alert
             {...props}
             tag={props.tag ?? 'aside'}
-            theme={props.theme ?? 'info'}
+            theme={props.theme ?? 'success'}
             expanded={props.expanded ?? true}
             controlComponent={<></>}
         >

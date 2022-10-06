@@ -4,7 +4,7 @@ import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable } from '../../packages/packageList'
-import { Tips, Warning } from '../../components/Warning'
+import { Tips } from '../../components/Warning'
 
 
 
@@ -203,12 +203,12 @@ export const MildProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
             </p>
-            <Warning>
+            <Tips>
                 <p>
                     Note: <em>Mild</em> means <em>light background</em> on <em>light mode</em> or <em>dark background</em> on <em>dark mode</em>.
                     The default {themable.packageShortLink} scheme is light mode, so mild is <em>light background</em>.
                 </p>
-            </Warning>
+            </Tips>
         </PropertySection>
     );
 }
