@@ -4,6 +4,7 @@ import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable } from '../../packages/packageList'
+import { Tips, Warning } from '../../components/Warning'
 
 
 
@@ -202,10 +203,12 @@ export const MildProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
             </p>
-            <p>
-                Note: <em>mild</em> means <em>light background</em> on <em>light mode</em> or <em>dark background</em> on <em>dark mode</em>.
-                The default {themable.packageShortLink} scheme is light mode, so mild is <em>light background</em>.
-            </p>
+            <Warning>
+                <p>
+                    Note: <em>Mild</em> means <em>light background</em> on <em>light mode</em> or <em>dark background</em> on <em>dark mode</em>.
+                    The default {themable.packageShortLink} scheme is light mode, so mild is <em>light background</em>.
+                </p>
+            </Warning>
         </PropertySection>
     );
 }
@@ -233,10 +236,12 @@ export const NudeProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Activates an <strong>nude mode</strong> ({background.packageShortLink}-less, {padding.packageShortLink}-less, and {border.packageShortLink}-less) of the component.
             </p>
-            <p>
-                Useful to make a <strong>wrapper</strong> for the <code>&lt;child&gt;</code> component.
-                Only the <code>&lt;child&gt;</code> is visually visible.
-            </p>
+            <Tips>
+                <p>
+                    Useful to make a <strong>wrapper</strong> for the <code>&lt;child&gt;</code> component.
+                    Only the <code>&lt;child&gt;</code> is visually visible.
+                </p>
+            </Tips>
         </PropertySection>
     );
 }

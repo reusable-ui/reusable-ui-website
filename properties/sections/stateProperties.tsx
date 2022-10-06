@@ -4,6 +4,7 @@ import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
+import { Warning } from '../../components/Warning'
 
 
 
@@ -118,10 +119,12 @@ export const ActiveProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Defines the current <strong>active state</strong> of the component.
             </p>
-            <p>
-                The default <em>styling implementation</em> of active state is by removing {outlineable.packageShortLink} and {mildable.packageShortLink} effects.
-                So if the {outlineable.packageShortLink} or {mildable.packageShortLink} is not activated, the {activatable.packageShortDisplay} is not <em>visually</em> visible.
-            </p>
+            <Warning>
+                <p>
+                    The default <em>styling implementation</em> of active state is by removing {outlineable.packageShortLink} and {mildable.packageShortLink} effects.
+                    So if the {outlineable.packageShortLink} or {mildable.packageShortLink} is not activated, the {activatable.packageShortDisplay} is not <em>visually</em> visible.
+                </p>
+            </Warning>
         </PropertySection>
     );
 }
