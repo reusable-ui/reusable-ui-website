@@ -20,7 +20,7 @@ const BasicPage: NextPage = () => {
     return (<ComponentContextProvider component={basic} baseComponents={generic}>
         <Head>
             <title>{`${basic.componentTag} Component`}</title>
-            <meta name="description" content={`${basic.componentTag} is a simple box layout component with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, ${packages.gradientable.packageShortName}, ${packages.outlineable.packageShortName}, ${packages.mildable.packageShortName}, and ${packages.nudible.packageShortName}`} />
+            <meta name="description" content={`${basic.componentTag} is a simple box layout component with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, ${packages.gradientable.packageShortName}, ${packages.outlineable.packageShortName}, ${packages.mildable.packageShortName}, and ${packages.nudible.packageShortName}.`} />
         </Head>
         <Section title={<><TheComponentDisplay /> Component</>}>
             <p>
