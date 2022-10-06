@@ -31,7 +31,7 @@ export const SizeProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default size.
+                        Uses <strong>default</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'sm'</code>}>
@@ -115,7 +115,7 @@ export const GradientProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default gradient setting.
+                        Uses <strong>default</strong> gradient setting.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'inherit'</code>}>
@@ -147,7 +147,7 @@ export const OutlinedProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default outlined setting.
+                        Uses <strong>default</strong> outlined setting.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'inherit'</code>}>
@@ -179,7 +179,7 @@ export const MildProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default mild setting.
+                        Uses <strong>default</strong> mild setting.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'inherit'</code>}>
@@ -215,7 +215,7 @@ export const NudeProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default nude setting.
+                        Uses <strong>default</strong> nude setting.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>

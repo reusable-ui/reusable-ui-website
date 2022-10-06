@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { Accordion, AccordionItem, Indicator as OriIndicator, IndicatorProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, InheritActiveProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -182,6 +182,62 @@ const IndicatorPage: NextPage = () => {
                 </NudeProperty>
             </VariantProperties>
             <StateProperties>
+                <EnabledProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Indicator
+                                key={index}
+                                theme={themeName}
+                                enabled={false}
+                            >
+                                An {'<Indicator>'} with disabled state
+                            </Indicator>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Indicator
+    theme='${themeName}'
+    enabled={false}
+>
+    An {'<Indicator>'} with disabled state
+</Indicator>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </EnabledProperty>
+                <InheritEnabledProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Indicator theme='primary' enabled={false}>
+                                <Indicator
+                                    key={index}
+                                    theme={themeName}
+                                    inheritEnabled={true}
+                                >
+                                    An {'<Indicator>'} with inherit enabled
+                                </Indicator>
+                            </Indicator>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Indicator theme='primary' enabled={false}>
+    <Indicator
+        theme='${themeName}'
+        inheritEnabled={true}
+    >
+        An {'<Indicator>'} with inherit enabled
+    </Indicator>
+</Indicator>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </InheritEnabledProperty>
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>

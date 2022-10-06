@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
 
 
 
@@ -25,13 +25,76 @@ export const StateProperties = ({children} : StatePropertiesProps) => {
         </Section>
     );
 }
+
+
+export const EnabledProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.enabled} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> enabled/disabled state.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        The component is <strong>enabled</strong>.
+                    </p>
+                    <p>
+                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (configured by default).
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        The component is <strong>disabled</strong>.
+                    </p>
+                    <p>
+                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (configured by default).
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Defines the <strong>enabled/disabled state</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+export const InheritEnabledProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.inheritEnabled} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> inheritance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        Influences the component&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        Independent the component&apos;s {disableable.packageShortDisplay}.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Influences the component&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
+            </p>
+        </PropertySection>
+    );
+}
+
 export const ActiveProperty = ({children: preview}: PreviewProps) => {
     return (
         <PropertySection property={properties.active} preview={preview} possibleValues={
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default active state.
+                        Uses <strong>default</strong> active state.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
@@ -39,7 +102,7 @@ export const ActiveProperty = ({children: preview}: PreviewProps) => {
                         <strong>Activates</strong> the component.
                     </p>
                     <p>
-                        Note: The component can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>
+                        Note: The component can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
@@ -47,7 +110,7 @@ export const ActiveProperty = ({children: preview}: PreviewProps) => {
                         <strong>Deactivates</strong> (normalize) the component.
                     </p>
                     <p>
-                        Note: The component can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>
+                        Note: The component can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -68,7 +131,7 @@ export const InheritActiveProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses default inheritance setting.
+                        Uses <strong>default</strong> inheritance setting.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
