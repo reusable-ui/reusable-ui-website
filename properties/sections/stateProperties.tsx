@@ -286,7 +286,8 @@ export const ArrivedProperty = ({children: preview}: PreviewProps) => {
                 Shows the <strong>arrive indicator</strong> (being touched but not clicked) of the component.
             </p>
             <p>
-                It&apos;s the same as <code>{`:hover`}</code> + <code>{`:focus-visible`}</code> in CSS, but we toggle our <em>:hover</em> by our logic way (controllable and/or uncontrollable).
+                It&apos;s similar to <code>{`:is(:hover, :focus-visible)`}</code> in CSS, but we toggle our <em>:hover</em> by <em>our logic way</em> (controllable and/or uncontrollable).
+                In the future, we <em>may</em> change our algorithm to determine how the control will interact with the user.
             </p>
         </PropertySection>
     );
