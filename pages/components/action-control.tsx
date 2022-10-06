@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { Accordion, AccordionItem, ActionControl as OriActionControl, ActionControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -379,6 +379,58 @@ const ActionControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </ArrivedProperty>
+                <PressedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) => <>
+                            <ActionControl
+                                key={index}
+                                theme={themeName}
+                                pressed={false}
+                            >
+                                An {'<ActionControl>'} without pressed indicator
+                            </ActionControl>
+                            <ActionControl
+                                key={index}
+                                theme={themeName}
+                                pressed={true}
+                            >
+                                An {'<ActionControl>'} with pressed indicator
+                            </ActionControl>
+                            <ActionControl
+                                key={index}
+                                theme={themeName}
+                                pressed={undefined}
+                            >
+                                An {'<ActionControl>'} with auto pressed indicator
+                            </ActionControl>
+                        </>)}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<ActionControl
+    theme='${themeName}'
+    pressed={false}
+>
+    An {'<ActionControl>'} without pressed indicator
+</ActionControl>
+<ActionControl
+    theme='${themeName}'
+    pressed={true}
+>
+    An {'<ActionControl>'} with pressed indicator
+</ActionControl>
+<ActionControl
+    theme='${themeName}'
+    pressed={undefined}
+>
+    An {'<ActionControl>'} with auto pressed indicator
+</ActionControl>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </PressedProperty>
             </StateProperties>
             <InheritedProperties />
             <Variables variables={
