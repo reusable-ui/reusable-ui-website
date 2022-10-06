@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { Accordion, AccordionItem, Control as OriControl, ControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -21,11 +21,11 @@ const ControlPage: NextPage = () => {
     return (<ComponentContextProvider component={control} baseComponents={indicator}>
         <Head>
             <title>{`${control.componentTag} Component`}</title>
-            <meta name="description" content={`${control.componentTag} is a simple box layout component with built-in variants and indication states: ${packages.disableable.packageShortName} and ${packages.activatable.packageShortName}.`} />
+            <meta name="description" content={`${control.componentTag} is an interactive simple box layout component with built-in variants, states, and interaction states: ${packages.focusable.packageShortName} and ${packages.interactable.packageShortName}.`} />
         </Head>
         <Section title={<><TheComponentDisplay /> Component</>}>
             <p>
-                <TheComponentDisplay /> is a <strong>simple box</strong> layout component with built-in variants and indication states: {packages.disableable.packageShortLink} and {packages.activatable.packageShortLink}.
+                <TheComponentDisplay /> is an interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortLink} and {packages.interactable.packageShortLink}.
             </p>
             <VariantProperties>
                 <SizeProperty>
@@ -296,36 +296,122 @@ const ControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
+                <FocusedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Control
+                                key={index}
+                                theme={themeName}
+                                focused={true}
+                            >
+                                An {'<Control>'} with focus indicator
+                            </Control>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Control
+    theme='${themeName}'
+    focused={true}
+>
+    An {'<Control>'} with focus indicator
+</Control>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </FocusedProperty>
+                <ArrivedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) => <>
+                            <Control
+                                key={index}
+                                theme={themeName}
+                                arrived={false}
+                            >
+                                An {'<Control>'} without arrive indicator
+                            </Control>
+                            <Control
+                                key={index}
+                                theme={themeName}
+                                arrived={true}
+                            >
+                                An {'<Control>'} with arrive indicator
+                            </Control>
+                            <Control
+                                key={index}
+                                theme={themeName}
+                                arrived={undefined}
+                            >
+                                An {'<Control>'} with auto arrive indicator
+                            </Control>
+                        </>)}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Control
+    theme='${themeName}'
+    arrived={false}
+>
+    An {'<Control>'} without arrive indicator
+</Control>
+<Control
+    theme='${themeName}'
+    arrived={true}
+>
+    An {'<Control>'} with arrive indicator
+</Control>
+<Control
+    theme='${themeName}'
+    arrived={undefined}
+>
+    An {'<Control>'} with auto arrive indicator
+</Control>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ArrivedProperty>
             </StateProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
+                    <AccordionItem label='Accessibilities'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>cursorDisable</code>
+                                <p>A <code>cursor</code> to apply when <code>{`enabled={false}`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
                     <AccordionItem label='Animations'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>filterDisable</code>
-                                <p>A <code>filter</code> to apply when <code>{`enabled={false}`}</code>.</p>
+                                <code>boxShadowFocus</code>
+                                <p>A <code>boxShadow</code> (focus indicator) to apply when the control is <strong>in focus</strong> -or- when <code>{`focus={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>filterActive</code>
-                                <p>A <code>filter</code> to apply when <code>{`active={true}`}</code>.</p>
+                                <code>filterArrive</code>
+                                <p>A <code>filter</code> to apply when the pointing device <strong>arrives</strong> at the control -or- when <code>{`arrive={true}`}</code>.</p>
                             </ListItem>
                             
                             <ListItem>
-                                <code>animEnable</code>
-                                <p>An animation represents <em>enabling animation</em>, transition from <code>{`enabled={false}`}</code> to <code>{`enabled={true}`}</code>.</p>
+                                <code>animFocus</code>
+                                <p>An animation represents <em>focusing animation</em>, a transition from <strong>out of focus</strong> to <strong>in focus</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>animDisable</code>
-                                <p>An animation represents <em>disabling animation</em>, transition from <code>{`enabled={true}`}</code> to <code>{`enabled={false}`}</code>.</p>
+                                <code>animBlur</code>
+                                <p>An animation represents <em>blurring animation</em>, a transition from <strong>in focus</strong> to <strong>out of focus</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>animActive</code>
-                                <p>An animation represents <em>activating animation</em>, transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                                <code>animArrive</code>
+                                <p>An animation represents <em>arriving animation</em>, a transition from <strong>left</strong> to <strong>arrived</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>animPassive</code>
-                                <p>An animation represents <em>deactivating animation</em>, transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                                <code>animLeave</code>
+                                <p>An animation represents <em>leaving animation</em>, a transition from <strong>arrived</strong> to <strong>left</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -337,12 +423,12 @@ const ControlPage: NextPage = () => {
 
 import {controls, controlValues} from '@reusable-ui/control';
 
-controls.filterActive = [[
-    'contrast(150%)',
-    'brightness(120%)',
+controls.filterArrive = [[
+    'contrast(80%)',
+    'brightness(80%)',
 ]];
-console.log('filterActive variable name: ', controls.filterActive);
-console.log('filterActive variable value: ', controlValues.filterActive);
+console.log('filterActive variable name: ', controls.filterArrive);
+console.log('filterActive variable value: ', controlValues.filterArrive);
 `
                 }</TypeScriptCode>
             </Variables>

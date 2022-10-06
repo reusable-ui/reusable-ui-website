@@ -225,3 +225,69 @@ export const InheritActiveProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
+
+
+export const FocusedProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.focused} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        <strong>Automatically</strong> shows/hides the <strong>focus indicator</strong>, if needed.
+                    </p>
+                    <Warning>
+                        <p>
+                            In <em>most cases</em>, the <strong>focus indicator</strong> will <strong>be shown</strong> if the component is focused by the <kbd>tab</kbd> key.
+                            Focusing by a <strong>pointing device</strong> will <strong>not show</strong> the <strong>focus indicator</strong>, except when containing <code>{`<input> or <textarea>`}</code> -or- when <code>{`assertiveFocusable={true}`}</code>.
+                        </p>
+                    </Warning>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Shows</strong> the <strong>focus indicator</strong>, regradless the component is <em>actually</em> in focus or not.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Hides</strong> the <strong>focus indicator</strong>, regradless the component is <em>actually</em> in focus or not.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Shows the <strong>focus indicator</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+
+export const ArrivedProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.arrived} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        <strong>Automatically</strong> shows/hides the <strong>arrive indicator</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Shows</strong> the <strong>arrive indicator</strong>, regradless the component is <em>actually</em> in <code>{`:hover`}</code> or not.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Hides</strong> the <strong>arrive indicator</strong>, regradless the component is <em>actually</em> in <code>{`:hover`}</code> or not.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Shows the <strong>arrive indicator</strong> (being touched but not clicked) of the component.
+            </p>
+            <p>
+                It&apos;s the same as <code>{`:hover`}</code> + <code>{`:focus-visible`}</code> in CSS, but we toggle our <em>:hover</em> by our logic way (controllable and/or uncontrollable).
+            </p>
+        </PropertySection>
+    );
+}
