@@ -4,3 +4,4 @@
 * add demo panel
 * add customization guide
 * continue <ClientSideLinkProperties />
+* continue [customValidator], [onValidation] for <EditableControl> and <Form>

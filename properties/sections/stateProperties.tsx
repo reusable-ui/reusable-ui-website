@@ -3,9 +3,10 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
 import { icon } from '../../packages/packageList'
+import { TheComponentDisplay } from '../../packages/componentContext'
 
 
 
@@ -322,6 +323,116 @@ export const PressedProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Shows the <strong>pressed indicator</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+
+
+
+export const EnableValidationProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.enableValidation} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> enableValidation setting.
+                    </p>
+                    <p>
+                        The default value is <code>false</code>, if outside <code>{`Form`}</code> and <code>{`ValidationProvider`}</code>.
+                        If inside <code>{`Form`}</code> or <code>{`ValidationProvider`}</code>, default to <code>true</code>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        The component {invalidable.packageShortDisplay} is <strong>activated</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        The component {invalidable.packageShortDisplay} is <strong>deactivated</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Activates the {invalidable.packageShortDisplay} of the component.
+            </p>
+        </PropertySection>
+    );
+}
+export const IsValidProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.isValid} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        <strong>Automatically</strong> marks the <strong>validity status</strong> based on its value.
+                    </p>
+                    <Warning>
+                        <p>
+                            Note: The component creator is responsible for making the validation algorithm.
+                            The default algorithm of the <TheComponentDisplay /> is by checking <code>:valid</code>/<code>:invalid</code> match of the first child of <code>{`<input>`}</code>/<code>{`<textarea>`}</code>/<code>{`<select>`}</code>.
+                        </p>
+                    </Warning>
+                </AccordionItem>
+                <AccordionItem label={<code>null</code>}>
+                    <p>
+                        <strong>Marks</strong> the component status as <strong>neutral</strong>.
+                    </p>
+                    <p>
+                        Note: The component status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Marks</strong> the component status as <strong>valid</strong>.
+                        The component appearance will be <strong>green</strong>-ish (by default <em>success theme</em>), overwrites its current theme.
+                    </p>
+                    <p>
+                        Note: The component status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Marks</strong> the component status as <strong>invalid</strong>.
+                        The component appearance will be <strong>redd</strong>-ish (by default <em>danger theme</em>), overwrites its current theme.
+                    </p>
+                    <p>
+                        Note: The component status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Marks the <strong>validity status</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+export const InheritValidationProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.inheritValidation} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> inheritance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        Influences the component&apos;s {invalidable.packageShortDisplay} by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        Independent the component&apos;s {invalidable.packageShortDisplay}.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Influences the component&apos;s {invalidable.packageShortDisplay} by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code>.
             </p>
         </PropertySection>
     );
