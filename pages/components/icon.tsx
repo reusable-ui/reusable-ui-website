@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { InheritedProperties, Section, Variables } from '../../components/Section'
-import { basic, icon } from '../../packages/packageList'
+import { generic, icon } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ContextualMildProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
@@ -22,7 +22,7 @@ const Icon = (props: IconProps) => <OriIcon {...props} theme={props.theme ?? 'pr
 
 
 const IconPage: NextPage = () => {
-    return (<ComponentContextProvider component={icon} baseComponents={basic}>
+    return (<ComponentContextProvider component={icon} baseComponents={generic}>
         <Head>
             <title>{`${icon.componentTag} Component`}</title>
             <meta name="description" content={`${icon.componentTag} is a simple box layout component with built-in variants and indication states: ${packages.disableable.packageShortName} and ${packages.activatable.packageShortName}.`} />
@@ -31,6 +31,14 @@ const IconPage: NextPage = () => {
             <p>
                 Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
             </p>
+            <Section title='Icon Sets'>
+                <Section title='Built-in Icon Sets'>
+                    //
+                </Section>
+                <Section title='Adding Custom Icon Sets'>
+                    //
+                </Section>
+            </Section>
             <VariantProperties>
                 <SizeProperty possibleValues={
                     <Accordion>
