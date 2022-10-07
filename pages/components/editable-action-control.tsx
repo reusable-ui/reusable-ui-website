@@ -1,53 +1,57 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../components/Section'
-import { control, editableControl } from '../../packages/packageList'
+import { InheritedProperties, Section } from '../../components/Section'
+import { editableControl, actionControl, editableActionControl } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
-import { Accordion, AccordionItem, EditableControl as OriEditableControl, EditableControlProps, List, ListItem } from '@reusable-ui/components'
+import { EditableActionControl as OriEditableActionControl, EditableActionControlProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
-const EditableControl = (props: EditableControlProps) => <OriEditableControl {...props} theme={props.theme ?? 'primary'} />
+const EditableActionControl = (props: EditableActionControlProps) => <OriEditableActionControl {...props} theme={props.theme ?? 'primary'} />
 
 
 
-const EditableControlPage: NextPage = () => {
-    return (<ComponentContextProvider component={editableControl} baseComponents={control}>
+const EditableActionControlPage: NextPage = () => {
+    return (<ComponentContextProvider component={editableActionControl} baseComponents={[editableControl, actionControl]}>
         <Head>
-            <title>{`${editableControl.componentTag} Component`}</title>
-            <meta name="description" content={`${editableControl.componentTag} is an editable simple box layout component with built-in variants, states, and ${packages.invalidable.packageShortName}.`} />
+            <title>{`${editableActionControl.componentTag} Component`}</title>
+            <meta name="description" content={`${editableActionControl.componentTag} is a clickable simple box layout component with built-in variants, states, ${packages.invalidable.packageShortName} and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Section title={<><TheComponentDisplay /> Component</>}>
             <p>
-                <TheComponentDisplay /> is an editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
+                <TheComponentDisplay /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
+            </p>
+            <p>
+                If you plan to create a <strong>custom checkbox</strong>, this <em>base component</em> is a great starting point.
+                It already have {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
             </p>
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
                         {sizeOptions.map((sizeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<EditableControl>'} with {sizeName ?? 'default'} size
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with {sizeName ?? 'default'} size
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {sizeOptions.map((sizeName) =>
 `
-<EditableControl
+<EditableActionControl
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-    An {'<EditableControl>'} with ${sizeName ?? 'default'} size
-</EditableControl>
+    An {'<EditableActionControl>'} with ${sizeName ?? 'default'} size
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -55,23 +59,23 @@ const EditableControlPage: NextPage = () => {
                 <ThemeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                             >
-                                An {'<EditableControl>'} with {themeName} theme
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with {themeName} theme
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
 >
-    An {'<EditableControl>'} with ${themeName} theme
-</EditableControl>
+    An {'<EditableActionControl>'} with ${themeName} theme
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -79,25 +83,25 @@ const EditableControlPage: NextPage = () => {
                 <GradientProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 gradient={true}
                             >
-                                An {'<EditableControl>'} with gradient mode
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with gradient mode
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     gradient={true}
 >
-    An {'<EditableControl>'} with gradient mode
-</EditableControl>
+    An {'<EditableActionControl>'} with gradient mode
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -105,25 +109,25 @@ const EditableControlPage: NextPage = () => {
                 <OutlinedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 outlined={true}
                             >
-                                An {'<EditableControl>'} with outlined mode
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with outlined mode
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     outlined={true}
 >
-    An {'<EditableControl>'} with outlined mode
-</EditableControl>
+    An {'<EditableActionControl>'} with outlined mode
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -131,25 +135,25 @@ const EditableControlPage: NextPage = () => {
                 <MildProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 mild={false}
                             >
-                                An {'<EditableControl>'} without mild mode
-                            </EditableControl>
+                                An {'<EditableActionControl>'} without mild mode
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     mild={false}
 >
-    An {'<EditableControl>'} without mild mode
-</EditableControl>
+    An {'<EditableActionControl>'} without mild mode
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -157,25 +161,25 @@ const EditableControlPage: NextPage = () => {
                 <NudeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 nude={true}
                             >
-                                An {'<EditableControl>'} with nude mode
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with nude mode
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     nude={true}
 >
-    An {'<EditableControl>'} with nude mode
-</EditableControl>
+    An {'<EditableActionControl>'} with nude mode
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -185,25 +189,25 @@ const EditableControlPage: NextPage = () => {
                 <EnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 enabled={false}
                             >
-                                An {'<EditableControl>'} with disabled state
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with disabled state
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     enabled={false}
 >
-    An {'<EditableControl>'} with disabled state
-</EditableControl>
+    An {'<EditableActionControl>'} with disabled state
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -211,29 +215,29 @@ const EditableControlPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl theme='primary' enabled={false}>
-                                <EditableControl
+                            <EditableActionControl theme='primary' enabled={false}>
+                                <EditableActionControl
                                     key={index}
                                     theme={themeName}
                                     inheritEnabled={true}
                                 >
-                                    An {'<EditableControl>'} with inherit enabled
-                                </EditableControl>
-                            </EditableControl>
+                                    An {'<EditableActionControl>'} with inherit enabled
+                                </EditableActionControl>
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl theme='primary' enabled={false}>
-    <EditableControl
+<EditableActionControl theme='primary' enabled={false}>
+    <EditableActionControl
         theme='${themeName}'
         inheritEnabled={true}
     >
-        An {'<EditableControl>'} with inherit enabled
-    </EditableControl>
-</EditableControl>
+        An {'<EditableActionControl>'} with inherit enabled
+    </EditableActionControl>
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -243,25 +247,25 @@ const EditableControlPage: NextPage = () => {
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 active={true}
                             >
-                                An {'<EditableControl>'} with active state
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with active state
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     active={true}
 >
-    An {'<EditableControl>'} with active state
-</EditableControl>
+    An {'<EditableActionControl>'} with active state
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -269,29 +273,29 @@ const EditableControlPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl theme='primary' active={true}>
-                                <EditableControl
+                            <EditableActionControl theme='primary' active={true}>
+                                <EditableActionControl
                                     key={index}
                                     theme={themeName}
                                     inheritActive={true}
                                 >
-                                    An {'<EditableControl>'} with inherit active
-                                </EditableControl>
-                            </EditableControl>
+                                    An {'<EditableActionControl>'} with inherit active
+                                </EditableActionControl>
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl theme='primary' active={true}>
-    <EditableControl
+<EditableActionControl theme='primary' active={true}>
+    <EditableActionControl
         theme='${themeName}'
         inheritActive={true}
     >
-        An {'<EditableControl>'} with inherit active
-    </EditableControl>
-</EditableControl>
+        An {'<EditableActionControl>'} with inherit active
+    </EditableActionControl>
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -299,25 +303,25 @@ const EditableControlPage: NextPage = () => {
                 <FocusedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 focused={true}
                             >
-                                An {'<EditableControl>'} with focus indicator
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with focus indicator
+                            </EditableActionControl>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     focused={true}
 >
-    An {'<EditableControl>'} with focus indicator
-</EditableControl>
+    An {'<EditableActionControl>'} with focus indicator
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -325,51 +329,51 @@ const EditableControlPage: NextPage = () => {
                 <ArrivedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) => <>
-                            <EditableControl
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
-                                An {'<EditableControl>'} without arrive indicator
-                            </EditableControl>
-                            <EditableControl
+                                An {'<EditableActionControl>'} without arrive indicator
+                            </EditableActionControl>
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
-                                An {'<EditableControl>'} with arrive indicator
-                            </EditableControl>
-                            <EditableControl
+                                An {'<EditableActionControl>'} with arrive indicator
+                            </EditableActionControl>
+                            <EditableActionControl
                                 key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
-                                An {'<EditableControl>'} with auto arrive indicator
-                            </EditableControl>
+                                An {'<EditableActionControl>'} with auto arrive indicator
+                            </EditableActionControl>
                         </>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl
+<EditableActionControl
     theme='${themeName}'
     arrived={false}
 >
-    An {'<EditableControl>'} without arrive indicator
-</EditableControl>
-<EditableControl
+    An {'<EditableActionControl>'} without arrive indicator
+</EditableActionControl>
+<EditableActionControl
     theme='${themeName}'
     arrived={true}
 >
-    An {'<EditableControl>'} with arrive indicator
-</EditableControl>
-<EditableControl
+    An {'<EditableActionControl>'} with arrive indicator
+</EditableActionControl>
+<EditableActionControl
     theme='${themeName}'
     arrived={undefined}
 >
-    An {'<EditableControl>'} with auto arrive indicator
-</EditableControl>
+    An {'<EditableActionControl>'} with auto arrive indicator
+</EditableActionControl>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -377,96 +381,112 @@ const EditableControlPage: NextPage = () => {
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>
-                        <EditableControl
+                        <EditableActionControl
                             theme='primary'
                             enableValidation={true}
                             isValid={null}
                         >
-                            An {'<EditableControl>'} marked as neutral
-                        </EditableControl>
-                        <EditableControl
+                            An {'<EditableActionControl>'} marked as neutral
+                        </EditableActionControl>
+                        <EditableActionControl
                             theme='primary'
                             enableValidation={true}
                             isValid={true}
                         >
-                            An {'<EditableControl>'} marked as valid
-                        </EditableControl>
-                        <EditableControl
+                            An {'<EditableActionControl>'} marked as valid
+                        </EditableActionControl>
+                        <EditableActionControl
                             theme='primary'
                             enableValidation={true}
                             isValid={false}
                         >
-                            An {'<EditableControl>'} marked as invalid
-                        </EditableControl>
+                            An {'<EditableActionControl>'} marked as invalid
+                        </EditableActionControl>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
 `
-<EditableControl
+<EditableActionControl
     theme='primary'
     enableValidation={true}
     isValid={null}
 >
-    An {'<EditableControl>'} marked as neutral
-</EditableControl>
-<EditableControl
+    An {'<EditableActionControl>'} marked as neutral
+</EditableActionControl>
+<EditableActionControl
     theme='primary'
     enableValidation={true}
     isValid={true}
 >
-    An {'<EditableControl>'} marked as valid
-</EditableControl>
-<EditableControl
+    An {'<EditableActionControl>'} marked as valid
+</EditableActionControl>
+<EditableActionControl
     theme='primary'
     enableValidation={true}
     isValid={false}
 >
-    An {'<EditableControl>'} marked as invalid
-</EditableControl>
+    An {'<EditableActionControl>'} marked as invalid
+</EditableActionControl>
 `
                     }</TypeScriptCode>
                 </IsValidProperty>
                 <InheritValidationProperty />
+                <PressedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) => <>
+                            <EditableActionControl
+                                key={index}
+                                theme={themeName}
+                                pressed={false}
+                            >
+                                An {'<EditableActionControl>'} without pressed indicator
+                            </EditableActionControl>
+                            <EditableActionControl
+                                key={index}
+                                theme={themeName}
+                                pressed={true}
+                            >
+                                An {'<EditableActionControl>'} with pressed indicator
+                            </EditableActionControl>
+                            <EditableActionControl
+                                key={index}
+                                theme={themeName}
+                                pressed={undefined}
+                            >
+                                An {'<EditableActionControl>'} with auto pressed indicator
+                            </EditableActionControl>
+                        </>)}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<EditableActionControl
+    theme='${themeName}'
+    pressed={false}
+>
+    An {'<EditableActionControl>'} without pressed indicator
+</EditableActionControl>
+<EditableActionControl
+    theme='${themeName}'
+    pressed={true}
+>
+    An {'<EditableActionControl>'} with pressed indicator
+</EditableActionControl>
+<EditableActionControl
+    theme='${themeName}'
+    pressed={undefined}
+>
+    An {'<EditableActionControl>'} with auto pressed indicator
+</EditableActionControl>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </PressedProperty>
             </StateProperties>
             <InheritedProperties />
-            <Variables variables={
-                <Accordion>
-                    <AccordionItem label='Animations'>
-                        <List listStyle='flush'>
-                            <ListItem>
-                                <code>animValid</code>
-                                <p>An animation represents <em>validating animation</em>, a transition from <strong>neutral/invalid</strong> to <strong>valid</strong>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animInvalid</code>
-                                <p>An animation represents <em>invalidating animation</em>, a transition from <strong>neutral/valid</strong> to <strong>invalid</strong>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animUnvalid</code>
-                                <p>An animation represents <em>de-validating animation</em>, a transition from <strong>valid</strong> to <strong>neutral/invalid</strong>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animUninvalid</code>
-                                <p>An animation represents <em>de-invalidating animation</em>, a transition from <strong>invalid</strong> to <strong>neutral/valid</strong>.</p>
-                            </ListItem>
-                        </List>
-                    </AccordionItem>
-                </Accordion>
-            }>
-                <TypeScriptCode>{
-`
-// put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
-
-import {editableControls, editableControlValues} from '@reusable-ui/editable-control';
-
-editableControls.opacity = 0.5;
-console.log('opacity variable name: ', editableControls.opacity);
-console.log('opacity variable value: ', editableControlValues.opacity);
-`
-                }</TypeScriptCode>
-            </Variables>
         </Section>
     </ComponentContextProvider>);
 }
 
-export default EditableControlPage
+export default EditableActionControlPage
