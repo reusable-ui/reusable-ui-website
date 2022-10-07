@@ -103,17 +103,9 @@ const Components: NextPage = () => {
                     Represent a simple structured component to perform simple tasks.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.visuallyHidden.packageDisplay}>
-                        <p>
-                            A wrapper component for hidding its contents (children) while still accessible to assistive technologies.
-                        </p>
-                        <p>
-                            In <em>most cases</em>, you won&apos;t need this component. Use <code>aria-label</code> whenever possible.
-                        </p>
-                    </AccordionItem>
                     <AccordionItem label={packages.icon.packageDisplay}>
                         <p>
-                            Displays an emoticon or other icon to attract user&apos; attention.
+                            Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.label.packageDisplay}>
@@ -350,6 +342,14 @@ const Components: NextPage = () => {
                     Provides non-visual components to perform a specific function.
                 </p>
                 <Accordion theme='primary'>
+                    <AccordionItem label={packages.visuallyHidden.packageDisplay}>
+                        <p>
+                            A wrapper component for hidding its contents (children) while still accessible to assistive technologies.
+                        </p>
+                        <p>
+                            In <em>most cases</em>, you won&apos;t need this component. Use <code>aria-label</code> whenever possible.
+                        </p>
+                    </AccordionItem>
                     <AccordionItem label={packages.useElementCssSize.packageDisplay}>
                         <p>
                             A utility component for fetching the dimension of configured target element and then stored to a configured <em>css variable</em>.

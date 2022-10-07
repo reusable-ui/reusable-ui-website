@@ -1,9 +1,9 @@
 import React from 'react'
 import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
-import { PreviewProps, PropertySection, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { background, foreground, border, padding, themable } from '../../packages/packageList'
+import { background, foreground, border, padding, themable, colorable } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 
 
@@ -26,9 +26,11 @@ export const VariantProperties = ({children} : VariantPropertiesProps) => {
         </Section>
     );
 }
-export const SizeProperty = ({children: preview}: PreviewProps) => {
+export interface SizePropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+}
+export const SizeProperty = ({possibleValues, children: preview}: SizePropertyProps) => {
     return (
-        <PropertySection property={properties.size} preview={preview} possibleValues={
+        <PropertySection property={properties.size} preview={preview} possibleValues={possibleValues ??
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
@@ -174,7 +176,11 @@ export const OutlinedProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
-export const MildProperty = ({children: preview}: PreviewProps) => {
+export interface MildPropertyProps extends PreviewProps {
+    description ?: React.ReactNode
+    tips        ?: React.ReactNode
+}
+export const MildProperty = ({children: preview, description, tips}: MildPropertyProps) => {
     return (
         <PropertySection property={properties.mild} preview={preview} possibleValues={
             <Accordion>
@@ -200,16 +206,34 @@ export const MildProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
             </Accordion>
         }>
-            <p>
+            {description ?? <p>
                 Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
-            </p>
-            <Tips>
+            </p>}
+            {tips ?? <Tips>
                 <p>
-                    Note: <em>Mild</em> means <em>light background</em> on <em>light mode</em> or <em>dark background</em> on <em>dark mode</em>.
-                    The default {themable.packageShortLink} scheme is light mode, so mild is <em>light background</em>.
+                    Note: <strong>Mild</strong> means <em>light background</em> on <em>light mode</em> and <em>dark background</em> on <em>dark mode</em>.
+                    The <strong>default</strong> {themable.packageShortLink} scheme is <strong>light mode</strong>, so mild is <strong>light background</strong>.
                 </p>
-            </Tips>
+            </Tips>}
         </PropertySection>
+    );
+}
+export const ContextualMildProperty = ({description, tips, ...props}: MildPropertyProps) => {
+    return (
+        <MildProperty
+            {...props}
+            
+            description={description ?? <p>
+                Activates a <strong>mild mode</strong> (mild {colorable.packageShortLink}) of the component.
+            </p>}
+            
+            tips={tips ?? <Tips>
+                <p>
+                    Note: <strong>Mild</strong> means <strong>near <code>{`<parent>`}</code>&apos;s background brightness</strong>, that is <em>smooth color</em> on <em>smooth <code>{`<parent>`}</code></em> and <em>strong color</em> on <em>strong <code>{`<parent>`}</code></em>.
+                    The <strong>default</strong> behavior is <strong>contrast mode</strong>, that is <em>strong color</em> on <em>smooth <code>{`<parent>`}</code></em> and <em>smooth color</em> on <em>strong <code>{`<parent>`}</code></em>.
+                </p>
+            </Tips>}
+        />
     );
 }
 export const NudeProperty = ({children: preview}: PreviewProps) => {
