@@ -553,16 +553,15 @@ const ContentPage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Borders'>
+                    <AccordionItem label='Animations'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>borderWidth</code>
-                                <p>The thickness of border (stroke).</p>
+                                <code>transition</code>
+                                <p>The list of css properties to be <code>transition</code>-ed.</p>
                             </ListItem>
-                            
                             <ListItem>
-                                <code>borderRadius</code>
-                                <p>The rounded corner radius.</p>
+                                <code>mediaTransition</code>
+                                <p>The list of css properties to be <code>transition</code>-ed for the <strong>media</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -578,43 +577,23 @@ const ContentPage: NextPage = () => {
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineSm</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xs</code>.</p>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockSm</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xs</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>paddingInlineMd</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>md</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>paddingBlockMd</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>md</code>.</p>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineLg</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>lg</code>.</p>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockLg</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>lg</code>.</p>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>paddingInlineXl</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xl</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>paddingBlockXl</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xl</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>paddingInlineXxl</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xxl</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>paddingBlockXxl</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xxl</code>.</p>
+                                <code>linkSpacing</code>
+                                <p>The gap between <strong>link</strong>s.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -626,10 +605,9 @@ const ContentPage: NextPage = () => {
 
 import {contents, contentValues} from '@reusable-ui/content';
 
-contents.paddingInlineXxxl = '84px';
-contents.paddingBlockXxxl = '63px';
-console.log('paddingInlineXxxl variable name: ', contents.paddingInlineXxxl);
-console.log('paddingInlineXxxl variable value: ', contentValues.paddingInlineXxxl);
+contents.mediaOpacity = 0.5;
+console.log('mediaOpacity variable name: ', contents.mediaOpacity);
+console.log('mediaOpacity variable value: ', contentValues.mediaOpacity);
 `
                 }</TypeScriptCode>
             </Variables>
