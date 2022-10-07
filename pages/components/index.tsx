@@ -88,7 +88,7 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.container.packageDisplay}>
                         <p>
-                            A generic container with <strong>responsive padding width</strong> based on browser&apos;s width.
+                            A generic container with <strong>responsive padding width &amp; height</strong> based on browser&apos;s width at certain {packages.breakpoints.packageShortLink}.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.content.packageDisplay}>
