@@ -34,7 +34,7 @@ const ContainerPage: NextPage = () => {
                     By default the <TheComponentDisplay />&apos;s childen space is <strong>inside</strong> the <TheComponentDisplay />&apos;s padding.
                 </p>
                 <p>
-                    But in <em>some cases</em>, you may want some children or sub <code>{`<section>`}</code>s to <strong>fill accross</strong> the <TheComponentDisplay />&apos;s padding.
+                    But in <em>some cases</em>, you may want some children or sub <code>{`<section>`}</code>s to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
                     For example: a <strong>hero section</strong> or <strong>highlighted sections</strong>.
                     There are 2 special <code>className</code> to do that: <code>'fill'</code> and <code>'fill-self'</code>.
                 </p>
