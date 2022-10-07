@@ -96,7 +96,7 @@ export class PackageInfo {
             .join('/')
         );
     }
-    get packageLink() : React.ReactNode {
+    get packageLink() : React.ReactElement<ConditionalLinkProps> {
         return (
             <ConditionalLink packageUrl={this.packageUrl}>
                 {/* a composite <element> : */}{this.packageDisplay}
@@ -104,7 +104,7 @@ export class PackageInfo {
             </ConditionalLink>
         );
     }
-    get packageShortLink() : React.ReactNode {
+    get packageShortLink() : React.ReactElement<ConditionalLinkProps> {
         return (
             <ConditionalLink packageUrl={this.packageUrl}>
                 {/* a composite <element> : */}{/* {this.packageShortDisplay} */}
@@ -141,7 +141,7 @@ export class BarrelPackageInfo extends PackageInfo {
             </strong>
         );
     }
-    get packageLink() : React.ReactNode {
+    get packageLink() : React.ReactElement<ConditionalLinkProps> {
         return (
             <ConditionalLink packageUrl={this.packageUrl} currentPageComponent={<strong />}>
                 {/* a composite <element> : */}{/* {this.packageDisplay} */}

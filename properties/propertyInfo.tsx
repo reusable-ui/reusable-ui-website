@@ -113,14 +113,14 @@ export class PropertyInfo {
             .join('/')
         );
     }
-    get propertyLink() : React.ReactNode {
+    get propertyLink() : React.ReactElement<ConditionalLinkProps> {
         return (
             <ConditionalLink propertyUrl={this.propertyUrl}>
                 {this.propertyDisplay}
             </ConditionalLink>
         );
     }
-    get propertyShortLink() : React.ReactNode {
+    get propertyShortLink() : React.ReactElement<ConditionalLinkProps> {
         return (
             <ConditionalLink propertyUrl={this.propertyUrl}>
                 {this.propertyShortDisplay}

@@ -6,9 +6,10 @@ import { basic, content } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
-import { Accordion, AccordionItem, Basic, Carousel, Content as OriContent, ContentProps, List, ListItem } from '@reusable-ui/components'
+import { Accordion, AccordionItem, Basic, Button, Carousel, Content as OriContent, ContentProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { CommaSeparated, ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { Warning } from '../../components/Warning'
 
 
 
@@ -33,7 +34,7 @@ const ContentPage: NextPage = () => {
             </p>
             <Section title='Images &amp; Media'>
                 <p>
-                    Media elements such as <MediaList includeCustom={true} /> are styled to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
+                    Media elements such as <MediaList includeCustom={true} /> are <strong>automatically styled</strong> to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
                 </p>
                 <p>
                     Here the demonstration:
@@ -208,7 +209,7 @@ const ContentPage: NextPage = () => {
                 </Section>
                 <Section title='Excluding Media'>
                     <p>
-                        Sometimes we need to put a media <MediaList includeCustom={false} /> <strong>without</strong> to apply the <strong>default styling</strong>.
+                        Sometimes we need to put a media (<MediaList includeCustom={false} />) <strong>without</strong> to apply the <strong>default styling</strong>.
                         For example an <strong>emoji</strong> of <code>{`<img>`}</code>.
                     </p>
                     <p>
@@ -244,6 +245,149 @@ const ContentPage: NextPage = () => {
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
     </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+</Content>
+`
+                    }</TypeScriptCode>
+                </Section>
+            </Section>
+            <Section title='Links'>
+                <p>
+                    Link elements such as <LinkList includeCustom={true} /> are <strong>automatically styled</strong> and get <strong>separated</strong> from each other.
+                </p>
+                <Warning>
+                    <p>
+                        Actually we don&apos;t style the link elements, instead we mutate them with {React.cloneElement(packages.button.packageLink, undefined, <code>{`<Button buttonStyle='link'>`}</code>)} and styled them for adding margin.
+                    </p>
+                    <p>
+                        If the link elements are <strong>function component</strong> or <strong>class component</strong>, we don&apos;t mutate them.
+                    </p>
+                </Warning>
+                <p>
+                    Here the demonstration:
+                </p>
+                <Preview>
+                    <Content tag='article' theme='primary'>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                        </p>
+                        <a href='#'>Link 1</a>
+                        <a href='#'>Link 2</a>
+                        <a href='#'>Link 3</a>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                        </p>
+                    </Content>
+                </Preview>
+                <p></p>
+                <TypeScriptCode>{
+`
+<Content tag='article' theme='primary'>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+    <a href='#'>Link 1</a>
+    <a href='#'>Link 2</a>
+    <a href='#'>Link 3</a>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+</Content>
+`
+                }</TypeScriptCode>
+                <Section title='Custom Links'>
+                    <p>
+                        If you need a <strong>custom element</strong> to be treated <strong>as link</strong>, add a <code>'link'</code> to the element&apos;s <code>className</code>.
+                    </p>
+                    <p>
+                        Here the demonstration:
+                    </p>
+                    <Preview>
+                        <Content tag='article' theme='primary'>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                            <Button buttonStyle='link' href='#'>Link 1</Button>
+                            <Button buttonStyle='link' onClick={() => alert('hello world')}>Link 2</Button>
+                            <div className='link'>Link 3</div>
+                            <span className='link'>Link 4</span>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                        </Content>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Content tag='article' theme='primary'>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+    <Button buttonStyle='link' href='#'>Link 1</Button>
+    <Button buttonStyle='link' onClick={() => alert('hello world')}>Link 2</Button>
+    <div className='link'>Link 3</div>
+    <span className='link'>Link 4</span>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+</Content>
+`
+                    }</TypeScriptCode>
+                </Section>
+                <Section title='Excluding Links'>
+                    <p>
+                        Sometimes we need to put a link (<LinkList includeCustom={false} />) <strong>without</strong> to apply the <strong>default styling</strong>.
+                        For example a <strong>custom button</strong> of <code>{`<a>`}</code>.
+                    </p>
+                    <p>
+                        Add a <code>'not-link'</code> to the element&apos;s <code>className</code>.
+                    </p>
+                    <p>
+                        Here the demonstration:
+                    </p>
+                    <Preview>
+                        <Content tag='article' theme='primary'>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                            <a href='#' className='not-link'>Link 1</a>
+                            <a href='#' className='not-link'>Link 2</a>
+                            <a href='#' className='not-link'>Link 3</a>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                        </Content>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Content tag='article' theme='primary'>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+    </p>
+    <a href='#' className='not-link'>Link 1</a>
+    <a href='#' className='not-link'>Link 2</a>
+    <a href='#' className='not-link'>Link 3</a>
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
     </p>
