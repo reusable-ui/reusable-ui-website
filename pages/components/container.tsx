@@ -468,7 +468,7 @@ const ContainerPage: NextPage = () => {
 import {containers, containerValues} from '@reusable-ui/container';
 
 containers.paddingInlineXxxl = '84px';
-containers.paddingBlockXxl = '63px';
+containers.paddingBlockXxxl = '63px';
 console.log('paddingInlineXxxl variable name: ', containers.paddingInlineXxxl);
 console.log('paddingInlineXxxl variable value: ', containerValues.paddingInlineXxxl);
 `
