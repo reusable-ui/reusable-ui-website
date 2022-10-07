@@ -73,7 +73,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.editableActionControl.packageDisplay}>
                         <p>
-                            A clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.clickable.packageShortLink} and {packages.invalidable.packageShortLink}.
+                            An editable &amp; clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
                         </p>
                     </AccordionItem>
                 </Accordion>

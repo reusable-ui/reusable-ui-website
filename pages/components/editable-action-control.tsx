@@ -21,11 +21,11 @@ const EditableActionControlPage: NextPage = () => {
     return (<ComponentContextProvider component={editableActionControl} baseComponents={[editableControl, actionControl]}>
         <Head>
             <title>{`${editableActionControl.componentTag} Component`}</title>
-            <meta name="description" content={`${editableActionControl.componentTag} is a clickable simple box layout component with built-in variants, states, ${packages.invalidable.packageShortName} and ${packages.clickable.packageShortName}.`} />
+            <meta name="description" content={`${editableActionControl.componentTag} is an editable &amp; clickable simple box layout component with built-in variants, states, ${packages.invalidable.packageShortName} and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Section title={<><TheComponentDisplay /> Component</>}>
             <p>
-                <TheComponentDisplay /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
+                <TheComponentDisplay /> is an editable &amp; clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
             </p>
             <p>
                 If you plan to create a <strong>custom checkbox</strong>, this <em>base component</em> is a great starting point.
