@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { AccordionItem, Accordion } from '@reusable-ui/components'
 import { PropertySection, Section } from '../../components/Section'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
+import { BusyBar } from '../../components/BusyBar'
 
-import loadable from '@loadable/component'
-const TagListLazy = loadable(() => import(/* webpackChunkName: 'TagList' */'../../components/TagList'));
-const RoleListLazy = loadable(() => import(/* webpackChunkName: 'RoleList' */'../../components/RoleList'));
+const TagListLazy  = React.lazy(() => import(/* webpackChunkName: 'TagList' */'../../components/TagList'));
+const RoleListLazy = React.lazy(() => import(/* webpackChunkName: 'RoleList' */'../../components/RoleList'));
 
 
 
@@ -40,7 +40,9 @@ export const TagProperty = () => {
                     <p>
                         The valid HTML tag name are:
                     </p>
-                    <TagListLazy />
+                    <Suspense fallback={<BusyBar />}>
+                        <TagListLazy />
+                    </Suspense>
                 </AccordionItem>
             </Accordion>
         }>
@@ -66,7 +68,9 @@ export const RoleProperty = () => {
                     <p>
                         The valid ARIA role name are:
                     </p>
-                    <RoleListLazy />
+                    <Suspense fallback={<BusyBar />}>
+                        <RoleListLazy />
+                    </Suspense>
                 </AccordionItem>
             </Accordion>
         }>
