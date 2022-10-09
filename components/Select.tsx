@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Label, Radio } from '@reusable-ui/components';
+import { Label, Radio, RadioProps } from '@reusable-ui/components';
 
 import { ResponsiveGroup, ResponsiveGroupProps } from "./ResponsiveGroup";
 
@@ -13,7 +13,8 @@ export interface SelectProps<TValue = any> extends ResponsiveGroupProps {
     setValue ?: React.Dispatch<TValue>
     
     options   : TValue[]
-    getName  ?: (value: TValue) => string|null
+    getName  ?: (value: TValue) => string|null,
+    getProps ?: (value: TValue) => RadioProps
 }
 const Select = <TValue extends any = any>(props: SelectProps<TValue>) => {
     const {
@@ -24,36 +25,37 @@ const Select = <TValue extends any = any>(props: SelectProps<TValue>) => {
         
         options,
         getName,
+        getProps,
     ...restResponsiveGroupProps} = props;
     
     return (
-        <>
-            {label && <Label>{label}</Label>}
+        <ResponsiveGroup
+            {...restResponsiveGroupProps}
             
-            <ResponsiveGroup
-                {...restResponsiveGroupProps}
-                
-                theme={props.theme ?? 'primary'}
-            >
-                {options.map((option, index) =>
-                    <Radio
-                        key={index}
-                        
-                        mild={true}
-                        nude={false}
-                        
-                        name={label}
-                        
-                        active={Object.is(value, option)}
-                        onActiveChange={(event) => {
-                            if (event.active) setValue?.(option);
-                        }}
-                    >
-                        {getName?.(option) ?? ((option === undefined) ? 'unset' : `${option}`)}
-                    </Radio>
-                )}
-            </ResponsiveGroup>
-        </>
+            theme={props.theme ?? 'primary'}
+        >
+            {(label || undefined) && <Label theme='secondary'>{label}</Label>}
+            {options.map((option, index) =>
+                <Radio
+                    key={index}
+                    
+                    theme={undefined}
+                    mild={true}
+                    nude={false}
+                    
+                    name={label}
+                    
+                    active={Object.is(value, option)}
+                    onActiveChange={(event) => {
+                        if (event.active) setValue?.(option);
+                    }}
+                    
+                    {...getProps?.(option)}
+                >
+                    {getName ? getName(option) : ((option === undefined) ? 'unset' : `${option}`)}
+                </Radio>
+            )}
+        </ResponsiveGroup>
     );
 }
 export {
