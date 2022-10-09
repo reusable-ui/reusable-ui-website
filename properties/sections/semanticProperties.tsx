@@ -33,7 +33,7 @@ export const TagProperty = () => {
                         Assigning an empty string (<code>''</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<>a valid HTML tag name</>}>
+                <AccordionItem label={<>a valid HTML tag name</>} lazy={true}>
                     <p>
                         Assigning a <strong>valid HTML tag name</strong> will rendered to the <strong>given tag</strong> at runtime.
                     </p>
@@ -61,7 +61,7 @@ export const RoleProperty = () => {
                         Assigning an empty string (<code>''</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<>a valid ARIA role name</>}>
+                <AccordionItem label={<>a valid ARIA role name</>} lazy={true}>
                     <p>
                         Assigning a <strong>valid ARIA role name</strong> will rendered to the <code>role='...'</code> at runtime.
                     </p>

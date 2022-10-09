@@ -181,12 +181,12 @@ const TagList = () => {
     'tspan',
     'use',
     'view',
-].map((tag, index, arr) => (<>
+].map((tag, index, arr) => (<React.Fragment key={index}>
     <code>
         '{tag}'
     </code>
     {(index < (arr.length - 1)) && ', '}
-</>))}
+</React.Fragment>))}
         </p>
     );
 }

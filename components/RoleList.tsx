@@ -75,12 +75,12 @@ const RoleList = () => {
     'tree',
     'treegrid',
     'treeitem',
-].map((role, index, arr) => (<>
+].map((role, index, arr) => (<React.Fragment key={index}>
     <code>
         '{role}'
     </code>
     {(index < (arr.length - 1)) && ', '}
-</>))}
+</React.Fragment>))}
         </p>
     );
 }
