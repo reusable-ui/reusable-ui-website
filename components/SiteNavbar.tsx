@@ -13,7 +13,7 @@ const SiteLogo = () => {
 }
 const SiteNavbar = () => {
     return (
-        <Navbar theme='primary' className='siteNavbar'>{({
+        <Navbar theme='primary' gradient={true} className='siteNavbar'>{({
             basicVariantProps,
             navbarExpanded,
             menuExpanded,
@@ -23,7 +23,7 @@ const SiteNavbar = () => {
             {!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />}
             
             <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
-                <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat'>
+                <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat' gradient={navbarExpanded ? 'inherit' : false}>
                     <NavItem><Link href='/'>Home</Link></NavItem>
                     <NavItem><Link href='/core'>Core</Link></NavItem>
                     <NavItem><Link href='/components'>Components</Link></NavItem>
