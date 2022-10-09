@@ -183,7 +183,7 @@ const TagList = () => {
     'view',
 ].map((tag, index, arr) => (<React.Fragment key={index}>
     <code>
-        '{tag}'
+        {`'${tag}'`}
     </code>
     {(index < (arr.length - 1)) && ', '}
 </React.Fragment>))}

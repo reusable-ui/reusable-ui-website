@@ -45,10 +45,12 @@ const ContentPage: NextPage = () => {
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
                         </p>
+                        {/* eslint-disable @next/next/no-img-element */}
                         <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
                         </p>
+                        {/* eslint-disable @next/next/no-img-element */}
                         <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
@@ -75,13 +77,14 @@ const ContentPage: NextPage = () => {
                 }</TypeScriptCode>
                 <Section title='Images &amp; Media at the Beginning and End'>
                     <p>
-                        If the media position is at <strong>the first</strong> and/or <strong>the last</strong>, the media are bit <strong>clipped</strong> by <TheComponentDisplay />'s <strong>border-radius</strong>.
+                        If the media position is at <strong>the first</strong> and/or <strong>the last</strong>, the media are bit <strong>clipped</strong> by <TheComponentDisplay />&apos;s <strong>border-radius</strong>.
                     </p>
                     <p>
                         Here the demonstration:
                     </p>
                     <Preview>
                         <Content tag='article' theme='secondary' size='lg'>
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
@@ -89,6 +92,7 @@ const ContentPage: NextPage = () => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
                             </p>
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
                         </Content>
                     </Preview>
@@ -120,8 +124,11 @@ const ContentPage: NextPage = () => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
                             </p>
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
@@ -153,7 +160,7 @@ const ContentPage: NextPage = () => {
                 </Section>
                 <Section title='Custom Media'>
                     <p>
-                        If you need a <strong>custom element</strong> to be treated <strong>as media</strong>, add a <code>'media'</code> to the element&apos;s <code>className</code>.
+                        If you need a <strong>custom element</strong> to be treated <strong>as media</strong>, add a <code>{'media'}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:
@@ -164,8 +171,11 @@ const ContentPage: NextPage = () => {
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
                             </p>
                             <Carousel theme='success' className='media'>
+                                {/* eslint-disable @next/next/no-img-element */}
                                 <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
+                                {/* eslint-disable @next/next/no-img-element */}
                                 <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
+                                {/* eslint-disable @next/next/no-img-element */}
                                 <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
                             </Carousel>
                             <p>
@@ -214,7 +224,7 @@ const ContentPage: NextPage = () => {
                         For example an <strong>emoji</strong> of <code>{`<img>`}</code>.
                     </p>
                     <p>
-                        Add a <code>'not-media'</code> to the element&apos;s <code>className</code>.
+                        Add a <code>{'not-media'}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:
@@ -224,7 +234,9 @@ const ContentPage: NextPage = () => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
                             </p>
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' className='not-media' style={{ height: '150px' }} />
+                            {/* eslint-disable @next/next/no-img-element */}
                             <img alt='lorem image' src='/images/lorem-image-1.svg' className='not-media' style={{ height: '150px' }} />
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
@@ -306,7 +318,7 @@ const ContentPage: NextPage = () => {
                 }</TypeScriptCode>
                 <Section title='Custom Links'>
                     <p>
-                        If you need a <strong>custom element</strong> to be treated <strong>as link</strong>, add a <code>'link'</code> to the element&apos;s <code>className</code>.
+                        If you need a <strong>custom element</strong> to be treated <strong>as link</strong>, add a <code>{'link'}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:
@@ -355,7 +367,7 @@ const ContentPage: NextPage = () => {
                         For example a <strong>custom button</strong> of <code>{`<a>`}</code>.
                     </p>
                     <p>
-                        Add a <code>'not-link'</code> to the element&apos;s <code>className</code>.
+                        Add a <code>{'not-link'}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:

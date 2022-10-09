@@ -243,7 +243,7 @@ const Core: NextPage = () => {
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.excitable.packageDisplay}>
                         <p>
-                            A capability of UI to <strong>highlight itself</strong> to attract user's attention.
+                            A capability of UI to <strong>highlight itself</strong> to attract user&apos;s attention.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.collapsible.packageDisplay}>

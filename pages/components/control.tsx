@@ -212,7 +212,7 @@ const ControlPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Control theme='primary' enabled={false}>
+                            <Control key={index} theme='primary' enabled={false}>
                                 <Control
                                     key={index}
                                     theme={themeName}
@@ -270,7 +270,7 @@ const ControlPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Control theme='primary' active={true}>
+                            <Control key={index} theme='primary' active={true}>
                                 <Control
                                     key={index}
                                     theme={themeName}

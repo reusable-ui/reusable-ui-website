@@ -270,17 +270,17 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <AccordionItem label={packages.modal.packageDisplay}>
                         <p>
-                            Overlays a dialog to the entire site's page.
+                            Overlays a dialog to the entire site&apos;s page.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.modalCard.packageDisplay}>
                         <p>
-                            Overlays a {packages.card.packageLink} as dialog to the entire site's page.
+                            Overlays a {packages.card.packageLink} as dialog to the entire site&apos;s page.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.modalSide.packageDisplay}>
                         <p>
-                            Overlays a {packages.card.packageLink} as dialog to the side of site's page.
+                            Overlays a {packages.card.packageLink} as dialog to the side of site&apos;s page.
                         </p>
                     </AccordionItem>
                 </Accordion>

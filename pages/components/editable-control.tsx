@@ -212,7 +212,7 @@ const EditableControlPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl theme='primary' enabled={false}>
+                            <EditableControl key={index} theme='primary' enabled={false}>
                                 <EditableControl
                                     key={index}
                                     theme={themeName}
@@ -270,7 +270,7 @@ const EditableControlPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl theme='primary' active={true}>
+                            <EditableControl key={index} theme='primary' active={true}>
                                 <EditableControl
                                     key={index}
                                     theme={themeName}

@@ -77,7 +77,7 @@ const RoleList = () => {
     'treeitem',
 ].map((role, index, arr) => (<React.Fragment key={index}>
     <code>
-        '{role}'
+        {`'${role}'`}
     </code>
     {(index < (arr.length - 1)) && ', '}
 </React.Fragment>))}

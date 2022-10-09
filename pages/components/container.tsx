@@ -37,11 +37,11 @@ const ContainerPage: NextPage = () => {
                 <p>
                     But in <em>some cases</em>, you may want some children or sub <code>{`<section>`}</code>s to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
                     For example: a <strong>hero section</strong> or <strong>highlighted sections</strong>.
-                    There are 2 special <code>className</code> to do that: <code>'fill'</code> and <code>'fill-self'</code>.
+                    There are 2 special <code>className</code> to do that: <code>{'fill'}</code> and <code>{'fill-self'}</code>.
                 </p>
                 <Section title={<>Fill the <TheComponentDisplay />&apos;s Padding</>}>
                     <p>
-                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>fills</strong> the <TheComponentDisplay />&apos;s padding, add a <code>'fill'</code> to the child&apos;s <code>className</code>.
+                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>fills</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{'fill'}</code> to the child&apos;s <code>className</code>.
                     </p>
                     <p>
                         The <strong>child&apos;s padding</strong> itself is <strong>preserved</strong> as original, so the content alignment is shifted.
@@ -55,13 +55,13 @@ const ContainerPage: NextPage = () => {
                                 The first child
                             </section>
                             <section style={{ background: '#FFFF00' }} className='fill'>
-                                The second child applied <code>className='fill'</code>
+                                The second child applied <code>{"className='fill'"}</code>
                             </section>
                             <section style={{ background: '#90EE90' }}>
                                 The third child
                             </section>
                             <section style={{ background: '#E9967A' }} className='fill'>
-                                The fourth child applied <code>className='fill'</code>
+                                The fourth child applied <code>{"className='fill'"}</code>
                             </section>
                             <section style={{ background: '#D2B48C' }}>
                                 The fifth child
@@ -76,13 +76,13 @@ const ContainerPage: NextPage = () => {
         The first child
     </section>
     <section style={{ background: '#FFFF00' }} className='fill'>
-        The second child applied <code>className='fill'</code>
+        The second child applied <code>{"className='fill'"}</code>
     </section>
     <section style={{ background: '#90EE90' }}>
         The third child
     </section>
     <section style={{ background: '#E9967A' }} className='fill'>
-        The fourth child applied <code>className='fill'</code>
+        The fourth child applied <code>{"className='fill'"}</code>
     </section>
     <section style={{ background: '#D2B48C' }}>
         The fifth child
@@ -94,12 +94,12 @@ const ContainerPage: NextPage = () => {
                     <hr />
                     
                     <p>
-                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>'fill'</code> class <strong>removes</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
+                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{'fill'}</code> class <strong>removes</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
                     </p>
                     <Preview>
                         <Container tag='section' theme='primary'>
                             <section style={{ background: '#FFC0CB' }} className='fill'>
-                                The first child applied <code>className='fill'</code>
+                                The first child applied <code>{"className='fill'"}</code>
                             </section>
                             <section style={{ background: '#FFFF00' }}>
                                 The second child
@@ -111,7 +111,7 @@ const ContainerPage: NextPage = () => {
                                 The fourth child
                             </section>
                             <section style={{ background: '#D2B48C' }} className='fill'>
-                                The fifth child applied <code>className='fill'</code>
+                                The fifth child applied <code>{"className='fill'"}</code>
                             </section>
                         </Container>
                     </Preview>
@@ -120,7 +120,7 @@ const ContainerPage: NextPage = () => {
 `
 <Container tag='section' theme='primary'>
     <section style={{ background: '#FFC0CB' }} className='fill'>
-        The first child applied <code>className='fill'</code>
+        The first child applied <code>{"className='fill'"}</code>
     </section>
     <section style={{ background: '#FFFF00' }}>
         The second child
@@ -132,7 +132,7 @@ const ContainerPage: NextPage = () => {
         The fourth child
     </section>
     <section style={{ background: '#D2B48C' }} className='fill'>
-        The fifth child applied <code>className='fill'</code>
+        The fifth child applied <code>{"className='fill'"}</code>
     </section>
 </Container>
 `
@@ -140,7 +140,7 @@ const ContainerPage: NextPage = () => {
                 </Section>
                 <Section title={<>Take Over the <TheComponentDisplay />&apos;s Padding</>}>
                     <p>
-                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>takes over</strong> the <TheComponentDisplay />&apos;s padding, add a <code>'fill'</code> to the child&apos;s <code>className</code>.
+                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>takes over</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{'fill'}</code> to the child&apos;s <code>className</code>.
                     </p>
                     <p>
                         The <strong>child&apos;s padding</strong> copies (take over) the <TheComponentDisplay />&apos;s padding, so the content alignment is preserved.
@@ -154,13 +154,13 @@ const ContainerPage: NextPage = () => {
                                 The first child
                             </section>
                             <section style={{ background: '#FFFF00' }} className='fill-self'>
-                                The second child applied <code>className='fill-self'</code>
+                                The second child applied <code>{"className='fill-self'"}</code>
                             </section>
                             <section style={{ background: '#90EE90' }}>
                                 The third child
                             </section>
                             <section style={{ background: '#E9967A' }} className='fill-self'>
-                                The fourth child applied <code>className='fill-self'</code>
+                                The fourth child applied <code>{"className='fill-self'"}</code>
                             </section>
                             <section style={{ background: '#D2B48C' }}>
                                 The fifth child
@@ -175,13 +175,13 @@ const ContainerPage: NextPage = () => {
         The first child
     </section>
     <section style={{ background: '#FFFF00' }} className='fill-self'>
-        The second child applied <code>className='fill-self'</code>
+        The second child applied <code>{"className='fill-self'"}</code>
     </section>
     <section style={{ background: '#90EE90' }}>
         The third child
     </section>
     <section style={{ background: '#E9967A' }} className='fill-self'>
-        The fourth child applied <code>className='fill-self'</code>
+        The fourth child applied <code>{"className='fill-self'"}</code>
     </section>
     <section style={{ background: '#D2B48C' }}>
         The fifth child
@@ -193,12 +193,12 @@ const ContainerPage: NextPage = () => {
                     <hr />
                     
                     <p>
-                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>'fill-self'</code> class also <strong>takes over</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
+                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{'fill-self'}</code> class also <strong>takes over</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
                     </p>
                     <Preview>
                         <Container tag='section' theme='primary'>
                             <section style={{ background: '#FFC0CB' }} className='fill-self'>
-                                The first child applied <code>className='fill-self'</code>
+                                The first child applied <code>{"className='fill-self'"}</code>
                             </section>
                             <section style={{ background: '#FFFF00' }}>
                                 The second child
@@ -210,7 +210,7 @@ const ContainerPage: NextPage = () => {
                                 The fourth child
                             </section>
                             <section style={{ background: '#D2B48C' }} className='fill-self'>
-                                The fifth child applied <code>className='fill-self'</code>
+                                The fifth child applied <code>{"className='fill-self'"}</code>
                             </section>
                         </Container>
                     </Preview>
@@ -219,7 +219,7 @@ const ContainerPage: NextPage = () => {
 `
 <Container tag='section' theme='primary'>
     <section style={{ background: '#FFC0CB' }} className='fill-self'>
-        The first child applied <code>className='fill-self'</code>
+        The first child applied <code>{"className='fill-self'"}</code>
     </section>
     <section style={{ background: '#FFFF00' }}>
         The second child
@@ -231,7 +231,7 @@ const ContainerPage: NextPage = () => {
         The fourth child
     </section>
     <section style={{ background: '#D2B48C' }} className='fill-self'>
-        The fifth child applied <code>className='fill-self'</code>
+        The fifth child applied <code>{"className='fill-self'"}</code>
     </section>
 </Container>
 `

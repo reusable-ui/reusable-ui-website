@@ -212,7 +212,7 @@ const IndicatorPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Indicator theme='primary' enabled={false}>
+                            <Indicator key={index} theme='primary' enabled={false}>
                                 <Indicator
                                     key={index}
                                     theme={themeName}
@@ -270,7 +270,7 @@ const IndicatorPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Indicator theme='primary' active={true}>
+                            <Indicator key={index} theme='primary' active={true}>
                                 <Indicator
                                     key={index}
                                     theme={themeName}
