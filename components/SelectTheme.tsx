@@ -8,7 +8,7 @@ import { Select, SelectProps } from './Select';
 const themes          : (ThemeName|undefined)[] = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark'];
 const themesWithUnset : (ThemeName|undefined)[] = [undefined, ...themes];
 const getNoName = () => null;
-const getProps  = (option: ThemeName|undefined): RadioProps => ({ theme: option });
+const getProps  = (option: ThemeName|undefined): RadioProps => ({ theme: option, mild: false });
 
 
 

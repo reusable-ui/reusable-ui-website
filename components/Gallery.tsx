@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useDeferredValue, useRef, useState } from 'react'
 
 import { style, rule, children } from '@cssfn/core'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
@@ -81,6 +81,7 @@ const Gallery = (props: GalleryProps) => {
     
     
     const [theme , setTheme ] = useState<ThemeName|undefined>('primary');
+    const delayedTheme = useDeferredValue(theme);
     const [search, setSearch] = useState<string>('');
     const searchRef           = useRef<HTMLInputElement>(null);
     
@@ -91,11 +92,13 @@ const Gallery = (props: GalleryProps) => {
         const filter = search.trim().toLowerCase();
         return collection.filter((item) => item.toLowerCase().includes(filter));
     })() : collection;
+    const delayedFilteredCollection = useDeferredValue(filteredCollection);
     
     const itemsPerPage = 100;
     const [pageIndex, setPageIndex] = useState<number>(0);
     const totalPages = Math.ceil(filteredCollection.length / itemsPerPage);
     if (totalPages && (pageIndex > (totalPages - 1))) setPageIndex(0); // reset if out-of-range, in case of the collection is shrinking due to seach filter changed
+    const delayedTotalPages = useDeferredValue(totalPages);
     
     
     
@@ -152,12 +155,12 @@ const Gallery = (props: GalleryProps) => {
                     }
                     nextItems={
                         <NavNextItem
-                            onClick={() => setPageIndex(totalPages - 1)}
+                            onClick={() => setPageIndex(delayedTotalPages - 1)}
                         />
                     }
                 >
                     {
-                        [...Array(totalPages)]
+                        [...Array(delayedTotalPages)]
                         .map((_value, counter) => counter)
                         .map((counter) => (
                             <NavItem
@@ -179,7 +182,7 @@ const Gallery = (props: GalleryProps) => {
             {...restCardProps}
             
             classes={classes}
-            theme={theme}
+            theme={delayedTheme}
         >
             <CardHeader>
                 {pageOptions}
@@ -187,10 +190,10 @@ const Gallery = (props: GalleryProps) => {
             </CardHeader>
             <CardBody>
                 {
-                    filteredCollection
+                    delayedFilteredCollection
                     .slice((pageIndex * itemsPerPage), (pageIndex * itemsPerPage) + itemsPerPage)
                     .map((itemName) =>
-                        React.cloneElement(itemMap(itemName, { theme }),
+                        React.cloneElement(itemMap(itemName, { theme: delayedTheme }),
                             // props:
                             {
                                 key: itemName,

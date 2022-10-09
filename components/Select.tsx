@@ -34,7 +34,7 @@ const Select = <TValue extends any = any>(props: SelectProps<TValue>) => {
             
             theme={props.theme ?? 'primary'}
         >
-            {(label || undefined) && <Label theme='secondary'>{label}</Label>}
+            {(label || undefined) && <Label>{label}</Label>}
             {options.map((option, index) =>
                 <Radio
                     key={index}
