@@ -1,3 +1,4 @@
+import { RadioProps } from '@reusable-ui/components';
 import { ThemeName } from '@reusable-ui/core';
 
 import { Select, SelectProps } from './Select';
@@ -7,6 +8,7 @@ import { Select, SelectProps } from './Select';
 const themes          : (ThemeName|undefined)[] = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark'];
 const themesWithUnset : (ThemeName|undefined)[] = [undefined, ...themes];
 const getNoName = () => null;
+const getProps  = (option: ThemeName|undefined): RadioProps => ({ theme: option });
 
 
 
@@ -30,6 +32,7 @@ const SelectTheme = (props: SelectThemeProps) => {
             
             options={addUnset ? themesWithUnset : themes}
             getName={showName ? undefined : getNoName}
+            getProps={getProps}
         />
     );
 };
