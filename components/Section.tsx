@@ -1,6 +1,7 @@
 import { default as React, createContext, useContext, useMemo } from 'react'
 import { Tag, useMergeClasses } from '@reusable-ui/core'
-import { AccordionProps, Accordion, Container, ContainerProps, Generic } from '@reusable-ui/components'
+import { AccordionProps, Accordion } from '../components/Accordion'
+import { Container, ContainerProps, Generic } from '@reusable-ui/components'
 import { PropertyInfo } from '../properties/propertyInfo';
 import { SeeBaseComponentLinks, TheBaseComponentLinks, TheComponentDisplay, TheComponentTag } from '../packages/componentContext';
 

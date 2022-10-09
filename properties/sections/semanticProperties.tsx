@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { AccordionItem, Accordion } from '@reusable-ui/components'
+import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PropertySection, Section } from '../../components/Section'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'

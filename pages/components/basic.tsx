@@ -5,8 +5,9 @@ import { InheritedProperties, Section, Variables } from '../../components/Sectio
 import { generic, basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
-import { Preview } from '../../components/Preview'  
-import { Accordion, AccordionItem, Basic as OriBasic, BasicProps, List, ListItem } from '@reusable-ui/components'
+import { Preview } from '../../components/Preview'
+import { AccordionItem, Accordion } from '../../components/Accordion'
+import { Basic as OriBasic, BasicProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 

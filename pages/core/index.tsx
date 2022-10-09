@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { AccordionItem, Accordion } from '@reusable-ui/components'
+import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 import { IntLink } from '../../components/IntLink'
