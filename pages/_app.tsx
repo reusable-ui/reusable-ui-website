@@ -1,16 +1,21 @@
-import { useRef } from 'react';
-// import '../styles/Site.global.scss'
+import '../styles/Site.global.scss'
+
+import React, { Suspense, useRef } from 'react';
+
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
-import { Section } from '../components/Section';
-import { ExtLink } from '../components/ExtLink';
-import { siteVars } from '../website.config';
-import '../website.config';
+
 import '@cssfn/cssfn-dom'
 
-import loadable from '@loadable/component'
-const SiteNavbarLazy = loadable(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
+import '../website.config';
+import { siteVars } from '../website.config';
+
+import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
+
+import { Section } from '../components/Section';
+import { ExtLink } from '../components/ExtLink';
+
+const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
 
 
 
@@ -25,13 +30,15 @@ const Header = () => {
             </Head>
             
             <header ref={headerRef}>
-                <SiteNavbarLazy fallback={
+                <Suspense fallback={
                     <Container
                         className='siteNavbar lazy'
                         theme='primary'
                         mild={false}
                     />
-                } />
+                }>
+                    <SiteNavbarLazy />
+                </Suspense>
             </header>
             <UseElementCssSize elementRef={headerRef} varBlockSize={siteVars.headerHeight} />
         </>

@@ -44,11 +44,6 @@ styleSheet(() => style({
             position        : 'sticky',
             insetBlockStart : '0px',
         }),
-        ...rule('.siteNavbar', {
-            boxSizing: 'border-box',
-            minBlockSize: '60px',
-            paddingBlock: '0px',
-        }),
         ...rule('a:has(code:only-child)', {
             textDecoration: [['none'], '!important'],
         }),
