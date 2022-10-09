@@ -4,7 +4,7 @@ import { style, rule, children } from '@cssfn/core'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 
 import { spacers, OrientationName, ThemeName, useMergeClasses } from '@reusable-ui/core'
-import { Generic, Card, headerElm, footerElm, bodyElm, Icon, ButtonIcon, Search, Label, NavItem, NavNextItem, NavPrevItem, Pagination, Group, ResponsiveProvider, CardProps } from '@reusable-ui/components';
+import { Generic, Card, headerElm, footerElm, bodyElm, Icon, ButtonIcon, Search, Label, NavItem, NavNextItem, NavPrevItem, Pagination, Group, ResponsiveProvider, CardProps, CardHeader, CardFooter, CardBody } from '@reusable-ui/components';
 
 import SelectTheme from './SelectTheme';
 
@@ -31,7 +31,9 @@ export const useGallerySheet = dynamicStyleSheet(() => style({
             alignSelf     : 'stretch',
             
             ...children('.flow', {
-                display   : 'flex',
+                display        : 'flex',
+                flexWrap       : 'wrap',
+                justifyContent : 'center',
                 ...rule('.block', {
                     flexDirection : 'column',
                 }),
@@ -113,7 +115,7 @@ const Gallery = (props: GalleryProps) => {
                         <Label className='solid'>
                             <Icon icon='color_lens' />
                         </Label>
-                        <SelectTheme className='fluid' orientation='inline' showName={false} size='sm' value={theme} setValue={setTheme} />
+                        <SelectTheme className='fluid' orientation='inline' label='' showName={false} size='sm' value={theme} setValue={setTheme} />
                     </Group>
                     <Group orientation='inline' size='sm'>
                         {
@@ -177,24 +179,29 @@ const Gallery = (props: GalleryProps) => {
             {...restCardProps}
             
             classes={classes}
-            cardStyle='flush'
             theme={theme}
         >
-            {pageOptions}
-            {pageNav}
-            {
-                filteredCollection
-                .slice((pageIndex * itemsPerPage), (pageIndex * itemsPerPage) + itemsPerPage)
-                .map((itemName) =>
-                    React.cloneElement(itemMap(itemName, { theme }),
-                        // props:
-                        {
-                            key: itemName,
-                        },
+            <CardHeader>
+                {pageOptions}
+                {pageNav}
+            </CardHeader>
+            <CardBody>
+                {
+                    filteredCollection
+                    .slice((pageIndex * itemsPerPage), (pageIndex * itemsPerPage) + itemsPerPage)
+                    .map((itemName) =>
+                        React.cloneElement(itemMap(itemName, { theme }),
+                            // props:
+                            {
+                                key: itemName,
+                            },
+                        )
                     )
-                )
-            }
-            {pageNav}
+                }
+            </CardBody>
+            <CardFooter>
+                {pageNav}
+            </CardFooter>
         </Card>
     );
 }
