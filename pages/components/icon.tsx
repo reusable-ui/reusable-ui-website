@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { InheritedProperties, Section, Variables } from '../../components/Section'
@@ -6,11 +6,13 @@ import { generic, icon } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ContextualMildProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
-import { Accordion, AccordionItem, Basic, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
+import { Accordion, AccordionItem, Basic, Details, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
 import type { SizeName } from '@reusable-ui/icon'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { BusyBar } from '../../components/BusyBar'
+
+const IconGalleryLazy = React.lazy(() => import(/* webpackChunkName: 'IconGallery' */'../../components/IconGallery'))
 
 
 
@@ -33,7 +35,14 @@ const IconPage: NextPage = () => {
             </p>
             <Section title='Icon Sets'>
                 <Section title='Built-in Icon Sets'>
-                    //
+                    <p>
+                        There a lot of <strong>common icons</strong> that ready to use for your projects.
+                    </p>
+                    <Details theme='primary' detailsStyle='content' label='Show icon gallery' lazy={true}>
+                        <Suspense fallback={<BusyBar />}>
+                            <IconGalleryLazy cardStyle='flush' />
+                        </Suspense>
+                    </Details>
                 </Section>
                 <Section title='Adding Custom Icon Sets'>
                     //
