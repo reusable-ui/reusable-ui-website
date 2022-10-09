@@ -96,7 +96,7 @@ const iconSets = [
 
 
 
-export interface IconGalleryProps extends GalleryProps {
+export interface IconGalleryProps extends Omit<GalleryProps, 'collection'|'children'> {
 }
 const IconGallery = (props: IconGalleryProps) => {
     const styleSheet = useGallerySheet();
