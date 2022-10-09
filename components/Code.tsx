@@ -1,11 +1,10 @@
 import style from './CodeHighlighter.module.scss'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import type { CodeHighlighterProps } from './CodeHighlighter'
 import { Details } from '@reusable-ui/components'
 
-import loadable from '@loadable/component'
-const CodeHighlighterLazy = loadable(() => import(/* webpackChunkName: 'CodeHighlighter' */'./CodeHighlighter'))
+const CodeHighlighterLazy = React.lazy(() => import(/* webpackChunkName: 'CodeHighlighter' */'./CodeHighlighter'))
 
 
 
@@ -25,15 +24,17 @@ export function Code(props: CodeProps) {
     ...restProps} = props;
     const code = children?.trim();
     
-    const CodeJsx = ({ classes }: { classes ?: string[] }) => (<>
-        <CodeHighlighterLazy {...restProps} classes={classes} fallback={
+    const CodeJsx = ({ classes }: { classes ?: string[] }) => (
+        <Suspense fallback={
             <pre className={[style.codeHighlighter, ...(classes ?? [])].flat().join(' ')}>
-                { code }
+                {code}
             </pre>
         }>
-            { code }
-        </CodeHighlighterLazy>
-    </>);
+            <CodeHighlighterLazy {...restProps} classes={classes}>
+                {code}
+            </CodeHighlighterLazy>
+        </Suspense>
+    );
     
     if (collapsable) return (
         <Details
