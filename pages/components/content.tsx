@@ -160,7 +160,7 @@ const ContentPage: NextPage = () => {
                 </Section>
                 <Section title='Custom Media'>
                     <p>
-                        If you need a <strong>custom element</strong> to be treated <strong>as media</strong>, add a <code>{'media'}</code> to the element&apos;s <code>className</code>.
+                        If you need a <strong>custom element</strong> to be treated <strong>as media</strong>, add a <code>{"'media'"}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:
@@ -224,7 +224,7 @@ const ContentPage: NextPage = () => {
                         For example an <strong>emoji</strong> of <code>{`<img>`}</code>.
                     </p>
                     <p>
-                        Add a <code>{'not-media'}</code> to the element&apos;s <code>className</code>.
+                        Add a <code>{"'not-media'"}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:
@@ -318,7 +318,7 @@ const ContentPage: NextPage = () => {
                 }</TypeScriptCode>
                 <Section title='Custom Links'>
                     <p>
-                        If you need a <strong>custom element</strong> to be treated <strong>as link</strong>, add a <code>{'link'}</code> to the element&apos;s <code>className</code>.
+                        If you need a <strong>custom element</strong> to be treated <strong>as link</strong>, add a <code>{"'link'"}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:
@@ -367,7 +367,7 @@ const ContentPage: NextPage = () => {
                         For example a <strong>custom button</strong> of <code>{`<a>`}</code>.
                     </p>
                     <p>
-                        Add a <code>{'not-link'}</code> to the element&apos;s <code>className</code>.
+                        Add a <code>{"'not-link'"}</code> to the element&apos;s <code>className</code>.
                     </p>
                     <p>
                         Here the demonstration:

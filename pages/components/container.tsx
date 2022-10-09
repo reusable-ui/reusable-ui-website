@@ -37,11 +37,11 @@ const ContainerPage: NextPage = () => {
                 <p>
                     But in <em>some cases</em>, you may want some children or sub <code>{`<section>`}</code>s to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
                     For example: a <strong>hero section</strong> or <strong>highlighted sections</strong>.
-                    There are 2 special <code>className</code> to do that: <code>{'fill'}</code> and <code>{'fill-self'}</code>.
+                    There are 2 special <code>className</code> to do that: <code>{"'fill'"}</code> and <code>{"'fill-self'"}</code>.
                 </p>
                 <Section title={<>Fill the <TheComponentDisplay />&apos;s Padding</>}>
                     <p>
-                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>fills</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{'fill'}</code> to the child&apos;s <code>className</code>.
+                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>fills</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{"'fill'"}</code> to the child&apos;s <code>className</code>.
                     </p>
                     <p>
                         The <strong>child&apos;s padding</strong> itself is <strong>preserved</strong> as original, so the content alignment is shifted.
@@ -94,7 +94,7 @@ const ContainerPage: NextPage = () => {
                     <hr />
                     
                     <p>
-                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{'fill'}</code> class <strong>removes</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
+                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{"'fill'"}</code> class <strong>removes</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
                     </p>
                     <Preview>
                         <Container tag='section' theme='primary'>
@@ -140,7 +140,7 @@ const ContainerPage: NextPage = () => {
                 </Section>
                 <Section title={<>Take Over the <TheComponentDisplay />&apos;s Padding</>}>
                     <p>
-                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>takes over</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{'fill'}</code> to the child&apos;s <code>className</code>.
+                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>takes over</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{"'fill-self'"}</code> to the child&apos;s <code>className</code>.
                     </p>
                     <p>
                         The <strong>child&apos;s padding</strong> copies (take over) the <TheComponentDisplay />&apos;s padding, so the content alignment is preserved.
@@ -193,7 +193,7 @@ const ContainerPage: NextPage = () => {
                     <hr />
                     
                     <p>
-                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{'fill-self'}</code> class also <strong>takes over</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
+                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{"'fill-self'"}</code> class also <strong>takes over</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
                     </p>
                     <Preview>
                         <Container tag='section' theme='primary'>

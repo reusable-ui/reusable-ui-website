@@ -59,27 +59,27 @@ const IconPage: NextPage = () => {
                                 Uses <strong>default</strong> size.
                             </p>
                         </AccordionItem>
-                        <AccordionItem label={<code>{'sm'}</code>}>
+                        <AccordionItem label={<code>{`'sm'`}</code>}>
                             <p>
                                 Makes the <TheComponentDisplay /> <strong>smaller</strong> size.
                             </p>
                         </AccordionItem>
-                        <AccordionItem label={<code>{'nm'}</code>}>
+                        <AccordionItem label={<code>{`'nm'`}</code>}>
                             <p>
                                 Makes the <TheComponentDisplay /> <strong>normal</strong> size.
                             </p>
                         </AccordionItem>
-                        <AccordionItem label={<code>{'md'}</code>}>
+                        <AccordionItem label={<code>{`'md'`}</code>}>
                             <p>
                                 Makes the <TheComponentDisplay /> <strong>bigger</strong> size.
                             </p>
                         </AccordionItem>
-                        <AccordionItem label={<code>{'lg'}</code>}>
+                        <AccordionItem label={<code>{`'lg'`}</code>}>
                             <p>
                                 Makes the <TheComponentDisplay /> <strong>biggest</strong> size.
                             </p>
                         </AccordionItem>
-                        <AccordionItem label={<code>{'1em'}</code>}>
+                        <AccordionItem label={<code>{`'1em'`}</code>}>
                             <p>
                                 Makes the <TheComponentDisplay /> as tall as <strong>current font size</strong>.
                             </p>

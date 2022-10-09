@@ -37,12 +37,12 @@ export const SizeProperty = ({possibleValues, children: preview}: SizePropertyPr
                         Uses <strong>default</strong> size.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'sm'}</code>}>
+                <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
                         Makes the <code>font-size</code>, <code>padding</code> and <code>border-radius</code> <strong>smaller</strong> than the default.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'lg'}</code>}>
+                <AccordionItem label={<code>{`'lg'`}</code>}>
                     <p>
                         Makes the <code>font-size</code>, <code>padding</code> and <code>border-radius</code> <strong>bigger</strong> than the default.
                     </p>
@@ -64,42 +64,42 @@ export const ThemeProperty = ({children: preview}: PreviewProps) => {
                         Uses the nearest ancestor&apos;s theme -or- <em>un-themed</em> if not found.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'primary'}</code>} theme='primary'>
+                <AccordionItem label={<code>{`'primary'`}</code>} theme='primary'>
                     <p>
                         The <strong>primary</strong> theme represents your <strong>website color</strong>.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'secondary'}</code>} theme='secondary'>
+                <AccordionItem label={<code>{`'secondary'`}</code>} theme='secondary'>
                     <p>
                         The <strong>secondary</strong> theme represents your <strong>website alternative color</strong>.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'success'}</code>} theme='success'>
+                <AccordionItem label={<code>{`'success'`}</code>} theme='success'>
                     <p>
                         The <strong>success</strong> theme represents a <strong>success result</strong> to the user.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'info'}</code>} theme='info'>
+                <AccordionItem label={<code>{`'info'`}</code>} theme='info'>
                     <p>
                         The <strong>info</strong> theme represents a <strong>general information</strong> to the user.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'warning'}</code>} theme='warning'>
+                <AccordionItem label={<code>{`'warning'`}</code>} theme='warning'>
                     <p>
                         The <strong>warning</strong> theme represents a <strong>warning message</strong> or notify something that <strong>could cause an error</strong> to the user.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'danger'}</code>} theme='danger'>
+                <AccordionItem label={<code>{`'danger'`}</code>} theme='danger'>
                     <p>
                         The <strong>danger</strong> theme represents an <strong>error result</strong> to the user.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'light'}</code>} theme='light'>
+                <AccordionItem label={<code>{`'light'`}</code>} theme='light'>
                     <p>
                         The <strong>light</strong> theme doen&apos;t have a meaning, just for helping a text content <strong>againts a dark background or dark background-image</strong>.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'dark'}</code>} theme='dark'>
+                <AccordionItem label={<code>{`'dark'`}</code>} theme='dark'>
                     <p>
                         The <strong>dark</strong> theme doen&apos;t have a meaning, just for helping a text content <strong>againts a light background or light background-image</strong>.
                     </p>
@@ -121,7 +121,7 @@ export const GradientProperty = ({children: preview}: PreviewProps) => {
                         Uses <strong>default</strong> gradient setting.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'inherit'}</code>}>
+                <AccordionItem label={<code>{`'inherit'`}</code>}>
                     <p>
                         <strong>Inherits</strong> <code>&lt;parent&gt;</code>&apos;s gradient.
                     </p>
@@ -153,7 +153,7 @@ export const OutlinedProperty = ({children: preview}: PreviewProps) => {
                         Uses <strong>default</strong> outlined setting.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'inherit'}</code>}>
+                <AccordionItem label={<code>{`'inherit'`}</code>}>
                     <p>
                         <strong>Inherits</strong> <code>&lt;parent&gt;</code>&apos;s outlined.
                     </p>
@@ -189,7 +189,7 @@ export const MildProperty = ({children: preview, description, tips}: MildPropert
                         Uses <strong>default</strong> mild setting.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>{'inherit'}</code>}>
+                <AccordionItem label={<code>{`'inherit'`}</code>}>
                     <p>
                         <strong>Inherits</strong> <code>&lt;parent&gt;</code>&apos;s mild.
                     </p>

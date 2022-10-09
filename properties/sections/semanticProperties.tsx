@@ -28,9 +28,9 @@ export const TagProperty = () => {
     return (
         <PropertySection property={properties.tag} possibleValues={
             <Accordion>
-                <AccordionItem label={<>empty string (<code>{''}</code>)</>}>
+                <AccordionItem label={<>empty string (<code>{"''"}</code>)</>}>
                     <p>
-                        Assigning an empty string (<code>{''}</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
+                        Assigning an empty string (<code>{"''"}</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<>a valid HTML tag name</>} lazy={true}>
@@ -56,9 +56,9 @@ export const RoleProperty = () => {
     return (
         <PropertySection property={properties.role} possibleValues={
             <Accordion>
-                <AccordionItem label={<>empty string (<code>{''}</code>)</>}>
+                <AccordionItem label={<>empty string (<code>{"''"}</code>)</>}>
                     <p>
-                        Assigning an empty string (<code>{''}</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
+                        Assigning an empty string (<code>{"''"}</code>) will rendered to <code>&lt;div&gt;</code> at runtime.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<>a valid ARIA role name</>} lazy={true}>
