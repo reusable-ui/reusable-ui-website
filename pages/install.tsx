@@ -5,6 +5,7 @@ import React from 'react'
 import { Section } from '../components/Section'
 import {core, components} from '../packages/packageList'
 import { IntLink } from '../components/IntLink'
+import { Tips } from '../components/Warning'
 
 
 
@@ -73,9 +74,11 @@ yarn add @reusable-ui/components
 # pnpm:
 pnpm add @reusable-ui/components
                     `}</BashCode>
-                    <p>
-                        Any component you don&apos;t use will automatically removed (tree shake) by Webpack/Parcel/Rollup or similar tool when you deploy your (React) app.
-                    </p>
+                    <Tips>
+                        <p>
+                            Any component you don&apos;t use will automatically removed (tree shake) by Webpack/Parcel/Rollup or similar tool when you deploy your (React) app.
+                        </p>
+                    </Tips>
                 </Section>
                 <Section title='Install Specific Reusable-UI Component'>
                     <p>

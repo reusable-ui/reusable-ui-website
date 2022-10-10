@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../../components/Section'
+import { InheritedProperties, ComponentInstallation, Section, Variables } from '../../../components/Section'
 import { generic, icon } from '../../../packages/packageList'
 import * as packages from '../../../packages/packageList'
 import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../../properties/sections/variantProperties'
@@ -50,6 +50,7 @@ const IconPage: NextPage = () => {
             <p>
                 Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
             </p>
+            <ComponentInstallation />
             <Section elmRef={sectionConfigureRef} title={<>Configuring <TheComponentDisplay />&apos;s Resources</>}>
                 <p>
                     After you install the <TheComponentPackage />, you need to <strong>manually copy</strong> some resources into your <strong>application public directory</strong>.
