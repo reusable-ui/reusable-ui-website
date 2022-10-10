@@ -105,9 +105,13 @@ const IconPage: NextPage = () => {
                             </p>
                             <Preview blockDisplay={true}>
                                 <div style={{display: 'flex', justifyContent: 'center'}}>
+                                    {/* eslint-disable @next/next/no-img-element */}
                                     <img src='/icons/reusable-ui.svg' style={{height: '48px'}} />
+                                    {/* eslint-disable @next/next/no-img-element */}
                                     <img src='/icons/instagram.svg' style={{height: '48px'}} />
+                                    {/* eslint-disable @next/next/no-img-element */}
                                     <img src='/icons/whatsapp.svg' style={{height: '48px'}} />
+                                    {/* eslint-disable @next/next/no-img-element */}
                                     <img src='/icons/busy.svg' style={{height: '48px'}} />
                                 </div>
                             </Preview>
