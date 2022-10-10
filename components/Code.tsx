@@ -11,13 +11,13 @@ const CodeHighlighterLazy = React.lazy(() => import(/* webpackChunkName: 'CodeHi
 // react components:
 
 export interface CodeProps extends CodeHighlighterProps {
-    collapsable ?: boolean
+    collapsible ?: boolean
     collapse    ?: boolean
     label       ?: React.ReactNode
 }
 export function Code(props: CodeProps) {
     const {
-        collapsable = true,
+        collapsible = true,
         collapse    = true,
         label,
         children,
@@ -36,7 +36,7 @@ export function Code(props: CodeProps) {
         </Suspense>
     );
     
-    if (collapsable) return (
+    if (collapsible) return (
         <Details
             label={label ?? 'Show code'}
             

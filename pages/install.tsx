@@ -32,7 +32,7 @@ const Installation: NextPage = () => {
                 <p>
                     To install the {core.packageLink}, open the terminal window on your code editor and type:
                 </p>
-                <BashCode collapsable={false}>{`
+                <BashCode collapsible={false}>{`
 # npm:
 npm install @reusable-ui/core
 
@@ -63,7 +63,7 @@ pnpm add @reusable-ui/core
                     <p>
                         To install the <strong>whole</strong> {components.packageLink}, open the terminal window on your code editor and type:
                     </p>
-                    <BashCode collapsable={false}>{`
+                    <BashCode collapsible={false}>{`
 # npm:
 npm install @reusable-ui/components
 

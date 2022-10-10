@@ -7,10 +7,11 @@ import * as packages from '../../packages/packageList'
 import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty, IconSizeProperty as SizeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Basic, Details, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
+import { Basic, Details, ExclusiveAccordion, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { BusyBar } from '../../components/BusyBar'
+import { Warning } from '../../components/Warning'
 
 const IconGalleryLazy = React.lazy(() => import(/* webpackChunkName: 'IconGallery' */'../../components/IconGallery'))
 
@@ -45,31 +46,107 @@ const IconPage: NextPage = () => {
                     <p>
                         To add custom icons, for example a <strong>logo</strong> icon, follow these steps:
                     </p>
-                    <Section title='Prepare the Image'>
-                        <p>
-                            You can either use a <strong>SVG</strong> or <strong>PNG</strong> file format, but the SVG is more recommended.
-                        </p>
-                        <p>
-                            For the SVG format, you can use any image size.
-                            For the PNG format, the image size should be the biggest icon size you'll use.
-                        </p>
-                        <p>
-                            The <code>alpha = 255</code> of the image (<code>rgb(any, any, any, 255)</code>) will be <strong>fully opaque</strong>, whereas the <code>alpha = 0</code> of the image (<code>rgb(any, any, any, 0)</code>) will be <strong>fully transparent</strong>.
-                            The <code>alpha</code> value between <code>0</code> and <code>255</code> will be <strong>semi transparent</strong>.
-                            The color part <code>R, G, B</code> don&apos;t matter.
-                        </p>
-                        <p>
-                            Here the samples:
-                        </p>
-                        <Preview blockDisplay={true}>
-                            <div style={{display: 'flex', justifyContent: 'center'}}>
-                                <img src='/icons/reusable-ui.svg' style={{height: '48px'}} />
-                                <img src='/icons/instagram.svg' style={{height: '48px'}} />
-                                <img src='/icons/whatsapp.svg' style={{height: '48px'}} />
-                                <img src='/icons/busy.svg' style={{height: '48px'}} />
-                            </div>
-                        </Preview>
-                    </Section>
+                    <ExclusiveAccordion lazy={true} theme='primary'>
+                        <AccordionItem label='Prepare the Image'>
+                            <p>
+                                You can either use a <strong>SVG</strong> or <strong>PNG</strong> file format, but the SVG is more recommended.
+                            </p>
+                            <p>
+                                For the SVG format, you can use any image size.
+                                For the PNG format, the image size should be the biggest icon size you&apos;ll use.
+                            </p>
+                            <p>
+                                The <code>alpha = 255</code> of the image (<code>rgb(any, any, any, 255)</code>) will be <strong>fully opaque</strong>, whereas the <code>alpha = 0</code> of the image (<code>rgb(any, any, any, 0)</code>) will be <strong>fully transparent</strong>.
+                                The <code>alpha</code> value between <code>0</code> and <code>255</code> will be <strong>semi transparent</strong>.
+                                The color part <code>R, G, B</code> don&apos;t matter.
+                            </p>
+                            <p>
+                                Here the samples:
+                            </p>
+                            <Preview blockDisplay={true}>
+                                <div style={{display: 'flex', justifyContent: 'center'}}>
+                                    <img src='/icons/reusable-ui.svg' style={{height: '48px'}} />
+                                    <img src='/icons/instagram.svg' style={{height: '48px'}} />
+                                    <img src='/icons/whatsapp.svg' style={{height: '48px'}} />
+                                    <img src='/icons/busy.svg' style={{height: '48px'}} />
+                                </div>
+                            </Preview>
+                        </AccordionItem>
+                        <AccordionItem label='Store the Image'>
+                            <p>
+                                Let&apos;s say you have 2 images: <code>your-logo.svg</code> and <code>your-face.png</code>.
+                                Then store them into <code>icons</code> folder which is inside your application public directory (in React: <code>/public</code>).
+                            </p>
+                            <p>
+                                Example:
+                            </p>
+                            <ul>
+                                <li><code>/public/icons/your-logo.svg</code></li>
+                                <li><code>/public/icons/your-face.svg</code></li>
+                            </ul>
+                            <p>
+                                If the location is correct, then the files can be accessed via url:
+                            </p>
+                            <ul>
+                                <li><code>https://yourdomain.com/icons/your-logo.svg</code></li>
+                                <li><code>https://yourdomain.com/icons/your-face.svg</code></li>
+                            </ul>
+                        </AccordionItem>
+                        <AccordionItem label='Registering the Custom Icons'>
+                            <p>
+                                To make the <TheComponentDisplay /> component <em>aware</em> of your custom icon, at the <strong>application main file</strong> (in React: <code>/src/App.jsx</code>, in NextJS: <code>/pages/_app.jsx</code>), add the following code:
+                            </p>
+                            <TypeScriptCode collapsible={false}>{
+`
+/* ... */
+import { iconConfig } from '@reusable-ui/icon'
+// -or- import { iconConfig } from '@reusable-ui/components'
+/* ... */
+
+/* ... */
+iconConfig.image.path = '/icons';
+iconConfig.image.files.push(
+    'your-logo.svg',
+    'your-face.png',
+);
+/* ... */
+`
+                            }</TypeScriptCode>
+                            <p></p>
+                            <Warning>
+                                <p>
+                                    Because the <code>iconConfig</code> is a <strong>singleton</strong>, so you <strong>don&apos;t need</strong> to configure the <TheComponentDisplay /> on <strong>every page</strong> that uses it. Just configure it on the <strong>main file</strong> and done!
+                                </p>
+                            </Warning>
+                        </AccordionItem>
+                        <AccordionItem label='Using the Registered Custom Icons'>
+                            <p>
+                                Finally, insert an <TheComponentDisplay /> component into your <strong>jsx code</strong>, with property <code>{"icon='your-logo'"}</code> or <code>{"icon='your-face'"}</code>, something like this code:
+                            </p>
+                            <TypeScriptCode collapsible={false}>{
+`
+/* ... */
+import { Icon } from '@reusable-ui/icon'
+// -or- import { Icon } from '@reusable-ui/components'
+/* ... */
+
+/* ... */
+export const MyComponent = () => {
+    return (
+        <>
+            <p>blah...</p>
+            
+            <Icon icon='your-logo' theme='primary' size='lg' />
+            
+            <p>blah...</p>
+        </>
+    );
+}
+/* ... */
+`
+                            }</TypeScriptCode>
+                        </AccordionItem>
+                    </ExclusiveAccordion>
                 </Section>
             </Section>
             <VariantProperties>

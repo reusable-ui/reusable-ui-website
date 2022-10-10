@@ -41,7 +41,7 @@ const About: NextPage = () => {
                 So, please call me <strong>Marco</strong>.
             </p>
             <div className={styles.clear}></div>
-            <TypeScriptCode collapsable={false}>{`
+            <TypeScriptCode collapsible={false}>{`
 import { YunusKurniawan as Marco } from '@reusable-ui/creator'
             `}</TypeScriptCode>
             <p>
