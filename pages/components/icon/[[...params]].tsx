@@ -106,13 +106,13 @@ const IconPage: NextPage = () => {
                             <Preview blockDisplay={true}>
                                 <div style={{display: 'flex', justifyContent: 'center'}}>
                                     {/* eslint-disable @next/next/no-img-element */}
-                                    <img src='/icons/reusable-ui.svg' style={{height: '48px'}} />
-                                    {/* eslint-disable @next/next/no-img-element */}
-                                    <img src='/icons/instagram.svg' style={{height: '48px'}} />
-                                    {/* eslint-disable @next/next/no-img-element */}
-                                    <img src='/icons/whatsapp.svg' style={{height: '48px'}} />
-                                    {/* eslint-disable @next/next/no-img-element */}
-                                    <img src='/icons/busy.svg' style={{height: '48px'}} />
+                                    <img alt='sample icon image' src='/icons/reusable-ui.svg' style={{height: '48px'}} />
+                                    {/*  alt='lorem image'eslint-disable @next/next/no-img-element */}
+                                    <img alt='sample icon image' src='/icons/instagram.svg' style={{height: '48px'}} />
+                                    {/*  alt='lorem image'eslint-disable @next/next/no-img-element */}
+                                    <img alt='sample icon image' src='/icons/whatsapp.svg' style={{height: '48px'}} />
+                                    {/*  alt='lorem image'eslint-disable @next/next/no-img-element */}
+                                    <img alt='sample icon image' src='/icons/busy.svg' style={{height: '48px'}} />
                                 </div>
                             </Preview>
                         </AccordionItem>
