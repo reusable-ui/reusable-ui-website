@@ -34,6 +34,7 @@ styleSheet(() => style({
         
         ...rule('html', {
             blockSize: '100%',
+            scrollPaddingTop: siteVars.headerHeight,
         }),
         ...rule(['html', 'body'], {
             padding : '0px',

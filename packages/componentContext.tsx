@@ -55,6 +55,11 @@ export const CommaSeparated = ({components}: CommaSeparatedProps) => (<>{
 
 
 
+export const TheComponentPackage = () : React.ReactElement => {
+    const {component} = useComponentInfo();
+    return <code>{component.packageFullName}</code>;
+}
+
 export const TheComponentTag = () : React.ReactElement => {
     const {component} = useComponentInfo();
     return <>{component.componentTag}</>;

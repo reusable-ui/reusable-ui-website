@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect, useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { InheritedProperties, Section, Variables } from '../../../components/Section'
@@ -10,7 +10,7 @@ import { Preview } from '../../../components/Preview'
 import { AccordionItem, Accordion } from '../../../components/Accordion'
 import { Basic, Details, ExclusiveAccordion, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentPackage } from '../../../packages/componentContext'
 import { BusyBar } from '../../../components/BusyBar'
 import { Warning } from '../../../components/Warning'
 
@@ -28,7 +28,16 @@ const IconPage: NextPage = () => {
     const router = useRouter();
     const params = router.query.params ?? [];
     const param  = Array.isArray(params) ? params.join('/') : params;
-    console.log(param)
+    
+    
+    const sectionConfigureRef = useRef<HTMLElement>(null);
+    useEffect(() => {
+        switch(param.toLocaleLowerCase()) {
+            case 'configure':
+                sectionConfigureRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+                break;
+        } // switch
+    }, [param]);
     
     
     
@@ -41,6 +50,23 @@ const IconPage: NextPage = () => {
             <p>
                 Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
             </p>
+            <Section elmRef={sectionConfigureRef} title={<>Configuring <TheComponentDisplay />&apos;s Resources</>}>
+                <p>
+                    After you install the <TheComponentPackage />, you need to <strong>manually copy</strong> some resources into your <strong>application public directory</strong>.
+                </p>
+                <p>
+                    Go to <code>/node_modules/@reusable-ui/icon/public</code> directory.
+                    Inside it, copy the <code>fonts</code> and <code>icons</code> directories into <strong>application public directory</strong> (in React: <code>/public</code>).
+                    So, the final files are something like this:
+                </p>
+                <ul>
+                    <li><code>/public/fonts/*.(ttf|woff|woff2)</code></li>
+                    <li><code>/public/icons/*.svg</code></li>
+                </ul>
+                <p>
+                    Done! The required resources by the <TheComponentDisplay /> component are now set! 😉
+                </p>
+            </Section>
             <IconProperty>
                 <p>
                     There are 2 types of icon sets: <strong>Built-in</strong> icon set and <strong>Custom</strong> icon set.
@@ -88,7 +114,7 @@ const IconPage: NextPage = () => {
                         <AccordionItem label='Store the Image'>
                             <p>
                                 Let&apos;s say you have 2 images: <code>your-logo.svg</code> and <code>your-face.png</code>.
-                                Then store them into <code>icons</code> folder which is inside your application public directory (in React: <code>/public</code>).
+                                Then store them into <code>icons</code> folder which is inside your <strong>application public directory</strong> (in React: <code>/public</code>).
                             </p>
                             <p>
                                 Example:
