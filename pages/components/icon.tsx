@@ -4,20 +4,16 @@ import Head from 'next/head'
 import { InheritedProperties, Section, Variables } from '../../components/Section'
 import { generic, icon } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ContextualMildProperty } from '../../properties/sections/variantProperties'
+import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty, IconSizeProperty as SizeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Basic, Details, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
-import type { SizeName } from '@reusable-ui/icon'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { BusyBar } from '../../components/BusyBar'
 
 const IconGalleryLazy = React.lazy(() => import(/* webpackChunkName: 'IconGallery' */'../../components/IconGallery'))
 
-
-
-export const sizeOptions  : (SizeName|undefined)[] = ['sm', 'nm', 'md', 'lg'];
 
 
 const Icon = (props: IconProps) => <OriIcon {...props} theme={props.theme ?? 'primary'} />
@@ -47,45 +43,37 @@ const IconPage: NextPage = () => {
                 </Section>
                 <Section title='Adding Custom Icon Sets'>
                     <p>
-                        ...
+                        To add custom icons, for example a <strong>logo</strong> icon, follow these steps:
                     </p>
+                    <Section title='Prepare the Image'>
+                        <p>
+                            You can either use a <strong>SVG</strong> or <strong>PNG</strong> file format, but the SVG is more recommended.
+                        </p>
+                        <p>
+                            For the SVG format, you can use any image size.
+                            For the PNG format, the image size should be the biggest icon size you'll use.
+                        </p>
+                        <p>
+                            The <code>alpha = 255</code> of the image (<code>rgb(any, any, any, 255)</code>) will be <strong>fully opaque</strong>, whereas the <code>alpha = 0</code> of the image (<code>rgb(any, any, any, 0)</code>) will be <strong>fully transparent</strong>.
+                            The <code>alpha</code> value between <code>0</code> and <code>255</code> will be <strong>semi transparent</strong>.
+                            The color part <code>R, G, B</code> don&apos;t matter.
+                        </p>
+                        <p>
+                            Here the samples:
+                        </p>
+                        <Preview blockDisplay={true}>
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <img src='/icons/reusable-ui.svg' style={{height: '48px'}} />
+                                <img src='/icons/instagram.svg' style={{height: '48px'}} />
+                                <img src='/icons/whatsapp.svg' style={{height: '48px'}} />
+                                <img src='/icons/busy.svg' style={{height: '48px'}} />
+                            </div>
+                        </Preview>
+                    </Section>
                 </Section>
             </Section>
             <VariantProperties>
-                <SizeProperty possibleValues={
-                    <Accordion>
-                        <AccordionItem label={<code>undefined</code>}>
-                            <p>
-                                Uses <strong>default</strong> size.
-                            </p>
-                        </AccordionItem>
-                        <AccordionItem label={<code>{`'sm'`}</code>}>
-                            <p>
-                                Makes the <TheComponentDisplay /> <strong>smaller</strong> size.
-                            </p>
-                        </AccordionItem>
-                        <AccordionItem label={<code>{`'nm'`}</code>}>
-                            <p>
-                                Makes the <TheComponentDisplay /> <strong>normal</strong> size.
-                            </p>
-                        </AccordionItem>
-                        <AccordionItem label={<code>{`'md'`}</code>}>
-                            <p>
-                                Makes the <TheComponentDisplay /> <strong>bigger</strong> size.
-                            </p>
-                        </AccordionItem>
-                        <AccordionItem label={<code>{`'lg'`}</code>}>
-                            <p>
-                                Makes the <TheComponentDisplay /> <strong>biggest</strong> size.
-                            </p>
-                        </AccordionItem>
-                        <AccordionItem label={<code>{`'1em'`}</code>}>
-                            <p>
-                                Makes the <TheComponentDisplay /> as tall as <strong>current font size</strong>.
-                            </p>
-                        </AccordionItem>
-                    </Accordion>
-                }>
+                <SizeProperty>
                     <Preview blockDisplay={true}>
                         {sizeOptions.map((sizeName, index) =>
                             <Icon

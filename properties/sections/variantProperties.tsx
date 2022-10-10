@@ -1,14 +1,18 @@
 import React from 'react'
 import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
+import type { SizeName as IconSizeName } from '@reusable-ui/icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
+import { TheComponentDisplay } from '../../packages/componentContext'
 
 
 
-export const sizeOptions  : (SizeName|undefined)[] = ['sm', undefined, 'lg'];
+export const sizeOptions     : (SizeName|undefined)[]     = ['sm', undefined, 'lg'];
+export const iconSizeOptions : (IconSizeName|undefined)[] = ['sm', 'nm', 'md', 'lg'];
+
 export const themeOptions : ThemeName[] = getThemeOptions();
 
 
@@ -53,6 +57,44 @@ export const SizeProperty = ({possibleValues, children: preview}: SizePropertyPr
                 Defines the <strong>alternative size</strong> of the component.
             </p>
         </PropertySection>
+    );
+}
+export const IconSizeProperty = ({possibleValues, ...restProps}: SizePropertyProps) => {
+    return (
+        <SizeProperty {...restProps} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'sm'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>smaller</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'nm'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>normal</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'md'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>bigger</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'lg'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>biggest</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'1em'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> as tall as <strong>current font size</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        } />
     );
 }
 export const ThemeProperty = ({children: preview}: PreviewProps) => {
