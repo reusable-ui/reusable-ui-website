@@ -223,7 +223,7 @@ export const Variables = (props: VariablesProps) => {
             {preview && <>
                 <hr />
                 <p>
-                    The example of accessing &amp; modifying variables:
+                    The example of accessing, modifying,  &amp; adding variables:
                 </p>
                 {preview}
             </>}

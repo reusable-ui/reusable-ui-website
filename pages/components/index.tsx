@@ -110,7 +110,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                     <AccordionItem label={packages.label.packageDisplay}>
                         <p>
-                            Represents a caption for the corresponding neighboring component.
+                            Represents a <strong>caption</strong> for the corresponding neighboring component.
                         </p>
                     </AccordionItem>
                     <AccordionItem label={packages.button.packageDisplay}>
