@@ -67,3 +67,8 @@ export const isValid            = new PropertyInfo('isValid')
 export const inheritValidation  = new PropertyInfo('inheritValidation')
 
 export const checkable          = new PropertyInfo('checkable')
+
+
+
+// appearances:
+export const icon               = new PropertyInfo('icon')

@@ -4,7 +4,8 @@ import Head from 'next/head'
 import { InheritedProperties, Section, Variables } from '../../components/Section'
 import { generic, icon } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty, IconSizeProperty as SizeProperty } from '../../properties/sections/variantProperties'
+import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../properties/sections/variantProperties'
+import { IconProperty, IconSizeProperty as SizeProperty } from '../../properties/sections/iconProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Basic, Details, ExclusiveAccordion, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
@@ -31,10 +32,13 @@ const IconPage: NextPage = () => {
             <p>
                 Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
             </p>
-            <Section title='Icon Sets'>
+            <IconProperty>
+                <p>
+                    There are 2 types of icon sets: <strong>Built-in</strong> icon set and <strong>Custom</strong> icon set.
+                </p>
                 <Section title='Built-in Icon Sets'>
                     <p>
-                        There a lot of <strong>common icons</strong> that ready to use for your projects.
+                        There a pretty much of <strong>common icon sets</strong> that ready to use for <em>general</em> projects.
                     </p>
                     <Details theme='primary' detailsStyle='content' label='Show icon gallery' lazy={true}>
                         <Suspense fallback={<BusyBar />}>
@@ -94,7 +98,7 @@ const IconPage: NextPage = () => {
                         </AccordionItem>
                         <AccordionItem label='Registering the Custom Icons'>
                             <p>
-                                To make the <TheComponentDisplay /> component <em>aware</em> of your custom icon, at the <strong>application main file</strong> (in React: <code>/src/App.jsx</code>, in NextJS: <code>/pages/_app.jsx</code>), add the following code:
+                                To make the <TheComponentDisplay /> component <em>aware</em> of your custom icons, at the <strong>application main file</strong> (in React: <code>/src/App.jsx</code>, in NextJS: <code>/pages/_app.jsx</code>), add the following code:
                             </p>
                             <TypeScriptCode collapsible={false}>{
 `
@@ -148,7 +152,7 @@ export const MyComponent = () => {
                         </AccordionItem>
                     </ExclusiveAccordion>
                 </Section>
-            </Section>
+            </IconProperty>
             <VariantProperties>
                 <SizeProperty>
                     <Preview blockDisplay={true}>
