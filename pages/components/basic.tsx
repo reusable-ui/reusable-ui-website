@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
 import { generic, basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -27,6 +27,7 @@ const BasicPage: NextPage = () => {
             <p>
                 <TheComponentDisplay /> is a <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
             </p>
+            <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>

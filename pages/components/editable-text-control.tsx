@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
 import { editableControl, editableTextControl } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -32,6 +32,7 @@ const EditableTextControlPage: NextPage = () => {
                 If you plan to create a <strong>custom textBox</strong>, this <em>base component</em> is a great starting point.
                 It already have <strong>validation icon</strong>. You need to define the position of the <em>validation icon</em> by injecting a custom CSS.
             </p>
+            <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>

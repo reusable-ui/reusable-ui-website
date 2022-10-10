@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
 import { basic, container } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -30,6 +30,7 @@ const ContainerPage: NextPage = () => {
             <p>
                 This component is great for creating <code>{`<main>`}</code> or <code>{`<section>`}</code> of your page.
             </p>
+            <ComponentInstallation />
             <Section title='Adjusting the Children Space'>
                 <p>
                     By default the <TheComponentDisplay />&apos;s childen space is <strong>inside</strong> the <TheComponentDisplay />&apos;s padding.

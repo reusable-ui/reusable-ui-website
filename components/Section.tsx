@@ -1,9 +1,9 @@
 import { default as React, createContext, useContext, useMemo } from 'react'
 import { Tag, useMergeClasses } from '@reusable-ui/core'
 import { AccordionProps, Accordion, AccordionItem } from '../components/Accordion'
-import { Container, ContainerProps, Generic } from '@reusable-ui/components'
+import { Container, ContainerProps, ExclusiveAccordion, Generic } from '@reusable-ui/components'
 import { PropertyInfo } from '../properties/propertyInfo';
-import { SeeBaseComponentLinks, TheBaseComponentLinks, TheComponentDisplay, TheComponentTag, useComponentInfo } from '../packages/componentContext';
+import { SeeBaseComponentLinks, TheBaseComponentLinks, TheComponentDisplay, useComponentInfo } from '../packages/componentContext';
 import { BashCode } from './Code';
 import { Tips } from './Warning';
 
@@ -131,7 +131,7 @@ export const ComponentInstallation = () => {
             <p>
                 There are 2 ways to install <TheComponentDisplay /> component into your react app project: 
             </p>
-            <Accordion theme='primary'>
+            <ExclusiveAccordion theme='primary'>
                 <AccordionItem label={<>Install the <strong>Specific</strong> Package of <TheComponentDisplay /> Component</>}>
                     <p>
                         To install the <strong>minimal dependencies</strong> required by <TheComponentDisplay /> component,
@@ -177,7 +177,7 @@ pnpm add @reusable-ui/components
                         </p>
                     </Tips>
                 </AccordionItem>
-            </Accordion>
+            </ExclusiveAccordion>
         </Section>
     );
 }

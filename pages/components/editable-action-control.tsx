@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section } from '../../components/Section'
+import { ComponentInstallation, InheritedProperties, Section } from '../../components/Section'
 import { editableControl, actionControl, editableActionControl } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -31,6 +31,7 @@ const EditableActionControlPage: NextPage = () => {
                 If you plan to create a <strong>custom checkbox</strong>, this <em>base component</em> is a great starting point.
                 It already have {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
             </p>
+            <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>

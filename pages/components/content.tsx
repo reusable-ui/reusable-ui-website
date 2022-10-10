@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
 import { basic, content } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -33,6 +33,7 @@ const ContentPage: NextPage = () => {
             <p>
                 This component is great for creating <code>{`<article>`}</code> or <strong>newspaper-like</strong> content.
             </p>
+            <ComponentInstallation />
             <Section title='Images &amp; Media'>
                 <p>
                     Media elements such as <MediaList includeCustom={true} /> are <strong>automatically styled</strong> to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
