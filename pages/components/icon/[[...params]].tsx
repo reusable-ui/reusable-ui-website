@@ -1,20 +1,22 @@
 import React, { Suspense } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, Section, Variables } from '../../components/Section'
-import { generic, icon } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
-import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../properties/sections/variantProperties'
-import { IconProperty, IconSizeProperty as SizeProperty } from '../../properties/sections/iconProperties'
-import { Preview } from '../../components/Preview'
-import { AccordionItem, Accordion } from '../../components/Accordion'
+import { InheritedProperties, Section, Variables } from '../../../components/Section'
+import { generic, icon } from '../../../packages/packageList'
+import * as packages from '../../../packages/packageList'
+import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../../properties/sections/variantProperties'
+import { IconProperty, IconSizeProperty as SizeProperty } from '../../../properties/sections/iconProperties'
+import { Preview } from '../../../components/Preview'
+import { AccordionItem, Accordion } from '../../../components/Accordion'
 import { Basic, Details, ExclusiveAccordion, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
-import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { BusyBar } from '../../components/BusyBar'
-import { Warning } from '../../components/Warning'
+import { TypeScriptCode } from '../../../components/Code'
+import { ComponentContextProvider, TheComponentDisplay } from '../../../packages/componentContext'
+import { BusyBar } from '../../../components/BusyBar'
+import { Warning } from '../../../components/Warning'
 
-const IconGalleryLazy = React.lazy(() => import(/* webpackChunkName: 'IconGallery' */'../../components/IconGallery'))
+import { useRouter } from 'next/router'
+
+const IconGalleryLazy = React.lazy(() => import(/* webpackChunkName: 'IconGallery' */'../../../components/IconGallery'))
 
 
 
@@ -23,6 +25,13 @@ const Icon = (props: IconProps) => <OriIcon {...props} theme={props.theme ?? 'pr
 
 
 const IconPage: NextPage = () => {
+    const router = useRouter();
+    const params = router.query.params ?? [];
+    const param  = Array.isArray(params) ? params.join('/') : params;
+    console.log(param)
+    
+    
+    
     return (<ComponentContextProvider component={icon} baseComponents={generic}>
         <Head>
             <title>{`${icon.componentTag} Component`}</title>
