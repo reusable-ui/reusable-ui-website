@@ -1,5 +1,5 @@
 import { default as React, createContext, useContext, useMemo } from 'react'
-import { Tag, useMergeClasses } from '@reusable-ui/core'
+import type { Tag } from '@reusable-ui/core'
 import { AccordionProps, Accordion, AccordionItem } from '../components/Accordion'
 import { Container, ContainerProps, ExclusiveAccordion, Generic } from '@reusable-ui/components'
 import { PropertyInfo } from '../properties/propertyInfo';
@@ -10,50 +10,22 @@ import { Tips } from './Warning';
 
 
 export interface GenericSectionProps extends ContainerProps {
-    // appearances:
-    fill ?: boolean
 }
 /**
  * A generic `<section>` without any `<h1-h6>` or `<article>`.
  * You should manually including at least one `<article>` with appropriate `<h1-h6>`.
  */
 export const GenericSection = (props: GenericSectionProps) => {
-    // rest props:
-    const {
-        // appearances:
-        fill = true,
-    ...restContainerProps} = props;
-    
-    
-    
-    // classes:
-    const classes = useMergeClasses(
-        // preserves the original `classes`:
-        props.classes,
-        
-        
-        
-        // variants:
-        fill ? 'fill-self' : null,
-    );
-    
-    
-    
     // jsx:
     return (
         <Container
             // other props:
-            {...restContainerProps}
+            {...props}
             
             
             
             // semantics:
             tag={props.tag ?? 'section'}
-            
-            
-            
-            // classes:
-            classes={classes}
         />
     );
 }
@@ -160,7 +132,7 @@ export const Section = (props: SectionProps) => {
             {...restGenericSectionProps}
         >
             {/* a built-in <article> as the content */}
-            <article className='fill-self'>
+            <Container tag='article' className='fill-self'>
                 {/* the article title (if provided) */}
                 {title && <Generic tag={titleTag}>
                     {title}
@@ -172,7 +144,7 @@ export const Section = (props: SectionProps) => {
                 <ArticleContext.Provider value={subContextProp}>
                     {content}
                 </ArticleContext.Provider>
-            </article>
+            </Container>
         </GenericSection>
     );
 }
