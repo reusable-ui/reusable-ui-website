@@ -15,17 +15,34 @@ export interface GenericSectionProps extends ContainerProps {
  * A generic `<section>` without any `<h1-h6>` or `<article>`.
  * You should manually including at least one `<article>` with appropriate `<h1-h6>`.
  */
-export function GenericSection(props: GenericSectionProps) {
+export const GenericSection = (props: GenericSectionProps) => {
+    // classes:
     const classes = useMergeClasses(
+        // preserves the original `classes`:
         props.classes,
+        
+        
+        
+        // variants:
         'fill',
     );
     
+    
+    
+    // jsx:
     return (
         <Container
+            // other props:
             {...props}
             
+            
+            
+            // semantics:
             tag={props.tag ?? 'section'}
+            
+            
+            
+            // classes:
             classes={classes}
         />
     );
@@ -33,42 +50,137 @@ export function GenericSection(props: GenericSectionProps) {
 
 
 
-
-export interface ISectionContext {
+export interface IArticleContext {
     level : number
 }
-const SectionContext = createContext<ISectionContext>({
+const ArticleContext = createContext<IArticleContext>({
     level : 1,
 });
 
 
 
+export interface MainProps extends SectionProps {
+}
+export const Main = (props: MainProps) => {
+    // rest props:
+    const {
+        // title:
+        titleTag = 'h1',
+        title,
+        
+        
+        
+        // content:
+        children : content,
+    ...restGenericSectionProps} = props;
+    
+    
+    
+    // jsx:
+    const subContextProp = useMemo<IArticleContext>(() => ({
+        level: 2,
+    }), []);
+    return (
+        <GenericSection
+            // other props:
+            {...restGenericSectionProps}
+            
+            
+            
+            // semantics:
+            tag={props.tag ?? 'main'} // the <root-section> as <main-article>
+        >
+            {/* the article title (if provided) */}
+            {title && <Generic tag={titleTag}>
+                {title}
+            </Generic>}
+            
+            
+            
+            {/* the article content within `ArticleContext` */}
+            <ArticleContext.Provider value={subContextProp}>
+                {content}
+            </ArticleContext.Provider>
+        </GenericSection>
+    );
+}
+
+
+
+export interface IntroSectionProps extends GenericSectionProps {
+}
+export const IntroSection = (props: IntroSectionProps) => {
+    // jsx:
+    return (
+        <GenericSection
+            // other props:
+            {...props}
+        >
+            {/* a built-in <article> as the content */}
+            <article>
+                {props.children}
+            </article>
+        </GenericSection>
+    );
+}
+
+
+
 export interface SectionProps extends GenericSectionProps {
+    // title:
     titleTag ?: 'h1'|'h2'|'h3'|'h4'|'h5'|'h6'
     title    ?: React.ReactNode
+    
+    
+    
+    // content:
     children ?: React.ReactNode
 }
 /**
- * A simple `<section>` with built in `<h2>` and `<article>`.
+ * A simple `<section>` with built-in `<h2>` and `<article>`.
  */
 export const Section = (props: SectionProps) => {
-    const { level } = useContext(SectionContext);
-    const { titleTag = `h${level}` as Tag, title, children, ...restGenericSectionProps} = props;
+    // contexts:
+    const { level } = useContext(ArticleContext);
     
     
-    const subContextProp = useMemo<ISectionContext>(() => ({
-        level: (level < 6) ? (level + 1) : 6,
+    
+    // rest props:
+    const {
+        // title:
+        titleTag = `h${level}` as Tag,
+        title,
+        
+        
+        
+        // content:
+        children : content,
+    ...restGenericSectionProps} = props;
+    
+    
+    
+    // jsx:
+    const subContextProp = useMemo<IArticleContext>(() => ({
+        level: Math.min(6, level + 1), // limits the level to max 6
     }), [level]);
     return (
-        <GenericSection {...restGenericSectionProps}>
+        <GenericSection
+            // other props:
+            {...restGenericSectionProps}
+        >
+            {/* a built-in <article> as the content */}
             <article>
+                {/* the article title (if provided) */}
                 {title && <Generic tag={titleTag}>
-                    { title }
+                    {title}
                 </Generic>}
                 
-                <SectionContext.Provider value={subContextProp}>
-                    { children }
-                </SectionContext.Provider>
+                
+                
+                {/* the article content within `ArticleContext` */}
+                <ArticleContext.Provider value={subContextProp}>
+                    {content}
+                </ArticleContext.Provider>
             </article>
         </GenericSection>
     );
