@@ -6,7 +6,7 @@ import { Tooltip } from '@reusable-ui/components'
 import { ExtLink } from '../components/ExtLink'
 import { TypeScriptCode } from '../components/Code'
 import styles from '../styles/About.module.scss'
-import { Section } from '../components/Section'
+import { Main, Section } from '../components/Section'
 
 
 
@@ -21,7 +21,7 @@ const About: NextPage = () => {
             <meta name="description" content="A short history about Reusable-UI libs" />
         </Head>
         
-        <Section>
+        <Main>
             <p>
                 Reusable-UI is a personal project created by <ExtLink dofollow={true} href='https://www.instagram.com/heyyy.marco/'>Hey Marco</ExtLink>.
                 Hopefully in the future the Reusable-UI will be a team project.
@@ -60,7 +60,7 @@ import { YunusKurniawan as Marco } from '@reusable-ui/creator'
                 Hopefully you like my project and makes your react project much fun!
                 Please support me for my existence!
             </p>
-        </Section>
+        </Main>
     </>);
 }
 
