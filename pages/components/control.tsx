@@ -326,29 +326,26 @@ const ControlPage: NextPage = () => {
                 </FocusedProperty>
                 <ArrivedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <Control
-                                key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
                                 A {'<Control>'} without arrive indicator
                             </Control>
                             <Control
-                                key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
                                 A {'<Control>'} with arrive indicator
                             </Control>
                             <Control
-                                key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
                                 A {'<Control>'} with auto arrive indicator
                             </Control>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>

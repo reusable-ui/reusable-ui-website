@@ -72,3 +72,8 @@ export const checkable          = new PropertyInfo('checkable')
 
 // appearances:
 export const icon               = new PropertyInfo('icon')
+
+
+
+// miscs:
+export const href               = new PropertyInfo('href')

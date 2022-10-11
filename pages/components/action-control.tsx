@@ -11,7 +11,7 @@ import { ActionControl as OriActionControl, ActionControlProps, Control, List, L
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ClientSideLinkProperties } from '../../properties/sections/clientSideLinkProperties'
+import { ClientSideLinkProperty } from '../../properties/sections/clientSideLinkProperties'
 
 
 
@@ -35,7 +35,7 @@ const ActionControlPage: NextPage = () => {
                 It also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
             </p>
             <ComponentInstallation />
-            <ClientSideLinkProperties />
+            <ClientSideLinkProperty />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
@@ -333,29 +333,26 @@ const ActionControlPage: NextPage = () => {
                 </FocusedProperty>
                 <ArrivedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <ActionControl
-                                key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
                                 An {'<ActionControl>'} without arrive indicator
                             </ActionControl>
                             <ActionControl
-                                key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
                                 An {'<ActionControl>'} with arrive indicator
                             </ActionControl>
                             <ActionControl
-                                key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
                                 An {'<ActionControl>'} with auto arrive indicator
                             </ActionControl>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
@@ -385,29 +382,26 @@ const ActionControlPage: NextPage = () => {
                 </ArrivedProperty>
                 <PressedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <ActionControl
-                                key={index}
                                 theme={themeName}
                                 pressed={false}
                             >
                                 An {'<ActionControl>'} without pressed indicator
                             </ActionControl>
                             <ActionControl
-                                key={index}
                                 theme={themeName}
                                 pressed={true}
                             >
                                 An {'<ActionControl>'} with pressed indicator
                             </ActionControl>
                             <ActionControl
-                                key={index}
                                 theme={themeName}
                                 pressed={undefined}
                             >
                                 An {'<ActionControl>'} with auto pressed indicator
                             </ActionControl>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>

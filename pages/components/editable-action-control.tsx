@@ -329,29 +329,26 @@ const EditableActionControlPage: NextPage = () => {
                 </FocusedProperty>
                 <ArrivedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <EditableActionControl
-                                key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
                                 An {'<EditableActionControl>'} without arrive indicator
                             </EditableActionControl>
                             <EditableActionControl
-                                key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
                                 An {'<EditableActionControl>'} with arrive indicator
                             </EditableActionControl>
                             <EditableActionControl
-                                key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
                                 An {'<EditableActionControl>'} with auto arrive indicator
                             </EditableActionControl>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
@@ -434,29 +431,26 @@ const EditableActionControlPage: NextPage = () => {
                 <InheritValidationProperty />
                 <PressedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <EditableActionControl
-                                key={index}
                                 theme={themeName}
                                 pressed={false}
                             >
                                 An {'<EditableActionControl>'} without pressed indicator
                             </EditableActionControl>
                             <EditableActionControl
-                                key={index}
                                 theme={themeName}
                                 pressed={true}
                             >
                                 An {'<EditableActionControl>'} with pressed indicator
                             </EditableActionControl>
                             <EditableActionControl
-                                key={index}
                                 theme={themeName}
                                 pressed={undefined}
                             >
                                 An {'<EditableActionControl>'} with auto pressed indicator
                             </EditableActionControl>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>

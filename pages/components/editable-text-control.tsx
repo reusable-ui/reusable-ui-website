@@ -330,29 +330,26 @@ const EditableTextControlPage: NextPage = () => {
                 </FocusedProperty>
                 <ArrivedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <EditableTextControl
-                                key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
                                 An {'<EditableTextControl>'} without arrive indicator
                             </EditableTextControl>
                             <EditableTextControl
-                                key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
                                 An {'<EditableTextControl>'} with arrive indicator
                             </EditableTextControl>
                             <EditableTextControl
-                                key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
                                 An {'<EditableTextControl>'} with auto arrive indicator
                             </EditableTextControl>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>

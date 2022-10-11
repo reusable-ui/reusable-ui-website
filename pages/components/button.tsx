@@ -11,12 +11,17 @@ import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reus
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ClientSideLinkProperties } from '../../properties/sections/clientSideLinkProperties'
+import { ClientSideLinkProperty, HrefProperty } from '../../properties/sections/clientSideLinkProperties'
 import {tag, role} from '../../properties/propertyList'
+import { Tips } from '../../components/Warning'
 
 
 
 const Button = (props: ButtonProps) => <OriButton {...props} theme={props.theme ?? 'primary'} />
+const TipsAutoTagToAnchor = () => <Tips>
+    The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code>.
+    You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
+</Tips>
 
 
 
@@ -34,11 +39,12 @@ const ButtonPage: NextPage = () => {
                 <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
             </p>
             <p>
-                The default {tag.propertyShortLink} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- a client-side <code>{`<Link>`}</code> component is inside the <TheComponentDisplay />.
-                You can also <em>manually</em> change the {tag.propertyShortLink} and/or the {role.propertyShortLink}.
+                The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- a client-side <code>{`<Link>`}</code> component is inside the <TheComponentDisplay />.
+                You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
             </p>
             <ComponentInstallation />
-            <ClientSideLinkProperties />
+            <ClientSideLinkProperty tips={<TipsAutoTagToAnchor />} />
+            <HrefProperty tips={<TipsAutoTagToAnchor />} />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
@@ -336,29 +342,26 @@ const ButtonPage: NextPage = () => {
                 </FocusedProperty>
                 <ArrivedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <Button
-                                key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
                                 A {'<Button>'} without arrive indicator
                             </Button>
                             <Button
-                                key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
                                 A {'<Button>'} with arrive indicator
                             </Button>
                             <Button
-                                key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
                                 A {'<Button>'} with auto arrive indicator
                             </Button>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
@@ -388,29 +391,26 @@ const ButtonPage: NextPage = () => {
                 </ArrivedProperty>
                 <PressedProperty>
                     <Preview>
-                        {themeOptions.map((themeName, index) => <>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
                             <Button
-                                key={index}
                                 theme={themeName}
                                 pressed={false}
                             >
                                 A {'<Button>'} without pressed indicator
                             </Button>
                             <Button
-                                key={index}
                                 theme={themeName}
                                 pressed={true}
                             >
                                 A {'<Button>'} with pressed indicator
                             </Button>
                             <Button
-                                key={index}
                                 theme={themeName}
                                 pressed={undefined}
                             >
                                 A {'<Button>'} with auto pressed indicator
                             </Button>
-                        </>)}
+                        </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
