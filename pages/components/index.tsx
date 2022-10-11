@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Section } from '../../components/Section'
+import { HeroSection, Main, Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 
 
@@ -13,18 +13,20 @@ const Components: NextPage = () => {
             <title>Reusable-UI Components</title>
             <meta name="description" content="A short history about Reusable-UI libs" />
         </Head>
-        <Section title='Reusable-UI Components'>
-            <p>
-                {packages.components.packageLink} library contains a collection of our <em>official</em> common components.
-            </p>
-            <p>
-                This library (collection) is intended for <em>(react) web developers</em>.
-                So, if you want to create a website without the hassle of creating the required components,
-                our component library can help save your time.
-            </p>
-            <p>
-                Of course, our collection is limited. You may still need {packages.core.packageLink} to create a more specific component for your needs.
-            </p>
+        <Main nude={true}>
+            <HeroSection title='Reusable-UI Components'>
+                <p>
+                    {packages.components.packageLink} library contains a collection of our <em>official</em> common components.
+                </p>
+                <p>
+                    This library (collection) is intended for <em>(react) web developers</em>.
+                    So, if you want to create a website without the hassle of creating the required components,
+                    our component library can help save your time.
+                </p>
+                <p>
+                    Of course, our collection is limited. You may still need {packages.core.packageLink} to create a more specific component for your needs.
+                </p>
+            </HeroSection>
             <Section title='Base Components'>
                 <p>
                     Provides a <strong>basic layout</strong> and <strong>interacting feedbacks</strong> for creating <em>real</em> components.
@@ -367,7 +369,7 @@ const Components: NextPage = () => {
                     </AccordionItem>
                 </Accordion>
             </Section>
-        </Section>
+        </Main>
     </>);
 }
 

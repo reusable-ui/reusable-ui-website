@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { generic, basic } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -23,10 +23,12 @@ const BasicPage: NextPage = () => {
             <title>{`${basic.componentTag} Component`}</title>
             <meta name="description" content={`${basic.componentTag} is a simple box layout component with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, ${packages.gradientable.packageShortName}, ${packages.outlineable.packageShortName}, ${packages.mildable.packageShortName}, and ${packages.nudible.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is a <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is a <strong>simple box</strong> layout component with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, {packages.gradientable.packageShortLink}, {packages.outlineable.packageShortLink}, {packages.mildable.packageShortLink}, and {packages.nudible.packageShortLink}.
+                </p>
+            </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
@@ -334,7 +336,7 @@ basics.lineHeight = 2;
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

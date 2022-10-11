@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { actionControl, button } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -53,41 +53,43 @@ const ButtonPage: NextPage = () => {
             <title>{`${button.componentTag} Component`}</title>
             <meta name="description" content={`${button.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
-            </p>
-            <p>
-                <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
-            </p>
-            <p>
-                The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
-            </p>
-            <p>
-                You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
-            </p>
-            <p>
-                Here the demo:
-            </p>
-            <Preview display='right' stretch={false}>
-                <Button theme='primary'>Regular</Button>
-                <Button theme='success'>Success</Button>
-                <Button theme='danger'>Error</Button>
-                <Button theme='primary' gradient={true}>Gradient</Button>
-                <Button theme='primary' mild={true}>Mild</Button>
-                <Button theme='primary' outlined={true}>Outlined</Button>
-                <Button theme='primary' buttonStyle='link'>Link</Button>
-                <Button theme='primary' size='sm'>Small</Button>
-                <Button theme='primary' size='lg'>Big</Button>
-                <Button theme='primary' enabled={false}>Disabled</Button>
-            </Preview>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
+                </p>
+                <p>
+                    <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
+                </p>
+                <p>
+                    The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+                </p>
+                <p>
+                    You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
+                </p>
+                <p>
+                    Here the demo:
+                </p>
+                <Preview display='right' stretch={false}>
+                    <Button theme='primary'>Regular</Button>
+                    <Button theme='success'>Success</Button>
+                    <Button theme='danger'>Error</Button>
+                    <Button theme='primary' gradient={true}>Gradient</Button>
+                    <Button theme='primary' mild={true}>Mild</Button>
+                    <Button theme='primary' outlined={true}>Outlined</Button>
+                    <Button theme='primary' buttonStyle='link'>Link</Button>
+                    <Button theme='primary' size='sm'>Small</Button>
+                    <Button theme='primary' size='lg'>Big</Button>
+                    <Button theme='primary' enabled={false}>Disabled</Button>
+                </Preview>
+            </HeroSection>
             <ComponentInstallation />
             <ClientSideLinkProperty tips={<TipsAutoTagToAnchorForLink />} />
             <HrefProperty tips={<TipsAutoTagToAnchorForHref />} />
             <OnClickProperty tips={<TipsButtonTag />} />
             <VariantProperties>
                 <SizeProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
                             <Button
                                 key={index}
@@ -544,7 +546,7 @@ console.log('whiteSpace variable value: ', buttonValues.whiteSpace);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

@@ -15,7 +15,7 @@ const Home: NextPage = () => {
             <meta name="description" content="Reusable-UI - A React component library for building sites quickly. Reuse the components, save your time now and later." />
         </Head>
         
-        <Main>
+        <Main nude={true}>
             <HeroSection theme='primary' className={styles.hero}>
                 <h1 className='display-4'>Reusable-UI</h1>
                 <p className='display-6'>Reuse the components,<br />save your time now and next</p>

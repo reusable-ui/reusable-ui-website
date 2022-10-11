@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
 import { basic, content } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -26,13 +26,15 @@ const ContentPage: NextPage = () => {
             <title>{`${content.componentTag} Component`}</title>
             <meta name="description" content={`${content.componentTag} is a generic media container with pre-formatted media elements such as images, videos, etc.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is a generic <strong>media container</strong> with pre-formatted media elements such as <strong>images</strong>, <strong>videos</strong>, etc.
-            </p>
-            <p>
-                This component is great for creating <code>{`<article>`}</code> or <strong>newspaper-like</strong> content.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is a generic <strong>media container</strong> with pre-formatted media elements such as <strong>images</strong>, <strong>videos</strong>, etc.
+                </p>
+                <p>
+                    This component is great for creating <code>{`<article>`}</code> or <strong>newspaper-like</strong> content.
+                </p>
+            </HeroSection>
             <ComponentInstallation />
             <Section title='Images &amp; Media'>
                 <p>
@@ -625,7 +627,7 @@ console.log('mediaOpacity variable value: ', contentValues.mediaOpacity);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

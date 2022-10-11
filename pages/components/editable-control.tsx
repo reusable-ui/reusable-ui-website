@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { control, editableControl } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -24,10 +24,12 @@ const EditableControlPage: NextPage = () => {
             <title>{`${editableControl.componentTag} Component`}</title>
             <meta name="description" content={`${editableControl.componentTag} is an editable simple box layout component with built-in variants, states, and ${packages.invalidable.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is an editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is an editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
+                </p>
+            </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
@@ -464,7 +466,7 @@ console.log('opacity variable value: ', editableControlValues.opacity);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

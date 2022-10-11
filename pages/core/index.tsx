@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Section } from '../../components/Section'
+import { HeroSection, Main, Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 import { IntLink } from '../../components/IntLink'
 
@@ -14,20 +14,22 @@ const Core: NextPage = () => {
             <title>Reusable-UI Core</title>
             <meta name="description" content="A short history about Reusable-UI libs" />
         </Head>
-        <Section title='Reusable-UI Core'>
-            <p>
-                {packages.core.packageLink} is a building block (framework) for making any {packages.components.packageLink}.
-                It also governs the interaction between components.
-            </p>
-            <p>
-                This core is intended for <em>component developers</em>.
-                So, if you want to create <strong>a new kind of component</strong> which is <em>compatible</em> with {packages.components.packageLink},
-                this core is a great starting point.
-            </p>
-            <p>
-                Don&apos;t have an idea to create a Reusable-UI component?
-                Don&apos;t worry, we made <IntLink to='/guide-create-component'>a tutorial creating a Reusable-UI component</IntLink> for you.
-            </p>
+        <Main nude={true}>
+            <HeroSection title='Reusable-UI Core'>
+                <p>
+                    {packages.core.packageLink} is a building block (framework) for making any {packages.components.packageLink}.
+                    It also governs the interaction between components.
+                </p>
+                <p>
+                    This core is intended for <em>component developers</em>.
+                    So, if you want to create <strong>a new kind of component</strong> which is <em>compatible</em> with {packages.components.packageLink},
+                    this core is a great starting point.
+                </p>
+                <p>
+                    Don&apos;t have an idea to create a Reusable-UI component?
+                    Don&apos;t worry, we made <IntLink to='/guide-create-component'>a tutorial creating a Reusable-UI component</IntLink> for you.
+                </p>
+            </HeroSection>
             <Section title='Reusable-UI Configs'>
                 <p>
                     Stores a <strong>global confuguration</strong> to be shared between components.
@@ -298,7 +300,7 @@ const Core: NextPage = () => {
                     </AccordionItem>
                 </Accordion>
             </Section>
-        </Section>
+        </Main>
     </>);
 }
 

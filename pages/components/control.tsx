@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { indicator, control } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -24,10 +24,12 @@ const ControlPage: NextPage = () => {
             <title>{`${control.componentTag} Component`}</title>
             <meta name="description" content={`${control.componentTag} is an interactive simple box layout component with built-in variants, states, and interaction states: ${packages.focusable.packageShortName} and ${packages.interactable.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is an interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortLink} and {packages.interactable.packageShortLink}.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is an interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortLink} and {packages.interactable.packageShortLink}.
+                </p>
+            </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
@@ -431,7 +433,7 @@ console.log('filterArrive variable value: ', controlValues.filterArrive);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

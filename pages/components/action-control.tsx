@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { control, actionControl } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -25,15 +25,17 @@ const ActionControlPage: NextPage = () => {
             <title>{`${actionControl.componentTag} Component`}</title>
             <meta name="description" content={`${actionControl.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortLink}.
-            </p>
-            <p>
-                If you plan to create a <strong>custom button</strong>, this <em>base component</em> is a great starting point.
-                It already handles the <kbd>enter</kbd> and <kbd>space</kbd> keys for triggering the <code>onClick</code> event for you.
-                It also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortLink}.
+                </p>
+                <p>
+                    If you plan to create a <strong>custom button</strong>, this <em>base component</em> is a great starting point.
+                    It already handles the <kbd>enter</kbd> and <kbd>space</kbd> keys for triggering the <code>onClick</code> event for you.
+                    It also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
+                </p>
+            </HeroSection>
             <ComponentInstallation />
             <ClientSideLinkProperty />
             <VariantProperties>
@@ -475,7 +477,7 @@ console.log('filterPress variable value: ', actionControlValues.filterPress);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

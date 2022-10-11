@@ -1,13 +1,13 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { basic, label } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Button, Group, Label, LabelProps, List, ListItem, Radio, TextInput } from '@reusable-ui/components'
+import { Button, Group, Label, Radio, TextInput } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 
@@ -19,38 +19,40 @@ const LabelPage: NextPage = () => {
             <title>{`${label.componentTag} Component`}</title>
             <meta name="description" content={`${label.componentTag} is a simple box layout component with built-in variants and indication states: ${packages.disableable.packageShortName} and ${packages.activatable.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                Represents a <strong>caption</strong> for the corresponding neighboring component.
-            </p>
-            <p>
-                This <TheComponentDisplay /> is usually used in <em>conjunction</em> with {packages.group.packageLink}, {packages.input.packageLink}, {packages.check.packageLink}, {packages.radio.packageLink}, and {packages.button.packageLink}.<br />
-                Something like these:
-            </p>
-            <Preview>
-                <div>
-                    <Group theme='danger'>
-                        <Label>
-                            Spicy level:
-                        </Label>
-                        <Radio name='spicy' nude={false} defaultActive={true}>Light</Radio>
-                        <Radio name='spicy' nude={false}>Hot</Radio>
-                        <Radio name='spicy' nude={false}>Super</Radio>
-                    </Group>
-                </div>
-                <div>
-                    <Group theme='primary'>
-                        <TextInput placeholder='Username' />
-                        <Label>
-                            @
-                        </Label>
-                        <TextInput placeholder='Server' />
-                        <Button>
-                            Submit
-                        </Button>
-                    </Group>
-                </div>
-            </Preview>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    Represents a <strong>caption</strong> for the corresponding neighboring component.
+                </p>
+                <p>
+                    This <TheComponentDisplay /> is usually used in <em>conjunction</em> with {packages.group.packageLink}, {packages.input.packageLink}, {packages.check.packageLink}, {packages.radio.packageLink}, and {packages.button.packageLink}.<br />
+                    Something like these:
+                </p>
+                <Preview>
+                    <div>
+                        <Group theme='danger'>
+                            <Label>
+                                Spicy level:
+                            </Label>
+                            <Radio name='spicy' nude={false} defaultActive={true}>Light</Radio>
+                            <Radio name='spicy' nude={false}>Hot</Radio>
+                            <Radio name='spicy' nude={false}>Super</Radio>
+                        </Group>
+                    </div>
+                    <div>
+                        <Group theme='primary'>
+                            <TextInput placeholder='Username' />
+                            <Label>
+                                @
+                            </Label>
+                            <TextInput placeholder='Server' />
+                            <Button>
+                                Submit
+                            </Button>
+                        </Group>
+                    </div>
+                </Preview>
+            </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
                 <SizeProperty>
@@ -225,7 +227,7 @@ console.log('opacity variable value: ', labelValues.opacity);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 

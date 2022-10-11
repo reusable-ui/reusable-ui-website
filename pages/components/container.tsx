@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
 import { basic, container } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
@@ -23,13 +23,15 @@ const ContainerPage: NextPage = () => {
             <title>{`${container.componentTag} Component`}</title>
             <meta name="description" content={`${container.componentTag} is a generic container with responsive padding width & height based on browser's width at certain ${packages.breakpoints.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                <TheComponentDisplay /> is a generic container with <strong>responsive padding width &amp; height</strong> based on browser&apos;s width at certain {packages.breakpoints.packageShortLink}.
-            </p>
-            <p>
-                This component is great for creating <code>{`<main>`}</code> or <code>{`<section>`}</code> of your page.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    <TheComponentDisplay /> is a generic container with <strong>responsive padding width &amp; height</strong> based on browser&apos;s width at certain {packages.breakpoints.packageShortLink}.
+                </p>
+                <p>
+                    This component is great for creating <code>{`<main>`}</code> or <code>{`<section>`}</code> of your page.
+                </p>
+            </HeroSection>
             <ComponentInstallation />
             <Section title='Adjusting the Children Space'>
                 <p>
@@ -476,7 +478,7 @@ console.log('paddingInlineXxxl variable value: ', containerValues.paddingInlineX
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 
