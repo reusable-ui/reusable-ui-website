@@ -24,7 +24,7 @@ export const GenericSection = (props: GenericSectionProps) => {
         
         
         // variants:
-        'fill',
+        'fill-self',
     );
     
     
@@ -107,25 +107,6 @@ export const Main = (props: MainProps) => {
 
 
 
-export interface IntroSectionProps extends GenericSectionProps {
-}
-export const IntroSection = (props: IntroSectionProps) => {
-    // jsx:
-    return (
-        <GenericSection
-            // other props:
-            {...props}
-        >
-            {/* a built-in <article> as the content */}
-            <article>
-                {props.children}
-            </article>
-        </GenericSection>
-    );
-}
-
-
-
 export interface SectionProps extends GenericSectionProps {
     // title:
     titleTag ?: 'h1'|'h2'|'h3'|'h4'|'h5'|'h6'
@@ -169,7 +150,7 @@ export const Section = (props: SectionProps) => {
             {...restGenericSectionProps}
         >
             {/* a built-in <article> as the content */}
-            <article>
+            <article className='fill-self'>
                 {/* the article title (if provided) */}
                 {title && <Generic tag={titleTag}>
                     {title}
@@ -183,6 +164,28 @@ export const Section = (props: SectionProps) => {
                 </ArticleContext.Provider>
             </article>
         </GenericSection>
+    );
+}
+
+
+
+export interface HeroSectionProps extends SectionProps {
+}
+export const HeroSection = (props: HeroSectionProps) => {
+    // contexts:
+    const { level } = useContext(ArticleContext);
+    
+    
+    
+    // jsx:
+    const supContextProp = useMemo<IArticleContext>(() => ({
+        level: Math.max(1, level - 1), // limits the level to min 1
+    }), [level]);
+    return (
+        /* move-up the level of `ArticleContext` */
+        <ArticleContext.Provider value={supContextProp}>
+            <Section {...props} />
+        </ArticleContext.Provider>
     );
 }
 
