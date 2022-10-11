@@ -11,7 +11,7 @@ import { Tips } from './Warning';
 
 export interface GenericSectionProps extends ContainerProps {
     // appearances:
-    indent ?: boolean
+    fill ?: boolean
 }
 /**
  * A generic `<section>` without any `<h1-h6>` or `<article>`.
@@ -21,7 +21,7 @@ export const GenericSection = (props: GenericSectionProps) => {
     // rest props:
     const {
         // appearances:
-        indent = false,
+        fill = true,
     ...restContainerProps} = props;
     
     
@@ -34,7 +34,7 @@ export const GenericSection = (props: GenericSectionProps) => {
         
         
         // variants:
-        indent ? null : 'fill-self',
+        fill ? 'fill-self' : null,
     );
     
     
