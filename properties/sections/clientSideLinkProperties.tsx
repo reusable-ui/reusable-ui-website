@@ -6,7 +6,7 @@ import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
 import { icon } from '../../packages/packageList'
-import { TheComponentDisplay } from '../../packages/componentContext'
+import { TheComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
 
 
@@ -20,6 +20,9 @@ export interface ClientSideLinkPropertiesProps {
     children ?: React.ReactNode
 }
 export const ClientSideLinkProperties = ({children} : ClientSideLinkPropertiesProps) => {
+    const {component: {componentTag}} = useComponentInfo();
+    const componentName = componentTag.slice(1, -1);
+    
     return (
         <Section title='Client Side Link'>
             <p>
@@ -35,7 +38,7 @@ export const ClientSideLinkProperties = ({children} : ClientSideLinkPropertiesPr
             </p>
             <TypeScriptCode>{`
 // declaration:
-<ActionControl>
+<${componentName}>
     please
     <Link to='/about'>
         visit
@@ -43,18 +46,18 @@ export const ClientSideLinkProperties = ({children} : ClientSideLinkPropertiesPr
     <span>
         here!
     </span>
-</ActionControl>
+</${componentName}>
 
 // during render phase:
 // for illustration purpose, the actuall is not this way
 <Link to='/about'>
-    <ActionControl>
+    <${componentName}>
         please
         visit
         <span>
             here!
         </span>
-    </ActionControl>
+    </${componentName}>
 </Link>
             `}</TypeScriptCode>
             {children}

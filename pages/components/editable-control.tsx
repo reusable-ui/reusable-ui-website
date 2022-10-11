@@ -7,7 +7,7 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { EditableControl as OriEditableControl, EditableControlProps, List, ListItem } from '@reusable-ui/components'
+import { Control, EditableControl as OriEditableControl, EditableControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
@@ -213,7 +213,7 @@ const EditableControlPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl key={index} theme='primary' enabled={false}>
+                            <Control key={index} theme='primary' enabled={false}>
                                 <EditableControl
                                     key={index}
                                     theme={themeName}
@@ -221,21 +221,21 @@ const EditableControlPage: NextPage = () => {
                                 >
                                     An {'<EditableControl>'} with inherit enabled
                                 </EditableControl>
-                            </EditableControl>
+                            </Control>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl theme='primary' enabled={false}>
+<Control theme='primary' enabled={false}>
     <EditableControl
         theme='${themeName}'
         inheritEnabled={true}
     >
         An {'<EditableControl>'} with inherit enabled
     </EditableControl>
-</EditableControl>
+</Control>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -271,7 +271,7 @@ const EditableControlPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableControl key={index} theme='primary' active={true}>
+                            <Control key={index} theme='primary' active={true}>
                                 <EditableControl
                                     key={index}
                                     theme={themeName}
@@ -279,21 +279,21 @@ const EditableControlPage: NextPage = () => {
                                 >
                                     An {'<EditableControl>'} with inherit active
                                 </EditableControl>
-                            </EditableControl>
+                            </Control>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableControl theme='primary' active={true}>
+<Control theme='primary' active={true}>
     <EditableControl
         theme='${themeName}'
         inheritActive={true}
     >
         An {'<EditableControl>'} with inherit active
     </EditableControl>
-</EditableControl>
+</Control>
 `
                         ).join('')}
                     </TypeScriptCode>

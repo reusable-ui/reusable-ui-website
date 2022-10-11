@@ -6,7 +6,7 @@ import { editableControl, actionControl, editableActionControl } from '../../pac
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'  
-import { EditableActionControl as OriEditableActionControl, EditableActionControlProps } from '@reusable-ui/components'
+import { Control, EditableActionControl as OriEditableActionControl, EditableActionControlProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
@@ -216,7 +216,7 @@ const EditableActionControlPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableActionControl key={index} theme='primary' enabled={false}>
+                            <Control key={index} theme='primary' enabled={false}>
                                 <EditableActionControl
                                     key={index}
                                     theme={themeName}
@@ -224,21 +224,21 @@ const EditableActionControlPage: NextPage = () => {
                                 >
                                     An {'<EditableActionControl>'} with inherit enabled
                                 </EditableActionControl>
-                            </EditableActionControl>
+                            </Control>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableActionControl theme='primary' enabled={false}>
+<Control theme='primary' enabled={false}>
     <EditableActionControl
         theme='${themeName}'
         inheritEnabled={true}
     >
         An {'<EditableActionControl>'} with inherit enabled
     </EditableActionControl>
-</EditableActionControl>
+</Control>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -274,7 +274,7 @@ const EditableActionControlPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <EditableActionControl key={index} theme='primary' active={true}>
+                            <Control key={index} theme='primary' active={true}>
                                 <EditableActionControl
                                     key={index}
                                     theme={themeName}
@@ -282,21 +282,21 @@ const EditableActionControlPage: NextPage = () => {
                                 >
                                     An {'<EditableActionControl>'} with inherit active
                                 </EditableActionControl>
-                            </EditableActionControl>
+                            </Control>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<EditableActionControl theme='primary' active={true}>
+<Control theme='primary' active={true}>
     <EditableActionControl
         theme='${themeName}'
         inheritActive={true}
     >
         An {'<EditableActionControl>'} with inherit active
     </EditableActionControl>
-</EditableActionControl>
+</Control>
 `
                         ).join('')}
                     </TypeScriptCode>

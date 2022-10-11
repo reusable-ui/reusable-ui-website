@@ -7,7 +7,7 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { ActionControl as OriActionControl, ActionControlProps, List, ListItem } from '@reusable-ui/components'
+import { ActionControl as OriActionControl, ActionControlProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
@@ -220,7 +220,7 @@ const ActionControlPage: NextPage = () => {
                 <InheritEnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl key={index} theme='primary' enabled={false}>
+                            <Control key={index} theme='primary' enabled={false}>
                                 <ActionControl
                                     key={index}
                                     theme={themeName}
@@ -228,21 +228,21 @@ const ActionControlPage: NextPage = () => {
                                 >
                                     An {'<ActionControl>'} with inherit enabled
                                 </ActionControl>
-                            </ActionControl>
+                            </Control>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl theme='primary' enabled={false}>
+<Control theme='primary' enabled={false}>
     <ActionControl
         theme='${themeName}'
         inheritEnabled={true}
     >
         An {'<ActionControl>'} with inherit enabled
     </ActionControl>
-</ActionControl>
+</Control>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -278,7 +278,7 @@ const ActionControlPage: NextPage = () => {
                 <InheritActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl key={index} theme='primary' active={true}>
+                            <Control key={index} theme='primary' active={true}>
                                 <ActionControl
                                     key={index}
                                     theme={themeName}
@@ -286,21 +286,21 @@ const ActionControlPage: NextPage = () => {
                                 >
                                     An {'<ActionControl>'} with inherit active
                                 </ActionControl>
-                            </ActionControl>
+                            </Control>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl theme='primary' active={true}>
+<Control theme='primary' active={true}>
     <ActionControl
         theme='${themeName}'
         inheritActive={true}
     >
         An {'<ActionControl>'} with inherit active
     </ActionControl>
-</ActionControl>
+</Control>
 `
                         ).join('')}
                     </TypeScriptCode>
