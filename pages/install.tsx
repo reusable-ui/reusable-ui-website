@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { BashCode } from '../components/Code'
 import React from 'react'
-import { Section } from '../components/Section'
+import { Main, Section } from '../components/Section'
 import {core, components} from '../packages/packageList'
 import { IntLink } from '../components/IntLink'
 import { Tips } from '../components/Warning'
@@ -16,7 +16,7 @@ const Installation: NextPage = () => {
             <meta name="description" content="Install Reusable-UI for your React/NextJS/Gatsby app." />
         </Head>
         
-        <Section title='Install Reusable-UI'>
+        <Main title='Install Reusable-UI'>
             <p>
                 There are 2 major parts of Reusable-UI: {core.packageLink} and {components.packageLink}.
             </p>
@@ -33,7 +33,8 @@ const Installation: NextPage = () => {
                 <p>
                     To install the {core.packageLink}, open the terminal window on your code editor and type:
                 </p>
-                <BashCode collapsible={false}>{`
+                <BashCode collapsible={false}>{
+`
 # npm:
 npm install @reusable-ui/core
 
@@ -42,7 +43,8 @@ yarn add @reusable-ui/core
 
 # pnpm:
 pnpm add @reusable-ui/core
-                `}</BashCode>
+`
+                }</BashCode>
                 <p>
                     Don&apos;t have an idea to create a Reusable-UI component?
                     Don&apos;t worry, we made <IntLink to='/guide-create-component'>a tutorial creating a Reusable-UI component</IntLink> for you.
@@ -64,7 +66,8 @@ pnpm add @reusable-ui/core
                     <p>
                         To install the <strong>whole</strong> {components.packageLink}, open the terminal window on your code editor and type:
                     </p>
-                    <BashCode collapsible={false}>{`
+                    <BashCode collapsible={false}>{
+`
 # npm:
 npm install @reusable-ui/components
 
@@ -73,7 +76,8 @@ yarn add @reusable-ui/components
 
 # pnpm:
 pnpm add @reusable-ui/components
-                    `}</BashCode>
+`
+                    }</BashCode>
                     <Tips>
                         <p>
                             Any component you don&apos;t use will automatically removed (tree shake) by Webpack/Parcel/Rollup or similar tool when you deploy your (React) app.
@@ -86,7 +90,7 @@ pnpm add @reusable-ui/components
                     </p>
                 </Section>
             </Section>
-        </Section>
+        </Main>
     </>);
 }
 export default Installation
