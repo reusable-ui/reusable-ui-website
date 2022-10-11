@@ -11,16 +11,38 @@ import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reus
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ClientSideLinkProperty, HrefProperty } from '../../properties/sections/clientSideLinkProperties'
+import { ClientSideLinkProperty, HrefProperty, OnClickProperty } from '../../properties/sections/actionProperties'
 import {tag, role} from '../../properties/propertyList'
 import { Tips } from '../../components/Warning'
 
 
 
 const Button = (props: ButtonProps) => <OriButton {...props} theme={props.theme ?? 'primary'} />
-const TipsAutoTagToAnchor = () => <Tips>
-    The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code>.
+
+const ParagraphChangeTagRole = () => <p>
     You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
+</p>
+
+const TipsAutoTagToAnchorForLink = () => <Tips>
+    <p>
+        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+    </p>
+    <ParagraphChangeTagRole />
+</Tips>
+
+const TipsAutoTagToAnchorForHref = () => <Tips>
+    <p>
+        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if you assign the <code>{`href`}</code> property.
+    </p>
+    <ParagraphChangeTagRole />
+</Tips>
+
+const TipsButtonTag = () => <Tips>
+    <p>
+        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>remain</strong> to <code>{`<button>`}</code>,
+        as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+    </p>
+    <ParagraphChangeTagRole />
 </Tips>
 
 
@@ -39,12 +61,30 @@ const ButtonPage: NextPage = () => {
                 <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
             </p>
             <p>
-                The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- a client-side <code>{`<Link>`}</code> component is inside the <TheComponentDisplay />.
+                The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+            </p>
+            <p>
                 You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
             </p>
+            <p>
+                Here the demo:
+            </p>
+            <Preview display='right' stretch={false}>
+                <Button theme='primary'>Regular</Button>
+                <Button theme='success'>Success</Button>
+                <Button theme='danger'>Error</Button>
+                <Button theme='primary' gradient={true}>Gradient</Button>
+                <Button theme='primary' mild={true}>Mild</Button>
+                <Button theme='primary' outlined={true}>Outlined</Button>
+                <Button theme='primary' buttonStyle='link'>Link</Button>
+                <Button theme='primary' size='sm'>Small</Button>
+                <Button theme='primary' size='lg'>Big</Button>
+                <Button theme='primary' enabled={false}>Disabled</Button>
+            </Preview>
             <ComponentInstallation />
-            <ClientSideLinkProperty tips={<TipsAutoTagToAnchor />} />
-            <HrefProperty tips={<TipsAutoTagToAnchor />} />
+            <ClientSideLinkProperty tips={<TipsAutoTagToAnchorForLink />} />
+            <HrefProperty tips={<TipsAutoTagToAnchorForHref />} />
+            <OnClickProperty tips={<TipsButtonTag />} />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>

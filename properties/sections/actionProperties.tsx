@@ -8,7 +8,7 @@ import { Tips, Warning } from '../../components/Warning'
 import { icon } from '../../packages/packageList'
 import { TheComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
-import {tag, role} from '../../properties/propertyList'
+import {tag, role} from '../propertyList'
 
 
 
@@ -28,7 +28,7 @@ export const ClientSideLinkProperty = ({tips, children: preview} : ClientSideLin
     return (
         <Section title='Client Side Link'>
             <p>
-                Navigates between pages using <em>JavaScript</em> way, <strong>without</strong> causing <strong>a whole page HTTP request</strong>.
+                <strong>Navigates</strong> between pages using <em>JavaScript</em> way, <strong>without</strong> causing <strong>a whole page HTTP request</strong>.
             </p>
             <p>
                 <TheComponentDisplay /> designed to work with <code>{`<Link>`}</code> component of <strong>React Router</strong> and <strong>Next JS</strong> (<em>Gatsby JS</em> and <em>React Remix</em> are coming soon).
@@ -87,7 +87,27 @@ export const HrefProperty = ({tips, children: preview}: HrefPropertyProps) => {
     return (
         <PropertySection property={properties.href} preview={preview}>
             <p>
-                Navigates to another pages or to external websites using <em>traditional</em> link.
+                <strong>Navigates</strong> to another pages or to external websites using <strong>traditional</strong> link.
+            </p>
+            {tips && <>
+                <p></p>
+                {tips}
+            </>}
+        </PropertySection>
+    );
+}
+
+
+
+export interface OnClickPropertyProps {
+    tips ?: React.ReactNode
+    children ?: React.ReactNode
+}
+export const OnClickProperty = ({tips, children: preview}: OnClickPropertyProps) => {
+    return (
+        <PropertySection property={properties.onClick} preview={preview}>
+            <p>
+                <strong>Executes</strong> a JavaScript&apos;s <strong>callback function</strong> when the <TheComponentDisplay /> is clicked.
             </p>
             {tips && <>
                 <p></p>

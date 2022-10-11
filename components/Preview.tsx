@@ -16,21 +16,25 @@ export const usePreviewStyleSheet = dynamicStyleSheet(() => {
             filter    : 'none',
         }),
         ...children(bodyElm, {
-            ...rule(':not(.block)&', {
-                display: 'grid',
+            ...rule(':is(.down, .right)&', {
+                display: 'flex',
+                ...rule('.down&', {
+                    flexDirection : 'column',
+                }),
+                ...rule('.right&', {
+                    flexDirection : 'row',
+                    flexWrap      : 'wrap',
+                }),
                 
                 ...rule(':not(.stretch)&', {
-                    justifyItems   : 'center',
+                    justifyContent : 'center',
                     alignItems     : 'center',
-                    justifyContent : 'center', // for unstretchable item => do not stretch the group's width
-                    alignContent   : 'start', // for unstretchable item => do not stretch the group's height
                 }),
                 ...rule('.stretch&', {
-                    justifyItems   : 'stretch',
+                    justifyContent : 'center',
                     alignItems     : 'stretch',
                 }),
                 
-                gridAutoFlow : 'row',
                 
                 gap          : `var(--gap, ${spacers.default})`,
             }),
@@ -54,7 +58,7 @@ export const usePreviewStyleSheet = dynamicStyleSheet(() => {
 
 
 export interface PreviewProps extends Omit<CardProps, 'children'> {
-    blockDisplay ?: boolean
+    display      ?: 'down'|'right'|'block'
     stretch      ?: boolean
     preventShift ?: boolean
     transpMask   ?: boolean
@@ -64,7 +68,7 @@ export interface PreviewProps extends Omit<CardProps, 'children'> {
 }
 export const Preview = (props: PreviewProps) => {
     const {
-        blockDisplay = false,
+        display      = 'down',
         stretch      = true,
         preventShift = false,
         transpMask   = true,
@@ -122,7 +126,7 @@ export const Preview = (props: PreviewProps) => {
         props.classes,
         
         styleSheet.main,
-        blockDisplay ? 'block'   : null,
+        display,
         stretch      ? 'stretch' : null,
         transpMask   ? 'transp'  : null,
     );

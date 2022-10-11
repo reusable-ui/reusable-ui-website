@@ -103,8 +103,8 @@ const IconPage: NextPage = () => {
                             <p>
                                 Here the samples:
                             </p>
-                            <Preview blockDisplay={true}>
-                                <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <Preview display='right' stretch={false}>
+                                <div style={{display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', gap: 'inherit'}}>
                                     {/* eslint-disable @next/next/no-img-element */}
                                     <img alt='sample icon image' src='/icons/reusable-ui.svg' style={{height: '48px'}} />
                                     {/*  alt='lorem image'eslint-disable @next/next/no-img-element */}
@@ -195,7 +195,7 @@ export const MyComponent = () => {
             </IconProperty>
             <VariantProperties>
                 <SizeProperty>
-                    <Preview blockDisplay={true}>
+                    <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
                             <Icon
                                 key={index}

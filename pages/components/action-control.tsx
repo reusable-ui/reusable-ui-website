@@ -11,7 +11,7 @@ import { ActionControl as OriActionControl, ActionControlProps, Control, List, L
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ClientSideLinkProperty } from '../../properties/sections/clientSideLinkProperties'
+import { ClientSideLinkProperty } from '../../properties/sections/actionProperties'
 
 
 

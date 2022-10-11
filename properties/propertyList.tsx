@@ -75,5 +75,6 @@ export const icon               = new PropertyInfo('icon')
 
 
 
-// miscs:
+// actions:
 export const href               = new PropertyInfo('href')
+export const onClick            = new PropertyInfo('onClick')
