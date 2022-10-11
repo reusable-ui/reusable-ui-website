@@ -10,12 +10,22 @@ import { Tips } from './Warning';
 
 
 export interface GenericSectionProps extends ContainerProps {
+    // appearances:
+    indent ?: boolean
 }
 /**
  * A generic `<section>` without any `<h1-h6>` or `<article>`.
  * You should manually including at least one `<article>` with appropriate `<h1-h6>`.
  */
 export const GenericSection = (props: GenericSectionProps) => {
+    // rest props:
+    const {
+        // appearances:
+        indent = false,
+    ...restContainerProps} = props;
+    
+    
+    
     // classes:
     const classes = useMergeClasses(
         // preserves the original `classes`:
@@ -24,7 +34,7 @@ export const GenericSection = (props: GenericSectionProps) => {
         
         
         // variants:
-        'fill-self',
+        indent ? null : 'fill-self',
     );
     
     
@@ -33,7 +43,7 @@ export const GenericSection = (props: GenericSectionProps) => {
     return (
         <Container
             // other props:
-            {...props}
+            {...restContainerProps}
             
             
             
