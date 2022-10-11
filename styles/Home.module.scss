@@ -1,4 +1,4 @@
-.hero {
+.hero>article {
     display: flex;
     flex-direction: column;
     
@@ -9,7 +9,9 @@
     }
 }
 
-.features {
+
+
+.features>article {
     display: grid;
     grid-auto-flow: row;
     grid-auto-rows: auto;
@@ -19,6 +21,3 @@
     
     gap: 3rem;
 }
-// .features>*{
-//     background: pink;
-// }
