@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, ComponentInstallation, Section, Variables } from '../../../components/Section'
+import { InheritedProperties, ComponentInstallation, Section, Variables, HeroSection, Main } from '../../../components/Section'
 import { generic, icon } from '../../../packages/packageList'
 import * as packages from '../../../packages/packageList'
 import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../../properties/sections/variantProperties'
@@ -46,10 +46,27 @@ const IconPage: NextPage = () => {
             <title>{`${icon.componentTag} Component`}</title>
             <meta name="description" content={`${icon.componentTag} is a simple box layout component with built-in variants and indication states: ${packages.disableable.packageShortName} and ${packages.activatable.packageShortName}.`} />
         </Head>
-        <Section title={<><TheComponentDisplay /> Component</>}>
-            <p>
-                Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
-            </p>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+                <p>
+                    Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
+                </p>
+                <p>
+                    Here the demo:
+                </p>
+                <Preview display='right' stretch={false}>
+                    <Icon icon='face' theme='primary' />
+                    <Icon icon='instagram' theme='primary' />
+                    <Icon icon='whatsapp' theme='primary' />
+                    <Icon icon='reusable-ui' theme='primary' />
+                    <Icon icon='face' theme='success' />
+                    <Icon icon='face' theme='danger' />
+                    <Icon icon='face' theme='primary' size='sm' />
+                    <Icon icon='face' theme='primary' size='nm' />
+                    <Icon icon='face' theme='primary' size='md' />
+                    <Icon icon='face' theme='primary' size='lg' />
+                </Preview>
+            </HeroSection>
             <ComponentInstallation />
             <Section elmRef={sectionConfigureRef} title={<>Configuring <TheComponentDisplay />&apos;s Resources</>}>
                 <p>
@@ -339,7 +356,7 @@ console.log('opacity variable value: ', iconValues.opacity);
 `
                 }</TypeScriptCode>
             </Variables>
-        </Section>
+        </Main>
     </ComponentContextProvider>);
 }
 
