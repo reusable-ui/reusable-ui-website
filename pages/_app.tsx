@@ -4,6 +4,7 @@ import React, { Suspense, useRef } from 'react';
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Script from 'next/script';
 
 import '@cssfn/cssfn-dom'
 
@@ -24,6 +25,18 @@ const Header = () => {
     
     return (
         <>
+            <Script strategy="lazyOnload" async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
+            <Script strategy="lazyOnload">{
+`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+`
+            }
+            </Script>
+            
             <Head>
                 <link rel="icon" type="image/png" href="/favicon.png" />
                 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
