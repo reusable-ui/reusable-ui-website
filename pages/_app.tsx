@@ -79,9 +79,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         
         <Header />
         
-        <main>
-            <Outlet {...pageProps} />
-        </main>
+        <Outlet {...pageProps} />
         
         <Footer />
     </>);
