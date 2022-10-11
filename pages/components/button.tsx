@@ -2,37 +2,40 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, InheritedProperties, Section, Variables } from '../../components/Section'
-import { control, actionControl } from '../../packages/packageList'
+import { actionControl, button } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { ActionControl as OriActionControl, ActionControlProps, Control, List, ListItem } from '@reusable-ui/components'
+import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkProperties } from '../../properties/sections/clientSideLinkProperties'
+import {tag, role} from '../../properties/propertyList'
 
 
 
-const ActionControl = (props: ActionControlProps) => <OriActionControl {...props} theme={props.theme ?? 'primary'} />
+const Button = (props: ButtonProps) => <OriButton {...props} theme={props.theme ?? 'primary'} />
 
 
 
-const ActionControlPage: NextPage = () => {
-    return (<ComponentContextProvider component={actionControl} baseComponents={control}>
+const ButtonPage: NextPage = () => {
+    return (<ComponentContextProvider component={button} baseComponents={actionControl}>
         <Head>
-            <title>{`${actionControl.componentTag} Component`}</title>
-            <meta name="description" content={`${actionControl.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
+            <title>{`${button.componentTag} Component`}</title>
+            <meta name="description" content={`${button.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Section title={<><TheComponentDisplay /> Component</>}>
             <p>
-                <TheComponentDisplay /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortLink}.
+                <TheComponentDisplay /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
             </p>
             <p>
-                If you plan to create a <strong>custom button</strong>, this <em>base component</em> is a great starting point.
-                It already handles the <kbd>enter</kbd> and <kbd>space</kbd> keys for triggering the <code>onClick</code> event for you.
-                It also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
+                <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
+            </p>
+            <p>
+                The default {tag.propertyShortLink} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- a client-side <code>{`<Link>`}</code> component is inside the <TheComponentDisplay />.
+                You can also <em>manually</em> change the {tag.propertyShortLink} and/or the {role.propertyShortLink}.
             </p>
             <ComponentInstallation />
             <ClientSideLinkProperties />
@@ -40,23 +43,23 @@ const ActionControlPage: NextPage = () => {
                 <SizeProperty>
                     <Preview>
                         {sizeOptions.map((sizeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<ActionControl>'} with {sizeName ?? 'default'} size
-                            </ActionControl>
+                                A {'<Button>'} with {sizeName ?? 'default'} size
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {sizeOptions.map((sizeName) =>
 `
-<ActionControl
+<Button
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-    An {'<ActionControl>'} with ${sizeName ?? 'default'} size
-</ActionControl>
+    A {'<Button>'} with ${sizeName ?? 'default'} size
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -64,23 +67,23 @@ const ActionControlPage: NextPage = () => {
                 <ThemeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                             >
-                                An {'<ActionControl>'} with {themeName} theme
-                            </ActionControl>
+                                A {'<Button>'} with {themeName} theme
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
 >
-    An {'<ActionControl>'} with ${themeName} theme
-</ActionControl>
+    A {'<Button>'} with ${themeName} theme
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -88,25 +91,25 @@ const ActionControlPage: NextPage = () => {
                 <GradientProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 gradient={true}
                             >
-                                An {'<ActionControl>'} with gradient mode
-                            </ActionControl>
+                                A {'<Button>'} with gradient mode
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     gradient={true}
 >
-    An {'<ActionControl>'} with gradient mode
-</ActionControl>
+    A {'<Button>'} with gradient mode
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -114,25 +117,25 @@ const ActionControlPage: NextPage = () => {
                 <OutlinedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 outlined={true}
                             >
-                                An {'<ActionControl>'} with outlined mode
-                            </ActionControl>
+                                A {'<Button>'} with outlined mode
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     outlined={true}
 >
-    An {'<ActionControl>'} with outlined mode
-</ActionControl>
+    A {'<Button>'} with outlined mode
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -140,25 +143,25 @@ const ActionControlPage: NextPage = () => {
                 <MildProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
-                                mild={false}
+                                mild={true}
                             >
-                                An {'<ActionControl>'} without mild mode
-                            </ActionControl>
+                                A {'<Button>'} with mild mode
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
-    mild={false}
+    mild={true}
 >
-    An {'<ActionControl>'} without mild mode
-</ActionControl>
+    A {'<Button>'} with mild mode
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -166,25 +169,25 @@ const ActionControlPage: NextPage = () => {
                 <NudeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 nude={true}
                             >
-                                An {'<ActionControl>'} with nude mode
-                            </ActionControl>
+                                A {'<Button>'} with nude mode
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     nude={true}
 >
-    An {'<ActionControl>'} with nude mode
-</ActionControl>
+    A {'<Button>'} with nude mode
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -194,25 +197,25 @@ const ActionControlPage: NextPage = () => {
                 <EnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 enabled={false}
                             >
-                                An {'<ActionControl>'} with disabled state
-                            </ActionControl>
+                                A {'<Button>'} with disabled state
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     enabled={false}
 >
-    An {'<ActionControl>'} with disabled state
-</ActionControl>
+    A {'<Button>'} with disabled state
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -221,13 +224,13 @@ const ActionControlPage: NextPage = () => {
                     <Preview>
                         {themeOptions.map((themeName, index) =>
                             <Control key={index} theme='primary' enabled={false}>
-                                <ActionControl
+                                <Button
                                     key={index}
                                     theme={themeName}
                                     inheritEnabled={true}
                                 >
-                                    An {'<ActionControl>'} with inherit enabled
-                                </ActionControl>
+                                    A {'<Button>'} with inherit enabled
+                                </Button>
                             </Control>
                         )}
                     </Preview>
@@ -236,12 +239,12 @@ const ActionControlPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Control theme='primary' enabled={false}>
-    <ActionControl
+    <Button
         theme='${themeName}'
         inheritEnabled={true}
     >
-        An {'<ActionControl>'} with inherit enabled
-    </ActionControl>
+        A {'<Button>'} with inherit enabled
+    </Button>
 </Control>
 `
                         ).join('')}
@@ -252,25 +255,25 @@ const ActionControlPage: NextPage = () => {
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 active={true}
                             >
-                                An {'<ActionControl>'} with active state
-                            </ActionControl>
+                                A {'<Button>'} with active state
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     active={true}
 >
-    An {'<ActionControl>'} with active state
-</ActionControl>
+    A {'<Button>'} with active state
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -279,13 +282,13 @@ const ActionControlPage: NextPage = () => {
                     <Preview>
                         {themeOptions.map((themeName, index) =>
                             <Control key={index} theme='primary' active={true}>
-                                <ActionControl
+                                <Button
                                     key={index}
                                     theme={themeName}
                                     inheritActive={true}
                                 >
-                                    An {'<ActionControl>'} with inherit active
-                                </ActionControl>
+                                    A {'<Button>'} with inherit active
+                                </Button>
                             </Control>
                         )}
                     </Preview>
@@ -294,12 +297,12 @@ const ActionControlPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Control theme='primary' active={true}>
-    <ActionControl
+    <Button
         theme='${themeName}'
         inheritActive={true}
     >
-        An {'<ActionControl>'} with inherit active
-    </ActionControl>
+        A {'<Button>'} with inherit active
+    </Button>
 </Control>
 `
                         ).join('')}
@@ -308,25 +311,25 @@ const ActionControlPage: NextPage = () => {
                 <FocusedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 focused={true}
                             >
-                                An {'<ActionControl>'} with focus indicator
-                            </ActionControl>
+                                A {'<Button>'} with focus indicator
+                            </Button>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     focused={true}
 >
-    An {'<ActionControl>'} with focus indicator
-</ActionControl>
+    A {'<Button>'} with focus indicator
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -334,51 +337,51 @@ const ActionControlPage: NextPage = () => {
                 <ArrivedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) => <>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 arrived={false}
                             >
-                                An {'<ActionControl>'} without arrive indicator
-                            </ActionControl>
-                            <ActionControl
+                                A {'<Button>'} without arrive indicator
+                            </Button>
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 arrived={true}
                             >
-                                An {'<ActionControl>'} with arrive indicator
-                            </ActionControl>
-                            <ActionControl
+                                A {'<Button>'} with arrive indicator
+                            </Button>
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 arrived={undefined}
                             >
-                                An {'<ActionControl>'} with auto arrive indicator
-                            </ActionControl>
+                                A {'<Button>'} with auto arrive indicator
+                            </Button>
                         </>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     arrived={false}
 >
-    An {'<ActionControl>'} without arrive indicator
-</ActionControl>
-<ActionControl
+    A {'<Button>'} without arrive indicator
+</Button>
+<Button
     theme='${themeName}'
     arrived={true}
 >
-    An {'<ActionControl>'} with arrive indicator
-</ActionControl>
-<ActionControl
+    A {'<Button>'} with arrive indicator
+</Button>
+<Button
     theme='${themeName}'
     arrived={undefined}
 >
-    An {'<ActionControl>'} with auto arrive indicator
-</ActionControl>
+    A {'<Button>'} with auto arrive indicator
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -386,51 +389,51 @@ const ActionControlPage: NextPage = () => {
                 <PressedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) => <>
-                            <ActionControl
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 pressed={false}
                             >
-                                An {'<ActionControl>'} without pressed indicator
-                            </ActionControl>
-                            <ActionControl
+                                A {'<Button>'} without pressed indicator
+                            </Button>
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 pressed={true}
                             >
-                                An {'<ActionControl>'} with pressed indicator
-                            </ActionControl>
-                            <ActionControl
+                                A {'<Button>'} with pressed indicator
+                            </Button>
+                            <Button
                                 key={index}
                                 theme={themeName}
                                 pressed={undefined}
                             >
-                                An {'<ActionControl>'} with auto pressed indicator
-                            </ActionControl>
+                                A {'<Button>'} with auto pressed indicator
+                            </Button>
                         </>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<ActionControl
+<Button
     theme='${themeName}'
     pressed={false}
 >
-    An {'<ActionControl>'} without pressed indicator
-</ActionControl>
-<ActionControl
+    A {'<Button>'} without pressed indicator
+</Button>
+<Button
     theme='${themeName}'
     pressed={true}
 >
-    An {'<ActionControl>'} with pressed indicator
-</ActionControl>
-<ActionControl
+    A {'<Button>'} with pressed indicator
+</Button>
+<Button
     theme='${themeName}'
     pressed={undefined}
 >
-    An {'<ActionControl>'} with auto pressed indicator
-</ActionControl>
+    A {'<Button>'} with auto pressed indicator
+</Button>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -439,28 +442,51 @@ const ActionControlPage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Accessibilities'>
+                    <AccordionItem label='Spacings'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>cursor</code>
-                                <p>A default <code>cursor</code>.</p>
+                                <code>gapInline</code>
+                                <p>The default horizontal spacing between <TheComponentDisplay />&apos;s children.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlock</code>
+                                <p>The default vertical spacing between <TheComponentDisplay />&apos;s children.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInlineSm</code>
+                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlockSm</code>
+                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInlineLg</code>
+                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlockLg</code>
+                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Animations'>
+                    <AccordionItem label='Typos'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>filterPress</code>
-                                <p>A <code>filter</code> to apply when the user pressing at the control -or- when <code>{`pressed={true}`}</code>.</p>
+                                <code>whiteSpace</code>
+                                <p>Defines how a <strong>white space</strong> inside <TheComponentDisplay /> is handled.</p>
                             </ListItem>
-                            
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Styles'>
+                        <List listStyle='flush'>
                             <ListItem>
-                                <code>animPress</code>
-                                <p>An animation represents <em>pressing animation</em>, a transition from <strong>released</strong> to <strong>pressed</strong>.</p>
+                                <code>ghostOpacity</code>
+                                <p>The default opacity level when <code>{`buttonStyle='ghost'`}</code>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>animRelease</code>
-                                <p>An animation represents <em>releasing animation</em>, a transition from <strong>pressed</strong> to <strong>released</strong>.</p>
+                                <code>ghostOpacityArrive</code>
+                                <p>The opacity level when <code>{`buttonStyle='ghost'`}</code> and a pointer is on the <TheComponentDisplay />.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -470,14 +496,11 @@ const ActionControlPage: NextPage = () => {
 `
 // put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
 
-import {actionControls, actionControlValues} from '@reusable-ui/action-control';
+import {buttons, buttonValues} from '@reusable-ui/button';
 
-actionControls.filterPress = [[
-    'brightness(60%)',
-    'contrast(150%)',
-]];
-console.log('filterPress variable name: ', actionControls.filterPress);
-console.log('filterPress variable value: ', actionControlValues.filterPress);
+buttons.whiteSpace = 'nowrap';
+console.log('whiteSpace variable name: ', buttons.whiteSpace);
+console.log('whiteSpace variable value: ', buttonValues.whiteSpace);
 `
                 }</TypeScriptCode>
             </Variables>
@@ -485,4 +508,4 @@ console.log('filterPress variable value: ', actionControlValues.filterPress);
     </ComponentContextProvider>);
 }
 
-export default ActionControlPage
+export default ButtonPage
