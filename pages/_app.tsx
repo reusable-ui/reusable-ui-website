@@ -4,7 +4,6 @@ import React, { Suspense, useRef } from 'react';
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Script from 'next/script';
 
 import '@cssfn/cssfn-dom'
 
@@ -15,6 +14,7 @@ import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reu
 
 import { Section } from '../components/Section';
 import { ExtLink } from '../components/ExtLink';
+import { GoogleAnalytics } from '../components/GoogleAnalytics';
 
 const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
 
@@ -25,17 +25,7 @@ const Header = () => {
     
     return (
         <>
-            <Script strategy="beforeInteractive" async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
-            <Script strategy="beforeInteractive" id='g-analytics'>{
-`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
-`
-            }
-            </Script>
+            <GoogleAnalytics />
             
             <Head>
                 <link rel="icon" type="image/png" href="/favicon.png" />
