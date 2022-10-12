@@ -11,10 +11,21 @@ export interface PackageItemProps extends AccordionItemProps
     children ?: React.ReactNode
 }
 export const PackageItem = (props: PackageItemProps) => {
+    const {
+        package  : packageName,
+        children : description,
+    ...restAccordionItemProps} = props;
+    
+    
+    
     return (
-        <AccordionItem label={props.package.packageDisplay}>
-            {props.children}
-            {props.package.packageSeeDocumentationParagraph}
+        <AccordionItem
+            {...restAccordionItemProps}
+            
+            label={packageName.packageDisplay}
+        >
+            {description}
+            {packageName.packageSeeDocumentationParagraph}
         </AccordionItem>
     )
 }
