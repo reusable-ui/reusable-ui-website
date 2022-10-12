@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { pascalCase } from 'pascal-case'
 import { DetermineCurrentPageProps, useDetermineCurrentPage } from '@reusable-ui/core'
 import { ButtonProps, Button } from '@reusable-ui/components'
+import { IntLink } from '../components/IntLink';
 
 
 
@@ -47,6 +48,22 @@ const ConditionalLink = (props: ConditionalLinkProps): React.ReactElement => {
         // children:
         linkWithChildren,
     );
+}
+
+
+
+export interface SeeDocumentationProps {
+    component        : React.ReactElement
+    startsUppercase ?: boolean
+    endsDot         ?: boolean
+}
+export const SeeDocumentation = ({component, startsUppercase = false, endsDot = false}: SeeDocumentationProps) => {
+    return (
+        <>
+            {startsUppercase ? 'See ' : 'see '}
+            the documentation of {component} here{endsDot ? '.' : ''}
+        </>
+    )
 }
 
 
@@ -112,6 +129,29 @@ export class PackageInfo {
             </ConditionalLink>
         );
     }
+    get packageSeeDocumentation() : React.ReactElement<SeeDocumentationProps> {
+        return (
+            <SeeDocumentation
+                component={<>{this.packageDisplay}</>}
+            />
+        );
+    }
+    get packageSeeDocumentationLink() {
+        return (
+            <IntLink to={this.packageUrl}>
+                {this.packageSeeDocumentation}
+            </IntLink>
+        );
+    }
+    get packageSeeDocumentationParagraph() {
+        return (
+            <p>
+                <IntLink to={this.packageUrl}>
+                    {React.cloneElement(this.packageSeeDocumentation, { startsUppercase: true, endsDot: true })}
+                </IntLink>
+            </p>
+        );
+    }
     
     // pages:
     get basePage() : string {
@@ -121,18 +161,9 @@ export class PackageInfo {
         return this.packageName;
     }
 }
-export class LibPackageInfo extends PackageInfo {
-    get componentTag() : string {
-        return `<${this.displayName ?? pascalCase(this.packageName)}>`;
-    }
-    get packageDisplay() : React.ReactNode {
-        return (
-            <code>
-                {this.componentTag}
-            </code>
-        );
-    }
-}
+
+
+
 export class BarrelPackageInfo extends PackageInfo {
     get packageDisplay() : React.ReactNode {
         return (
@@ -153,46 +184,82 @@ export class BarrelPackageInfo extends PackageInfo {
 
 
 
-export class CoreInfo extends LibPackageInfo {
+export class CoreInfo extends PackageInfo {
     get basePage() : string {
         return 'core';
     }
+    
+    get packagePrefix(): string {
+        throw Error('not implemented');
+    }
+    get packageNameWithPrefix() : string {
+        return `${this.packageName} ${this.packagePrefix}`;
+    }
+    get packageDisplay() : React.ReactNode {
+        return <code>{this.packageNameWithPrefix}</code>
+    }
+    get packageSeeDocumentation() : React.ReactElement<SeeDocumentationProps> {
+        return (
+            <SeeDocumentation
+                component={<>{`'${this.packageNameWithPrefix}'`}</>}
+            />
+        );
+    }
 }
 export class ConfigInfo extends CoreInfo {
-    get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName} config</code>
+    get packagePrefix(): string {
+        return 'config';
     }
 }
 export class UtilityInfo extends CoreInfo {
-    get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName} utility</code>
+    get packagePrefix(): string {
+        return 'utility';
     }
 }
 export class FeatureInfo extends CoreInfo {
-    get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName} feature</code>
+    get packagePrefix(): string {
+        return 'feature';
     }
 }
 export class CapabilityInfo extends CoreInfo {
-    get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName} capability</code>
+    get packagePrefix(): string {
+        return 'capability';
     }
 }
 export class VariantInfo extends CoreInfo {
-    get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName} variant</code>
+    get packagePrefix(): string {
+        return 'variant';
     }
 }
 export class StateInfo extends CoreInfo {
-    get packageDisplay() : React.ReactNode {
-        return <code>{this.packageName} state</code>
+    get packagePrefix(): string {
+        return 'state';
     }
 }
 
 
 
-export class ComponentInfo extends LibPackageInfo {
+export class ComponentInfo extends PackageInfo {
     get basePage() : string {
         return 'components';
+    }
+    
+    get packageDisplay() : React.ReactNode {
+        return (
+            <code>
+                {this.componentTag}
+            </code>
+        );
+    }
+    
+    get componentTag() : string {
+        return `<${this.displayName ?? pascalCase(this.packageName)}>`;
+    }
+    get packageSeeDocumentation() : React.ReactElement<SeeDocumentationProps> {
+        return (
+            <SeeDocumentation
+                component={<>{this.componentTag}</>}
+            />
+        );
     }
 }

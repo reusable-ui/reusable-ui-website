@@ -1,10 +1,11 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { AccordionItem, Accordion } from '../../components/Accordion'
+import { Accordion } from '../../components/Accordion'
 import { HeroSection, Main, Section } from '../../components/Section'
 import * as packages from '../../packages/packageList'
 import { IntLink } from '../../components/IntLink'
+import { PackageItem } from '../../packages/PackageItem'
 
 
 
@@ -35,31 +36,31 @@ const Core: NextPage = () => {
                     Stores a <strong>global confuguration</strong> to be shared between components.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.colors.packageDisplay}>
+                    <PackageItem package={packages.colors}>
                         <p>
                             A centralized <strong>color management system</strong> using css variables (css custom properties).
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.borders.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.borders}>
                         <p>
                             A centralized <strong>border (stroke) management system</strong> using css variables (css custom properties).
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.spacers.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.spacers}>
                         <p>
                             A centralized <strong>spacer (margins/paddings/gaps) management system</strong> using css variables (css custom properties).
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.breakpoints.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.breakpoints}>
                         <p>
                             A centralized <strong>responsive management system</strong> based on browser&apos;s screen width.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.typos.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.typos}>
                         <p>
                             A centralized <strong>typography management system</strong> using css variables (css custom properties).
                         </p>
-                    </AccordionItem>
+                    </PackageItem>
                 </Accordion>
             </Section>
             <Section title='Reusable-UI Utilities'>
@@ -67,61 +68,61 @@ const Core: NextPage = () => {
                     Provides <strong>common utility functions</strong> to be shared between components, so the overall bundle size is minimal.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.numbers.packageDisplay}>
+                    <PackageItem package={packages.numbers}>
                         <p>
                             A set of <strong>numeric utility functions</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.nodes.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.nodes}>
                         <p>
                             A set of <strong>React node utility functions</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.stripouts.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.stripouts}>
                         <p>
                             Removes <strong>browser&apos;s default stylesheet</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.layouts.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.layouts}>
                         <p>
                             A set of <strong>common layout mixins</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.hooks.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.hooks}>
                         <p>
                             A set of <strong>complement React helper hooks</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.semantics.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.semantics}>
                         <p>
                             A <strong>semantic management system</strong> for React components.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.accessibilities.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.accessibilities}>
                         <p>
                             An <strong>accessibility management system</strong> for react components.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.validations.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.validations}>
                         <p>
                             A <strong>validation management system</strong> for react components.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.focuses.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.focuses}>
                         <p>
                             A set of <strong>focusing-component functions</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.clientSides.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.clientSides}>
                         <p>
                             A set of <strong>client-side-link functions</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.navigations.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.navigations}>
                         <p>
                             A set of <strong>navigation functions</strong>.
                         </p>
-                    </AccordionItem>
+                    </PackageItem>
                 </Accordion>
             </Section>
             <Section title='Reusable-UI Features'>
@@ -137,36 +138,36 @@ const Core: NextPage = () => {
                     So, please <strong>don&apos;t</strong> write them <strong>directly</strong>, in order to the system to <strong>override</strong> them.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.background.packageDisplay}>
+                    <PackageItem package={packages.background}>
                         <p>
                             <strong>Background</strong> stuff of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.foreground.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.foreground}>
                         <p>
                             <strong>Foreground</strong> (text color) stuff of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.border.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.border}>
                         <p>
                             <strong>Border</strong> (stroke) stuff of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.ring.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.ring}>
                         <p>
                             <strong>Ring</strong> (focus indicator) color of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.animation.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.animation}>
                         <p>
                             <strong>Animation</strong> stuff of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.padding.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.padding}>
                         <p>
                             <strong>Padding</strong> (inner spacing) stuff of UI.
                         </p>
-                    </AccordionItem>
+                    </PackageItem>
                 </Accordion>
             </Section>
             <Section title='Reusable-UI Capabilities'>
@@ -174,16 +175,16 @@ const Core: NextPage = () => {
                     The <strong>capabilities</strong> of the component <strong>appearance</strong> or <strong>behavior</strong>.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.floatable.packageDisplay}>
+                    <PackageItem package={packages.floatable}>
                         <p>
                             A capability of UI to <strong>float/overlay on the top/beside</strong> the another UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.groupable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.groupable}>
                         <p>
                             <strong>Groups</strong> a list of UIs as a <strong>single UI</strong>.
                         </p>
-                    </AccordionItem>
+                    </PackageItem>
                 </Accordion>
             </Section>
             <Section title='Reusable-UI Variants'>
@@ -191,51 +192,51 @@ const Core: NextPage = () => {
                     The <strong>alternative appearances</strong> of the component layout without changing the component&apos;s functionality.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.orientationable.packageDisplay}>
+                    <PackageItem package={packages.orientationable}>
                         <p>
                             A capability of UI to <strong>rotate its layout</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.resizable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.resizable}>
                         <p>
                             <strong>Size options</strong> of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.themable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.themable}>
                         <p>
                             <strong>Color options</strong> of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.gradientable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.gradientable}>
                         <p>
                             <strong>Gradient variant</strong> of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.outlineable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.outlineable}>
                         <p>
                             <strong>Outlined variant</strong> (background-less) of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.mildable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.mildable}>
                         <p>
                             <strong>Mild variant</strong> (soft color) of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.nudible.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.nudible}>
                         <p>
                             <strong>Nude variant</strong> (background-less + border-less + padding-less) of UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.colorable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.colorable}>
                         <p>
                             <strong>Colorize</strong> the UI based on <strong>its theme</strong> or the <strong>parent&apos;s background</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.basicVariants.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.basicVariants}>
                         <p>
                             Copies the <strong>basic variants</strong> from <strong>related  component</strong>.
                         </p>
-                    </AccordionItem>
+                    </PackageItem>
                 </Accordion>
             </Section>
             <Section title='Reusable-UI States'>
@@ -243,61 +244,61 @@ const Core: NextPage = () => {
                     The <strong>conditions</strong> of the component <strong>behavior</strong> or <strong>functionality</strong>.
                 </p>
                 <Accordion theme='primary'>
-                    <AccordionItem label={packages.excitable.packageDisplay}>
+                    <PackageItem package={packages.excitable}>
                         <p>
                             A capability of UI to <strong>highlight itself</strong> to attract user&apos;s attention.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.collapsible.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.collapsible}>
                         <p>
                             A capability of UI to <strong>expand/reduce its size</strong> or <strong>toggle the visibility</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.disableable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.disableable}>
                         <p>
                             A capability of UI to be <strong>disabled</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.activatable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.activatable}>
                         <p>
                             A capability of UI to be <strong>highlighted/selected/activated</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.focusable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.focusable}>
                         <p>
                             A capability of UI to be <strong>focused</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.interactable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.interactable}>
                         <p>
                             Adds an <strong>interactive feel</strong> to a UI.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.clickable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.clickable}>
                         <p>
                             A capability of UI to be <strong>clicked</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.activeAsClick.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.activeAsClick}>
                         <p>
                             Shows the UI as <strong>clicked</strong> (pressed) when <strong>activated</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.invalidable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.invalidable}>
                         <p>
                             A possibility of UI having an <strong>invalid state</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.checkable.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.checkable}>
                         <p>
                             A capability of UI to be <strong>checked</strong>.
                         </p>
-                    </AccordionItem>
-                    <AccordionItem label={packages.validationIcon.packageDisplay}>
+                    </PackageItem>
+                    <PackageItem package={packages.validationIcon}>
                         <p>
                             An <strong>icon</strong> for indicating a <strong>validity status</strong>.
                         </p>
-                    </AccordionItem>
+                    </PackageItem>
                 </Accordion>
             </Section>
         </Main>

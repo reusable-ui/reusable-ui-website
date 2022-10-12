@@ -97,9 +97,7 @@ export const SeeBaseComponentLinks = () : React.ReactElement|null => {
     if (!baseComponents) return null;
     return (
         <p>
-            You can <CommaSeparated components={[baseComponents].flat().map((baseComponent) => <IntLink to={baseComponent.packageUrl}>
-                see the documentation of {baseComponent.componentTag} here
-            </IntLink>)} />.
+            You can <CommaSeparated components={[baseComponents].flat().map((baseComponent) => baseComponent.packageSeeDocumentationLink)} />.
         </p>
     );
 }
