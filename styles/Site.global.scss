@@ -1,7 +1,8 @@
 .siteNavbar {
     &[class~='lazy'] {
-        box-sizing: border-box;
-        min-block-size: 60px !important;
-        padding-block: 0px !important;
+        box-sizing    : border-box;
+        block-size    : 60px !important;
+        overflow      : hidden;
+        padding-block : 0px !important;
     }
 }

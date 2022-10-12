@@ -38,6 +38,7 @@ const Header = () => {
                         className='siteNavbar lazy'
                         theme='primary'
                         mild={false}
+                        gradient={true}
                     />
                 }>
                     <SiteNavbarLazy />
