@@ -228,7 +228,7 @@ export const ComponentInstallation = () => {
             <p>
                 There are 2 ways to install <TheComponentDisplay /> component into your react app project: 
             </p>
-            <ExclusiveAccordion theme='primary'>
+            <ExclusiveAccordion lazy={true} theme='primary'>
                 <AccordionItem label={<>Install the <strong>Specific</strong> Package of <TheComponentDisplay /> Component</>}>
                     <p>
                         To install the <strong>minimal dependencies</strong> required by <TheComponentDisplay /> component,
