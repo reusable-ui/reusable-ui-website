@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 import { Navbar } from '@reusable-ui/components'
 
-const SiteNavbarMenuLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'./SiteNavbarMenu'));
+const SiteNavbarMenuLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbarMenu' */'./SiteNavbarMenu'));
 
 
 
