@@ -123,6 +123,11 @@ const Core: NextPage = () => {
                             A set of <strong>navigation functions</strong>.
                         </p>
                     </PackageItem>
+                    <PackageItem package={packages.animatingState}>
+                        <p>
+                            A hook for creating <strong>animating state</strong>.
+                        </p>
+                    </PackageItem>
                 </Accordion>
             </Section>
             <Section title='Reusable-UI Features'>

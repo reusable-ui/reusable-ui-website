@@ -21,6 +21,7 @@ export const validations            = new UtilityInfo('validations')
 export const focuses                = new UtilityInfo('focuses')
 export const clientSides            = new UtilityInfo('client-sides')
 export const navigations            = new UtilityInfo('navigations')
+export const animatingState         = new UtilityInfo('animating-state')
 
 // reusable-ui features:
 export const background             = new FeatureInfo('background')
