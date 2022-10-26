@@ -10,7 +10,7 @@ import '@cssfn/cssfn-dom'
 import '../website.config';
 import { siteVars } from '../website.config';
 
-import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
+import { Basic, ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 
 import { Section } from '../components/Section';
 import { ExtLink } from '../components/ExtLink';
@@ -35,6 +35,11 @@ const Header = () => {
             </Head>
             
             <header ref={headerRef}>
+                <Container tag='aside' theme='warning' size='sm' style={{ paddingBlock: '0.25rem', textAlign: 'center' }}>
+                    <p>
+                        This site is still <strong>under construction</strong>. There are lot of <em>broken links</em>.
+                    </p>
+                </Container>
                 {/* <Suspense fallback={
                     <Container
                         className='siteNavbar lazy'
