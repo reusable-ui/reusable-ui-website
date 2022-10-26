@@ -10,7 +10,7 @@ import '@cssfn/cssfn-dom'
 import '../website.config';
 import { siteVars } from '../website.config';
 
-import { Basic, ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
+import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 
 import { Section } from '../components/Section';
 import { ExtLink } from '../components/ExtLink';
