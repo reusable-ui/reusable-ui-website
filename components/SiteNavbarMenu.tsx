@@ -1,15 +1,15 @@
 import Link from 'next/link';
-import { ActionControl, Collapse, HamburgerMenuButton, Icon, Nav, NavbarParams, NavItem } from '@reusable-ui/components';
+import { Collapse, HamburgerMenuButton, Icon, Nav, NavbarParams, NavItem } from '@reusable-ui/components';
 
 
 
 const SiteLogo = () => {
     return (
-        <ActionControl nude={true} mild={false}>
-            <Link href='/'>
+        <Link href='/'>
+            <a>
                 <Icon icon='reusable-ui' size='lg' />
-            </Link>
-        </ActionControl>
+            </a>
+        </Link>
     );
 }
 

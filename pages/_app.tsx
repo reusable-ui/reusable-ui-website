@@ -37,7 +37,7 @@ const Header = () => {
             <header ref={headerRef}>
                 <Container tag='aside' theme='warning' size='sm' style={{ paddingBlock: '0.25rem' }}>
                     <p style={{lineHeight: 1, fontSize: '0.75rem', textAlign: 'center'}}>
-                        This site is still <strong>under construction</strong>. There are lot of <em>broken links</em>.
+                        This site is still <strong>under construction</strong>.
                     </p>
                 </Container>
                 {/* <Suspense fallback={
