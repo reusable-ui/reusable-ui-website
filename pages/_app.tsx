@@ -1,13 +1,14 @@
+import '../libs/cssfn-preload'
+import '@cssfn/cssfn-dom'
+
+import '../website.config';
+
 import '../styles/Site.global.scss'
 
 import React, { useRef } from 'react';
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-
-import '@cssfn/cssfn-dom'
-
-import '../website.config';
 import { siteVars } from '../website.config';
 
 import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
