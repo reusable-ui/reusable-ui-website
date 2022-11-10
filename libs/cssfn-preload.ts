@@ -2,4 +2,4 @@ import { ensureRendererWorkersReady } from '@cssfn/cssfn'
 
 
 
-const _loaded = await ensureRendererWorkersReady(5000);
+const _loaded = await ensureRendererWorkersReady();
