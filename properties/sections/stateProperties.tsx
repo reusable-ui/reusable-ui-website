@@ -236,23 +236,23 @@ export const DefaultActiveProperty = ({children: preview}: PreviewProps) => {
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
-                        Uses <strong>default</strong> initial value.
+                        Uses <strong>default</strong> initial state.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        The {properties.active.propertyShortLink} property is <strong>initially activated</strong>.
+                        The {properties.active.propertyShortLink} state is <strong>initially activated</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        The {properties.active.propertyShortLink} property is <strong>initially deactivated</strong>.
+                        The {properties.active.propertyShortLink} state is <strong>initially deactivated</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Defines the initial {properties.active.propertyShortLink} property&apos;s value when the <TheComponentDisplay /> is first loaded.
+                <strong>Defines</strong> the <strong>initial</strong> {properties.active.propertyShortLink} state when the <TheComponentDisplay /> is <strong>first loaded</strong>.
             </p>
         </PropertySection>
     );
@@ -261,7 +261,7 @@ export const OnActiveChangeProperty = ({children: preview}: PreviewProps) => {
     return (
         <PropertySection property={properties.onActiveChange} preview={preview}>
             <p>
-                <strong>Executes</strong> a JavaScript&apos;s <strong>callback function</strong> when the {properties.active.propertyShortLink} property&apos;s value is <strong>changed</strong>.
+                <strong>Executes</strong> a JavaScript&apos;s <strong>callback function</strong> when the {properties.active.propertyShortLink} state <strong>changed</strong>.
             </p>
         </PropertySection>
     );

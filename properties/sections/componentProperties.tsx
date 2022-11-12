@@ -142,8 +142,8 @@ export const ButtonChildrenProperty = ({children: preview, buttonChildrenAsNeste
 `<${componentName} buttonComponent={
     <Button>
         <span>Hello World</span>
-    </Button>}
-/>`
+    </Button>
+} />`
                 }</TypeScriptCode>
                 {buttonChildrenAsNested && <>
                     is equivalent to:
