@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { button, toggleButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ToggleButton as OriToggleButton, ToggleButtonProps, Control, List, ListItem } from '@reusable-ui/components'
@@ -28,7 +28,7 @@ const ToggleButtonPage: NextPage = () => {
             <meta name="description" content={`${toggleButton.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentDisplay /> is a {button.packageLink} component with toggleable {active.propertyShortLink} state each time the <TheComponentDisplay /> is clicked.<br />
                 </p>
@@ -69,6 +69,34 @@ const ToggleButtonPage: NextPage = () => {
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
             <VariantProperties>
+                <OrientationProperty>
+                    <Preview display='right' stretch={false}>
+                        {orientationOptions.map((orientationName, index) =>
+                            <ToggleButton
+                                key={index}
+                                orientation={orientationName}
+                            >
+                                <span>A {'<ToggleButton>'}</span>
+                                <span>with</span>
+                                <span>{orientationName} oriented</span>
+                            </ToggleButton>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {orientationOptions.map((orientationName) =>
+`
+<ToggleButton
+    orientation='${orientationName}'
+>
+    <span>A {'<ToggleButton>'}</span>
+    <span>with</span>
+    <span>${orientationName} oriented</span>
+</ToggleButton>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OrientationProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>

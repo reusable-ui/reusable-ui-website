@@ -19,7 +19,7 @@ export const ComponentProperties = ({children} : ComponentPropertiesProps) => {
     return (
         <Section title='Component Properties'>
             <p>
-                <strong>Overwrites</strong> the internal (sub) components used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Overwrites the <strong>internal (sub) components</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
             {children}
         </Section>
@@ -35,7 +35,7 @@ export const ButtonComponentProperty = ({children: preview} : ButtonComponentPro
     return (
         <PropertySection property={properties.buttonComponent} preview={preview}>
             <p>
-                <strong>Overwrites</strong> the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Overwrites the <strong>internal {button.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
         </PropertySection>
     );
@@ -50,7 +50,7 @@ export const ButtonRefProperty = ({children: preview} : ButtonRefPropertyProps) 
     return (
         <PropertySection property={properties.buttonRef} preview={preview}>
             <p>
-                <strong>Gets</strong> the <strong>DOM reference</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Gets the <strong>DOM reference</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
             <p>
                 <TypeScriptCode collapsible={false}>{
@@ -76,7 +76,7 @@ export const ButtonOrientationProperty = ({children: preview} : ButtonRefPropert
     return (
         <PropertySection property={properties.buttonOrientation} preview={preview}>
             <p>
-                <strong>Sets</strong> the <strong>orientation</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Sets the <strong>orientation</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
             <p>
                 <TypeScriptCode collapsible={false}>{
@@ -102,7 +102,7 @@ export const ButtonStyleProperty = ({children: preview} : ButtonStylePropertyPro
     return (
         <PropertySection property={properties.buttonStyle} preview={preview}>
             <p>
-                <strong>Sets</strong> the <strong>alternative appearance</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Sets the <strong>alternative appearance</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
             <p>
                 <TypeScriptCode collapsible={false}>{
@@ -129,7 +129,7 @@ export const ButtonChildrenProperty = ({children: preview, buttonChildrenAsNeste
     return (
         <PropertySection property={properties.buttonChildren} preview={preview}>
             <p>
-                <strong>Defines</strong> the <strong>nested element</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Defines the <strong>nested element</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
             <p>
                 <TypeScriptCode collapsible={false}>{

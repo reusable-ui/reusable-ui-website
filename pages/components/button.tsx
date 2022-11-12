@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { actionControl, button } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
@@ -27,7 +27,7 @@ const ButtonPage: NextPage = () => {
             <meta name="description" content={`${button.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentDisplay /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
                 </p>
@@ -59,6 +59,34 @@ const ButtonPage: NextPage = () => {
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
             <VariantProperties>
+                <OrientationProperty>
+                    <Preview display='right' stretch={false}>
+                        {orientationOptions.map((orientationName, index) =>
+                            <Button
+                                key={index}
+                                orientation={orientationName}
+                            >
+                                <span>A {'<Button>'}</span>
+                                <span>with</span>
+                                <span>{orientationName} oriented</span>
+                            </Button>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {orientationOptions.map((orientationName) =>
+`
+<Button
+    orientation='${orientationName}'
+>
+    <span>A {'<Button>'}</span>
+    <span>with</span>
+    <span>${orientationName} oriented</span>
+</Button>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OrientationProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>

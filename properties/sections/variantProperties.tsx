@@ -1,5 +1,5 @@
 import React from 'react'
-import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
+import { OrientationName, SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import type { SizeName as IconSizeName } from '@reusable-ui/icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
@@ -9,10 +9,12 @@ import { Tips } from '../../components/Warning'
 
 
 
-export const sizeOptions     : (SizeName|undefined)[]     = ['sm', undefined, 'lg'];
-export const iconSizeOptions : (IconSizeName|undefined)[] = ['sm', 'nm', 'md', 'lg'];
+export const sizeOptions        : (SizeName|undefined)[]     = ['sm', undefined, 'lg'];
+export const iconSizeOptions    : (IconSizeName|undefined)[] = ['sm', 'nm', 'md', 'lg'];
 
-export const themeOptions : ThemeName[] = getThemeOptions();
+export const themeOptions       : ThemeName[]                = getThemeOptions();
+
+export const orientationOptions : OrientationName[]          = ['inline', 'block'];
 
 
 
@@ -273,3 +275,32 @@ export const NudeProperty = ({children: preview}: PreviewProps) => {
     );
 }
 
+
+
+export const OrientationProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.orientation} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> orientation setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inline'</code>}>
+                    <p>
+                        Set the orientation to <strong>horizontal</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'block'</code>}>
+                    <p>
+                        Set the orientation to <strong>vertical</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>orientation</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
