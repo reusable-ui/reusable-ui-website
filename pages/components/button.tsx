@@ -271,7 +271,7 @@ const ButtonPage: NextPage = () => {
                 </InheritEnabledProperty>
                 <ReadOnlyProperty />
                 <InheritReadOnlyProperty />
-                <ActiveProperty>
+                <ActiveProperty outlinedMildWarning={false}>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
                             <Button

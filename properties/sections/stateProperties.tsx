@@ -161,7 +161,10 @@ export const InheritReadOnlyProperty = ({children: preview}: PreviewProps) => {
     );
 }
 
-export const ActiveProperty = ({children: preview}: PreviewProps) => {
+export interface ActivePropertyProps extends PreviewProps {
+    outlinedMildWarning ?: boolean
+}
+export const ActiveProperty = ({children: preview, outlinedMildWarning = true}: ActivePropertyProps) => {
     return (
         <PropertySection property={properties.active} preview={preview} possibleValues={
             <Accordion>
@@ -191,12 +194,12 @@ export const ActiveProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Defines the current <strong>active state</strong> of the component.
             </p>
-            <Warning>
+            {outlinedMildWarning && <Warning>
                 <p>
                     The default <em>styling implementation</em> of active state is by removing {outlineable.packageShortLink} and {mildable.packageShortLink} effects.
                     So if the {outlineable.packageShortLink} or {mildable.packageShortLink} is not activated, the {activatable.packageShortDisplay} is not <em>visually</em> visible.
                 </p>
-            </Warning>
+            </Warning>}
         </PropertySection>
     );
 }
@@ -223,6 +226,42 @@ export const InheritActiveProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Influences the component&apos;s {activatable.packageShortDisplay} by <code>{`<ancestor active={true}>`}</code>.
+            </p>
+        </PropertySection>
+    );
+}
+export const DefaultActiveProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.defaultActive} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> initial value.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        The {properties.active.propertyShortLink} property is <strong>initially activated</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        The {properties.active.propertyShortLink} property is <strong>initially deactivated</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Defines the initial {properties.active.propertyShortLink} property&apos;s value when the <TheComponentDisplay /> is first loaded.
+            </p>
+        </PropertySection>
+    );
+}
+export const OnActiveChangeProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.onActiveChange} preview={preview}>
+            <p>
+                <strong>Executes</strong> a JavaScript&apos;s <strong>callback function</strong> when the {properties.active.propertyShortLink} property&apos;s value is <strong>changed</strong>.
             </p>
         </PropertySection>
     );

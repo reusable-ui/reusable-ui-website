@@ -125,7 +125,7 @@ export const StateClassesProperty = () => {
                 Defines an array of classes which are <em>responsible</em> for changing the <strong>conditions</strong> of the component <strong>behavior</strong> or <strong>functionality</strong>.
             </p>
             <p>
-                For example: <code>stateClasses={`{['toggledOn', 'actived', 'pressed']}`}</code>.
+                For example: <code>stateClasses={`{['toggledOn', 'activated', 'pressed']}`}</code>.
             </p>
             <ParagraphStableReferenceArray />
         </PropertySection>

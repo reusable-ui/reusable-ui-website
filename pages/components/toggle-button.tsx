@@ -10,9 +10,10 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ToggleButton as OriToggleButton, ToggleButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
 import {tag, active, onClick} from '../../properties/propertyList'
+import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ButtonStyleProperty, ComponentProperties } from '../../properties/sections/componentProperties'
 
 
 
@@ -55,6 +56,15 @@ const ToggleButtonPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <DefaultActiveProperty />
+            <OnActiveChangeProperty />
+            <ComponentProperties>
+                <ButtonComponentProperty />
+                <ButtonRefProperty />
+                <ButtonOrientationProperty />
+                <ButtonStyleProperty />
+                <ButtonChildrenProperty buttonChildrenAsNested={true} />
+            </ComponentProperties>
             <ClientSideLinkPropertyOfButton />
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
@@ -271,7 +281,7 @@ const ToggleButtonPage: NextPage = () => {
                 </InheritEnabledProperty>
                 <ReadOnlyProperty />
                 <InheritReadOnlyProperty />
-                <ActiveProperty>
+                <ActiveProperty outlinedMildWarning={false}>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
                             <ToggleButton

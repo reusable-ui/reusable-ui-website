@@ -55,6 +55,8 @@ export const inheritReadOnly    = new PropertyInfo('inheritReadOnly')
 
 export const active             = new PropertyInfo('active')
 export const inheritActive      = new PropertyInfo('inheritActive')
+export const defaultActive      = new PropertyInfo('defaultActive')
+export const onActiveChange     = new PropertyInfo('onActiveChange')
 
 export const focused            = new PropertyInfo('focused')
 
@@ -78,3 +80,12 @@ export const icon               = new PropertyInfo('icon')
 // actions:
 export const href               = new PropertyInfo('href')
 export const onClick            = new PropertyInfo('onClick')
+
+
+
+// components:
+export const buttonComponent    = new PropertyInfo('buttonComponent')
+export const buttonRef          = new PropertyInfo('buttonRef')
+export const buttonOrientation  = new PropertyInfo('buttonOrientation')
+export const buttonStyle        = new PropertyInfo('buttonStyle')
+export const buttonChildren     = new PropertyInfo('buttonChildren')

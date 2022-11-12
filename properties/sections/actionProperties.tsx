@@ -22,8 +22,7 @@ export interface ClientSideLinkPropertyProps {
     children ?: React.ReactNode
 }
 export const ClientSideLinkProperty = ({tips, children: preview} : ClientSideLinkPropertyProps) => {
-    const {component: {componentTag}} = useComponentInfo();
-    const componentName = componentTag.slice(1, -1);
+    const {component: {componentName}} = useComponentInfo();
     
     return (
         <Section title='Client Side Link'>

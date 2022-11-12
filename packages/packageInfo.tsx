@@ -252,8 +252,11 @@ export class ComponentInfo extends PackageInfo {
         );
     }
     
+    get componentName() : string {
+        return this.displayName ?? pascalCase(this.packageName);
+    }
     get componentTag() : string {
-        return `<${this.displayName ?? pascalCase(this.packageName)}>`;
+        return `<${this.componentName}>`;
     }
     get packageSeeDocumentation() : React.ReactElement<SeeDocumentationProps> {
         return (
