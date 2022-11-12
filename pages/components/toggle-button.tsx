@@ -2,56 +2,56 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { actionControl, button } from '../../packages/packageList'
+import { button, toggleButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
+import { ToggleButton as OriToggleButton, ToggleButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
-import {tag, active} from '../../properties/propertyList'
+import {tag, active, onClick} from '../../properties/propertyList'
 
 
 
-const Button = (props: ButtonProps) => <OriButton {...props} theme={props.theme ?? 'primary'} />
+const ToggleButton = (props: ToggleButtonProps) => <OriToggleButton {...props} theme={props.theme ?? 'primary'} />
 
 
 
-const ButtonPage: NextPage = () => {
-    return (<ComponentContextProvider component={button} baseComponents={actionControl}>
+const ToggleButtonPage: NextPage = () => {
+    return (<ComponentContextProvider component={toggleButton} baseComponents={button}>
         <Head>
-            <title>{`${button.componentTag} Component`}</title>
-            <meta name="description" content={`${button.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
+            <title>{`${toggleButton.componentTag} Component`}</title>
+            <meta name="description" content={`${toggleButton.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
+                    <TheComponentDisplay /> is a {button.packageLink} component with toggleable {active.propertyShortLink} state each time the <TheComponentDisplay /> is clicked.<br />
                 </p>
                 <p>
-                    <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
+                    This is equivalent to a {button.packageLink} with {onClick.propertyShortLink} event handles the {active.propertyShortLink} property via <code>{`useState()`}</code>.
                 </p>
                 <p>
-                    The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+                    If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentDisplay /> becomes <em>useless</em>.
+                    So it&apos;s better to use {button.packageLink} <em>directly</em>.
                 </p>
-                <ParagraphChangeTagRole />
                 <p>
                     Here the demo:
                 </p>
                 <Preview display='right' stretch={false}>
-                    <Button theme='primary'>Regular</Button>
-                    <Button theme='success'>Success</Button>
-                    <Button theme='danger'>Error</Button>
-                    <Button theme='primary' gradient={true}>Gradient</Button>
-                    <Button theme='primary' mild={true}>Mild</Button>
-                    <Button theme='primary' outlined={true}>Outlined</Button>
-                    <Button theme='primary' buttonStyle='link'>Link</Button>
-                    <Button theme='primary' size='sm'>Small</Button>
-                    <Button theme='primary' size='lg'>Big</Button>
-                    <Button theme='primary' enabled={false}>Disabled</Button>
+                    <ToggleButton theme='primary'>Regular</ToggleButton>
+                    <ToggleButton theme='success'>Success</ToggleButton>
+                    <ToggleButton theme='danger'>Error</ToggleButton>
+                    <ToggleButton theme='primary' gradient={true}>Gradient</ToggleButton>
+                    <ToggleButton theme='primary' mild={true}>Mild</ToggleButton>
+                    <ToggleButton theme='primary' outlined={true}>Outlined</ToggleButton>
+                    <ToggleButton theme='primary' buttonStyle='link'>Link</ToggleButton>
+                    <ToggleButton theme='primary' size='sm'>Small</ToggleButton>
+                    <ToggleButton theme='primary' size='lg'>Big</ToggleButton>
+                    <ToggleButton theme='primary' enabled={false}>Disabled</ToggleButton>
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
@@ -62,23 +62,23 @@ const ButtonPage: NextPage = () => {
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Button>'} with {sizeName ?? 'default'} size
-                            </Button>
+                                A {'<ToggleButton>'} with {sizeName ?? 'default'} size
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {sizeOptions.map((sizeName) =>
 `
-<Button
+<ToggleButton
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-    A {'<Button>'} with ${sizeName ?? 'default'} size
-</Button>
+    A {'<ToggleButton>'} with ${sizeName ?? 'default'} size
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -86,23 +86,23 @@ const ButtonPage: NextPage = () => {
                 <ThemeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                             >
-                                A {'<Button>'} with {themeName} theme
-                            </Button>
+                                A {'<ToggleButton>'} with {themeName} theme
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
 >
-    A {'<Button>'} with ${themeName} theme
-</Button>
+    A {'<ToggleButton>'} with ${themeName} theme
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -110,25 +110,25 @@ const ButtonPage: NextPage = () => {
                 <GradientProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 gradient={true}
                             >
-                                A {'<Button>'} with gradient mode
-                            </Button>
+                                A {'<ToggleButton>'} with gradient mode
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     gradient={true}
 >
-    A {'<Button>'} with gradient mode
-</Button>
+    A {'<ToggleButton>'} with gradient mode
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -136,25 +136,25 @@ const ButtonPage: NextPage = () => {
                 <OutlinedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 outlined={true}
                             >
-                                A {'<Button>'} with outlined mode
-                            </Button>
+                                A {'<ToggleButton>'} with outlined mode
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     outlined={true}
 >
-    A {'<Button>'} with outlined mode
-</Button>
+    A {'<ToggleButton>'} with outlined mode
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -162,25 +162,25 @@ const ButtonPage: NextPage = () => {
                 <MildProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 mild={true}
                             >
-                                A {'<Button>'} with mild mode
-                            </Button>
+                                A {'<ToggleButton>'} with mild mode
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     mild={true}
 >
-    A {'<Button>'} with mild mode
-</Button>
+    A {'<ToggleButton>'} with mild mode
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -188,25 +188,25 @@ const ButtonPage: NextPage = () => {
                 <NudeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 nude={true}
                             >
-                                A {'<Button>'} with nude mode
-                            </Button>
+                                A {'<ToggleButton>'} with nude mode
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     nude={true}
 >
-    A {'<Button>'} with nude mode
-</Button>
+    A {'<ToggleButton>'} with nude mode
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -216,25 +216,25 @@ const ButtonPage: NextPage = () => {
                 <EnabledProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 enabled={false}
                             >
-                                A {'<Button>'} with disabled state
-                            </Button>
+                                A {'<ToggleButton>'} with disabled state
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     enabled={false}
 >
-    A {'<Button>'} with disabled state
-</Button>
+    A {'<ToggleButton>'} with disabled state
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -243,13 +243,13 @@ const ButtonPage: NextPage = () => {
                     <Preview>
                         {themeOptions.map((themeName, index) =>
                             <Control key={index} theme='primary' enabled={false}>
-                                <Button
+                                <ToggleButton
                                     key={index}
                                     theme={themeName}
                                     inheritEnabled={true}
                                 >
-                                    A {'<Button>'} with inherit enabled
-                                </Button>
+                                    A {'<ToggleButton>'} with inherit enabled
+                                </ToggleButton>
                             </Control>
                         )}
                     </Preview>
@@ -258,12 +258,12 @@ const ButtonPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Control theme='primary' enabled={false}>
-    <Button
+    <ToggleButton
         theme='${themeName}'
         inheritEnabled={true}
     >
-        A {'<Button>'} with inherit enabled
-    </Button>
+        A {'<ToggleButton>'} with inherit enabled
+    </ToggleButton>
 </Control>
 `
                         ).join('')}
@@ -274,25 +274,25 @@ const ButtonPage: NextPage = () => {
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 active={true}
                             >
-                                A {'<Button>'} with active state
-                            </Button>
+                                A {'<ToggleButton>'} with active state
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     active={true}
 >
-    A {'<Button>'} with active state
-</Button>
+    A {'<ToggleButton>'} with active state
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -301,13 +301,13 @@ const ButtonPage: NextPage = () => {
                     <Preview>
                         {themeOptions.map((themeName, index) =>
                             <Control key={index} theme='primary' active={true}>
-                                <Button
+                                <ToggleButton
                                     key={index}
                                     theme={themeName}
                                     inheritActive={true}
                                 >
-                                    A {'<Button>'} with inherit active
-                                </Button>
+                                    A {'<ToggleButton>'} with inherit active
+                                </ToggleButton>
                             </Control>
                         )}
                     </Preview>
@@ -316,12 +316,12 @@ const ButtonPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Control theme='primary' active={true}>
-    <Button
+    <ToggleButton
         theme='${themeName}'
         inheritActive={true}
     >
-        A {'<Button>'} with inherit active
-    </Button>
+        A {'<ToggleButton>'} with inherit active
+    </ToggleButton>
 </Control>
 `
                         ).join('')}
@@ -330,25 +330,25 @@ const ButtonPage: NextPage = () => {
                 <FocusedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
-                            <Button
+                            <ToggleButton
                                 key={index}
                                 theme={themeName}
                                 focused={true}
                             >
-                                A {'<Button>'} with focus indicator
-                            </Button>
+                                A {'<ToggleButton>'} with focus indicator
+                            </ToggleButton>
                         )}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     focused={true}
 >
-    A {'<Button>'} with focus indicator
-</Button>
+    A {'<ToggleButton>'} with focus indicator
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -356,48 +356,48 @@ const ButtonPage: NextPage = () => {
                 <ArrivedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Button
+                            <ToggleButton
                                 theme={themeName}
                                 arrived={false}
                             >
-                                A {'<Button>'} without arrive indicator
-                            </Button>
-                            <Button
+                                A {'<ToggleButton>'} without arrive indicator
+                            </ToggleButton>
+                            <ToggleButton
                                 theme={themeName}
                                 arrived={true}
                             >
-                                A {'<Button>'} with arrive indicator
-                            </Button>
-                            <Button
+                                A {'<ToggleButton>'} with arrive indicator
+                            </ToggleButton>
+                            <ToggleButton
                                 theme={themeName}
                                 arrived={undefined}
                             >
-                                A {'<Button>'} with auto arrive indicator
-                            </Button>
+                                A {'<ToggleButton>'} with auto arrive indicator
+                            </ToggleButton>
                         </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     arrived={false}
 >
-    A {'<Button>'} without arrive indicator
-</Button>
-<Button
+    A {'<ToggleButton>'} without arrive indicator
+</ToggleButton>
+<ToggleButton
     theme='${themeName}'
     arrived={true}
 >
-    A {'<Button>'} with arrive indicator
-</Button>
-<Button
+    A {'<ToggleButton>'} with arrive indicator
+</ToggleButton>
+<ToggleButton
     theme='${themeName}'
     arrived={undefined}
 >
-    A {'<Button>'} with auto arrive indicator
-</Button>
+    A {'<ToggleButton>'} with auto arrive indicator
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -405,48 +405,48 @@ const ButtonPage: NextPage = () => {
                 <PressedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Button
+                            <ToggleButton
                                 theme={themeName}
                                 pressed={false}
                             >
-                                A {'<Button>'} without pressed indicator
-                            </Button>
-                            <Button
+                                A {'<ToggleButton>'} without pressed indicator
+                            </ToggleButton>
+                            <ToggleButton
                                 theme={themeName}
                                 pressed={true}
                             >
-                                A {'<Button>'} with pressed indicator
-                            </Button>
-                            <Button
+                                A {'<ToggleButton>'} with pressed indicator
+                            </ToggleButton>
+                            <ToggleButton
                                 theme={themeName}
                                 pressed={undefined}
                             >
-                                A {'<Button>'} with auto pressed indicator
-                            </Button>
+                                A {'<ToggleButton>'} with auto pressed indicator
+                            </ToggleButton>
                         </React.Fragment>)}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
                         {themeOptions.map((themeName) =>
 `
-<Button
+<ToggleButton
     theme='${themeName}'
     pressed={false}
 >
-    A {'<Button>'} without pressed indicator
-</Button>
-<Button
+    A {'<ToggleButton>'} without pressed indicator
+</ToggleButton>
+<ToggleButton
     theme='${themeName}'
     pressed={true}
 >
-    A {'<Button>'} with pressed indicator
-</Button>
-<Button
+    A {'<ToggleButton>'} with pressed indicator
+</ToggleButton>
+<ToggleButton
     theme='${themeName}'
     pressed={undefined}
 >
-    A {'<Button>'} with auto pressed indicator
-</Button>
+    A {'<ToggleButton>'} with auto pressed indicator
+</ToggleButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -509,11 +509,11 @@ const ButtonPage: NextPage = () => {
 `
 // put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
 
-import {buttons, buttonValues} from '@reusable-ui/button';
+import {toggleButtons, toggleButtonValues} from '@reusable-ui/toggle-button';
 
-buttons.whiteSpace = 'nowrap';
-console.log('whiteSpace variable name: ', buttons.whiteSpace);
-console.log('whiteSpace variable value: ', buttonValues.whiteSpace);
+toggleButtons.whiteSpace = 'nowrap';
+console.log('whiteSpace variable name: ', toggleButtons.whiteSpace);
+console.log('whiteSpace variable value: ', toggleButtonValues.whiteSpace);
 `
                 }</TypeScriptCode>
             </Variables>
@@ -521,4 +521,4 @@ console.log('whiteSpace variable value: ', buttonValues.whiteSpace);
     </ComponentContextProvider>);
 }
 
-export default ButtonPage
+export default ToggleButtonPage

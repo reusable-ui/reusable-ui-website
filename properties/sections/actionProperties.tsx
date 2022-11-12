@@ -76,6 +76,11 @@ export const ClientSideLinkProperty = ({tips, children: preview} : ClientSideLin
         </Section>
     );
 }
+export const ClientSideLinkPropertyOfButton = ({tips, ...rest} : ClientSideLinkPropertyProps) => {
+    return (
+        <ClientSideLinkProperty {...rest} tips={tips ?? <TipsAutoTagToAnchorForHref />} />
+    )
+}
 
 
 
@@ -94,6 +99,11 @@ export const HrefProperty = ({tips, children: preview}: HrefPropertyProps) => {
                 {tips}
             </>}
         </PropertySection>
+    );
+}
+export const HrefPropertyOfButton = ({tips, ...rest}: HrefPropertyProps) => {
+    return (
+        <HrefProperty {...rest} tips={tips ?? <TipsAutoTagToAnchorForHref />} />
     );
 }
 
@@ -116,3 +126,36 @@ export const OnClickProperty = ({tips, children: preview}: OnClickPropertyProps)
         </PropertySection>
     );
 }
+export const OnClickPropertyOfButton = ({tips, ...rest}: OnClickPropertyProps) => {
+    return (
+        <OnClickProperty {...rest} tips={tips ?? <TipsButtonTag />} />
+    );
+}
+
+
+
+export const ParagraphChangeTagRole = () => <p>
+    You can also <em>manually</em> change the {tag.propertyShortDisplay} and/or the {role.propertyShortDisplay} as well.
+</p>
+
+const TipsAutoTagToAnchorForLink = () => <Tips>
+    <p>
+        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+    </p>
+    <ParagraphChangeTagRole />
+</Tips>
+
+const TipsAutoTagToAnchorForHref = () => <Tips>
+    <p>
+        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if you assign the <code>{`href`}</code> property.
+    </p>
+    <ParagraphChangeTagRole />
+</Tips>
+
+const TipsButtonTag = () => <Tips>
+    <p>
+        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>remain</strong> to <code>{`<button>`}</code>,
+        as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+    </p>
+    <ParagraphChangeTagRole />
+</Tips>
