@@ -4,8 +4,10 @@ import type { SizeName as IconSizeName } from '@reusable-ui/icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { background, foreground, border, padding, themable, colorable } from '../../packages/packageList'
+import { background, foreground, border, padding, themable, colorable, carousel } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
+import { TheComponentLink } from '../../packages/componentContext'
+import { ButtonStyle } from '@reusable-ui/components'
 
 
 
@@ -15,6 +17,8 @@ export const iconSizeOptions    : (IconSizeName|undefined)[] = ['sm', 'nm', 'md'
 export const themeOptions       : ThemeName[]                = getThemeOptions();
 
 export const orientationOptions : OrientationName[]          = ['inline', 'block'];
+
+export const buttonStyleOptions : ButtonStyle[]              = ['regular', 'link', 'ghost'];
 
 
 
@@ -300,6 +304,45 @@ export const OrientationProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Sets the <strong>orientation</strong> of the component.
+            </p>
+        </PropertySection>
+    );
+}
+
+
+
+export const ButtonStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.buttonStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'link'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> appear as a <strong>link</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'ghost'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> appear <strong>semi invisible</strong>.
+                    </p>
+                    <p>
+                        Useful when placed on the top of an image without distracting the image.
+                        Used in {carousel.packageLink} component.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );

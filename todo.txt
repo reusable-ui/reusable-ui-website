@@ -1,3 +1,5 @@
+* docs <Button label>
+
 * add guide-using-component
 * add guide-create-component
 

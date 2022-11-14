@@ -4,16 +4,16 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { button, toggleButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ToggleButton as OriToggleButton, ToggleButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
-import {tag, active, onClick} from '../../properties/propertyList'
-import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ButtonStyleProperty, ComponentProperties } from '../../properties/sections/componentProperties'
+import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
+import {active, onClick} from '../../properties/propertyList'
+import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
 
 
 
@@ -60,15 +60,35 @@ const ToggleButtonPage: NextPage = () => {
             <OnActiveChangeProperty />
             <ComponentProperties>
                 <ButtonComponentProperty />
-                <ButtonRefProperty />
-                <ButtonOrientationProperty />
-                <ButtonStyleProperty />
-                <ButtonChildrenProperty buttonChildrenAsNested={true} />
             </ComponentProperties>
             <ClientSideLinkPropertyOfButton />
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
             <VariantProperties>
+                <ButtonStyleProperty>
+                    <Preview display='right' stretch={false}>
+                        {buttonStyleOptions.map((buttonStyle, index) =>
+                            <ToggleButton
+                                key={index}
+                                buttonStyle={buttonStyle}
+                            >
+                                A {'<ToggleButton>'} with {buttonStyle} style
+                            </ToggleButton>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {buttonStyleOptions.map((buttonStyle) =>
+`
+<ToggleButton
+    buttonStyle='${buttonStyle}'
+>
+    A {'<ToggleButton>'} with ${buttonStyle} style
+</ToggleButton>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ButtonStyleProperty>
                 <OrientationProperty>
                     <Preview display='right' stretch={false}>
                         {orientationOptions.map((orientationName, index) =>

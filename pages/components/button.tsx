@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { actionControl, button } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
@@ -12,7 +12,7 @@ import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
-import {tag, active} from '../../properties/propertyList'
+import {tag} from '../../properties/propertyList'
 
 
 
@@ -59,6 +59,30 @@ const ButtonPage: NextPage = () => {
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
             <VariantProperties>
+                <ButtonStyleProperty>
+                    <Preview display='right' stretch={false}>
+                        {buttonStyleOptions.map((buttonStyle, index) =>
+                            <Button
+                                key={index}
+                                buttonStyle={buttonStyle}
+                            >
+                                A {'<Button>'} with {buttonStyle} style
+                            </Button>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {buttonStyleOptions.map((buttonStyle) =>
+`
+<Button
+    buttonStyle='${buttonStyle}'
+>
+    A {'<Button>'} with ${buttonStyle} style
+</Button>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ButtonStyleProperty>
                 <OrientationProperty>
                     <Preview display='right' stretch={false}>
                         {orientationOptions.map((orientationName, index) =>

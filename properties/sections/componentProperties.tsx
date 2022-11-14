@@ -32,11 +32,18 @@ export interface ButtonComponentPropertyProps {
     children ?: React.ReactNode
 }
 export const ButtonComponentProperty = ({children: preview} : ButtonComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.buttonComponent} preview={preview}>
             <p>
                 Overwrites the <strong>internal {button.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} buttonComponent={
+    <MyCustomButton />
+} />`
+            }</TypeScriptCode>
         </PropertySection>
     );
 }
@@ -52,17 +59,15 @@ export const ButtonRefProperty = ({children: preview} : ButtonRefPropertyProps) 
             <p>
                 Gets the <strong>DOM reference</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
-            <p>
-                <TypeScriptCode collapsible={false}>{
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonRef={fooButtonRef} />`
-                }</TypeScriptCode>
-                is equivalent to:
-                <TypeScriptCode collapsible={false}>{
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonComponent={
     <Button elmRef={fooButtonRef} />
 } />`
-                }</TypeScriptCode>
-            </p>
+            }</TypeScriptCode>
         </PropertySection>
     );
 }
@@ -78,22 +83,20 @@ export const ButtonOrientationProperty = ({children: preview} : ButtonRefPropert
             <p>
                 Sets the <strong>orientation</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
-            <p>
-                <TypeScriptCode collapsible={false}>{
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonOrientation='inline' />`
-                }</TypeScriptCode>
-                is equivalent to:
-                <TypeScriptCode collapsible={false}>{
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonComponent={
     <Button orientation='inline' />
 } />`
-                }</TypeScriptCode>
-            </p>
+            }</TypeScriptCode>
         </PropertySection>
     );
 }
 
-export interface ButtonStylePropertyProps {
+/*export interface ButtonStylePropertyProps {
     children ?: React.ReactNode
 }
 export const ButtonStyleProperty = ({children: preview} : ButtonStylePropertyProps) => {
@@ -104,26 +107,23 @@ export const ButtonStyleProperty = ({children: preview} : ButtonStylePropertyPro
             <p>
                 Sets the <strong>alternative appearance</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
-            <p>
-                <TypeScriptCode collapsible={false}>{
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonStyle='link' />`
-                }</TypeScriptCode>
-                is equivalent to:
-                <TypeScriptCode collapsible={false}>{
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonComponent={
     <Button buttonStyle='link' />
 } />`
-                }</TypeScriptCode>
-            </p>
+            }</TypeScriptCode>
         </PropertySection>
     );
-}
+}*/
 
 export interface ButtonChildrenPropertyProps {
     children ?: React.ReactNode
-    buttonChildrenAsNested ?: boolean
 }
-export const ButtonChildrenProperty = ({children: preview, buttonChildrenAsNested = false} : ButtonChildrenPropertyProps) => {
+export const ButtonChildrenProperty = ({children: preview} : ButtonChildrenPropertyProps) => {
     const {component: {componentName}} = useComponentInfo();
     
     return (
@@ -131,29 +131,19 @@ export const ButtonChildrenProperty = ({children: preview, buttonChildrenAsNeste
             <p>
                 Defines the <strong>nested element</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
             </p>
-            <p>
-                <TypeScriptCode collapsible={false}>{
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonChildren={
     <span>Hello World</span>
 } />`}
-                </TypeScriptCode>
-                is equivalent to:
-                <TypeScriptCode collapsible={false}>{
+            </TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
 `<${componentName} buttonComponent={
     <Button>
         <span>Hello World</span>
     </Button>
 } />`
-                }</TypeScriptCode>
-                {buttonChildrenAsNested && <>
-                    is equivalent to:
-                    <TypeScriptCode collapsible={false}>{
-`<${componentName}>
-    <span>Hello World</span>
-</${componentName}>`
-                    }</TypeScriptCode>
-                </>}
-            </p>
+            }</TypeScriptCode>
         </PropertySection>
     );
 }
