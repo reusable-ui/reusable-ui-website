@@ -1,24 +1,28 @@
 import React from 'react'
 import { OrientationName, SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import type { SizeName as IconSizeName } from '@reusable-ui/icon'
+import type { SizeName as ButtonIconSizeName } from '@reusable-ui/button-icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink } from '../../packages/componentContext'
-import { ButtonStyle } from '@reusable-ui/components'
+import { ButtonStyle, IconPosition } from '@reusable-ui/components'
 
 
 
-export const sizeOptions        : (SizeName|undefined)[]     = ['sm', undefined, 'lg'];
-export const iconSizeOptions    : (IconSizeName|undefined)[] = ['sm', 'nm', 'md', 'lg'];
+export const sizeOptions               : (SizeName|undefined)[]           = ['sm', undefined, 'lg'];
+export const iconSizeOptions           : (IconSizeName|undefined)[]       = ['sm', 'nm', 'md', 'lg'];
+export const buttonIconSizeOptions     : (ButtonIconSizeName|undefined)[] = ['xs','sm', undefined, 'lg','xl'];
 
-export const themeOptions       : ThemeName[]                = getThemeOptions();
+export const buttonIconPositionOptions : IconPosition[]                   = ['start','end'];
 
-export const orientationOptions : OrientationName[]          = ['inline', 'block'];
+export const themeOptions              : ThemeName[]                      = getThemeOptions();
 
-export const buttonStyleOptions : ButtonStyle[]              = ['regular', 'link', 'ghost'];
+export const orientationOptions        : OrientationName[]                = ['inline', 'block'];
+
+export const buttonStyleOptions        : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
 
 
 

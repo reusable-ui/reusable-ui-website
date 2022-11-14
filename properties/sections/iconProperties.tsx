@@ -4,7 +4,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { TheComponentDisplay } from '../../packages/componentContext';
 import { SizeProperty, SizePropertyProps } from "./variantProperties";
 import { Preview } from '../../components/Preview'
-import { PreviewProps, PropertySection, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { Basic, Details, ExclusiveAccordion, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
@@ -199,5 +199,69 @@ export const IconSizeProperty = ({possibleValues, ...restProps}: SizePropertyPro
                 </AccordionItem>
             </Accordion>
         } />
+    );
+}
+export const ButtonIconSizeProperty = ({possibleValues, ...restProps}: SizePropertyProps) => {
+    return (
+        <SizeProperty {...restProps} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'xs'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>more smaller</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'sm'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>smaller</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'lg'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>bigger</strong> size.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'xl'`}</code>}>
+                    <p>
+                        Makes the <TheComponentDisplay /> <strong>more bigger</strong> size.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        } />
+    );
+}
+
+
+export interface IconPositionPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+}
+export const ButtonIconPositionProperty = ({possibleValues, children: preview}: IconPositionPropertyProps) => {
+    return (
+        <PropertySection property={properties.iconPosition} preview={preview} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> position.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'start'`}</code>}>
+                    <p>
+                        The icon is positioned <strong>at the beginning</strong> of <code>writing-mode</code>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'end'`}</code>}>
+                    <p>
+                    The icon is positioned <strong>at the end</strong> of <code>writing-mode</code>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Determines the <strong>position</strong> of the icon.
+            </p>
+        </PropertySection>
     );
 }

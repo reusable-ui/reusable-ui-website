@@ -74,6 +74,7 @@ export const checkable          = new PropertyInfo('checkable')
 
 // appearances:
 export const icon               = new PropertyInfo('icon')
+export const iconPosition       = new PropertyInfo('iconPosition')
 
 
 
@@ -96,3 +97,5 @@ export const buttonRef          = new PropertyInfo('buttonRef')
 export const buttonOrientation  = new PropertyInfo('buttonOrientation')
 export const buttonStyle        = new PropertyInfo('buttonStyle')
 export const buttonChildren     = new PropertyInfo('buttonChildren')
+
+export const iconComponent      = new PropertyInfo('iconComponent')

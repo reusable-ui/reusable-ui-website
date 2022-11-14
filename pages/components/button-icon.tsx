@@ -4,15 +4,15 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { button, buttonIcon, icon } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
+import { ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions, buttonIconSizeOptions, buttonIconPositionOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { ButtonIcon as OriButtonIcon, ButtonIconProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
-import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
-import { DetailedIconProperty } from '../../properties/sections/iconProperties'
+import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
+import { ButtonIconPositionProperty, ButtonIconSizeProperty, DetailedIconProperty } from '../../properties/sections/iconProperties'
 
 
 
@@ -71,8 +71,34 @@ export const MyComponent = () => {
 `
                 }</TypeScriptCode>
             </DetailedIconProperty>
+            <ButtonIconPositionProperty>
+                <Preview display='right' stretch={false}>
+                    {buttonIconPositionOptions.map((iconPosition, index) =>
+                        <ButtonIcon
+                            key={index}
+                            iconPosition={iconPosition}
+                        >
+                            A {'<ButtonIcon>'} with an icon at the {iconPosition}
+                        </ButtonIcon>
+                    )}
+                </Preview>
+                <p></p>
+                <TypeScriptCode>
+                    {buttonIconPositionOptions.map((iconPosition) =>
+`
+<ButtonIcon
+    iconPosition='${iconPosition}'
+    icon='face'
+>
+    A {'<ButtonIcon>'} with an icon at the ${iconPosition}
+</ButtonIcon>
+`
+                    ).join('')}
+                </TypeScriptCode>
+            </ButtonIconPositionProperty>
             <ComponentProperties>
                 <ButtonComponentProperty />
+                <IconComponentProperty />
             </ComponentProperties>
             <ClientSideLinkPropertyOfButton />
             <HrefPropertyOfButton />
@@ -95,6 +121,7 @@ export const MyComponent = () => {
 `
 <ButtonIcon
     buttonStyle='${buttonStyle}'
+    icon='face'
 >
     A {'<ButtonIcon>'} with ${buttonStyle} style
 </ButtonIcon>
@@ -121,6 +148,7 @@ export const MyComponent = () => {
 `
 <ButtonIcon
     orientation='${orientationName}'
+    icon='face'
 >
     <span>A {'<ButtonIcon>'}</span>
     <span>with</span>
@@ -130,9 +158,9 @@ export const MyComponent = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </OrientationProperty>
-                <SizeProperty>
+                <ButtonIconSizeProperty>
                     <Preview display='right' stretch={false}>
-                        {sizeOptions.map((sizeName, index) =>
+                        {buttonIconSizeOptions.map((sizeName, index) =>
                             <ButtonIcon
                                 key={index}
                                 size={sizeName}
@@ -143,17 +171,18 @@ export const MyComponent = () => {
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
-                        {sizeOptions.map((sizeName) =>
+                        {buttonIconSizeOptions.map((sizeName) =>
 `
 <ButtonIcon
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    icon='face'
 >
     A {'<ButtonIcon>'} with ${sizeName ?? 'default'} size
 </ButtonIcon>
 `
                         ).join('')}
                     </TypeScriptCode>
-                </SizeProperty>
+                </ButtonIconSizeProperty>
                 <ThemeProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
@@ -171,6 +200,7 @@ export const MyComponent = () => {
 `
 <ButtonIcon
     theme='${themeName}'
+    icon='face'
 >
     A {'<ButtonIcon>'} with ${themeName} theme
 </ButtonIcon>
@@ -197,6 +227,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     gradient={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with gradient mode
 </ButtonIcon>
@@ -223,6 +254,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     outlined={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with outlined mode
 </ButtonIcon>
@@ -249,6 +281,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     mild={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with mild mode
 </ButtonIcon>
@@ -275,6 +308,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     nude={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with nude mode
 </ButtonIcon>
@@ -303,6 +337,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     enabled={false}
+    icon='face'
 >
     A {'<ButtonIcon>'} with disabled state
 </ButtonIcon>
@@ -332,6 +367,7 @@ export const MyComponent = () => {
     <ButtonIcon
         theme='${themeName}'
         inheritEnabled={true}
+        icon='face'
     >
         A {'<ButtonIcon>'} with inherit enabled
     </ButtonIcon>
@@ -361,6 +397,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     active={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with active state
 </ButtonIcon>
@@ -390,6 +427,7 @@ export const MyComponent = () => {
     <ButtonIcon
         theme='${themeName}'
         inheritActive={true}
+        icon='face'
     >
         A {'<ButtonIcon>'} with inherit active
     </ButtonIcon>
@@ -417,6 +455,7 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     focused={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with focus indicator
 </ButtonIcon>
@@ -454,18 +493,21 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     arrived={false}
+    icon='face'
 >
     A {'<ButtonIcon>'} without arrive indicator
 </ButtonIcon>
 <ButtonIcon
     theme='${themeName}'
     arrived={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with arrive indicator
 </ButtonIcon>
 <ButtonIcon
     theme='${themeName}'
     arrived={undefined}
+    icon='face'
 >
     A {'<ButtonIcon>'} with auto arrive indicator
 </ButtonIcon>
@@ -503,18 +545,21 @@ export const MyComponent = () => {
 <ButtonIcon
     theme='${themeName}'
     pressed={false}
+    icon='face'
 >
     A {'<ButtonIcon>'} without pressed indicator
 </ButtonIcon>
 <ButtonIcon
     theme='${themeName}'
     pressed={true}
+    icon='face'
 >
     A {'<ButtonIcon>'} with pressed indicator
 </ButtonIcon>
 <ButtonIcon
     theme='${themeName}'
     pressed={undefined}
+    icon='face'
 >
     A {'<ButtonIcon>'} with auto pressed indicator
 </ButtonIcon>

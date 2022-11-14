@@ -5,7 +5,7 @@ import { PreviewProps, PropertySection, Section } from '../../components/Section
 import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
-import { button } from '../../packages/packageList'
+import { button, icon } from '../../packages/packageList'
 import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
 import {tag, role} from '../propertyList'
@@ -142,6 +142,28 @@ export const ButtonChildrenProperty = ({children: preview} : ButtonChildrenPrope
     <Button>
         <span>Hello World</span>
     </Button>
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface IconComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const IconComponentProperty = ({children: preview} : IconComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.iconComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {icon.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} iconComponent={
+    <MyCustomIcon />
 } />`
             }</TypeScriptCode>
         </PropertySection>
