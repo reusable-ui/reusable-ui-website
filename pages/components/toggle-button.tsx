@@ -1,13 +1,12 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { button, toggleButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { AccordionItem, Accordion } from '../../components/Accordion'
-import { ToggleButton as OriToggleButton, ToggleButtonProps, Control, List, ListItem } from '@reusable-ui/components'
+import { ToggleButton as OriToggleButton, ToggleButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
@@ -511,70 +510,6 @@ const ToggleButtonPage: NextPage = () => {
                 </PressedProperty>
             </StateProperties>
             <InheritedProperties />
-            <Variables variables={
-                <Accordion>
-                    <AccordionItem label='Spacings'>
-                        <List listStyle='flush'>
-                            <ListItem>
-                                <code>gapInline</code>
-                                <p>The default horizontal spacing between <TheComponentDisplay />&apos;s children.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>gapBlock</code>
-                                <p>The default vertical spacing between <TheComponentDisplay />&apos;s children.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>gapInlineSm</code>
-                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>gapBlockSm</code>
-                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>gapInlineLg</code>
-                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>gapBlockLg</code>
-                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
-                            </ListItem>
-                        </List>
-                    </AccordionItem>
-                    <AccordionItem label='Typos'>
-                        <List listStyle='flush'>
-                            <ListItem>
-                                <code>whiteSpace</code>
-                                <p>Defines how a <strong>white space</strong> inside <TheComponentDisplay /> is handled.</p>
-                            </ListItem>
-                        </List>
-                    </AccordionItem>
-                    <AccordionItem label='Styles'>
-                        <List listStyle='flush'>
-                            <ListItem>
-                                <code>ghostOpacity</code>
-                                <p>The default opacity level when <code>{`buttonStyle='ghost'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>ghostOpacityArrive</code>
-                                <p>The opacity level when <code>{`buttonStyle='ghost'`}</code> and a pointer is on the <TheComponentDisplay />.</p>
-                            </ListItem>
-                        </List>
-                    </AccordionItem>
-                </Accordion>
-            }>
-                <TypeScriptCode>{
-`
-// put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
-
-import {toggleButtons, toggleButtonValues} from '@reusable-ui/toggle-button';
-
-toggleButtons.whiteSpace = 'nowrap';
-console.log('whiteSpace variable name: ', toggleButtons.whiteSpace);
-console.log('whiteSpace variable value: ', toggleButtonValues.whiteSpace);
-`
-                }</TypeScriptCode>
-            </Variables>
         </Main>
     </ComponentContextProvider>);
 }
