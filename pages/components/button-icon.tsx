@@ -16,7 +16,7 @@ import { DetailedIconProperty } from '../../properties/sections/iconProperties'
 
 
 
-const ButtonIcon = (props: ButtonIconProps) => <OriButtonIcon {...props} theme={props.theme ?? 'primary'} />
+const ButtonIcon = (props: ButtonIconProps) => <OriButtonIcon {...props} theme={props.theme ?? 'primary'} icon={props.icon ?? 'face'} />
 
 
 
