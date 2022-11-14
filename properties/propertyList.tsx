@@ -83,6 +83,13 @@ export const onClick            = new PropertyInfo('onClick')
 
 
 
+// navigations:
+export const caseSensitive      = new PropertyInfo('caseSensitive')
+export const end                = new PropertyInfo('end')
+
+
+
+
 // components:
 export const buttonComponent    = new PropertyInfo('buttonComponent')
 export const buttonRef          = new PropertyInfo('buttonRef')
