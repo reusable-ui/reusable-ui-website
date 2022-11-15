@@ -25,7 +25,7 @@ const ButtonIconPage: NextPage = () => {
     return (<ComponentContextProvider component={buttonIcon} baseComponents={button}>
         <Head>
             <title>{`${buttonIcon.componentTag} Component`}</title>
-            <meta name="description" content={`${buttonIcon.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
+            <meta name="description" content={`${buttonIcon.componentTag} is a ${button.componentTag} component with built in ${icon.componentTag} component.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>

@@ -24,7 +24,7 @@ const ToggleButtonPage: NextPage = () => {
     return (<ComponentContextProvider component={toggleButton} baseComponents={button}>
         <Head>
             <title>{`${toggleButton.componentTag} Component`}</title>
-            <meta name="description" content={`${toggleButton.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
+            <meta name="description" content={`${toggleButton.componentTag} is a ${button.componentTag} component with toggleable ${active.propertyName} state each time the ${toggleButton.componentTag} is clicked.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>

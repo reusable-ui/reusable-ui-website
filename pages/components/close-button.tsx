@@ -24,7 +24,7 @@ const CloseButtonPage: NextPage = () => {
     return (<ComponentContextProvider component={closeButton} baseComponents={buttonIcon}>
         <Head>
             <title>{`${closeButton.componentTag} Component`}</title>
-            <meta name="description" content={`${closeButton.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
+            <meta name="description" content={`${closeButton.componentTag} is a special ${buttonIcon.componentTag} for dismising a content.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
