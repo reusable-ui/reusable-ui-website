@@ -30,7 +30,7 @@ const ButtonIconPage: NextPage = () => {
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a {button.packageLink} component with built in {icon.packageLink} component.<br />
+                    <TheComponentDisplay /> is a {button.packageLink} component with built in {icon.packageLink} component.
                 </p>
                 <p>
                     Here the demo:
