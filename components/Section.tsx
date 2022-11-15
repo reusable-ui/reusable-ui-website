@@ -220,7 +220,10 @@ export const PropertySection = (props: PropertySectionProps) => {
 
 
 
-export const ComponentInstallation = () => {
+export interface ComponentInstallationProps {
+    children ?: React.ReactNode
+}
+export const ComponentInstallation = ({children}: ComponentInstallationProps) => {
     const {component: {packageFullName}} = useComponentInfo();
     
     return (
@@ -275,6 +278,7 @@ pnpm add @reusable-ui/components
                     </Tips>
                 </AccordionItem>
             </ExclusiveAccordion>
+            {children}
         </Section>
     );
 }

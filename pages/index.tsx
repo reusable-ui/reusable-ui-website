@@ -20,7 +20,7 @@ const Home: NextPage = () => {
                 <h1 className='display-4'>Reusable-UI</h1>
                 <p className='display-6'>Reuse the components,<br />save your time now and next</p>
                 <div className='actions'>
-                    <Button icon='directions_run' theme='primary' size='lg'>
+                    <Button icon='directions_run' theme='primary' size='lg' gradient={true}>
                         <Link href='/guide-create-simple-app'>Get Started</Link>
                     </Button>
                 </div>

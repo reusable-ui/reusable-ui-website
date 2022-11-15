@@ -1,20 +1,64 @@
-import React, { Suspense, useEffect, useRef } from 'react'
+import React, { Suspense } from 'react'
 
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { TheComponentDisplay } from '../../packages/componentContext';
+import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext';
 import { SizeProperty, SizePropertyProps } from "./variantProperties";
 import { Preview } from '../../components/Preview'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { Basic, Details, ExclusiveAccordion, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
+import { Details, ExclusiveAccordion } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { Warning } from '../../components/Warning'
+import { Tips } from '../../components/Warning'
+import { icon } from '../../packages/packageList'
 
 import { BusyBar } from '../../components/BusyBar'
 import { ItemProps } from '../../components/Gallery';
 
 const IconGalleryLazy = React.lazy(() => import(/* webpackChunkName: 'IconGallery' */'../../components/IconGallery'))
 
+
+
+export const ConfiguringIconResources = () => {
+    const {component: {packageName}} = useComponentInfo();
+    const isCurrentIcon = (packageName === icon.packageName);
+    
+    return (
+        <>
+            <p>
+                {
+                    isCurrentIcon
+                    ?
+                    <>
+                        Because {icon.packageLink}
+                    </>
+                    :
+                    <>
+                        Because <TheComponentLink /> uses {icon.packageLink} and the {icon.packageLink} itself
+                    </>
+                }
+                {' '}needs to be configured first,
+                you&apos;ll need to do: <strong><u>Configuring {icon.packageDisplay}&apos;s Resources</u></strong> below:
+            </p>
+            <Section title={<>Configuring {icon.packageDisplay}&apos;s Resources</>}>
+                <p>
+                    <strong>After you install</strong> the <TheComponentLink />, you need to <strong>manually copy</strong> some resources into your <strong>application public directory</strong>.
+                </p>
+                <p>
+                    Go to <code>/node_modules/@reusable-ui/icon/public</code> directory.
+                    Inside it, copy the <code>fonts</code> and <code>icons</code> directories into <strong>application public directory</strong> (in React: <code>/public</code>).
+                    So, the final files are something like this:
+                </p>
+                <ul>
+                    <li><code>/public/fonts/*.(ttf|woff|woff2)</code></li>
+                    <li><code>/public/icons/*.svg</code></li>
+                </ul>
+                <p>
+                    Done! The required resources by the {!isCurrentIcon && <>{icon.packageLink} and </>} <TheComponentDisplay /> component are now set! 😉
+                </p>
+            </Section>
+        </>
+    );
+}
 
 
 export const IconProperty = ({children}: PreviewProps) => {
@@ -51,7 +95,7 @@ export const DetailedIconProperty = ({children, itemComponent}: DetailedIconProp
                 <p>
                     To add custom icons, for example a <strong>logo</strong> icon, follow these steps:
                 </p>
-                <ExclusiveAccordion lazy={true} theme='primary'>
+                <ExclusiveAccordion lazy={true} theme='primary' listStyle='numbered'>
                     <AccordionItem label='Prepare the Image'>
                         <p>
                             You can either use a <strong>SVG</strong> or <strong>PNG</strong> file format, but the SVG is more recommended.
@@ -122,11 +166,11 @@ iconConfig.image.files.push(
 `
                         }</TypeScriptCode>
                         <p></p>
-                        <Warning>
+                        <Tips>
                             <p>
                                 Because the <code>iconConfig</code> is a <strong>singleton</strong>, so you <strong>don&apos;t need</strong> to configure the <TheComponentDisplay /> on <strong>every page</strong> that uses it. Just configure it on the <strong>main file</strong> and done!
                             </p>
-                        </Warning>
+                        </Tips>
                     </AccordionItem>
                     <AccordionItem label='Using the Registered Custom Icons'>
                         <p>

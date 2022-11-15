@@ -1,18 +1,16 @@
-import React, { useEffect, useRef } from 'react'
+import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, ComponentInstallation, Section, Variables, HeroSection, Main } from '../../../components/Section'
+import { InheritedProperties, ComponentInstallation, Variables, HeroSection, Main } from '../../../components/Section'
 import { generic, icon } from '../../../packages/packageList'
 import * as packages from '../../../packages/packageList'
 import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../../properties/sections/variantProperties'
-import { DetailedIconProperty, IconSizeProperty as SizeProperty } from '../../../properties/sections/iconProperties'
+import { ConfiguringIconResources, DetailedIconProperty, IconSizeProperty as SizeProperty } from '../../../properties/sections/iconProperties'
 import { Preview } from '../../../components/Preview'
 import { AccordionItem, Accordion } from '../../../components/Accordion'
 import { Basic, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentPackage } from '../../../packages/componentContext'
-
-import { useRouter } from 'next/router'
+import { ComponentContextProvider, TheComponentDisplay } from '../../../packages/componentContext'
 
 
 
@@ -21,19 +19,19 @@ const Icon = (props: IconProps) => <OriIcon {...props} theme={props.theme ?? 'pr
 
 
 const IconPage: NextPage = () => {
-    const router = useRouter();
-    const params = router.query.params ?? [];
-    const param  = Array.isArray(params) ? params.join('/') : params;
+    // const router = useRouter();
+    // const params = router.query.params ?? [];
+    // const param  = Array.isArray(params) ? params.join('/') : params;
     
     
-    const sectionConfigureRef = useRef<HTMLElement>(null);
-    useEffect(() => {
-        switch(param.toLocaleLowerCase()) {
-            case 'configure':
-                sectionConfigureRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-                break;
-        } // switch
-    }, [param]);
+    // const sectionConfigureRef = useRef<HTMLElement>(null);
+    // useEffect(() => {
+    //     switch(param.toLocaleLowerCase()) {
+    //         case 'configure':
+    //             sectionConfigureRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    //             break;
+    //     } // switch
+    // }, [param]);
     
     
     
@@ -63,24 +61,9 @@ const IconPage: NextPage = () => {
                     <Icon icon='face' theme='primary' size='lg' />
                 </Preview>
             </HeroSection>
-            <ComponentInstallation />
-            <Section elmRef={sectionConfigureRef} title={<>Configuring <TheComponentDisplay />&apos;s Resources</>}>
-                <p>
-                    After you install the <TheComponentPackage />, you need to <strong>manually copy</strong> some resources into your <strong>application public directory</strong>.
-                </p>
-                <p>
-                    Go to <code>/node_modules/@reusable-ui/icon/public</code> directory.
-                    Inside it, copy the <code>fonts</code> and <code>icons</code> directories into <strong>application public directory</strong> (in React: <code>/public</code>).
-                    So, the final files are something like this:
-                </p>
-                <ul>
-                    <li><code>/public/fonts/*.(ttf|woff|woff2)</code></li>
-                    <li><code>/public/icons/*.svg</code></li>
-                </ul>
-                <p>
-                    Done! The required resources by the <TheComponentDisplay /> component are now set! 😉
-                </p>
-            </Section>
+            <ComponentInstallation>
+                <ConfiguringIconResources />
+            </ComponentInstallation>
             <DetailedIconProperty />
             <VariantProperties>
                 <SizeProperty>

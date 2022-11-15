@@ -1,18 +1,19 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { button, buttonIcon, icon } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions, buttonIconSizeOptions, buttonIconPositionOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { ButtonIcon as OriButtonIcon, ButtonIconProps, Control } from '@reusable-ui/components'
+import { AccordionItem, Accordion } from '../../components/Accordion'
+import { ButtonIcon as OriButtonIcon, ButtonIconProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
-import { ButtonIconPositionProperty, ButtonIconSizeProperty, DetailedIconProperty } from '../../properties/sections/iconProperties'
+import { ButtonIconPositionProperty, ButtonIconSizeProperty, ConfiguringIconResources, DetailedIconProperty } from '../../properties/sections/iconProperties'
 
 
 
@@ -44,7 +45,9 @@ const ButtonIconPage: NextPage = () => {
                     <ButtonIcon theme='primary' icon='file_download' enabled={false} orientation='block'>Download (member only)</ButtonIcon>
                 </Preview>
             </HeroSection>
-            <ComponentInstallation />
+            <ComponentInstallation>
+                <ConfiguringIconResources />
+            </ComponentInstallation>
             <DetailedIconProperty itemComponent={
                 (itemName) => <OriButtonIcon icon={itemName}><span className='label'>{itemName}</span></OriButtonIcon>
             }>
@@ -569,6 +572,155 @@ export const MyComponent = () => {
                 </PressedProperty>
             </StateProperties>
             <InheritedProperties />
+            <Variables variables={
+                <Accordion>
+                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>borderRadius</code>
+                                <p>The default rounded corner radius.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderRadiusXs</code>
+                                <p>The rounded corner radius when <code>{`size='xs'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderRadiusSm</code>
+                                <p>The rounded corner radius when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderRadiusLg</code>
+                                <p>The rounded corner radius when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>borderRadiusXl</code>
+                                <p>The rounded corner radius when <code>{`size='xl'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Spacings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>paddingInline</code>
+                                <p>The default inner spacing on the left &amp; right.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlock</code>
+                                <p>The default inner spacing on the top &amp; bottom.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingInlineXs</code>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='xs'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlockXs</code>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='xs'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingInlineSm</code>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlockSm</code>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingInlineLg</code>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlockLg</code>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingInlineXl</code>
+                                <p>The inner spacing on the left &amp; right when <code>{`size='xl'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlockXl</code>
+                                <p>The inner spacing on the top &amp; bottom when <code>{`size='xl'`}</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>gapInline</code>
+                                <p>The default horizontal spacing between <TheComponentDisplay />&apos;s children.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlock</code>
+                                <p>The default vertical spacing between <TheComponentDisplay />&apos;s children.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInlineXs</code>
+                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='xs'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlockXs</code>
+                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='xs'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInlineSm</code>
+                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlockSm</code>
+                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInlineLg</code>
+                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlockLg</code>
+                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInlineXl</code>
+                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='xl'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlockXl</code>
+                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='xl'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Typos'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>fontSize</code>
+                                <p>The default text size.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontSizeXs</code>
+                                <p>The text size when <code>{`size='xs'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontSizeSm</code>
+                                <p>The text size when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontSizeLg</code>
+                                <p>The text size when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>fontSizeXl</code>
+                                <p>The text size when <code>{`size='xl'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                </Accordion>
+            }>
+                <TypeScriptCode>{
+`
+// put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
+
+import {buttonIcons, buttonIconValues} from '@reusable-ui/button-icon';
+
+buttonIcons.whiteSpace = 'nowrap';
+console.log('whiteSpace variable name: ', buttonIcons.whiteSpace);
+console.log('whiteSpace variable value: ', buttonIconValues.whiteSpace);
+`
+                }</TypeScriptCode>
+            </Variables>
         </Main>
     </ComponentContextProvider>);
 }
