@@ -21,7 +21,7 @@ const EditableActionControlPage: NextPage = () => {
     return (<ComponentContextProvider component={editableActionControl} baseComponents={[editableControl, actionControl]}>
         <Head>
             <title>{`${editableActionControl.componentTag} Component`}</title>
-            <meta name="description" content={`${editableActionControl.componentTag} is an editable &amp; clickable simple box layout component with built-in variants, states, ${packages.invalidable.packageShortName} and ${packages.clickable.packageShortName}.`} />
+            <meta name="description" content={`${editableActionControl.componentTag} is an editable & clickable simple box layout component with built-in variants, states, ${packages.invalidable.packageShortName} and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>}>
