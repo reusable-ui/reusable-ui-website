@@ -29,7 +29,7 @@ const ToggleButtonPage: NextPage = () => {
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a {button.packageLink} component with toggleable {active.propertyShortLink} state each time the <TheComponentDisplay /> is clicked.<br />
+                    <TheComponentDisplay /> is a {button.packageLink} component with toggleable {active.propertyShortLink} state each time the <TheComponentDisplay /> is clicked.
                 </p>
                 <p>
                     This is equivalent to a {button.packageLink} with {onClick.propertyShortLink} event handles the {active.propertyShortLink} property via <code>{`useState()`}</code>.

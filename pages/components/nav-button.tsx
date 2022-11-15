@@ -31,7 +31,7 @@ const NavButtonPage: NextPage = () => {
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a {button.packageLink} component with managed {active.propertyShortLink} state depends on <strong>current page URL</strong>.<br />
+                    <TheComponentDisplay /> is a {button.packageLink} component with managed {active.propertyShortLink} state depends on <strong>current page URL</strong>.
                 </p>
                 <p>
                     If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentDisplay /> becomes <em>useless</em>.
