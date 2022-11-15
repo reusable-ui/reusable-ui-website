@@ -17,7 +17,7 @@ const LabelPage: NextPage = () => {
     return (<ComponentContextProvider component={label} baseComponents={basic}>
         <Head>
             <title>{`${label.componentTag} Component`}</title>
-            <meta name="description" content={`${label.componentTag} is a simple box layout component with built-in variants and indication states: ${packages.disableable.packageShortName} and ${packages.activatable.packageShortName}.`} />
+            <meta name="description" content={`${label.componentTag} represents a caption for the corresponding neighboring component.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>}>

@@ -38,7 +38,7 @@ const IconPage: NextPage = () => {
     return (<ComponentContextProvider component={icon} baseComponents={generic}>
         <Head>
             <title>{`${icon.componentTag} Component`}</title>
-            <meta name="description" content={`${icon.componentTag} is a simple box layout component with built-in variants and indication states: ${packages.disableable.packageShortName} and ${packages.activatable.packageShortName}.`} />
+            <meta name="description" content={`${icon.componentTag} displays an emoticon or other icon to attract user's attention with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, and ${packages.mildable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>}>
