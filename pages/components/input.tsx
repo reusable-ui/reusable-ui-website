@@ -2,14 +2,14 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { editableControl, input } from '../../packages/packageList'
+import { editableTextControl, input } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Input as OriInput, InputProps, InputType, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -19,7 +19,7 @@ const inputTypes = ['TextInput', 'SearchInput', 'PasswordInput', 'EmailInput', '
 
 
 const InputPage: NextPage = () => {
-    return (<ComponentContextProvider component={input} baseComponents={editableControl}>
+    return (<ComponentContextProvider component={input} baseComponents={editableTextControl}>
         <Head>
             <title>{`${input.componentTag} Component`}</title>
             <meta name="description" content={`${input.componentTag} is an interactive control in order to accept data from the user.`} />
@@ -56,9 +56,8 @@ const InputPage: NextPage = () => {
                             <Input
                                 key={index}
                                 size={sizeName}
-                            >
-                                An {'<Input>'} with {sizeName ?? 'default'} size
-                            </Input>
+                                placeholder={`An <Input> with ${sizeName ?? 'default'} size`}
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -67,9 +66,8 @@ const InputPage: NextPage = () => {
 `
 <Input
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
->
-    An {'<Input>'} with ${sizeName ?? 'default'} size
-</Input>
+    placeholder={\`An <Input> with ${sizeName ?? 'default'} size\`}
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -80,9 +78,8 @@ const InputPage: NextPage = () => {
                             <Input
                                 key={index}
                                 theme={themeName}
-                            >
-                                An {'<Input>'} with {themeName} theme
-                            </Input>
+                                placeholder={`An <Input> with ${themeName} theme`}
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -91,9 +88,8 @@ const InputPage: NextPage = () => {
 `
 <Input
     theme='${themeName}'
->
-    An {'<Input>'} with ${themeName} theme
-</Input>
+    placeholder={\`An <Input> with ${themeName ?? 'default'} theme\`}
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -105,9 +101,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 gradient={true}
-                            >
-                                An {'<Input>'} with gradient mode
-                            </Input>
+                                placeholder='An <Input> with gradient mode'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -117,9 +112,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     gradient={true}
->
-    An {'<Input>'} with gradient mode
-</Input>
+    placeholder='An <Input> with gradient mode'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -131,9 +125,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 outlined={true}
-                            >
-                                An {'<Input>'} with outlined mode
-                            </Input>
+                                placeholder='An <Input> with outlined mode'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -143,9 +136,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     outlined={true}
->
-    An {'<Input>'} with outlined mode
-</Input>
+    placeholder='An <Input> with outlined mode'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -157,9 +149,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 mild={false}
-                            >
-                                An {'<Input>'} without mild mode
-                            </Input>
+                                placeholder='An <Input> with mild-less mode'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -169,9 +160,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     mild={false}
->
-    An {'<Input>'} without mild mode
-</Input>
+    placeholder='An <Input> with mild-less mode'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -183,9 +173,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 nude={true}
-                            >
-                                An {'<Input>'} with nude mode
-                            </Input>
+                                placeholder='An <Input> with nude mode'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -195,9 +184,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     nude={true}
->
-    An {'<Input>'} with nude mode
-</Input>
+    placeholder='An <Input> with nude mode'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -211,9 +199,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 enabled={false}
-                            >
-                                An {'<Input>'} with disabled state
-                            </Input>
+                                placeholder='An <Input> with disabled state'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -223,9 +210,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     enabled={false}
->
-    An {'<Input>'} with disabled state
-</Input>
+    placeholder='An <Input> with disabled state'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -238,9 +224,8 @@ const InputPage: NextPage = () => {
                                     key={index}
                                     theme={themeName}
                                     inheritEnabled={true}
-                                >
-                                    An {'<Input>'} with inherit enabled
-                                </Input>
+                                    placeholder='An <Input> with inherit disabled'
+                                />
                             </Control>
                         )}
                     </Preview>
@@ -252,9 +237,8 @@ const InputPage: NextPage = () => {
     <Input
         theme='${themeName}'
         inheritEnabled={true}
-    >
-        An {'<Input>'} with inherit enabled
-    </Input>
+        placeholder='An <Input> with inherit disabled'
+    />
 </Control>
 `
                         ).join('')}
@@ -269,9 +253,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 active={true}
-                            >
-                                An {'<Input>'} with active state
-                            </Input>
+                                placeholder='An <Input> with active state'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -281,9 +264,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     active={true}
->
-    An {'<Input>'} with active state
-</Input>
+    placeholder='An <Input> with active state'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -296,9 +278,8 @@ const InputPage: NextPage = () => {
                                     key={index}
                                     theme={themeName}
                                     inheritActive={true}
-                                >
-                                    An {'<Input>'} with inherit active
-                                </Input>
+                                    placeholder='An <Input> with inherit active'
+                                />
                             </Control>
                         )}
                     </Preview>
@@ -310,9 +291,8 @@ const InputPage: NextPage = () => {
     <Input
         theme='${themeName}'
         inheritActive={true}
-    >
-        An {'<Input>'} with inherit active
-    </Input>
+        placeholder='An <Input> with inherit active'
+    />
 </Control>
 `
                         ).join('')}
@@ -325,9 +305,8 @@ const InputPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                                 focused={true}
-                            >
-                                An {'<Input>'} with focus indicator
-                            </Input>
+                                placeholder='An <Input> with focus indicator'
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -337,9 +316,8 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     focused={true}
->
-    An {'<Input>'} with focus indicator
-</Input>
+    placeholder='An <Input> with focus indicator'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -350,21 +328,18 @@ const InputPage: NextPage = () => {
                             <Input
                                 theme={themeName}
                                 arrived={false}
-                            >
-                                An {'<Input>'} without arrive indicator
-                            </Input>
+                                placeholder='An <Input> without arrive indicator'
+                            />
                             <Input
                                 theme={themeName}
                                 arrived={true}
-                            >
-                                An {'<Input>'} with arrive indicator
-                            </Input>
+                                placeholder='An <Input> with arrive indicator'
+                            />
                             <Input
                                 theme={themeName}
                                 arrived={undefined}
-                            >
-                                An {'<Input>'} with auto arrive indicator
-                            </Input>
+                                placeholder='An <Input> with auto arrive indicator'
+                            />
                         </React.Fragment>)}
                     </Preview>
                     <p></p>
@@ -374,21 +349,18 @@ const InputPage: NextPage = () => {
 <Input
     theme='${themeName}'
     arrived={false}
->
-    An {'<Input>'} without arrive indicator
-</Input>
+    placeholder='An <Input> without arrive indicator'
+/>
 <Input
     theme='${themeName}'
     arrived={true}
->
-    An {'<Input>'} with arrive indicator
-</Input>
+    placeholder='An <Input> with arrive indicator'
+/>
 <Input
     theme='${themeName}'
     arrived={undefined}
->
-    An {'<Input>'} with auto arrive indicator
-</Input>
+    placeholder='An <Input> with auto arrive indicator'
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -400,23 +372,20 @@ const InputPage: NextPage = () => {
                             theme='primary'
                             enableValidation={true}
                             isValid={null}
-                        >
-                            An {'<Input>'} marked as neutral
-                        </Input>
+                            placeholder='An <Input> marked as neutral'
+                        />
                         <Input
                             theme='primary'
                             enableValidation={true}
                             isValid={true}
-                        >
-                            An {'<Input>'} marked as valid
-                        </Input>
+                            placeholder='An <Input> marked as valid'
+                        />
                         <Input
                             theme='primary'
                             enableValidation={true}
                             isValid={false}
-                        >
-                            An {'<Input>'} marked as invalid
-                        </Input>
+                            placeholder='An <Input> marked as invalid'
+                        />
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
@@ -425,23 +394,20 @@ const InputPage: NextPage = () => {
     theme='primary'
     enableValidation={true}
     isValid={null}
->
-    An {'<Input>'} marked as neutral
-</Input>
+    placeholder='An <Input> marked as neutral'
+/>
 <Input
     theme='primary'
     enableValidation={true}
     isValid={true}
->
-    An {'<Input>'} marked as valid
-</Input>
+    placeholder='An <Input> marked as valid'
+/>
 <Input
     theme='primary'
     enableValidation={true}
     isValid={false}
->
-    An {'<Input>'} marked as invalid
-</Input>
+    placeholder='An <Input> marked as invalid'
+/>
 `
                     }</TypeScriptCode>
                 </IsValidProperty>
@@ -450,27 +416,19 @@ const InputPage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Accessibilities'>
+                    <AccordionItem label='Appearances'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>cursor</code>
-                                <p>A default <code>cursor</code>.</p>
+                                <code>placeholderOpacity</code>
+                                <p>The opacity level of the <TheComponentLink />&apos;s <code>::placeholder</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Animations'>
+                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>iconSize</code>
-                                <p>An icon height (the width is automatically by <code>aspect-ratio</code>).</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>iconValid</code>
-                                <p>An icon image to show when <code>{`isValid={true}`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>iconInvalid</code>
-                                <p>An icon image to show when <code>{`isValid={false}`}</code>.</p>
+                                <code>backgGrad</code>
+                                <p>The background gradient when <code>{`gradient={true}`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
