@@ -33,8 +33,8 @@ const InputPage: NextPage = () => {
                     There are some specialized types of <TheComponentDisplay /> with built in validation corresponding to the data type:
                 </p>
                 <ul>
-                    {inputTypes.map((inputType) => (
-                        <li>
+                    {inputTypes.map((inputType, index) => (
+                        <li key={index}>
                             <code>{`<${inputType}>`}</code> or <code>{`<${inputType.slice(0, -5)}>`}</code>
                         </li>
                     ))}
@@ -43,8 +43,8 @@ const InputPage: NextPage = () => {
                     Here the demo:
                 </p>
                 <Preview stretch={false} display='right'>
-                    {inputTypes.map((inputType) => (
-                        <Input type={inputType.slice(0, -5).toLowerCase() as InputType} enableValidation={true} placeholder={`type a ${inputType.slice(0, -5).toLowerCase()} here...`} />
+                    {inputTypes.map((inputType, index) => (
+                        <Input key={index} type={inputType.slice(0, -5).toLowerCase() as InputType} enableValidation={true} placeholder={`type a ${inputType.slice(0, -5).toLowerCase()} here...`} />
                     ))}
                 </Preview>
             </HeroSection>

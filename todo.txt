@@ -1,5 +1,7 @@
 * docs <Button label>
 * docs <EditableControl|Form onValidation customValidator>
+* docs <Input min max step pattern type placeholder autoComplete list>
+>
 
 * add guide-using-component
 * add guide-create-component
