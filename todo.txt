@@ -1,4 +1,5 @@
 * docs <Button label>
+* docs <EditableControl|Form onValidation customValidator>
 
 * add guide-using-component
 * add guide-create-component

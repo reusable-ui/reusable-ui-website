@@ -5,8 +5,8 @@ import { PreviewProps, PropertySection, Section } from '../../components/Section
 import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
-import { icon } from '../../packages/packageList'
-import { TheComponentDisplay } from '../../packages/componentContext'
+import { icon, form } from '../../packages/packageList'
+import { TheComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 
 
 
@@ -370,6 +370,9 @@ export const PressedProperty = ({children: preview}: PreviewProps) => {
 
 
 export const EnableValidationProperty = ({children: preview}: PreviewProps) => {
+    const {component: {packageName}} = useComponentInfo();
+    const isCurrentForm = (packageName === form.packageName);
+    
     return (
         <PropertySection property={properties.enableValidation} preview={preview} possibleValues={
             <Accordion>
@@ -377,10 +380,10 @@ export const EnableValidationProperty = ({children: preview}: PreviewProps) => {
                     <p>
                         Uses <strong>default</strong> enableValidation setting.
                     </p>
-                    <p>
+                    {!isCurrentForm && <p>
                         The default value is <code>false</code>, if outside <code>{`Form`}</code> and <code>{`ValidationProvider`}</code>.
                         If inside <code>{`Form`}</code> or <code>{`ValidationProvider`}</code>, default to <code>true</code>.
-                    </p>
+                    </p>}
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
@@ -401,6 +404,9 @@ export const EnableValidationProperty = ({children: preview}: PreviewProps) => {
     );
 }
 export const IsValidProperty = ({children: preview}: PreviewProps) => {
+    const {component: {packageName}} = useComponentInfo();
+    const isCurrentForm = (packageName === form.packageName);
+    
     return (
         <PropertySection property={properties.isValid} preview={preview} possibleValues={
             <Accordion>
@@ -408,12 +414,12 @@ export const IsValidProperty = ({children: preview}: PreviewProps) => {
                     <p>
                         <strong>Automatically</strong> marks the <strong>validity status</strong> based on its value.
                     </p>
-                    <Warning>
+                    {!isCurrentForm && <Warning>
                         <p>
                             Note: The component creator is responsible for making the validation algorithm.
                             The default algorithm of the <TheComponentDisplay /> is by checking <code>:valid</code>/<code>:invalid</code> match of the first child of <code>{`<input>`}</code>/<code>{`<textarea>`}</code>/<code>{`<select>`}</code>.
                         </p>
-                    </Warning>
+                    </Warning>}
                 </AccordionItem>
                 <AccordionItem label={<code>null</code>}>
                     <p>
