@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { editableTextControl, range } from '../../packages/packageList'
+import { editableActionControl, range } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
@@ -18,7 +18,7 @@ const Range = (props: RangeProps) => <OriRange {...props} theme={props.theme ?? 
 
 
 const RangePage: NextPage = () => {
-    return (<ComponentContextProvider component={range} baseComponents={editableTextControl}>
+    return (<ComponentContextProvider component={range} baseComponents={editableActionControl}>
         <Head>
             <title>{`${range.componentTag} Component`}</title>
             <meta name="description" content={`${range.componentTag} is an interactive control in order to accept numeric value within a specified range.`} />
