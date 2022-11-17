@@ -1,16 +1,14 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { content, form } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Basic, Button, Carousel, EmailInput, Form as OriForm, FormProps, List, ListItem, TextInput } from '@reusable-ui/components'
+import { Button, EmailInput, Form as OriForm, FormProps, List, ListItem, TextInput } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { CommaSeparated, ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
-import { Warning } from '../../components/Warning'
 import { EnableValidationProperty, InheritValidationProperty, IsValidProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
