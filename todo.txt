@@ -1,3 +1,4 @@
+* move <ComponentProperties> to the bottom
 * docs <Button label>
 * docs <ValidationProperties> & <FormProperties>
 * docs <EditableControl|Form onValidation customValidator>
