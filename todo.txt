@@ -1,7 +1,8 @@
 * docs <Button label>
+* docs <ValidationProperties> & <FormProperties>
 * docs <EditableControl|Form onValidation customValidator>
-* docs <Input min max step pattern type placeholder autoComplete list>
->
+* docs <Input name form defaultValue value onChange required minLength maxLength min max step pattern type placeholder autoComplete list autoFocus tabIndex enterKeyHint>
+* docs <Range min max step name form defaultValue value onChange pressed actionMouses actionTouches actionKeys releaseDelay>
 
 * add guide-using-component
 * add guide-create-component

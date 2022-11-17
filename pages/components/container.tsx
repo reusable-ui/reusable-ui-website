@@ -415,51 +415,51 @@ const ContainerPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>paddingInline</code>
-                                <p>The default inner spacing on the left &amp; right.</p>
+                                <p>The default <strong>inner spacing</strong> on the <strong>left &amp; right</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlock</code>
-                                <p>The default inner spacing on the top &amp; bottom.</p>
+                                <p>The default <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineSm</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xs</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xs</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockSm</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xs</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xs</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineMd</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>md</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>md</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockMd</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>md</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>md</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineLg</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>lg</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>lg</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockLg</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>lg</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>lg</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineXl</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xl</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xl</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockXl</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xl</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xl</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineXxl</code>
-                                <p>The inner spacing on the left &amp; right when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xxl</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xxl</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockXxl</code>
-                                <p>The inner spacing on the top &amp; bottom when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xxl</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <strong>browser&apos;s width</strong> is equal to / bigger than <code>xxl</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

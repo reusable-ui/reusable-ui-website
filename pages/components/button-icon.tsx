@@ -602,43 +602,43 @@ export const MyComponent = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>paddingInline</code>
-                                <p>The default inner spacing on the left &amp; right.</p>
+                                <p>The default <strong>inner spacing</strong> on the <strong>left &amp; right</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlock</code>
-                                <p>The default inner spacing on the top &amp; bottom.</p>
+                                <p>The default <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineXs</code>
-                                <p>The inner spacing on the left &amp; right when <code>{`size='xs'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <code>{`size='xs'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockXs</code>
-                                <p>The inner spacing on the top &amp; bottom when <code>{`size='xs'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <code>{`size='xs'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineSm</code>
-                                <p>The inner spacing on the left &amp; right when <code>{`size='sm'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockSm</code>
-                                <p>The inner spacing on the top &amp; bottom when <code>{`size='sm'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineLg</code>
-                                <p>The inner spacing on the left &amp; right when <code>{`size='lg'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockLg</code>
-                                <p>The inner spacing on the top &amp; bottom when <code>{`size='lg'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineXl</code>
-                                <p>The inner spacing on the left &amp; right when <code>{`size='xl'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <code>{`size='xl'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlockXl</code>
-                                <p>The inner spacing on the top &amp; bottom when <code>{`size='xl'`}</code>.</p>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <code>{`size='xl'`}</code>.</p>
                             </ListItem>
                             
                             <ListItem>

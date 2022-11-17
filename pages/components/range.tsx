@@ -4,13 +4,14 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { editableTextControl, range } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Range as OriRange, RangeProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ComponentProperties, ThumbClassesProperty, ThumbComponentProperty, ThumbRefProperty, ThumbStyleProperty, TrackClassesProperty, TrackComponentProperty, TrackLowerClassesProperty, TrackLowerComponentProperty, TrackLowerRefProperty, TrackLowerStyleProperty, TrackRefProperty, TrackStyleProperty, TrackUpperClassesProperty, TrackUpperComponentProperty, TrackUpperRefProperty, TrackUpperStyleProperty } from '../../properties/sections/componentProperties'
 
 
 
@@ -41,7 +42,45 @@ const RangePage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <ComponentProperties>
+                <TrackComponentProperty />
+                <TrackLowerComponentProperty />
+                <TrackUpperComponentProperty />
+                <ThumbComponentProperty />
+                <TrackRefProperty />
+                <TrackLowerRefProperty />
+                <TrackUpperRefProperty />
+                <ThumbRefProperty />
+                <TrackClassesProperty />
+                <TrackLowerClassesProperty />
+                <TrackUpperClassesProperty />
+                <ThumbClassesProperty />
+                <TrackStyleProperty />
+                <TrackLowerStyleProperty />
+                <TrackUpperStyleProperty />
+                <ThumbStyleProperty />
+            </ComponentProperties>
             <VariantProperties>
+                <OrientationProperty>
+                    <Preview display='right' stretch={false}>
+                        {orientationOptions.map((orientationName, index) =>
+                            <Range
+                                key={index}
+                                orientation={orientationName}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {orientationOptions.map((orientationName) =>
+`
+<Range
+    orientation='${orientationName}'
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OrientationProperty>
                 <SizeProperty>
                     <Preview>
                         {sizeOptions.map((sizeName, index) =>
@@ -374,19 +413,99 @@ const RangePage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Appearances'>
+                    <AccordionItem label='Sizes'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>placeholderOpacity</code>
-                                <p>The opacity level of the <TheComponentLink />&apos;s <code>::placeholder</code>.</p>
+                                <code>minInlineSize</code>
+                                <p>A default <strong>minimum width</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>minBlockSize</code>
+                                <p>A default <strong>minimum height</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>minInlineSizeBlock</code>
+                                <p>A <strong>minimum width</strong> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>minBlockSizeBlock</code>
+                                <p>A <strong>minimum height</strong> when <code>{`orientation='block'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                    <AccordionItem label='Accessibilities'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>backgGrad</code>
-                                <p>The background gradient when <code>{`gradient={true}`}</code>.</p>
+                                <code>cursor</code>
+                                <p>A default <strong>cursor</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>cursorBlock</code>
+                                <p>A <strong>cursor</strong> to apply when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Tracks'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>trackInlineSize</code>
+                                <p>The <strong>width</strong> of the <strong>main track</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackBlockSize</code>
+                                <p>The <strong>height</strong> of the <strong>main track</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackBorderRadius</code>
+                                <p>The <strong>border radius</strong> of the <strong>main track</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackPaddingInline</code>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> of the <strong>main track</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackPaddingBlock</code>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> of the <strong>main track</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackInlineSizeBlock</code>
+                                <p>The <strong>width</strong> of the <strong>main track</strong> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackBlockSizeBlock</code>
+                                <p>The <strong>height</strong> of the <strong>main track</strong> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>tracklowerFilter</code>
+                                <p>A <strong>filter</strong> to apply on the <strong>lower track</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>trackupperFilter</code>
+                                <p>A <strong>filter</strong> to apply on the <strong>upper track</strong>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Thumbs'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>thumbInlineSize</code>
+                                <p>The <strong>width</strong> of the <strong>thumb</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>thumbBlockSize</code>
+                                <p>The <strong>height</strong> of the <strong>thumb</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>thumbBorderRadius</code>
+                                <p>The <strong>border radius</strong> of the <strong>thumb</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>thumbPaddingInline</code>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> of the <strong>thumb</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>thumbPaddingBlock</code>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> of the <strong>thumb</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

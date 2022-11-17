@@ -440,7 +440,7 @@ const EditableTextControlPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>cursor</code>
-                                <p>A default <code>cursor</code>.</p>
+                                <p>A default <strong>cursor</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

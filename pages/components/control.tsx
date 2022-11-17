@@ -383,7 +383,7 @@ const ControlPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>cursorDisable</code>
-                                <p>A <code>cursor</code> to apply when <code>{`enabled={false}`}</code>.</p>
+                                <p>A <strong>cursor</strong> to apply when <code>{`enabled={false}`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

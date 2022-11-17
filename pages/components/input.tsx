@@ -428,7 +428,7 @@ const InputPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>backgGrad</code>
-                                <p>The background gradient when <code>{`gradient={true}`}</code>.</p>
+                                <p>The <strong>background gradient</strong> when <code>{`gradient={true}`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
