@@ -1,0 +1,411 @@
+import React from 'react'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { editableTextControl, range } from '../../packages/packageList'
+import * as packages from '../../packages/packageList'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { Preview } from '../../components/Preview'
+import { AccordionItem, Accordion } from '../../components/Accordion'
+import { Control, Range as OriRange, RangeProps, List, ListItem } from '@reusable-ui/components'
+import { TypeScriptCode } from '../../components/Code'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+
+
+
+const Range = (props: RangeProps) => <OriRange {...props} theme={props.theme ?? 'primary'} />
+
+
+const RangePage: NextPage = () => {
+    return (<ComponentContextProvider component={range} baseComponents={editableTextControl}>
+        <Head>
+            <title>{`${range.componentTag} Component`}</title>
+            <meta name="description" content={`${range.componentTag} is an interactive control in order to accept data from the user.`} />
+        </Head>
+        <Main nude={true}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+                <p>
+                    <TheComponentDisplay /> is an interactive control in order to accept data from the user.
+                </p>
+                <p>
+                    Here the demo:
+                </p>
+                <Preview stretch={false} display='right'>
+                    <Range orientation='block' style={{minBlockSize: '100px'}} />
+                    <Range orientation='block' style={{minBlockSize: '100px'}} nude={false} />
+                    <div>
+                        <Range orientation='inline' style={{minInlineSize: '200px'}} />
+                        <Range orientation='inline' style={{minInlineSize: '200px'}} nude={false} />
+                    </div>
+                </Preview>
+            </HeroSection>
+            <ComponentInstallation />
+            <VariantProperties>
+                <SizeProperty>
+                    <Preview>
+                        {sizeOptions.map((sizeName, index) =>
+                            <Range
+                                key={index}
+                                size={sizeName}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {sizeOptions.map((sizeName) =>
+`
+<Range
+    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </SizeProperty>
+                <ThemeProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ThemeProperty>
+                <GradientProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                gradient={true}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    gradient={true}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </GradientProperty>
+                <OutlinedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                outlined={true}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    outlined={true}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OutlinedProperty>
+                <MildProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                mild={true}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    mild={true}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </MildProperty>
+                <NudeProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                nude={false}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    nude={false}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </NudeProperty>
+            </VariantProperties>
+            <StateProperties>
+                <EnabledProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                enabled={false}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    enabled={false}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </EnabledProperty>
+                <InheritEnabledProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Control key={index} theme='primary' enabled={false}>
+                                <Range
+                                    key={index}
+                                    theme={themeName}
+                                    inheritEnabled={true}
+                                />
+                            </Control>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Control theme='primary' enabled={false}>
+    <Range
+        theme='${themeName}'
+        inheritEnabled={true}
+    />
+</Control>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </InheritEnabledProperty>
+                <ReadOnlyProperty />
+                <InheritReadOnlyProperty />
+                <ActiveProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                active={true}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    active={true}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ActiveProperty>
+                <InheritActiveProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Control key={index} theme='primary' active={true}>
+                                <Range
+                                    key={index}
+                                    theme={themeName}
+                                    inheritActive={true}
+                                />
+                            </Control>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Control theme='primary' active={true}>
+    <Range
+        theme='${themeName}'
+        inheritActive={true}
+    />
+</Control>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </InheritActiveProperty>
+                <FocusedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) =>
+                            <Range
+                                key={index}
+                                theme={themeName}
+                                focused={true}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    focused={true}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </FocusedProperty>
+                <ArrivedProperty>
+                    <Preview>
+                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
+                            <Range
+                                theme={themeName}
+                                arrived={false}
+                            />
+                            <Range
+                                theme={themeName}
+                                arrived={true}
+                            />
+                            <Range
+                                theme={themeName}
+                                arrived={undefined}
+                            />
+                        </React.Fragment>)}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {themeOptions.map((themeName) =>
+`
+<Range
+    theme='${themeName}'
+    arrived={false}
+/>
+<Range
+    theme='${themeName}'
+    arrived={true}
+/>
+<Range
+    theme='${themeName}'
+    arrived={undefined}
+/>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ArrivedProperty>
+                <EnableValidationProperty />
+                <IsValidProperty>
+                    <Preview>
+                        <Range
+                            theme='primary'
+                            enableValidation={true}
+                            isValid={null}
+                        />
+                        <Range
+                            theme='primary'
+                            enableValidation={true}
+                            isValid={true}
+                        />
+                        <Range
+                            theme='primary'
+                            enableValidation={true}
+                            isValid={false}
+                        />
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Range
+    theme='primary'
+    enableValidation={true}
+    isValid={null}
+/>
+<Range
+    theme='primary'
+    enableValidation={true}
+    isValid={true}
+/>
+<Range
+    theme='primary'
+    enableValidation={true}
+    isValid={false}
+/>
+`
+                    }</TypeScriptCode>
+                </IsValidProperty>
+                <InheritValidationProperty />
+            </StateProperties>
+            <InheritedProperties />
+            <Variables variables={
+                <Accordion>
+                    <AccordionItem label='Appearances'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>placeholderOpacity</code>
+                                <p>The opacity level of the <TheComponentLink />&apos;s <code>::placeholder</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>backgGrad</code>
+                                <p>The background gradient when <code>{`gradient={true}`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                </Accordion>
+            }>
+                <TypeScriptCode>{
+`
+// put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
+
+import {ranges, rangeValues} from '@reusable-ui/range';
+
+ranges.opacity = 0.5;
+console.log('opacity variable name: ', ranges.opacity);
+console.log('opacity variable value: ', rangeValues.opacity);
+`
+                }</TypeScriptCode>
+            </Variables>
+        </Main>
+    </ComponentContextProvider>);
+}
+
+export default RangePage
