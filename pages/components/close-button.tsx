@@ -73,10 +73,6 @@ const CloseButtonPage: NextPage = () => {
                     ).join('')}
                 </TypeScriptCode>
             </ButtonIconPositionProperty>
-            <ComponentProperties>
-                <ButtonComponentProperty />
-                <IconComponentProperty />
-            </ComponentProperties>
             <OnClickPropertyOfButton />
             <VariantProperties>
                 <ButtonStyleProperty>
@@ -480,6 +476,10 @@ const CloseButtonPage: NextPage = () => {
                     </TypeScriptCode>
                 </PressedProperty>
             </StateProperties>
+            <ComponentProperties>
+                <ButtonComponentProperty />
+                <IconComponentProperty />
+            </ComponentProperties>
             <InheritedProperties />
         </Main>
     </ComponentContextProvider>);

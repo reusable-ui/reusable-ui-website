@@ -57,9 +57,6 @@ const ToggleButtonPage: NextPage = () => {
             <ComponentInstallation />
             <DefaultActiveProperty />
             <OnActiveChangeProperty />
-            <ComponentProperties>
-                <ButtonComponentProperty />
-            </ComponentProperties>
             <ClientSideLinkPropertyOfButton />
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
@@ -509,6 +506,9 @@ const ToggleButtonPage: NextPage = () => {
                     </TypeScriptCode>
                 </PressedProperty>
             </StateProperties>
+            <ComponentProperties>
+                <ButtonComponentProperty />
+            </ComponentProperties>
             <InheritedProperties />
         </Main>
     </ComponentContextProvider>);

@@ -41,24 +41,6 @@ const RangePage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
-            <ComponentProperties>
-                <TrackComponentProperty />
-                <TrackLowerComponentProperty />
-                <TrackUpperComponentProperty />
-                <ThumbComponentProperty />
-                <TrackRefProperty />
-                <TrackLowerRefProperty />
-                <TrackUpperRefProperty />
-                <ThumbRefProperty />
-                <TrackClassesProperty />
-                <TrackLowerClassesProperty />
-                <TrackUpperClassesProperty />
-                <ThumbClassesProperty />
-                <TrackStyleProperty />
-                <TrackLowerStyleProperty />
-                <TrackUpperStyleProperty />
-                <ThumbStyleProperty />
-            </ComponentProperties>
             <VariantProperties>
                 <OrientationProperty>
                     <Preview display='right' stretch={false}>
@@ -409,6 +391,24 @@ const RangePage: NextPage = () => {
                 </IsValidProperty>
                 <InheritValidationProperty />
             </StateProperties>
+            <ComponentProperties>
+                <TrackComponentProperty />
+                <TrackLowerComponentProperty />
+                <TrackUpperComponentProperty />
+                <ThumbComponentProperty />
+                <TrackRefProperty />
+                <TrackLowerRefProperty />
+                <TrackUpperRefProperty />
+                <ThumbRefProperty />
+                <TrackClassesProperty />
+                <TrackLowerClassesProperty />
+                <TrackUpperClassesProperty />
+                <ThumbClassesProperty />
+                <TrackStyleProperty />
+                <TrackLowerStyleProperty />
+                <TrackUpperStyleProperty />
+                <ThumbStyleProperty />
+            </ComponentProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>

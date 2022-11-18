@@ -99,10 +99,6 @@ export const MyComponent = () => {
                     ).join('')}
                 </TypeScriptCode>
             </ButtonIconPositionProperty>
-            <ComponentProperties>
-                <ButtonComponentProperty />
-                <IconComponentProperty />
-            </ComponentProperties>
             <ClientSideLinkPropertyOfButton />
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
@@ -571,6 +567,10 @@ export const MyComponent = () => {
                     </TypeScriptCode>
                 </PressedProperty>
             </StateProperties>
+            <ComponentProperties>
+                <ButtonComponentProperty />
+                <IconComponentProperty />
+            </ComponentProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>

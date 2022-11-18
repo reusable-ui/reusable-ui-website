@@ -57,9 +57,6 @@ const NavButtonPage: NextPage = () => {
                 <CaseSensitiveProperty />
                 <EndProperty />
             </NavigationProperties>
-            <ComponentProperties>
-                <ButtonComponentProperty />
-            </ComponentProperties>
             <ClientSideLinkPropertyOfButton />
             <HrefPropertyOfButton />
             <OnClickPropertyOfButton />
@@ -509,6 +506,9 @@ const NavButtonPage: NextPage = () => {
                     </TypeScriptCode>
                 </PressedProperty>
             </StateProperties>
+            <ComponentProperties>
+                <ButtonComponentProperty />
+            </ComponentProperties>
             <InheritedProperties />
         </Main>
     </ComponentContextProvider>);
