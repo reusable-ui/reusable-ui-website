@@ -32,11 +32,13 @@ const RangePage: NextPage = () => {
                     Here the demo:
                 </p>
                 <Preview stretch={false} display='right'>
-                    <Range orientation='block' style={{minBlockSize: '100px'}} />
-                    <Range orientation='block' style={{minBlockSize: '100px'}} nude={false} />
-                    <div>
-                        <Range orientation='inline' style={{minInlineSize: '200px'}} />
-                        <Range orientation='inline' style={{minInlineSize: '200px'}} nude={false} />
+                    <Range orientation='block' />
+                    <Range orientation='block' outlined={true} />
+                    <Range orientation='block' nude={false} />
+                    <div style={{display: 'flex', flexDirection: 'column', gap: 'inherit'}}>
+                        <Range orientation='inline' />
+                        <Range orientation='inline' outlined={true} />
+                        <Range orientation='inline' nude={false} />
                     </div>
                 </Preview>
             </HeroSection>
