@@ -1,4 +1,3 @@
-* move <ComponentProperties> to the bottom
 * docs <Button label>
 * docs <ValidationProperties> & <FormProperties>
 * docs <EditableControl|Form onValidation customValidator>
@@ -11,4 +10,3 @@
 * add demo panel
 * add customization guide
 * continue <ClientSideLinkProperties />
-* continue [customValidator], [onValidation] for <EditableControl> and <Form>
