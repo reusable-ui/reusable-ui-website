@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { editableTextControl, check } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, CheckStyleProperty, checkStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Check as OriCheck, CheckProps, List, ListItem } from '@reusable-ui/components'
@@ -36,11 +36,35 @@ const CheckPage: NextPage = () => {
                     <Check defaultChecked={true} theme='primary' checkStyle='switch'>check</Check>
                     <Check defaultChecked={true} theme='success' nude={false}>check</Check>
                     <Check defaultChecked={true} theme='dark' checkStyle='switch' nude={false}>check</Check>
-                    <Check defaultChecked={true} theme='danger' checkStyle='toggleButton' nude={false}>toggle check</Check>
+                    <Check defaultChecked={true} theme='danger' checkStyle='toggleButton'>toggle check</Check>
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
+                <CheckStyleProperty>
+                    <Preview display='right' stretch={false}>
+                        {checkStyleOptions.map((checkStyle, index) =>
+                            <Check
+                                key={index}
+                                checkStyle={checkStyle}
+                            >
+                                A {'<Check>'} with {checkStyle} style
+                            </Check>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {checkStyleOptions.map((checkStyle) =>
+`
+<Check
+    checkStyle='${checkStyle}'
+>
+    A {'<Check>'} with ${checkStyle} style
+</Check>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </CheckStyleProperty>
                 <SizeProperty>
                     <Preview>
                         {sizeOptions.map((sizeName, index) =>
@@ -441,19 +465,79 @@ const CheckPage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Appearances'>
+                    <AccordionItem label='Spacings'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>placeholderOpacity</code>
-                                <p>The opacity level of the <TheComponentLink />&apos;s <code>::placeholder</code>.</p>
+                                <code>spacing</code>
+                                <p>The spacing between <strong>check indicator</strong> and <strong>check label</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                    <AccordionItem label='Animations'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>backgGrad</code>
-                                <p>The <strong>background gradient</strong> when <code>{`gradient={true}`}</code>.</p>
+                                <code>indicator</code>
+                                <p>An <code>indicating image</code> to show when <code>{`active={true}`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>switchIndicator</code>
+                                <p>An <code>indicating image</code> to show when <code>{`active={true}`}</code> and <code>{`checkStyle='switch'`}</code>.</p>
+                            </ListItem>
+                            
+                            
+                            
+                            <ListItem>
+                                <code>checkFilterIn</code>
+                                <p>A <code>filter</code> to apply when <code>{`active={true}`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>checkFilterOut</code>
+                                <p>A <code>filter</code> to apply when <code>{`active={false}`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>checkTransformIn</code>
+                                <p>A <code>transform</code> to apply when <code>{`active={true}`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>checkTransformOut</code>
+                                <p>A <code>transform</code> to apply when <code>{`active={false}`}</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>checkAnimIn</code>
+                                <p>An animation represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>checkAnimOut</code>
+                                <p>An animation represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                            </ListItem>
+                            
+                            
+                            
+                            <ListItem>
+                                <code>switchCheckFilterIn</code>
+                                <p>A <code>filter</code> to apply when <code>{`active={true}`}</code> and <code>{`checkStyle='switch'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>switchCheckFilterOut</code>
+                                <p>A <code>filter</code> to apply when <code>{`active={false}`}</code> and <code>{`checkStyle='switch'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>switchCheckTransformIn</code>
+                                <p>A <code>transform</code> to apply when <code>{`active={true}`}</code> and <code>{`checkStyle='switch'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>switchCheckTransformOut</code>
+                                <p>A <code>transform</code> to apply when <code>{`active={false}`}</code> and <code>{`checkStyle='switch'`}</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>switchCheckAnimIn</code>
+                                <p>An animation represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>, when <code>{`checkStyle='switch'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>switchCheckAnimOut</code>
+                                <p>An animation represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>, when <code>{`checkStyle='switch'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

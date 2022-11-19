@@ -40,6 +40,9 @@ export const outlined            = new PropertyInfo('outlined')
 export const mild                = new PropertyInfo('mild')
 export const nude                = new PropertyInfo('nude')
 
+export const buttonStyle         = new PropertyInfo('buttonStyle')
+export const checkStyle          = new PropertyInfo('checkStyle')
+
 
 
 // states:
@@ -95,7 +98,6 @@ export const end                 = new PropertyInfo('end')
 export const buttonComponent     = new PropertyInfo('buttonComponent')
 export const buttonRef           = new PropertyInfo('buttonRef')
 export const buttonOrientation   = new PropertyInfo('buttonOrientation')
-export const buttonStyle         = new PropertyInfo('buttonStyle')
 export const buttonChildren      = new PropertyInfo('buttonChildren')
 
 export const iconComponent       = new PropertyInfo('iconComponent')

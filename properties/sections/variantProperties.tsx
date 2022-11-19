@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink } from '../../packages/componentContext'
-import { ButtonStyle, IconPosition } from '@reusable-ui/components'
+import { ButtonStyle, CheckStyle, IconPosition } from '@reusable-ui/components'
 
 
 
@@ -23,6 +23,7 @@ export const themeOptions              : ThemeName[]                      = getT
 export const orientationOptions        : OrientationName[]                = ['inline', 'block'];
 
 export const buttonStyleOptions        : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
+export const checkStyleOptions         : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
 
 
 
@@ -341,6 +342,43 @@ export const ButtonStyleProperty = ({children: preview}: PreviewProps) => {
                     <p>
                         Useful when placed on the top of an image without distracting the image.
                         Used in {carousel.packageLink} component.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const CheckStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.checkStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'switch'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> appear as a <strong>sliding switch</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'button'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> appear as a <strong>button</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'toggleButton'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> appear as a <strong>toggle button</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
