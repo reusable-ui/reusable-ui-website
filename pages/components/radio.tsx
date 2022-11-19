@@ -21,12 +21,12 @@ const RadioPage: NextPage = () => {
     return (<ComponentContextProvider component={radio} baseComponents={check}>
         <Head>
             <title>{`${radio.componentTag} Component`}</title>
-            <meta name="description" content={`${radio.componentTag} is an interactive control in order to select multiple options.`} />
+            <meta name="description" content={`${radio.componentTag} is an interactive control in order to select single option.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is an interactive control in order to select multiple options.
+                    <TheComponentDisplay /> is an interactive control in order to select single option.
                 </p>
                 <p>
                     Here the demo:
