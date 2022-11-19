@@ -94,6 +94,7 @@ export const hamburgerMenuButton    = new ComponentInfo('hamburger-menu-button')
 
 // layout-components:
 export const list                   = new ComponentInfo('list')
+export const listItem               = new ComponentInfo('listItem')
 export const card                   = new ComponentInfo('card')
 export const masonry                = new ComponentInfo('masonry')
 
