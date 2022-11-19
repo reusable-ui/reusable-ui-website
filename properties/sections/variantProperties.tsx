@@ -5,10 +5,10 @@ import type { SizeName as ButtonIconSizeName } from '@reusable-ui/button-icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { background, foreground, border, padding, themable, colorable, carousel } from '../../packages/packageList'
+import { background, foreground, border, padding, themable, colorable, carousel, content } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink } from '../../packages/componentContext'
-import { ButtonStyle, CheckStyle, IconPosition } from '@reusable-ui/components'
+import { ButtonStyle, CheckStyle, IconPosition, LabelStyle } from '@reusable-ui/components'
 
 
 
@@ -22,6 +22,7 @@ export const themeOptions              : ThemeName[]                      = getT
 
 export const orientationOptions        : OrientationName[]                = ['inline', 'block'];
 
+export const labelStyleOptions         : LabelStyle[]                     = ['regular', 'content'];
 export const buttonStyleOptions        : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
 export const checkStyleOptions         : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
 
@@ -316,6 +317,33 @@ export const OrientationProperty = ({children: preview}: PreviewProps) => {
 
 
 
+export const LabelStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.labelStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'content'</code>}>
+                    <p>
+                        Makes the <TheComponentLink />&apos;s layout <strong>partially match</strong> to {content.packageLink}&apos;s layout.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
 export const ButtonStyleProperty = ({children: preview}: PreviewProps) => {
     return (
         <PropertySection property={properties.buttonStyle} preview={preview} possibleValues={

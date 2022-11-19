@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { basic, label } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, LabelStyleProperty, labelStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button, Group, Label, Radio, TextInput } from '@reusable-ui/components'
@@ -20,7 +20,7 @@ const LabelPage: NextPage = () => {
             <meta name="description" content={`${label.componentTag} represents a caption for the corresponding neighboring component.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
                 <p>
                     Represents a <strong>caption</strong> for the corresponding neighboring component.
                 </p>
@@ -55,6 +55,30 @@ const LabelPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
+                <LabelStyleProperty>
+                    <Preview display='right' stretch={false}>
+                        {labelStyleOptions.map((labelStyle, index) =>
+                            <Label
+                                key={index}
+                                labelStyle={labelStyle}
+                            >
+                                A {'<Label>'} with {labelStyle} style
+                            </Label>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {labelStyleOptions.map((labelStyle) =>
+`
+<Label
+    labelStyle='${labelStyle}'
+>
+    A {'<Label>'} with ${labelStyle} style
+</Label>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </LabelStyleProperty>
                 <SizeProperty>
                     <Preview>
                         {sizeOptions.map((sizeName, index) =>

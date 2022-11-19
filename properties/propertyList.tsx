@@ -40,6 +40,7 @@ export const outlined            = new PropertyInfo('outlined')
 export const mild                = new PropertyInfo('mild')
 export const nude                = new PropertyInfo('nude')
 
+export const labelStyle          = new PropertyInfo('labelStyle')
 export const buttonStyle         = new PropertyInfo('buttonStyle')
 export const checkStyle          = new PropertyInfo('checkStyle')
 
