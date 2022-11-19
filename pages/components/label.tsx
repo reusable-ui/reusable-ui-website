@@ -25,8 +25,10 @@ const LabelPage: NextPage = () => {
                     Represents a <strong>caption</strong> for the corresponding neighboring component.
                 </p>
                 <p>
-                    This <TheComponentDisplay /> is usually used in <em>conjunction</em> with {packages.group.packageLink}, {packages.input.packageLink}, {packages.check.packageLink}, {packages.radio.packageLink}, and {packages.button.packageLink}.<br />
-                    Something like these:
+                    This <TheComponentDisplay /> is usually used in <em>conjunction</em> with {packages.group.packageLink}, {packages.input.packageLink}, {packages.check.packageLink}, {packages.radio.packageLink}, and {packages.button.packageLink}.
+                </p>
+                <p>
+                    Here the demo:
                 </p>
                 <Preview>
                     <div>
