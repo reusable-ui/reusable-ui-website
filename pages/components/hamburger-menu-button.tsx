@@ -24,7 +24,7 @@ const HamburgerMenuButtonPage: NextPage = () => {
     return (<ComponentContextProvider component={hamburgerMenuButton} baseComponents={toggleButton}>
         <Head>
             <title>{`${hamburgerMenuButton.componentTag} Component`}</title>
-            <meta name="description" content={`${hamburgerMenuButton.componentTag} is a toggleable button for showing/hiding menu in ${packages.navbar.packageDisplay}.`} />
+            <meta name="description" content={`${hamburgerMenuButton.componentTag} is a toggleable button for showing/hiding menu in ${packages.navbar.componentTag}.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
