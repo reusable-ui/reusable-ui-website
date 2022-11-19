@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { bodyElm, Card, CardBody, CardHeader, CardProps, headerElm, useClientAreaResizeObserver } from '@reusable-ui/components'
 import { style, children, rule } from '@cssfn/core'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
@@ -58,13 +58,15 @@ export const usePreviewStyleSheet = dynamicStyleSheet(() => {
 
 
 export interface PreviewProps extends Omit<CardProps, 'children'> {
-    display      ?: 'down'|'right'|'block'
-    stretch      ?: boolean
-    preventShift ?: boolean
-    transpMask   ?: boolean
-    gap          ?: string
+    display           ?: 'down'|'right'|'block'
+    stretch           ?: boolean
+    preventShift      ?: boolean
+    transpMask        ?: boolean
+    gap               ?: string
     
-    children     ?: React.ReactNode | ((isLoaded: boolean) => React.ReactNode)
+    cardBodyComponent ?: React.ReactElement
+    
+    children          ?: React.ReactNode | ((isLoaded: boolean) => React.ReactNode)
 }
 export const Preview = (props: PreviewProps) => {
     const {
@@ -73,6 +75,8 @@ export const Preview = (props: PreviewProps) => {
         preventShift = false,
         transpMask   = true,
         gap,
+        
+        cardBodyComponent = <CardBody />,
         
         children,
     ...restCardProps} = props;
@@ -151,9 +155,10 @@ export const Preview = (props: PreviewProps) => {
             <CardHeader>
                 Preview
             </CardHeader>
-            <CardBody>
-                { (typeof(children) === 'function') ? children(isLoaded) : children }
-            </CardBody>
+            {React.cloneElement(cardBodyComponent, undefined,
+                // children:
+                ((typeof(children) === 'function') ? children(isLoaded) : children),
+            )}
         </Card>
     );
 }
