@@ -2,14 +2,13 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { editableTextControl, check } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
+import { editableActionControl, check } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, CheckStyleProperty, checkStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Check as OriCheck, CheckProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -18,7 +17,7 @@ const Check = (props: CheckProps) => <OriCheck {...props} theme={props.theme ?? 
 
 
 const CheckPage: NextPage = () => {
-    return (<ComponentContextProvider component={check} baseComponents={editableTextControl}>
+    return (<ComponentContextProvider component={check} baseComponents={editableActionControl}>
         <Head>
             <title>{`${check.componentTag} Component`}</title>
             <meta name="description" content={`${check.componentTag} is an interactive control in order to select multiple options.`} />
