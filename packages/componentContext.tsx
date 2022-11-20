@@ -6,13 +6,15 @@ import { generic } from './packageList';
 
 
 export interface IComponentContext {
-    component        : ComponentInfo
-    nestedComponent ?: ComponentInfo
-    baseComponents  ?: ComponentInfo|ComponentInfo[]
+    component         : ComponentInfo
+    nestedComponent  ?: ComponentInfo|ComponentInfo[]
+    nestedProperties ?: boolean
+    baseComponents   ?: ComponentInfo|ComponentInfo[]
 }
 export const ComponentContext = React.createContext<IComponentContext>(/*defaultValue :*/{
     component        : generic,
     nestedComponent  : undefined,
+    nestedProperties : true,
     baseComponents   : undefined,
 });
 
@@ -30,10 +32,11 @@ export interface ComponentContextProviderProps extends IComponentContext {
 export const ComponentContextProvider = (props: ComponentContextProviderProps) => {
     const {
         children,
+        nestedProperties = true,
     ...restComponentContext} = props;
     
     return (
-        <ComponentContext.Provider value={restComponentContext}>
+        <ComponentContext.Provider value={{nestedProperties, ...restComponentContext}}>
             {children}
         </ComponentContext.Provider>
     );
@@ -75,11 +78,19 @@ export const TheComponentLink = () : React.ReactElement => {
 
 export const TheNestedComponentDisplay = () : React.ReactElement => {
     const {nestedComponent} = useComponentInfo();
-    return <>{nestedComponent?.packageDisplay}</>;
+    if (!nestedComponent) return <></>;
+    if (Array.isArray(nestedComponent)) return <CommaSeparated components={
+        nestedComponent.map((nestedComponent) => nestedComponent.packageDisplay)
+    } />;
+    return <>{nestedComponent.packageDisplay}</>;
 }
 export const TheNestedComponentLink = () : React.ReactElement => {
     const {nestedComponent} = useComponentInfo();
-    return <>{nestedComponent?.packageLink}</>;
+    if (!nestedComponent) return <></>;
+    if (Array.isArray(nestedComponent)) return <CommaSeparated components={
+        nestedComponent.map((nestedComponent) => nestedComponent.packageLink)
+    } />;
+    return <>{nestedComponent.packageLink}</>;
 }
 
 export const TheBaseComponentDisplay = () : React.ReactElement|null => {

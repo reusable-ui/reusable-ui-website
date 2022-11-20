@@ -47,7 +47,7 @@ const listSampleItems = ({mixVaraints = true, listStyle}: ListSampleItemsProps =
         <ListItem key={6} {...(mixVaraints ? { theme: 'danger', actionCtrl: true} : undefined)}>
             A seventh item
         </ListItem>,
-    ])
+    ]);
 }
 
 interface SampleListProps extends ListProps, ListSampleItemsProps {

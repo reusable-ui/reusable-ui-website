@@ -32,7 +32,7 @@ export const StateProperties = ({children} : StatePropertiesProps) => {
 
 
 export const EnabledProperty = ({children: preview}: PreviewProps) => {
-    const {nestedComponent} = useComponentInfo();
+    const {nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.enabled} preview={preview} possibleValues={
@@ -63,14 +63,14 @@ export const EnabledProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Defines the <strong>enabled/disabled state</strong> of the <TheComponentLink />.
             </p>
-            {!!nestedComponent && <p>
+            {!!nestedComponent && nestedProperties && <p>
                 You can set the <code>enabled</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
     );
 }
 export const InheritEnabledProperty = ({children: preview}: PreviewProps) => {
-    const {nestedComponent} = useComponentInfo();
+    const {nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.inheritEnabled} preview={preview} possibleValues={
@@ -95,7 +95,7 @@ export const InheritEnabledProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Influences the <TheComponentLink />&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
             </p>
-            {!!nestedComponent && <p>
+            {!!nestedComponent && nestedProperties && <p>
                 You can set the <code>inheritEnabled</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
@@ -103,7 +103,7 @@ export const InheritEnabledProperty = ({children: preview}: PreviewProps) => {
 }
 
 export const ReadOnlyProperty = ({children: preview}: PreviewProps) => {
-    const {nestedComponent} = useComponentInfo();
+    const {nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.readOnly} preview={preview} possibleValues={
@@ -134,7 +134,7 @@ export const ReadOnlyProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Defines the <strong>readOnly/mutable state</strong> of the <TheComponentLink />.
             </p>
-            {!!nestedComponent && <p>
+            {!!nestedComponent && nestedProperties && <p>
                 You can set the <code>readOnly</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
             <Warning>
@@ -149,7 +149,7 @@ export const ReadOnlyProperty = ({children: preview}: PreviewProps) => {
     );
 }
 export const InheritReadOnlyProperty = ({children: preview}: PreviewProps) => {
-    const {nestedComponent} = useComponentInfo();
+    const {nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.inheritReadOnly} preview={preview} possibleValues={
@@ -174,7 +174,7 @@ export const InheritReadOnlyProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Influences the <TheComponentLink />&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
             </p>
-            {!!nestedComponent && <p>
+            {!!nestedComponent && nestedProperties && <p>
                 You can set the <code>inheritReadOnly</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
@@ -185,7 +185,7 @@ export interface ActivePropertyProps extends PreviewProps {
     outlinedMildWarning ?: boolean
 }
 export const ActiveProperty = ({children: preview, outlinedMildWarning = true}: ActivePropertyProps) => {
-    const {nestedComponent} = useComponentInfo();
+    const {nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.active} preview={preview} possibleValues={
@@ -216,7 +216,7 @@ export const ActiveProperty = ({children: preview, outlinedMildWarning = true}: 
             <p>
                 Defines the current <strong>active state</strong> of the <TheComponentLink />.
             </p>
-            {!!nestedComponent && <p>
+            {!!nestedComponent && nestedProperties && <p>
                 You can set the <code>active</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
             {outlinedMildWarning && <Warning>
@@ -229,7 +229,7 @@ export const ActiveProperty = ({children: preview, outlinedMildWarning = true}: 
     );
 }
 export const InheritActiveProperty = ({children: preview}: PreviewProps) => {
-    const {nestedComponent} = useComponentInfo();
+    const {nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.inheritActive} preview={preview} possibleValues={
@@ -254,7 +254,7 @@ export const InheritActiveProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Influences the <TheComponentLink />&apos;s {activatable.packageShortDisplay} by <code>{`<ancestor active={true}>`}</code>.
             </p>
-            {!!nestedComponent && <p>
+            {!!nestedComponent && nestedProperties && <p>
                 You can set the <code>inheritActive</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>

@@ -96,6 +96,9 @@ export const hamburgerMenuButton    = new ComponentInfo('hamburger-menu-button')
 export const list                   = new ComponentInfo('list')
 export const listItem               = new ComponentInfo('listItem')
 export const card                   = new ComponentInfo('card')
+export const cardHeader             = new ComponentInfo('cardHeader')
+export const cardBody               = new ComponentInfo('cardBody')
+export const cardFooter             = new ComponentInfo('cardFooter')
 export const masonry                = new ComponentInfo('masonry')
 
 // status-components:
