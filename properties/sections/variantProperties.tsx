@@ -5,10 +5,10 @@ import type { SizeName as ButtonIconSizeName } from '@reusable-ui/button-icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { background, foreground, border, padding, themable, colorable, carousel, content } from '../../packages/packageList'
+import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
-import { TheComponentLink } from '../../packages/componentContext'
-import { ButtonStyle, CheckStyle, IconPosition, LabelStyle } from '@reusable-ui/components'
+import { TheComponentLink, TheNestedComponentLink } from '../../packages/componentContext'
+import { ButtonStyle, CheckStyle, IconPosition, LabelStyle, ListSeparatorItem, ListStyle } from '@reusable-ui/components'
 
 
 
@@ -25,6 +25,7 @@ export const orientationOptions        : OrientationName[]                = ['in
 export const labelStyleOptions         : LabelStyle[]                     = ['regular', 'content'];
 export const buttonStyleOptions        : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
 export const checkStyleOptions         : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
+export const listStyleOptions          : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
 
 
 
@@ -410,6 +411,86 @@ export const CheckStyleProperty = ({children: preview}: PreviewProps) => {
                     </p>
                 </AccordionItem>
             </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const ListStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.listStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'flat'</code>}>
+                    <p>
+                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentLink />s.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'flush'</code>}>
+                    <p>
+                        Removes the <strong>surrounding border</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'joined'</code>}>
+                    <p>
+                        Removes <strong>separator borders</strong> between <TheNestedComponentLink />s.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'content'</code>}>
+                    <p>
+                        Makes the <TheNestedComponentLink />&apos;s layout <strong>match</strong> to {content.packageLink}&apos;s layout.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'button'</code>}>
+                    <p>
+                        Makes the <TheNestedComponentLink />&apos;s layout <strong>match</strong> to {button.packageLink}&apos;s layout.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'tab'</code>}>
+                    <p>
+                        Makes the <TheComponentLink />&apos;s layout like a <strong>tabular header</strong> layout.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'breadcrumb'</code>}>
+                    <p>
+                        Makes the <TheComponentLink />&apos;s layout like a <strong>navigation breadcrumb</strong> layout.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'bullet'</code>}>
+                    <p>
+                        Makes the <TheNestedComponentLink />&apos;s layout like a <strong>bullet</strong>.
+                    </p>
+                    <p>
+                        Note: Requires each <TheNestedComponentLink /> have an <strong>empty children</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'numbered'</code>}>
+                    <p>
+                        Makes each <TheNestedComponentLink /> have a <strong>numbered counter</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        } possibleValueNotes={
+            <>
+                <p></p>
+                <Tips>
+                    <p>
+                        For the <code>{`'regular'`}</code>, <code>{`'flat'`}</code>, <code>{`'flush'`}</code> and <code>{`'joined'`}</code>, you can mix with one of another items.<br />
+                        Eg: <code>{`listStyle={['joined', 'numbered']}`}</code>
+                    </p>
+                </Tips>
+            </>
         }>
             <p>
                 Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.

@@ -178,10 +178,11 @@ export interface PreviewProps {
 }
 
 export interface PropertySectionProps {
-    property        : PropertyInfo
-    children        : React.ReactNode
-    possibleValues ?: React.ReactElement<AccordionProps, typeof Accordion>
-    preview        ?: React.ReactNode
+    property            : PropertyInfo
+    children            : React.ReactNode
+    possibleValues     ?: React.ReactElement<AccordionProps, typeof Accordion>
+    possibleValueNotes ?: React.ReactNode
+    preview            ?: React.ReactNode
 }
 export const PropertySection = (props: PropertySectionProps) => {
     const {
@@ -191,6 +192,7 @@ export const PropertySection = (props: PropertySectionProps) => {
         },
         children : description,
         possibleValues,
+        possibleValueNotes,
         preview,
     } = props;
     return (
@@ -206,6 +208,7 @@ export const PropertySection = (props: PropertySectionProps) => {
                         theme : possibleValues.props.theme ?? 'primary',
                     },
                 )}
+                {possibleValueNotes}
             </>}
             {preview && <>
                 <hr />

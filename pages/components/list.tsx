@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { indicator, list, listItem } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ListStyleProperty, listStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { List as OriList, ListProps, List as List2, ListItem, Control } from '@reusable-ui/components'
@@ -15,11 +15,19 @@ import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledP
 
 
 const List = (props: ListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
-    {props.children ?? [
+    {props.children ?? ((props.listStyle === 'bullet') ? [
+        <ListItem key={0} />,
+        <ListItem key={1} />,
+        <ListItem key={2} theme='success' />,
+        <ListItem key={3} />,
+        <ListItem key={4} active={true} actionCtrl={true} href='https://www.google.com' />,
+        <ListItem key={5} actionCtrl={true} />,
+        <ListItem key={6} theme='danger' actionCtrl={true} />,
+    ] : [
         <ListItem key={0}>
             A first item
         </ListItem>,
-        <ListItem key={1} tag='span' role='presentation'>
+        <ListItem key={1}>
             A second item
         </ListItem>,
         <ListItem key={2} theme='success'>
@@ -37,7 +45,7 @@ const List = (props: ListProps) => <OriList {...props} theme={props.theme ?? 'pr
         <ListItem key={6} theme='danger' actionCtrl={true}>
             A seventh item
         </ListItem>,
-    ]}
+    ])}
 </OriList>
 
 const listSampleItems = (indents: number = 1) => {
@@ -46,7 +54,7 @@ const listSampleItems = (indents: number = 1) => {
 `${tabs}<ListItem>
 ${tabs}    A first item
 ${tabs}</ListItem>
-${tabs}<ListItem tag='span' role='presentation'>
+${tabs}<ListItem>
 ${tabs}    A second item
 ${tabs}</ListItem>
 ${tabs}<ListItem theme='success'>
@@ -64,6 +72,18 @@ ${tabs}</ListItem>
 ${tabs}<ListItem theme='danger' actionCtrl={true}>
 ${tabs}    A seventh item
 ${tabs}</ListItem>`
+    );
+}
+const listSampleEmptyItems = (indents: number = 1) => {
+    const tabs = (new Array(indents).fill('    ')).join('');
+    return (
+`${tabs}<ListItem />
+${tabs}<ListItem />
+${tabs}<ListItem theme='success' />
+${tabs}<ListItem />
+${tabs}<ListItem active={true} actionCtrl={true} href='https://www.google.com' />
+${tabs}<ListItem actionCtrl={true} />
+${tabs}<ListItem theme='danger' actionCtrl={true} />`
     );
 }
 
@@ -91,6 +111,28 @@ const ListPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
+                <ListStyleProperty>
+                    <Preview display='right' stretch={false}>
+                        {listStyleOptions.map((listStyle, index) =>
+                            <List
+                                key={index}
+                                listStyle={listStyle}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {listStyleOptions.map((listStyle) =>
+`
+<List
+    listStyle='${listStyle}'
+>
+${(listStyle === 'bullet') ? listSampleEmptyItems() : listSampleItems()}
+</List>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ListStyleProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
