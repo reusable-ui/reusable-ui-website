@@ -7,7 +7,7 @@ import { PreviewProps, PropertySection, PropertySectionProps, Section } from '..
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
-import { TheComponentLink, TheNestedComponentLink } from '../../packages/componentContext'
+import { TheComponentLink, TheNestedComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { ButtonStyle, CheckStyle, IconPosition, LabelStyle, ListSeparatorItem, ListStyle } from '@reusable-ui/components'
 
 
@@ -36,7 +36,7 @@ export const VariantProperties = ({children} : VariantPropertiesProps) => {
     return (
         <Section title='Variant Properties'>
             <p>
-                The <strong>alternative appearances</strong> of the component layout without changing the component&apos;s functionality.
+                The <strong>alternative appearances</strong> of the <TheComponentLink /> layout without changing the <TheComponentLink />&apos;s functionality.
             </p>
             {children}
         </Section>
@@ -45,6 +45,8 @@ export const VariantProperties = ({children} : VariantPropertiesProps) => {
 export interface SizePropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
 export const SizeProperty = ({possibleValues, children: preview}: SizePropertyProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.size} preview={preview} possibleValues={possibleValues ??
             <Accordion>
@@ -66,12 +68,17 @@ export const SizeProperty = ({possibleValues, children: preview}: SizePropertyPr
             </Accordion>
         }>
             <p>
-                Defines the <strong>alternative size</strong> of the component.
+                Defines the <strong>alternative size</strong> of the <TheComponentLink />.
             </p>
+            {!!nestedComponent && <p>
+                You can set the <code>size</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+            </p>}
         </PropertySection>
     );
 }
 export const ThemeProperty = ({children: preview}: PreviewProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.theme} preview={preview} possibleValues={
             <Accordion>
@@ -123,12 +130,17 @@ export const ThemeProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Defines the <strong>contextual theme</strong> of the component.
+                Defines the <strong>contextual theme</strong> of the <TheComponentLink />.
             </p>
+            {!!nestedComponent && <p>
+                You can set the <code>theme</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+            </p>}
         </PropertySection>
     );
 }
 export const GradientProperty = ({children: preview}: PreviewProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.gradient} preview={preview} possibleValues={
             <Accordion>
@@ -155,12 +167,17 @@ export const GradientProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Activates a <strong>3D mode</strong> of the component.
+                Activates a <strong>3D mode</strong> of the <TheComponentLink />.
             </p>
+            {!!nestedComponent && <p>
+                You can set the <code>gradient</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+            </p>}
         </PropertySection>
     );
 }
 export const OutlinedProperty = ({children: preview}: PreviewProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.outlined} preview={preview} possibleValues={
             <Accordion>
@@ -187,8 +204,11 @@ export const OutlinedProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Activates an <strong>outlined mode</strong> ({background.packageShortLink}-less, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
+                Activates an <strong>outlined mode</strong> ({background.packageShortLink}-less, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the <TheComponentLink />.
             </p>
+            {!!nestedComponent && <p>
+                You can set the <code>outlined</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+            </p>}
         </PropertySection>
     );
 }
@@ -197,6 +217,8 @@ export interface MildPropertyProps extends PreviewProps {
     tips        ?: React.ReactNode
 }
 export const MildProperty = ({children: preview, description, tips}: MildPropertyProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.mild} preview={preview} possibleValues={
             <Accordion>
@@ -223,7 +245,10 @@ export const MildProperty = ({children: preview, description, tips}: MildPropert
             </Accordion>
         }>
             {description ?? <p>
-                Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the component.
+                Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the <TheComponentLink />.
+            </p>}
+            {!!nestedComponent && <p>
+                You can set the <code>mild</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
             </p>}
             {tips ?? <Tips>
                 <p>
@@ -240,7 +265,7 @@ export const ContextualMildProperty = ({description, tips, ...props}: MildProper
             {...props}
             
             description={description ?? <p>
-                Activates a <strong>mild mode</strong> (mild {colorable.packageShortLink}) of the component.
+                Activates a <strong>mild mode</strong> (mild {colorable.packageShortLink}) of the <TheComponentLink />.
             </p>}
             
             tips={tips ?? <Tips>
@@ -274,7 +299,7 @@ export const NudeProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Activates an <strong>nude mode</strong> ({background.packageShortLink}-less, {padding.packageShortLink}-less, and {border.packageShortLink}-less) of the component.
+                Activates an <strong>nude mode</strong> ({background.packageShortLink}-less, {padding.packageShortLink}-less, and {border.packageShortLink}-less) of the <TheComponentLink />.
             </p>
             <Tips>
                 <p>
@@ -310,7 +335,7 @@ export const OrientationProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Sets the <strong>orientation</strong> of the component.
+                Sets the <strong>orientation</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -520,10 +545,10 @@ export const ActionCtrlProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Sets the <strong>default actionCtrl</strong> property on <TheComponentLink /> level.
+                Sets the <strong>default</strong> <code>actionCtrl</code> property on <TheComponentLink /> level.
             </p>
             <p>
-                You can set the <strong>actionCtrl</strong> property <em>individually</em> of each <TheNestedComponentLink />.
+                You can set the <code>actionCtrl</code> property <strong>individually</strong> of each <TheNestedComponentLink />.
             </p>
         </PropertySection>
     );

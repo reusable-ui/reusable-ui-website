@@ -4,6 +4,7 @@ import { PropertySection, Section } from '../../components/Section'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
 import { BusyBar } from '../../components/BusyBar'
+import { TheComponentLink } from '../../packages/componentContext'
 
 const TagListLazy  = React.lazy(() => import(/* webpackChunkName: 'TagList' */'../../components/TagList'));
 const RoleListLazy = React.lazy(() => import(/* webpackChunkName: 'RoleList' */'../../components/RoleList'));
@@ -14,7 +15,7 @@ export const SemanticProperties = () => {
     return (
         <Section title='Semantic Properties'>
             <p>
-                Defines <strong>semantic meaning</strong> to the component, allowing <em>screen readers</em> and other tools to present and support <em>interaction</em> with the component in a way that is consistent with user expectations of that type of the component.
+                Defines <strong>semantic meaning</strong> to the <TheComponentLink />, allowing <em>screen readers</em> and other tools to present and support <em>interaction</em> with the <TheComponentLink /> in a way that is consistent with user expectations of that type of the <TheComponentLink />.
             </p>
             <TagProperty />
             <RoleProperty />
@@ -47,7 +48,7 @@ export const TagProperty = () => {
             </Accordion>
         }>
             <p>
-                Defines the final <strong>rendered tag</strong> of the component.
+                Defines the final <strong>rendered tag</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -75,7 +76,7 @@ export const RoleProperty = () => {
             </Accordion>
         }>
             <p>
-                Defines the <strong>meaning</strong> of the component.
+                Defines the <strong>meaning</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );

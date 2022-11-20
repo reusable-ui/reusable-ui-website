@@ -2,6 +2,7 @@ import React from 'react'
 import { PropertySection, Section } from '../../components/Section'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
+import { TheComponentLink } from '../../packages/componentContext'
 
 
 
@@ -9,7 +10,7 @@ export const GlobalProperties = () => {
     return (
         <Section title='Global Properties'>
             <p>
-                Defines <strong>general properties</strong> to the component.
+                Defines <strong>general properties</strong> to the <TheComponentLink />.
             </p>
             <ElmRefProperty />
             <OuterRefProperty />
@@ -22,10 +23,10 @@ export const ElmRefProperty = () => {
     return (
         <PropertySection property={properties.elmRef}>
             <p>
-                Gets the <strong>DOM element reference</strong> to the component.
+                Gets the <strong>DOM element reference</strong> to the <TheComponentLink />.
             </p>
             <p>
-                If the component contains <em>multiple DOM elements</em>, you will get the <strong>most functioning</strong> element.
+                If the <TheComponentLink /> contains <em>multiple DOM elements</em>, you will get the <strong>most functioning</strong> element.
                 For example: A <strong>custom textbox control</strong> contains some <code>&lt;div&gt;</code>s, <code>&lt;span&gt;</code>s, and an <code>&lt;input type='hidden'&gt;</code>.
                 You will get the reference of <code>&lt;input type='hidden'&gt;</code> because it&apos;s the most functioning element, whereas the others are just for layouting purpose.
             </p>
@@ -36,10 +37,10 @@ export const OuterRefProperty = () => {
     return (
         <PropertySection property={properties.outerRef}>
             <p>
-                Gets the most outer <strong>DOM element reference</strong> to the component.
+                Gets the most outer <strong>DOM element reference</strong> to the <TheComponentLink />.
             </p>
             <p>
-                If the component contains <em>multiple DOM elements</em>, you will get the <strong>most outer</strong> element.
+                If the <TheComponentLink /> contains <em>multiple DOM elements</em>, you will get the <strong>most outer</strong> element.
                 For example: A <strong>custom textbox control</strong> contains an <code>&lt;input type='hidden'&gt;</code> wrapped with a <code>&lt;div&gt;</code>.
                 You will get the reference of <code>&lt;div&gt;</code> because it&apos;s the most outer element.
             </p>
@@ -109,7 +110,7 @@ export const VariantClassesProperty = () => {
     return (
         <PropertySection property={properties.variantClasses}>
             <p>
-                Defines an array of classes which are <em>responsible</em> for making <strong>alternative appearances</strong> of the component layout without changing the component&apos;s functionality.
+                Defines an array of classes which are <em>responsible</em> for making <strong>alternative appearances</strong> of the <TheComponentLink /> layout without changing the <TheComponentLink />&apos;s functionality.
             </p>
             <p>
                 For example: <code>variantClasses={`{['outlined', 'rounded', 'glassy']}`}</code>.
@@ -122,7 +123,7 @@ export const StateClassesProperty = () => {
     return (
         <PropertySection property={properties.stateClasses}>
             <p>
-                Defines an array of classes which are <em>responsible</em> for changing the <strong>conditions</strong> of the component <strong>behavior</strong> or <strong>functionality</strong>.
+                Defines an array of classes which are <em>responsible</em> for changing the <strong>conditions</strong> of the <TheComponentLink /> <strong>behavior</strong> or <strong>functionality</strong>.
             </p>
             <p>
                 For example: <code>stateClasses={`{['toggledOn', 'activated', 'pressed']}`}</code>.

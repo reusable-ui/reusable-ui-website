@@ -14,11 +14,11 @@ import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledP
 
 
 
-interface SampleListProps extends ListProps {
+interface ListSampleItemsProps extends Pick<ListProps, 'listStyle'> {
     mixVaraints ?: boolean
 }
-const List = ({mixVaraints = true, ...props}: SampleListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
-    {props.children ?? ((props.listStyle === 'bullet') ? [
+const listSampleItems = ({mixVaraints = true, listStyle}: ListSampleItemsProps = {}) => {
+    return ((listStyle === 'bullet') ? [
         <ListItem key={0} />,
         <ListItem key={1} />,
         <ListItem key={2} theme='success' />,
@@ -48,40 +48,52 @@ const List = ({mixVaraints = true, ...props}: SampleListProps) => <OriList {...p
         <ListItem key={6} {...(mixVaraints ? { theme: 'danger', actionCtrl: true} : undefined)}>
             A seventh item
         </ListItem>,
-    ])}
+    ])
+}
+
+interface SampleListProps extends ListProps, ListSampleItemsProps {
+}
+const List = (props: SampleListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
+    {props.children ?? listSampleItems(props)}
 </OriList>
 
-interface ListSampleItemsProps {
+interface ListSampleItemsArrayProps {
     indents     ?: number
     mixVaraints ?: boolean
 }
-const listSampleItems = ({indents = 1, mixVaraints = true} : ListSampleItemsProps = {}) => {
+const listSampleItemsArray = ({indents = 1, mixVaraints = true} : ListSampleItemsArrayProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
-    return (
-`${tabs}<ListItem>
+    return ([
+(prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
 ${tabs}    A first item
-${tabs}</ListItem>
-${tabs}<ListItem>
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
 ${tabs}    A second item
-${tabs}</ListItem>
-${tabs}<ListItem${mixVaraints ? " theme='success'" : ""}>
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${mixVaraints ? " theme='success'" : ""}${prop ? ` ${prop}` : ''}>
 ${tabs}    A third item
-${tabs}</ListItem>
-${tabs}<ListItem>
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
 ${tabs}    A fourth item
-${tabs}</ListItem>
-${tabs}<ListItem${mixVaraints ? " active={true} actionCtrl={true} href='https://www.google.com'" : ""}>
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${mixVaraints ? " active={true} actionCtrl={true} href='https://www.google.com'" : ""}${prop ? ` ${prop}` : ''}>
 ${tabs}    A fifth item
-${tabs}</ListItem>
-${tabs}<ListItem${mixVaraints ? " actionCtrl={true}" : ""}>
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${mixVaraints ? " actionCtrl={true}" : ""}${prop ? ` ${prop}` : ''}>
 ${tabs}    A sixth item
-${tabs}</ListItem>
-${tabs}<ListItem${mixVaraints ? " theme='danger' actionCtrl={true}" : ""}>
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${mixVaraints ? " theme='danger' actionCtrl={true}" : ""}${prop ? ` ${prop}` : ''}>
 ${tabs}    A seventh item
 ${tabs}</ListItem>`
-    );
+    ]);
 }
-const listSampleEmptyItems = (indents: number = 1) => {
+
+interface ListSampleItemsStringProps extends ListSampleItemsArrayProps {
+}
+const listSampleItemsString = (options : ListSampleItemsStringProps = {}) => {
+    return listSampleItemsArray(options).map((listItem) => listItem()).join('\n');
+}
+const listSampleEmptyItemsString = (indents: number = 1) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return (
 `${tabs}<ListItem />
@@ -134,7 +146,7 @@ const ListPage: NextPage = () => {
 <List
     listStyle='${listStyle}'
 >
-${(listStyle === 'bullet') ? listSampleEmptyItems() : listSampleItems()}
+${(listStyle === 'bullet') ? listSampleEmptyItemsString() : listSampleItemsString()}
 </List>
 `
                         ).join('')}
@@ -215,10 +227,8 @@ ${(listStyle === 'bullet') ? listSampleEmptyItems() : listSampleItems()}
                     <p></p>
                     <TypeScriptCode>{
 `
-<List
-    actionCtrl={true}
->
-${listSampleItems({mixVaraints: false})}
+<List actionCtrl={true}>
+${listSampleItemsString({mixVaraints: false})}
 </List>
 
 <List>
@@ -255,19 +265,31 @@ ${listSampleItems({mixVaraints: false})}
                                 size={sizeName}
                             />
                         )}
+                        
+                        <List
+                            mixVaraints={false}
+                        >
+                            {listSampleItems({mixVaraints: false}).map((listItem, index) => React.cloneElement(listItem, { size: sizeOptions[index] ?? undefined }))}
+                        </List>
                     </Preview>
                     <p></p>
-                    <TypeScriptCode>
-                        {sizeOptions.map((sizeName) =>
+                    <TypeScriptCode>{
+                        sizeOptions.map((sizeName, index) =>
 `
 <List
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-${listSampleItems({mixVaraints: false})}
+${listSampleItemsString({mixVaraints: false})}
 </List>
 `
-                        ).join('')}
-                    </TypeScriptCode>
+                        ).join('')
++
+`
+<List>
+${listSampleItemsArray({mixVaraints: false}).map((listItem, index) => listItem(sizeOptions[index] ? `size='${sizeOptions[index]}'` : '')).join('\n')}
+</List>
+`
+                    }</TypeScriptCode>
                 </SizeProperty>
                 <ThemeProperty>
                     <Preview display='right' stretch={false}>
@@ -277,19 +299,30 @@ ${listSampleItems({mixVaraints: false})}
                                 theme={themeName}
                             />
                         )}
+                        <List
+                            mixVaraints={false}
+                        >
+                            {listSampleItems({mixVaraints: false}).map((listItem, index) => React.cloneElement(listItem, { theme: themeOptions[index] ?? undefined }))}
+                        </List>
                     </Preview>
                     <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
+                    <TypeScriptCode>{
+                        themeOptions.map((themeName) =>
 `
 <List
     theme='${themeName}'
 >
-${listSampleItems()}
+${listSampleItemsString()}
 </List>
 `
-                        ).join('')}
-                    </TypeScriptCode>
+                        ).join('')
++
+`
+<List>
+${listSampleItemsArray({mixVaraints: false}).map((listItem, index) => listItem(themeOptions[index] ? `theme='${themeOptions[index]}'` : '')).join('\n')}
+</List>
+`
+                    }</TypeScriptCode>
                 </ThemeProperty>
                 <GradientProperty>
                     <Preview display='right' stretch={false}>
@@ -300,6 +333,31 @@ ${listSampleItems()}
                                 gradient={true}
                             />
                         )}
+                        <List
+                            mixVaraints={false}
+                        >
+                            <ListItem gradient={true}>
+                                A first item (gradient)
+                            </ListItem>
+                            <ListItem>
+                                A second item
+                            </ListItem>
+                            <ListItem gradient={true}>
+                                A third item (gradient)
+                            </ListItem>
+                            <ListItem>
+                                A fourth item
+                            </ListItem>
+                            <ListItem gradient={true}>
+                                A fifth item (gradient)
+                            </ListItem>
+                            <ListItem gradient={true}>
+                                A sixth item (gradient)
+                            </ListItem>
+                            <ListItem>
+                                A seventh item
+                            </ListItem>
+                        </List>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
@@ -309,7 +367,31 @@ ${listSampleItems()}
     theme='${themeName}'
     gradient={true}
 >
-${listSampleItems()}
+${listSampleItemsString()}
+</List>
+
+<List>
+    <ListItem gradient={true}>
+        A first item (gradient)
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListItem gradient={true}>
+        A third item (gradient)
+    </ListItem>
+    <ListItem>
+        A fourth item
+    </ListItem>
+    <ListItem gradient={true}>
+        A fifth item (gradient)
+    </ListItem>
+    <ListItem gradient={true}>
+        A sixth item (gradient)
+    </ListItem>
+    <ListItem>
+        A seventh item
+    </ListItem>
 </List>
 `
                         ).join('')}
@@ -324,6 +406,31 @@ ${listSampleItems()}
                                 outlined={true}
                             />
                         )}
+                        <List
+                            mixVaraints={false}
+                        >
+                            <ListItem outlined={true}>
+                                A first item (outlined)
+                            </ListItem>
+                            <ListItem>
+                                A second item
+                            </ListItem>
+                            <ListItem outlined={true}>
+                                A third item (outlined)
+                            </ListItem>
+                            <ListItem>
+                                A fourth item
+                            </ListItem>
+                            <ListItem outlined={true}>
+                                A fifth item (outlined)
+                            </ListItem>
+                            <ListItem outlined={true}>
+                                A sixth item (outlined)
+                            </ListItem>
+                            <ListItem>
+                                A seventh item
+                            </ListItem>
+                        </List>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
@@ -333,7 +440,31 @@ ${listSampleItems()}
     theme='${themeName}'
     outlined={true}
 >
-${listSampleItems()}
+${listSampleItemsString()}
+</List>
+
+<List>
+    <ListItem outlined={true}>
+        A first item (outlined)
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListItem outlined={true}>
+        A third item (outlined)
+    </ListItem>
+    <ListItem>
+        A fourth item
+    </ListItem>
+    <ListItem outlined={true}>
+        A fifth item (outlined)
+    </ListItem>
+    <ListItem outlined={true}>
+        A sixth item (outlined)
+    </ListItem>
+    <ListItem>
+        A seventh item
+    </ListItem>
 </List>
 `
                         ).join('')}
@@ -348,6 +479,31 @@ ${listSampleItems()}
                                 mild={false}
                             />
                         )}
+                        <List
+                            mixVaraints={false}
+                        >
+                            <ListItem mild={false}>
+                                A first item (not mild)
+                            </ListItem>
+                            <ListItem>
+                                A second item
+                            </ListItem>
+                            <ListItem mild={false}>
+                                A third item (not mild)
+                            </ListItem>
+                            <ListItem>
+                                A fourth item
+                            </ListItem>
+                            <ListItem mild={false}>
+                                A fifth item (not mild)
+                            </ListItem>
+                            <ListItem mild={false}>
+                                A sixth item (not mild)
+                            </ListItem>
+                            <ListItem>
+                                A seventh item
+                            </ListItem>
+                        </List>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>
@@ -357,7 +513,31 @@ ${listSampleItems()}
     theme='${themeName}'
     mild={false}
 >
-${listSampleItems()}
+${listSampleItemsString()}
+</List>
+
+<List>
+    <ListItem mild={false}>
+        A first item (not mild)
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListItem mild={false}>
+        A third item (not mild)
+    </ListItem>
+    <ListItem>
+        A fourth item
+    </ListItem>
+    <ListItem mild={false}>
+        A fifth item (not mild)
+    </ListItem>
+    <ListItem mild={false}>
+        A sixth item (not mild)
+    </ListItem>
+    <ListItem>
+        A seventh item
+    </ListItem>
 </List>
 `
                         ).join('')}
@@ -383,7 +563,7 @@ ${listSampleItems()}
     theme='${themeName}'
     enabled={false}
 >
-${listSampleItems()}
+${listSampleItemsString()}
 </List>
 `
                         ).join('')}
@@ -410,7 +590,7 @@ ${listSampleItems()}
         theme='${themeName}'
         inheritEnabled={true}
     >
-${listSampleItems({indents: 2})}
+${listSampleItemsString({indents: 2})}
     </List>
 </Control>
 `
@@ -437,7 +617,7 @@ ${listSampleItems({indents: 2})}
     theme='${themeName}'
     active={true}
 >
-${listSampleItems()}
+${listSampleItemsString()}
 </List>
 `
                         ).join('')}
@@ -464,7 +644,7 @@ ${listSampleItems()}
         theme='${themeName}'
         inheritActive={true}
     >
-${listSampleItems({indents: 2})}
+${listSampleItemsString({indents: 2})}
     </List>
 </Control>
 `

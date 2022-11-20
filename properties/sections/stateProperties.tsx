@@ -6,7 +6,7 @@ import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
 import { icon, form } from '../../packages/packageList'
-import { TheComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 
 
 
@@ -22,7 +22,7 @@ export const StateProperties = ({children} : StatePropertiesProps) => {
     return (
         <Section title='State Properties'>
             <p>
-                The <strong>conditions</strong> of the component <strong>behavior</strong> or <strong>functionality</strong>.
+                The <strong>conditions</strong> of the <TheComponentLink /> <strong>behavior</strong> or <strong>functionality</strong>.
             </p>
             {children}
         </Section>
@@ -42,24 +42,24 @@ export const EnabledProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        The component is <strong>enabled</strong>.
+                        The <TheComponentLink /> is <strong>enabled</strong>.
                     </p>
                     <p>
-                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        The component is <strong>disabled</strong>.
+                        The <TheComponentLink /> is <strong>disabled</strong>.
                     </p>
                     <p>
-                        Note: The component can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> can be disabled <em>indirectly</em> by <code>{`<ancestor enabled={false}>`}</code> if <code>{`inheritEnabled={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Defines the <strong>enabled/disabled state</strong> of the component.
+                Defines the <strong>enabled/disabled state</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -75,18 +75,18 @@ export const InheritEnabledProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        Influences the component&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
+                        Influences the <TheComponentLink />&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        Independent the component&apos;s {disableable.packageShortDisplay}.
+                        Independent the <TheComponentLink />&apos;s {disableable.packageShortDisplay}.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Influences the component&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
+                Influences the <TheComponentLink />&apos;s {disableable.packageShortDisplay} by <code>{`<ancestor enabled={false}>`}</code>.
             </p>
         </PropertySection>
     );
@@ -103,24 +103,24 @@ export const ReadOnlyProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        The component is <strong>readOnly</strong> (locked).
+                        The <TheComponentLink /> is <strong>readOnly</strong> (locked).
                     </p>
                     <p>
-                        Note: The component can be readOnly <em>indirectly</em> by <code>{`<ancestor readOnly={true}>`}</code> if <code>{`inheritReadOnly={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> can be readOnly <em>indirectly</em> by <code>{`<ancestor readOnly={true}>`}</code> if <code>{`inheritReadOnly={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        The component is <strong>mutable</strong> (editable).
+                        The <TheComponentLink /> is <strong>mutable</strong> (editable).
                     </p>
                     <p>
-                        Note: The component can be readOnly <em>indirectly</em> by <code>{`<ancestor readOnly={true}>`}</code> if <code>{`inheritReadOnly={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> can be readOnly <em>indirectly</em> by <code>{`<ancestor readOnly={true}>`}</code> if <code>{`inheritReadOnly={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Defines the <strong>readOnly/mutable state</strong> of the component.
+                Defines the <strong>readOnly/mutable state</strong> of the <TheComponentLink />.
             </p>
             <Warning>
                 <p>
@@ -144,18 +144,18 @@ export const InheritReadOnlyProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        Influences the component&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
+                        Influences the <TheComponentLink />&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        Independent the component&apos;s {properties.readOnly.propertyShortDisplay}.
+                        Independent the <TheComponentLink />&apos;s {properties.readOnly.propertyShortDisplay}.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Influences the component&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
+                Influences the <TheComponentLink />&apos;s {properties.readOnly.propertyShortDisplay} by <code>{`<ancestor readOnly={true}>`}</code>.
             </p>
         </PropertySection>
     );
@@ -175,24 +175,24 @@ export const ActiveProperty = ({children: preview, outlinedMildWarning = true}: 
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Activates</strong> the component.
+                        <strong>Activates</strong> the <TheComponentLink />.
                     </p>
                     <p>
-                        Note: The component can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>.
+                        Note: The <TheComponentLink /> can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Deactivates</strong> (normalize) the component.
+                        <strong>Deactivates</strong> (normalize) the <TheComponentLink />.
                     </p>
                     <p>
-                        Note: The component can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>.
+                        Note: The <TheComponentLink /> can be activated <em>indirectly</em> by <code>{`<ancestor active={true}>`}</code> if <code>{`inheritActive={true}`}</code>.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Defines the current <strong>active state</strong> of the component.
+                Defines the current <strong>active state</strong> of the <TheComponentLink />.
             </p>
             {outlinedMildWarning && <Warning>
                 <p>
@@ -214,18 +214,18 @@ export const InheritActiveProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        Influences the component&apos;s {activatable.packageShortDisplay} by <code>{`<ancestor active={true}>`}</code>.
+                        Influences the <TheComponentLink />&apos;s {activatable.packageShortDisplay} by <code>{`<ancestor active={true}>`}</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        Independent the component&apos;s {activatable.packageShortDisplay}.
+                        Independent the <TheComponentLink />&apos;s {activatable.packageShortDisplay}.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Influences the component&apos;s {activatable.packageShortDisplay} by <code>{`<ancestor active={true}>`}</code>.
+                Influences the <TheComponentLink />&apos;s {activatable.packageShortDisplay} by <code>{`<ancestor active={true}>`}</code>.
             </p>
         </PropertySection>
     );
@@ -279,25 +279,25 @@ export const FocusedProperty = ({children: preview}: PreviewProps) => {
                     </p>
                     <Warning>
                         <p>
-                            In <em>most cases</em>, the <strong>focus indicator</strong> will <strong>be shown</strong> if the component is focused by the <kbd>tab</kbd> key.
+                            In <em>most cases</em>, the <strong>focus indicator</strong> will <strong>be shown</strong> if the <TheComponentLink /> is focused by the <kbd>tab</kbd> key.
                             Focusing by a <strong>pointing device</strong> will <strong>not show</strong> the <strong>focus indicator</strong>, except when containing <code>{`<input> or <textarea>`}</code> -or- when <code>{`assertiveFocusable={true}`}</code>.
                         </p>
                     </Warning>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Shows</strong> the <strong>focus indicator</strong>, regradless the component is <em>actually</em> in focus or not.
+                        <strong>Shows</strong> the <strong>focus indicator</strong>, regradless the <TheComponentLink /> is <em>actually</em> in focus or not.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Hides</strong> the <strong>focus indicator</strong>, regradless the component is <em>actually</em> in focus or not.
+                        <strong>Hides</strong> the <strong>focus indicator</strong>, regradless the <TheComponentLink /> is <em>actually</em> in focus or not.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Shows the <strong>focus indicator</strong> of the component.
+                Shows the <strong>focus indicator</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -316,18 +316,18 @@ export const ArrivedProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Shows</strong> the <strong>arrive indicator</strong>, regradless the component is <em>actually</em> in <code>{`:hover`}</code> or not.
+                        <strong>Shows</strong> the <strong>arrive indicator</strong>, regradless the <TheComponentLink /> is <em>actually</em> in <code>{`:hover`}</code> or not.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Hides</strong> the <strong>arrive indicator</strong>, regradless the component is <em>actually</em> in <code>{`:hover`}</code> or not.
+                        <strong>Hides</strong> the <strong>arrive indicator</strong>, regradless the <TheComponentLink /> is <em>actually</em> in <code>{`:hover`}</code> or not.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Shows the <strong>arrive indicator</strong> (being touched but not clicked) of the component.
+                Shows the <strong>arrive indicator</strong> (being touched but not clicked) of the <TheComponentLink />.
             </p>
             <p>
                 It&apos;s similar to <code>{`:is(:hover, :focus-visible)`}</code> in CSS, but we toggle our <em>:hover</em> by <em>our logic way</em> (controllable and/or uncontrollable).
@@ -350,18 +350,18 @@ export const PressedProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Shows</strong> the <strong>pressed indicator</strong>, regradless the component is <em>actually</em> being pressed or not.
+                        <strong>Shows</strong> the <strong>pressed indicator</strong>, regradless the <TheComponentLink /> is <em>actually</em> being pressed or not.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Hides</strong> the <strong>pressed indicator</strong>, regradless the component is <em>actually</em> being pressed or not.
+                        <strong>Hides</strong> the <strong>pressed indicator</strong>, regradless the <TheComponentLink /> is <em>actually</em> being pressed or not.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Shows the <strong>pressed indicator</strong> of the component.
+                Shows the <strong>pressed indicator</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -387,18 +387,18 @@ export const EnableValidationProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        The component {invalidable.packageShortDisplay} is <strong>activated</strong>.
+                        The <TheComponentLink /> {invalidable.packageShortDisplay} is <strong>activated</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        The component {invalidable.packageShortDisplay} is <strong>deactivated</strong>.
+                        The <TheComponentLink /> {invalidable.packageShortDisplay} is <strong>deactivated</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Activates the {invalidable.packageShortDisplay} of the component.
+                Activates the {invalidable.packageShortDisplay} of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -423,34 +423,34 @@ export const IsValidProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>null</code>}>
                     <p>
-                        <strong>Marks</strong> the component status as <strong>neutral</strong>.
+                        <strong>Marks</strong> the <TheComponentLink /> status as <strong>neutral</strong>.
                     </p>
                     <p>
-                        Note: The component status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Marks</strong> the component status as <strong>valid</strong>.
-                        The component appearance will be <strong>green</strong>-ish (by default <em>success theme</em>), overwrites its current theme.
+                        <strong>Marks</strong> the <TheComponentLink /> status as <strong>valid</strong>.
+                        The <TheComponentLink /> appearance will be <strong>green</strong>-ish (by default <em>success theme</em>), overwrites its current theme.
                     </p>
                     <p>
-                        Note: The component status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Marks</strong> the component status as <strong>invalid</strong>.
-                        The component appearance will be <strong>redd</strong>-ish (by default <em>danger theme</em>), overwrites its current theme.
+                        <strong>Marks</strong> the <TheComponentLink /> status as <strong>invalid</strong>.
+                        The <TheComponentLink /> appearance will be <strong>redd</strong>-ish (by default <em>danger theme</em>), overwrites its current theme.
                     </p>
                     <p>
-                        Note: The component status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
+                        Note: The <TheComponentLink /> status can be marked as valid/invalid <em>indirectly</em> by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code> if <code>{`inheritValidation={true}`}</code> (was configured by default).
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Marks the <strong>validity status</strong> of the component.
+                Marks the <strong>validity status</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
@@ -466,18 +466,18 @@ export const InheritValidationProperty = ({children: preview}: PreviewProps) => 
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        Influences the component&apos;s {invalidable.packageShortDisplay} by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code>.
+                        Influences the <TheComponentLink />&apos;s {invalidable.packageShortDisplay} by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        Independent the component&apos;s {invalidable.packageShortDisplay}.
+                        Independent the <TheComponentLink />&apos;s {invalidable.packageShortDisplay}.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Influences the component&apos;s {invalidable.packageShortDisplay} by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code>.
+                Influences the <TheComponentLink />&apos;s {invalidable.packageShortDisplay} by <code>{`<ancestor isValid={true|false} enableValidation={true}>`}</code>.
             </p>
         </PropertySection>
     );
