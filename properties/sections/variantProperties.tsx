@@ -520,7 +520,10 @@ export const ActionCtrlProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Sets the <strong>default actionCtrl property</strong> of every <TheNestedComponentLink />s.
+                Sets the <strong>default actionCtrl</strong> property on <TheComponentLink /> level.
+            </p>
+            <p>
+                You can set the <strong>actionCtrl</strong> property <em>individually</em> of each <TheNestedComponentLink />.
             </p>
         </PropertySection>
     );

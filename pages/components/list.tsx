@@ -14,7 +14,10 @@ import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledP
 
 
 
-const List = (props: ListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
+interface SampleListProps extends ListProps {
+    mixVaraints ?: boolean
+}
+const List = ({mixVaraints = true, ...props}: SampleListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
     {props.children ?? ((props.listStyle === 'bullet') ? [
         <ListItem key={0} />,
         <ListItem key={1} />,
@@ -30,25 +33,29 @@ const List = (props: ListProps) => <OriList {...props} theme={props.theme ?? 'pr
         <ListItem key={1}>
             A second item
         </ListItem>,
-        <ListItem key={2} theme='success'>
+        <ListItem key={2} {...(mixVaraints ? { theme: 'success'} : undefined)}>
             A third item
         </ListItem>,
         <ListItem key={3}>
             A fourth item
         </ListItem>,
-        <ListItem key={4} active={true} actionCtrl={true} href='https://www.google.com'>
+        <ListItem key={4} {...(mixVaraints ? { active: true, actionCtrl: true, href: 'https://www.google.com'} : undefined)}>
             A fifth item
         </ListItem>,
-        <ListItem key={5} actionCtrl={true}>
+        <ListItem key={5} {...(mixVaraints ? { actionCtrl: true} : undefined)}>
             A sixth item
         </ListItem>,
-        <ListItem key={6} theme='danger' actionCtrl={true}>
+        <ListItem key={6} {...(mixVaraints ? { theme: 'danger', actionCtrl: true} : undefined)}>
             A seventh item
         </ListItem>,
     ])}
 </OriList>
 
-const listSampleItems = (indents: number = 1) => {
+interface ListSampleItemsProps {
+    indents     ?: number
+    mixVaraints ?: boolean
+}
+const listSampleItems = ({indents = 1, mixVaraints = true} : ListSampleItemsProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return (
 `${tabs}<ListItem>
@@ -57,19 +64,19 @@ ${tabs}</ListItem>
 ${tabs}<ListItem>
 ${tabs}    A second item
 ${tabs}</ListItem>
-${tabs}<ListItem theme='success'>
+${tabs}<ListItem${mixVaraints ? " theme='success'" : ""}>
 ${tabs}    A third item
 ${tabs}</ListItem>
 ${tabs}<ListItem>
 ${tabs}    A fourth item
 ${tabs}</ListItem>
-${tabs}<ListItem active={true} actionCtrl={true} href='https://www.google.com'>
+${tabs}<ListItem${mixVaraints ? " active={true} actionCtrl={true} href='https://www.google.com'" : ""}>
 ${tabs}    A fifth item
 ${tabs}</ListItem>
-${tabs}<ListItem actionCtrl={true}>
+${tabs}<ListItem${mixVaraints ? " actionCtrl={true}" : ""}>
 ${tabs}    A sixth item
 ${tabs}</ListItem>
-${tabs}<ListItem theme='danger' actionCtrl={true}>
+${tabs}<ListItem${mixVaraints ? " theme='danger' actionCtrl={true}" : ""}>
 ${tabs}    A seventh item
 ${tabs}</ListItem>`
     );
@@ -174,7 +181,71 @@ ${(listStyle === 'bullet') ? listSampleEmptyItems() : listSampleItems()}
                     </TypeScriptCode>
                 </OrientationProperty>
                 <ActionCtrlProperty>
-                    test
+                    <Preview display='right' stretch={false}>
+                        <List
+                            actionCtrl={true}
+                            mixVaraints={false}
+                        />
+                        <List
+                            mixVaraints={false}
+                        >
+                            <ListItem actionCtrl={true}>
+                                A first item (clickable)
+                            </ListItem>
+                            <ListItem>
+                                A second item
+                            </ListItem>
+                            <ListItem actionCtrl={true}>
+                                A third item (clickable)
+                            </ListItem>
+                            <ListItem>
+                                A fourth item
+                            </ListItem>
+                            <ListItem actionCtrl={true}>
+                                A fifth item (clickable)
+                            </ListItem>
+                            <ListItem actionCtrl={true}>
+                                A sixth item (clickable)
+                            </ListItem>
+                            <ListItem>
+                                A seventh item
+                            </ListItem>
+                        </List>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<List
+    actionCtrl={true}
+>
+${listSampleItems({mixVaraints: false})}
+</List>
+
+<List>
+    <ListItem actionCtrl={true}>
+        A first item (clickable)
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListItem actionCtrl={true}>
+        A third item (clickable)
+    </ListItem>
+    <ListItem>
+        A fourth item
+    </ListItem>
+    <ListItem actionCtrl={true}>
+        A fifth item (clickable)
+    </ListItem>
+    <ListItem actionCtrl={true}>
+        A sixth item (clickable)
+    </ListItem>
+    <ListItem>
+        A seventh item
+    </ListItem>
+</List>
+`
+                    }</TypeScriptCode>
                 </ActionCtrlProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
@@ -192,7 +263,7 @@ ${(listStyle === 'bullet') ? listSampleEmptyItems() : listSampleItems()}
 <List
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-${listSampleItems()}
+${listSampleItems({mixVaraints: false})}
 </List>
 `
                         ).join('')}
@@ -339,7 +410,7 @@ ${listSampleItems()}
         theme='${themeName}'
         inheritEnabled={true}
     >
-${listSampleItems(2)}
+${listSampleItems({indents: 2})}
     </List>
 </Control>
 `
@@ -393,7 +464,7 @@ ${listSampleItems()}
         theme='${themeName}'
         inheritActive={true}
     >
-${listSampleItems(2)}
+${listSampleItems({indents: 2})}
     </List>
 </Control>
 `
