@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { indicator, list, listItem } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ListStyleProperty, listStyleOptions } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ListStyleProperty, listStyleOptions, OrientationProperty, orientationOptions, ActionCtrlProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { List as OriList, ListProps, List as List2, ListItem, Control } from '@reusable-ui/components'
@@ -133,6 +133,49 @@ ${(listStyle === 'bullet') ? listSampleEmptyItems() : listSampleItems()}
                         ).join('')}
                     </TypeScriptCode>
                 </ListStyleProperty>
+                <OrientationProperty>
+                    <Preview display='right' stretch={false}>
+                        {orientationOptions.map((orientationName, index) =>
+                            <List
+                                key={index}
+                                orientation={orientationName}
+                            >
+                                <ListItem>
+                                    A first item
+                                </ListItem>
+                                <ListItem>
+                                    A second item
+                                </ListItem>
+                                <ListItem>
+                                    A third item
+                                </ListItem>
+                            </List>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {orientationOptions.map((orientationName) =>
+`
+<List
+    orientation='${orientationName}'
+>
+    <ListItem>
+        A first item
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListItem>
+        A third item
+    </ListItem>
+</List>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OrientationProperty>
+                <ActionCtrlProperty>
+                    test
+                </ActionCtrlProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>

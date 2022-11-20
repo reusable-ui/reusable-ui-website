@@ -498,3 +498,30 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
+export const ActionCtrlProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.actionCtrl} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> behavior.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        Makes every <TheNestedComponentLink />s <strong>not clickable</strong> (if not overriden).
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        Makes every <TheNestedComponentLink />s <strong>clickable</strong> (if not overriden).
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>default actionCtrl property</strong> of every <TheNestedComponentLink />s.
+            </p>
+        </PropertySection>
+    );
+}

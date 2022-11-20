@@ -44,6 +44,7 @@ export const labelStyle          = new PropertyInfo('labelStyle')
 export const buttonStyle         = new PropertyInfo('buttonStyle')
 export const checkStyle          = new PropertyInfo('checkStyle')
 export const listStyle           = new PropertyInfo('listStyle')
+export const actionCtrl          = new PropertyInfo('actionCtrl')
 
 
 
