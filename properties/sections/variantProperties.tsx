@@ -7,8 +7,8 @@ import { PreviewProps, PropertySection, PropertySectionProps, Section } from '..
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
-import { TheComponentLink, TheNestedComponentLink, useComponentInfo } from '../../packages/componentContext'
-import { ButtonStyle, CheckStyle, IconPosition, LabelStyle, ListSeparatorItem, ListStyle } from '@reusable-ui/components'
+import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { ButtonStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
 
 
 
@@ -71,7 +71,7 @@ export const SizeProperty = ({possibleValues, children: preview}: SizePropertyPr
                 Defines the <strong>alternative size</strong> of the <TheComponentLink />.
             </p>
             {!!nestedComponent && <p>
-                You can set the <code>size</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+                You can set the <code>size</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
     );
@@ -133,7 +133,7 @@ export const ThemeProperty = ({children: preview}: PreviewProps) => {
                 Defines the <strong>contextual theme</strong> of the <TheComponentLink />.
             </p>
             {!!nestedComponent && <p>
-                You can set the <code>theme</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+                You can set the <code>theme</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
     );
@@ -170,7 +170,7 @@ export const GradientProperty = ({children: preview}: PreviewProps) => {
                 Activates a <strong>3D mode</strong> of the <TheComponentLink />.
             </p>
             {!!nestedComponent && <p>
-                You can set the <code>gradient</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+                You can set the <code>gradient</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
     );
@@ -207,7 +207,7 @@ export const OutlinedProperty = ({children: preview}: PreviewProps) => {
                 Activates an <strong>outlined mode</strong> ({background.packageShortLink}-less, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the <TheComponentLink />.
             </p>
             {!!nestedComponent && <p>
-                You can set the <code>outlined</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+                You can set the <code>outlined</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
         </PropertySection>
     );
@@ -248,7 +248,7 @@ export const MildProperty = ({children: preview, description, tips}: MildPropert
                 Activates a <strong>mild mode</strong> (mild {background.packageShortLink}, contrast {foreground.packageShortLink}, and contrast {border.packageShortLink}) of the <TheComponentLink />.
             </p>}
             {!!nestedComponent && <p>
-                You can set the <code>mild</code> <strong>individually</strong> for each <TheNestedComponentLink />s.
+                You can set the <code>mild</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>}
             {tips ?? <Tips>
                 <p>
@@ -459,7 +459,7 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'flat'</code>}>
                     <p>
-                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentLink />s.
+                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'flush'</code>}>
@@ -469,17 +469,17 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'joined'</code>}>
                     <p>
-                        Removes <strong>separator borders</strong> between <TheNestedComponentLink />s.
+                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'content'</code>}>
                     <p>
-                        Makes the <TheNestedComponentLink />&apos;s layout <strong>match</strong> to {content.packageLink}&apos;s layout.
+                        Makes the <TheNestedComponentDisplay />&apos;s layout <strong>match</strong> to {content.packageLink}&apos;s layout.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'button'</code>}>
                     <p>
-                        Makes the <TheNestedComponentLink />&apos;s layout <strong>match</strong> to {button.packageLink}&apos;s layout.
+                        Makes the <TheNestedComponentDisplay />&apos;s layout <strong>match</strong> to {button.packageLink}&apos;s layout.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'tab'</code>}>
@@ -494,15 +494,15 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'bullet'</code>}>
                     <p>
-                        Makes the <TheNestedComponentLink />&apos;s layout like a <strong>bullet</strong>.
+                        Makes the <TheNestedComponentDisplay />&apos;s layout like a <strong>bullet</strong>.
                     </p>
                     <p>
-                        Note: Requires each <TheNestedComponentLink /> have an <strong>empty children</strong>.
+                        Note: Requires each <TheNestedComponentDisplay /> have an <strong>empty children</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'numbered'</code>}>
                     <p>
-                        Makes each <TheNestedComponentLink /> have a <strong>numbered counter</strong>.
+                        Makes each <TheNestedComponentDisplay /> have a <strong>numbered counter</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -534,12 +534,12 @@ export const ActionCtrlProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        Makes every <TheNestedComponentLink />s <strong>not clickable</strong> (if not overriden).
+                        Makes <TheNestedComponentDisplay /> <strong>not clickable</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        Makes every <TheNestedComponentLink />s <strong>clickable</strong> (if not overriden).
+                        Makes <TheNestedComponentDisplay /> <strong>clickable</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -548,7 +548,7 @@ export const ActionCtrlProperty = ({children: preview}: PreviewProps) => {
                 Sets the <strong>default</strong> <code>actionCtrl</code> property on <TheComponentLink /> level.
             </p>
             <p>
-                You can set the <code>actionCtrl</code> property <strong>individually</strong> of each <TheNestedComponentLink />.
+                You can set the <code>actionCtrl</code> property <strong>individually</strong> for each <TheNestedComponentDisplay />.
             </p>
         </PropertySection>
     );
