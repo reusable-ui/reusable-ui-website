@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Container as OriContainer, ContainerProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
 
 
 
@@ -35,16 +35,16 @@ const ContainerPage: NextPage = () => {
             <ComponentInstallation />
             <Section title='Adjusting the Children Space'>
                 <p>
-                    By default the <TheComponentDisplay />&apos;s childen space is <strong>inside</strong> the <TheComponentDisplay />&apos;s padding.
+                    By default the <TheComponentLink />&apos;s childen space is <strong>inside</strong> the <TheComponentLink />&apos;s padding.
                 </p>
                 <p>
-                    But in <em>some cases</em>, you may want some children or sub <code>{`<section>`}</code>s to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
+                    But in <em>some cases</em>, you may want some children or sub <code>{`<section>`}</code>s to <strong>fill</strong> over the <TheComponentLink />&apos;s padding.
                     For example: a <strong>hero section</strong> or <strong>highlighted sections</strong>.
                     There are 2 special <code>className</code> to do that: <code>{"'fill'"}</code> and <code>{"'fill-self'"}</code>.
                 </p>
-                <Section title={<>Fill the <TheComponentDisplay />&apos;s Padding</>}>
+                <Section title={<>Fill the <TheComponentLink />&apos;s Padding</>}>
                     <p>
-                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>fills</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{"'fill'"}</code> to the child&apos;s <code>className</code>.
+                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>fills</strong> the <TheComponentLink />&apos;s padding, add a <code>{"'fill'"}</code> to the child&apos;s <code>className</code>.
                     </p>
                     <p>
                         The <strong>child&apos;s padding</strong> itself is <strong>preserved</strong> as original, so the content alignment is shifted.
@@ -141,12 +141,12 @@ const ContainerPage: NextPage = () => {
 `
                     }</TypeScriptCode>
                 </Section>
-                <Section title={<>Take Over the <TheComponentDisplay />&apos;s Padding</>}>
+                <Section title={<>Take Over the <TheComponentLink />&apos;s Padding</>}>
                     <p>
-                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>takes over</strong> the <TheComponentDisplay />&apos;s padding, add a <code>{"'fill-self'"}</code> to the child&apos;s <code>className</code>.
+                        To make the child element(s) or sub <code>{`<section>`}</code>(s) <strong>takes over</strong> the <TheComponentLink />&apos;s padding, add a <code>{"'fill-self'"}</code> to the child&apos;s <code>className</code>.
                     </p>
                     <p>
-                        The <strong>child&apos;s padding</strong> copies (take over) the <TheComponentDisplay />&apos;s padding, so the content alignment is preserved.
+                        The <strong>child&apos;s padding</strong> copies (take over) the <TheComponentLink />&apos;s padding, so the content alignment is preserved.
                     </p>
                     <p>
                         Here the demonstration:

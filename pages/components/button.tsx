@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
 import {tag} from '../../properties/propertyList'
@@ -511,27 +511,27 @@ const ButtonPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>gapInline</code>
-                                <p>The default horizontal spacing between <TheComponentDisplay />&apos;s children.</p>
+                                <p>The default horizontal spacing between <TheComponentLink />&apos;s children.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlock</code>
-                                <p>The default vertical spacing between <TheComponentDisplay />&apos;s children.</p>
+                                <p>The default vertical spacing between <TheComponentLink />&apos;s children.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapInlineSm</code>
-                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                                <p>The horizontal spacing between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlockSm</code>
-                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                                <p>The vertical spacing between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapInlineLg</code>
-                                <p>The horizontal spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                                <p>The horizontal spacing between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlockLg</code>
-                                <p>The vertical spacing between <TheComponentDisplay />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                                <p>The vertical spacing between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -539,7 +539,7 @@ const ButtonPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>whiteSpace</code>
-                                <p>Defines how a <strong>white space</strong> inside <TheComponentDisplay /> is handled.</p>
+                                <p>Defines how a <strong>white space</strong> inside <TheComponentLink /> is handled.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -551,7 +551,7 @@ const ButtonPage: NextPage = () => {
                             </ListItem>
                             <ListItem>
                                 <code>ghostOpacityArrive</code>
-                                <p>The opacity level when <code>{`buttonStyle='ghost'`}</code> and a pointer is on the <TheComponentDisplay />.</p>
+                                <p>The opacity level when <code>{`buttonStyle='ghost'`}</code> and a pointer is on the <TheComponentLink />.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

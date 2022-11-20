@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Basic, Button, Carousel, Content as OriContent, ContentProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { CommaSeparated, ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { CommaSeparated, ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
 import { Warning } from '../../components/Warning'
 
 
@@ -38,7 +38,7 @@ const ContentPage: NextPage = () => {
             <ComponentInstallation />
             <Section title='Images &amp; Media'>
                 <p>
-                    Media elements such as <MediaList includeCustom={true} /> are <strong>automatically styled</strong> to <strong>fill</strong> over the <TheComponentDisplay />&apos;s padding.
+                    Media elements such as <MediaList includeCustom={true} /> are <strong>automatically styled</strong> to <strong>fill</strong> over the <TheComponentLink />&apos;s padding.
                 </p>
                 <p>
                     Here the demonstration:
@@ -80,7 +80,7 @@ const ContentPage: NextPage = () => {
                 }</TypeScriptCode>
                 <Section title='Images &amp; Media at the Beginning and End'>
                     <p>
-                        If the media position is at <strong>the first</strong> and/or <strong>the last</strong>, the media are bit <strong>clipped</strong> by <TheComponentDisplay />&apos;s <strong>border-radius</strong>.
+                        If the media position is at <strong>the first</strong> and/or <strong>the last</strong>, the media are bit <strong>clipped</strong> by <TheComponentLink />&apos;s <strong>border-radius</strong>.
                     </p>
                     <p>
                         Here the demonstration:

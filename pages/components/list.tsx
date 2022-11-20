@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { List as OriList, ListProps, List as List2, ListItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheNestedComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -765,7 +765,7 @@ ${listSampleItemsString({indents: 2})}
                         <List2 listStyle='flush'>
                             <ListItem>
                                 <code>transition</code>
-                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay />.</p>
+                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentLink />.</p>
                             </ListItem>
                             <ListItem>
                                 <code>itemTransition</code>
@@ -773,15 +773,15 @@ ${listSampleItemsString({indents: 2})}
                             </ListItem>
                             <ListItem>
                                 <code>contentTransition</code>
-                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay /> when <code>{`listStyle='content'`}</code>.</p>
+                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentLink /> when <code>{`listStyle='content'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>tabTransition</code>
-                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay /> when <code>{`listStyle='tab'`}</code>.</p>
+                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentLink /> when <code>{`listStyle='tab'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>bulletTransition</code>
-                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay /> when <code>{`listStyle='bullet'`}</code>.</p>
+                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentLink /> when <code>{`listStyle='bullet'`}</code>.</p>
                             </ListItem>
                         </List2>
                     </AccordionItem>

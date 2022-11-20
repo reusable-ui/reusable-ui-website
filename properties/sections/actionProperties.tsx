@@ -6,7 +6,7 @@ import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { icon } from '../../packages/packageList'
-import { TheComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
 import {tag, role} from '../propertyList'
 
@@ -139,21 +139,21 @@ export const ParagraphChangeTagRole = () => <p>
 
 const TipsAutoTagToAnchorForLink = () => <Tips>
     <p>
-        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
     </p>
     <ParagraphChangeTagRole />
 </Tips>
 
 const TipsAutoTagToAnchorForHref = () => <Tips>
     <p>
-        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if you assign the <code>{`href`}</code> property.
+        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if you assign the <code>{`href`}</code> property.
     </p>
     <ParagraphChangeTagRole />
 </Tips>
 
 const TipsButtonTag = () => <Tips>
     <p>
-        The <TheComponentDisplay />&apos;s default {tag.propertyShortLink} will <strong>remain</strong> to <code>{`<button>`}</code>,
+        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>remain</strong> to <code>{`<button>`}</code>,
         as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
     </p>
     <ParagraphChangeTagRole />

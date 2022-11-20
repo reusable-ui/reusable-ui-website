@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Card as OriCard, CardProps, CardHeader, CardBody, CardFooter, List, ListItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheNestedComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -359,156 +359,41 @@ ${cardSampleItemsString({indents: 2})}
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>transition</code>
-                                <p>The card of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay />.</p>
+                                <p>The list of css properties to be <code>transition</code>-ed for the whole <TheComponentLink />.</p>
                             </ListItem>
                             <ListItem>
                                 <code>itemTransition</code>
-                                <p>The card of css properties to be <code>transition</code>-ed for each <TheNestedComponentDisplay />.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>contentTransition</code>
-                                <p>The card of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay /> when <code>{`cardStyle='content'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>tabTransition</code>
-                                <p>The card of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay /> when <code>{`cardStyle='tab'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>bulletTransition</code>
-                                <p>The card of css properties to be <code>transition</code>-ed for the whole <TheComponentDisplay /> when <code>{`cardStyle='bullet'`}</code>.</p>
+                                <p>The list of css properties to be <code>transition</code>-ed for each <TheNestedComponentDisplay />.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Buttons'>
+                    <AccordionItem label='Sizes'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>buttonSpacing</code>
-                                <p>The default <strong>spacing</strong> between <TheNestedComponentDisplay />s when <code>{`cardStyle='button'`}</code>.</p>
+                                <code>boxSizing</code>
+                                <p>The <strong>final height</strong> of the whole <TheComponentLink />, including <strong>borders</strong> and <strong>paddings</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>buttonSpacingSm</code>
-                                <p>The <strong>spacing</strong> between <TheNestedComponentDisplay />s when <code>{`cardStyle='button'`}</code> and <code>{`size='sm'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>buttonSpacingLg</code>
-                                <p>The <strong>spacing</strong> between <TheNestedComponentDisplay />s when <code>{`cardStyle='button'`}</code> and <code>{`size='lg'`}</code>.</p>
+                                <code>blockSize</code>
+                                <p>The <strong>height</strong> of the whole <TheComponentLink />.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Tabs'>
+                    <AccordionItem label='Typos'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>tabTextAlign</code>
-                                <p>The <strong>text alignment</strong> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='tab'`}</code>.</p>
+                                <code>overflowWrap</code>
+                                <p>Defines how a <strong>long word</strong> inside <TheComponentLink /> is handled.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Breadcrumbs'>
-                        <Card cardStyle='flush'>
+                    <AccordionItem label='Captions'>
+                        <List listStyle='flush'>
                             <ListItem>
-                                <code>breadcrumbPaddingInline</code>
-                                <p>The default <strong>inner spacing</strong> on the <strong>left &amp; right</strong> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='breadcrumb'`}</code>.</p>
+                                <code>captionFilter</code>
+                                <p>A <strong>filter</strong> to apply on the {cardHeader.packageDisplay} and {cardFooter.packageDisplay}.</p>
                             </ListItem>
-                            <ListItem>
-                                <code>breadcrumbPaddingBlock</code>
-                                <p>The default <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='breadcrumb'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbPaddingInlineSm</code>
-                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <code>{`size='sm'`}</code> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='breadcrumb'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbPaddingBlockSm</code>
-                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <code>{`size='sm'`}</code> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='breadcrumb'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbPaddingInlineLg</code>
-                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> when <code>{`size='lg'`}</code> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='breadcrumb'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbPaddingBlockLg</code>
-                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> when <code>{`size='lg'`}</code> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='breadcrumb'`}</code>.</p>
-                            </ListItem>
-                            
-                            
-                            
-                            <ListItem>
-                                <code>breadcrumbSeparatorImage</code>
-                                <p>The default <strong>background image</strong> for each <strong>separator</strong> between <TheNestedComponentDisplay />s.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorImageBlock</code>
-                                <p>The <strong>background image</strong> for each <strong>separator</strong> between <TheNestedComponentDisplay />s when <code>{`orientation='block'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorInlineSize</code>
-                                <p>The default <strong>width</strong> for each <strong>separator</strong> between <TheNestedComponentDisplay />s.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorBlockSize</code>
-                                <p>The default <strong>height</strong> for each <strong>separator</strong> between <TheNestedComponentDisplay />s.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorInlineSizeBlock</code>
-                                <p>The <strong>width</strong> for each <strong>separator</strong> between <TheNestedComponentDisplay />s when <code>{`orientation='block'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorBlockSizeBlock</code>
-                                <p>The <strong>height</strong> for each <strong>separator</strong> between <TheNestedComponentDisplay />s when <code>{`orientation='block'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorMarginInline</code>
-                                <p>The default horizontal spacing between <strong>separator</strong> and <TheNestedComponentDisplay />.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorMarginBlock</code>
-                                <p>The default vertical spacing between <strong>separator</strong> and <TheNestedComponentDisplay />.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorMarginInlineBlock</code>
-                                <p>The horizontal spacing between <strong>separator</strong> and <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>breadcrumbSeparatorMarginBlockBlock</code>
-                                <p>The vertical spacing between <strong>separator</strong> and <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
-                            </ListItem>
-                        </Card>
-                    </AccordionItem>
-                    <AccordionItem label='Bullets'>
-                        <Card cardStyle='flush'>
-                            <ListItem>
-                                <code>bulletSpacing</code>
-                                <p>The default <strong>spacing</strong> between <TheNestedComponentDisplay />s.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>bulletSpacingSm</code>
-                                <p>The <strong>spacing</strong> between <TheNestedComponentDisplay />s when <code>{`size='sm'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>bulletSpacingLg</code>
-                                <p>The <strong>spacing</strong> between <TheNestedComponentDisplay />s when <code>{`size='lg'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>bulletPadding</code>
-                                <p>The default <strong>inner spacing</strong> for each <TheNestedComponentDisplay />.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>bulletPaddingSm</code>
-                                <p>The <strong>inner spacing</strong> for each <TheNestedComponentDisplay /> when <code>{`size='sm'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>bulletPaddingLg</code>
-                                <p>The <strong>inner spacing</strong> for each <TheNestedComponentDisplay /> when <code>{`size='lg'`}</code>.</p>
-                            </ListItem>
-                        </Card>
-                    </AccordionItem>
-                    <AccordionItem label='Numbered'>
-                        <Card cardStyle='flush'>
-                            <ListItem>
-                                <code>numberedContent</code>
-                                <p>The <strong>numeric formatting counter</strong> for each <TheNestedComponentDisplay /> when <code>{`cardStyle='numbered'`}</code>.</p>
-                            </ListItem>
-                        </Card>
+                        </List>
                     </AccordionItem>
                 </Accordion>
             }>
