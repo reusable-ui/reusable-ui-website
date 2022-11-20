@@ -128,6 +128,76 @@ const ListPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <ActionCtrlProperty>
+                <Preview display='right' stretch={false}>
+                    <List
+                        actionCtrl={true}
+                        mixVaraints={false}
+                    />
+                    <List
+                        mixVaraints={false}
+                    >
+                        <ListItem actionCtrl={true}>
+                            A first item (clickable)
+                        </ListItem>
+                        <ListItem>
+                            A second item
+                        </ListItem>
+                        <ListItem actionCtrl={true}>
+                            A third item (clickable)
+                        </ListItem>
+                        <ListItem>
+                            A fourth item
+                        </ListItem>
+                        <ListItem actionCtrl={true}>
+                            A fifth item (clickable)
+                        </ListItem>
+                        <ListItem actionCtrl={true}>
+                            A sixth item (clickable)
+                        </ListItem>
+                        <ListItem>
+                            A seventh item
+                        </ListItem>
+                    </List>
+                </Preview>
+                <p></p>
+                <TypeScriptCode>{
+`
+<List
+    actionCtrl={true}
+    theme='primary'
+>
+${listSampleItemsString({mixVaraints: false})}
+</List>
+
+<List
+    theme='primary'
+>
+    <ListItem actionCtrl={true}>
+        A first item (clickable)
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListItem actionCtrl={true}>
+        A third item (clickable)
+    </ListItem>
+    <ListItem>
+        A fourth item
+    </ListItem>
+    <ListItem actionCtrl={true}>
+        A fifth item (clickable)
+    </ListItem>
+    <ListItem actionCtrl={true}>
+        A sixth item (clickable)
+    </ListItem>
+    <ListItem>
+        A seventh item
+    </ListItem>
+</List>
+`
+                }</TypeScriptCode>
+            </ActionCtrlProperty>
             <VariantProperties>
                 <ListStyleProperty>
                     <Preview display='right' stretch={false}>
@@ -193,76 +263,6 @@ ${(listStyle === 'bullet') ? listSampleEmptyItemsString() : listSampleItemsStrin
                         ).join('')}
                     </TypeScriptCode>
                 </OrientationProperty>
-                <ActionCtrlProperty>
-                    <Preview display='right' stretch={false}>
-                        <List
-                            actionCtrl={true}
-                            mixVaraints={false}
-                        />
-                        <List
-                            mixVaraints={false}
-                        >
-                            <ListItem actionCtrl={true}>
-                                A first item (clickable)
-                            </ListItem>
-                            <ListItem>
-                                A second item
-                            </ListItem>
-                            <ListItem actionCtrl={true}>
-                                A third item (clickable)
-                            </ListItem>
-                            <ListItem>
-                                A fourth item
-                            </ListItem>
-                            <ListItem actionCtrl={true}>
-                                A fifth item (clickable)
-                            </ListItem>
-                            <ListItem actionCtrl={true}>
-                                A sixth item (clickable)
-                            </ListItem>
-                            <ListItem>
-                                A seventh item
-                            </ListItem>
-                        </List>
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>{
-`
-<List
-    actionCtrl={true}
-    theme='primary'
->
-${listSampleItemsString({mixVaraints: false})}
-</List>
-
-<List
-    theme='primary'
->
-    <ListItem actionCtrl={true}>
-        A first item (clickable)
-    </ListItem>
-    <ListItem>
-        A second item
-    </ListItem>
-    <ListItem actionCtrl={true}>
-        A third item (clickable)
-    </ListItem>
-    <ListItem>
-        A fourth item
-    </ListItem>
-    <ListItem actionCtrl={true}>
-        A fifth item (clickable)
-    </ListItem>
-    <ListItem actionCtrl={true}>
-        A sixth item (clickable)
-    </ListItem>
-    <ListItem>
-        A seventh item
-    </ListItem>
-</List>
-`
-                    }</TypeScriptCode>
-                </ActionCtrlProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
