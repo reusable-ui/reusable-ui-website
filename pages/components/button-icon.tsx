@@ -643,43 +643,43 @@ export const MyComponent = () => {
                             
                             <ListItem>
                                 <code>gapInline</code>
-                                <p>The default horizontal spacing between <TheComponentLink />&apos;s children.</p>
+                                <p>The default <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlock</code>
-                                <p>The default vertical spacing between <TheComponentLink />&apos;s children.</p>
+                                <p>The default <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapInlineXs</code>
-                                <p>The horizontal spacing between <TheComponentLink />&apos;s children when <code>{`size='xs'`}</code>.</p>
+                                <p>The <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='xs'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlockXs</code>
-                                <p>The vertical spacing between <TheComponentLink />&apos;s children when <code>{`size='xs'`}</code>.</p>
+                                <p>The <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='xs'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapInlineSm</code>
-                                <p>The horizontal spacing between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                                <p>The <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlockSm</code>
-                                <p>The vertical spacing between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                                <p>The <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapInlineLg</code>
-                                <p>The horizontal spacing between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                                <p>The <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlockLg</code>
-                                <p>The vertical spacing between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                                <p>The <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapInlineXl</code>
-                                <p>The horizontal spacing between <TheComponentLink />&apos;s children when <code>{`size='xl'`}</code>.</p>
+                                <p>The <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='xl'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>gapBlockXl</code>
-                                <p>The vertical spacing between <TheComponentLink />&apos;s children when <code>{`size='xl'`}</code>.</p>
+                                <p>The <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='xl'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

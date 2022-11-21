@@ -420,7 +420,7 @@ const InputPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>placeholderOpacity</code>
-                                <p>The opacity level of the <TheComponentLink />&apos;s <code>::placeholder</code>.</p>
+                                <p>The <strong>opacity level</strong> of the <TheComponentLink />&apos;s <code>::placeholder</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

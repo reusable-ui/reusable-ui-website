@@ -864,19 +864,19 @@ ${listSampleItemsString({indents: 2})}
                             </ListItem>
                             <ListItem>
                                 <code>breadcrumbSeparatorMarginInline</code>
-                                <p>The default horizontal spacing between <strong>separator</strong> and <TheNestedComponentDisplay />.</p>
+                                <p>The default <strong>horizontal spacing</strong> between <strong>separator</strong> and <TheNestedComponentDisplay />.</p>
                             </ListItem>
                             <ListItem>
                                 <code>breadcrumbSeparatorMarginBlock</code>
-                                <p>The default vertical spacing between <strong>separator</strong> and <TheNestedComponentDisplay />.</p>
+                                <p>The default <strong>vertical spacing</strong> between <strong>separator</strong> and <TheNestedComponentDisplay />.</p>
                             </ListItem>
                             <ListItem>
                                 <code>breadcrumbSeparatorMarginInlineBlock</code>
-                                <p>The horizontal spacing between <strong>separator</strong> and <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
+                                <p>The <strong>horizontal spacing</strong> between <strong>separator</strong> and <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>breadcrumbSeparatorMarginBlockBlock</code>
-                                <p>The vertical spacing between <strong>separator</strong> and <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
+                                <p>The <strong>vertical spacing</strong> between <strong>separator</strong> and <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
