@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
 import { content, masonry } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Basic, Button, Carousel, Masonry as OriMasonry, MasonryProps, List, ListItem } from '@reusable-ui/components'
@@ -17,8 +17,14 @@ import { Warning } from '../../components/Warning'
 const masonryStyle : React.CSSProperties = {
     boxSizing: 'border-box',
     maxWidth: 'min(650px, 100%)',
+};
+const masonryStyleInline : React.CSSProperties = {
+    ...masonryStyle,
+    maxWidth: '100%',
+    maxBlockSize: '670px',
+    overflow: 'auto',
 }
-const Masonry = (props: MasonryProps) => <OriMasonry {...props} theme={props.theme ?? 'primary'} style={props.style ?? masonryStyle}>
+const Masonry = (props: MasonryProps) => <OriMasonry {...props} theme={props.theme ?? 'primary'} style={props.style ?? ((props.orientation === 'inline') ? masonryStyleInline : masonryStyle)}>
     {props.children ?? [
         <img key={0} alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />,
         <img key={1} alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />,
@@ -44,8 +50,7 @@ ${tabs}<img alt='lorem image' src='/images/lorem-img/building-800x500.jpg' />
 ${tabs}<img alt='lorem image' src='/images/lorem-img/street-800x800.jpg' />
 ${tabs}<img alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />
 ${tabs}<img alt='lorem image' src='/images/lorem-img/water-500x800.jpg' />
-${tabs}<img alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />
-`
+${tabs}<img alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />`
     );
 }
 
@@ -74,6 +79,36 @@ const MasonryPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
+                <OrientationProperty>
+                    <Preview display='right' stretch={false}>
+                        {orientationOptions.map((orientationName, index) =>
+                            <Masonry
+                                key={index}
+                                orientation={orientationName}
+                            />
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {orientationOptions.map((orientationName) =>
+`
+<Masonry
+    orientation='${orientationName}'
+    theme='primary'${(orientationName === 'inline') ?
+`
+    style={{
+        boxSizing: 'border-box',
+        maxWidth: '100%',
+        maxBlockSize: '670px',
+        overflow: 'auto',
+    }}` : ''}
+>
+${masonrySampleItemsString()}
+</Masonry>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </OrientationProperty>
                 <SizeProperty>
                     <Preview display='down' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
