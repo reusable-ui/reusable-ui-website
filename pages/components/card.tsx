@@ -88,7 +88,26 @@ const CardPage: NextPage = () => {
                     Here the demo:
                 </p>
                 <Preview display='right' stretch={false}>
-                    <Card theme='primary' />
+                    <Card theme='primary'>
+                        <CardHeader>
+                            Test Card
+                        </CardHeader>
+                        <CardBody>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
+                            </p>
+                        </CardBody>
+                        <CardFooter>
+                            Just for fun!
+                        </CardFooter>
+                    </Card>
+                    <Card theme='success' />
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
