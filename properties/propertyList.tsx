@@ -44,7 +44,6 @@ export const labelStyle          = new PropertyInfo('labelStyle')
 export const buttonStyle         = new PropertyInfo('buttonStyle')
 export const checkStyle          = new PropertyInfo('checkStyle')
 export const listStyle           = new PropertyInfo('listStyle')
-export const actionCtrl          = new PropertyInfo('actionCtrl')
 export const cardStyle           = new PropertyInfo('cardStyle')
 
 
@@ -82,6 +81,12 @@ export const checkable           = new PropertyInfo('checkable')
 // appearances:
 export const icon                = new PropertyInfo('icon')
 export const iconPosition        = new PropertyInfo('iconPosition')
+
+
+
+// behaviors:
+export const actionCtrl          = new PropertyInfo('actionCtrl')
+export const lazy                = new PropertyInfo('lazy')
 
 
 

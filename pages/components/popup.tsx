@@ -12,6 +12,7 @@ import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, ExpandedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
+import { LazyProperty } from '../../properties/sections/behaviorProperties'
 
 
 
@@ -65,6 +66,7 @@ const PopupPage: NextPage = () => {
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
+            <LazyProperty />
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
