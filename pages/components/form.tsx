@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button, EmailInput, Form as OriForm, FormProps, List, ListItem, TextInput } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { CommaSeparated, ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { CommaSeparated, ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { EnableValidationProperty, InheritValidationProperty, IsValidProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -36,13 +36,13 @@ const FormPage: NextPage = () => {
             <meta name="description" content={`${form.componentTag} represents a document section containing interactive controls for submitting.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> represents a document section containing interactive controls for submitting.
+                    <TheComponentLink /> represents a document section containing interactive controls for submitting.
                 </p>
                 <p>
-                    Note: The default styling of the <TheComponentDisplay /> is just <code>{'display: block'}</code> with some basic styling.<br />
-                    <em>In real world</em>, you should create <code>{'<YourForm>'}</code> (based on <TheComponentDisplay />) with appropriate styling for better look.
+                    Note: The default styling of the <TheComponentLink /> is just <code>{'display: block'}</code> with some basic styling.<br />
+                    <em>In real world</em>, you should create <code>{'<YourForm>'}</code> (based on <TheComponentLink />) with appropriate styling for better look.
                 </p>
                 <p>
                     Here the demo:

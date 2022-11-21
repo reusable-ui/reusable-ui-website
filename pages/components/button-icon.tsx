@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ButtonIcon as OriButtonIcon, ButtonIconProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
@@ -28,9 +28,9 @@ const ButtonIconPage: NextPage = () => {
             <meta name="description" content={`${buttonIcon.componentTag} is a ${button.componentTag} component with built in ${icon.componentTag} component.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a {button.packageLink} component with built in {icon.packageLink} component.
+                    <TheComponentLink /> is a {button.packageLink} component with built in {icon.packageLink} component.
                 </p>
                 <p>
                     Here the demo:

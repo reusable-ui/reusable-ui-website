@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext';
+import { TheComponentLink, useComponentInfo } from '../../packages/componentContext';
 import { SizeProperty, SizePropertyProps } from "./variantProperties";
 import { Preview } from '../../components/Preview'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
@@ -53,7 +53,7 @@ export const ConfiguringIconResources = () => {
                     <li><code>/public/icons/*.svg</code></li>
                 </ul>
                 <p>
-                    Done! The required resources by the {!isCurrentIcon && <>{icon.packageLink} and </>} <TheComponentDisplay /> component are now set! 😉
+                    Done! The required resources by the {!isCurrentIcon && <>{icon.packageLink} and </>} <TheComponentLink /> component are now set! 😉
                 </p>
             </Section>
         </>
@@ -147,7 +147,7 @@ export const DetailedIconProperty = ({children, itemComponent}: DetailedIconProp
                     </AccordionItem>
                     <AccordionItem label='Registering the Custom Icons'>
                         <p>
-                            To make the <TheComponentDisplay /> component <em>aware</em> of your custom icons, at the <strong>application main file</strong> (in React: <code>/src/App.jsx</code>, in NextJS: <code>/pages/_app.jsx</code>), add the following code:
+                            To make the <TheComponentLink /> component <em>aware</em> of your custom icons, at the <strong>application main file</strong> (in React: <code>/src/App.jsx</code>, in NextJS: <code>/pages/_app.jsx</code>), add the following code:
                         </p>
                         <TypeScriptCode collapsible={false}>{
 `
@@ -168,13 +168,13 @@ iconConfig.image.files.push(
                         <p></p>
                         <Tips>
                             <p>
-                                Because the <code>iconConfig</code> is a <strong>singleton</strong>, so you <strong>don&apos;t need</strong> to configure the <TheComponentDisplay /> on <strong>every page</strong> that uses it. Just configure it on the <strong>main file</strong> and done!
+                                Because the <code>iconConfig</code> is a <strong>singleton</strong>, so you <strong>don&apos;t need</strong> to configure the <TheComponentLink /> on <strong>every page</strong> that uses it. Just configure it on the <strong>main file</strong> and done!
                             </p>
                         </Tips>
                     </AccordionItem>
                     <AccordionItem label='Using the Registered Custom Icons'>
                         <p>
-                            Finally, insert an <TheComponentDisplay /> component into your <strong>jsx code</strong>, with property <code>{"icon='your-logo'"}</code> or <code>{"icon='your-face'"}</code>, something like this code:
+                            Finally, insert an <TheComponentLink /> component into your <strong>jsx code</strong>, with property <code>{"icon='your-logo'"}</code> or <code>{"icon='your-face'"}</code>, something like this code:
                         </p>
                         {children || <TypeScriptCode collapsible={false}>{
 `
@@ -218,27 +218,27 @@ export const IconSizeProperty = ({possibleValues, ...restProps}: SizePropertyPro
                 </AccordionItem>
                 <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>smaller</strong> size.
+                        Makes the <TheComponentLink /> <strong>smaller</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'nm'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>normal</strong> size.
+                        Makes the <TheComponentLink /> <strong>normal</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'md'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>bigger</strong> size.
+                        Makes the <TheComponentLink /> <strong>bigger</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'lg'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>biggest</strong> size.
+                        Makes the <TheComponentLink /> <strong>biggest</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'1em'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> as tall as <strong>current font size</strong>.
+                        Makes the <TheComponentLink /> as tall as <strong>current font size</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -256,22 +256,22 @@ export const ButtonIconSizeProperty = ({possibleValues, ...restProps}: SizePrope
                 </AccordionItem>
                 <AccordionItem label={<code>{`'xs'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>more smaller</strong> size.
+                        Makes the <TheComponentLink /> <strong>more smaller</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>smaller</strong> size.
+                        Makes the <TheComponentLink /> <strong>smaller</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'lg'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>bigger</strong> size.
+                        Makes the <TheComponentLink /> <strong>bigger</strong> size.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'xl'`}</code>}>
                     <p>
-                        Makes the <TheComponentDisplay /> <strong>more bigger</strong> size.
+                        Makes the <TheComponentLink /> <strong>more bigger</strong> size.
                     </p>
                 </AccordionItem>
             </Accordion>

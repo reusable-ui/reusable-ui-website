@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control as OriControl, ControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -25,9 +25,9 @@ const ControlPage: NextPage = () => {
             <meta name="description" content={`${control.componentTag} is an interactive simple box layout component with built-in variants, states, and interaction states: ${packages.focusable.packageShortName} and ${packages.interactable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is an interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortLink} and {packages.interactable.packageShortLink}.
+                    <TheComponentLink /> is an interactive <strong>simple box</strong> layout component with built-in variants, states, and interaction states: {packages.focusable.packageShortLink} and {packages.interactable.packageShortLink}.
                 </p>
             </HeroSection>
             <ComponentInstallation />

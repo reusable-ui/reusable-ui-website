@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { List as OriList, ListProps, List as List2, ListItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -114,9 +114,9 @@ const ListPage: NextPage = () => {
             <meta name="description" content={`${list.componentTag} represents a series of content.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> represents a series of content.
+                    <TheComponentLink /> represents a series of content.
                 </p>
                 <p>
                     Here the demo:

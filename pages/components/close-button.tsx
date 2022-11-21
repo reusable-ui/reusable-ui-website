@@ -8,7 +8,7 @@ import { ThemeProperty, themeOptions, VariantProperties, GradientProperty, Outli
 import { Preview } from '../../components/Preview'
 import { CloseButton as OriCloseButton, CloseButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
@@ -27,9 +27,9 @@ const CloseButtonPage: NextPage = () => {
             <meta name="description" content={`${closeButton.componentTag} is a special ${buttonIcon.componentTag} for dismising a content.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a special {buttonIcon.packageLink} for dismising a content.<br />
+                    <TheComponentLink /> is a special {buttonIcon.packageLink} for dismising a content.<br />
                     It&apos;s used in {alert.packageLink}, {modalCard.packageLink}, {modalSide.packageLink}, and more.
                 </p>
                 <p>

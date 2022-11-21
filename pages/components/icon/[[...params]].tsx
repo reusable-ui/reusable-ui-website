@@ -10,7 +10,7 @@ import { Preview } from '../../../components/Preview'
 import { AccordionItem, Accordion } from '../../../components/Accordion'
 import { Basic, Icon as OriIcon, IconProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../../packages/componentContext'
 
 
 
@@ -41,7 +41,7 @@ const IconPage: NextPage = () => {
             <meta name="description" content={`${icon.componentTag} displays an emoticon or other icon to attract user's attention with built-in variants: ${packages.resizable.packageShortName}, ${packages.themable.packageShortName}, and ${packages.mildable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
                     Displays an <strong>emoticon</strong> or other icon to attract user&apos;s attention with built-in variants: {packages.resizable.packageShortLink}, {packages.themable.packageShortLink}, and {packages.mildable.packageShortLink}.
                 </p>

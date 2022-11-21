@@ -3,7 +3,7 @@ import type { Tag } from '@reusable-ui/core'
 import { AccordionProps, Accordion, AccordionItem } from '../components/Accordion'
 import { Container, ContainerProps, ExclusiveAccordion, Generic } from '@reusable-ui/components'
 import { PropertyInfo } from '../properties/propertyInfo';
-import { SeeBaseComponentLinks, TheBaseComponentLinks, TheComponentDisplay, useComponentInfo } from '../packages/componentContext';
+import { SeeBaseComponentLinks, TheBaseComponentLinks, TheComponentLink, useComponentInfo } from '../packages/componentContext';
 import { BashCode } from './Code';
 import { Tips } from './Warning';
 
@@ -230,14 +230,14 @@ export const ComponentInstallation = ({children}: ComponentInstallationProps) =>
     const {component: {packageFullName}} = useComponentInfo();
     
     return (
-        <Section title={<>Installing <TheComponentDisplay /> Component</>}>
+        <Section title={<>Installing <TheComponentLink /> Component</>}>
             <p>
-                There are 2 ways to install <TheComponentDisplay /> component into your react app project: 
+                There are 2 ways to install <TheComponentLink /> component into your react app project: 
             </p>
             <ExclusiveAccordion lazy={true} theme='primary'>
-                <AccordionItem label={<>Install the <strong>Specific</strong> Package of <TheComponentDisplay /> Component</>}>
+                <AccordionItem label={<>Install the <strong>Specific</strong> Package of <TheComponentLink /> Component</>}>
                     <p>
-                        To install the <strong>minimal dependencies</strong> required by <TheComponentDisplay /> component,
+                        To install the <strong>minimal dependencies</strong> required by <TheComponentLink /> component,
                         open your terminal window on your code editor and type:
                     </p>
                     <BashCode collapsible={false}>{
@@ -253,7 +253,7 @@ pnpm add ${packageFullName}
 `
                     }</BashCode>
                 </AccordionItem>
-                <AccordionItem label={<>Install the <strong>Whole</strong> Reusable-UI Component Pack, including the <TheComponentDisplay /> Component</>}>
+                <AccordionItem label={<>Install the <strong>Whole</strong> Reusable-UI Component Pack, including the <TheComponentLink /> Component</>}>
                     <p>
                         To install the <strong>whole collection</strong> of <em>official</em> Reusable-UI components,
                         open your terminal window on your code editor and type:
@@ -291,7 +291,7 @@ export const InheritedProperties = () => {
     return (
         <Section title='Inherited Properties'>
             <p>
-                Because <TheComponentDisplay /> is made from <TheBaseComponentLinks />, so all properties from <TheBaseComponentLinks /> are inherited.
+                Because <TheComponentLink /> is made from <TheBaseComponentLinks />, so all properties from <TheBaseComponentLinks /> are inherited.
             </p>
             <SeeBaseComponentLinks />
         </Section>
@@ -310,8 +310,8 @@ export const Variables = (props: VariablesProps) => {
     return (
         <Section title='Variables'>
             <p>
-                There are <strong>several variables</strong> of <TheComponentDisplay /> you can customize.
-                Changing the variables <strong>affects all</strong> <TheComponentDisplay /> instance and <strong>other components</strong> that depend on <TheComponentDisplay />.
+                There are <strong>several variables</strong> of <TheComponentLink /> you can customize.
+                Changing the variables <strong>affects all</strong> <TheComponentLink /> instance and <strong>other components</strong> that depend on <TheComponentLink />.
             </p>
             {variables && <>
                 <p>

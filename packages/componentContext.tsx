@@ -67,10 +67,10 @@ export const TheComponentTag = () : React.ReactElement => {
     const {component} = useComponentInfo();
     return <>{component.componentTag}</>;
 }
-export const TheComponentDisplay = () : React.ReactElement => {
-    const {component} = useComponentInfo();
-    return <>{component.packageDisplay}</>;
-}
+// export const TheComponentDisplay = () : React.ReactElement => {
+//     const {component} = useComponentInfo();
+//     return <>{component.packageDisplay}</>;
+// }
 export const TheComponentLink = () : React.ReactElement => {
     const {component} = useComponentInfo();
     return <>{component.packageLink}</>;
@@ -84,20 +84,20 @@ export const TheNestedComponentDisplay = () : React.ReactElement => {
     } />;
     return <>{nestedComponent.packageDisplay}</>;
 }
-export const TheNestedComponentLink = () : React.ReactElement => {
-    const {nestedComponent} = useComponentInfo();
-    if (!nestedComponent) return <></>;
-    if (Array.isArray(nestedComponent)) return <CommaSeparated components={
-        nestedComponent.map((nestedComponent) => nestedComponent.packageLink)
-    } />;
-    return <>{nestedComponent.packageLink}</>;
-}
+// export const TheNestedComponentLink = () : React.ReactElement => {
+//     const {nestedComponent} = useComponentInfo();
+//     if (!nestedComponent) return <></>;
+//     if (Array.isArray(nestedComponent)) return <CommaSeparated components={
+//         nestedComponent.map((nestedComponent) => nestedComponent.packageLink)
+//     } />;
+//     return <>{nestedComponent.packageLink}</>;
+// }
 
-export const TheBaseComponentDisplay = () : React.ReactElement|null => {
-    const {baseComponents} = useComponentInfo();
-    if (!baseComponents) return null;
-    return <CommaSeparated components={[baseComponents].flat().map((baseComponent) => baseComponent.packageDisplay)} />
-}
+// export const TheBaseComponentDisplay = () : React.ReactElement|null => {
+//     const {baseComponents} = useComponentInfo();
+//     if (!baseComponents) return null;
+//     return <CommaSeparated components={[baseComponents].flat().map((baseComponent) => baseComponent.packageDisplay)} />
+// }
 export const TheBaseComponentLinks = () : React.ReactElement|null => {
     const {baseComponents} = useComponentInfo();
     if (!baseComponents) return null;

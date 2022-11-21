@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button, Group, Label, Radio, TextInput } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 
 
 
@@ -20,12 +20,12 @@ const LabelPage: NextPage = () => {
             <meta name="description" content={`${label.componentTag} represents a caption for the corresponding neighboring component.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     Represents a <strong>caption</strong> for the corresponding neighboring component.
                 </p>
                 <p>
-                    This <TheComponentDisplay /> is usually used in <em>conjunction</em> with {packages.group.packageLink}, {packages.input.packageLink}, {packages.check.packageLink}, {packages.radio.packageLink}, and {packages.button.packageLink}.
+                    This <TheComponentLink /> is usually used in <em>conjunction</em> with {packages.group.packageLink}, {packages.input.packageLink}, {packages.check.packageLink}, {packages.radio.packageLink}, and {packages.button.packageLink}.
                 </p>
                 <p>
                     Here the demo:

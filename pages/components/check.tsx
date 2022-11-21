@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Check as OriCheck, CheckProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -23,9 +23,9 @@ const CheckPage: NextPage = () => {
             <meta name="description" content={`${check.componentTag} is an interactive control in order to select multiple options.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is an interactive control in order to select multiple options.
+                    <TheComponentLink /> is an interactive control in order to select multiple options.
                 </p>
                 <p>
                     Here the demo:

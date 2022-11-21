@@ -8,7 +8,7 @@ import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperti
 import { Preview } from '../../components/Preview'
 import { ToggleButton as OriToggleButton, ToggleButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import {active, onClick} from '../../properties/propertyList'
@@ -27,15 +27,15 @@ const ToggleButtonPage: NextPage = () => {
             <meta name="description" content={`${toggleButton.componentTag} is a ${button.componentTag} component with toggleable ${active.propertyName} state each time the ${toggleButton.componentTag} is clicked.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a {button.packageLink} component with toggleable {active.propertyShortLink} state each time the <TheComponentDisplay /> is clicked.
+                    <TheComponentLink /> is a {button.packageLink} component with toggleable {active.propertyShortLink} state each time the <TheComponentLink /> is clicked.
                 </p>
                 <p>
                     This is equivalent to a {button.packageLink} with {onClick.propertyShortLink} event handles the {active.propertyShortLink} property via <code>{`useState()`}</code>.
                 </p>
                 <p>
-                    If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentDisplay /> becomes <em>useless</em>.
+                    If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentLink /> becomes <em>useless</em>.
                     So it&apos;s better to use {button.packageLink} <em>directly</em>.
                 </p>
                 <p>

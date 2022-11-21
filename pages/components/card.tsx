@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Card as OriCard, CardProps, CardHeader, CardBody, CardFooter, List, ListItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -80,9 +80,9 @@ const CardPage: NextPage = () => {
             <meta name="description" content={`${card.componentTag} is a content container, with optional header and footer.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a content container, with optional header and footer.
+                    <TheComponentLink /> is a content container, with optional header and footer.
                 </p>
                 <p>
                     Here the demo:

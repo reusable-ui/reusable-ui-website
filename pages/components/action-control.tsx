@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ActionControl as OriActionControl, ActionControlProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkProperty } from '../../properties/sections/actionProperties'
 
@@ -26,9 +26,9 @@ const ActionControlPage: NextPage = () => {
             <meta name="description" content={`${actionControl.componentTag} is a clickable simple box layout component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortLink}.
+                    <TheComponentLink /> is a clickable <strong>simple box</strong> layout component with built-in variants, states, and {packages.clickable.packageShortLink}.
                 </p>
                 <p>
                     If you plan to create a <strong>custom button</strong>, this <em>base component</em> is a great starting point.

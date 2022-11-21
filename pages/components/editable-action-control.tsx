@@ -8,7 +8,7 @@ import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperti
 import { Preview } from '../../components/Preview'  
 import { Control, EditableActionControl as OriEditableActionControl, EditableActionControlProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -24,9 +24,9 @@ const EditableActionControlPage: NextPage = () => {
             <meta name="description" content={`${editableActionControl.componentTag} is an editable & clickable simple box layout component with built-in variants, states, ${packages.invalidable.packageShortName} and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is an editable &amp; clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
+                    <TheComponentLink /> is an editable &amp; clickable <strong>simple box</strong> layout component with built-in variants, states, {packages.invalidable.packageShortLink} and {packages.clickable.packageShortLink}.
                 </p>
                 <p>
                     If you plan to create a <strong>custom checkbox</strong>, this <em>base component</em> is a great starting point.

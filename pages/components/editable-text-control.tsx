@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, EditableTextControl as OriEditableTextControl, EditableTextControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -25,9 +25,9 @@ const EditableTextControlPage: NextPage = () => {
             <meta name="description" content={`${editableTextControl.componentTag} is a generic text editor layout component with built-in variants, states, and ${packages.invalidable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is a generic <strong>text editor</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
+                    <TheComponentLink /> is a generic <strong>text editor</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
                 </p>
                 <p>
                     If you plan to create a <strong>custom textBox</strong>, this <em>base component</em> is a great starting point.

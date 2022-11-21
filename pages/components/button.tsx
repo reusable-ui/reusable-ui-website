@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
 import {tag} from '../../properties/propertyList'
@@ -27,15 +27,15 @@ const ButtonPage: NextPage = () => {
             <meta name="description" content={`${button.componentTag} is a button component with built-in variants, states, and ${packages.clickable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
+                    <TheComponentLink /> is a button component with built-in variants, states, and {packages.clickable.packageShortLink}.
                 </p>
                 <p>
-                    <TheComponentDisplay /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
+                    <TheComponentLink /> also handles a special child: <code>{`<Link href/to='...'>`}</code>, a <strong>client side link</strong> in <strong>React Router</strong>/<strong>Next JS</strong>/<strong>Gatsby JS</strong>, for handling <code>onClick</code> event.
                 </p>
                 <p>
-                    The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+                    The default {tag.propertyShortDisplay} is <code>{`<button>`}</code>, but can be <em>automatically</em> changed to <code>{`<a>`}</code> if <code>{`href`}</code> property is present -or- there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentLink />.
                 </p>
                 <ParagraphChangeTagRole />
                 <p>

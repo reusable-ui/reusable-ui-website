@@ -6,7 +6,7 @@ import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
 import { icon, form } from '../../packages/packageList'
-import { TheComponentDisplay, TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 
 
 
@@ -282,7 +282,7 @@ export const DefaultActiveProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                <strong>Defines</strong> the <strong>initial</strong> {properties.active.propertyShortLink} state when the <TheComponentDisplay /> is <strong>first loaded</strong>.
+                <strong>Defines</strong> the <strong>initial</strong> {properties.active.propertyShortLink} state when the <TheComponentLink /> is <strong>first loaded</strong>.
             </p>
         </PropertySection>
     );
@@ -447,7 +447,7 @@ export const IsValidProperty = ({children: preview}: PreviewProps) => {
                     {!isCurrentForm && <Warning>
                         <p>
                             Note: The component creator is responsible for making the validation algorithm.
-                            The default algorithm of the <TheComponentDisplay /> is by checking <code>:valid</code>/<code>:invalid</code> match of the first child of <code>{`<input>`}</code>/<code>{`<textarea>`}</code>/<code>{`<select>`}</code>.
+                            The default algorithm of the <TheComponentLink /> is by checking <code>:valid</code>/<code>:invalid</code> match of the first child of <code>{`<input>`}</code>/<code>{`<textarea>`}</code>/<code>{`<select>`}</code>.
                         </p>
                     </Warning>}
                 </AccordionItem>

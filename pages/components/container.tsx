@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Container as OriContainer, ContainerProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 
 
 
@@ -24,9 +24,9 @@ const ContainerPage: NextPage = () => {
             <meta name="description" content={`${container.componentTag} is a generic container with responsive padding width & height based on browser's width at certain ${packages.breakpoints.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is a generic container with <strong>responsive padding width &amp; height</strong> based on browser&apos;s width at certain {packages.breakpoints.packageShortLink}.
+                    <TheComponentLink /> is a generic container with <strong>responsive padding width &amp; height</strong> based on browser&apos;s width at certain {packages.breakpoints.packageShortLink}.
                 </p>
                 <p>
                     This component is great for creating <code>{`<main>`}</code> or <code>{`<section>`}</code> of your page.
@@ -97,7 +97,7 @@ const ContainerPage: NextPage = () => {
                     <hr />
                     
                     <p>
-                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{"'fill'"}</code> class <strong>removes</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
+                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{"'fill'"}</code> class <strong>removes</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentLink />.
                     </p>
                     <Preview>
                         <Container tag='section' theme='primary'>
@@ -196,7 +196,7 @@ const ContainerPage: NextPage = () => {
                     <hr />
                     
                     <p>
-                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{"'fill-self'"}</code> class also <strong>takes over</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentDisplay />.
+                        When the child is located at the <strong>top</strong> or <strong>bottom</strong>, the <code>{"'fill-self'"}</code> class also <strong>takes over</strong> the <strong>padding-top</strong> and/or <strong>padding-bottom</strong> of the <TheComponentLink />.
                     </p>
                     <Preview>
                         <Container tag='section' theme='primary'>

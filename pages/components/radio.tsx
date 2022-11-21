@@ -8,7 +8,7 @@ import { Preview as OriPreview, PreviewProps } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Radio as OriRadio, RadioProps, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -24,9 +24,9 @@ const RadioPage: NextPage = () => {
             <meta name="description" content={`${radio.componentTag} is an interactive control in order to select single option.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is an interactive control in order to select single option.
+                    <TheComponentLink /> is an interactive control in order to select single option.
                 </p>
                 <p>
                     Here the demo:

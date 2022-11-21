@@ -6,7 +6,7 @@ import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { icon } from '../../packages/packageList'
-import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
 import {tag, role} from '../propertyList'
 
@@ -30,11 +30,11 @@ export const ClientSideLinkProperty = ({tips, children: preview} : ClientSideLin
                 <strong>Navigates</strong> between pages using <em>JavaScript</em> way, <strong>without</strong> causing <strong>a whole page HTTP request</strong>.
             </p>
             <p>
-                <TheComponentDisplay /> designed to work with <code>{`<Link>`}</code> component of <strong>React Router</strong> and <strong>Next JS</strong> (<em>Gatsby JS</em> and <em>React Remix</em> are coming soon).
+                <TheComponentLink /> designed to work with <code>{`<Link>`}</code> component of <strong>React Router</strong> and <strong>Next JS</strong> (<em>Gatsby JS</em> and <em>React Remix</em> are coming soon).
             </p>
             <p>
-                When there is a <code>{`<Link>`}</code> component <em>inside</em> the <TheComponentDisplay />,
-                at render phase, the hierarchy of <TheComponentDisplay /> and <code>{`<Link>`}</code> is <strong>automatically swapped</strong> for you.
+                When there is a <code>{`<Link>`}</code> component <em>inside</em> the <TheComponentLink />,
+                at render phase, the hierarchy of <TheComponentLink /> and <code>{`<Link>`}</code> is <strong>automatically swapped</strong> for you.
                 Here the illustration:
             </p>
             <TypeScriptCode>{`
@@ -116,7 +116,7 @@ export const OnClickProperty = ({tips, children: preview}: OnClickPropertyProps)
     return (
         <PropertySection property={properties.onClick} preview={preview}>
             <p>
-                <strong>Executes</strong> a JavaScript&apos;s <strong>callback function</strong> when the <TheComponentDisplay /> is clicked.
+                <strong>Executes</strong> a JavaScript&apos;s <strong>callback function</strong> when the <TheComponentLink /> is clicked.
             </p>
             {tips && <>
                 <p></p>
@@ -139,7 +139,7 @@ export const ParagraphChangeTagRole = () => <p>
 
 const TipsAutoTagToAnchorForLink = () => <Tips>
     <p>
-        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if there is a client-side <code>{`<Link>`}</code> component inside the <TheComponentLink />.
     </p>
     <ParagraphChangeTagRole />
 </Tips>
@@ -154,7 +154,7 @@ const TipsAutoTagToAnchorForHref = () => <Tips>
 const TipsButtonTag = () => <Tips>
     <p>
         The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>remain</strong> to <code>{`<button>`}</code>,
-        as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentDisplay />.
+        as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentLink />.
     </p>
     <ParagraphChangeTagRole />
 </Tips>

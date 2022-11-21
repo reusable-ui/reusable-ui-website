@@ -8,7 +8,7 @@ import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperti
 import { Preview } from '../../components/Preview'
 import { NavButton as OriNavButton, NavButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import {active} from '../../properties/propertyList'
@@ -29,12 +29,12 @@ const NavButtonPage: NextPage = () => {
             <meta name="description" content={`${navButton.componentTag} is a ${button.componentTag} component with managed ${active.propertyName} state depends on current page URL.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a {button.packageLink} component with managed {active.propertyShortLink} state depends on <strong>current page URL</strong>.
+                    <TheComponentLink /> is a {button.packageLink} component with managed {active.propertyShortLink} state depends on <strong>current page URL</strong>.
                 </p>
                 <p>
-                    If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentDisplay /> becomes <em>useless</em>.
+                    If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentLink /> becomes <em>useless</em>.
                     So it&apos;s better to use {button.packageLink} <em>directly</em>.
                 </p>
                 <p>

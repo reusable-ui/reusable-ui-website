@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Range as OriRange, RangeProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, ThumbClassesProperty, ThumbComponentProperty, ThumbRefProperty, ThumbStyleProperty, TrackClassesProperty, TrackComponentProperty, TrackLowerClassesProperty, TrackLowerComponentProperty, TrackLowerRefProperty, TrackLowerStyleProperty, TrackRefProperty, TrackStyleProperty, TrackUpperClassesProperty, TrackUpperComponentProperty, TrackUpperRefProperty, TrackUpperStyleProperty } from '../../properties/sections/componentProperties'
 
@@ -24,9 +24,9 @@ const RangePage: NextPage = () => {
             <meta name="description" content={`${range.componentTag} is an interactive control in order to accept numeric value within a specified range.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is an interactive control in order to accept numeric value within a specified range.
+                    <TheComponentLink /> is an interactive control in order to accept numeric value within a specified range.
                 </p>
                 <p>
                     Here the demo:

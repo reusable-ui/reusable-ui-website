@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Masonry as OriMasonry, MasonryProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 
 
 
@@ -61,9 +61,9 @@ const MasonryPage: NextPage = () => {
             <meta name="description" content={`${masonry.componentTag} is a container in which the items are laid out one after the other in the inline (or block) direction.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a container in which the items are laid out one after the other in the inline (or block) direction.
+                    <TheComponentLink /> is a container in which the items are laid out one after the other in the inline (or block) direction.
                 </p>
                 <p>
                     This component is great for creating a <strong>gallery</strong>.

@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { HamburgerMenuButton as OriHamburgerMenuButton, HamburgerMenuButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
@@ -27,9 +27,9 @@ const HamburgerMenuButtonPage: NextPage = () => {
             <meta name="description" content={`${hamburgerMenuButton.componentTag} is a toggleable button for showing/hiding menu in ${packages.navbar.componentTag}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is a toggleable button for showing/hiding menu in {packages.navbar.packageLink}.
+                    <TheComponentLink /> is a toggleable button for showing/hiding menu in {packages.navbar.packageLink}.
                 </p>
                 <p>
                     Here the demo:

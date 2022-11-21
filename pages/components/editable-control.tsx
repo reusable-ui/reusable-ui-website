@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, EditableControl as OriEditableControl, EditableControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -25,9 +25,9 @@ const EditableControlPage: NextPage = () => {
             <meta name="description" content={`${editableControl.componentTag} is an editable simple box layout component with built-in variants, states, and ${packages.invalidable.packageShortName}.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is an editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
+                    <TheComponentLink /> is an editable <strong>simple box</strong> layout component with built-in variants, states, and {packages.invalidable.packageShortLink}.
                 </p>
             </HeroSection>
             <ComponentInstallation />

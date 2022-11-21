@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Basic, Button, Carousel, Content as OriContent, ContentProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { CommaSeparated, ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { CommaSeparated, ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { Warning } from '../../components/Warning'
 
 
@@ -27,9 +27,9 @@ const ContentPage: NextPage = () => {
             <meta name="description" content={`${content.componentTag} is a generic media container with pre-formatted media elements such as images, videos, etc.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>}>
                 <p>
-                    <TheComponentDisplay /> is a generic <strong>media container</strong> with pre-formatted media elements such as <strong>images</strong>, <strong>videos</strong>, etc.
+                    <TheComponentLink /> is a generic <strong>media container</strong> with pre-formatted media elements such as <strong>images</strong>, <strong>videos</strong>, etc.
                 </p>
                 <p>
                     This component is great for creating an <code>{`<article>`}</code> or a <strong>newspaper-like</strong> content.

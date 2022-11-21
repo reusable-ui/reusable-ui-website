@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Input as OriInput, InputProps, InputType, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
@@ -25,12 +25,12 @@ const InputPage: NextPage = () => {
             <meta name="description" content={`${input.componentTag} is an interactive control in order to accept data from the user.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentDisplay /> Component</>} theme='secondary'>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentDisplay /> is an interactive control in order to accept data from the user.
+                    <TheComponentLink /> is an interactive control in order to accept data from the user.
                 </p>
                 <p>
-                    There are some specialized types of <TheComponentDisplay /> with built in validation corresponding to the data type:
+                    There are some specialized types of <TheComponentLink /> with built in validation corresponding to the data type:
                 </p>
                 <ul>
                     {inputTypes.map((inputType, index) => (

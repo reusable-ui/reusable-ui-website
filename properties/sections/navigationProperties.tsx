@@ -6,7 +6,7 @@ import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
 import { icon } from '../../packages/packageList'
-import { TheComponentDisplay, TheComponentLink, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import {active, onClick} from '../../properties/propertyList'
 import { TypeScriptCode } from '../../components/Code'
 
