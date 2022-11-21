@@ -32,7 +32,7 @@ const ContentPage: NextPage = () => {
                     <TheComponentDisplay /> is a generic <strong>media container</strong> with pre-formatted media elements such as <strong>images</strong>, <strong>videos</strong>, etc.
                 </p>
                 <p>
-                    This component is great for creating <code>{`<article>`}</code> or <strong>newspaper-like</strong> content.
+                    This component is great for creating an <code>{`<article>`}</code> or a <strong>newspaper-like</strong> content.
                 </p>
             </HeroSection>
             <ComponentInstallation />
