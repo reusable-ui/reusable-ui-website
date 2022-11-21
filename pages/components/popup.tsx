@@ -75,7 +75,7 @@ const PopupPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Popup>'} with {sizeName ?? 'default'} size
+                                A {'<Popup>'} with {sizeName ?? 'default'} size
                             </Popup>
                         )}
                     </Preview>
@@ -86,7 +86,7 @@ const PopupPage: NextPage = () => {
 <Popup
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
 >
-    An {'<Popup>'} with ${sizeName ?? 'default'} size
+    A {'<Popup>'} with ${sizeName ?? 'default'} size
 </Popup>
 `
                         ).join('')}
@@ -99,7 +99,7 @@ const PopupPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                             >
-                                An {'<Popup>'} with {themeName} theme
+                                A {'<Popup>'} with {themeName} theme
                             </Popup>
                         )}
                     </Preview>
@@ -110,7 +110,7 @@ const PopupPage: NextPage = () => {
 <Popup
     theme='${themeName}'
 >
-    An {'<Popup>'} with ${themeName} theme
+    A {'<Popup>'} with ${themeName} theme
 </Popup>
 `
                         ).join('')}
@@ -124,7 +124,7 @@ const PopupPage: NextPage = () => {
                                 theme={themeName}
                                 gradient={true}
                             >
-                                An {'<Popup>'} with gradient mode
+                                A {'<Popup>'} with gradient mode
                             </Popup>
                         )}
                     </Preview>
@@ -136,7 +136,7 @@ const PopupPage: NextPage = () => {
     theme='${themeName}'
     gradient={true}
 >
-    An {'<Popup>'} with gradient mode
+    A {'<Popup>'} with gradient mode
 </Popup>
 `
                         ).join('')}
@@ -150,7 +150,7 @@ const PopupPage: NextPage = () => {
                                 theme={themeName}
                                 outlined={true}
                             >
-                                An {'<Popup>'} with outlined mode
+                                A {'<Popup>'} with outlined mode
                             </Popup>
                         )}
                     </Preview>
@@ -162,7 +162,7 @@ const PopupPage: NextPage = () => {
     theme='${themeName}'
     outlined={true}
 >
-    An {'<Popup>'} with outlined mode
+    A {'<Popup>'} with outlined mode
 </Popup>
 `
                         ).join('')}
@@ -176,7 +176,7 @@ const PopupPage: NextPage = () => {
                                 theme={themeName}
                                 mild={false}
                             >
-                                An {'<Popup>'} without mild mode
+                                A {'<Popup>'} without mild mode
                             </Popup>
                         )}
                     </Preview>
@@ -188,7 +188,7 @@ const PopupPage: NextPage = () => {
     theme='${themeName}'
     mild={false}
 >
-    An {'<Popup>'} without mild mode
+    A {'<Popup>'} without mild mode
 </Popup>
 `
                         ).join('')}
@@ -202,7 +202,7 @@ const PopupPage: NextPage = () => {
                                 theme={themeName}
                                 nude={true}
                             >
-                                An {'<Popup>'} with nude mode
+                                A {'<Popup>'} with nude mode
                             </Popup>
                         )}
                     </Preview>
@@ -214,15 +214,13 @@ const PopupPage: NextPage = () => {
     theme='${themeName}'
     nude={true}
 >
-    An {'<Popup>'} with nude mode
+    A {'<Popup>'} with nude mode
 </Popup>
 `
                         ).join('')}
                     </TypeScriptCode>
                 </NudeProperty>
             </VariantProperties>
-            <StateProperties>
-            </StateProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
