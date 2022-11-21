@@ -7,14 +7,30 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Popup as OriPopup, PopupProps, List, ListItem } from '@reusable-ui/components'
+import { Popup as OriPopup, PopupProps, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, ExpandedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { useFlipFlop } from '../../hooks/flipFlop'
 
 
 
 const Popup = (props: PopupProps) => <OriPopup {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} />
+
+const FlipFlopPopup = (props: PopupProps) => {
+    const [popupRef, isFlip] = useFlipFlop<boolean>({defaultState: true});
+    
+    
+    
+    return (
+        <div ref={popupRef}>
+            <p>
+                <code>{`<Popup expanded={${isFlip}}>`}</code>
+            </p>
+            <Popup expanded={isFlip} {...props} />
+        </div>
+    );
+}
 
 
 
@@ -31,6 +47,24 @@ const PopupPage: NextPage = () => {
                 </p>
             </HeroSection>
             <ComponentInstallation />
+            <ExpandedProperty>
+                    <Preview display='down' cardBodyComponent={<CardBody style={{justifyContent: 'start', blockSize: '5rem'}} />}>
+                        <FlipFlopPopup>
+                            Hopla!
+                        </FlipFlopPopup>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Popup
+    expanded={true}
+    theme='primary'
+>
+    Hopla!
+</Popup>
+`
+                    }</TypeScriptCode>
+            </ExpandedProperty>
             <VariantProperties>
                 <SizeProperty>
                     <Preview>

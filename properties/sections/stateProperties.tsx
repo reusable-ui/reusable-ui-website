@@ -512,3 +512,33 @@ export const InheritValidationProperty = ({children: preview}: PreviewProps) => 
         </PropertySection>
     );
 }
+
+
+
+export const ExpandedProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.expanded} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> expanded setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        <strong>Expands</strong> the <strong>size</strong> or <strong>shows</strong> the <strong>visibility</strong> of the <TheComponentLink />.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        <strong>Collapses</strong> the <strong>size</strong> or <strong>hides</strong> the <strong>visibility</strong> of the <TheComponentLink />.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                <strong>Expands</strong>/<strong>Collapses</strong> the <strong>size</strong> or <strong>shows</strong>/<strong>hides</strong> the <strong>visibility</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
