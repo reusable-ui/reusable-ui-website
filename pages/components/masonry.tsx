@@ -1,16 +1,14 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { content, masonry } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Basic, Button, Carousel, Masonry as OriMasonry, MasonryProps, List, ListItem } from '@reusable-ui/components'
+import { Masonry as OriMasonry, MasonryProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { CommaSeparated, ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
-import { Warning } from '../../components/Warning'
+import { ComponentContextProvider, TheComponentDisplay, TheComponentLink } from '../../packages/componentContext'
 
 
 

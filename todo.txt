@@ -4,6 +4,7 @@
 * docs <Input name form defaultValue value onChange required minLength maxLength min max step pattern type placeholder autoComplete list autoFocus tabIndex enterKeyHint>
 * docs <Range min max step name form defaultValue value onChange pressed actionMouses actionTouches actionKeys releaseDelay>
 * docs <Check|Radio defaultActive onActiveChange autoFocus tabIndex enterKeyHint label required type name form defaultValue value onChange defaultChecked checked>
+* docs <Masonry orientation='inline|block'> warning 'block' influenced by vertical scrollbar width and 'inline' should have max-height & horz scrollbar
 
 * add guide-using-component
 * add guide-create-component
