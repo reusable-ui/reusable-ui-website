@@ -270,7 +270,7 @@ const DemoFloatingShift = () => {
 
 
 const PopupPage: NextPage = () => {
-    return (<ComponentContextProvider component={popup} baseComponents={basic}>
+    return (<ComponentContextProvider component={popup} baseComponents={basic} componentFactory={<Popup />}>
         <Head>
             <title>{`${popup.componentTag} Component`}</title>
             <meta name="description" content={`${popup.componentTag} is a generic element with dynamic visibility (show/hide) in popup fashion.`} />
@@ -302,49 +302,7 @@ const PopupPage: NextPage = () => {
             </ExpandedProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn />} />
-                    <p></p>
-                    <TypeScriptCode>{
-`
-<Button
-    theme='success'
-    size='lg'
->
-    Order Now! Limited offer.
-</Button>
-<Popup
-    expanded={true}
-    theme='danger'
-    size='sm'
->
-    Hurry up!
-</Popup>
-
-
-
-<Button
-    elmRef={buttonRef}
-    theme='success'
-    size='lg'
->
-    Order Now! Limited offer.
-</Button>
-<Popup
-    floatingOn={buttonRef}
-    floatingPlacement='right-start'
-    floatingOffset={-50}
-    floatingShift={-15}
-    
-    expanded={true}
-    theme='danger'
-    size='sm'
->
-    Hurry up!
-</Popup>
-`
-                    }</TypeScriptCode>
-                </FloatingOnProperty>
+                <FloatingOnProperty />
                 <FloatingPlacementProperty>
                     <DemoFloatingPlacement />
                 </FloatingPlacementProperty>

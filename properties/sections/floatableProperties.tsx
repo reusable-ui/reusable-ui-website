@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { TheComponentLink } from '../../packages/componentContext'
-import { List, ListItem } from '@reusable-ui/components'
+import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
+import { BasicProps, CardBody, List, ListItem } from '@reusable-ui/components'
 import { Warning } from '../../components/Warning'
+import { CollapsibleProps, FloatableProps } from '@reusable-ui/core'
+import { TypeScriptCode } from '../../components/Code'
+import { Preview } from '../../components/Preview'
+
+const Button = React.lazy(() => import(/* webpackChunkName: 'Button' */'@reusable-ui/button'));
+
 
 
 
@@ -24,9 +30,113 @@ export const FloatingProperties = ({children} : FloatingPropertiesProps) => {
 
 
 
-export const FloatingOnProperty = ({children: preview}: PreviewProps) => {
+export interface DemoFloatingProps {
+    targetComponent ?: React.ReactElement<BasicProps>
+}
+export interface CodeFloatingProps {
+    targetTag        ?: string
+    targetChildren   ?: string
+    floatingChildren ?: string
+}
+
+const defaultTargetComponent  = <Button />;
+const defaultTargetTag        = 'Button'
+const defaultTargetChildren   = '    Order Now! Limited offer.'
+const defaultFloatingChildren = '    Hurry up!'
+
+const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloatingProps) => {
+    const {componentFactory} = useComponentInfo();
+    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    const targetRef = useRef<HTMLElement>(null);
+    
+    
+    
+    targetComponent = React.cloneElement(targetComponent, {
+        theme  : targetComponent.props.theme  ?? 'success',
+        size   : targetComponent.props.size   ?? 'lg',
+    }, defaultTargetChildren);
+    floatingComponent = React.cloneElement(floatingComponent, {
+        expanded : floatingComponent.props.expanded ?? true,
+        theme    : floatingComponent.props.theme    ?? 'danger',
+        size     : floatingComponent.props.size     ?? 'sm',
+    }, defaultFloatingChildren);
     return (
-        <PropertySection property={properties.floatingOn} preview={preview}>
+        <CardBody style={{gap: '4rem'}}>
+            <div>
+                {targetComponent}
+                {floatingComponent}
+            </div>
+            
+            <div>
+                {React.cloneElement(targetComponent, {
+                    elmRef : targetComponent.props.elmRef ?? targetRef,
+                })}
+                {React.cloneElement(floatingComponent, {
+                    floatingOn        : floatingComponent.props.floatingOn        ?? targetRef,
+                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right-start',
+                    floatingOffset    : floatingComponent.props.floatingOffset    ?? -50,
+                    floatingShift     : floatingComponent.props.floatingShift     ?? -15,
+                })}
+            </div>
+        </CardBody>
+    );
+}
+const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+    const {component: {componentName: componentTag}} = useComponentInfo();
+    return (
+        <TypeScriptCode>{
+`
+<${targetTag}
+    theme='success'
+    size='lg'
+>
+${targetChildren}
+</${targetTag}>
+<${componentTag}
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+${floatingChildren}
+</${componentTag}>
+
+
+
+<${targetTag}
+    elmRef={buttonRef}
+    theme='success'
+    size='lg'
+>
+${targetChildren}
+</${targetTag}>
+<${componentTag}
+    floatingOn={buttonRef}
+    floatingPlacement='right-start'
+    floatingOffset={-50}
+    floatingShift={-15}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+${floatingChildren}
+</${componentTag}>
+`
+        }</TypeScriptCode>
+    );
+}
+
+
+
+
+
+export const FloatingOnProperty = ({children: preview, targetComponent, targetTag}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
+    return (
+        <PropertySection property={properties.floatingOn} preview={preview ?? <>
+            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} />} />
+            <p></p>
+            <CodeFloatingOn targetTag={targetTag} />
+        </>}>
             <p>
                 Determines the <strong>target DOM reference</strong> where the <TheComponentLink /> should be <strong>floating on</strong>.<br />
                 If not set (<code>undefined</code>), the <TheComponentLink /> becomes a normal element flow.

@@ -10,6 +10,7 @@ export interface IComponentContext {
     nestedComponent  ?: ComponentInfo|ComponentInfo[]
     nestedProperties ?: boolean
     baseComponents   ?: ComponentInfo|ComponentInfo[]
+    componentFactory ?: React.ReactElement
 }
 export const ComponentContext = React.createContext<IComponentContext>(/*defaultValue :*/{
     component        : generic,
