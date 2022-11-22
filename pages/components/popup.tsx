@@ -7,13 +7,14 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Popup as OriPopup, PopupProps, List, ListItem, CardBody, Button } from '@reusable-ui/components'
+import { Popup as OriPopup, PopupProps, List, ListItem, CardBody, Button, Label } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, ExpandedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { FloatingOnProperty, FloatingProperties } from '../../properties/sections/floatableProperties'
+import { FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingStrategyProperty } from '../../properties/sections/floatableProperties'
+import SelectFloatingPlacement from '../../components/SelectFloatingPlacement'
 
 
 
@@ -80,6 +81,31 @@ const DemoFloatingOn = () => {
         </>
     );
 }
+const DemoFloatingPlacement = () => {
+    const contentRef = useRef<HTMLElement>(null);
+    
+    
+    
+    return (
+        <SelectFloatingPlacement>{(popupPlacement) => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Label elmRef={contentRef} theme='primary' size='lg' style={{ width: '50%', height: '50%' }}>
+                A content
+            </Label>
+            <Popup
+                expanded={true}
+                theme='warning'
+                mild={true}
+                
+                floatingOn={contentRef}
+                floatingPlacement={popupPlacement}
+            >
+                <code>
+                    {`popupPlacement='${popupPlacement}'`}
+                </code>
+            </Popup>
+        </div>}</SelectFloatingPlacement>
+    )
+};
 
 
 
@@ -166,6 +192,10 @@ const PopupPage: NextPage = () => {
 `
                     }</TypeScriptCode>
                 </FloatingOnProperty>
+                <FloatingPlacementProperty>
+                    <DemoFloatingPlacement />
+                </FloatingPlacementProperty>
+                <FloatingStrategyProperty />
             </FloatingProperties>
             <VariantProperties>
                 <SizeProperty>
