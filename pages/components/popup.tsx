@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
@@ -7,18 +7,36 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Popup as OriPopup, PopupProps, List, ListItem, CardBody } from '@reusable-ui/components'
+import { Popup as OriPopup, PopupProps, List, ListItem, CardBody, Button } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, EnabledProperty, ExpandedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
+import { FloatingOnProperty, FloatingProperties } from '../../properties/sections/floatableProperties'
 
 
 
 const Popup = (props: PopupProps) => <OriPopup {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} />
 
-const FlipFlopPopup = (props: PopupProps) => {
+const DemoPopup = () => {
+    const [popupRef, isFlip] = useFlipFlop<boolean>({defaultState: true});
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    
+    
+    
+    return (
+        <div ref={popupRef}>
+            <Button elmRef={buttonRef} theme='success' size='lg'>
+                Order Now! Limited offer.
+            </Button>
+            <Popup expanded={isFlip} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right-start' floatingOffset={-50} floatingShift={-15}>
+                Hurry up!
+            </Popup>
+        </div>
+    );
+}
+const DemoExpanded = () => {
     const [popupRef, isFlip] = useFlipFlop<boolean>({defaultState: true});
     
     
@@ -28,8 +46,38 @@ const FlipFlopPopup = (props: PopupProps) => {
             <p>
                 <code>{`<Popup expanded={${isFlip}}>`}</code>
             </p>
-            <Popup expanded={isFlip} {...props} />
+            <Popup expanded={isFlip} theme='primary'>
+                Hopla!
+            </Popup>
         </div>
+    );
+}
+const DemoFloatingOn = () => {
+    const buttonRef1 = useRef<HTMLButtonElement>(null);
+    const buttonRef2 = useRef<HTMLButtonElement>(null);
+    
+    
+    
+    return (
+        <>
+            <div>
+                <Button elmRef={buttonRef1} theme='success' size='lg'>
+                    Order Now! Limited offer.
+                </Button>
+                <Popup expanded={true} theme='danger' size='sm'>
+                    Hurry up!
+                </Popup>
+            </div>
+            
+            <div>
+                <Button elmRef={buttonRef2} theme='success' size='lg'>
+                    Order Now! Limited offer.
+                </Button>
+                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef2} floatingPlacement='right-start' floatingOffset={-50} floatingShift={-15}>
+                    Hurry up!
+                </Popup>
+            </div>
+        </>
     );
 }
 
@@ -42,17 +90,21 @@ const PopupPage: NextPage = () => {
             <meta name="description" content={`${popup.componentTag} is a generic element with dynamic visibility (show/hide) in popup fashion.`} />
         </Head>
         <Main nude={true}>
-            <HeroSection title={<><TheComponentLink /> Component</>}>
+            <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentLink /> is a generic element with dynamic visibility (show/hide) in popup fashion.
                 </p>
+                <p>
+                    Here the demo:
+                </p>
+                <Preview stretch={false} display='down' cardBodyComponent={<CardBody style={{justifyContent: 'end', blockSize: '4rem'}} />}>
+                    <DemoPopup />
+                </Preview>
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
                     <Preview display='down' cardBodyComponent={<CardBody style={{justifyContent: 'start', blockSize: '5rem'}} />}>
-                        <FlipFlopPopup>
-                            Hopla!
-                        </FlipFlopPopup>
+                        <DemoExpanded />
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
@@ -67,6 +119,54 @@ const PopupPage: NextPage = () => {
                     }</TypeScriptCode>
             </ExpandedProperty>
             <LazyProperty />
+            <FloatingProperties>
+                <FloatingOnProperty>
+                    <Preview display='down' stretch={true} cardBodyComponent={<CardBody style={{gap: '4rem'}} />}>
+                        <DemoFloatingOn />
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Button
+    elmRef={buttonRef1}
+    theme='success'
+    size='lg'
+>
+    Order Now! Limited offer.
+</Button>
+<Popup
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+    Hurry up!
+</Popup>
+
+
+
+<Button
+    elmRef={buttonRef2}
+    theme='success'
+    size='lg'
+>
+    Order Now! Limited offer.
+</Button>
+<Popup
+    floatingOn={buttonRef2}
+    floatingPlacement='right-start'
+    floatingOffset={-50}
+    floatingShift={-15}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+    Hurry up!
+</Popup>
+`
+                    }</TypeScriptCode>
+                </FloatingOnProperty>
+            </FloatingProperties>
             <VariantProperties>
                 <SizeProperty>
                     <Preview>
