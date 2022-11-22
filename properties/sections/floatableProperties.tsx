@@ -244,22 +244,24 @@ const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren 
     
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
-            <div>
-            </div>
-            
-            <div>
-                {React.cloneElement(targetComponent, {
-                    elmRef : targetComponent.props.elmRef ?? buttonRef,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
-                    floatingAutoFlip  : floatingComponent.props.floatingAutoFlip  ?? true,
-                })}
-            </div>
-            
-            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
-            </div>
+            <Suspense>
+                <div>
+                </div>
+                
+                <div>
+                    {React.cloneElement(targetComponent, {
+                        elmRef : targetComponent.props.elmRef ?? buttonRef,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
+                        floatingAutoFlip  : floatingComponent.props.floatingAutoFlip  ?? true,
+                    })}
+                </div>
+                
+                <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
+                </div>
+            </Suspense>
         </CardBody>
     );
 }
@@ -348,22 +350,24 @@ const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren
     
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
-            <div>
-            </div>
-            
-            <div>
-                {React.cloneElement(targetComponent, {
-                    elmRef : targetComponent.props.elmRef ?? buttonRef,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
-                    floatingAutoShift : floatingComponent.props.floatingAutoShift ?? true,
-                })}
-            </div>
-            
-            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
-            </div>
+            <Suspense>
+                <div>
+                </div>
+                
+                <div>
+                    {React.cloneElement(targetComponent, {
+                        elmRef : targetComponent.props.elmRef ?? buttonRef,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
+                        floatingAutoShift : floatingComponent.props.floatingAutoShift ?? true,
+                    })}
+                </div>
+                
+                <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
+                </div>
+            </Suspense>
         </CardBody>
     );
 }
@@ -425,28 +429,30 @@ const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChi
     
     
     return (
-        <CardBody>
-            <p style={{marginBlockEnd: '3rem'}}>
-                <code>{`<${componentTag} floatingOffset={${floatingOffset}}>`}</code>
-            </p>
-            
-            <div>
-                {React.cloneElement(targetComponent, {
-                    elmRef : targetComponent.props.elmRef ?? buttonRef,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
-                    floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
-                    floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
-                })}
-            </div>
-            
-            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+        <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem'}}>
+            <Suspense>
+                <p style={{marginBlockEnd: '3rem'}}>
+                    <code>{`<${componentTag} floatingOffset={${floatingOffset}}>`}</code>
+                </p>
+                
+                <div>
+                    {React.cloneElement(targetComponent, {
+                        elmRef : targetComponent.props.elmRef ?? buttonRef,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
+                        floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
+                        floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
+                    })}
+                </div>
+                
+                <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+            </Suspense>
         </CardBody>
     );
 }
@@ -508,28 +514,30 @@ const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChil
     
     
     return (
-        <CardBody>
-            <p style={{marginBlockEnd: '3rem'}}>
-                <code>{`<${componentTag} floatingShift={${floatingShift}}>`}</code>
-            </p>
-            
-            <div>
-                {React.cloneElement(targetComponent, {
-                    elmRef : targetComponent.props.elmRef ?? buttonRef,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
-                    floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
-                    floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
-                })}
-            </div>
-            
-            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+        <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem'}}>
+            <Suspense>
+                <p style={{marginBlockEnd: '3rem'}}>
+                    <code>{`<${componentTag} floatingShift={${floatingShift}}>`}</code>
+                </p>
+                
+                <div>
+                    {React.cloneElement(targetComponent, {
+                        elmRef : targetComponent.props.elmRef ?? buttonRef,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
+                        floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
+                        floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
+                    })}
+                </div>
+                
+                <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+            </Suspense>
         </CardBody>
     );
 }
