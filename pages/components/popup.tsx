@@ -283,11 +283,11 @@ const PopupPage: NextPage = () => {
                 <p>
                     Here the demo:
                 </p>
-                <Preview stretch={false} display='down' cardBodyComponent={<DemoPopup />} />
+                <Preview display='down' stretch={false} cardBodyComponent={<DemoPopup />} />
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `
