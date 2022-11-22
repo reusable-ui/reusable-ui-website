@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { Suspense, useRef } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
@@ -128,15 +128,13 @@ ${floatingChildren}
 
 
 
-
-
 export const FloatingOnProperty = ({children: preview, targetComponent, targetTag}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
-        <PropertySection property={properties.floatingOn} preview={preview ?? <>
+        <PropertySection property={properties.floatingOn} preview={preview ?? <Suspense>
             <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} />} />
             <p></p>
             <CodeFloatingOn targetTag={targetTag} />
-        </>}>
+        </Suspense>}>
             <p>
                 Determines the <strong>target DOM reference</strong> where the <TheComponentLink /> should be <strong>floating on</strong>.<br />
                 If not set (<code>undefined</code>), the <TheComponentLink /> becomes a normal element flow.
