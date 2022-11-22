@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
@@ -6,14 +6,13 @@ import { basic, popup } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Popup as OriPopup, PopupProps, List, ListItem, CardBody, Button, Label, Range } from '@reusable-ui/components'
+import { Popup as OriPopup, PopupProps, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
-import SelectFloatingPlacement from '../../components/SelectFloatingPlacement'
 
 
 
@@ -47,31 +46,6 @@ const DemoExpanded = () => {
             </Popup>
         </CardBody>
     );
-}
-const DemoFloatingPlacement = () => {
-    const contentRef = useRef<HTMLElement>(null);
-    
-    
-    
-    return (
-        <SelectFloatingPlacement>{(popupPlacement) => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Label elmRef={contentRef} theme='primary' size='lg' style={{ width: '50%', height: '50%', resize: 'both', overflow: 'hidden', transition: 'none', borderRadius: 0, }}>
-                A content
-            </Label>
-            <Popup
-                expanded={true}
-                theme='warning'
-                mild={true}
-                
-                floatingOn={contentRef}
-                floatingPlacement={popupPlacement}
-            >
-                <code>
-                    {`floatingPlacement='${popupPlacement}'`}
-                </code>
-            </Popup>
-        </div>}</SelectFloatingPlacement>
-    )
 }
 
 
