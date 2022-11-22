@@ -1,19 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { basic, popup } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Popup as OriPopup, PopupProps, List, ListItem, CardBody, Button, Label } from '@reusable-ui/components'
+import { Popup as OriPopup, PopupProps, List, ListItem, CardBody, Button, Label, Range } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, ExpandedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ExpandedProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingStrategyProperty } from '../../properties/sections/floatableProperties'
+import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import SelectFloatingPlacement from '../../components/SelectFloatingPlacement'
 
 
@@ -213,6 +212,64 @@ const DemoFloatingAutoShift = () => {
         </CardBody>
     );
 }
+const DemoFloatingOffset = () => {
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const [floatingOffset, setFloatingOffset] = useState<number>(0);
+    const handleChange : React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        setFloatingOffset(event.target.valueAsNumber);
+    };
+    
+    
+    
+    return (
+        <CardBody>
+            <p style={{marginBlockEnd: '3rem'}}>
+                <code>{`<Popup floatingOffset={${floatingOffset}}>`}</code>
+            </p>
+            <div>
+                <Button elmRef={buttonRef} theme='success' size='lg'>
+                    Order Now! Limited offer.
+                </Button>
+                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='top' floatingOffset={floatingOffset}>
+                    Hurry up!
+                </Popup>
+                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right' floatingOffset={floatingOffset}>
+                    Hurry up!
+                </Popup>
+            </div>
+            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+        </CardBody>
+    );
+}
+const DemoFloatingShift = () => {
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const [floatingShift, setFloatingShift] = useState<number>(0);
+    const handleChange : React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        setFloatingShift(event.target.valueAsNumber);
+    };
+    
+    
+    
+    return (
+        <CardBody>
+            <p style={{marginBlockEnd: '3rem'}}>
+                <code>{`<Popup floatingShift={${floatingShift}}>`}</code>
+            </p>
+            <div>
+                <Button elmRef={buttonRef} theme='success' size='lg'>
+                    Order Now! Limited offer.
+                </Button>
+                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='top' floatingShift={floatingShift}>
+                    Hurry up!
+                </Popup>
+                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right' floatingShift={floatingShift}>
+                    Hurry up!
+                </Popup>
+            </div>
+            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+        </CardBody>
+    );
+}
 
 
 
@@ -361,6 +418,59 @@ const PopupPage: NextPage = () => {
 `
                     }</TypeScriptCode>
                 </FloatingAutoShiftProperty>
+                <FloatingOffsetProperty>
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingOffset />} />
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Button
+    elmRef={buttonRef}
+    theme='success'
+    size='lg'
+>
+    Order Now! Limited offer.
+</Button>
+<Popup
+    floatingOn={buttonRef}
+    floatingPlacement='top'
+    floatingOffset={10}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+    Hurry up!
+</Popup>
+`
+                    }</TypeScriptCode>
+                </FloatingOffsetProperty>
+                <FloatingShiftProperty>
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingShift />} />
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Button
+    elmRef={buttonRef}
+    theme='success'
+    size='lg'
+>
+    Order Now! Limited offer.
+</Button>
+<Popup
+    floatingOn={buttonRef}
+    floatingPlacement='top'
+    floatingShift={10}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+    Hurry up!
+</Popup>
+`
+                    }</TypeScriptCode>
+                </FloatingShiftProperty>
+                <OnFloatingUpdateProperty />
             </FloatingProperties>
             <VariantProperties>
                 <SizeProperty>

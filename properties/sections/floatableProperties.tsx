@@ -2,7 +2,9 @@ import React from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentLink } from '../../packages/componentContext'
+import { List, ListItem } from '@reusable-ui/components'
+import { Warning } from '../../components/Warning'
 
 
 
@@ -71,7 +73,6 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
         </PropertySection>
     );
 }
-
 export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
 export const FloatingAutoFlipProperty = ({possibleValues, children: preview}: FloatingAutoFlipPropertyProps) => {
@@ -101,7 +102,6 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview}: Fl
         </PropertySection>
     );
 }
-
 export interface FloatingAutoShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
 export const FloatingAutoShiftProperty = ({possibleValues, children: preview}: FloatingAutoShiftPropertyProps) => {
@@ -128,6 +128,115 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview}: F
             <p>
                 <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the <TheComponentLink /> is about to be clipped.
             </p>
+        </PropertySection>
+    );
+}
+export interface FloatingOffsetPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+}
+export const FloatingOffsetProperty = ({possibleValues, children: preview}: FloatingOffsetPropertyProps) => {
+    return (
+        <PropertySection property={properties.floatingOffset} preview={preview} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> distance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>0</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> <strong>touch</strong> the <strong>target DOM reference</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<strong>positive number</strong>}>
+                    <p>
+                        Makes a <strong>gap</strong> between the <TheComponentLink /> and the <strong>target DOM reference</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<strong>negative number</strong>}>
+                    <p>
+                        Makes the <TheComponentLink /> <strong>inside</strong> the <strong>target DOM reference</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>target DOM reference</strong>.
+            </p>
+        </PropertySection>
+    );
+}
+export interface FloatingShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+}
+export const FloatingShiftProperty = ({possibleValues, children: preview}: FloatingShiftPropertyProps) => {
+    return (
+        <PropertySection property={properties.floatingShift} preview={preview} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> distance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>0</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> placed <strong>at</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<strong>positive number</strong>}>
+                    <p>
+                        Makes the <TheComponentLink /> placed <strong>before</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<strong>negative number</strong>}>
+                    <p>
+                        Makes the <TheComponentLink /> placed <strong>after</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+            </p>
+        </PropertySection>
+    );
+}
+export const OnFloatingUpdateProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.onFloatingUpdate} preview={preview}>
+            <p>
+                Sets a <strong>callback function</strong> to be called when the <TheComponentLink /> <strong>updates the position</strong> relative to the <strong>target DOM reference</strong>.
+            </p>
+            <p>
+                The callback function parameters:
+            </p>
+            <Accordion theme='primary'>
+                <AccordionItem label={<code>event: FloatingPosition</code>}>
+                    <List listStyle='flush'>
+                        <ListItem>
+                            <code>placement: Placement</code>
+                            <p>
+                                A <code>string</code> represents {properties.floatingPlacement.propertyShortDisplay}.
+                            </p>
+                        </ListItem>
+                        <ListItem>
+                            <code>strategy: Strategy</code>
+                            <p>
+                                A <code>string</code> represents {properties.floatingStrategy.propertyShortDisplay}.
+                            </p>
+                        </ListItem>
+                        <ListItem>
+                            <code>middlewareData: MiddlewareData</code>
+                            <p>
+                                An <code>object</code> represents an information of <em>floating state</em> (offset, shift, placement, etc).
+                            </p>
+                            <Warning>
+                                <p>
+                                    We&apos;ll improve this detail soon. Sorry for a bad documentation. 😅
+                                </p>
+                            </Warning>
+                        </ListItem>
+                    </List>
+                </AccordionItem>
+            </Accordion>
         </PropertySection>
     );
 }
