@@ -21,19 +21,15 @@ const Popup = (props: PopupProps) => <OriPopup {...props} theme={props.theme ?? 
 
 const DemoPopup = () => {
     const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
-    const buttonRef = useRef<HTMLButtonElement>(null);
     
     
     
     return (
-        <div ref={viewportRef}>
-            <Button elmRef={buttonRef} theme='success' size='lg'>
-                Order Now! Limited offer.
-            </Button>
-            <Popup expanded={isFlip} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right-start' floatingOffset={-50} floatingShift={-15}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '4rem'}}>
+            <Popup expanded={isFlip} theme='danger' size='lg'>
                 Hurry up!
             </Popup>
-        </div>
+        </CardBody>
     );
 }
 const DemoExpanded = () => {
@@ -42,14 +38,14 @@ const DemoExpanded = () => {
     
     
     return (
-        <div ref={viewportRef}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', justifyContent: 'start'}}>
             <p>
                 <code>{`<Popup expanded={${isFlip}}>`}</code>
             </p>
             <Popup expanded={isFlip} theme='primary'>
                 Hopla!
             </Popup>
-        </div>
+        </CardBody>
     );
 }
 const DemoFloatingOn = () => {
@@ -58,7 +54,7 @@ const DemoFloatingOn = () => {
     
     
     return (
-        <>
+        <CardBody style={{gap: '4rem'}}>
             <div>
                 <Button theme='success' size='lg'>
                     Order Now! Limited offer.
@@ -76,7 +72,7 @@ const DemoFloatingOn = () => {
                     Hurry up!
                 </Popup>
             </div>
-        </>
+        </CardBody>
     );
 }
 const DemoFloatingPlacement = () => {
@@ -140,7 +136,7 @@ const DemoFloatingAutoFlip = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{gap: '5rem', blockSize: '6rem', justifyContent: 'start', overflowY: 'scroll'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
             <div>
             </div>
             
@@ -194,7 +190,7 @@ const DemoFloatingAutoShift = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{gap: '5rem', blockSize: '6rem', justifyContent: 'start', overflowY: 'scroll'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
             <div>
             </div>
             
@@ -287,15 +283,11 @@ const PopupPage: NextPage = () => {
                 <p>
                     Here the demo:
                 </p>
-                <Preview stretch={false} display='down' cardBodyComponent={<CardBody style={{justifyContent: 'end', blockSize: '4rem'}} />}>
-                    <DemoPopup />
-                </Preview>
+                <Preview stretch={false} display='down' cardBodyComponent={<DemoPopup />} />
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' cardBodyComponent={<CardBody style={{justifyContent: 'start', blockSize: '5rem'}} />}>
-                        <DemoExpanded />
-                    </Preview>
+                    <Preview display='down' cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `
@@ -311,9 +303,7 @@ const PopupPage: NextPage = () => {
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<CardBody style={{gap: '4rem'}} />}>
-                        <DemoFloatingOn />
-                    </Preview>
+                    <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn />} />
                     <p></p>
                     <TypeScriptCode>{
 `
