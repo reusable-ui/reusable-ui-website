@@ -284,19 +284,19 @@ const FormPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>animValid</code>
-                                <p>An animation represents <em>validating animation</em>, a transition from <strong>neutral/invalid</strong> to <strong>valid</strong>.</p>
+                                <p>Represents <strong>validating animation</strong>, a transition from <strong>neutral/invalid</strong> to <strong>valid</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animInvalid</code>
-                                <p>An animation represents <em>invalidating animation</em>, a transition from <strong>neutral/valid</strong> to <strong>invalid</strong>.</p>
+                                <p>Represents <strong>invalidating animation</strong>, a transition from <strong>neutral/valid</strong> to <strong>invalid</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animUnvalid</code>
-                                <p>An animation represents <em>de-validating animation</em>, a transition from <strong>valid</strong> to <strong>neutral/invalid</strong>.</p>
+                                <p>Represents <strong>de-validating animation</strong>, a transition from <strong>valid</strong> to <strong>neutral/invalid</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animUninvalid</code>
-                                <p>An animation represents <em>de-invalidating animation</em>, a transition from <strong>invalid</strong> to <strong>neutral/valid</strong>.</p>
+                                <p>Represents <strong>de-invalidating animation</strong>, a transition from <strong>invalid</strong> to <strong>neutral/valid</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

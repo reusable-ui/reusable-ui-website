@@ -504,11 +504,11 @@ const CheckPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>checkAnimIn</code>
-                                <p>An animation represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                                <p>Represents <strong>activating animation</strong>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>checkAnimOut</code>
-                                <p>An animation represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                                <p>Represents <strong>deactivating animation</strong>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
                             </ListItem>
                             
                             
@@ -532,11 +532,11 @@ const CheckPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>switchCheckAnimIn</code>
-                                <p>An animation represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>, when <code>{`checkStyle='switch'`}</code>.</p>
+                                <p>Represents <strong>activating animation</strong>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>, when <code>{`checkStyle='switch'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>switchCheckAnimOut</code>
-                                <p>An animation represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>, when <code>{`checkStyle='switch'`}</code>.</p>
+                                <p>Represents <strong>deactivating animation</strong>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>, when <code>{`checkStyle='switch'`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

@@ -54,15 +54,14 @@ const DemoExpanded = () => {
     );
 }
 const DemoFloatingOn = () => {
-    const buttonRef1 = useRef<HTMLButtonElement>(null);
-    const buttonRef2 = useRef<HTMLButtonElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
     
     
     
     return (
         <>
             <div>
-                <Button elmRef={buttonRef1} theme='success' size='lg'>
+                <Button theme='success' size='lg'>
                     Order Now! Limited offer.
                 </Button>
                 <Popup expanded={true} theme='danger' size='sm'>
@@ -71,10 +70,10 @@ const DemoFloatingOn = () => {
             </div>
             
             <div>
-                <Button elmRef={buttonRef2} theme='success' size='lg'>
+                <Button elmRef={buttonRef} theme='success' size='lg'>
                     Order Now! Limited offer.
                 </Button>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef2} floatingPlacement='right-start' floatingOffset={-50} floatingShift={-15}>
+                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right-start' floatingOffset={-50} floatingShift={-15}>
                     Hurry up!
                 </Popup>
             </div>
@@ -100,7 +99,7 @@ const DemoFloatingPlacement = () => {
                 floatingPlacement={popupPlacement}
             >
                 <code>
-                    {`popupPlacement='${popupPlacement}'`}
+                    {`floatingPlacement='${popupPlacement}'`}
                 </code>
             </Popup>
         </div>}</SelectFloatingPlacement>
@@ -262,7 +261,6 @@ const PopupPage: NextPage = () => {
                     <TypeScriptCode>{
 `
 <Button
-    elmRef={buttonRef1}
     theme='success'
     size='lg'
 >
@@ -279,14 +277,14 @@ const PopupPage: NextPage = () => {
 
 
 <Button
-    elmRef={buttonRef2}
+    elmRef={buttonRef}
     theme='success'
     size='lg'
 >
     Order Now! Limited offer.
 </Button>
 <Popup
-    floatingOn={buttonRef2}
+    floatingOn={buttonRef}
     floatingPlacement='right-start'
     floatingOffset={-50}
     floatingShift={-15}
@@ -340,7 +338,14 @@ const PopupPage: NextPage = () => {
     theme='success'
     size='lg'
 >
-    Order<br />Now!<br /><br />Limited<br />offer
+    Order
+    <br />
+    Now!
+    <br />
+    <br />
+    Limited
+    <br />
+    offer
 </Button>
 <Popup
     floatingOn={buttonRef}
@@ -375,6 +380,7 @@ const PopupPage: NextPage = () => {
 `
 <Popup
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    theme='primary'
 >
     A {'<Popup>'} with ${sizeName ?? 'default'} size
 </Popup>
@@ -411,8 +417,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName, index) =>
                             <Popup
                                 key={index}
-                                theme={themeName}
                                 gradient={true}
+                                theme={themeName}
                             >
                                 A {'<Popup>'} with gradient mode
                             </Popup>
@@ -423,8 +429,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Popup
-    theme='${themeName}'
     gradient={true}
+    theme='${themeName}'
 >
     A {'<Popup>'} with gradient mode
 </Popup>
@@ -437,8 +443,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName, index) =>
                             <Popup
                                 key={index}
-                                theme={themeName}
                                 outlined={true}
+                                theme={themeName}
                             >
                                 A {'<Popup>'} with outlined mode
                             </Popup>
@@ -449,8 +455,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Popup
-    theme='${themeName}'
     outlined={true}
+    theme='${themeName}'
 >
     A {'<Popup>'} with outlined mode
 </Popup>
@@ -463,8 +469,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName, index) =>
                             <Popup
                                 key={index}
+                                mild={true}
                                 theme={themeName}
-                                mild={false}
                             >
                                 A {'<Popup>'} without mild mode
                             </Popup>
@@ -475,8 +481,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Popup
+    mild={true}
     theme='${themeName}'
-    mild={false}
 >
     A {'<Popup>'} without mild mode
 </Popup>
@@ -489,8 +495,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName, index) =>
                             <Popup
                                 key={index}
-                                theme={themeName}
                                 nude={true}
+                                theme={themeName}
                             >
                                 A {'<Popup>'} with nude mode
                             </Popup>
@@ -501,8 +507,8 @@ const PopupPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Popup
-    theme='${themeName}'
     nude={true}
+    theme='${themeName}'
 >
     A {'<Popup>'} with nude mode
 </Popup>
@@ -518,11 +524,11 @@ const PopupPage: NextPage = () => {
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>animExpand</code>
-                                <p>An animation represents <em>expanding animation</em>, a transition from <code>{`expanded={false}`}</code> to <code>{`expanded={true}`}</code>.</p>
+                                <p>Represents <strong>expanding animation</strong>, a transition from <code>{`expanded={false}`}</code> to <code>{`expanded={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animCollapse</code>
-                                <p>An animation represents <em>collapsing animation</em>, a transition from <code>{`expanded={true}`}</code> to <code>{`expanded={false}`}</code>.</p>
+                                <p>Represents <strong>collapsing animation</strong>, a transition from <code>{`expanded={true}`}</code> to <code>{`expanded={false}`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

@@ -317,19 +317,19 @@ const IndicatorPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>animEnable</code>
-                                <p>An animation represents <em>enabling animation</em>, a transition from <code>{`enabled={false}`}</code> to <code>{`enabled={true}`}</code>.</p>
+                                <p>Represents <strong>enabling animation</strong>, a transition from <code>{`enabled={false}`}</code> to <code>{`enabled={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animDisable</code>
-                                <p>An animation represents <em>disabling animation</em>, a transition from <code>{`enabled={true}`}</code> to <code>{`enabled={false}`}</code>.</p>
+                                <p>Represents <strong>disabling animation</strong>, a transition from <code>{`enabled={true}`}</code> to <code>{`enabled={false}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animActive</code>
-                                <p>An animation represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                                <p>Represents <strong>activating animation</strong>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animPassive</code>
-                                <p>An animation represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                                <p>Represents <strong>deactivating animation</strong>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

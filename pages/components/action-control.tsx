@@ -452,11 +452,11 @@ const ActionControlPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>animPress</code>
-                                <p>An animation represents <em>pressing animation</em>, a transition from <strong>released</strong> to <strong>pressed</strong>.</p>
+                                <p>Represents <strong>pressing animation</strong>, a transition from <strong>released</strong> to <strong>pressed</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animRelease</code>
-                                <p>An animation represents <em>releasing animation</em>, a transition from <strong>pressed</strong> to <strong>released</strong>.</p>
+                                <p>Represents <strong>releasing animation</strong>, a transition from <strong>pressed</strong> to <strong>released</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

@@ -400,19 +400,19 @@ const ControlPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>animFocus</code>
-                                <p>An animation represents <em>focusing animation</em>, a transition from <strong>out of focus</strong> to <strong>in focus</strong>.</p>
+                                <p>Represents <strong>focusing animation</strong>, a transition from <strong>out of focus</strong> to <strong>in focus</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animBlur</code>
-                                <p>An animation represents <em>blurring animation</em>, a transition from <strong>in focus</strong> to <strong>out of focus</strong>.</p>
+                                <p>Represents <strong>blurring animation</strong>, a transition from <strong>in focus</strong> to <strong>out of focus</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animArrive</code>
-                                <p>An animation represents <em>arriving animation</em>, a transition from <strong>left</strong> to <strong>arrived</strong>.</p>
+                                <p>Represents <strong>arriving animation</strong>, a transition from <strong>left</strong> to <strong>arrived</strong>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>animLeave</code>
-                                <p>An animation represents <em>leaving animation</em>, a transition from <strong>arrived</strong> to <strong>left</strong>.</p>
+                                <p>Represents <strong>leaving animation</strong>, a transition from <strong>arrived</strong> to <strong>left</strong>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

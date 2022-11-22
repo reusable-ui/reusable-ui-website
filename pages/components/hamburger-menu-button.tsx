@@ -438,28 +438,28 @@ const HamburgerMenuButtonPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>hamburgerTopAnimIn</code>
-                                <p>An animation for <strong>line-1</strong> represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                                <p>An animation for <strong>line-1</strong> represents <strong>activating animation</strong>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>hamburgerMidAnimIn</code>
-                                <p>An animation for <strong>line-2</strong> represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                                <p>An animation for <strong>line-2</strong> represents <strong>activating animation</strong>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>hamburgerBtmAnimIn</code>
-                                <p>An animation for <strong>line-3</strong> represents <em>activating animation</em>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
+                                <p>An animation for <strong>line-3</strong> represents <strong>activating animation</strong>, a transition from <code>{`active={false}`}</code> to <code>{`active={true}`}</code>.</p>
                             </ListItem>
                             
                             <ListItem>
                                 <code>hamburgerTopAnimOut</code>
-                                <p>An animation for <strong>line-1</strong> represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                                <p>An animation for <strong>line-1</strong> represents <strong>deactivating animation</strong>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>hamburgerMidAnimOut</code>
-                                <p>An animation for <strong>line-2</strong> represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                                <p>An animation for <strong>line-2</strong> represents <strong>deactivating animation</strong>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>hamburgerBtmAnimOut</code>
-                                <p>An animation for <strong>line-3</strong> represents <em>deactivating animation</em>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
+                                <p>An animation for <strong>line-3</strong> represents <strong>deactivating animation</strong>, a transition from <code>{`active={true}`}</code> to <code>{`active={false}`}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
