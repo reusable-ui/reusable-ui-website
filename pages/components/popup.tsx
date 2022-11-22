@@ -73,35 +73,6 @@ const DemoFloatingPlacement = () => {
         </div>}</SelectFloatingPlacement>
     )
 }
-const DemoFloatingShift = () => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    const [floatingShift, setFloatingShift] = useState<number>(0);
-    const handleChange : React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        setFloatingShift(event.target.valueAsNumber);
-    };
-    
-    
-    
-    return (
-        <CardBody>
-            <p style={{marginBlockEnd: '3rem'}}>
-                <code>{`<Popup floatingShift={${floatingShift}}>`}</code>
-            </p>
-            <div>
-                <Button elmRef={buttonRef} theme='success' size='lg'>
-                    Order Now! Limited offer.
-                </Button>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='top' floatingShift={floatingShift}>
-                    Hurry up!
-                </Popup>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right' floatingShift={floatingShift}>
-                    Hurry up!
-                </Popup>
-            </div>
-            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
-        </CardBody>
-    );
-}
 
 
 
@@ -146,32 +117,7 @@ const PopupPage: NextPage = () => {
                 <FloatingAutoFlipProperty />
                 <FloatingAutoShiftProperty />
                 <FloatingOffsetProperty />
-                <FloatingShiftProperty>
-                    <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingShift />} />
-                    <p></p>
-                    <TypeScriptCode>{
-`
-<Button
-    elmRef={buttonRef}
-    theme='success'
-    size='lg'
->
-    Order Now! Limited offer.
-</Button>
-<Popup
-    floatingOn={buttonRef}
-    floatingPlacement='top'
-    floatingShift={10}
-    
-    expanded={true}
-    theme='danger'
-    size='sm'
->
-    Hurry up!
-</Popup>
-`
-                    }</TypeScriptCode>
-                </FloatingShiftProperty>
+                <FloatingShiftProperty />
                 <OnFloatingUpdateProperty />
             </FloatingProperties>
             <VariantProperties>
