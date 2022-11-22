@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useEffect, useRef } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
@@ -8,6 +8,7 @@ import { Warning } from '../../components/Warning'
 import { CollapsibleProps, FloatableProps } from '@reusable-ui/core'
 import { TypeScriptCode } from '../../components/Code'
 import { Preview } from '../../components/Preview'
+import { useFlipFlop } from '../../hooks/flipFlop'
 
 const Button = React.lazy(() => import(/* webpackChunkName: 'Button' */'@reusable-ui/button'));
 
@@ -44,10 +45,13 @@ const defaultTargetTag        = 'Button'
 const defaultTargetChildren   = '    Order Now! Limited offer.'
 const defaultFloatingChildren = '    Hurry up!'
 
+
+
+
 const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloatingProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
-    const targetRef = useRef<HTMLElement>(null);
+    const buttonRef = useRef<HTMLElement>(null);
     
     
     
@@ -60,6 +64,9 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloating
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
     }, defaultFloatingChildren);
+    
+    
+    
     return (
         <CardBody style={{gap: '4rem'}}>
             <div>
@@ -69,10 +76,10 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloating
             
             <div>
                 {React.cloneElement(targetComponent, {
-                    elmRef : targetComponent.props.elmRef ?? targetRef,
+                    elmRef : targetComponent.props.elmRef ?? buttonRef,
                 })}
                 {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? targetRef,
+                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
                     floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right-start',
                     floatingOffset    : floatingComponent.props.floatingOffset    ?? -50,
                     floatingShift     : floatingComponent.props.floatingShift     ?? -15,
@@ -83,6 +90,9 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloating
 }
 const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
     const {component: {componentName: componentTag}} = useComponentInfo();
+    
+    
+    
     return (
         <TypeScriptCode>{
 `
@@ -114,6 +124,110 @@ ${targetChildren}
     floatingPlacement='right-start'
     floatingOffset={-50}
     floatingShift={-15}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+${floatingChildren}
+</${componentTag}>
+`
+        }</TypeScriptCode>
+    );
+}
+
+const DemoAutoFlip = ({targetComponent = defaultTargetComponent}: DemoFloatingProps) => {
+    const {componentFactory} = useComponentInfo();
+    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    
+    
+    
+    targetComponent = React.cloneElement(targetComponent, {
+        theme  : targetComponent.props.theme  ?? 'success',
+        size   : targetComponent.props.size   ?? 'lg',
+    }, defaultTargetChildren);
+    floatingComponent = React.cloneElement(floatingComponent, {
+        expanded : floatingComponent.props.expanded ?? true,
+        theme    : floatingComponent.props.theme    ?? 'danger',
+        size     : floatingComponent.props.size     ?? 'sm',
+    }, defaultFloatingChildren);
+    
+    
+    
+    const [viewportRef, isFlip, isInViewport] = useFlipFlop<boolean, HTMLElement>({defaultState: true});
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    
+    
+    
+    const scrollCummulative = useRef<number>(0);
+    useEffect(() => {
+        // conditions:
+        if (!isInViewport) return;
+        const viewportElm = viewportRef.current;
+        if (!viewportElm) return;
+        
+        
+        
+        // setups:
+        const interval = 2000;
+        const steps = 20;
+        const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
+        scrollCummulative.current = (isFlip ? 0 : scrollLength);
+        const cancelInterval = setInterval(() => {
+            scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
+            viewportElm.scrollTo({top: Math.round(scrollCummulative.current), behavior: 'smooth'});
+        }, interval / steps);
+        
+        
+        
+        // cleanups:
+        return () => {
+            clearInterval(cancelInterval);
+        };
+    }, [isFlip, isInViewport]);
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
+            <div>
+            </div>
+            
+            <div>
+                {React.cloneElement(targetComponent, {
+                    elmRef : targetComponent.props.elmRef ?? buttonRef,
+                })}
+                {React.cloneElement(floatingComponent, {
+                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
+                    floatingAutoFlip  : floatingComponent.props.floatingAutoFlip  ?? true,
+                })}
+            </div>
+            
+            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
+            </div>
+        </CardBody>
+    );
+}
+const CodeAutoFlip = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+    const {component: {componentName: componentTag}} = useComponentInfo();
+    
+    
+    
+    return (
+        <TypeScriptCode>{
+`
+<${targetTag}
+    elmRef={buttonRef}
+    theme='success'
+    size='lg'
+>
+${targetChildren}
+</${targetTag}>
+<${componentTag}
+    floatingOn={buttonRef}
+    floatingPlacement='top'
+    floatingAutoFlip={true}
     
     expanded={true}
     theme='danger'
@@ -183,9 +297,9 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
 }
 export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoFlipProperty = ({possibleValues, children: preview}: FloatingAutoFlipPropertyProps) => {
+export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag}: FloatingAutoFlipPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
-        <PropertySection property={properties.floatingAutoFlip} preview={preview} possibleValues={possibleValues ??
+        <PropertySection property={properties.floatingAutoFlip} possibleValues={possibleValues ??
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
@@ -203,7 +317,11 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview}: Fl
                     </p>
                 </AccordionItem>
             </Accordion>
-        }>
+        } preview={preview ?? <Suspense>
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} />} />
+            <p></p>
+            <CodeAutoFlip targetTag={targetTag} />
+        </Suspense>}>
             <p>
                 <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the <TheComponentLink /> is about to be clipped.
             </p>

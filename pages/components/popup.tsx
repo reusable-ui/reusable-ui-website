@@ -48,33 +48,6 @@ const DemoExpanded = () => {
         </CardBody>
     );
 }
-const DemoFloatingOn = () => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    
-    
-    
-    return (
-        <CardBody style={{gap: '4rem'}}>
-            <div>
-                <Button theme='success' size='lg'>
-                    Order Now! Limited offer.
-                </Button>
-                <Popup expanded={true} theme='danger' size='sm'>
-                    Hurry up!
-                </Popup>
-            </div>
-            
-            <div>
-                <Button elmRef={buttonRef} theme='success' size='lg'>
-                    Order Now! Limited offer.
-                </Button>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right-start' floatingOffset={-50} floatingShift={-15}>
-                    Hurry up!
-                </Popup>
-            </div>
-        </CardBody>
-    );
-}
 const DemoFloatingPlacement = () => {
     const contentRef = useRef<HTMLElement>(null);
     
@@ -99,60 +72,6 @@ const DemoFloatingPlacement = () => {
             </Popup>
         </div>}</SelectFloatingPlacement>
     )
-}
-const DemoFloatingAutoFlip = () => {
-    const [viewportRef, isFlip, isInViewport] = useFlipFlop<boolean, HTMLElement>({defaultState: true});
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    
-    
-    
-    const scrollCummulative = useRef<number>(0);
-    useEffect(() => {
-        // conditions:
-        if (!isInViewport) return;
-        const viewportElm = viewportRef.current;
-        if (!viewportElm) return;
-        
-        
-        
-        // setups:
-        const interval = 2000;
-        const steps = 20;
-        const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
-        scrollCummulative.current = (isFlip ? 0 : scrollLength);
-        const cancelInterval = setInterval(() => {
-            scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
-            viewportElm.scrollTo({top: Math.round(scrollCummulative.current), behavior: 'smooth'});
-        }, interval / steps);
-        
-        
-        
-        // cleanups:
-        return () => {
-            clearInterval(cancelInterval);
-        };
-    }, [isFlip, isInViewport]);
-    
-    
-    
-    return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
-            <div>
-            </div>
-            
-            <div>
-                <Button elmRef={buttonRef} theme='success' size='lg'>
-                    Order Now! Limited offer.
-                </Button>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='top' floatingAutoFlip={true}>
-                    Hurry up!
-                </Popup>
-            </div>
-            
-            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
-            </div>
-        </CardBody>
-    );
 }
 const DemoFloatingAutoShift = () => {
     const [viewportRef, isFlip, isInViewport] = useFlipFlop<boolean, HTMLElement>({defaultState: true});
@@ -307,32 +226,7 @@ const PopupPage: NextPage = () => {
                     <DemoFloatingPlacement />
                 </FloatingPlacementProperty>
                 <FloatingStrategyProperty />
-                <FloatingAutoFlipProperty>
-                    <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingAutoFlip />} />
-                    <p></p>
-                    <TypeScriptCode>{
-`
-<Button
-    elmRef={buttonRef}
-    theme='success'
-    size='lg'
->
-    Order Now! Limited offer.
-</Button>
-<Popup
-    floatingOn={buttonRef}
-    floatingPlacement='top'
-    floatingAutoFlip={true}
-    
-    expanded={true}
-    theme='danger'
-    size='sm'
->
-    Hurry up!
-</Popup>
-`
-                    }</TypeScriptCode>
-                </FloatingAutoFlipProperty>
+                <FloatingAutoFlipProperty />
                 <FloatingAutoShiftProperty>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingAutoShift />} />
                     <p></p>
