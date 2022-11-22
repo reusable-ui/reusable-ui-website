@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from 'react'
+import React, { ChangeEventHandler, Suspense, useEffect, useRef, useState } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
@@ -11,6 +11,7 @@ import { Preview } from '../../components/Preview'
 import { useFlipFlop } from '../../hooks/flipFlop'
 
 const Button = React.lazy(() => import(/* webpackChunkName: 'Button' */'@reusable-ui/button'));
+const Range  = React.lazy(() => import(/* webpackChunkName: 'Range'  */'@reusable-ui/range'));
 
 
 
@@ -357,6 +358,89 @@ ${floatingChildren}
     );
 }
 
+const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+    const {componentFactory} = useComponentInfo();
+    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    
+    
+    
+    targetComponent = React.cloneElement(targetComponent, {
+        theme  : targetComponent.props.theme  ?? 'success',
+        size   : targetComponent.props.size   ?? 'lg',
+    }, targetChildren);
+    floatingComponent = React.cloneElement(floatingComponent, {
+        expanded : floatingComponent.props.expanded ?? true,
+        theme    : floatingComponent.props.theme    ?? 'danger',
+        size     : floatingComponent.props.size     ?? 'sm',
+    }, floatingChildren);
+    
+    
+    
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const [floatingOffset, setFloatingOffset] = useState<number>(0);
+    const handleChange : React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        setFloatingOffset(event.target.valueAsNumber);
+    };
+    
+    
+    
+    return (
+        <CardBody>
+            <p style={{marginBlockEnd: '3rem'}}>
+                <code>{`<Popup floatingOffset={${floatingOffset}}>`}</code>
+            </p>
+            
+            <div>
+                {React.cloneElement(targetComponent, {
+                    elmRef : targetComponent.props.elmRef ?? buttonRef,
+                })}
+                {React.cloneElement(floatingComponent, {
+                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
+                    floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
+                })}
+                {React.cloneElement(floatingComponent, {
+                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
+                    floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
+                })}
+            </div>
+            
+            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
+        </CardBody>
+    );
+}
+const CodeFloatingOffset = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+    const {component: {componentName: componentTag}} = useComponentInfo();
+    
+    
+    
+    return (
+        <TypeScriptCode>{
+`
+<${targetTag}
+    elmRef={buttonRef}
+    theme='success'
+    size='lg'
+>
+${targetChildren}
+</${targetTag}>
+<${componentTag}
+    floatingOn={buttonRef}
+    floatingPlacement='top'
+    floatingOffset={10}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+${floatingChildren}
+</${componentTag}>
+`
+        }</TypeScriptCode>
+    );
+}
+
 
 
 export const FloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
@@ -480,9 +564,9 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview, ta
 }
 export interface FloatingOffsetPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingOffsetProperty = ({possibleValues, children: preview}: FloatingOffsetPropertyProps) => {
+export const FloatingOffsetProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: FloatingOffsetPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
-        <PropertySection property={properties.floatingOffset} preview={preview} possibleValues={possibleValues ??
+        <PropertySection property={properties.floatingOffset} possibleValues={possibleValues ??
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
@@ -505,7 +589,11 @@ export const FloatingOffsetProperty = ({possibleValues, children: preview}: Floa
                     </p>
                 </AccordionItem>
             </Accordion>
-        }>
+        } preview={preview ?? <Suspense>
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingOffset targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />} />
+            <p></p>
+            <CodeFloatingOffset targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+        </Suspense>}>
             <p>
                 The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>target DOM reference</strong>.
             </p>

@@ -73,35 +73,6 @@ const DemoFloatingPlacement = () => {
         </div>}</SelectFloatingPlacement>
     )
 }
-const DemoFloatingOffset = () => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    const [floatingOffset, setFloatingOffset] = useState<number>(0);
-    const handleChange : React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        setFloatingOffset(event.target.valueAsNumber);
-    };
-    
-    
-    
-    return (
-        <CardBody>
-            <p style={{marginBlockEnd: '3rem'}}>
-                <code>{`<Popup floatingOffset={${floatingOffset}}>`}</code>
-            </p>
-            <div>
-                <Button elmRef={buttonRef} theme='success' size='lg'>
-                    Order Now! Limited offer.
-                </Button>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='top' floatingOffset={floatingOffset}>
-                    Hurry up!
-                </Popup>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right' floatingOffset={floatingOffset}>
-                    Hurry up!
-                </Popup>
-            </div>
-            <Range theme='primary' min={-20} max={20} onChange={handleChange} />
-        </CardBody>
-    );
-}
 const DemoFloatingShift = () => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [floatingShift, setFloatingShift] = useState<number>(0);
@@ -174,32 +145,7 @@ const PopupPage: NextPage = () => {
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty />
                 <FloatingAutoShiftProperty />
-                <FloatingOffsetProperty>
-                    <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingOffset />} />
-                    <p></p>
-                    <TypeScriptCode>{
-`
-<Button
-    elmRef={buttonRef}
-    theme='success'
-    size='lg'
->
-    Order Now! Limited offer.
-</Button>
-<Popup
-    floatingOn={buttonRef}
-    floatingPlacement='top'
-    floatingOffset={10}
-    
-    expanded={true}
-    theme='danger'
-    size='sm'
->
-    Hurry up!
-</Popup>
-`
-                    }</TypeScriptCode>
-                </FloatingOffsetProperty>
+                <FloatingOffsetProperty />
                 <FloatingShiftProperty>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingShift />} />
                     <p></p>
