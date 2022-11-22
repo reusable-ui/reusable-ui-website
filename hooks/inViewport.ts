@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 
 
-export const useInViewport = () => {
-    const elmRef = useRef(null);
+export const useInViewport = <TElement extends HTMLElement>() => {
+    const elmRef = useRef<TElement>(null);
     const [isInViewport, setIsInViewport] = useState(false);
     useEffect(() => {
         // conditions:

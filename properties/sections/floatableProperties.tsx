@@ -71,3 +71,63 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
         </PropertySection>
     );
 }
+
+export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+}
+export const FloatingAutoFlipProperty = ({possibleValues, children: preview}: FloatingAutoFlipPropertyProps) => {
+    return (
+        <PropertySection property={properties.floatingAutoFlip} preview={preview} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`true`}</code>}>
+                    <p>
+                        <strong>Activates</strong> the <strong>auto flip</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`false`}</code>}>
+                    <p>
+                        <strong>Deactivates</strong> the <strong>auto flip</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the <TheComponentLink /> is about to be clipped.
+            </p>
+        </PropertySection>
+    );
+}
+
+export interface FloatingAutoShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+}
+export const FloatingAutoShiftProperty = ({possibleValues, children: preview}: FloatingAutoShiftPropertyProps) => {
+    return (
+        <PropertySection property={properties.floatingAutoShift} preview={preview} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`true`}</code>}>
+                    <p>
+                        <strong>Activates</strong> the <strong>auto shift</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`false`}</code>}>
+                    <p>
+                        <strong>Deactivates</strong> the <strong>auto shift</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the <TheComponentLink /> is about to be clipped.
+            </p>
+        </PropertySection>
+    );
+}

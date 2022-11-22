@@ -6,8 +6,8 @@ import { useInViewport } from './inViewport';
 export interface FlipFlopOptions<TState> {
     defaultState : TState
 }
-export const useFlipFlop = <TState,>({ defaultState } : FlipFlopOptions<TState>) => {
-    const [elmRef, isInViewport] = useInViewport();
+export const useFlipFlop = <TState, TElement extends HTMLElement>({ defaultState } : FlipFlopOptions<TState>) => {
+    const [elmRef, isInViewport] = useInViewport<TElement>();
     
     
     
