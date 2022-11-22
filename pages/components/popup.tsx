@@ -88,7 +88,7 @@ const DemoFloatingPlacement = () => {
     
     return (
         <SelectFloatingPlacement>{(popupPlacement) => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Label elmRef={contentRef} theme='primary' size='lg' style={{ width: '50%', height: '50%' }}>
+            <Label elmRef={contentRef} theme='primary' size='lg' style={{ width: '50%', height: '50%', resize: 'both', overflow: 'hidden', transition: 'none', borderRadius: 0, }}>
                 A content
             </Label>
             <Popup
