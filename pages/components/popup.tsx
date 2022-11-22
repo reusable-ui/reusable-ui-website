@@ -110,9 +110,7 @@ const PopupPage: NextPage = () => {
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty />
-                <FloatingPlacementProperty>
-                    <DemoFloatingPlacement />
-                </FloatingPlacementProperty>
+                <FloatingPlacementProperty />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty />
                 <FloatingAutoShiftProperty />
