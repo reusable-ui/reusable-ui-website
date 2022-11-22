@@ -73,60 +73,6 @@ const DemoFloatingPlacement = () => {
         </div>}</SelectFloatingPlacement>
     )
 }
-const DemoFloatingAutoShift = () => {
-    const [viewportRef, isFlip, isInViewport] = useFlipFlop<boolean, HTMLElement>({defaultState: true});
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    
-    
-    
-    const scrollCummulative = useRef<number>(0);
-    useEffect(() => {
-        // conditions:
-        if (!isInViewport) return;
-        const viewportElm = viewportRef.current;
-        if (!viewportElm) return;
-        
-        
-        
-        // setups:
-        const interval = 2000;
-        const steps = 10;
-        const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
-        scrollCummulative.current = (isFlip ? 0 : scrollLength);
-        const cancelInterval = setInterval(() => {
-            scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
-            viewportElm.scrollTo({top: Math.round(scrollCummulative.current), behavior: 'smooth'});
-        }, interval / steps);
-        
-        
-        
-        // cleanups:
-        return () => {
-            clearInterval(cancelInterval);
-        };
-    }, [isFlip, isInViewport]);
-    
-    
-    
-    return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
-            <div>
-            </div>
-            
-            <div>
-                <Button elmRef={buttonRef} theme='success' size='lg'>
-                    Order<br />Now!<br /><br />Limited<br />offer
-                </Button>
-                <Popup expanded={true} theme='danger' size='sm' floatingOn={buttonRef} floatingPlacement='right' floatingAutoShift={true}>
-                    Hurry up!
-                </Popup>
-            </div>
-            
-            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
-            </div>
-        </CardBody>
-    );
-}
 const DemoFloatingOffset = () => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [floatingOffset, setFloatingOffset] = useState<number>(0);
@@ -227,39 +173,7 @@ const PopupPage: NextPage = () => {
                 </FloatingPlacementProperty>
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty />
-                <FloatingAutoShiftProperty>
-                    <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingAutoShift />} />
-                    <p></p>
-                    <TypeScriptCode>{
-`
-<Button
-    elmRef={buttonRef}
-    theme='success'
-    size='lg'
->
-    Order
-    <br />
-    Now!
-    <br />
-    <br />
-    Limited
-    <br />
-    offer
-</Button>
-<Popup
-    floatingOn={buttonRef}
-    floatingPlacement='right'
-    floatingAutoShift={true}
-    
-    expanded={true}
-    theme='danger'
-    size='sm'
->
-    Hurry up!
-</Popup>
-`
-                    }</TypeScriptCode>
-                </FloatingAutoShiftProperty>
+                <FloatingAutoShiftProperty />
                 <FloatingOffsetProperty>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingOffset />} />
                     <p></p>

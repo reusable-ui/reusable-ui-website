@@ -32,7 +32,8 @@ export const FloatingProperties = ({children} : FloatingPropertiesProps) => {
 
 
 export interface DemoFloatingProps {
-    targetComponent ?: React.ReactElement<BasicProps>
+    targetComponent  ?: React.ReactElement<BasicProps>
+    targetChildren   ?: string
 }
 export interface CodeFloatingProps {
     targetTag        ?: string
@@ -40,15 +41,24 @@ export interface CodeFloatingProps {
     floatingChildren ?: string
 }
 
-const defaultTargetComponent  = <Button />;
-const defaultTargetTag        = 'Button'
-const defaultTargetChildren   = '    Order Now! Limited offer.'
-const defaultFloatingChildren = '    Hurry up!'
+const defaultTargetComponent   = <Button />;
+const defaultTargetTag         = 'Button'
+const defaultTargetChildren    = '    Order Now! Limited offer.'
+const defaultAltTargetChildren =
+`    Order
+    <br />
+    Now!
+    <br />
+    <br />
+    Limited
+    <br />
+    offer`;
+const defaultFloatingChildren  = '    Hurry up!'
 
 
 
 
-const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloatingProps) => {
+const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildren = defaultAltTargetChildren}: DemoFloatingProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     const buttonRef = useRef<HTMLElement>(null);
@@ -58,7 +68,7 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent}: DemoFloating
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, defaultTargetChildren);
+    }, targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
@@ -136,7 +146,7 @@ ${floatingChildren}
     );
 }
 
-const DemoAutoFlip = ({targetComponent = defaultTargetComponent}: DemoFloatingProps) => {
+const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren}: DemoFloatingProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
@@ -145,7 +155,7 @@ const DemoAutoFlip = ({targetComponent = defaultTargetComponent}: DemoFloatingPr
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, defaultTargetChildren);
+    }, targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
@@ -240,14 +250,118 @@ ${floatingChildren}
     );
 }
 
+const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren = defaultAltTargetChildren}: DemoFloatingProps) => {
+    const {componentFactory} = useComponentInfo();
+    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    
+    
+    
+    targetComponent = React.cloneElement(targetComponent, {
+        theme  : targetComponent.props.theme  ?? 'success',
+        size   : targetComponent.props.size   ?? 'lg',
+    }, targetChildren.split('<br />').flatMap((child, index, arr) => (index < (arr.length - 1) ? [child, <br key={index} />] : [child])));
+    floatingComponent = React.cloneElement(floatingComponent, {
+        expanded : floatingComponent.props.expanded ?? true,
+        theme    : floatingComponent.props.theme    ?? 'danger',
+        size     : floatingComponent.props.size     ?? 'sm',
+    }, defaultFloatingChildren);
+    
+    
+    
+    const [viewportRef, isFlip, isInViewport] = useFlipFlop<boolean, HTMLElement>({defaultState: true});
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    
+    
+    
+    const scrollCummulative = useRef<number>(0);
+    useEffect(() => {
+        // conditions:
+        if (!isInViewport) return;
+        const viewportElm = viewportRef.current;
+        if (!viewportElm) return;
+        
+        
+        
+        // setups:
+        const interval = 2000;
+        const steps = 20;
+        const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
+        scrollCummulative.current = (isFlip ? 0 : scrollLength);
+        const cancelInterval = setInterval(() => {
+            scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
+            viewportElm.scrollTo({top: Math.round(scrollCummulative.current), behavior: 'smooth'});
+        }, interval / steps);
+        
+        
+        
+        // cleanups:
+        return () => {
+            clearInterval(cancelInterval);
+        };
+    }, [isFlip, isInViewport]);
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
+            <div>
+            </div>
+            
+            <div>
+                {React.cloneElement(targetComponent, {
+                    elmRef : targetComponent.props.elmRef ?? buttonRef,
+                })}
+                {React.cloneElement(floatingComponent, {
+                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                    floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
+                    floatingAutoShift : floatingComponent.props.floatingAutoShift ?? true,
+                })}
+            </div>
+            
+            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
+            </div>
+        </CardBody>
+    );
+}
+const CodeAutoShift = ({targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+    const {component: {componentName: componentTag}} = useComponentInfo();
+    
+    
+    
+    return (
+        <TypeScriptCode>{
+`
+<${targetTag}
+    elmRef={buttonRef}
+    theme='success'
+    size='lg'
+>
+${targetChildren}
+</${targetTag}>
+<${componentTag}
+    floatingOn={buttonRef}
+    floatingPlacement='right'
+    floatingAutoShift={true}
+    
+    expanded={true}
+    theme='danger'
+    size='sm'
+>
+${floatingChildren}
+</${componentTag}>
+`
+        }</TypeScriptCode>
+    );
+}
 
 
-export const FloatingOnProperty = ({children: preview, targetComponent, targetTag}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
+
+export const FloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingOn} preview={preview ?? <Suspense>
-            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} />} />
+            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} targetChildren={targetChildren} />} />
             <p></p>
-            <CodeFloatingOn targetTag={targetTag} />
+            <CodeFloatingOn targetTag={targetTag} targetChildren={targetChildren} />
         </Suspense>}>
             <p>
                 Determines the <strong>target DOM reference</strong> where the <TheComponentLink /> should be <strong>floating on</strong>.<br />
@@ -297,7 +411,7 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
 }
 export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag}: FloatingAutoFlipPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren}: FloatingAutoFlipPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingAutoFlip} possibleValues={possibleValues ??
             <Accordion>
@@ -318,9 +432,9 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <Suspense>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} targetChildren={targetChildren} />} />
             <p></p>
-            <CodeAutoFlip targetTag={targetTag} />
+            <CodeAutoFlip targetTag={targetTag} targetChildren={targetChildren} />
         </Suspense>}>
             <p>
                 <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the <TheComponentLink /> is about to be clipped.
@@ -330,9 +444,9 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
 }
 export interface FloatingAutoShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoShiftProperty = ({possibleValues, children: preview}: FloatingAutoShiftPropertyProps) => {
+export const FloatingAutoShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren}: FloatingAutoShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
-        <PropertySection property={properties.floatingAutoShift} preview={preview} possibleValues={possibleValues ??
+        <PropertySection property={properties.floatingAutoShift} possibleValues={possibleValues ??
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
                     <p>
@@ -350,7 +464,11 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview}: F
                     </p>
                 </AccordionItem>
             </Accordion>
-        }>
+        } preview={preview ?? <Suspense>
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoShift targetComponent={targetComponent} targetChildren={targetChildren} />} />
+            <p></p>
+            <CodeAutoShift targetTag={targetTag} targetChildren={targetChildren} />
+        </Suspense>}>
             <p>
                 <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the <TheComponentLink /> is about to be clipped.
             </p>
