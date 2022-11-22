@@ -47,8 +47,8 @@ export const usePreviewStyleSheet = dynamicStyleSheet(() => {
             background   : colors.secondaryMild,
             ...rule('.transp&', {
                 background: [
-                    'url("/images/tile-1.svg")',
-                    'url("/images/soft-rainbow.svg")',
+                    'url("/images/tile-1.svg") 0%/auto',
+                    'url("/images/soft-rainbow.svg") 0%/cover',
                 ],
             }),
         }),

@@ -123,8 +123,8 @@ const DemoFloatingAutoFlip = () => {
         
         // setups:
         const interval = 2000;
-        const steps = 10;
-        const scrollLength = 7 * 16;
+        const steps = 20;
+        const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
         scrollCummulative.current = (isFlip ? 0 : scrollLength);
         const cancelInterval = setInterval(() => {
             scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
@@ -155,7 +155,7 @@ const DemoFloatingAutoFlip = () => {
                 </Popup>
             </div>
             
-            <div>
+            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
             </div>
         </CardBody>
     );
@@ -178,7 +178,7 @@ const DemoFloatingAutoShift = () => {
         // setups:
         const interval = 2000;
         const steps = 10;
-        const scrollLength = 14.5 * 16;
+        const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
         scrollCummulative.current = (isFlip ? 0 : scrollLength);
         const cancelInterval = setInterval(() => {
             scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
@@ -209,7 +209,7 @@ const DemoFloatingAutoShift = () => {
                 </Popup>
             </div>
             
-            <div>
+            <div style={{width: '1px', height: '1px', flex: '0 0 auto'}}>
             </div>
         </CardBody>
     );

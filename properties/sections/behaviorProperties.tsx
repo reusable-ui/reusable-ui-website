@@ -3,6 +3,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection } from '../../components/Section'
 import * as properties from '../propertyList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { Tips } from '../../components/Warning'
 
 
 
@@ -65,6 +66,11 @@ export const LazyProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Determines whenever the <TheComponentLink />&apos;s <code>children</code> should be rendered or not when the <code>{`<${component.componentName} expanded={false}>`}</code>.
             </p>
+            <Tips>
+                <p>
+                    Useful in combination with <strong>React Lazy</strong> and <strong>React Suspense</strong>.
+                </p>
+            </Tips>
         </PropertySection>
     );
 }
