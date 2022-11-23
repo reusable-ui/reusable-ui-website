@@ -116,9 +116,9 @@ interface CodeFloatingOnProps extends CodeFloatingProps, BaseFloatingOnProps {
 const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
     const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
     const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
     const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
+    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
     
     
     return (
@@ -275,9 +275,9 @@ const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren 
 const CodeAutoFlip = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
     const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
     const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
     const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
+    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
     
     
     
@@ -383,9 +383,9 @@ const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren
 const CodeAutoShift = ({targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
     const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
     const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
     const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
+    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
     
     
     
@@ -470,9 +470,9 @@ const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChi
 const CodeFloatingOffset = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
     const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
     const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
     const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
+    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
     
     
     
@@ -557,9 +557,9 @@ const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChil
 const CodeFloatingShift = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
     const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
     const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
     const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
+    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
     
     
     
