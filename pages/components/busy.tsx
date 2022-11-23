@@ -129,9 +129,7 @@ const BusyPage: NextPage = () => {
                             <Busy
                                 key={index}
                                 size={sizeName}
-                            >
-                                {defaultFloatingChildren}
-                            </Busy>
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -141,9 +139,7 @@ const BusyPage: NextPage = () => {
 <Busy
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
     theme='danger'
->
-${defaultFloatingChildren}
-</Busy>
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -154,9 +150,7 @@ ${defaultFloatingChildren}
                             <Busy
                                 key={index}
                                 theme={themeName}
-                            >
-                                {defaultFloatingChildren}
-                            </Busy>
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -165,9 +159,7 @@ ${defaultFloatingChildren}
 `
 <Busy
     theme='${themeName}'
->
-${defaultFloatingChildren}
-</Busy>
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -180,9 +172,7 @@ ${defaultFloatingChildren}
                                 gradient={true}
                                 nude={false}
                                 theme={themeName}
-                            >
-                                {defaultFloatingChildren}
-                            </Busy>
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -193,9 +183,7 @@ ${defaultFloatingChildren}
     gradient={true}
     nude={false}
     theme='${themeName}'
->
-${defaultFloatingChildren}
-</Busy>
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -208,9 +196,7 @@ ${defaultFloatingChildren}
                                 outlined={false}
                                 nude={false}
                                 theme={themeName}
-                            >
-                                {defaultFloatingChildren}
-                            </Busy>
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -221,9 +207,7 @@ ${defaultFloatingChildren}
     outlined={false}
     nude={false}
     theme='${themeName}'
->
-${defaultFloatingChildren}
-</Busy>
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -237,9 +221,7 @@ ${defaultFloatingChildren}
                                 outlined={false}
                                 nude={false}
                                 theme={themeName}
-                            >
-                                {defaultFloatingChildren}
-                            </Busy>
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -251,9 +233,7 @@ ${defaultFloatingChildren}
     outlined={false}
     nude={false}
     theme='${themeName}'
->
-${defaultFloatingChildren}
-</Busy>
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -265,9 +245,7 @@ ${defaultFloatingChildren}
                                 key={index}
                                 nude={false}
                                 theme={themeName}
-                            >
-                                {defaultFloatingChildren}
-                            </Busy>
+                            />
                         )}
                     </Preview>
                     <p></p>
@@ -277,9 +255,7 @@ ${defaultFloatingChildren}
 <Busy
     nude={false}
     theme='${themeName}'
->
-${defaultFloatingChildren}
-</Busy>
+/>
 `
                         ).join('')}
                     </TypeScriptCode>
