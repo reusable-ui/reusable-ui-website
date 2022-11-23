@@ -114,8 +114,11 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildre
 interface CodeFloatingOnProps extends CodeFloatingProps, BaseFloatingOnProps {
 }
 const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
-    const {component: {componentName: componentTag}} = useComponentInfo();
-    
+    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const componentSize     = componentFactory?.props.size ?? 'sm';
+    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentTheme    = componentFactory?.props.theme ?? 'danger';
+    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
     
     
     return (
@@ -129,8 +132,7 @@ ${targetChildren}
 </${targetTag}>
 <${componentTag}
     expanded={true}
-    theme='danger'
-    size='sm'
+    ${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -151,8 +153,7 @@ ${targetChildren}
     floatingShift={${floatingShift}}
     
     expanded={true}
-    theme='danger'
-    size='sm'
+    ${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -274,7 +275,11 @@ const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren 
     );
 }
 const CodeAutoFlip = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}} = useComponentInfo();
+    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const componentSize     = componentFactory?.props.size ?? 'sm';
+    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentTheme    = componentFactory?.props.theme ?? 'danger';
+    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
     
     
     
@@ -294,8 +299,7 @@ ${targetChildren}
     floatingAutoFlip={true}
     
     expanded={true}
-    theme='danger'
-    size='sm'
+    ${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -380,7 +384,11 @@ const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren
     );
 }
 const CodeAutoShift = ({targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}} = useComponentInfo();
+    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const componentSize     = componentFactory?.props.size ?? 'sm';
+    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentTheme    = componentFactory?.props.theme ?? 'danger';
+    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
     
     
     
@@ -400,8 +408,7 @@ ${targetChildren}
     floatingAutoShift={true}
     
     expanded={true}
-    theme='danger'
-    size='sm'
+    ${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -465,7 +472,11 @@ const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChi
     );
 }
 const CodeFloatingOffset = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}} = useComponentInfo();
+    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const componentSize     = componentFactory?.props.size ?? 'sm';
+    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentTheme    = componentFactory?.props.theme ?? 'danger';
+    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
     
     
     
@@ -485,8 +496,7 @@ ${targetChildren}
     floatingOffset={10}
     
     expanded={true}
-    theme='danger'
-    size='sm'
+    ${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -550,7 +560,11 @@ const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChil
     );
 }
 const CodeFloatingShift = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}} = useComponentInfo();
+    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const componentSize     = componentFactory?.props.size ?? 'sm';
+    const componentSizeStr  = componentSize ? `size='${componentSize}'\n` : '';
+    const componentTheme    = componentFactory?.props.theme ?? 'danger';
+    const componentThemeStr = componentSize ? `theme='${componentTheme}'\n` : '';
     
     
     
@@ -570,8 +584,7 @@ ${targetChildren}
     floatingShift={10}
     
     expanded={true}
-    theme='danger'
-    size='sm'
+    ${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>

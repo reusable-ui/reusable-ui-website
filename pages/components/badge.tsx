@@ -99,9 +99,7 @@ const BadgePage: NextPage = () => {
 <Badge
     expanded={true}
     theme='danger'
->
-    Hopla!
-</Badge>
+/>
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
