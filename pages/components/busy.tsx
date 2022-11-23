@@ -67,8 +67,9 @@ const DemoExpanded = () => {
 
 const BusyPage: NextPage = () => {
     return (<ComponentContextProvider component={busy} baseComponents={badge} componentFactory={<Busy
-    // TODO: fix the size:
-    size={'' as any} />}>
+        // TODO: fix the size:
+        size={'' as any} />}
+    >
         <Head>
             <title>{`${busy.componentTag} Component`}</title>
             <meta name="description" content={`${busy.componentTag} represents counters or labels.`} />
@@ -98,7 +99,10 @@ const BusyPage: NextPage = () => {
             </ExpandedProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={-12} floatingShift={-10} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={-15} floatingShift={-12} floatingComponent={<Busy
+                    // TODO: fix the size:
+                    size={'' as any} outlined={false} nude={false} />}
+                />
                 <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
@@ -163,6 +167,7 @@ ${defaultFloatingChildren}
                             <Busy
                                 key={index}
                                 gradient={true}
+                                nude={false}
                                 theme={themeName}
                             >
                                 {defaultFloatingChildren}
@@ -175,6 +180,7 @@ ${defaultFloatingChildren}
 `
 <Busy
     gradient={true}
+    nude={false}
     theme='${themeName}'
 >
 ${defaultFloatingChildren}
@@ -189,6 +195,7 @@ ${defaultFloatingChildren}
                             <Busy
                                 key={index}
                                 outlined={false}
+                                nude={false}
                                 theme={themeName}
                             >
                                 {defaultFloatingChildren}
@@ -201,6 +208,7 @@ ${defaultFloatingChildren}
 `
 <Busy
     outlined={false}
+    nude={false}
     theme='${themeName}'
 >
 ${defaultFloatingChildren}
@@ -215,6 +223,8 @@ ${defaultFloatingChildren}
                             <Busy
                                 key={index}
                                 mild={true}
+                                outlined={false}
+                                nude={false}
                                 theme={themeName}
                             >
                                 {defaultFloatingChildren}
@@ -227,6 +237,8 @@ ${defaultFloatingChildren}
 `
 <Busy
     mild={true}
+    outlined={false}
+    nude={false}
     theme='${themeName}'
 >
 ${defaultFloatingChildren}

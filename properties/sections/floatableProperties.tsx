@@ -34,16 +34,18 @@ export const FloatingProperties = ({children} : FloatingPropertiesProps) => {
 
 
 export interface DemoFloatingProps {
-    targetComponent  ?: React.ReactElement<BasicProps>
+    floatingComponent ?: React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    targetComponent   ?: React.ReactElement<BasicProps>
     
-    targetChildren   ?: string|false
-    floatingChildren ?: string|false
+    targetChildren    ?: string|false
+    floatingChildren  ?: string|false
 }
 export interface CodeFloatingProps {
-    targetTag        ?: string
+    floatingComponent ?: React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    targetTag         ?: string
     
-    targetChildren   ?: string|false
-    floatingChildren ?: string|false
+    targetChildren    ?: string|false
+    floatingChildren  ?: string|false
 }
 
 const defaultTargetComponent   = <Button />;
@@ -62,14 +64,24 @@ const defaultFloatingChildren  = '    Hurry up!'
 
 
 
-const useComponentProperties = () => {
+interface UseComponentPropertiesProps {
+    overrideFloatingComponent ?: React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+}
+const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropertiesProps) => {
     const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
+    const floatingComponent = overrideFloatingComponent ?? componentFactory;
     
-    const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
+    const componentSize     = floatingComponent?.props.size ?? 'sm';
+    const componentSizeStr  = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
     
-    const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+    const componentTheme    = floatingComponent?.props.theme ?? 'danger';
+    const componentThemeStr = (componentTheme !== undefined) ? `\n    theme='${componentTheme}'` : '';
+    
+    const componentOutlined    = floatingComponent?.props.outlined ?? undefined;
+    const componentOutlinedStr = (componentOutlined !== undefined) ? `\n    outlined={${componentOutlined}}` : '';
+    
+    const componentNude    = floatingComponent?.props.nude ?? undefined;
+    const componentNudeStr = (componentNude !== undefined) ? `\n    nude={${componentNude}}` : '';
     
     return ({
         floatingTag,
@@ -77,6 +89,10 @@ const useComponentProperties = () => {
             componentSizeStr
             +
             componentThemeStr
+            +
+            componentOutlinedStr
+            +
+            componentNudeStr
         ),
     });
 }
@@ -90,9 +106,9 @@ interface BaseFloatingOnProps {
 }
 interface DemoFloatingOnProps extends DemoFloatingProps, BaseFloatingOnProps {
 }
-const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: DemoFloatingOnProps) => {
+const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: DemoFloatingOnProps) => {
     const {componentFactory} = useComponentInfo();
-    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     const buttonRef = useRef<HTMLElement>(null);
     
     
@@ -134,8 +150,8 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildre
 }
 interface CodeFloatingOnProps extends CodeFloatingProps, BaseFloatingOnProps {
 }
-const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
-    const {floatingTag, floatingProperties} = useComponentProperties();
+const CodeFloatingOn = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
+    const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     return (
@@ -185,9 +201,9 @@ ${floatingChildren}
     );
 }
 
-const DemoFloatingPlacement = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
     const {componentFactory} = useComponentInfo();
-    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
@@ -222,9 +238,9 @@ const DemoFloatingPlacement = ({targetComponent = defaultTargetComponent, target
     );
 }
 
-const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
     const {componentFactory} = useComponentInfo();
-    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
@@ -297,8 +313,8 @@ const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren 
         </CardBody>
     );
 }
-const CodeAutoFlip = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-const {floatingTag, floatingProperties} = useComponentProperties();
+const CodeAutoFlip = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     
@@ -330,9 +346,9 @@ ${floatingChildren}
     );
 }
 
-const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
     const {componentFactory} = useComponentInfo();
-    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
@@ -405,8 +421,8 @@ const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren
         </CardBody>
     );
 }
-const CodeAutoShift = ({targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-const {floatingTag, floatingProperties} = useComponentProperties();
+const CodeAutoShift = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     
@@ -438,9 +454,9 @@ ${floatingChildren}
     );
 }
 
-const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+const DemoFloatingOffset = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
     const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
-    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
@@ -492,8 +508,8 @@ const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChi
         </CardBody>
     );
 }
-const CodeFloatingOffset = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-const {floatingTag, floatingProperties} = useComponentProperties();
+const CodeFloatingOffset = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     
@@ -525,9 +541,9 @@ ${floatingChildren}
     );
 }
 
-const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+const DemoFloatingShift = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
     const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
-    let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
+    let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
@@ -579,8 +595,8 @@ const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChil
         </CardBody>
     );
 }
-const CodeFloatingShift = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-const {floatingTag, floatingProperties} = useComponentProperties();
+const CodeFloatingShift = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     
@@ -616,12 +632,12 @@ ${floatingChildren}
 
 export interface FloatingOnPropertyProps extends PreviewProps, BaseFloatingOnProps {
 }
-export const FloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingChildren, floatingOffset, floatingShift}: FloatingOnPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingOffset, floatingShift}: FloatingOnPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingOn} preview={preview ?? <>
-            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingOffset={floatingOffset} floatingShift={floatingShift} />} />
+            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} floatingOffset={floatingOffset} floatingShift={floatingShift} />} />
             <p></p>
-            <CodeFloatingOn targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingOffset={floatingOffset} floatingShift={floatingShift} />
+            <CodeFloatingOn floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingOffset={floatingOffset} floatingShift={floatingShift} />
         </>}>
             <p>
                 Determines the <strong>target DOM reference</strong> where the <TheComponentLink /> should be <strong>floating on</strong>.<br />
@@ -630,10 +646,10 @@ export const FloatingOnProperty = ({children: preview, targetComponent, targetTa
         </PropertySection>
     );
 }
-export const FloatingPlacementProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingPlacementProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingPlacement} preview={preview ?? <>
-            <DemoFloatingPlacement targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <DemoFloatingPlacement targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />
         </>}>
             <p>
                 Determines the <strong>location</strong> where the <TheComponentLink /> should be <strong>floating on</strong> the <em>target DOM reference</em>.
@@ -673,7 +689,7 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
 }
 export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: FloatingAutoFlipPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingAutoFlipPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingAutoFlip} possibleValues={possibleValues ??
             <Accordion>
@@ -694,9 +710,9 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />} />
             <p></p>
-            <CodeAutoFlip targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeAutoFlip floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
         </>}>
             <p>
                 <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the <TheComponentLink /> is about to be clipped.
@@ -706,7 +722,7 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
 }
 export interface FloatingAutoShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: FloatingAutoShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingAutoShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingAutoShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingAutoShift} possibleValues={possibleValues ??
             <Accordion>
@@ -727,9 +743,9 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview, ta
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoShift targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoShift targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />} />
             <p></p>
-            <CodeAutoShift targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeAutoShift floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
         </>}>
             <p>
                 <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the <TheComponentLink /> is about to be clipped.
@@ -739,7 +755,7 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview, ta
 }
 export interface FloatingOffsetPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingOffsetProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: FloatingOffsetPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingOffsetProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingOffsetPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingOffset} possibleValues={possibleValues ??
             <Accordion>
@@ -765,9 +781,9 @@ export const FloatingOffsetProperty = ({possibleValues, children: preview, targe
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingOffset targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingOffset targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />} />
             <p></p>
-            <CodeFloatingOffset targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeFloatingOffset floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
         </>}>
             <p>
                 The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>target DOM reference</strong>.
@@ -777,7 +793,7 @@ export const FloatingOffsetProperty = ({possibleValues, children: preview, targe
 }
 export interface FloatingShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: FloatingShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingShift} possibleValues={possibleValues ??
             <Accordion>
@@ -803,9 +819,9 @@ export const FloatingShiftProperty = ({possibleValues, children: preview, target
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingShift targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoFloatingShift targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />} />
             <p></p>
-            <CodeFloatingShift targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeFloatingShift floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
         </>}>
             <p>
                 The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
