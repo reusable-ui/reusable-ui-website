@@ -36,14 +36,14 @@ export const FloatingProperties = ({children} : FloatingPropertiesProps) => {
 export interface DemoFloatingProps {
     targetComponent  ?: React.ReactElement<BasicProps>
     
-    targetChildren   ?: string
-    floatingChildren ?: string
+    targetChildren   ?: string|false
+    floatingChildren ?: string|false
 }
 export interface CodeFloatingProps {
     targetTag        ?: string
     
-    targetChildren   ?: string
-    floatingChildren ?: string
+    targetChildren   ?: string|false
+    floatingChildren ?: string|false
 }
 
 const defaultTargetComponent   = <Button />;
@@ -59,6 +59,27 @@ const defaultAltTargetChildren =
     <br />
     offer`;
 const defaultFloatingChildren  = '    Hurry up!'
+
+
+
+const useComponentProperties = () => {
+    const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
+    
+    const componentSize     = componentFactory?.props.size ?? 'sm';
+    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
+    
+    const componentTheme    = componentFactory?.props.theme ?? 'danger';
+    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+    
+    return ({
+        floatingTag,
+        floatingProperties: (
+            componentSizeStr
+            +
+            componentThemeStr
+        ),
+    });
+}
 
 
 
@@ -114,11 +135,7 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildre
 interface CodeFloatingOnProps extends CodeFloatingProps, BaseFloatingOnProps {
 }
 const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
-    const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
-    const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+    const {floatingTag, floatingProperties} = useComponentProperties();
     
     
     return (
@@ -127,14 +144,18 @@ const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultT
 <${targetTag}
     theme='success'
     size='lg'
->
+${(targetChildren === false) ? '/>' :
+`>
 ${targetChildren}
-</${targetTag}>
-<${componentTag}
-    expanded={true}${componentThemeStr}${componentSizeStr}
->
+</${targetTag}>`
+}
+<${floatingTag}
+    expanded={true}${floatingProperties}
+${(floatingChildren === false) ? '/>' :
+`>
 ${floatingChildren}
-</${componentTag}>
+</${floatingTag}>`
+}
 
 
 
@@ -142,19 +163,23 @@ ${floatingChildren}
     elmRef={buttonRef}
     theme='success'
     size='lg'
->
+${(targetChildren === false) ? '/>' :
+`>
 ${targetChildren}
-</${targetTag}>
-<${componentTag}
+</${targetTag}>`
+}
+<${floatingTag}
     floatingOn={buttonRef}
     floatingPlacement='right-start'
     floatingOffset={${floatingOffset}}
     floatingShift={${floatingShift}}
     
-    expanded={true}${componentThemeStr}${componentSizeStr}
->
+    expanded={true}${floatingProperties}
+${(floatingChildren === false) ? '/>' :
+`>
 ${floatingChildren}
-</${componentTag}>
+</${floatingTag}>`
+}
 `
         }</TypeScriptCode>
     );
@@ -273,11 +298,7 @@ const DemoAutoFlip = ({targetComponent = defaultTargetComponent, targetChildren 
     );
 }
 const CodeAutoFlip = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
-    const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
-    const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+const {floatingTag, floatingProperties} = useComponentProperties();
     
     
     
@@ -288,18 +309,22 @@ const CodeAutoFlip = ({targetTag = defaultTargetTag, targetChildren = defaultTar
     elmRef={buttonRef}
     theme='success'
     size='lg'
->
+${(targetChildren === false) ? '/>' :
+`>
 ${targetChildren}
-</${targetTag}>
-<${componentTag}
+</${targetTag}>`
+}
+<${floatingTag}
     floatingOn={buttonRef}
     floatingPlacement='top'
     floatingAutoFlip={true}
     
-    expanded={true}${componentThemeStr}${componentSizeStr}
->
+    expanded={true}${floatingProperties}
+${(floatingChildren === false) ? '/>' :
+`>
 ${floatingChildren}
-</${componentTag}>
+</${floatingTag}>`
+}
 `
         }</TypeScriptCode>
     );
@@ -314,7 +339,7 @@ const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, targetChildren.split('<br />').flatMap((child, index, arr) => (index < (arr.length - 1) ? [child, <br key={index} />] : [child])));
+    }, ((targetChildren === false) ? false : targetChildren.split('<br />').flatMap((child, index, arr) => (index < (arr.length - 1) ? [child, <br key={index} />] : [child]))));
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
@@ -381,11 +406,7 @@ const DemoAutoShift = ({targetComponent = defaultTargetComponent, targetChildren
     );
 }
 const CodeAutoShift = ({targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
-    const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
-    const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+const {floatingTag, floatingProperties} = useComponentProperties();
     
     
     
@@ -396,25 +417,29 @@ const CodeAutoShift = ({targetTag = defaultTargetTag, targetChildren = defaultAl
     elmRef={buttonRef}
     theme='success'
     size='lg'
->
+${(targetChildren === false) ? '/>' :
+`>
 ${targetChildren}
-</${targetTag}>
-<${componentTag}
+</${targetTag}>`
+}
+<${floatingTag}
     floatingOn={buttonRef}
     floatingPlacement='right'
     floatingAutoShift={true}
     
-    expanded={true}${componentThemeStr}${componentSizeStr}
->
+    expanded={true}${floatingProperties}
+${(floatingChildren === false) ? '/>' :
+`>
 ${floatingChildren}
-</${componentTag}>
+</${floatingTag}>`
+}
 `
         }</TypeScriptCode>
     );
 }
 
 const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
     let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
@@ -443,7 +468,7 @@ const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChi
         <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem'}}>
             <Suspense>
                 <p style={{marginBlockEnd: '3rem'}}>
-                    <code>{`<${componentTag} floatingOffset={${floatingOffset}}>`}</code>
+                    <code>{`<${floatingTag} floatingOffset={${floatingOffset}}>`}</code>
                 </p>
                 
                 <div>
@@ -468,11 +493,7 @@ const DemoFloatingOffset = ({targetComponent = defaultTargetComponent, targetChi
     );
 }
 const CodeFloatingOffset = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
-    const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
-    const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+const {floatingTag, floatingProperties} = useComponentProperties();
     
     
     
@@ -483,25 +504,29 @@ const CodeFloatingOffset = ({targetTag = defaultTargetTag, targetChildren = defa
     elmRef={buttonRef}
     theme='success'
     size='lg'
->
+${(targetChildren === false) ? '/>' :
+`>
 ${targetChildren}
-</${targetTag}>
-<${componentTag}
+</${targetTag}>`
+}
+<${floatingTag}
     floatingOn={buttonRef}
     floatingPlacement='top'
     floatingOffset={10}
     
-    expanded={true}${componentThemeStr}${componentSizeStr}
->
+    expanded={true}${floatingProperties}
+${(floatingChildren === false) ? '/>' :
+`>
 ${floatingChildren}
-</${componentTag}>
+</${floatingTag}>`
+}
 `
         }</TypeScriptCode>
     );
 }
 
 const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
+    const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
     let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
@@ -530,7 +555,7 @@ const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChil
         <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem'}}>
             <Suspense>
                 <p style={{marginBlockEnd: '3rem'}}>
-                    <code>{`<${componentTag} floatingShift={${floatingShift}}>`}</code>
+                    <code>{`<${floatingTag} floatingShift={${floatingShift}}>`}</code>
                 </p>
                 
                 <div>
@@ -555,11 +580,7 @@ const DemoFloatingShift = ({targetComponent = defaultTargetComponent, targetChil
     );
 }
 const CodeFloatingShift = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
-    const {component: {componentName: componentTag}, componentFactory} = useComponentInfo();
-    const componentSize     = componentFactory?.props.size ?? 'sm';
-    const componentSizeStr  = componentSize ? `\n    size='${componentSize}'` : '';
-    const componentTheme    = componentFactory?.props.theme ?? 'danger';
-    const componentThemeStr = componentTheme ? `\n    theme='${componentTheme}'` : '';
+const {floatingTag, floatingProperties} = useComponentProperties();
     
     
     
@@ -570,18 +591,22 @@ const CodeFloatingShift = ({targetTag = defaultTargetTag, targetChildren = defau
     elmRef={buttonRef}
     theme='success'
     size='lg'
->
+${(targetChildren === false) ? '/>' :
+`>
 ${targetChildren}
-</${targetTag}>
-<${componentTag}
+</${targetTag}>`
+}
+<${floatingTag}
     floatingOn={buttonRef}
     floatingPlacement='top'
     floatingShift={10}
     
-    expanded={true}${componentThemeStr}${componentSizeStr}
->
+    expanded={true}${floatingProperties}
+${(floatingChildren === false) ? '/>' :
+`>
 ${floatingChildren}
-</${componentTag}>
+</${floatingTag}>`
+}
 `
         }</TypeScriptCode>
     );

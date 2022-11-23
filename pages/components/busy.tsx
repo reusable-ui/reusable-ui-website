@@ -18,7 +18,7 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const Busy = (props: BusyProps) => <OriBusy {...props} theme={props.theme ?? 'danger'} expanded={props.expanded ?? true} />
 
-const defaultFloatingChildren = ''
+const defaultFloatingChildren = false;
 
 
 
