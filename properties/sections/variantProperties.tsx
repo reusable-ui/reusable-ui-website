@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
+import { BadgeStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
 
 
 
@@ -27,6 +27,7 @@ export const buttonStyleOptions        : ButtonStyle[]                    = ['re
 export const checkStyleOptions         : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
 export const listStyleOptions          : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
 export const cardStyleOptions          : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
+export const badgeStyleOptions         : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 
 
 
@@ -551,6 +552,49 @@ export const CardStyleProperty = ({children: preview}: PreviewProps) => {
                 <AccordionItem label={<code>'joined'</code>}>
                     <p>
                         Removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const BadgeStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.badgeStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'pill'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> have <strong>big rounded corners</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'square'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> have <strong>small rounded corners</strong> and have <strong>equal width and height</strong> (if possible).
+                    </p>
+                    <p>
+                        The <TheComponentLink /> requires having <strong>no children</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'circle'</code>}>
+                    <p>
+                        Makes the <TheComponentLink /> have <strong>circle shape</strong> and have <strong>equal width and height</strong> (if possible).
+                    </p>
+                    <p>
+                        The <TheComponentLink /> requires having <strong>no children</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>

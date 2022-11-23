@@ -270,12 +270,9 @@ const PopupPage: NextPage = () => {
 
 import {popups, popupValues} from '@reusable-ui/popup';
 
-popups.filterActive = [[
-    'contrast(150%)',
-    'brightness(120%)',
-]];
-console.log('filterActive variable name: ', popups.filterActive);
-console.log('filterActive variable value: ', popupValues.filterActive);
+popups.opacity = 0.5;
+console.log('opacity variable name: ', popups.opacity);
+console.log('opacity variable value: ', popupValues.opacity);
 `
                 }</TypeScriptCode>
             </Variables>
