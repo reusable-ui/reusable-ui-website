@@ -131,8 +131,7 @@ const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultT
 ${targetChildren}
 </${targetTag}>
 <${componentTag}
-    expanded={true}
-    ${componentThemeStr}${componentSizeStr}
+    expanded={true}${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -152,8 +151,7 @@ ${targetChildren}
     floatingOffset={${floatingOffset}}
     floatingShift={${floatingShift}}
     
-    expanded={true}
-    ${componentThemeStr}${componentSizeStr}
+    expanded={true}${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -298,8 +296,7 @@ ${targetChildren}
     floatingPlacement='top'
     floatingAutoFlip={true}
     
-    expanded={true}
-    ${componentThemeStr}${componentSizeStr}
+    expanded={true}${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -407,8 +404,7 @@ ${targetChildren}
     floatingPlacement='right'
     floatingAutoShift={true}
     
-    expanded={true}
-    ${componentThemeStr}${componentSizeStr}
+    expanded={true}${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -495,8 +491,7 @@ ${targetChildren}
     floatingPlacement='top'
     floatingOffset={10}
     
-    expanded={true}
-    ${componentThemeStr}${componentSizeStr}
+    expanded={true}${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
@@ -583,8 +578,7 @@ ${targetChildren}
     floatingPlacement='top'
     floatingShift={10}
     
-    expanded={true}
-    ${componentThemeStr}${componentSizeStr}
+    expanded={true}${componentThemeStr}${componentSizeStr}
 >
 ${floatingChildren}
 </${componentTag}>
