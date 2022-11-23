@@ -18,6 +18,16 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const Busy = (props: BusyProps) => <OriBusy {...props} theme={props.theme ?? 'danger'} expanded={props.expanded ?? true} />
 
+const defaultTargetChildren    = '    Processing... Please wait.'
+const defaultAltTargetChildren =
+`    Processing
+    <br />
+    ...
+    <br />
+    <br />
+    Please
+    <br />
+    wait.`;
 const defaultFloatingChildren = false;
 
 
@@ -31,14 +41,14 @@ const DemoBusy = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '4rem', gap: '4rem'}}>
             <Button elmRef={buttonRef1} theme='primary' size='lg' pressed={true}>
-                Processing Payment...
+                Processing...
             </Button>
             <Busy theme='primary' size='lg' expanded={true} floatingOn={buttonRef1} floatingPlacement='right' floatingOffset={8}>
                 {defaultFloatingChildren}
             </Busy>
             
             <Button theme='danger' size='lg'>
-                Saving data
+                Saving
                 <Busy mild='inherit' outlined={false}>
                     New!
                 </Busy>
@@ -100,16 +110,16 @@ const BusyPage: NextPage = () => {
             </ExpandedProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={-15} floatingShift={-12} floatingComponent={<Busy
+                <FloatingOnProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} floatingOffset={-15} floatingShift={-12} floatingComponent={<Busy
                     // TODO: fix the size:
                     size={'' as any} outlined={false} nude={false} />}
                 />
-                <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingPlacementProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} />
                 <FloatingStrategyProperty />
-                <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
-                <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} />
-                <FloatingOffsetProperty floatingChildren={defaultFloatingChildren} />
-                <FloatingShiftProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingAutoFlipProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} />
+                <FloatingAutoShiftProperty targetChildren={defaultAltTargetChildren} floatingChildren={defaultFloatingChildren} />
+                <FloatingOffsetProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} />
+                <FloatingShiftProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} />
                 <OnFloatingUpdateProperty />
             </FloatingProperties>
             <VariantProperties>
