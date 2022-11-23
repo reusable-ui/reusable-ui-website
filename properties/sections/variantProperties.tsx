@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BadgeStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
+import { BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
 
 
 
