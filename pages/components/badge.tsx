@@ -139,7 +139,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                     </TypeScriptCode>
                 </BadgeStyleProperty>
                 <SizeProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
                             <Badge
                                 key={index}
@@ -164,7 +164,7 @@ ${defaultFloatingChildren}
                     </TypeScriptCode>
                 </SizeProperty>
                 <ThemeProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Badge
                                 key={index}
@@ -188,7 +188,7 @@ ${defaultFloatingChildren}
                     </TypeScriptCode>
                 </ThemeProperty>
                 <GradientProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Badge
                                 key={index}
@@ -214,7 +214,7 @@ ${defaultFloatingChildren}
                     </TypeScriptCode>
                 </GradientProperty>
                 <OutlinedProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Badge
                                 key={index}
@@ -240,7 +240,7 @@ ${defaultFloatingChildren}
                     </TypeScriptCode>
                 </OutlinedProperty>
                 <MildProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Badge
                                 key={index}
@@ -266,7 +266,7 @@ ${defaultFloatingChildren}
                     </TypeScriptCode>
                 </MildProperty>
                 <NudeProperty>
-                    <Preview>
+                    <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Badge
                                 key={index}
