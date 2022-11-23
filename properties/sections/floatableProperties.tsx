@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, Suspense, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
@@ -63,7 +63,13 @@ const defaultFloatingChildren  = '    Hurry up!'
 
 
 
-const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+interface BaseFloatingOnProps {
+    floatingOffset ?: number
+    floatingShift  ?: number
+}
+interface DemoFloatingOnProps extends DemoFloatingProps, BaseFloatingOnProps {
+}
+const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: DemoFloatingOnProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     const buttonRef = useRef<HTMLElement>(null);
@@ -97,15 +103,17 @@ const DemoFloatingOn = ({targetComponent = defaultTargetComponent, targetChildre
                     {React.cloneElement(floatingComponent, {
                         floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right-start',
-                        floatingOffset    : floatingComponent.props.floatingOffset    ?? -50,
-                        floatingShift     : floatingComponent.props.floatingShift     ?? -15,
+                        floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
+                        floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
                     })}
                 </div>
             </Suspense>
         </CardBody>
     );
 }
-const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+interface CodeFloatingOnProps extends CodeFloatingProps, BaseFloatingOnProps {
+}
+const CodeFloatingOn = ({targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
     const {component: {componentName: componentTag}} = useComponentInfo();
     
     
@@ -139,8 +147,8 @@ ${targetChildren}
 <${componentTag}
     floatingOn={buttonRef}
     floatingPlacement='right-start'
-    floatingOffset={-50}
-    floatingShift={-15}
+    floatingOffset={${floatingOffset}}
+    floatingShift={${floatingShift}}
     
     expanded={true}
     theme='danger'
@@ -574,12 +582,14 @@ ${floatingChildren}
 
 
 
-export const FloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingChildren}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
+export interface FloatingOnPropertyProps extends PreviewProps, BaseFloatingOnProps {
+}
+export const FloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingChildren, floatingOffset, floatingShift}: FloatingOnPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingOn} preview={preview ?? <>
-            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingOffset={floatingOffset} floatingShift={floatingShift} />} />
             <p></p>
-            <CodeFloatingOn targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeFloatingOn targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingOffset={floatingOffset} floatingShift={floatingShift} />
         </>}>
             <p>
                 Determines the <strong>target DOM reference</strong> where the <TheComponentLink /> should be <strong>floating on</strong>.<br />

@@ -1,12 +1,12 @@
-import React, {  } from 'react'
+import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { basic, badge } from '../../packages/packageList'
+import { popup, badge } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, BadgeStyleProperty, badgeStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Badge as OriBadge, BadgeProps, List, ListItem, CardBody } from '@reusable-ui/components'
+import { Badge as OriBadge, BadgeProps, List, ListItem, CardBody, Button } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty } from '../../properties/sections/stateProperties'
@@ -24,14 +24,32 @@ const defaultFloatingChildren = '    2'
 
 const DemoBadge = () => {
     const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
+    const buttonRef1 = useRef<HTMLButtonElement>(null);
+    const buttonRef2 = useRef<HTMLButtonElement>(null);
+    const buttonRef3 = useRef<HTMLButtonElement>(null);
     
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '4rem'}}>
-            <Badge expanded={isFlip} size='lg'>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '4rem', gap: '2rem'}}>
+            <Button elmRef={buttonRef1} theme='primary' size='lg'>
+                Shopping Cart
+            </Button>
+            <Badge expanded={true} floatingOn={buttonRef1} floatingPlacement='right-start' floatingOffset={-12} floatingShift={-10}>
                 {defaultFloatingChildren}
             </Badge>
+            
+            <Button elmRef={buttonRef2} theme='primary' size='lg'>
+                Featured Products
+            </Button>
+            <Badge theme='success' expanded={isFlip} floatingOn={buttonRef2} floatingPlacement='right-start' floatingOffset={-28} floatingShift={-10}>
+                New!
+            </Badge>
+            
+            <Button elmRef={buttonRef3} theme='secondary' size='lg'>
+                Account
+            </Button>
+            <Badge theme='warning' badgeStyle='circle' size='sm' expanded={true} floatingOn={buttonRef3} floatingPlacement='right-start' floatingOffset={-10} floatingShift={-8} />
         </CardBody>
     );
 }
@@ -55,7 +73,9 @@ const DemoExpanded = () => {
 
 
 const BadgePage: NextPage = () => {
-    return (<ComponentContextProvider component={badge} baseComponents={basic} componentFactory={<Badge size={'' as any} />}>
+    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={<Badge
+    // TODO: fix the size:
+    size={'' as any} />}>
         <Head>
             <title>{`${badge.componentTag} Component`}</title>
             <meta name="description" content={`${badge.componentTag} represents counters or labels.`} />
@@ -68,7 +88,7 @@ const BadgePage: NextPage = () => {
                 <p>
                     Here the demo:
                 </p>
-                <Preview display='down' stretch={false} cardBodyComponent={<DemoBadge />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoBadge />} />
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
@@ -87,7 +107,7 @@ const BadgePage: NextPage = () => {
             </ExpandedProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={-12} floatingShift={-10} />
                 <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
@@ -127,7 +147,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Badge>'} with {sizeName ?? 'default'} size
+                                {defaultFloatingChildren}
                             </Badge>
                         )}
                     </Preview>
@@ -139,7 +159,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
     size=${sizeName ? `'${sizeName}'` : '{undefined}'}
     theme='danger'
 >
-    A {'<Badge>'} with ${sizeName ?? 'default'} size
+${defaultFloatingChildren}
 </Badge>
 `
                         ).join('')}
@@ -152,7 +172,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                                 key={index}
                                 theme={themeName}
                             >
-                                A {'<Badge>'} with {themeName} theme
+                                {defaultFloatingChildren}
                             </Badge>
                         )}
                     </Preview>
@@ -163,7 +183,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
 <Badge
     theme='${themeName}'
 >
-    A {'<Badge>'} with ${themeName} theme
+${defaultFloatingChildren}
 </Badge>
 `
                         ).join('')}
@@ -177,7 +197,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                                 gradient={true}
                                 theme={themeName}
                             >
-                                A {'<Badge>'} with gradient mode
+                                {defaultFloatingChildren}
                             </Badge>
                         )}
                     </Preview>
@@ -189,7 +209,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
     gradient={true}
     theme='${themeName}'
 >
-    A {'<Badge>'} with gradient mode
+${defaultFloatingChildren}
 </Badge>
 `
                         ).join('')}
@@ -203,7 +223,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                                 outlined={true}
                                 theme={themeName}
                             >
-                                A {'<Badge>'} with outlined mode
+                                {defaultFloatingChildren}
                             </Badge>
                         )}
                     </Preview>
@@ -215,7 +235,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
     outlined={true}
     theme='${themeName}'
 >
-    A {'<Badge>'} with outlined mode
+${defaultFloatingChildren}
 </Badge>
 `
                         ).join('')}
@@ -229,7 +249,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                                 mild={true}
                                 theme={themeName}
                             >
-                                A {'<Badge>'} without mild mode
+                                {defaultFloatingChildren}
                             </Badge>
                         )}
                     </Preview>
@@ -241,7 +261,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
     mild={true}
     theme='${themeName}'
 >
-    A {'<Badge>'} without mild mode
+${defaultFloatingChildren}
 </Badge>
 `
                         ).join('')}
@@ -255,7 +275,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                                 nude={true}
                                 theme={themeName}
                             >
-                                A {'<Badge>'} with nude mode
+                                {defaultFloatingChildren}
                             </Badge>
                         )}
                     </Preview>
@@ -267,7 +287,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
     nude={true}
     theme='${themeName}'
 >
-    A {'<Badge>'} with nude mode
+${defaultFloatingChildren}
 </Badge>
 `
                         ).join('')}
