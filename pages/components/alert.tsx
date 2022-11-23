@@ -18,7 +18,7 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const Alert = (props: AlertProps) => <OriAlert {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} />
 
-const defaultFloatingChildren      = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto labore molestiae incidunt, iste tenetur recusandae fuga voluptates cum architecto odit!';
+const defaultFloatingChildren      = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto labore molestiae incidunt.';
 const defaultFloatingChildrenShort = 'Lorem ipsum dolor.';
 
 
@@ -29,9 +29,11 @@ const DemoAlert = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '4rem'}}>
-            <Alert expanded={isFlip} theme='danger' size='lg'>
-                Hurry up!
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden'}}>
+            <Alert expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi, perferendis recusandae, neque totam voluptatem unde nihil illum quibusdam facilis? Deserunt aperiam possimus deleniti. Minima, debitis.
+                </p>
             </Alert>
         </CardBody>
     );
@@ -42,12 +44,14 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden', justifyContent: 'start'}}>
             <p>
                 <code>{`<Alert expanded={${isFlip}}>`}</code>
             </p>
-            <Alert expanded={isFlip} theme='primary'>
-                Hopla!
+            <Alert expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi, perferendis recusandae, neque totam voluptatem unde nihil illum quibusdam facilis? Deserunt aperiam possimus deleniti. Minima, debitis.
+                </p>
             </Alert>
         </CardBody>
     );
@@ -56,7 +60,7 @@ const DemoExpanded = () => {
 
 
 const AlertPage: NextPage = () => {
-    return (<ComponentContextProvider component={alert} baseComponents={popup} componentFactory={<Alert theme='primary' />}
+    return (<ComponentContextProvider component={alert} baseComponents={popup} componentFactory={<Alert theme='danger' />}
     >
         <Head>
             <title>{`${alert.componentTag} Component`}</title>
@@ -82,7 +86,12 @@ const AlertPage: NextPage = () => {
     expanded={true}
     theme='primary'
 >
-    Hopla!
+    <p>
+        ...
+    </p>
+    <p>
+        ...
+    </p>
 </Alert>
 `
                     }</TypeScriptCode>
@@ -256,18 +265,34 @@ const AlertPage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Animations'>
-                        <List listStyle='flush'>
-                            <ListItem>
-                                <code>animExpand</code>
-                                <p>Represents <strong>expanding animation</strong>, a transition from <code>{`expanded={false}`}</code> to <code>{`expanded={true}`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animCollapse</code>
-                                <p>Represents <strong>collapsing animation</strong>, a transition from <code>{`expanded={true}`}</code> to <code>{`expanded={false}`}</code>.</p>
-                            </ListItem>
-                        </List>
-                    </AccordionItem>
+                <AccordionItem label='Spacings'>
+                    <List listStyle='flush'>
+                        <ListItem>
+                            <code>gapInline</code>
+                            <p>The default <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children.</p>
+                        </ListItem>
+                        <ListItem>
+                            <code>gapBlock</code>
+                            <p>The default <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children.</p>
+                        </ListItem>
+                        <ListItem>
+                            <code>gapInlineSm</code>
+                            <p>The <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                        </ListItem>
+                        <ListItem>
+                            <code>gapBlockSm</code>
+                            <p>The <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='sm'`}</code>.</p>
+                        </ListItem>
+                        <ListItem>
+                            <code>gapInlineLg</code>
+                            <p>The <strong>horizontal spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                        </ListItem>
+                        <ListItem>
+                            <code>gapBlockLg</code>
+                            <p>The <strong>vertical spacing</strong> between <TheComponentLink />&apos;s children when <code>{`size='lg'`}</code>.</p>
+                        </ListItem>
+                    </List>
+                </AccordionItem>
                 </Accordion>
             }>
                 <TypeScriptCode>{
