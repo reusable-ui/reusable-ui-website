@@ -56,7 +56,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<Busy expanded={${isFlip}}>`}</code>
             </p>
-            <Busy expanded={isFlip}>
+            <Busy expanded={isFlip} size='lg'>
                 {defaultFloatingChildren}
             </Busy>
         </CardBody>
@@ -93,6 +93,7 @@ const BusyPage: NextPage = () => {
 <Busy
     expanded={true}
     theme='danger'
+    size='lg'
 />
 `
                     }</TypeScriptCode>
