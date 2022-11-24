@@ -143,7 +143,7 @@ const IconGallery = (props: IconGalleryProps) => {
                 <Icon
                     // {...itemProps}
                     icon={itemName}
-                    size='xl'
+                    size='md'
                 />
                 <span>
                     {itemName}
