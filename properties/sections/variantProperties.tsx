@@ -13,7 +13,7 @@ import { BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyl
 
 
 export const sizeOptions               : (SizeName|undefined)[]           = [      'sm', 'md', 'lg'      ];
-export const iconSizeOptions           : (IconSizeName|undefined)[]       = [      'sm', 'md', 'lg', 'xl'];
+export const iconSizeOptions           : (IconSizeName|undefined)[]       = ['xs', 'sm', 'md', 'lg', 'xl'];
 export const buttonIconSizeOptions     : (ButtonIconSizeName|undefined)[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export const buttonIconPositionOptions : IconPosition[]                   = ['start','end'];

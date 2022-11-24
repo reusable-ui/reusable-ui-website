@@ -4,15 +4,8 @@
             stroke: #000;
             stroke-width: 4;
             stroke-linecap: round;
-            transform-origin: 50% 50%;
-        }
-        polyline.top {
-            transform: rotate(-45deg) scaleX(1.35) translate(0, 37.5%);
-        }
-        polyline.btm {
-            transform: rotate(45deg) scaleX(1.35) translate(0, -37.5%);
         }
     </style>
-    <polyline class="top" points="2,3 22,3" />
-    <polyline class="btm" points="2,21 22,21" />
+    <polyline points="3,20 21,4" />
+    <polyline points="3,4 21,20" />
 </svg>

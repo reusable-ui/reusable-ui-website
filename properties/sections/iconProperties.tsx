@@ -216,6 +216,11 @@ export const IconSizeProperty = ({possibleValues, ...restProps}: SizePropertyPro
                         Uses <strong>default</strong> size.
                     </p>
                 </AccordionItem>
+                <AccordionItem label={<code>{`'xs'`}</code>}>
+                    <p>
+                        <strong>More smaller</strong> size of the <TheComponentLink />.
+                    </p>
+                </AccordionItem>
                 <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
                         <strong>Smaller</strong> size of the <TheComponentLink />.
