@@ -10,6 +10,7 @@ import { TypeScriptCode } from '../../components/Code'
 import { Preview } from '../../components/Preview'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import SelectFloatingPlacement from '../../components/SelectFloatingPlacement'
+import { useInViewport } from '../../hooks/inViewport'
 
 const Button = React.lazy(() => import(/* webpackChunkName: 'Button' */'@reusable-ui/button'));
 const Range  = React.lazy(() => import(/* webpackChunkName: 'Range'  */'@reusable-ui/range'));
@@ -257,12 +258,11 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
     
     
     
-    const [viewportRef, isFlip, isInViewport] = useFlipFlop<boolean, HTMLElement>({defaultState: true});
+    const [viewportRef, isInViewport] = useInViewport<HTMLElement>();
     const buttonRef = useRef<HTMLButtonElement>(null);
     
     
     
-    const scrollCummulative = useRef<number>(0);
     useEffect(() => {
         // conditions:
         if (!isInViewport) return;
@@ -275,10 +275,12 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
         const interval = 2000;
         const steps = 20;
         const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
-        scrollCummulative.current = (isFlip ? 0 : scrollLength);
         const cancelInterval = setInterval(() => {
-            scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
-            viewportElm.scrollTo({top: Math.round(scrollCummulative.current), behavior: 'smooth'});
+            const globalTick     = Date.now();
+            const subInterval    = interval / steps;
+            const globalScrolls  = Math.ceil(globalTick / subInterval) % (steps * 2);
+            const globalFlipFlop = (globalScrolls <= steps) ? globalScrolls : ((steps * 2) - globalScrolls);
+            viewportElm.scrollTo({top: Math.round(globalFlipFlop * (scrollLength / steps)), behavior: 'smooth'});
         }, interval / steps);
         
         
@@ -287,7 +289,7 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
         return () => {
             clearInterval(cancelInterval);
         };
-    }, [isFlip, isInViewport]);
+    }, [isInViewport]);
     
     
     
@@ -370,7 +372,6 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
     
     
     
-    const scrollCummulative = useRef<number>(0);
     useEffect(() => {
         // conditions:
         if (!isInViewport) return;
@@ -383,10 +384,12 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
         const interval = 2000;
         const steps = 20;
         const scrollLength = viewportElm.scrollHeight - viewportElm.clientHeight;
-        scrollCummulative.current = (isFlip ? 0 : scrollLength);
         const cancelInterval = setInterval(() => {
-            scrollCummulative.current += (scrollLength / steps * (isFlip ? 1 : -1));
-            viewportElm.scrollTo({top: Math.round(scrollCummulative.current), behavior: 'smooth'});
+            const globalTick     = Date.now();
+            const subInterval    = interval / steps;
+            const globalScrolls  = Math.ceil(globalTick / subInterval) % (steps * 2);
+            const globalFlipFlop = (globalScrolls <= steps) ? globalScrolls : ((steps * 2) - globalScrolls);
+            viewportElm.scrollTo({top: Math.round(globalFlipFlop * (scrollLength / steps)), behavior: 'smooth'});
         }, interval / steps);
         
         
