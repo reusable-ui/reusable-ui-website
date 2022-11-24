@@ -73,7 +73,7 @@ const DemoExpanded = () => {
 
 
 const BadgePage: NextPage = () => {
-    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={<Badge size={'' as any} />}>
+    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={<Badge size='md' />}>
         <Head>
             <title>{`${badge.componentTag} Component`}</title>
             <meta name="description" content={`${badge.componentTag} represents counters or labels.`} />
