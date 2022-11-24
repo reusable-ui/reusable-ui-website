@@ -53,6 +53,7 @@ export const badgeStyle          = new PropertyInfo('badgeStyle')
 export const excited             = new PropertyInfo('excited')
 
 export const expanded            = new PropertyInfo('expanded')
+export const onExpandedChange    = new PropertyInfo('onExpandedChange')
 
 export const enabled             = new PropertyInfo('enabled')
 export const inheritEnabled      = new PropertyInfo('inheritEnabled')
@@ -117,6 +118,8 @@ export const onFloatingUpdate   = new PropertyInfo('onFloatingUpdate')
 
 
 // components:
+export const controlComponent    = new PropertyInfo('controlComponent')
+
 export const buttonComponent     = new PropertyInfo('buttonComponent')
 export const buttonRef           = new PropertyInfo('buttonRef')
 export const buttonOrientation   = new PropertyInfo('buttonOrientation')

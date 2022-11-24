@@ -3,12 +3,13 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
 import {tag, role} from '../propertyList'
+import { ComponentInfo } from '../../packages/packageInfo'
 
 
 
@@ -23,6 +24,29 @@ export const ComponentProperties = ({children} : ComponentPropertiesProps) => {
             </p>
             {children}
         </Section>
+    );
+}
+
+
+
+export interface ControlComponentPropertyProps {
+    control  ?: ComponentInfo
+    children ?: React.ReactNode
+}
+export const ControlComponentProperty = ({children: preview, control: specificControl} : ControlComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.controlComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {(specificControl ?? control).packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} controlComponent={
+    <MyCustom${(specificControl ?? control).componentName} />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
     );
 }
 

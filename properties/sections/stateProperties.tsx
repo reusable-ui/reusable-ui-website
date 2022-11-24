@@ -7,6 +7,7 @@ import { outlineable, mildable, activatable, disableable, invalidable } from '..
 import { Warning } from '../../components/Warning'
 import { icon, form } from '../../packages/packageList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { List, ListItem } from '@reusable-ui/components'
 
 
 
@@ -539,6 +540,30 @@ export const ExpandedProperty = ({children: preview}: PreviewProps) => {
             <p>
                 <strong>Expands</strong>/<strong>Collapses</strong> the <strong>size</strong> or <strong>shows</strong>/<strong>hides</strong> the <strong>visibility</strong> of the <TheComponentLink />.
             </p>
+        </PropertySection>
+    );
+}
+export const OnExpandedChangeProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.onExpandedChange} preview={preview}>
+            <p>
+                Sets a <strong>callback function</strong> to be called when <strong>the user closes</strong> the <TheComponentLink />.
+            </p>
+            <p>
+                The callback function parameters:
+            </p>
+            <Accordion theme='primary'>
+                <AccordionItem label={<code>event: ExpandedChangeEvent</code>}>
+                    <List listStyle='flush'>
+                        <ListItem>
+                            <code>expanded: boolean</code>
+                            <p>
+                                A <code>boolean</code> value indicating the new {properties.expanded.propertyShortDisplay} state to be applied.
+                            </p>
+                        </ListItem>
+                    </List>
+                </AccordionItem>
+            </Accordion>
         </PropertySection>
     );
 }

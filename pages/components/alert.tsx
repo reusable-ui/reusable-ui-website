@@ -2,17 +2,19 @@ import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { popup, alert } from '../../packages/packageList'
+import { popup, alert, closeButton } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Alert as OriAlert, AlertProps, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ExpandedProperty } from '../../properties/sections/stateProperties'
+import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
+import { DetailedIconProperty } from '../../properties/sections/iconProperties'
+import { ComponentProperties, ControlComponentProperty, IconComponentProperty } from '../../properties/sections/componentProperties'
 
 
 
@@ -96,6 +98,8 @@ const AlertPage: NextPage = () => {
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
+            <OnExpandedChangeProperty />
+            <DetailedIconProperty />
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='right-start' floatingOffset={-16} floatingShift={-36} />
@@ -262,6 +266,10 @@ const AlertPage: NextPage = () => {
                     </TypeScriptCode>
                 </NudeProperty>
             </VariantProperties>
+            <ComponentProperties>
+                <IconComponentProperty />
+                <ControlComponentProperty control={closeButton} />
+            </ComponentProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>

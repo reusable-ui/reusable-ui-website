@@ -76,6 +76,8 @@ export interface DetailedIconPropertyProps extends PreviewProps {
     itemComponent ?: (itemName: string, itemProps: ItemProps) => React.ReactElement
 }
 export const DetailedIconProperty = ({children, itemComponent}: DetailedIconPropertyProps) => {
+    const {component: {packageName, componentName}} = useComponentInfo();
+    
     return (
         <IconProperty>
             <p>
@@ -179,8 +181,8 @@ iconConfig.image.files.push(
                         {children || <TypeScriptCode collapsible={false}>{
 `
 /* ... */
-import { Icon } from '@reusable-ui/icon'
-// -or- import { Icon } from '@reusable-ui/components'
+import { ${componentName} } from '@reusable-ui/${packageName}'
+// -or- import { ${componentName} } from '@reusable-ui/components'
 /* ... */
 
 /* ... */
@@ -189,7 +191,7 @@ export const MyComponent = () => {
         <>
             <p>blah...</p>
             
-            <Icon icon='your-logo' theme='primary' size='lg' />
+            <${componentName} icon='your-logo' theme='primary' size='lg' />
             
             <p>blah...</p>
         </>
