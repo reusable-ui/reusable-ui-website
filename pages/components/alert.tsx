@@ -31,10 +31,13 @@ const DemoAlert = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', overflow: 'hidden'}}>
             <Alert expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi, perferendis recusandae, neque totam voluptatem unde nihil illum quibusdam facilis? Deserunt aperiam possimus deleniti. Minima, debitis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi.
                 </p>
             </Alert>
         </CardBody>
@@ -46,13 +49,16 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '13rem', overflow: 'hidden', justifyContent: 'start'}}>
             <p>
                 <code>{`<Alert expanded={${isFlip}}>`}</code>
             </p>
             <Alert expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi, perferendis recusandae, neque totam voluptatem unde nihil illum quibusdam facilis? Deserunt aperiam possimus deleniti. Minima, debitis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi.
                 </p>
             </Alert>
         </CardBody>
@@ -119,7 +125,9 @@ const AlertPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Alert>'} with {sizeName} size
+                                <p>
+                                    An {'<Alert>'} with {sizeName} size
+                                </p>
                             </Alert>
                         )}
                     </Preview>
@@ -131,7 +139,9 @@ const AlertPage: NextPage = () => {
     size='${sizeName}'
     theme='primary'
 >
-    An {'<Alert>'} with ${sizeName} size
+    <p>
+        An {'<Alert>'} with ${sizeName} size
+    </p>
 </Alert>
 `
                         ).join('')}
@@ -144,7 +154,9 @@ const AlertPage: NextPage = () => {
                                 key={index}
                                 theme={themeName}
                             >
-                                An {'<Alert>'} with {themeName} theme
+                                <p>
+                                    An {'<Alert>'} with {themeName} theme
+                                </p>
                             </Alert>
                         )}
                     </Preview>
@@ -155,7 +167,9 @@ const AlertPage: NextPage = () => {
 <Alert
     theme='${themeName}'
 >
-    An {'<Alert>'} with ${themeName} theme
+    <p>
+        An {'<Alert>'} with ${themeName} theme
+    </p>
 </Alert>
 `
                         ).join('')}
@@ -169,7 +183,9 @@ const AlertPage: NextPage = () => {
                                 gradient={true}
                                 theme={themeName}
                             >
-                                An {'<Alert>'} with gradient mode
+                                <p>
+                                    An {'<Alert>'} with gradient mode
+                                </p>
                             </Alert>
                         )}
                     </Preview>
@@ -181,7 +197,9 @@ const AlertPage: NextPage = () => {
     gradient={true}
     theme='${themeName}'
 >
-    An {'<Alert>'} with gradient mode
+    <p>
+        An {'<Alert>'} with gradient mode
+    </p>
 </Alert>
 `
                         ).join('')}
@@ -195,7 +213,9 @@ const AlertPage: NextPage = () => {
                                 outlined={true}
                                 theme={themeName}
                             >
-                                An {'<Alert>'} with outlined mode
+                                <p>
+                                    An {'<Alert>'} with outlined mode
+                                </p>
                             </Alert>
                         )}
                     </Preview>
@@ -207,7 +227,9 @@ const AlertPage: NextPage = () => {
     outlined={true}
     theme='${themeName}'
 >
-    An {'<Alert>'} with outlined mode
+    <p>
+        An {'<Alert>'} with outlined mode
+    </p>
 </Alert>
 `
                         ).join('')}
@@ -221,7 +243,9 @@ const AlertPage: NextPage = () => {
                                 mild={false}
                                 theme={themeName}
                             >
-                                An {'<Alert>'} without mild mode
+                                <p>
+                                    An {'<Alert>'} without mild mode
+                                </p>
                             </Alert>
                         )}
                     </Preview>
@@ -233,7 +257,9 @@ const AlertPage: NextPage = () => {
     mild={false}
     theme='${themeName}'
 >
-    An {'<Alert>'} without mild mode
+    <p>
+        An {'<Alert>'} without mild mode
+    </p>
 </Alert>
 `
                         ).join('')}
@@ -247,7 +273,9 @@ const AlertPage: NextPage = () => {
                                 nude={true}
                                 theme={themeName}
                             >
-                                An {'<Alert>'} with nude mode
+                                <p>
+                                    An {'<Alert>'} with nude mode
+                                </p>
                             </Alert>
                         )}
                     </Preview>
@@ -259,7 +287,9 @@ const AlertPage: NextPage = () => {
     nude={true}
     theme='${themeName}'
 >
-    An {'<Alert>'} with nude mode
+    <p>
+        An {'<Alert>'} with nude mode
+    </p>
 </Alert>
 `
                         ).join('')}
