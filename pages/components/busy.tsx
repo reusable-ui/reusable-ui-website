@@ -76,7 +76,7 @@ const DemoExpanded = () => {
 
 
 const BusyPage: NextPage = () => {
-    return (<ComponentContextProvider component={busy} baseComponents={badge} componentFactory={<Busy size={'' as any} />}>
+    return (<ComponentContextProvider component={busy} baseComponents={badge} componentFactory={<Busy size='md' />}>
         <Head>
             <title>{`${busy.componentTag} Component`}</title>
             <meta name="description" content={`${busy.componentTag} represents counters or labels.`} />
@@ -107,7 +107,7 @@ const BusyPage: NextPage = () => {
             </ExpandedProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} floatingOffset={-15} floatingShift={-12} floatingComponent={<Busy size={'' as any} outlined={false} nude={false} />} />
+                <FloatingOnProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} floatingOffset={-15} floatingShift={-12} floatingComponent={<Busy size='md' outlined={false} nude={false} />} />
                 <FloatingPlacementProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty targetChildren={defaultTargetChildren} floatingChildren={defaultFloatingChildren} />
