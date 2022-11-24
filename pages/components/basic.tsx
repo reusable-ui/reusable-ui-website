@@ -38,7 +38,7 @@ const BasicPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Basic>'} with {sizeName ?? 'default'} size
+                                A {'<Basic>'} with {sizeName} size
                             </Basic>
                         )}
                     </Preview>
@@ -47,9 +47,9 @@ const BasicPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Basic
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    A {'<Basic>'} with ${sizeName ?? 'default'} size
+    A {'<Basic>'} with ${sizeName} size
 </Basic>
 `
                         ).join('')}

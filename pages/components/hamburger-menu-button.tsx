@@ -86,7 +86,7 @@ const HamburgerMenuButtonPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <HamburgerMenuButton
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 />
 `
                         ).join('')}

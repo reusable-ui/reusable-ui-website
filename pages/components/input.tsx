@@ -56,7 +56,7 @@ const InputPage: NextPage = () => {
                             <Input
                                 key={index}
                                 size={sizeName}
-                                placeholder={`An <Input> with ${sizeName ?? 'default'} size`}
+                                placeholder={`An <Input> with ${sizeName} size`}
                             />
                         )}
                     </Preview>
@@ -65,8 +65,8 @@ const InputPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Input
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
-    placeholder={\`An <Input> with ${sizeName ?? 'default'} size\`}
+    size='${sizeName}'
+    placeholder={\`An <Input> with ${sizeName} size\`}
 />
 `
                         ).join('')}

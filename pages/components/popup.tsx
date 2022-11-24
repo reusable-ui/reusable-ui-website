@@ -100,7 +100,7 @@ const PopupPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Popup>'} with {sizeName ?? 'default'} size
+                                A {'<Popup>'} with {sizeName} size
                             </Popup>
                         )}
                     </Preview>
@@ -109,10 +109,10 @@ const PopupPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Popup
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     theme='primary'
 >
-    A {'<Popup>'} with ${sizeName ?? 'default'} size
+    A {'<Popup>'} with ${sizeName} size
 </Popup>
 `
                         ).join('')}

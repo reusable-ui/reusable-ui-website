@@ -39,7 +39,7 @@ const ControlPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Control>'} with {sizeName ?? 'default'} size
+                                A {'<Control>'} with {sizeName} size
                             </Control>
                         )}
                     </Preview>
@@ -48,9 +48,9 @@ const ControlPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Control
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    A {'<Control>'} with ${sizeName ?? 'default'} size
+    A {'<Control>'} with ${sizeName} size
 </Control>
 `
                         ).join('')}

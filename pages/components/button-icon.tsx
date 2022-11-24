@@ -164,7 +164,7 @@ export const MyComponent = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<ButtonIcon>'} with {sizeName ?? 'default'} size
+                                A {'<ButtonIcon>'} with {sizeName} size
                             </ButtonIcon>
                         )}
                     </Preview>
@@ -173,10 +173,10 @@ export const MyComponent = () => {
                         {buttonIconSizeOptions.map((sizeName) =>
 `
 <ButtonIcon
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     icon='face'
 >
-    A {'<ButtonIcon>'} with ${sizeName ?? 'default'} size
+    A {'<ButtonIcon>'} with ${sizeName} size
 </ButtonIcon>
 `
                         ).join('')}

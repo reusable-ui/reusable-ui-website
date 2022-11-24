@@ -78,7 +78,7 @@ const RangePage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Range
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 />
 `
                         ).join('')}

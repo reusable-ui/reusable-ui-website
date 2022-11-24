@@ -12,9 +12,9 @@ import { BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyl
 
 
 
-export const sizeOptions               : (SizeName|undefined)[]           = ['sm', undefined, 'lg'];
-export const iconSizeOptions           : (IconSizeName|undefined)[]       = ['sm', 'nm', 'md', 'lg'];
-export const buttonIconSizeOptions     : (ButtonIconSizeName|undefined)[] = ['xs','sm', undefined, 'lg','xl'];
+export const sizeOptions               : (SizeName|undefined)[]           = [     'sm', 'md', 'lg'     ];
+export const iconSizeOptions           : (IconSizeName|undefined)[]       = [     'sm', 'md', 'lg'     ];
+export const buttonIconSizeOptions     : (ButtonIconSizeName|undefined)[] = ['xs','sm', 'md', 'lg','xl'];
 
 export const buttonIconPositionOptions : IconPosition[]                   = ['start','end'];
 
@@ -59,12 +59,17 @@ export const SizeProperty = ({possibleValues, children: preview}: SizePropertyPr
                 </AccordionItem>
                 <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
-                        Makes the <code>font-size</code>, <code>padding</code> and <code>border-radius</code> <strong>smaller</strong> than the default.
+                        <strong>Smaller</strong> size of the <code>font-size</code>, <code>padding</code> and <code>border-radius</code>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'md'`}</code>}>
+                    <p>
+                        <strong>Medium</strong> size of the <code>font-size</code>, <code>padding</code> and <code>border-radius</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'lg'`}</code>}>
                     <p>
-                        Makes the <code>font-size</code>, <code>padding</code> and <code>border-radius</code> <strong>bigger</strong> than the default.
+                        <strong>Bigger</strong> size of the <code>font-size</code>, <code>padding</code> and <code>border-radius</code>.
                     </p>
                 </AccordionItem>
             </Accordion>

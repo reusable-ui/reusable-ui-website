@@ -71,7 +71,7 @@ const CheckPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Check>'} with {sizeName ?? 'default'} size
+                                A {'<Check>'} with {sizeName} size
                             </Check>
                         )}
                     </Preview>
@@ -80,9 +80,9 @@ const CheckPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Check
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    A {'<Check>'} with ${sizeName ?? 'default'} size
+    A {'<Check>'} with ${sizeName} size
 </Check>
 `
                         ).join('')}

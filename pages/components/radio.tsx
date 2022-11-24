@@ -73,7 +73,7 @@ const RadioPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Radio>'} with {sizeName ?? 'default'} size
+                                A {'<Radio>'} with {sizeName} size
                             </Radio>
                         )}
                     </Preview>
@@ -82,10 +82,10 @@ const RadioPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Radio
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     name='test'
 >
-    A {'<Radio>'} with ${sizeName ?? 'default'} size
+    A {'<Radio>'} with ${sizeName} size
 </Radio>
 `
                         ).join('')}

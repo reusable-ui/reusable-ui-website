@@ -73,10 +73,7 @@ const DemoExpanded = () => {
 
 
 const BadgePage: NextPage = () => {
-    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={<Badge
-        // TODO: fix the size:
-        size={'' as any} />}
-    >
+    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={<Badge size={'' as any} />}>
         <Head>
             <title>{`${badge.componentTag} Component`}</title>
             <meta name="description" content={`${badge.componentTag} represents counters or labels.`} />
@@ -155,7 +152,7 @@ ${((badgeStyle === 'square') || (badgeStyle === 'circle')) ? '/>' : `>\n${defaul
                         {sizeOptions.map((sizeName) =>
 `
 <Badge
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     theme='danger'
 >
 ${defaultFloatingChildren}

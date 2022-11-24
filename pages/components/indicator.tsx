@@ -39,7 +39,7 @@ const IndicatorPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Indicator>'} with {sizeName ?? 'default'} size
+                                An {'<Indicator>'} with {sizeName} size
                             </Indicator>
                         )}
                     </Preview>
@@ -48,9 +48,9 @@ const IndicatorPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Indicator
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    An {'<Indicator>'} with ${sizeName ?? 'default'} size
+    An {'<Indicator>'} with ${sizeName} size
 </Indicator>
 `
                         ).join('')}

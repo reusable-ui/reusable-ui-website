@@ -67,7 +67,7 @@ const FormPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Form
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     style={{ display: 'flex, gap: '1rem' }}
 >
     <TextInput placeholder='username' required />

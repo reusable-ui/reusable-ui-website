@@ -56,9 +56,9 @@ const IconPage: NextPage = () => {
                     <Icon icon='face' theme='success' />
                     <Icon icon='face' theme='danger' />
                     <Icon icon='face' theme='primary' size='sm' />
-                    <Icon icon='face' theme='primary' size='nm' />
                     <Icon icon='face' theme='primary' size='md' />
                     <Icon icon='face' theme='primary' size='lg' />
+                    <Icon icon='face' theme='primary' size='xl' />
                 </Preview>
             </HeroSection>
             <ComponentInstallation>
@@ -82,7 +82,7 @@ const IconPage: NextPage = () => {
 `
 <Icon
     icon='face'
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 />
 `
                         ).join('')}
@@ -172,16 +172,16 @@ const IconPage: NextPage = () => {
                                 <p>The icon height when <code>{`size='sm'`}</code>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>sizeNm</code>
-                                <p>The icon height when <code>{`size='nm'`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
                                 <code>sizeMd</code>
                                 <p>The icon height when <code>{`size='md'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>sizeLg</code>
                                 <p>The icon height when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>sizeXl</code>
+                                <p>The icon height when <code>{`size='xl'`}</code>.</p>
                             </ListItem>
                             <ListItem>
                                 <code>size1em</code>

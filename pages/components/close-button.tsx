@@ -141,7 +141,7 @@ const CloseButtonPage: NextPage = () => {
                         {buttonIconSizeOptions.map((sizeName) =>
 `
 <CloseButton
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 />
 `
                         ).join('')}

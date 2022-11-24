@@ -218,22 +218,22 @@ export const IconSizeProperty = ({possibleValues, ...restProps}: SizePropertyPro
                 </AccordionItem>
                 <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>smaller</strong> size.
-                    </p>
-                </AccordionItem>
-                <AccordionItem label={<code>{`'nm'`}</code>}>
-                    <p>
-                        Makes the <TheComponentLink /> <strong>normal</strong> size.
+                        <strong>Smaller</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'md'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>bigger</strong> size.
+                        <strong>Medium</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'lg'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>biggest</strong> size.
+                        <strong>Bigger</strong> size of the <TheComponentLink />.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'xl'`}</code>}>
+                    <p>
+                        <strong>More bigger</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'1em'`}</code>}>
@@ -256,22 +256,27 @@ export const ButtonIconSizeProperty = ({possibleValues, ...restProps}: SizePrope
                 </AccordionItem>
                 <AccordionItem label={<code>{`'xs'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>more smaller</strong> size.
+                        <strong>More smaller</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'sm'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>smaller</strong> size.
+                        <strong>Smaller</strong> size of the <TheComponentLink />.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`'md'`}</code>}>
+                    <p>
+                        <strong>Medium</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'lg'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>bigger</strong> size.
+                        <strong>Bigger</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'xl'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>more bigger</strong> size.
+                        <strong>More bigger</strong> size of the <TheComponentLink />.
                     </p>
                 </AccordionItem>
             </Accordion>

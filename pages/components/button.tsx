@@ -118,7 +118,7 @@ const ButtonPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<Button>'} with {sizeName ?? 'default'} size
+                                A {'<Button>'} with {sizeName} size
                             </Button>
                         )}
                     </Preview>
@@ -127,9 +127,9 @@ const ButtonPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Button
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    A {'<Button>'} with ${sizeName ?? 'default'} size
+    A {'<Button>'} with ${sizeName} size
 </Button>
 `
                         ).join('')}

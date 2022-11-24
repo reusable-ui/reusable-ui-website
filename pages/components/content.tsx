@@ -420,7 +420,7 @@ const ContentPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Content>'} with {sizeName ?? 'default'} size
+                                An {'<Content>'} with {sizeName} size
                             </Content>
                         )}
                     </Preview>
@@ -429,9 +429,9 @@ const ContentPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Content
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    An {'<Content>'} with ${sizeName ?? 'default'} size
+    An {'<Content>'} with ${sizeName} size
 </Content>
 `
                         ).join('')}

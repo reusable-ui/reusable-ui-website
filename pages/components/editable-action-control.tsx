@@ -42,7 +42,7 @@ const EditableActionControlPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<EditableActionControl>'} with {sizeName ?? 'default'} size
+                                An {'<EditableActionControl>'} with {sizeName} size
                             </EditableActionControl>
                         )}
                     </Preview>
@@ -51,9 +51,9 @@ const EditableActionControlPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <EditableActionControl
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    An {'<EditableActionControl>'} with ${sizeName ?? 'default'} size
+    An {'<EditableActionControl>'} with ${sizeName} size
 </EditableActionControl>
 `
                         ).join('')}

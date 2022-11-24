@@ -115,7 +115,7 @@ const AlertPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Alert>'} with {sizeName ?? 'default'} size
+                                An {'<Alert>'} with {sizeName} size
                             </Alert>
                         )}
                     </Preview>
@@ -124,10 +124,10 @@ const AlertPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Alert
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     theme='primary'
 >
-    An {'<Alert>'} with ${sizeName ?? 'default'} size
+    An {'<Alert>'} with ${sizeName} size
 </Alert>
 `
                         ).join('')}

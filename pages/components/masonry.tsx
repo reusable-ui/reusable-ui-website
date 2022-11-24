@@ -121,7 +121,7 @@ ${masonrySampleItemsString()}
                         {sizeOptions.map((sizeName) =>
 `
 <Masonry
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     theme='primary'
 >
 ${masonrySampleItemsString()}

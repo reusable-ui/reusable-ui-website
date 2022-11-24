@@ -46,7 +46,7 @@ const ActionControlPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<ActionControl>'} with {sizeName ?? 'default'} size
+                                An {'<ActionControl>'} with {sizeName} size
                             </ActionControl>
                         )}
                     </Preview>
@@ -55,9 +55,9 @@ const ActionControlPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <ActionControl
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    An {'<ActionControl>'} with ${sizeName ?? 'default'} size
+    An {'<ActionControl>'} with ${sizeName} size
 </ActionControl>
 `
                         ).join('')}

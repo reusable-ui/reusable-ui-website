@@ -172,7 +172,7 @@ ${cardSampleItemsString()}
                         sizeOptions.map((sizeName, index) =>
 `
 <Card
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     theme='primary'
 >
 ${cardSampleItemsString()}

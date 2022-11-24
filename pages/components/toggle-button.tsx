@@ -120,7 +120,7 @@ const ToggleButtonPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<ToggleButton>'} with {sizeName ?? 'default'} size
+                                A {'<ToggleButton>'} with {sizeName} size
                             </ToggleButton>
                         )}
                     </Preview>
@@ -129,9 +129,9 @@ const ToggleButtonPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <ToggleButton
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    A {'<ToggleButton>'} with ${sizeName ?? 'default'} size
+    A {'<ToggleButton>'} with ${sizeName} size
 </ToggleButton>
 `
                         ).join('')}

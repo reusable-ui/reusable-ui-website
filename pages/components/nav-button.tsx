@@ -120,7 +120,7 @@ const NavButtonPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                A {'<NavButton>'} with {sizeName ?? 'default'} size
+                                A {'<NavButton>'} with {sizeName} size
                             </NavButton>
                         )}
                     </Preview>
@@ -129,9 +129,9 @@ const NavButtonPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <NavButton
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    A {'<NavButton>'} with ${sizeName ?? 'default'} size
+    A {'<NavButton>'} with ${sizeName} size
 </NavButton>
 `
                         ).join('')}

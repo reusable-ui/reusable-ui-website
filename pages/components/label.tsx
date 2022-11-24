@@ -88,7 +88,7 @@ const LabelPage: NextPage = () => {
                                 key={index}
                                 size={sizeName}
                             >
-                                An {'<Label>'} with {sizeName ?? 'default'} size
+                                An {'<Label>'} with {sizeName} size
                             </Label>
                         )}
                     </Preview>
@@ -97,9 +97,9 @@ const LabelPage: NextPage = () => {
                         {sizeOptions.map((sizeName) =>
 `
 <Label
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
 >
-    An {'<Label>'} with ${sizeName ?? 'default'} size
+    An {'<Label>'} with ${sizeName} size
 </Label>
 `
                         ).join('')}

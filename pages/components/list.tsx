@@ -284,7 +284,7 @@ ${(listStyle === 'bullet') ? listSampleEmptyItemsString() : listSampleItemsStrin
                         sizeOptions.map((sizeName, index) =>
 `
 <List
-    size=${sizeName ? `'${sizeName}'` : '{undefined}'}
+    size='${sizeName}'
     theme='primary'
 >
 ${listSampleItemsString({mixVaraints: false})}
