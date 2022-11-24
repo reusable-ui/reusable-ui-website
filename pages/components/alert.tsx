@@ -18,8 +18,8 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const Alert = (props: AlertProps) => <OriAlert {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} />
 
-const defaultFloatingChildren      = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto labore molestiae incidunt.';
-const defaultFloatingChildrenShort = 'Lorem ipsum dolor.';
+// const defaultFloatingChildren      = '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto labore molestiae incidunt.';
+const defaultFloatingChildrenShort = '    Lorem ipsum dolor.';
 
 
 
@@ -64,12 +64,12 @@ const AlertPage: NextPage = () => {
     >
         <Head>
             <title>{`${alert.componentTag} Component`}</title>
-            <meta name="description" content={`${alert.componentTag} is a generic element with dynamic visibility (show/hide) in alert fashion.`} />
+            <meta name="description" content={`${alert.componentTag} is a UI for displaying feedback messages.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a generic element with dynamic visibility (show/hide) in alert fashion.
+                    <TheComponentLink /> is a UI for displaying feedback messages.
                 </p>
                 <p>
                     Here the demo:
@@ -98,7 +98,7 @@ const AlertPage: NextPage = () => {
             </ExpandedProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='right-start' floatingOffset={-16} floatingShift={-36} />
                 <FloatingPlacementProperty floatingChildren={defaultFloatingChildrenShort} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildrenShort} />
