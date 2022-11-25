@@ -1,4 +1,4 @@
-import React, {  } from 'react'
+import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
@@ -6,7 +6,7 @@ import { popup, tooltip, closeButton } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Tooltip as OriTooltip, TooltipProps, List, ListItem, CardBody } from '@reusable-ui/components'
+import { Tooltip as OriTooltip, TooltipProps, List, ListItem, CardBody, Button } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
@@ -18,7 +18,39 @@ import { ComponentProperties, ControlComponentProperty, IconComponentProperty } 
 
 
 
-const Tooltip = (props: TooltipProps) => <OriTooltip {...props} theme={props.theme ?? 'warning'} expanded={props.expanded ?? true} />
+const Tooltip = (props: TooltipProps) => {
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    
+    
+    
+    return (
+        <>
+            <Button elmRef={buttonRef} theme='success' size='lg'>
+                Order Now!
+            </Button>
+            <OriTooltip
+                theme={props.theme ?? 'warning'}
+                expanded={props.expanded ?? true}
+                
+                floatingOn={buttonRef}
+                floatingPlacement='right'
+                floatingAutoFlip={false}
+                floatingAutoShift={false}
+                
+                {...props}
+            >
+                {props.children ?? <>
+                    <p>
+                        Hurry up! Limited edition.
+                    </p>
+                    <p>
+                        A <strong>special discount</strong> today.
+                    </p>
+                </>}
+            </OriTooltip>
+        </>
+    );
+};
 
 // const defaultFloatingChildren      = '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto labore molestiae incidunt.';
 const defaultFloatingChildrenShort = '    Click here to order!';
@@ -31,15 +63,8 @@ const DemoTooltip = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', overflow: 'hidden'}}>
-            <Tooltip expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi, perferendis recusandae, neque totam voluptatem unde nihil illum quibusdam facilis? Deserunt aperiam possimus deleniti. Minima, debitis.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi.
-                </p>
-            </Tooltip>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden'}}>
+            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} />
         </CardBody>
     );
 }
@@ -49,18 +74,11 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '13rem', overflow: 'hidden', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden', justifyContent: 'start'}}>
             <p>
                 <code>{`<Tooltip expanded={${isFlip}}>`}</code>
             </p>
-            <Tooltip expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi, perferendis recusandae, neque totam voluptatem unde nihil illum quibusdam facilis? Deserunt aperiam possimus deleniti. Minima, debitis.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis vero blanditiis ullam officia quasi.
-                </p>
-            </Tooltip>
+            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} />
         </CardBody>
     );
 }
@@ -68,7 +86,7 @@ const DemoExpanded = () => {
 
 
 const TooltipPage: NextPage = () => {
-    return (<ComponentContextProvider component={tooltip} baseComponents={popup} componentFactory={<OriTooltip theme='warning' floatingAutoFlip={false} floatingAutoShift={false} />}
+    return (<ComponentContextProvider component={tooltip} baseComponents={popup} componentFactory={<OriTooltip theme='warning' size='md' floatingAutoFlip={false} floatingAutoShift={false} />}
     >
         <Head>
             <title>{`${tooltip.componentTag} Component`}</title>
@@ -86,7 +104,7 @@ const TooltipPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `
@@ -117,7 +135,7 @@ const TooltipPage: NextPage = () => {
             </FloatingProperties>
             <VariantProperties>
                 <SizeProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
                             <Tooltip
                                 key={index}
@@ -146,7 +164,7 @@ const TooltipPage: NextPage = () => {
                     </TypeScriptCode>
                 </SizeProperty>
                 <ThemeProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Tooltip
                                 key={index}
@@ -174,7 +192,7 @@ const TooltipPage: NextPage = () => {
                     </TypeScriptCode>
                 </ThemeProperty>
                 <GradientProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Tooltip
                                 key={index}
@@ -204,7 +222,7 @@ const TooltipPage: NextPage = () => {
                     </TypeScriptCode>
                 </GradientProperty>
                 <OutlinedProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Tooltip
                                 key={index}
@@ -234,7 +252,7 @@ const TooltipPage: NextPage = () => {
                     </TypeScriptCode>
                 </OutlinedProperty>
                 <MildProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Tooltip
                                 key={index}
@@ -264,7 +282,7 @@ const TooltipPage: NextPage = () => {
                     </TypeScriptCode>
                 </MildProperty>
                 <NudeProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Tooltip
                                 key={index}
@@ -336,6 +354,22 @@ const TooltipPage: NextPage = () => {
                             <ListItem>
                                 <code>arrowBlockSize</code>
                                 <p>The <strong>height</strong> of the <TheComponentLink />&apos;s <strong>arrow</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>arrowInlineSizeSm</code>
+                                <p>The <strong>width</strong> of the <TheComponentLink />&apos;s <strong>arrow</strong> when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>arrowBlockSizeSm</code>
+                                <p>The <strong>height</strong> of the <TheComponentLink />&apos;s <strong>arrow</strong> when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>arrowInlineSizeLg</code>
+                                <p>The <strong>width</strong> of the <TheComponentLink />&apos;s <strong>arrow</strong> when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>arrowBlockSizeLg</code>
+                                <p>The <strong>height</strong> of the <TheComponentLink />&apos;s <strong>arrow</strong> when <code>{`size='lg'`}</code>.</p>
                             </ListItem>
                             
                             <ListItem>
