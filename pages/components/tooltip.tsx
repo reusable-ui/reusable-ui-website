@@ -142,7 +142,7 @@ const TooltipPage: NextPage = () => {
                                 size={sizeName}
                             >
                                 <p>
-                                    An {'<Tooltip>'} with {sizeName} size
+                                    A {'<Tooltip>'} with {sizeName} size
                                 </p>
                             </Tooltip>
                         )}
@@ -156,7 +156,7 @@ const TooltipPage: NextPage = () => {
     theme='warning'
 >
     <p>
-        An {'<Tooltip>'} with ${sizeName} size
+        A {'<Tooltip>'} with ${sizeName} size
     </p>
 </Tooltip>
 `
@@ -171,7 +171,7 @@ const TooltipPage: NextPage = () => {
                                 theme={themeName}
                             >
                                 <p>
-                                    An {'<Tooltip>'} with {themeName} theme
+                                    A {'<Tooltip>'} with {themeName} theme
                                 </p>
                             </Tooltip>
                         )}
@@ -184,7 +184,7 @@ const TooltipPage: NextPage = () => {
     theme='${themeName}'
 >
     <p>
-        An {'<Tooltip>'} with ${themeName} theme
+        A {'<Tooltip>'} with ${themeName} theme
     </p>
 </Tooltip>
 `
@@ -200,7 +200,7 @@ const TooltipPage: NextPage = () => {
                                 theme={themeName}
                             >
                                 <p>
-                                    An {'<Tooltip>'} with gradient mode
+                                    A {'<Tooltip>'} with gradient mode
                                 </p>
                             </Tooltip>
                         )}
@@ -214,7 +214,7 @@ const TooltipPage: NextPage = () => {
     theme='${themeName}'
 >
     <p>
-        An {'<Tooltip>'} with gradient mode
+        A {'<Tooltip>'} with gradient mode
     </p>
 </Tooltip>
 `
@@ -230,7 +230,7 @@ const TooltipPage: NextPage = () => {
                                 theme={themeName}
                             >
                                 <p>
-                                    An {'<Tooltip>'} with outlined mode
+                                    A {'<Tooltip>'} with outlined mode
                                 </p>
                             </Tooltip>
                         )}
@@ -244,7 +244,7 @@ const TooltipPage: NextPage = () => {
     theme='${themeName}'
 >
     <p>
-        An {'<Tooltip>'} with outlined mode
+        A {'<Tooltip>'} with outlined mode
     </p>
 </Tooltip>
 `
@@ -260,7 +260,7 @@ const TooltipPage: NextPage = () => {
                                 theme={themeName}
                             >
                                 <p>
-                                    An {'<Tooltip>'} without mild mode
+                                    A {'<Tooltip>'} without mild mode
                                 </p>
                             </Tooltip>
                         )}
@@ -274,7 +274,7 @@ const TooltipPage: NextPage = () => {
     theme='${themeName}'
 >
     <p>
-        An {'<Tooltip>'} without mild mode
+        A {'<Tooltip>'} without mild mode
     </p>
 </Tooltip>
 `
@@ -290,7 +290,7 @@ const TooltipPage: NextPage = () => {
                                 theme={themeName}
                             >
                                 <p>
-                                    An {'<Tooltip>'} with nude mode
+                                    A {'<Tooltip>'} with nude mode
                                 </p>
                             </Tooltip>
                         )}
@@ -304,7 +304,7 @@ const TooltipPage: NextPage = () => {
     theme='${themeName}'
 >
     <p>
-        An {'<Tooltip>'} with nude mode
+        A {'<Tooltip>'} with nude mode
     </p>
 </Tooltip>
 `
