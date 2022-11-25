@@ -72,17 +72,17 @@ const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropert
     const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
     const floatingComponent = overrideFloatingComponent ?? componentFactory;
     
-    const componentSize     = floatingComponent?.props.size ?? 'sm';
-    const componentSizeStr  = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
+    const componentSize        = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : 'sm';
+    const componentSizeStr     = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
     
-    const componentTheme    = floatingComponent?.props.theme ?? 'danger';
-    const componentThemeStr = (componentTheme !== undefined) ? `\n    theme='${componentTheme}'` : '';
+    const componentTheme       = ('theme' in floatingComponent?.props) ? floatingComponent?.props.theme : 'danger';
+    const componentThemeStr    = (componentTheme !== undefined) ? `\n    theme='${componentTheme}'` : '';
     
     const componentOutlined    = floatingComponent?.props.outlined ?? undefined;
     const componentOutlinedStr = (componentOutlined !== undefined) ? `\n    outlined={${componentOutlined}}` : '';
     
-    const componentNude    = floatingComponent?.props.nude ?? undefined;
-    const componentNudeStr = (componentNude !== undefined) ? `\n    nude={${componentNude}}` : '';
+    const componentNude        = floatingComponent?.props.nude     ?? undefined;
+    const componentNudeStr     = (componentNude !== undefined) ? `\n    nude={${componentNude}}` : '';
     
     return ({
         floatingTag,

@@ -241,7 +241,8 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <PackageItem package={packages.collapse}>
                         <p>
-                            A generic element with dynamic visibility (show/hide) in sliding fashion.
+                            A non-visual container with dynamic visibility (show/hide) in sliding fashion.<br />
+                            You need to place a visual (styled) component inside the {packages.collapse.packageLink} in order to make the appearance.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.dropdown}>
