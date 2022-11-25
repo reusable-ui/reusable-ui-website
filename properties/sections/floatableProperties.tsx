@@ -306,7 +306,7 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
                     {React.cloneElement(floatingComponent, {
                         floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
-                        floatingAutoFlip  : floatingComponent.props.floatingAutoFlip  ?? true,
+                        floatingAutoFlip  : true,
                     })}
                 </div>
                 
@@ -415,7 +415,7 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
                     {React.cloneElement(floatingComponent, {
                         floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
-                        floatingAutoShift : floatingComponent.props.floatingAutoShift ?? true,
+                        floatingAutoShift : true,
                     })}
                 </div>
                 
