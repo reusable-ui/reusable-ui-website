@@ -12,7 +12,7 @@ export interface PackageItemProps extends AccordionItemProps
 }
 export const PackageItem = (props: PackageItemProps) => {
     const {
-        package  : packageName,
+        package  : packageInfo,
         children : description,
     ...restAccordionItemProps} = props;
     
@@ -22,10 +22,13 @@ export const PackageItem = (props: PackageItemProps) => {
         <AccordionItem
             {...restAccordionItemProps}
             
-            label={packageName.packageDisplay}
+            label={packageInfo.packageDisplay}
+            
+            tag='a'
+            href={packageInfo.packageUrl}
         >
             {description}
-            {packageName.packageSeeDocumentationParagraph}
+            {packageInfo.packageSeeDocumentationParagraph}
         </AccordionItem>
     )
 }
