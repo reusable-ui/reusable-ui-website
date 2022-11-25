@@ -347,6 +347,30 @@ const TooltipPage: NextPage = () => {
                             </ListItem>
                         </List>
                     </AccordionItem>
+                    <AccordionItem label='Animations'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>transformOrigin</code>
+                                <p>The default <code>transform-origin</code> to apply to the <TheComponentLink />.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>transformOriginTop</code>
+                                <p>The <code>transform-origin</code> to apply to the <TheComponentLink /> when the <TheComponentLink /> is <strong>on the top</strong> of corresponding component (pointing to bottom).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>transformOriginRight</code>
+                                <p>The <code>transform-origin</code> to apply to the <TheComponentLink /> when the <TheComponentLink /> is <strong>on the right</strong> of corresponding component (pointing to left).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>transformOriginBottom</code>
+                                <p>The <code>transform-origin</code> to apply to the <TheComponentLink /> when the <TheComponentLink /> is <strong>on the bottom</strong> of corresponding component (pointing to top).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>transformOriginLeft</code>
+                                <p>The <code>transform-origin</code> to apply to the <TheComponentLink /> when the <TheComponentLink /> is <strong>on the left</strong> of corresponding component (pointing to right).</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
                     <AccordionItem label='Typos'>
                         <List listStyle='flush'>
                             <ListItem>
@@ -399,21 +423,26 @@ const TooltipPage: NextPage = () => {
                                 <p>The <strong>shape</strong> of the <TheComponentLink />&apos;s <strong>arrow</strong>.</p>
                             </ListItem>
                             
+                            
                             <ListItem>
-                                <code>arrowTopTransform</code>
-                                <p>The <strong>transform</strong> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the top</strong> of corresponding component (pointing to bottom).</p>
+                                <code>arrowTransform</code>
+                                <p>The default <code>transform</code> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>arrowRightTransform</code>
-                                <p>The <strong>transform</strong> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the right</strong> of corresponding component (pointing to left).</p>
+                                <code>arrowTransformTop</code>
+                                <p>The <code>transform</code> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the top</strong> of corresponding component (pointing to bottom).</p>
                             </ListItem>
                             <ListItem>
-                                <code>arrowBottomTransform</code>
-                                <p>The <strong>transform</strong> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the bottom</strong> of corresponding component (pointing to top).</p>
+                                <code>arrowTransformRight</code>
+                                <p>The <code>transform</code> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the right</strong> of corresponding component (pointing to left).</p>
                             </ListItem>
                             <ListItem>
-                                <code>arrowLeftTransform</code>
-                                <p>The <strong>transform</strong> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the left</strong> of corresponding component (pointing to right).</p>
+                                <code>arrowTransformBottom</code>
+                                <p>The <code>transform</code> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the bottom</strong> of corresponding component (pointing to top).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>arrowTransformLeft</code>
+                                <p>The <code>transform</code> to apply to the <TheComponentLink />&apos;s <strong>arrow</strong> when the <TheComponentLink /> is <strong>on the left</strong> of corresponding component (pointing to right).</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
