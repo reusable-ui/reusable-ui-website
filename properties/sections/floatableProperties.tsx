@@ -72,6 +72,9 @@ const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropert
     const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
     const floatingComponent = overrideFloatingComponent ?? componentFactory;
     
+    const componentOrientation        = floatingComponent?.props.orientation ?? undefined;
+    const componentOrientationStr     = (componentOrientation !== undefined) ? `\n    orientation='${componentOrientation}'` : '';
+    
     const componentSize        = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : 'sm';
     const componentSizeStr     = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
     
@@ -87,6 +90,8 @@ const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropert
     return ({
         floatingTag,
         floatingProperties: (
+            componentOrientationStr
+            +
             componentSizeStr
             +
             componentThemeStr

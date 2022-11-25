@@ -1,12 +1,13 @@
 import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { generic, collapse } from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
+import { OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Collapse as OriCollapse, CollapseProps, List, ListItem, CardBody } from '@reusable-ui/components'
+import { Collapse as OriCollapse, CollapseProps, List, ListItem, CardBody, Basic } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty } from '../../properties/sections/stateProperties'
@@ -18,16 +19,27 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const Collapse = (props: CollapseProps) => <OriCollapse {...props} expanded={props.expanded ?? true} />
 
+const defaultFloatingChildren = '    Hello World!'
+
+
+
 const DemoCollapse = () => {
     const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
     
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '4rem'}}>
-            <Collapse expanded={isFlip}>
-                Hurry up!
-            </Collapse>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start'}}>
+            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
+                <Collapse expanded={isFlip} orientation='block'>
+                    <Image src='/images/lorem-image-1.svg' width={128} height={128} />
+                </Collapse>
+            </div>
+            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
+                <Collapse expanded={isFlip} orientation='inline'>
+                    <Image src='/images/lorem-image-1.svg' width={128} height={128} />
+                </Collapse>
+            </div>
         </CardBody>
     );
 }
@@ -37,13 +49,51 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', justifyContent: 'start'}}>
             <p>
                 <code>{`<Collapse expanded={${isFlip}}>`}</code>
             </p>
-            <Collapse expanded={isFlip}>
-                Hopla!
+            <Collapse expanded={isFlip} orientation='block'>
+                <Image src='/images/lorem-image-1.svg' width={128} height={128} />
             </Collapse>
+        </CardBody>
+    );
+}
+const DemoOrientation = () => {
+    const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
+            <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
+                <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
+                    <Collapse expanded={isFlip} orientation='block'>
+                        <Basic style={{boxSizing: 'border-box', inlineSize: '8rem', overflow: 'hidden'}}>
+                            Vertical
+                            <br />
+                            Collapse
+                            <br />
+                            /
+                            <br />
+                            Expand
+                        </Basic>
+                    </Collapse>
+                </div>
+                <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
+                    <Collapse expanded={isFlip} orientation='inline'>
+                        <Basic style={{boxSizing: 'border-box', blockSize: '8rem', overflow: 'hidden'}}>
+                            Horizontal
+                            <br />
+                            Collapse
+                            <br />
+                            /
+                            <br />
+                            Expand
+                        </Basic>
+                    </Collapse>
+                </div>
+            </div>
         </CardBody>
     );
 }
@@ -51,7 +101,7 @@ const DemoExpanded = () => {
 
 
 const CollapsePage: NextPage = () => {
-    return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={<Collapse {...({size: undefined, theme: undefined} as {})} />}>
+    return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={<Collapse orientation='block' {...({size: undefined, theme: undefined} as {})} />}>
         <Head>
             <title>{`${collapse.componentTag} Component`}</title>
             <meta name="description" content={`${collapse.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
@@ -65,7 +115,7 @@ const CollapsePage: NextPage = () => {
                 <p>
                     Here the demo:
                 </p>
-                <Preview display='down' stretch={false} cardBodyComponent={<DemoCollapse />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoCollapse />} />
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
@@ -75,49 +125,63 @@ const CollapsePage: NextPage = () => {
 `
 <Collapse
     expanded={true}
+    orientation='block'
 >
-    Hopla!
+    <img src='/images/lorem-image-1.svg' />
 </Collapse>
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
-            <LazyProperty />
-            <FloatingProperties>
-                <FloatingOnProperty />
-                <FloatingPlacementProperty />
-                <FloatingStrategyProperty />
-                <FloatingAutoFlipProperty />
-                <FloatingAutoShiftProperty />
-                <FloatingOffsetProperty />
-                <FloatingShiftProperty />
-                <OnFloatingUpdateProperty />
-            </FloatingProperties>
-            <VariantProperties>
-                <OrientationProperty>
-                    <Preview display='right' stretch={false}>
-                        {orientationOptions.map((orientationName, index) =>
-                            <Collapse
-                                key={index}
-                                orientation={orientationName}
-                            >
-                                A {'<Collapse>'} with collapsing ${orientationName}
-                            </Collapse>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {orientationOptions.map((orientationName) =>
+            <OrientationProperty>
+                <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
+                <p></p>
+                <TypeScriptCode>{
 `
 <Collapse
-    orientation='${orientationName}'
+    expanded={true}
+    orientation='block'
 >
-    A ${'<Collapse>'} with collapsing ${orientationName}
+    <Basic style={{boxSizing: 'border-box', inlineSize: '8rem', overflow: 'hidden'}}>
+        Vertical
+        <br />
+        Collapse
+        <br />
+        /
+        <br />
+        Expand
+    </Basic>
+</Collapse>
+
+
+
+<Collapse
+    expanded={true}
+    orientation='inline'
+>
+    <Basic style={{boxSizing: 'border-box', blockSize: '8rem', overflow: 'hidden'}}>
+        Horizontal
+        <br />
+        Collapse
+        <br />
+        /
+        <br />
+        Expand
+    </Basic>
 </Collapse>
 `
-                        ).join('')}
-                    </TypeScriptCode>
-                </OrientationProperty>
-            </VariantProperties>
+                }</TypeScriptCode>
+            </OrientationProperty>
+            <LazyProperty />
+            <FloatingProperties>
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={0} floatingShift={0} />
+                <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingStrategyProperty />
+                <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingOffsetProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingShiftProperty floatingChildren={defaultFloatingChildren} />
+                <OnFloatingUpdateProperty />
+            </FloatingProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
