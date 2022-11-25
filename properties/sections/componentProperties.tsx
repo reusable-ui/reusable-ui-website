@@ -475,3 +475,49 @@ export const ThumbStyleProperty = () => {
         </PropertySection>
     );
 }
+
+
+
+export interface ArrowComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const ArrowComponentProperty = ({children: preview} : ArrowComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.arrowComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {generic.packageLink} component</strong> used as the <strong>arrow</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} arrowComponent={
+    <MyCustomArrow />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface ArrowRefPropertyProps {
+    children ?: React.ReactNode
+}
+export const ArrowRefProperty = ({children: preview} : ArrowRefPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.arrowRef} preview={preview}>
+            <p>
+                Gets the <strong>DOM reference</strong> of the internal {generic.packageLink} component used as the <strong>arrow</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} arrowRef={fooArrowRef} />`
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} arrowComponent={
+    <Generic elmRef={fooArrowRef} />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}

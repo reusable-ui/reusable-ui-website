@@ -11,10 +11,10 @@ import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
-import { LazyProperty } from '../../properties/sections/behaviorProperties'
+import { CollapseDelayProperty, ExpandDelayProperty, LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { DetailedIconProperty } from '../../properties/sections/iconProperties'
-import { ComponentProperties, ControlComponentProperty, IconComponentProperty } from '../../properties/sections/componentProperties'
+import { ArrowComponentProperty, ArrowRefProperty, ComponentProperties, ControlComponentProperty, IconComponentProperty } from '../../properties/sections/componentProperties'
 
 
 
@@ -103,7 +103,7 @@ const TooltipPage: NextPage = () => {
                 <Preview display='down' stretch={false} cardBodyComponent={<DemoTooltip />} />
             </HeroSection>
             <ComponentInstallation />
-            <ExpandedProperty>
+            <ExpandedProperty uncontrollableBehavior={<p><strong>Automatically show/hide</strong> the <TheComponentLink /> when the user <strong>hover</strong>/<strong>focus</strong> on the corresponding component.</p>}>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
@@ -122,6 +122,8 @@ const TooltipPage: NextPage = () => {
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
+            <ExpandDelayProperty />
+            <CollapseDelayProperty />
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='right' floatingOffset={0} floatingShift={0} />
@@ -154,6 +156,9 @@ const TooltipPage: NextPage = () => {
 <Tooltip
     size='${sizeName}'
     theme='warning'
+    
+    floatingOn={buttonRef}
+    floatingPlacement='right'
 >
     <p>
         A {'<Tooltip>'} with ${sizeName} size
@@ -182,6 +187,9 @@ const TooltipPage: NextPage = () => {
 `
 <Tooltip
     theme='${themeName}'
+    
+    floatingOn={buttonRef}
+    floatingPlacement='right'
 >
     <p>
         A {'<Tooltip>'} with ${themeName} theme
@@ -212,6 +220,9 @@ const TooltipPage: NextPage = () => {
 <Tooltip
     gradient={true}
     theme='${themeName}'
+    
+    floatingOn={buttonRef}
+    floatingPlacement='right'
 >
     <p>
         A {'<Tooltip>'} with gradient mode
@@ -242,6 +253,9 @@ const TooltipPage: NextPage = () => {
 <Tooltip
     outlined={true}
     theme='${themeName}'
+    
+    floatingOn={buttonRef}
+    floatingPlacement='right'
 >
     <p>
         A {'<Tooltip>'} with outlined mode
@@ -272,6 +286,9 @@ const TooltipPage: NextPage = () => {
 <Tooltip
     mild={false}
     theme='${themeName}'
+    
+    floatingOn={buttonRef}
+    floatingPlacement='right'
 >
     <p>
         A {'<Tooltip>'} without mild mode
@@ -302,6 +319,9 @@ const TooltipPage: NextPage = () => {
 <Tooltip
     nude={true}
     theme='${themeName}'
+    
+    floatingOn={buttonRef}
+    floatingPlacement='right'
 >
     <p>
         A {'<Tooltip>'} with nude mode
@@ -313,6 +333,8 @@ const TooltipPage: NextPage = () => {
                 </NudeProperty>
             </VariantProperties>
             <ComponentProperties>
+                <ArrowComponentProperty />
+                <ArrowRefProperty />
             </ComponentProperties>
             <InheritedProperties />
             <Variables variables={

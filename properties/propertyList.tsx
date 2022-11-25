@@ -89,6 +89,8 @@ export const iconPosition        = new PropertyInfo('iconPosition')
 // behaviors:
 export const actionCtrl          = new PropertyInfo('actionCtrl')
 export const lazy                = new PropertyInfo('lazy')
+export const expandDelay         = new PropertyInfo('expandDelay')
+export const collapseDelay       = new PropertyInfo('collapseDelay')
 
 
 
@@ -143,3 +145,6 @@ export const trackStyle          = new PropertyInfo('trackStyle')
 export const trackLowerStyle     = new PropertyInfo('trackLowerStyle')
 export const trackUpperStyle     = new PropertyInfo('trackUpperStyle')
 export const thumbStyle          = new PropertyInfo('thumbStyle')
+
+export const arrowComponent      = new PropertyInfo('arrowComponent')
+export const arrowRef            = new PropertyInfo('arrowRef')

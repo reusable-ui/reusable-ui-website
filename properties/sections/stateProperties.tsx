@@ -516,14 +516,17 @@ export const InheritValidationProperty = ({children: preview}: PreviewProps) => 
 
 
 
-export const ExpandedProperty = ({children: preview}: PreviewProps) => {
+export interface ExpandedPropertyProps extends PreviewProps {
+    uncontrollableBehavior ?: React.ReactNode
+}
+export const ExpandedProperty = ({children: preview, uncontrollableBehavior}: ExpandedPropertyProps) => {
     return (
         <PropertySection property={properties.expanded} preview={preview} possibleValues={
             <Accordion>
                 <AccordionItem label={<code>undefined</code>}>
-                    <p>
+                    {uncontrollableBehavior ?? <p>
                         Uses <strong>default</strong> expanded setting.
-                    </p>
+                    </p>}
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>

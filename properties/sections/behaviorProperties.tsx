@@ -74,3 +74,28 @@ export const LazyProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
+
+
+
+export const ExpandDelayProperty = ({children: preview}: PreviewProps) => {
+    const {component} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.expandDelay} preview={preview}>
+            <p>
+                Defines the <strong>minimum duration</strong> (in milliseconds) of the user for <strong>hovering</strong>/<strong>focusing</strong> of the corresponding component to <strong>show</strong> the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const CollapseDelayProperty = ({children: preview}: PreviewProps) => {
+    const {component} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.collapseDelay} preview={preview}>
+            <p>
+                Defines the <strong>minimum duration</strong> (in milliseconds) of the user for <strong>leaving</strong>/<strong>un-focusing</strong> of the corresponding component to <strong>hide</strong> the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
