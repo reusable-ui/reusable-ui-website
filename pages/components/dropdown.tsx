@@ -19,12 +19,12 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const DummyUiSmall = () => {
     return (
-        <Image src='/images/lorem-image-1.svg' width={48} height={48} />
+        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
     );
 }
 const DummyUiBig = () => {
     return (
-        <Image src='/images/lorem-image-1.svg' width={128} height={128} />
+        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={128} height={128} />
     );
 }
 const Dropdown = (props: Partial<DropdownProps>) => <OriDropdown {...props} expanded={props.expanded ?? true}>
@@ -153,7 +153,10 @@ const DropdownPage: NextPage = () => {
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
-                <FloatingPlacementProperty />
+                <FloatingPlacementProperty floatingComponent={<Dropdown>
+                    {/* eslint-disable @next/next/no-img-element */}
+                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
+                </Dropdown>} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} />

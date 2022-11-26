@@ -19,12 +19,12 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 const DummyUiSmall = () => {
     return (
-        <Image src='/images/lorem-image-1.svg' width={48} height={48} />
+        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
     );
 }
 const DummyUiBig = () => {
     return (
-        <Image src='/images/lorem-image-1.svg' width={128} height={128} />
+        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={128} height={128} />
     );
 }
 const Collapse = (props: CollapseProps) => <OriCollapse {...props} expanded={props.expanded ?? true} style={{display: 'flex'}}>
@@ -146,7 +146,10 @@ const CollapsePage: NextPage = () => {
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
-                <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingPlacementProperty floatingComponent={<Collapse>
+                    {/* eslint-disable @next/next/no-img-element */}
+                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
+                </Collapse>} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} />

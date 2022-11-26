@@ -231,17 +231,19 @@ const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, ta
     
     
     return (
-        <SelectFloatingPlacement>{(floatingPlacement) => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <SelectFloatingPlacement>{(floatingPlacement) =>
             <Suspense>
-                {React.cloneElement(targetComponent, {
-                    elmRef : targetComponent.props.elmRef ?? buttonRef,
-                })}
-                {React.cloneElement(floatingComponent, {
-                    floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                    floatingPlacement : floatingComponent.props.floatingPlacement ?? floatingPlacement,
-                })}
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    {React.cloneElement(targetComponent, {
+                        elmRef : targetComponent.props.elmRef ?? buttonRef,
+                    })}
+                    {React.cloneElement(floatingComponent, {
+                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? floatingPlacement,
+                    })}
+                </div>
             </Suspense>
-        </div>}</SelectFloatingPlacement>
+        }</SelectFloatingPlacement>
     );
 }
 
