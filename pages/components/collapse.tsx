@@ -14,6 +14,14 @@ import { ExpandedProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
+import { useMergeClasses } from '@reusable-ui/core'
+import { dynamicStyleSheet } from '@cssfn/cssfn-react'
+
+
+
+const useCollapseStyleSheet = dynamicStyleSheet(() => ({
+    display: 'grid',
+}))
 
 
 
@@ -27,9 +35,24 @@ const DummyUiBig = () => {
         <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={128} height={128} />
     );
 }
-const Collapse = (props: CollapseProps) => <OriCollapse {...props} expanded={props.expanded ?? true} style={{display: 'flex'}}>
-    {props.children ?? <DummyUiBig />}
-</OriCollapse>
+const Collapse = (props: CollapseProps) => {
+    const styleSheet = useCollapseStyleSheet();
+    
+    const classes = useMergeClasses(
+        props.classes,
+        styleSheet.main,
+    );
+    
+    return (
+        <OriCollapse
+            {...props}
+            expanded={props.expanded ?? true}
+            classes={classes}
+        >
+            {props.children ?? <DummyUiBig />}
+        </OriCollapse>
+    );
+}
 
 const defaultFloatingChildren = '    <YourComponent />'
 
