@@ -9,12 +9,13 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Radio as OriRadio, RadioProps, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
 const Radio = (props: RadioProps) => <OriRadio {...props} theme={props.theme ?? 'primary'} name={props.name ?? 'test'} />
 const Preview = (props: PreviewProps) => <OriPreview {...props} cardBodyComponent={<CardBody tag='form' />} />
+
 
 
 const RadioPage: NextPage = () => {
@@ -346,89 +347,6 @@ const RadioPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Radio
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                                name='test'
-                            >
-                                A {'<Radio>'} with focus indicator
-                            </Radio>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Radio
-    theme='${themeName}'
-    focused={true}
-    name='test'
->
-    A {'<Radio>'} with focus indicator
-</Radio>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Radio
-                                theme={themeName}
-                                arrived={false}
-                                name='test'
-                            >
-                                A {'<Radio>'} without arrive indicator
-                            </Radio>
-                            <Radio
-                                theme={themeName}
-                                arrived={true}
-                                name='test'
-                            >
-                                A {'<Radio>'} with arrive indicator
-                            </Radio>
-                            <Radio
-                                theme={themeName}
-                                arrived={undefined}
-                                name='test'
-                            >
-                                A {'<Radio>'} with auto arrive indicator
-                            </Radio>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Radio
-    theme='${themeName}'
-    arrived={false}
-    name='test'
->
-    A {'<Radio>'} without arrive indicator
-</Radio>
-<Radio
-    theme='${themeName}'
-    arrived={true}
-    name='test'
->
-    A {'<Radio>'} with arrive indicator
-</Radio>
-<Radio
-    theme='${themeName}'
-    arrived={undefined}
-    name='test'
->
-    A {'<Radio>'} with auto arrive indicator
-</Radio>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

@@ -3,13 +3,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { button, toggleButton } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { ToggleButton as OriToggleButton, ToggleButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, DefaultActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import {active, onClick} from '../../properties/propertyList'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
@@ -381,130 +380,6 @@ const ToggleButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <ToggleButton
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                A {'<ToggleButton>'} with focus indicator
-                            </ToggleButton>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ToggleButton
-    theme='${themeName}'
-    focused={true}
->
-    A {'<ToggleButton>'} with focus indicator
-</ToggleButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <ToggleButton
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                A {'<ToggleButton>'} without arrive indicator
-                            </ToggleButton>
-                            <ToggleButton
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                A {'<ToggleButton>'} with arrive indicator
-                            </ToggleButton>
-                            <ToggleButton
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                A {'<ToggleButton>'} with auto arrive indicator
-                            </ToggleButton>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ToggleButton
-    theme='${themeName}'
-    arrived={false}
->
-    A {'<ToggleButton>'} without arrive indicator
-</ToggleButton>
-<ToggleButton
-    theme='${themeName}'
-    arrived={true}
->
-    A {'<ToggleButton>'} with arrive indicator
-</ToggleButton>
-<ToggleButton
-    theme='${themeName}'
-    arrived={undefined}
->
-    A {'<ToggleButton>'} with auto arrive indicator
-</ToggleButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
-                <PressedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <ToggleButton
-                                theme={themeName}
-                                pressed={false}
-                            >
-                                A {'<ToggleButton>'} without pressed indicator
-                            </ToggleButton>
-                            <ToggleButton
-                                theme={themeName}
-                                pressed={true}
-                            >
-                                A {'<ToggleButton>'} with pressed indicator
-                            </ToggleButton>
-                            <ToggleButton
-                                theme={themeName}
-                                pressed={undefined}
-                            >
-                                A {'<ToggleButton>'} with auto pressed indicator
-                            </ToggleButton>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ToggleButton
-    theme='${themeName}'
-    pressed={false}
->
-    A {'<ToggleButton>'} without pressed indicator
-</ToggleButton>
-<ToggleButton
-    theme='${themeName}'
-    pressed={true}
->
-    A {'<ToggleButton>'} with pressed indicator
-</ToggleButton>
-<ToggleButton
-    theme='${themeName}'
-    pressed={undefined}
->
-    A {'<ToggleButton>'} with auto pressed indicator
-</ToggleButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </PressedProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

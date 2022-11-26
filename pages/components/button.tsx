@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
 import {tag} from '../../properties/propertyList'
 
@@ -379,130 +379,6 @@ const ButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Button
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                A {'<Button>'} with focus indicator
-                            </Button>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Button
-    theme='${themeName}'
-    focused={true}
->
-    A {'<Button>'} with focus indicator
-</Button>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Button
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                A {'<Button>'} without arrive indicator
-                            </Button>
-                            <Button
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                A {'<Button>'} with arrive indicator
-                            </Button>
-                            <Button
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                A {'<Button>'} with auto arrive indicator
-                            </Button>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Button
-    theme='${themeName}'
-    arrived={false}
->
-    A {'<Button>'} without arrive indicator
-</Button>
-<Button
-    theme='${themeName}'
-    arrived={true}
->
-    A {'<Button>'} with arrive indicator
-</Button>
-<Button
-    theme='${themeName}'
-    arrived={undefined}
->
-    A {'<Button>'} with auto arrive indicator
-</Button>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
-                <PressedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Button
-                                theme={themeName}
-                                pressed={false}
-                            >
-                                A {'<Button>'} without pressed indicator
-                            </Button>
-                            <Button
-                                theme={themeName}
-                                pressed={true}
-                            >
-                                A {'<Button>'} with pressed indicator
-                            </Button>
-                            <Button
-                                theme={themeName}
-                                pressed={undefined}
-                            >
-                                A {'<Button>'} with auto pressed indicator
-                            </Button>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Button
-    theme='${themeName}'
-    pressed={false}
->
-    A {'<Button>'} without pressed indicator
-</Button>
-<Button
-    theme='${themeName}'
-    pressed={true}
->
-    A {'<Button>'} with pressed indicator
-</Button>
-<Button
-    theme='${themeName}'
-    pressed={undefined}
->
-    A {'<Button>'} with auto pressed indicator
-</Button>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </PressedProperty>
             </StateProperties>
             <InheritedProperties />
             <Variables variables={

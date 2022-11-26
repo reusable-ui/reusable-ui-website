@@ -9,11 +9,12 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Check as OriCheck, CheckProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
 const Check = (props: CheckProps) => <OriCheck {...props} theme={props.theme ?? 'primary'} />
+
 
 
 const CheckPage: NextPage = () => {
@@ -332,81 +333,6 @@ const CheckPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Check
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                A {'<Check>'} with focus indicator
-                            </Check>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Check
-    theme='${themeName}'
-    focused={true}
->
-    A {'<Check>'} with focus indicator
-</Check>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Check
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                A {'<Check>'} without arrive indicator
-                            </Check>
-                            <Check
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                A {'<Check>'} with arrive indicator
-                            </Check>
-                            <Check
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                A {'<Check>'} with auto arrive indicator
-                            </Check>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Check
-    theme='${themeName}'
-    arrived={false}
->
-    A {'<Check>'} without arrive indicator
-</Check>
-<Check
-    theme='${themeName}'
-    arrived={true}
->
-    A {'<Check>'} with arrive indicator
-</Check>
-<Check
-    theme='${themeName}'
-    arrived={undefined}
->
-    A {'<Check>'} with auto arrive indicator
-</Check>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

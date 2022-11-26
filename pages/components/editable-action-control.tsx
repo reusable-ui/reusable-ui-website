@@ -9,7 +9,7 @@ import { Preview } from '../../components/Preview'
 import { Control, EditableActionControl as OriEditableActionControl, EditableActionControlProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -303,81 +303,6 @@ const EditableActionControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <EditableActionControl
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                An {'<EditableActionControl>'} with focus indicator
-                            </EditableActionControl>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableActionControl
-    theme='${themeName}'
-    focused={true}
->
-    An {'<EditableActionControl>'} with focus indicator
-</EditableActionControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <EditableActionControl
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                An {'<EditableActionControl>'} without arrive indicator
-                            </EditableActionControl>
-                            <EditableActionControl
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                An {'<EditableActionControl>'} with arrive indicator
-                            </EditableActionControl>
-                            <EditableActionControl
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                An {'<EditableActionControl>'} with auto arrive indicator
-                            </EditableActionControl>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableActionControl
-    theme='${themeName}'
-    arrived={false}
->
-    An {'<EditableActionControl>'} without arrive indicator
-</EditableActionControl>
-<EditableActionControl
-    theme='${themeName}'
-    arrived={true}
->
-    An {'<EditableActionControl>'} with arrive indicator
-</EditableActionControl>
-<EditableActionControl
-    theme='${themeName}'
-    arrived={undefined}
->
-    An {'<EditableActionControl>'} with auto arrive indicator
-</EditableActionControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

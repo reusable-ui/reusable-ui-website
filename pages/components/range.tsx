@@ -9,12 +9,13 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Range as OriRange, RangeProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, ThumbClassesProperty, ThumbComponentProperty, ThumbRefProperty, ThumbStyleProperty, TrackClassesProperty, TrackComponentProperty, TrackLowerClassesProperty, TrackLowerComponentProperty, TrackLowerRefProperty, TrackLowerStyleProperty, TrackRefProperty, TrackStyleProperty, TrackUpperClassesProperty, TrackUpperComponentProperty, TrackUpperRefProperty, TrackUpperStyleProperty } from '../../properties/sections/componentProperties'
 
 
 
 const Range = (props: RangeProps) => <OriRange {...props} theme={props.theme ?? 'primary'} />
+
 
 
 const RangePage: NextPage = () => {
@@ -292,65 +293,6 @@ const RangePage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Range
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Range
-    theme='${themeName}'
-    focused={true}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Range
-                                theme={themeName}
-                                arrived={false}
-                            />
-                            <Range
-                                theme={themeName}
-                                arrived={true}
-                            />
-                            <Range
-                                theme={themeName}
-                                arrived={undefined}
-                            />
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Range
-    theme='${themeName}'
-    arrived={false}
-/>
-<Range
-    theme='${themeName}'
-    arrived={true}
-/>
-<Range
-    theme='${themeName}'
-    arrived={undefined}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

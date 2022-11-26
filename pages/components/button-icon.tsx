@@ -3,14 +3,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { button, buttonIcon, icon } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions, buttonIconSizeOptions, buttonIconPositionOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ButtonIcon as OriButtonIcon, ButtonIconProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
 import { ButtonIconPositionProperty, ButtonIconSizeProperty, ConfiguringIconResources, DetailedIconProperty } from '../../properties/sections/iconProperties'
@@ -435,137 +434,6 @@ export const MyComponent = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <ButtonIcon
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                A {'<ButtonIcon>'} with focus indicator
-                            </ButtonIcon>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ButtonIcon
-    theme='${themeName}'
-    focused={true}
-    icon='face'
->
-    A {'<ButtonIcon>'} with focus indicator
-</ButtonIcon>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <ButtonIcon
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                A {'<ButtonIcon>'} without arrive indicator
-                            </ButtonIcon>
-                            <ButtonIcon
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                A {'<ButtonIcon>'} with arrive indicator
-                            </ButtonIcon>
-                            <ButtonIcon
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                A {'<ButtonIcon>'} with auto arrive indicator
-                            </ButtonIcon>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ButtonIcon
-    theme='${themeName}'
-    arrived={false}
-    icon='face'
->
-    A {'<ButtonIcon>'} without arrive indicator
-</ButtonIcon>
-<ButtonIcon
-    theme='${themeName}'
-    arrived={true}
-    icon='face'
->
-    A {'<ButtonIcon>'} with arrive indicator
-</ButtonIcon>
-<ButtonIcon
-    theme='${themeName}'
-    arrived={undefined}
-    icon='face'
->
-    A {'<ButtonIcon>'} with auto arrive indicator
-</ButtonIcon>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
-                <PressedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <ButtonIcon
-                                theme={themeName}
-                                pressed={false}
-                            >
-                                A {'<ButtonIcon>'} without pressed indicator
-                            </ButtonIcon>
-                            <ButtonIcon
-                                theme={themeName}
-                                pressed={true}
-                            >
-                                A {'<ButtonIcon>'} with pressed indicator
-                            </ButtonIcon>
-                            <ButtonIcon
-                                theme={themeName}
-                                pressed={undefined}
-                            >
-                                A {'<ButtonIcon>'} with auto pressed indicator
-                            </ButtonIcon>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ButtonIcon
-    theme='${themeName}'
-    pressed={false}
-    icon='face'
->
-    A {'<ButtonIcon>'} without pressed indicator
-</ButtonIcon>
-<ButtonIcon
-    theme='${themeName}'
-    pressed={true}
-    icon='face'
->
-    A {'<ButtonIcon>'} with pressed indicator
-</ButtonIcon>
-<ButtonIcon
-    theme='${themeName}'
-    pressed={undefined}
-    icon='face'
->
-    A {'<ButtonIcon>'} with auto pressed indicator
-</ButtonIcon>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </PressedProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

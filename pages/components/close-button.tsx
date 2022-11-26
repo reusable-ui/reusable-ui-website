@@ -3,13 +3,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { buttonIcon, closeButton, alert, modalCard, modalSide } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions, buttonIconSizeOptions, buttonIconPositionOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { CloseButton as OriCloseButton, CloseButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
 import { ButtonIconPositionProperty, ButtonIconSizeProperty, ConfiguringIconResources } from '../../properties/sections/iconProperties'
@@ -365,116 +364,6 @@ const CloseButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) =>
-                            <CloseButton
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                                nude={false}
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<CloseButton
-    theme='${themeName}'
-    focused={true}
-    nude={false}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <CloseButton
-                                theme={themeName}
-                                arrived={false}
-                                nude={false}
-                            />
-                            <CloseButton
-                                theme={themeName}
-                                arrived={true}
-                                nude={false}
-                            />
-                            <CloseButton
-                                theme={themeName}
-                                arrived={undefined}
-                                nude={false}
-                            />
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<CloseButton
-    theme='${themeName}'
-    arrived={false}
-    nude={false}
-/>
-<CloseButton
-    theme='${themeName}'
-    arrived={true}
-    nude={false}
-/>
-<CloseButton
-    theme='${themeName}'
-    arrived={undefined}
-    nude={false}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
-                <PressedProperty>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <CloseButton
-                                theme={themeName}
-                                pressed={false}
-                                nude={false}
-                            />
-                            <CloseButton
-                                theme={themeName}
-                                pressed={true}
-                                nude={false}
-                            />
-                            <CloseButton
-                                theme={themeName}
-                                pressed={undefined}
-                                nude={false}
-                            />
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<CloseButton
-    theme='${themeName}'
-    pressed={false}
-    nude={false}
-/>
-<CloseButton
-    theme='${themeName}'
-    pressed={true}
-    nude={false}
-/>
-<CloseButton
-    theme='${themeName}'
-    pressed={undefined}
-    nude={false}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </PressedProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

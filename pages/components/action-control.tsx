@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ActionControl as OriActionControl, ActionControlProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkProperty } from '../../properties/sections/actionProperties'
 
 
@@ -307,81 +307,6 @@ const ActionControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <ActionControl
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                An {'<ActionControl>'} with focus indicator
-                            </ActionControl>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ActionControl
-    theme='${themeName}'
-    focused={true}
->
-    An {'<ActionControl>'} with focus indicator
-</ActionControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <ActionControl
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                An {'<ActionControl>'} without arrive indicator
-                            </ActionControl>
-                            <ActionControl
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                An {'<ActionControl>'} with arrive indicator
-                            </ActionControl>
-                            <ActionControl
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                An {'<ActionControl>'} with auto arrive indicator
-                            </ActionControl>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ActionControl
-    theme='${themeName}'
-    arrived={false}
->
-    An {'<ActionControl>'} without arrive indicator
-</ActionControl>
-<ActionControl
-    theme='${themeName}'
-    arrived={true}
->
-    An {'<ActionControl>'} with arrive indicator
-</ActionControl>
-<ActionControl
-    theme='${themeName}'
-    arrived={undefined}
->
-    An {'<ActionControl>'} with auto arrive indicator
-</ActionControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <PressedProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) => <React.Fragment key={index}>

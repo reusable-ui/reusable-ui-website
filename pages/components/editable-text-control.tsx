@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, EditableTextControl as OriEditableTextControl, EditableTextControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -304,81 +304,6 @@ const EditableTextControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <EditableTextControl
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                An {'<EditableTextControl>'} with focus indicator
-                            </EditableTextControl>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableTextControl
-    theme='${themeName}'
-    focused={true}
->
-    An {'<EditableTextControl>'} with focus indicator
-</EditableTextControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <EditableTextControl
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                An {'<EditableTextControl>'} without arrive indicator
-                            </EditableTextControl>
-                            <EditableTextControl
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                An {'<EditableTextControl>'} with arrive indicator
-                            </EditableTextControl>
-                            <EditableTextControl
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                An {'<EditableTextControl>'} with auto arrive indicator
-                            </EditableTextControl>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableTextControl
-    theme='${themeName}'
-    arrived={false}
->
-    An {'<EditableTextControl>'} without arrive indicator
-</EditableTextControl>
-<EditableTextControl
-    theme='${themeName}'
-    arrived={true}
->
-    An {'<EditableTextControl>'} with arrive indicator
-</EditableTextControl>
-<EditableTextControl
-    theme='${themeName}'
-    arrived={undefined}
->
-    An {'<EditableTextControl>'} with auto arrive indicator
-</EditableTextControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

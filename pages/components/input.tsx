@@ -3,19 +3,19 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { editableTextControl, input } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Input as OriInput, InputProps, InputType, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
 const Input = (props: InputProps) => <OriInput {...props} theme={props.theme ?? 'primary'} placeholder={props.placeholder ?? 'Type something here...'} />
 const inputTypes = ['TextInput', 'SearchInput', 'PasswordInput', 'EmailInput', 'TelInput', 'UrlInput', 'NumberInput', 'TimeInput', 'WeekInput', 'DateInput', 'DateTimeInput', 'MonthInput'];
+
 
 
 const InputPage: NextPage = () => {
@@ -298,73 +298,6 @@ const InputPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Input
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                                placeholder='An <Input> with focus indicator'
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Input
-    theme='${themeName}'
-    focused={true}
-    placeholder='An <Input> with focus indicator'
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <Input
-                                theme={themeName}
-                                arrived={false}
-                                placeholder='An <Input> without arrive indicator'
-                            />
-                            <Input
-                                theme={themeName}
-                                arrived={true}
-                                placeholder='An <Input> with arrive indicator'
-                            />
-                            <Input
-                                theme={themeName}
-                                arrived={undefined}
-                                placeholder='An <Input> with auto arrive indicator'
-                            />
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Input
-    theme='${themeName}'
-    arrived={false}
-    placeholder='An <Input> without arrive indicator'
-/>
-<Input
-    theme='${themeName}'
-    arrived={true}
-    placeholder='An <Input> with arrive indicator'
-/>
-<Input
-    theme='${themeName}'
-    arrived={undefined}
-    placeholder='An <Input> with auto arrive indicator'
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

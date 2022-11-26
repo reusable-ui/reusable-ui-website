@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, EditableControl as OriEditableControl, EditableControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, EnableValidationProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -300,81 +300,6 @@ const EditableControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <EditableControl
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                An {'<EditableControl>'} with focus indicator
-                            </EditableControl>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableControl
-    theme='${themeName}'
-    focused={true}
->
-    An {'<EditableControl>'} with focus indicator
-</EditableControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <EditableControl
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                An {'<EditableControl>'} without arrive indicator
-                            </EditableControl>
-                            <EditableControl
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                An {'<EditableControl>'} with arrive indicator
-                            </EditableControl>
-                            <EditableControl
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                An {'<EditableControl>'} with auto arrive indicator
-                            </EditableControl>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableControl
-    theme='${themeName}'
-    arrived={false}
->
-    An {'<EditableControl>'} without arrive indicator
-</EditableControl>
-<EditableControl
-    theme='${themeName}'
-    arrived={true}
->
-    An {'<EditableControl>'} with arrive indicator
-</EditableControl>
-<EditableControl
-    theme='${themeName}'
-    arrived={undefined}
->
-    An {'<EditableControl>'} with auto arrive indicator
-</EditableControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { HamburgerMenuButton as OriHamburgerMenuButton, HamburgerMenuButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, DefaultActiveProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, DefaultActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
 
@@ -300,102 +300,6 @@ const HamburgerMenuButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) =>
-                            <HamburgerMenuButton
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<HamburgerMenuButton
-    theme='${themeName}'
-    focused={true}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <HamburgerMenuButton
-                                theme={themeName}
-                                arrived={false}
-                            />
-                            <HamburgerMenuButton
-                                theme={themeName}
-                                arrived={true}
-                            />
-                            <HamburgerMenuButton
-                                theme={themeName}
-                                arrived={undefined}
-                            />
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<HamburgerMenuButton
-    theme='${themeName}'
-    arrived={false}
-/>
-<HamburgerMenuButton
-    theme='${themeName}'
-    arrived={true}
-/>
-<HamburgerMenuButton
-    theme='${themeName}'
-    arrived={undefined}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
-                <PressedProperty>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <HamburgerMenuButton
-                                theme={themeName}
-                                pressed={false}
-                            />
-                            <HamburgerMenuButton
-                                theme={themeName}
-                                pressed={true}
-                            />
-                            <HamburgerMenuButton
-                                theme={themeName}
-                                pressed={undefined}
-                            />
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<HamburgerMenuButton
-    theme='${themeName}'
-    pressed={false}
-/>
-<HamburgerMenuButton
-    theme='${themeName}'
-    pressed={true}
-/>
-<HamburgerMenuButton
-    theme='${themeName}'
-    pressed={undefined}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </PressedProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

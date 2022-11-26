@@ -3,13 +3,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { button, navButton } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { NavButton as OriNavButton, NavButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, ArrivedProperty, EnabledProperty, FocusedProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import {active} from '../../properties/propertyList'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
@@ -381,130 +380,6 @@ const NavButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritActiveProperty>
-                <FocusedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <NavButton
-                                key={index}
-                                theme={themeName}
-                                focused={true}
-                            >
-                                A {'<NavButton>'} with focus indicator
-                            </NavButton>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<NavButton
-    theme='${themeName}'
-    focused={true}
->
-    A {'<NavButton>'} with focus indicator
-</NavButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </FocusedProperty>
-                <ArrivedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <NavButton
-                                theme={themeName}
-                                arrived={false}
-                            >
-                                A {'<NavButton>'} without arrive indicator
-                            </NavButton>
-                            <NavButton
-                                theme={themeName}
-                                arrived={true}
-                            >
-                                A {'<NavButton>'} with arrive indicator
-                            </NavButton>
-                            <NavButton
-                                theme={themeName}
-                                arrived={undefined}
-                            >
-                                A {'<NavButton>'} with auto arrive indicator
-                            </NavButton>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<NavButton
-    theme='${themeName}'
-    arrived={false}
->
-    A {'<NavButton>'} without arrive indicator
-</NavButton>
-<NavButton
-    theme='${themeName}'
-    arrived={true}
->
-    A {'<NavButton>'} with arrive indicator
-</NavButton>
-<NavButton
-    theme='${themeName}'
-    arrived={undefined}
->
-    A {'<NavButton>'} with auto arrive indicator
-</NavButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ArrivedProperty>
-                <PressedProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) => <React.Fragment key={index}>
-                            <NavButton
-                                theme={themeName}
-                                pressed={false}
-                            >
-                                A {'<NavButton>'} without pressed indicator
-                            </NavButton>
-                            <NavButton
-                                theme={themeName}
-                                pressed={true}
-                            >
-                                A {'<NavButton>'} with pressed indicator
-                            </NavButton>
-                            <NavButton
-                                theme={themeName}
-                                pressed={undefined}
-                            >
-                                A {'<NavButton>'} with auto pressed indicator
-                            </NavButton>
-                        </React.Fragment>)}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<NavButton
-    theme='${themeName}'
-    pressed={false}
->
-    A {'<NavButton>'} without pressed indicator
-</NavButton>
-<NavButton
-    theme='${themeName}'
-    pressed={true}
->
-    A {'<NavButton>'} with pressed indicator
-</NavButton>
-<NavButton
-    theme='${themeName}'
-    pressed={undefined}
->
-    A {'<NavButton>'} with auto pressed indicator
-</NavButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </PressedProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />
