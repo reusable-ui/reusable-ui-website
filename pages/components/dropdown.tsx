@@ -105,7 +105,7 @@ const DemoOrientation = () => {
 
 
 const DropdownPage: NextPage = () => {
-    return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={<Dropdown orientation='block' {...({size: undefined, theme: undefined} as {})}><p>{defaultFloatingChildren}</p></Dropdown>}>
+    return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={<Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}><p>{defaultFloatingChildren}</p></Dropdown>}>
         <Head>
             <title>{`${dropdown.componentTag} Component`}</title>
             <meta name="description" content={`${dropdown.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
