@@ -126,7 +126,7 @@ const TooltipPage: NextPage = () => {
             <CollapseDelayProperty />
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='right' floatingOffset={0} floatingShift={0} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
                 <FloatingPlacementProperty floatingChildren={defaultFloatingChildrenShort} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildrenShort} />
