@@ -242,8 +242,6 @@ const IndicatorPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>
