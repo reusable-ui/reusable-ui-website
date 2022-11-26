@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Indicator as OriIndicator, IndicatorProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
