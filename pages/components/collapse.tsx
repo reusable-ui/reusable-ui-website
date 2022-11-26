@@ -171,7 +171,7 @@ const CollapsePage: NextPage = () => {
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
                 <FloatingPlacementProperty floatingComponent={<Collapse>
                     {/* eslint-disable @next/next/no-img-element */}
-                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
+                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={32} height={32} />
                 </Collapse>} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />

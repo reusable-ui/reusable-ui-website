@@ -169,7 +169,7 @@ const DropdownPage: NextPage = () => {
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
                 <FloatingPlacementProperty floatingComponent={<Dropdown>
                     {/* eslint-disable @next/next/no-img-element */}
-                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
+                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={32} height={32} />
                 </Dropdown>} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
