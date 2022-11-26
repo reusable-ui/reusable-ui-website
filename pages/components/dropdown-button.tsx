@@ -1,14 +1,12 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { toggleButton, dropdownButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { AccordionItem, Accordion } from '../../components/Accordion'
-import { DropdownButton as OriDropdownButton, DropdownButtonProps, Control, List, ListItem, CardBody, CardBodyProps, GenericProps } from '@reusable-ui/components'
+import { DropdownButton as OriDropdownButton, DropdownButtonProps, Control, CardBody, CardBodyProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ActiveProperty, DefaultActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, OnActiveChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
@@ -16,43 +14,19 @@ import { OnClickPropertyOfButton } from '../../properties/sections/actionPropert
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
-import { stripoutFocusableElement, useMergeClasses } from '@reusable-ui/core'
+import { useMergeClasses } from '@reusable-ui/core'
+import { DummyUiBig } from '../../components/DummyUi'
 
 
-const useDummyUiStyleSheet = dynamicStyleSheet(() => ({
-    ...stripoutFocusableElement(),
-    display: 'flex',
-}));
+
 const useCardBodyStyleSheet = dynamicStyleSheet(() => ({
     boxSizing: 'content-box',
     blockSize: 'calc(128px + 3rem)',
     alignItems: 'start !important',
-}));
+}), { id: 'afullz9rxv' });
 
 
 
-interface DummyUiProps {
-    tabIndex ?: React.HTMLAttributes<HTMLElement>['tabIndex']
-    elmRef   ?: GenericProps<HTMLElement>['elmRef']
-}
-const DummyUiSmall = ({tabIndex, elmRef}: DummyUiProps) => {
-    const styleSheet = useDummyUiStyleSheet();
-    
-    return (
-        <span ref={elmRef} tabIndex={tabIndex ?? -1} className={styleSheet.main}>
-            <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
-        </span>
-    );
-}
-const DummyUiBig = ({tabIndex, elmRef}: DummyUiProps) => {
-    const styleSheet = useDummyUiStyleSheet();
-    
-    return (
-        <span ref={elmRef} tabIndex={tabIndex ?? -1} className={styleSheet.main}>
-            <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={128} height={128} />
-        </span>
-    );
-}
 const DropdownButton = (props: Partial<DropdownButtonProps>) => <OriDropdownButton {...props} theme={props.theme ?? 'primary'} buttonChildren={
     'Show Menu'
 }>

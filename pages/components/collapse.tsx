@@ -1,7 +1,6 @@
 import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { generic, collapse } from '../../packages/packageList'
 import { OrientationProperty } from '../../properties/sections/variantProperties'
@@ -16,25 +15,16 @@ import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { useMergeClasses } from '@reusable-ui/core'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
+import { DummyUiSmall, DummyUiBig } from '../../components/DummyUi'
 
 
 
 const useCollapseStyleSheet = dynamicStyleSheet(() => ({
     display: 'grid',
-}));
+}), { id: '108xoaz9xn' });
 
 
 
-const DummyUiSmall = () => {
-    return (
-        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
-    );
-}
-const DummyUiBig = () => {
-    return (
-        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={128} height={128} />
-    );
-}
 const Collapse = (props: CollapseProps) => {
     const styleSheet = useCollapseStyleSheet();
     
