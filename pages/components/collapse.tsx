@@ -21,7 +21,7 @@ import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 
 const useCollapseStyleSheet = dynamicStyleSheet(() => ({
     display: 'grid',
-}))
+}));
 
 
 
