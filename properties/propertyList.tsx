@@ -148,3 +148,8 @@ export const thumbStyle          = new PropertyInfo('thumbStyle')
 
 export const arrowComponent      = new PropertyInfo('arrowComponent')
 export const arrowRef            = new PropertyInfo('arrowRef')
+
+
+
+// children:
+export const children            = new PropertyInfo('children')

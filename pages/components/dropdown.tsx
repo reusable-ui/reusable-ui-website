@@ -2,15 +2,15 @@ import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { collapse, dropdown } from '../../packages/packageList'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
+import { collapse, dropdown, generic } from '../../packages/packageList'
 import { OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Dropdown as OriDropdown, DropdownProps, List, ListItem, CardBody, Basic, Generic } from '@reusable-ui/components'
+import { Dropdown as OriDropdown, DropdownProps, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ExpandedProperty } from '../../properties/sections/stateProperties'
+import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
@@ -113,6 +113,19 @@ const DropdownPage: NextPage = () => {
                 <Preview display='right' stretch={false} cardBodyComponent={<DemoDropdown />} />
             </HeroSection>
             <ComponentInstallation />
+            <Section title='Defines the Dropdown-ed UI'>
+                <p>
+                    The <TheComponentLink /> should have <strong>one child</strong> to be <strong>dropdown</strong>-ed.
+                    The child shoud be a <strong>native DOM element</strong> or <strong>functional/class component</strong> that implements {generic.packageLink}&apos;s props.
+                </p>
+                <TypeScriptCode collapsible={false}>{
+`
+<Dropdown>
+    <YourComponent />
+</Dropdown>
+`
+                }</TypeScriptCode>
+            </Section>
             <ExpandedProperty>
                     <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
@@ -127,6 +140,7 @@ const DropdownPage: NextPage = () => {
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
+            <OnExpandedChangeProperty />
             <OrientationProperty>
                 <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
