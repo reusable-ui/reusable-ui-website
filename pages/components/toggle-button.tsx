@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { ToggleButton as OriToggleButton, ToggleButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, DefaultActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { DefaultActiveProperty, EnabledProperty, InheritEnabledProperty, OnActiveChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import {active, onClick} from '../../properties/propertyList'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
@@ -322,64 +322,6 @@ const ToggleButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
-                <ActiveProperty outlinedMildWarning={false}>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <ToggleButton
-                                key={index}
-                                theme={themeName}
-                                active={true}
-                            >
-                                A {'<ToggleButton>'} with active state
-                            </ToggleButton>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<ToggleButton
-    theme='${themeName}'
-    active={true}
->
-    A {'<ToggleButton>'} with active state
-</ToggleButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ActiveProperty>
-                <InheritActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Control key={index} theme='primary' active={true}>
-                                <ToggleButton
-                                    key={index}
-                                    theme={themeName}
-                                    inheritActive={true}
-                                >
-                                    A {'<ToggleButton>'} with inherit active
-                                </ToggleButton>
-                            </Control>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Control theme='primary' active={true}>
-    <ToggleButton
-        theme='${themeName}'
-        inheritActive={true}
-    >
-        A {'<ToggleButton>'} with inherit active
-    </ToggleButton>
-</Control>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </InheritActiveProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

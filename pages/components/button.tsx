@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button as OriButton, ButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton, ParagraphChangeTagRole } from '../../properties/sections/actionProperties'
 import {tag} from '../../properties/propertyList'
 
@@ -321,8 +321,6 @@ const ButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty outlinedMildWarning={false}>
                     <Preview>
                         {themeOptions.map((themeName, index) =>

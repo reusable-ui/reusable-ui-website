@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, EditableTextControl as OriEditableTextControl, EditableTextControlProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { EnabledProperty, EnableValidationProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -248,62 +248,6 @@ const EditableTextControlPage: NextPage = () => {
                 </InheritEnabledProperty>
                 <ReadOnlyProperty />
                 <InheritReadOnlyProperty />
-                <ActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <EditableTextControl
-                                key={index}
-                                theme={themeName}
-                                active={true}
-                            >
-                                An {'<EditableTextControl>'} with active state
-                            </EditableTextControl>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<EditableTextControl
-    theme='${themeName}'
-    active={true}
->
-    An {'<EditableTextControl>'} with active state
-</EditableTextControl>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ActiveProperty>
-                <InheritActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Control key={index} theme='primary' active={true}>
-                                <EditableTextControl
-                                    key={index}
-                                    theme={themeName}
-                                    inheritActive={true}
-                                >
-                                    An {'<EditableTextControl>'} with inherit active
-                                </EditableTextControl>
-                            </Control>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Control theme='primary' active={true}>
-    <EditableTextControl
-        theme='${themeName}'
-        inheritActive={true}
-    >
-        An {'<EditableTextControl>'} with inherit active
-    </EditableTextControl>
-</Control>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </InheritActiveProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

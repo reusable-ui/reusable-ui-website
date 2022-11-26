@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { NavButton as OriNavButton, NavButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import {active} from '../../properties/propertyList'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
@@ -322,64 +322,6 @@ const NavButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
-                <ActiveProperty outlinedMildWarning={false}>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <NavButton
-                                key={index}
-                                theme={themeName}
-                                active={true}
-                            >
-                                A {'<NavButton>'} with active state
-                            </NavButton>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<NavButton
-    theme='${themeName}'
-    active={true}
->
-    A {'<NavButton>'} with active state
-</NavButton>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ActiveProperty>
-                <InheritActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Control key={index} theme='primary' active={true}>
-                                <NavButton
-                                    key={index}
-                                    theme={themeName}
-                                    inheritActive={true}
-                                >
-                                    A {'<NavButton>'} with inherit active
-                                </NavButton>
-                            </Control>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Control theme='primary' active={true}>
-    <NavButton
-        theme='${themeName}'
-        inheritActive={true}
-    >
-        A {'<NavButton>'} with inherit active
-    </NavButton>
-</Control>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </InheritActiveProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

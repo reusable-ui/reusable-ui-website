@@ -9,7 +9,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Card as OriCard, CardProps, CardHeader, CardBody, CardFooter, List, ListItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -299,8 +299,6 @@ ${cardSampleItemsString({indents: 2})}
 `
                     }</TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty>
                     <Preview display='right' stretch={false}>
                         <Card

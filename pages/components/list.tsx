@@ -636,8 +636,6 @@ ${listSampleItemsString({indents: 2})}
 `
                     }</TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty>
                     <Preview display='right' stretch={false}>
                         <List

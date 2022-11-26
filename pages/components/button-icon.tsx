@@ -9,7 +9,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ButtonIcon as OriButtonIcon, ButtonIconProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
 import { ButtonIconPositionProperty, ButtonIconSizeProperty, ConfiguringIconResources, DetailedIconProperty } from '../../properties/sections/iconProperties'
@@ -374,8 +374,6 @@ export const MyComponent = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty outlinedMildWarning={false}>
                     <Preview>
                         {themeOptions.map((themeName, index) =>

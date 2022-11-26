@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ActionControl as OriActionControl, ActionControlProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, PressedProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, PressedProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ClientSideLinkProperty } from '../../properties/sections/actionProperties'
 
 
@@ -249,8 +249,6 @@ const ActionControlPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty>
                     <Preview>
                         {themeOptions.map((themeName, index) =>

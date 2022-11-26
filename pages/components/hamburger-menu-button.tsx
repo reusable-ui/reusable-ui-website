@@ -10,7 +10,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { HamburgerMenuButton as OriHamburgerMenuButton, HamburgerMenuButtonProps, Control, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, DefaultActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, OnActiveChangeProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ActiveProperty, DefaultActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, OnActiveChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
 
@@ -250,8 +250,6 @@ const HamburgerMenuButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
                 <ActiveProperty outlinedMildWarning={false}>
                     <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>

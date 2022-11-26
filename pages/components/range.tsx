@@ -9,7 +9,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Range as OriRange, RangeProps, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { EnabledProperty, EnableValidationProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, ThumbClassesProperty, ThumbComponentProperty, ThumbRefProperty, ThumbStyleProperty, TrackClassesProperty, TrackComponentProperty, TrackLowerClassesProperty, TrackLowerComponentProperty, TrackLowerRefProperty, TrackLowerStyleProperty, TrackRefProperty, TrackStyleProperty, TrackUpperClassesProperty, TrackUpperComponentProperty, TrackUpperRefProperty, TrackUpperStyleProperty } from '../../properties/sections/componentProperties'
 
 
@@ -245,54 +245,6 @@ const RangePage: NextPage = () => {
                 </InheritEnabledProperty>
                 <ReadOnlyProperty />
                 <InheritReadOnlyProperty />
-                <ActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Range
-                                key={index}
-                                theme={themeName}
-                                active={true}
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Range
-    theme='${themeName}'
-    active={true}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ActiveProperty>
-                <InheritActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Control key={index} theme='primary' active={true}>
-                                <Range
-                                    key={index}
-                                    theme={themeName}
-                                    inheritActive={true}
-                                />
-                            </Control>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Control theme='primary' active={true}>
-    <Range
-        theme='${themeName}'
-        inheritActive={true}
-    />
-</Control>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </InheritActiveProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>

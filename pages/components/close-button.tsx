@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { CloseButton as OriCloseButton, CloseButtonProps, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonComponentProperty, ComponentProperties, IconComponentProperty } from '../../properties/sections/componentProperties'
 import { ButtonIconPositionProperty, ButtonIconSizeProperty, ConfiguringIconResources } from '../../properties/sections/iconProperties'
@@ -310,60 +310,6 @@ const CloseButtonPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </InheritEnabledProperty>
-                <ReadOnlyProperty />
-                <InheritReadOnlyProperty />
-                <ActiveProperty outlinedMildWarning={false}>
-                    <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) =>
-                            <CloseButton
-                                key={index}
-                                theme={themeName}
-                                active={true}
-                                nude={false}
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<CloseButton
-    theme='${themeName}'
-    active={true}
-    nude={false}
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ActiveProperty>
-                <InheritActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Control key={index} theme='primary' active={true}>
-                                <CloseButton
-                                    key={index}
-                                    theme={themeName}
-                                    inheritActive={true}
-                                    nude={false}
-                                />
-                            </Control>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Control theme='primary' active={true}>
-    <CloseButton
-        theme='${themeName}'
-        inheritActive={true}
-        nude={false}
-    />
-</Control>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </InheritActiveProperty>
             </StateProperties>
             <ComponentProperties>
                 <ButtonComponentProperty />

@@ -9,7 +9,7 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Control, Input as OriInput, InputProps, InputType, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, EnabledProperty, EnableValidationProperty, InheritActiveProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { EnabledProperty, EnableValidationProperty, InheritEnabledProperty, InheritReadOnlyProperty, InheritValidationProperty, IsValidProperty, ReadOnlyProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -246,58 +246,6 @@ const InputPage: NextPage = () => {
                 </InheritEnabledProperty>
                 <ReadOnlyProperty />
                 <InheritReadOnlyProperty />
-                <ActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Input
-                                key={index}
-                                theme={themeName}
-                                active={true}
-                                placeholder='An <Input> with active state'
-                            />
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Input
-    theme='${themeName}'
-    active={true}
-    placeholder='An <Input> with active state'
-/>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </ActiveProperty>
-                <InheritActiveProperty>
-                    <Preview>
-                        {themeOptions.map((themeName, index) =>
-                            <Control key={index} theme='primary' active={true}>
-                                <Input
-                                    key={index}
-                                    theme={themeName}
-                                    inheritActive={true}
-                                    placeholder='An <Input> with inherit active'
-                                />
-                            </Control>
-                        )}
-                    </Preview>
-                    <p></p>
-                    <TypeScriptCode>
-                        {themeOptions.map((themeName) =>
-`
-<Control theme='primary' active={true}>
-    <Input
-        theme='${themeName}'
-        inheritActive={true}
-        placeholder='An <Input> with inherit active'
-    />
-</Control>
-`
-                        ).join('')}
-                    </TypeScriptCode>
-                </InheritActiveProperty>
                 <EnableValidationProperty />
                 <IsValidProperty>
                     <Preview>
