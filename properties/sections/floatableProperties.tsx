@@ -123,12 +123,12 @@ const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetCom
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, targetChildren);
+    }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
-    }, floatingChildren);
+    }, floatingComponent.props.children ?? floatingChildren);
     
     
     
@@ -217,12 +217,12 @@ const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, ta
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, targetChildren);
+    }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
-    }, floatingChildren);
+    }, floatingComponent.props.children ?? floatingChildren);
     
     
     
@@ -254,12 +254,12 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, targetChildren);
+    }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
-    }, floatingChildren);
+    }, floatingComponent.props.children ?? floatingChildren);
     
     
     
@@ -368,7 +368,7 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
-    }, floatingChildren);
+    }, floatingComponent.props.children ?? floatingChildren);
     
     
     
@@ -472,12 +472,12 @@ const DemoFloatingOffset = ({floatingComponent: overrideFloatingComponent, targe
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, targetChildren);
+    }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
-    }, floatingChildren);
+    }, floatingComponent.props.children ?? floatingChildren);
     
     
     
@@ -559,12 +559,12 @@ const DemoFloatingShift = ({floatingComponent: overrideFloatingComponent, target
     targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
-    }, targetChildren);
+    }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
         size     : floatingComponent.props.size     ?? 'sm',
-    }, floatingChildren);
+    }, floatingComponent.props.children ?? floatingChildren);
     
     
     
