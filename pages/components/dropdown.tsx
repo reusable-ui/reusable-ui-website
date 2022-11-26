@@ -17,13 +17,21 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 
 
-const Dropdown = (props: DropdownProps) => <OriDropdown {...props} expanded={props.expanded ?? true}>
-    <Generic tag='div'>
-        {props.children}
-    </Generic>
+const DummyUiSmall = () => {
+    return (
+        <Image src='/images/lorem-image-1.svg' width={48} height={48} />
+    );
+}
+const DummyUiBig = () => {
+    return (
+        <Image src='/images/lorem-image-1.svg' width={128} height={128} />
+    );
+}
+const Dropdown = (props: Partial<DropdownProps>) => <OriDropdown {...props} expanded={props.expanded ?? true}>
+    {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
 </OriDropdown>
 
-const defaultFloatingChildren = '    Hello World!'
+const defaultFloatingChildren = '    <YourComponent />'
 
 
 
@@ -35,14 +43,10 @@ const DemoDropdown = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start'}}>
             <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
-                <Dropdown expanded={isFlip} orientation='block'>
-                    <Image src='/images/lorem-image-1.svg' width={128} height={128} />
-                </Dropdown>
+                <Dropdown expanded={isFlip} orientation='block' />
             </div>
             <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
-                <Dropdown expanded={isFlip} orientation='inline'>
-                    <Image src='/images/lorem-image-1.svg' width={128} height={128} />
-                </Dropdown>
+                <Dropdown expanded={isFlip} orientation='inline' />
             </div>
         </CardBody>
     );
@@ -57,9 +61,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<Dropdown expanded={${isFlip}}>`}</code>
             </p>
-            <Dropdown expanded={isFlip} orientation='block'>
-                <Image src='/images/lorem-image-1.svg' width={128} height={128} />
-            </Dropdown>
+            <Dropdown expanded={isFlip} orientation='block' />
         </CardBody>
     );
 }
@@ -72,30 +74,10 @@ const DemoOrientation = () => {
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
             <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
                 <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Dropdown expanded={isFlip} orientation='block'>
-                        <Basic style={{boxSizing: 'border-box', inlineSize: '8rem', overflow: 'hidden'}}>
-                            Vertical
-                            <br />
-                            Dropdown
-                            <br />
-                            /
-                            <br />
-                            Expand
-                        </Basic>
-                    </Dropdown>
+                    <Dropdown expanded={isFlip} orientation='block' />
                 </div>
                 <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Dropdown expanded={isFlip} orientation='inline'>
-                        <Basic style={{boxSizing: 'border-box', blockSize: '8rem', overflow: 'hidden'}}>
-                            Horizontal
-                            <br />
-                            Dropdown
-                            <br />
-                            /
-                            <br />
-                            Expand
-                        </Basic>
-                    </Dropdown>
+                    <Dropdown expanded={isFlip} orientation='inline' />
                 </div>
             </div>
         </CardBody>
@@ -105,7 +87,9 @@ const DemoOrientation = () => {
 
 
 const DropdownPage: NextPage = () => {
-    return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={<Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}><p>{defaultFloatingChildren}</p></Dropdown>}>
+    return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={<Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}>
+        <DummyUiSmall />
+    </Dropdown>}>
         <Head>
             <title>{`${dropdown.componentTag} Component`}</title>
             <meta name="description" content={`${dropdown.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
@@ -138,7 +122,7 @@ const DropdownPage: NextPage = () => {
     expanded={true}
     orientation='block'
 >
-    <img src='/images/lorem-image-1.svg' />
+    <YourComponent />
 </Dropdown>
 `
                     }</TypeScriptCode>
@@ -152,15 +136,7 @@ const DropdownPage: NextPage = () => {
     expanded={true}
     orientation='block'
 >
-    <Basic style={{boxSizing: 'border-box', inlineSize: '8rem', overflow: 'hidden'}}>
-        Vertical
-        <br />
-        Dropdown
-        <br />
-        /
-        <br />
-        Expand
-    </Basic>
+    <YourComponent />
 </Dropdown>
 
 
@@ -169,23 +145,15 @@ const DropdownPage: NextPage = () => {
     expanded={true}
     orientation='inline'
 >
-    <Basic style={{boxSizing: 'border-box', blockSize: '8rem', overflow: 'hidden'}}>
-        Horizontal
-        <br />
-        Dropdown
-        <br />
-        /
-        <br />
-        Expand
-    </Basic>
+    <YourComponent />
 </Dropdown>
 `
                 }</TypeScriptCode>
             </OrientationProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={0} floatingShift={0} />
-                <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
+                <FloatingPlacementProperty />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} />
