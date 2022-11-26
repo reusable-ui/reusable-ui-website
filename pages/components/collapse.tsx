@@ -17,9 +17,21 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 
 
-const Collapse = (props: CollapseProps) => <OriCollapse {...props} expanded={props.expanded ?? true} />
+const DummyUiSmall = () => {
+    return (
+        <Image src='/images/lorem-image-1.svg' width={48} height={48} />
+    );
+}
+const DummyUiBig = () => {
+    return (
+        <Image src='/images/lorem-image-1.svg' width={128} height={128} />
+    );
+}
+const Collapse = (props: CollapseProps) => <OriCollapse {...props} expanded={props.expanded ?? true} style={{display: 'flex'}}>
+    {props.children ?? <DummyUiBig />}
+</OriCollapse>
 
-const defaultFloatingChildren = '    Hello World!'
+const defaultFloatingChildren = '    <YourComponent />'
 
 
 
@@ -31,14 +43,10 @@ const DemoCollapse = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start'}}>
             <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
-                <Collapse expanded={isFlip} orientation='block'>
-                    <Image src='/images/lorem-image-1.svg' width={128} height={128} />
-                </Collapse>
+                <Collapse expanded={isFlip} orientation='block' />
             </div>
             <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
-                <Collapse expanded={isFlip} orientation='inline'>
-                    <Image src='/images/lorem-image-1.svg' width={128} height={128} />
-                </Collapse>
+                <Collapse expanded={isFlip} orientation='inline' />
             </div>
         </CardBody>
     );
@@ -53,9 +61,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<Collapse expanded={${isFlip}}>`}</code>
             </p>
-            <Collapse expanded={isFlip} orientation='block'>
-                <Image src='/images/lorem-image-1.svg' width={128} height={128} />
-            </Collapse>
+            <Collapse expanded={isFlip} orientation='block' />
         </CardBody>
     );
 }
@@ -68,30 +74,10 @@ const DemoOrientation = () => {
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
             <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
                 <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Collapse expanded={isFlip} orientation='block'>
-                        <Basic style={{boxSizing: 'border-box', inlineSize: '8rem', overflow: 'hidden'}}>
-                            Vertical
-                            <br />
-                            Collapse
-                            <br />
-                            /
-                            <br />
-                            Expand
-                        </Basic>
-                    </Collapse>
+                    <Collapse expanded={isFlip} orientation='block' />
                 </div>
                 <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Collapse expanded={isFlip} orientation='inline'>
-                        <Basic style={{boxSizing: 'border-box', blockSize: '8rem', overflow: 'hidden'}}>
-                            Horizontal
-                            <br />
-                            Collapse
-                            <br />
-                            /
-                            <br />
-                            Expand
-                        </Basic>
-                    </Collapse>
+                    <Collapse expanded={isFlip} orientation='inline' />
                 </div>
             </div>
         </CardBody>
@@ -101,7 +87,9 @@ const DemoOrientation = () => {
 
 
 const CollapsePage: NextPage = () => {
-    return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={<Collapse orientation='block' {...({size: undefined, theme: undefined} as {})} />}>
+    return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={<Collapse orientation='block' {...({size: undefined, theme: undefined} as {})}>
+        <DummyUiSmall />
+    </Collapse>}>
         <Head>
             <title>{`${collapse.componentTag} Component`}</title>
             <meta name="description" content={`${collapse.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
@@ -127,7 +115,7 @@ const CollapsePage: NextPage = () => {
     expanded={true}
     orientation='block'
 >
-    <img src='/images/lorem-image-1.svg' />
+    <YourComponent />
 </Collapse>
 `
                     }</TypeScriptCode>
@@ -141,15 +129,7 @@ const CollapsePage: NextPage = () => {
     expanded={true}
     orientation='block'
 >
-    <Basic style={{boxSizing: 'border-box', inlineSize: '8rem', overflow: 'hidden'}}>
-        Vertical
-        <br />
-        Collapse
-        <br />
-        /
-        <br />
-        Expand
-    </Basic>
+    <YourComponent />
 </Collapse>
 
 
@@ -158,22 +138,14 @@ const CollapsePage: NextPage = () => {
     expanded={true}
     orientation='inline'
 >
-    <Basic style={{boxSizing: 'border-box', blockSize: '8rem', overflow: 'hidden'}}>
-        Horizontal
-        <br />
-        Collapse
-        <br />
-        /
-        <br />
-        Expand
-    </Basic>
+    <YourComponent />
 </Collapse>
 `
                 }</TypeScriptCode>
             </OrientationProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingOffset={0} floatingShift={0} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
                 <FloatingPlacementProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
