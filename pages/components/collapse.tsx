@@ -15,7 +15,7 @@ import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { useMergeClasses } from '@reusable-ui/core'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
-import { DummyUiSmall, DummyUiBig } from '../../components/DummyUi'
+import { DummyUiBig } from '../../components/DummyUi'
 
 
 
@@ -99,9 +99,11 @@ const DemoOrientation = () => {
 
 
 const CollapsePage: NextPage = () => {
-    return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={<Collapse orientation='block' {...({size: undefined, theme: undefined} as {})}>
-        <DummyUiSmall />
-    </Collapse>}>
+    return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={
+        <Collapse orientation='block' {...({size: undefined, theme: undefined} as {})}>
+            <DummyUiBig />
+        </Collapse>
+    }>
         <Head>
             <title>{`${collapse.componentTag} Component`}</title>
             <meta name="description" content={`${collapse.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
@@ -150,7 +152,7 @@ const CollapsePage: NextPage = () => {
             </OrientationProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
                 <FloatingPlacementProperty floatingComponent={<Collapse>
                     {/* eslint-disable @next/next/no-img-element */}
                     <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={32} height={32} />

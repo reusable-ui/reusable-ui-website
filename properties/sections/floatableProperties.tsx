@@ -36,14 +36,14 @@ export const FloatingProperties = ({children} : FloatingPropertiesProps) => {
 
 export interface DemoFloatingProps {
     floatingComponent ?: React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
-    targetComponent   ?: React.ReactElement<BasicProps>
+    targetComponent   ?: React.ReactElement<BasicProps>|false
     
     targetChildren    ?: string|false
     floatingChildren  ?: string|false
 }
 export interface CodeFloatingProps {
     floatingComponent ?: React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
-    targetTag         ?: string
+    targetTag         ?: string|false
     
     targetChildren    ?: string|false
     floatingChildren  ?: string|false
@@ -75,7 +75,7 @@ const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropert
     const componentOrientation        = floatingComponent?.props.orientation ?? undefined;
     const componentOrientationStr     = (componentOrientation !== undefined) ? `\n    orientation='${componentOrientation}'` : '';
     
-    const componentSize        = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : 'sm';
+    const componentSize        = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : 'md';
     const componentSizeStr     = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
     
     const componentTheme       = ('theme' in floatingComponent?.props) ? floatingComponent?.props.theme : 'danger';
@@ -113,21 +113,21 @@ interface BaseFloatingOnProps {
 }
 interface DemoFloatingOnProps extends DemoFloatingProps, BaseFloatingOnProps {
 }
-const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'right-start', floatingOffset = -50, floatingShift = -15}: DemoFloatingOnProps) => {
+const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'right-start', floatingOffset = -50, floatingShift = -25}: DemoFloatingOnProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     const buttonRef = useRef<HTMLElement>(null);
     
     
     
-    targetComponent = React.cloneElement(targetComponent, {
+    if (targetComponent !== false) targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'sm',
+        size     : floatingComponent.props.size     ?? 'md',
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -135,17 +135,18 @@ const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetCom
     return (
         <CardBody style={{gap: '4rem'}}>
             <Suspense>
-                <div>
+                {(targetComponent !== false) && <div>
                     {targetComponent}
                     {floatingComponent}
-                </div>
+                </div>}
+                {(targetComponent === false) && <div style={{marginBlockEnd: '3rem'}} />}
                 
                 <div>
-                    {React.cloneElement(targetComponent, {
+                    {(targetComponent !== false) && React.cloneElement(targetComponent, {
                         elmRef : targetComponent.props.elmRef ?? buttonRef,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? floatingPlacement,
                         floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
                         floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
@@ -157,13 +158,13 @@ const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetCom
 }
 interface CodeFloatingOnProps extends CodeFloatingProps, BaseFloatingOnProps {
 }
-const CodeFloatingOn = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'right-start', floatingOffset = -50, floatingShift = -15}: CodeFloatingOnProps) => {
+const CodeFloatingOn = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'right-start', floatingOffset = -50, floatingShift = -25}: CodeFloatingOnProps) => {
     const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     return (
         <TypeScriptCode>{
-`
+`${(targetTag !== false) ? `
 <${targetTag}
     theme='success'
     size='lg'
@@ -178,10 +179,10 @@ ${(floatingChildren === false) ? '/>' :
 `>
 ${floatingChildren}
 </${floatingTag}>`
-}
+}` : ''}
 
 
-
+${(targetTag !== false) ? `
 <${targetTag}
     elmRef={buttonRef}
     theme='success'
@@ -190,9 +191,8 @@ ${(targetChildren === false) ? '/>' :
 `>
 ${targetChildren}
 </${targetTag}>`
-}
-<${floatingTag}
-    floatingOn={buttonRef}
+}` : ''}
+<${floatingTag}${(targetTag !== false) ? `\n    floatingOn={buttonRef}` : ''}
     floatingPlacement='${floatingPlacement}'
     floatingOffset={${floatingOffset}}
     floatingShift={${floatingShift}}
@@ -214,14 +214,14 @@ const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, ta
     
     
     
-    targetComponent = React.cloneElement(targetComponent, {
+    if (targetComponent !== false) targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'sm',
+        size     : floatingComponent.props.size     ?? 'md',
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -234,11 +234,11 @@ const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, ta
         <SelectFloatingPlacement>{(floatingPlacement) =>
             <Suspense>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    {React.cloneElement(targetComponent, {
+                    {(targetComponent !== false) && React.cloneElement(targetComponent, {
                         elmRef : targetComponent.props.elmRef ?? buttonRef,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? floatingPlacement,
                     })}
                 </div>
@@ -247,20 +247,25 @@ const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, ta
     );
 }
 
-const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+interface BaseFloatingAutoFlipShiftProps {
+    floatingPlacement ?: FloatingPlacement
+}
+interface DemoAutoFlipProps extends DemoFloatingProps, BaseFloatingAutoFlipShiftProps {
+}
+const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'top'}: DemoAutoFlipProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
-    targetComponent = React.cloneElement(targetComponent, {
+    if (targetComponent !== false) targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'sm',
+        size     : floatingComponent.props.size     ?? 'md',
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -301,18 +306,18 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '14rem', pointerEvents: 'none', gap: '14rem', justifyContent: 'start', overflowY: 'scroll'}}>
             <Suspense>
                 <div>
                 </div>
                 
                 <div>
-                    {React.cloneElement(targetComponent, {
+                    {(targetComponent !== false) && React.cloneElement(targetComponent, {
                         elmRef : targetComponent.props.elmRef ?? buttonRef,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? floatingPlacement,
                         floatingAutoFlip  : true,
                     })}
                 </div>
@@ -323,14 +328,16 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
         </CardBody>
     );
 }
-const CodeAutoFlip = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+interface CodeAutoFlipProps extends CodeFloatingProps, BaseFloatingAutoFlipShiftProps {
+}
+const CodeAutoFlip = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'top'}: CodeAutoFlipProps) => {
 const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     
     return (
         <TypeScriptCode>{
-`
+`${(targetTag !== false) ? `
 <${targetTag}
     elmRef={buttonRef}
     theme='success'
@@ -339,10 +346,9 @@ ${(targetChildren === false) ? '/>' :
 `>
 ${targetChildren}
 </${targetTag}>`
-}
-<${floatingTag}
-    floatingOn={buttonRef}
-    floatingPlacement='top'
+}` : ''}
+<${floatingTag}${(targetTag !== false) ? `\n    floatingOn={buttonRef}` : ''}
+    floatingPlacement='${floatingPlacement}'
     floatingAutoFlip={true}
     
     expanded={true}${floatingProperties}
@@ -356,20 +362,22 @@ ${floatingChildren}
     );
 }
 
-const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: DemoFloatingProps) => {
+interface DemoAutoShiftProps extends DemoFloatingProps, BaseFloatingAutoFlipShiftProps {
+}
+const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComponent = defaultTargetComponent, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'right'}: DemoAutoShiftProps) => {
     const {componentFactory} = useComponentInfo();
     let   floatingComponent = overrideFloatingComponent ?? componentFactory as React.ReactElement<FloatableProps & CollapsibleProps & BasicProps>
     
     
     
-    targetComponent = React.cloneElement(targetComponent, {
+    if (targetComponent !== false) targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
     }, ((targetChildren === false) ? false : targetChildren.split('<br />').flatMap((child, index, arr) => (index < (arr.length - 1) ? [child, <br key={index} />] : [child]))));
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'sm',
+        size     : floatingComponent.props.size     ?? 'md',
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -410,18 +418,18 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', pointerEvents: 'none', gap: '5rem', justifyContent: 'start', overflowY: 'scroll'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '14rem', pointerEvents: 'none', gap: '14rem', justifyContent: 'start', overflowY: 'scroll'}}>
             <Suspense>
                 <div>
                 </div>
                 
                 <div>
-                    {React.cloneElement(targetComponent, {
+                    {(targetComponent !== false) && React.cloneElement(targetComponent, {
                         elmRef : targetComponent.props.elmRef ?? buttonRef,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
-                        floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
+                        floatingPlacement : floatingComponent.props.floatingPlacement ?? floatingPlacement,
                         floatingAutoShift : true,
                     })}
                 </div>
@@ -432,14 +440,16 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
         </CardBody>
     );
 }
-const CodeAutoShift = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren}: CodeFloatingProps) => {
+interface CodeAutoShiftProps extends CodeFloatingProps, BaseFloatingAutoFlipShiftProps {
+}
+const CodeAutoShift = ({floatingComponent: overrideFloatingComponent, targetTag = defaultTargetTag, targetChildren = defaultAltTargetChildren, floatingChildren = defaultFloatingChildren, floatingPlacement = 'right'}: CodeAutoShiftProps) => {
 const {floatingTag, floatingProperties} = useComponentProperties({overrideFloatingComponent});
     
     
     
     return (
         <TypeScriptCode>{
-`
+`${(targetTag !== false) ? `
 <${targetTag}
     elmRef={buttonRef}
     theme='success'
@@ -448,10 +458,9 @@ ${(targetChildren === false) ? '/>' :
 `>
 ${targetChildren}
 </${targetTag}>`
-}
-<${floatingTag}
-    floatingOn={buttonRef}
-    floatingPlacement='right'
+}` : ''}
+<${floatingTag}${(targetTag !== false) ? `\n    floatingOn={buttonRef}` : ''}
+    floatingPlacement='${floatingPlacement}'
     floatingAutoShift={true}
     
     expanded={true}${floatingProperties}
@@ -471,14 +480,14 @@ const DemoFloatingOffset = ({floatingComponent: overrideFloatingComponent, targe
     
     
     
-    targetComponent = React.cloneElement(targetComponent, {
+    if (targetComponent !== false) targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'sm',
+        size     : floatingComponent.props.size     ?? 'md',
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -492,23 +501,23 @@ const DemoFloatingOffset = ({floatingComponent: overrideFloatingComponent, targe
     
     
     return (
-        <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem'}}>
+        <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem', paddingBlockEnd: '3rem'}}>
             <Suspense>
-                <p style={{marginBlockEnd: '3rem'}}>
+                <p style={{marginBlockEnd: '9rem'}}>
                     <code>{`<${floatingTag} floatingOffset={${floatingOffset}}>`}</code>
                 </p>
                 
-                <div>
-                    {React.cloneElement(targetComponent, {
+                <div style={{display: 'flex', gap: '2rem'}}>
+                    {(targetComponent !== false) && React.cloneElement(targetComponent, {
                         elmRef : targetComponent.props.elmRef ?? buttonRef,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
                         floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
                         floatingOffset    : floatingComponent.props.floatingOffset    ?? floatingOffset,
                     })}
@@ -526,7 +535,7 @@ const {floatingTag, floatingProperties} = useComponentProperties({overrideFloati
     
     return (
         <TypeScriptCode>{
-`
+`${(targetTag !== false) ? `
 <${targetTag}
     elmRef={buttonRef}
     theme='success'
@@ -535,9 +544,8 @@ ${(targetChildren === false) ? '/>' :
 `>
 ${targetChildren}
 </${targetTag}>`
-}
-<${floatingTag}
-    floatingOn={buttonRef}
+}` : ''}
+<${floatingTag}${(targetTag !== false) ? `\n    floatingOn={buttonRef}` : ''}
     floatingPlacement='top'
     floatingOffset={10}
     
@@ -558,14 +566,14 @@ const DemoFloatingShift = ({floatingComponent: overrideFloatingComponent, target
     
     
     
-    targetComponent = React.cloneElement(targetComponent, {
+    if (targetComponent !== false) targetComponent = React.cloneElement(targetComponent, {
         theme  : targetComponent.props.theme  ?? 'success',
         size   : targetComponent.props.size   ?? 'lg',
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
         theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'sm',
+        size     : floatingComponent.props.size     ?? 'md',
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -579,23 +587,23 @@ const DemoFloatingShift = ({floatingComponent: overrideFloatingComponent, target
     
     
     return (
-        <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem'}}>
+        <CardBody style={{boxSizing: 'content-box', minBlockSize: '12rem', paddingBlockEnd: '3rem'}}>
             <Suspense>
-                <p style={{marginBlockEnd: '3rem'}}>
+                <p style={{marginBlockEnd: '9rem'}}>
                     <code>{`<${floatingTag} floatingShift={${floatingShift}}>`}</code>
                 </p>
                 
-                <div>
-                    {React.cloneElement(targetComponent, {
+                <div style={{display: 'flex', gap: '2rem'}}>
+                    {(targetComponent !== false) && React.cloneElement(targetComponent, {
                         elmRef : targetComponent.props.elmRef ?? buttonRef,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'top',
                         floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
                     })}
                     {React.cloneElement(floatingComponent, {
-                        floatingOn        : floatingComponent.props.floatingOn        ?? buttonRef,
+                        floatingOn        : floatingComponent.props.floatingOn        ?? ((targetComponent !== false) ? buttonRef : undefined),
                         floatingPlacement : floatingComponent.props.floatingPlacement ?? 'right',
                         floatingShift     : floatingComponent.props.floatingShift     ?? floatingShift,
                     })}
@@ -613,7 +621,7 @@ const {floatingTag, floatingProperties} = useComponentProperties({overrideFloati
     
     return (
         <TypeScriptCode>{
-`
+`${(targetTag !== false) ? `
 <${targetTag}
     elmRef={buttonRef}
     theme='success'
@@ -622,9 +630,8 @@ ${(targetChildren === false) ? '/>' :
 `>
 ${targetChildren}
 </${targetTag}>`
-}
-<${floatingTag}
-    floatingOn={buttonRef}
+}` : ''}
+<${floatingTag}${(targetTag !== false) ? `\n    floatingOn={buttonRef}` : ''}
     floatingPlacement='top'
     floatingShift={10}
     
@@ -700,7 +707,7 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
 }
 export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingAutoFlipPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement}: FloatingAutoFlipPropertyProps & DemoAutoFlipProps & CodeAutoFlipProps) => {
     return (
         <PropertySection property={properties.floatingAutoFlip} possibleValues={possibleValues ??
             <Accordion>
@@ -721,9 +728,9 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoFlip targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} />} />
             <p></p>
-            <CodeAutoFlip floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeAutoFlip floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} />
         </>}>
             <p>
                 <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the <TheComponentLink /> is about to be clipped.
@@ -733,7 +740,7 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
 }
 export interface FloatingAutoShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
 }
-export const FloatingAutoShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingAutoShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingAutoShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement}: FloatingAutoShiftPropertyProps & DemoAutoShiftProps & CodeAutoShiftProps) => {
     return (
         <PropertySection property={properties.floatingAutoShift} possibleValues={possibleValues ??
             <Accordion>
@@ -754,9 +761,9 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview, ta
                 </AccordionItem>
             </Accordion>
         } preview={preview ?? <>
-            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoShift targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />} />
+            <Preview display='down' stretch={false} cardBodyComponent={<DemoAutoShift targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} />} />
             <p></p>
-            <CodeAutoShift floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
+            <CodeAutoShift floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} />
         </>}>
             <p>
                 <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the <TheComponentLink /> is about to be clipped.

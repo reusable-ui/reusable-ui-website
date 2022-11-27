@@ -1,9 +1,8 @@
 import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
-import { collapse, dropdown, generic } from '../../packages/packageList'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { collapse, dropdown } from '../../packages/packageList'
 import { orientationOptions, OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
@@ -15,19 +14,10 @@ import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
+import { DummyUiBig } from '../../components/DummyUi'
 
 
 
-const DummyUiSmall = () => {
-    return (
-        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={48} height={48} />
-    );
-}
-const DummyUiBig = () => {
-    return (
-        <Image alt='<YourComponent />' src='/images/lorem-image-1.svg' width={128} height={128} />
-    );
-}
 const Dropdown = (props: Partial<DropdownProps>) => <OriDropdown {...props} expanded={props.expanded ?? true}>
     {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
 </OriDropdown>
@@ -87,9 +77,11 @@ const DemoOrientation = () => {
 
 
 const DropdownPage: NextPage = () => {
-    return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={<Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}>
-        <DummyUiSmall />
-    </Dropdown>}>
+    return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={
+        <Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}>
+            <DummyUiBig />
+        </Dropdown>
+    }>
         <Head>
             <title>{`${dropdown.componentTag} Component`}</title>
             <meta name="description" content={`${dropdown.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
@@ -147,7 +139,7 @@ const DropdownPage: NextPage = () => {
             </OrientationProperty>
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
                 <FloatingPlacementProperty floatingComponent={<Dropdown>
                     {/* eslint-disable @next/next/no-img-element */}
                     <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={32} height={32} />

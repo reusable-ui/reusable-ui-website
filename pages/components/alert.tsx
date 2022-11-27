@@ -68,7 +68,7 @@ const DemoExpanded = () => {
 
 
 const AlertPage: NextPage = () => {
-    return (<ComponentContextProvider component={alert} baseComponents={popup} componentFactory={<Alert theme='danger' />}
+    return (<ComponentContextProvider component={alert} baseComponents={popup} componentFactory={<Alert theme='danger' size='sm' />}
     >
         <Head>
             <title>{`${alert.componentTag} Component`}</title>
@@ -108,7 +108,7 @@ const AlertPage: NextPage = () => {
             <DetailedIconProperty />
             <LazyProperty />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='right-start' floatingOffset={-16} floatingShift={-36} />
+                <FloatingOnProperty floatingChildren={defaultFloatingChildrenShort} floatingPlacement='right-start' floatingOffset={-20} floatingShift={-30} />
                 <FloatingPlacementProperty floatingChildren={defaultFloatingChildrenShort} />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildrenShort} />

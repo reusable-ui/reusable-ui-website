@@ -4,18 +4,17 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { toggleButton, dropdownButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ButtonStyleProperty, buttonStyleOptions, orientationWithDirectionOptions, OrientationProperty, OrientationWithDirectionProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { DropdownButton as OriDropdownButton, DropdownButtonProps, Control, CardBody, CardBodyProps, DropdownExpandedChangeEvent } from '@reusable-ui/components'
+import { DropdownButton as OriDropdownButton, DropdownButtonProps, Control, CardBody, DropdownExpandedChangeEvent } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { ActiveProperty, DefaultActiveProperty, DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritActiveProperty, InheritEnabledProperty, OnActiveChangeProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
 import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, DropdownComponentProperty, DropdownOrientationProperty, DropdownRefProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
-import { dynamicStyleSheet } from '@cssfn/cssfn-react'
-import { EventHandler, useEvent, useMergeClasses } from '@reusable-ui/core'
-import { DummyUiSmall, DummyUiBig } from '../../components/DummyUi'
+import { EventHandler, useEvent } from '@reusable-ui/core'
+import { DummyUiBig, DummyUiSmall } from '../../components/DummyUi'
 import { DropdownCardBody } from '../../components/DropdownCardBody'
 import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
@@ -99,9 +98,11 @@ const DemoOrientation = () => {
 
 
 const DropdownButtonPage: NextPage = () => {
-    return (<ComponentContextProvider component={dropdownButton} baseComponents={toggleButton} componentFactory={<DropdownButton orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}>
-    <DummyUiSmall />
-</DropdownButton>}>
+    return (<ComponentContextProvider component={dropdownButton} baseComponents={toggleButton} componentFactory={
+        <DropdownButton orientation='block-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
+            <DummyUiBig />
+        </DropdownButton>
+    }>
         <Head>
             <title>{`${dropdownButton.componentTag} Component`}</title>
             <meta name="description" content={`${dropdownButton.componentTag} is a ${packages.toggleButton.componentTag} component with a ${packages.dropdown.componentTag}.`} />
@@ -160,14 +161,28 @@ const DropdownButtonPage: NextPage = () => {
             <LazyProperty />
             <OnClickPropertyOfButton tips={false} />
             <FloatingProperties>
-                <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top' floatingOffset={0} floatingShift={0} />
-                
-                {/* <FloatingStrategyProperty /> */}
-                {/* <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} /> */}
-                {/* <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} /> */}
-                {/* <FloatingOffsetProperty floatingChildren={defaultFloatingChildren} /> */}
-                {/* <FloatingShiftProperty floatingChildren={defaultFloatingChildren} /> */}
-                {/* <OnFloatingUpdateProperty /> */}
+                <FloatingOnProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
+                <FloatingPlacementProperty targetComponent={false} targetTag={false} floatingComponent={<DropdownButton theme='primary'>
+                    <DummyUiSmall />
+                </DropdownButton>} />
+                <FloatingStrategyProperty />
+                <FloatingAutoFlipProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='bottom' />
+                <FloatingAutoShiftProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
+                    <DropdownButton orientation='inline-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
+                        <DummyUiBig />
+                    </DropdownButton>}
+                />
+                <FloatingOffsetProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
+                    <DropdownButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
+                        <DummyUiBig />
+                    </DropdownButton>}
+                />
+                <FloatingShiftProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
+                    <DropdownButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
+                        <DummyUiBig />
+                    </DropdownButton>}
+                />
+                <OnFloatingUpdateProperty />
             </FloatingProperties>
             <VariantProperties>
                 <SizeProperty>

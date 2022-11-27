@@ -76,7 +76,7 @@ const DemoExpanded = () => {
 
 
 const BusyPage: NextPage = () => {
-    return (<ComponentContextProvider component={busy} baseComponents={badge} componentFactory={<Busy size='md' />}>
+    return (<ComponentContextProvider component={busy} baseComponents={badge} componentFactory={<Busy size='lg' />}>
         <Head>
             <title>{`${busy.componentTag} Component`}</title>
             <meta name="description" content={`${busy.componentTag} represents counters or labels.`} />
