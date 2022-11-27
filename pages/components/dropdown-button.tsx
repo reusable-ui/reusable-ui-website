@@ -18,7 +18,7 @@ import { DummyUiBig, DummyUiSmall } from '../../components/DummyUi'
 import { DropdownCardBody } from '../../components/DropdownCardBody'
 import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
+import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, DropdownButtonFloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 
 
 
@@ -161,7 +161,7 @@ const DropdownButtonPage: NextPage = () => {
             <LazyProperty />
             <OnClickPropertyOfButton tips={false} />
             <FloatingProperties>
-                <FloatingOnProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
+                <DropdownButtonFloatingOnProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
                 <FloatingPlacementProperty targetComponent={false} targetTag={false} floatingComponent={<DropdownButton theme='primary'>
                     <DummyUiSmall />
                 </DropdownButton>} />

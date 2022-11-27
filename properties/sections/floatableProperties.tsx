@@ -11,6 +11,7 @@ import { Preview } from '../../components/Preview'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import SelectFloatingPlacement from '../../components/SelectFloatingPlacement'
 import { useInViewport } from '../../hooks/inViewport'
+import { dropdown, toggleButton } from '../../packages/packageList'
 
 const Button = React.lazy(() => import(/* webpackChunkName: 'Button' */'@reusable-ui/button'));
 const Range  = React.lazy(() => import(/* webpackChunkName: 'Range'  */'@reusable-ui/range'));
@@ -660,6 +661,20 @@ export const FloatingOnProperty = ({children: preview, targetComponent, targetTa
             <p>
                 Determines the <strong>target DOM reference</strong> where the <TheComponentLink /> should be <strong>floating on</strong>.<br />
                 If not set (<code>undefined</code>), the <TheComponentLink /> becomes a normal element flow.
+            </p>
+        </PropertySection>
+    );
+}
+export const DropdownButtonFloatingOnProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement, floatingOffset, floatingShift}: FloatingOnPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+    return (
+        <PropertySection property={properties.floatingOn} preview={preview ?? <>
+            <Preview display='down' stretch={true} cardBodyComponent={<DemoFloatingOn targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} floatingOffset={floatingOffset} floatingShift={floatingShift} />} />
+            <p></p>
+            <CodeFloatingOn floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} floatingOffset={floatingOffset} floatingShift={floatingShift} />
+        </>}>
+            <p>
+                Determines the <strong>target DOM reference</strong> where the {dropdown.packageLink} component inside the <TheComponentLink /> should be <strong>floating on</strong>.<br />
+                If not set (<code>undefined</code>), the {dropdown.packageLink} floating on the {toggleButton.packageLink} inside the <TheComponentLink />.
             </p>
         </PropertySection>
     );
