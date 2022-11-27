@@ -123,7 +123,7 @@ const DropdownButtonPage: NextPage = () => {
                     <p></p>
                     <TypeScriptCode>{
 `
-<Dropdown
+<DropdownButton
     expanded={true}
     theme='primary'
     orientation='block-end'
@@ -132,7 +132,7 @@ const DropdownButtonPage: NextPage = () => {
     }
 >
     <YourComponent />
-</Dropdown>
+</DropdownButton>
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
