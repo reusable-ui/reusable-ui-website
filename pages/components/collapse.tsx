@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { generic, collapse } from '../../packages/packageList'
-import { OrientationProperty } from '../../properties/sections/variantProperties'
+import { orientationOptions, OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Collapse as OriCollapse, CollapseProps, List, ListItem, CardBody } from '@reusable-ui/components'
@@ -86,12 +86,11 @@ const DemoOrientation = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
             <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
-                <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Collapse expanded={isFlip} orientation='block' />
-                </div>
-                <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Collapse expanded={isFlip} orientation='inline' />
-                </div>
+                {orientationOptions.map((orientation, index) =>
+                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
+                        <Collapse expanded={isFlip} orientation={orientation} />
+                    </div>
+                )}
             </div>
         </CardBody>
     );
@@ -137,23 +136,16 @@ const CollapsePage: NextPage = () => {
                 <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
+                    orientationOptions.map((orientation) =>
 `
 <Collapse
     expanded={true}
-    orientation='block'
->
-    <YourComponent />
-</Collapse>
-
-
-
-<Collapse
-    expanded={true}
-    orientation='inline'
+    orientation='${orientation}'
 >
     <YourComponent />
 </Collapse>
 `
+                    ).join('\n\n')
                 }</TypeScriptCode>
             </OrientationProperty>
             <LazyProperty />

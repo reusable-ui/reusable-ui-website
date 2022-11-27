@@ -1,5 +1,5 @@
 import React from 'react'
-import { OrientationName, SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
+import { OrientationName, OrientationWithDirectionName, SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import type { SizeName as IconSizeName } from '@reusable-ui/icon'
 import type { SizeName as ButtonIconSizeName } from '@reusable-ui/button-icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
@@ -12,22 +12,23 @@ import { BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyl
 
 
 
-export const sizeOptions               : (SizeName|undefined)[]           = [      'sm', 'md', 'lg'      ];
-export const iconSizeOptions           : (IconSizeName|undefined)[]       = ['xs', 'sm', 'md', 'lg', 'xl'];
-export const buttonIconSizeOptions     : (ButtonIconSizeName|undefined)[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+export const sizeOptions                     : (SizeName|undefined)[]           = [      'sm', 'md', 'lg'      ];
+export const iconSizeOptions                 : (IconSizeName|undefined)[]       = ['xs', 'sm', 'md', 'lg', 'xl'];
+export const buttonIconSizeOptions           : (ButtonIconSizeName|undefined)[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-export const buttonIconPositionOptions : IconPosition[]                   = ['start','end'];
+export const buttonIconPositionOptions       : IconPosition[]                   = ['start','end'];
 
-export const themeOptions              : ThemeName[]                      = getThemeOptions();
+export const themeOptions                    : ThemeName[]                      = getThemeOptions();
 
-export const orientationOptions        : OrientationName[]                = ['inline', 'block'];
+export const orientationOptions              : OrientationName[]                = ['inline', 'block'];
+export const orientationWithDirectionOptions : OrientationWithDirectionName[]   = ['inline-start', 'inline-end', 'block-start', 'block-end'];
 
-export const labelStyleOptions         : LabelStyle[]                     = ['regular', 'content'];
-export const buttonStyleOptions        : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
-export const checkStyleOptions         : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
-export const listStyleOptions          : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
-export const cardStyleOptions          : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
-export const badgeStyleOptions         : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
+export const labelStyleOptions               : LabelStyle[]                     = ['regular', 'content'];
+export const buttonStyleOptions              : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
+export const checkStyleOptions               : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
+export const listStyleOptions                : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
+export const cardStyleOptions                : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
+export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 
 
 
@@ -343,6 +344,43 @@ export const OrientationProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Sets the <strong>orientation</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const OrientationWithDirectionProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.orientation} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> orientation setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inline-start'</code>}>
+                    <p>
+                        Set the orientation to <strong>horizontal</strong> and direction to <strong>left</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inline-end'</code>}>
+                    <p>
+                        Set the orientation to <strong>horizontal</strong> and direction to <strong>right</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'block-start'</code>}>
+                    <p>
+                        Set the orientation to <strong>vertical</strong> and direction to <strong>up</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'block-end'</code>}>
+                    <p>
+                        Set the orientation to <strong>vertical</strong> and direction to <strong>down</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>orientation</strong> and the <strong>direction</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );

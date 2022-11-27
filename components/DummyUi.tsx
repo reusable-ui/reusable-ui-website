@@ -8,6 +8,7 @@ import { stripoutFocusableElement } from '@reusable-ui/core'
 
 const useDummyUiStyleSheet = dynamicStyleSheet(() => ({
     ...stripoutFocusableElement(),
+    display: 'flex',
 }), { id: 'y5awjqfgx3' });
 
 

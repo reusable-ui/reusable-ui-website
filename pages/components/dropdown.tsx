@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
 import { collapse, dropdown, generic } from '../../packages/packageList'
-import { OrientationProperty } from '../../properties/sections/variantProperties'
+import { orientationOptions, OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Dropdown as OriDropdown, DropdownProps, List, ListItem, CardBody } from '@reusable-ui/components'
@@ -14,6 +14,7 @@ import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sec
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
+import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
 
 
 
@@ -61,7 +62,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<Dropdown expanded={${isFlip}}>`}</code>
             </p>
-            <Dropdown expanded={isFlip} orientation='block' />
+            <Dropdown expanded={isFlip} orientation='block' floatingAutoFlip={false} floatingAutoShift={false} />
         </CardBody>
     );
 }
@@ -73,12 +74,11 @@ const DemoOrientation = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
             <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
-                <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Dropdown expanded={isFlip} orientation='block' />
-                </div>
-                <div style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                    <Dropdown expanded={isFlip} orientation='inline' />
-                </div>
+                {orientationOptions.map((orientation, index) =>
+                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
+                        <Dropdown expanded={isFlip} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                    </div>
+                )}
             </div>
         </CardBody>
     );
@@ -113,19 +113,7 @@ const DropdownPage: NextPage = () => {
                 <Preview display='right' stretch={false} cardBodyComponent={<DemoDropdown />} />
             </HeroSection>
             <ComponentInstallation />
-            <Section title='Defines the Dropdown-ed UI'>
-                <p>
-                    The <TheComponentLink /> should have <strong>one child</strong> to be <strong>dropdown</strong>-ed.
-                    The child shoud be a <strong>native DOM element</strong> or <strong>functional/class component</strong> that implements {generic.packageLink}&apos;s props.
-                </p>
-                <TypeScriptCode collapsible={false}>{
-`
-<Dropdown>
-    <YourComponent />
-</Dropdown>
-`
-                }</TypeScriptCode>
-            </Section>
+            <DropdownUiProperty />
             <ExpandedProperty>
                     <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
@@ -145,23 +133,16 @@ const DropdownPage: NextPage = () => {
                 <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
+                    orientationOptions.map((orientation) =>
 `
 <Dropdown
     expanded={true}
-    orientation='block'
->
-    <YourComponent />
-</Dropdown>
-
-
-
-<Dropdown
-    expanded={true}
-    orientation='inline'
+    orientation='${orientation}'
 >
     <YourComponent />
 </Dropdown>
 `
+                    ).join('\n\n')
                 }</TypeScriptCode>
             </OrientationProperty>
             <LazyProperty />

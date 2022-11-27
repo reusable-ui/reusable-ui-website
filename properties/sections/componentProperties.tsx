@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -166,6 +166,28 @@ export const ButtonChildrenProperty = ({children: preview} : ButtonChildrenPrope
     <Button>
         <span>Hello World</span>
     </Button>
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface ToggleButtonComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const ToggleButtonComponentProperty = ({children: preview} : ToggleButtonComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.toggleButtonComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {toggleButton.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} toggleButtonComponent={
+    <MyCustomToggleButton />
 } />`
             }</TypeScriptCode>
         </PropertySection>
@@ -516,6 +538,77 @@ export const ArrowRefProperty = ({children: preview} : ArrowRefPropertyProps) =>
             <TypeScriptCode collapsible={false}>{
 `<${componentName} arrowComponent={
     <Generic elmRef={fooArrowRef} />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface DropdownComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const DropdownComponentProperty = ({children: preview} : DropdownComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.dropdownComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {dropdown.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} dropdownComponent={
+    <MyCustomDropdown />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+export interface DropdownRefPropertyProps {
+    children ?: React.ReactNode
+}
+export const DropdownRefProperty = ({children: preview} : DropdownRefPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.dropdownRef} preview={preview}>
+            <p>
+                Gets the <strong>DOM reference</strong> of the internal {dropdown.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} dropdownRef={fooDropdownRef} />`
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} dropdownComponent={
+    <Dropdown elmRef={fooDropdownRef} />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface DropdownRefPropertyProps {
+    children ?: React.ReactNode
+}
+export const DropdownOrientationProperty = ({children: preview} : DropdownRefPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.dropdownOrientation} preview={preview}>
+            <p>
+                Sets the <strong>orientation</strong> of the internal {dropdown.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} dropdownOrientation='inline' />`
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} dropdownComponent={
+    <Dropdown orientation='inline' />
 } />`
             }</TypeScriptCode>
         </PropertySection>

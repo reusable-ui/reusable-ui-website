@@ -546,6 +546,33 @@ export const ExpandedProperty = ({children: preview, uncontrollableBehavior}: Ex
         </PropertySection>
     );
 }
+export const DefaultExpandedProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.defaultExpanded} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> initial state.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        The {properties.expanded.propertyShortLink} state is <strong>initially expanded</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        The {properties.expanded.propertyShortLink} state is <strong>initially collapsed</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                <strong>Defines</strong> the <strong>initial</strong> {properties.expanded.propertyShortLink} state when the <TheComponentLink /> is <strong>first loaded</strong>.
+            </p>
+        </PropertySection>
+    );
+}
 export const OnExpandedChangeProperty = ({children: preview}: PreviewProps) => {
     return (
         <PropertySection property={properties.onExpandedChange} preview={preview}>
