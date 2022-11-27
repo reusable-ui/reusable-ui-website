@@ -260,7 +260,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.dropdownButton}>
                         <p>
-                            A {packages.button.packageLink} component with a {packages.dropdown.packageLink}.
+                            A {packages.toggleButton.packageLink} component with a {packages.dropdown.packageLink}.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.dropdownList}>

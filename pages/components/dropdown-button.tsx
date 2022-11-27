@@ -104,12 +104,12 @@ const DropdownButtonPage: NextPage = () => {
 </DropdownButton>}>
         <Head>
             <title>{`${dropdownButton.componentTag} Component`}</title>
-            <meta name="description" content={`${dropdownButton.componentTag} is a ${packages.button.componentTag} component with a ${packages.dropdown.componentTag}.`} />
+            <meta name="description" content={`${dropdownButton.componentTag} is a ${packages.toggleButton.componentTag} component with a ${packages.dropdown.componentTag}.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a {packages.button.packageLink} component with a {packages.dropdown.packageLink}.
+                    <TheComponentLink /> is a {packages.toggleButton.packageLink} component with a {packages.dropdown.packageLink}.
                 </p>
                 <p>
                     Here the demo:
@@ -127,6 +127,9 @@ const DropdownButtonPage: NextPage = () => {
     expanded={true}
     theme='primary'
     orientation='block-end'
+    buttonChildren={
+        'Show Menu'
+    }
 >
     <YourComponent />
 </Dropdown>
@@ -142,9 +145,11 @@ const DropdownButtonPage: NextPage = () => {
                     orientationWithDirectionOptions.map((orientation) =>
 `
 <DropdownButton
-    expanded={true}
-    theme='primary'
     orientation='${orientation}'
+    theme='primary'
+    buttonChildren={
+        'Show Menu'
+    }
 >
     <YourComponent />
 </DropdownButton>
@@ -180,7 +185,13 @@ const DropdownButtonPage: NextPage = () => {
 `
 <DropdownButton
     size='${sizeName}'
-/>
+    theme='primary'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -200,7 +211,12 @@ const DropdownButtonPage: NextPage = () => {
 `
 <DropdownButton
     theme='${themeName}'
-/>
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -220,9 +236,14 @@ const DropdownButtonPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <DropdownButton
-    theme='${themeName}'
     gradient={true}
-/>
+    theme='${themeName}'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -242,9 +263,14 @@ const DropdownButtonPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <DropdownButton
-    theme='${themeName}'
     outlined={true}
-/>
+    theme='${themeName}'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -264,9 +290,14 @@ const DropdownButtonPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <DropdownButton
-    theme='${themeName}'
     mild={true}
-/>
+    theme='${themeName}'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -288,9 +319,14 @@ const DropdownButtonPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <DropdownButton
-    theme='${themeName}'
     enabled={false}
-/>
+    theme='${themeName}'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
 `
                         ).join('')}
                     </TypeScriptCode>
@@ -313,9 +349,14 @@ const DropdownButtonPage: NextPage = () => {
 `
 <Control theme='primary' enabled={false}>
     <DropdownButton
-        theme='${themeName}'
         inheritEnabled={true}
-    />
+        theme='${themeName}'
+        buttonChildren={
+            'Show Menu'
+        }
+    >
+        <YourComponent />
+    </DropdownButton>
 </Control>
 `
                         ).join('')}
