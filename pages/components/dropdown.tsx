@@ -84,12 +84,12 @@ const DropdownPage: NextPage = () => {
     }>
         <Head>
             <title>{`${dropdown.componentTag} Component`}</title>
-            <meta name="description" content={`${dropdown.componentTag} is a non-visual container with dynamic visibility (show/hide) in sliding fashion.`} />
+            <meta name="description" content={`${dropdown.componentTag} is a non-visual context menu container with dynamic visibility (show/hide) in sliding fashion.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a non-visual container with dynamic visibility (show/hide) in sliding fashion.<br />
+                    <TheComponentLink /> is a non-visual context menu container with dynamic visibility (show/hide) in sliding fashion.<br />
                     You need to place a visual (styled) component inside the <TheComponentLink /> in order to make the appearance.
                 </p>
                 <p>

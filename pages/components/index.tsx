@@ -247,7 +247,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.dropdown}>
                         <p>
-                            A non-visual container with dynamic visibility (show/hide) in sliding fashion.<br />
+                            A non-visual context menu container with dynamic visibility (show/hide) in sliding fashion.<br />
                             You need to place a visual (styled) component inside the {packages.collapse.packageLink} in order to make the appearance.
                         </p>
                         <p>
