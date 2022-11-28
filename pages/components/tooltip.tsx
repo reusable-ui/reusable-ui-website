@@ -18,14 +18,17 @@ import { ArrowComponentProperty, ArrowRefProperty, ComponentProperties, ControlC
 
 
 
-const Tooltip = (props: TooltipProps) => {
+interface TooltipExProps extends TooltipProps {
+    buttonStyle ?: React.CSSProperties
+}
+const Tooltip = ({buttonStyle, ...props}: TooltipExProps) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     
     
     
     return (
         <>
-            <Button elmRef={buttonRef} theme='success' size='lg'>
+            <Button elmRef={buttonRef} theme='success' size='lg' style={buttonStyle}>
                 Order Now!
             </Button>
             <OriTooltip
@@ -76,9 +79,9 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden', justifyContent: 'start'}}>
             <p>
-                <code>{`<Tooltip expanded={${isFlip}}>`}</code>
+                <code>{`<Tooltip expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} />
+            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} buttonStyle={{marginRight: '9rem'}} />
         </CardBody>
     );
 }

@@ -39,7 +39,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', justifyContent: 'start'}}>
             <p>
-                <code>{`<Popup expanded={${isFlip}}>`}</code>
+                <code>{`<Popup expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <Popup expanded={isFlip} theme='primary'>
                 Hopla!
@@ -68,7 +68,7 @@ const PopupPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `

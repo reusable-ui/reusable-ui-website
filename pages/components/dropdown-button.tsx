@@ -58,7 +58,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '15rem', justifyContent: 'start'}}>
             <p>
-                <code>{`<DropdownButton expanded={${isFlip}}>`}</code>
+                <code>{`<DropdownButton expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <DropdownButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} />
         </CardBody>
@@ -119,7 +119,7 @@ const DropdownButtonPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <DropdownUiProperty />
-            <ExpandedProperty>
+            <ExpandedProperty collapsibleComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
@@ -162,12 +162,20 @@ const DropdownButtonPage: NextPage = () => {
             <OnClickPropertyOfButton tips={false} />
             <FloatingProperties>
                 <DropdownButtonFloatingOnProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
-                <FloatingPlacementProperty targetComponent={false} targetTag={false} floatingComponent={<DropdownButton theme='primary'>
+                <FloatingPlacementProperty
+                    floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                    targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
+                    targetComponent={false} targetTag={false} floatingComponent={<DropdownButton theme='primary'>
                     <DummyUiSmall />
                 </DropdownButton>} />
-                <FloatingStrategyProperty />
-                <FloatingAutoFlipProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='bottom' />
-                <FloatingAutoShiftProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
+                <FloatingStrategyProperty floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>} />
+                <FloatingAutoFlipProperty
+                    floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                    targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='bottom'
+                />
+                <FloatingAutoShiftProperty
+                    floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                    targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
                     <DropdownButton orientation='inline-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
                         <DummyUiBig />
                     </DropdownButton>}

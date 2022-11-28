@@ -72,7 +72,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', justifyContent: 'start'}}>
             <p>
-                <code>{`<Collapse expanded={${isFlip}}>`}</code>
+                <code>{`<Collapse expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <Collapse expanded={isFlip} orientation='block' />
         </CardBody>
@@ -121,7 +121,7 @@ const CollapsePage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `

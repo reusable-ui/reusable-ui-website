@@ -51,7 +51,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '13rem', overflow: 'hidden', justifyContent: 'start'}}>
             <p>
-                <code>{`<Alert expanded={${isFlip}}>`}</code>
+                <code>{`<Alert expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <Alert expanded={isFlip} style={{maxBlockSize: '100%', textOverflow: 'ellipsis', overflow: 'hidden'}}>
                 <p>
@@ -86,7 +86,7 @@ const AlertPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `

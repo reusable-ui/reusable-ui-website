@@ -61,7 +61,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', justifyContent: 'start'}}>
             <p>
-                <code>{`<Badge expanded={${isFlip}}>`}</code>
+                <code>{`<Badge expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <Badge expanded={isFlip}>
                 {defaultFloatingChildren}
@@ -90,7 +90,7 @@ const BadgePage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `

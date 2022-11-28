@@ -50,7 +50,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', justifyContent: 'start'}}>
             <p>
-                <code>{`<Dropdown expanded={${isFlip}}>`}</code>
+                <code>{`<Dropdown expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <Dropdown expanded={isFlip} orientation='block' floatingAutoFlip={false} floatingAutoShift={false} />
         </CardBody>
@@ -107,7 +107,7 @@ const DropdownPage: NextPage = () => {
             <ComponentInstallation />
             <DropdownUiProperty />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `

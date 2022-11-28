@@ -8,6 +8,7 @@ import { Warning } from '../../components/Warning'
 import { icon, form } from '../../packages/packageList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 import { List, ListItem } from '@reusable-ui/components'
+import { ComponentInfo } from '../../packages/packageInfo'
 
 
 
@@ -518,8 +519,9 @@ export const InheritValidationProperty = ({children: preview}: PreviewProps) => 
 
 export interface ExpandedPropertyProps extends PreviewProps {
     uncontrollableBehavior ?: React.ReactNode
+    collapsibleComponentText   ?: React.ReactNode
 }
-export const ExpandedProperty = ({children: preview, uncontrollableBehavior}: ExpandedPropertyProps) => {
+export const ExpandedProperty = ({children: preview, uncontrollableBehavior, collapsibleComponentText}: ExpandedPropertyProps) => {
     return (
         <PropertySection property={properties.expanded} preview={preview} possibleValues={
             <Accordion>
@@ -530,18 +532,18 @@ export const ExpandedProperty = ({children: preview, uncontrollableBehavior}: Ex
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Expands</strong> the <strong>size</strong> or <strong>shows</strong> the <strong>visibility</strong> of the <TheComponentLink />.
+                        <strong>Expands</strong> the <strong>size</strong> or <strong>shows</strong> the <strong>visibility</strong> of the {collapsibleComponentText ?? <TheComponentLink />}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Collapses</strong> the <strong>size</strong> or <strong>hides</strong> the <strong>visibility</strong> of the <TheComponentLink />.
+                        <strong>Collapses</strong> the <strong>size</strong> or <strong>hides</strong> the <strong>visibility</strong> of the {collapsibleComponentText ?? <TheComponentLink />}.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                <strong>Expands</strong>/<strong>Collapses</strong> the <strong>size</strong> or <strong>shows</strong>/<strong>hides</strong> the <strong>visibility</strong> of the <TheComponentLink />.
+                <strong>Expands</strong>/<strong>Collapses</strong> the <strong>size</strong> or <strong>shows</strong>/<strong>hides</strong> the <strong>visibility</strong> of the {collapsibleComponentText ?? <TheComponentLink />}.
             </p>
         </PropertySection>
     );

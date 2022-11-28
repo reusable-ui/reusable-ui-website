@@ -679,20 +679,25 @@ export const DropdownButtonFloatingOnProperty = ({children: preview, targetCompo
         </PropertySection>
     );
 }
-export const FloatingPlacementProperty = ({children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: PreviewProps & DemoFloatingProps & CodeFloatingProps) => {
+export interface FloatingPlacementPropertyProps extends PreviewProps {
+    targetComponentText   ?: React.ReactNode
+    floatingComponentText ?: React.ReactNode
+}
+export const FloatingPlacementProperty = ({children: preview, targetComponentText, floatingComponentText, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingPlacementPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingPlacement} preview={preview ?? <>
             <DemoFloatingPlacement targetComponent={targetComponent} targetChildren={targetChildren} floatingComponent={floatingComponent} floatingChildren={floatingChildren} />
         </>}>
             <p>
-                Determines the <strong>location</strong> where the <TheComponentLink /> should be <strong>floating on</strong> the <em>target DOM reference</em>.
+                Determines the <strong>location</strong> where the {floatingComponentText ?? <TheComponentLink />} should be <strong>floating on</strong> the {targetComponentText ?? <em>target DOM reference</em>}.
             </p>
         </PropertySection>
     );
 }
 export interface FloatingStrategyPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+    floatingComponentText ?: React.ReactNode
 }
-export const FloatingStrategyProperty = ({possibleValues, children: preview}: FloatingStrategyPropertyProps) => {
+export const FloatingStrategyProperty = ({possibleValues, children: preview, floatingComponentText}: FloatingStrategyPropertyProps) => {
     return (
         <PropertySection property={properties.floatingStrategy} preview={preview} possibleValues={possibleValues ??
             <Accordion>
@@ -703,26 +708,27 @@ export const FloatingStrategyProperty = ({possibleValues, children: preview}: Fl
                 </AccordionItem>
                 <AccordionItem label={<code>{`'absolute'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> positioned <code>absolute</code>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} positioned <code>absolute</code>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>{`'fixed'`}</code>}>
                     <p>
-                        Makes the <TheComponentLink /> positioned <code>fixed</code>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} positioned <code>fixed</code>.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Determines the <strong>technical strategy</strong> how the <TheComponentLink /> can float.<br />
-                In <em>most cases</em>, you should not worry about the detail mechanism how the <TheComponentLink /> can float.
+                Determines the <strong>technical strategy</strong> how the {floatingComponentText ?? <TheComponentLink />} can float.<br />
+                In <em>most cases</em>, you should not worry about the detail mechanism how the {floatingComponentText ?? <TheComponentLink />} can float.
             </p>
         </PropertySection>
     );
 }
 export interface FloatingAutoFlipPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+    floatingComponentText ?: React.ReactNode
 }
-export const FloatingAutoFlipProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement}: FloatingAutoFlipPropertyProps & DemoAutoFlipProps & CodeAutoFlipProps) => {
+export const FloatingAutoFlipProperty = ({possibleValues, children: preview, floatingComponentText, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement}: FloatingAutoFlipPropertyProps & DemoAutoFlipProps & CodeAutoFlipProps) => {
     return (
         <PropertySection property={properties.floatingAutoFlip} possibleValues={possibleValues ??
             <Accordion>
@@ -748,14 +754,15 @@ export const FloatingAutoFlipProperty = ({possibleValues, children: preview, tar
             <CodeAutoFlip floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} />
         </>}>
             <p>
-                <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the <TheComponentLink /> is about to be clipped.
+                <strong>Automatically flips</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>opposite direction</strong> when the {floatingComponentText ?? <TheComponentLink />} is about to be clipped.
             </p>
         </PropertySection>
     );
 }
 export interface FloatingAutoShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+    floatingComponentText ?: React.ReactNode
 }
-export const FloatingAutoShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement}: FloatingAutoShiftPropertyProps & DemoAutoShiftProps & CodeAutoShiftProps) => {
+export const FloatingAutoShiftProperty = ({possibleValues, children: preview, floatingComponentText, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren, floatingPlacement}: FloatingAutoShiftPropertyProps & DemoAutoShiftProps & CodeAutoShiftProps) => {
     return (
         <PropertySection property={properties.floatingAutoShift} possibleValues={possibleValues ??
             <Accordion>
@@ -781,7 +788,7 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview, ta
             <CodeAutoShift floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} />
         </>}>
             <p>
-                <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the <TheComponentLink /> is about to be clipped.
+                <strong>Automatically shifts</strong> the {properties.floatingPlacement.propertyShortDisplay} to <strong>nearest safe position</strong> when the {floatingComponentText ?? <TheComponentLink />} is about to be clipped.
             </p>
         </PropertySection>
     );

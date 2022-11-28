@@ -64,7 +64,7 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '6rem', justifyContent: 'start'}}>
             <p>
-                <code>{`<Busy expanded={${isFlip}}>`}</code>
+                <code>{`<Busy expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <Busy expanded={isFlip} size='lg'>
                 {defaultFloatingChildren}
@@ -93,7 +93,7 @@ const BusyPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <ExpandedProperty>
-                    <Preview display='down' stretch={true} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `
