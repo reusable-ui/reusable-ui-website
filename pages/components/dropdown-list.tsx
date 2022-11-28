@@ -166,6 +166,30 @@ ${DummyListItemsText()}
                     ).join('\n\n')
                 }</TypeScriptCode>
             </DropdownOrientationProperty>
+            <OrientationProperty>
+                <Preview display='right' stretch={false}>
+                    {orientationOptions.map((orientationName, index) =>
+                        <DropdownList
+                            key={index}
+                            orientation={orientationName}
+                        />
+                    )}
+                </Preview>
+                <p></p>
+                <TypeScriptCode>
+                    {orientationOptions.map((orientationName) =>
+`
+<DropdownList
+    expanded={true}
+    orientation='${orientationName}'
+    theme='primary'
+>
+${DummyListItemsText()}
+</DropdownList>
+`
+                    ).join('')}
+                </TypeScriptCode>
+            </OrientationProperty>
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
