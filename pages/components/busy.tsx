@@ -16,7 +16,7 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 
 
-const Busy = (props: BusyProps) => <OriBusy {...props} theme={props.theme ?? 'danger'} expanded={props.expanded ?? true} />
+const Busy = (props: BusyProps) => <OriBusy {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} />
 
 const defaultTargetChildren    = '    Processing... Please wait.'
 const defaultAltTargetChildren =
@@ -99,7 +99,7 @@ const BusyPage: NextPage = () => {
 `
 <Busy
     expanded={true}
-    theme='danger'
+    theme='primary'
     size='lg'
 />
 `
@@ -132,7 +132,7 @@ const BusyPage: NextPage = () => {
 `
 <Busy
     size='${sizeName}'
-    theme='danger'
+    theme='primary'
 />
 `
                         ).join('')}
