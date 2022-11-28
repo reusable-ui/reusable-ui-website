@@ -113,12 +113,12 @@ const DropdownListPage: NextPage = () => {
     }>
         <Head>
             <title>{`${dropdownList.componentTag} Component`}</title>
-            <meta name="description" content={`${dropdownList.componentTag} is a context menu of overlayed ${list.componentTag}.`} />
+            <meta name="description" content={`${dropdownList.componentTag} is a context menu of ${list.componentTag}.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a context menu of overlayed {list.packageLink}.
+                    <TheComponentLink /> is a context menu of {list.packageLink}.
                 </p>
                 <p>
                     <TheComponentLink /> is similar to {collapse.packageLink} with additional handling of <kbd>esc</kbd> key and <strong>blur</strong> event to close itself.

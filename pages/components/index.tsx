@@ -265,7 +265,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.dropdownList}>
                         <p>
-                            A context menu of overlayed {packages.list.packageLink}.
+                            A context menu of {packages.list.packageLink}.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.dropdownListButton}>
