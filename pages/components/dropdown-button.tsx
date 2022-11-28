@@ -160,7 +160,10 @@ const DropdownButtonPage: NextPage = () => {
             </OrientationWithDirectionProperty>
             <LazyProperty />
             <OnClickPropertyOfButton tips={false} />
-            <FloatingProperties>
+            <FloatingProperties
+                floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
+            >
                 <DropdownButtonFloatingOnProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
                 <FloatingPlacementProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}

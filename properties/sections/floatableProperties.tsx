@@ -20,13 +20,16 @@ const Range  = React.lazy(() => import(/* webpackChunkName: 'Range'  */'@reusabl
 
 
 export interface FloatingPropertiesProps {
-    children : React.ReactNode
+    targetComponentText   ?: React.ReactNode
+    floatingComponentText ?: React.ReactNode
+    
+    children               : React.ReactNode
 }
-export const FloatingProperties = ({children} : FloatingPropertiesProps) => {
+export const FloatingProperties = ({targetComponentText, floatingComponentText, children} : FloatingPropertiesProps) => {
     return (
         <Section title='Floating Properties'>
             <p>
-                Determines how the <TheComponentLink /> should be <strong>floating on</strong> the <strong>target DOM reference</strong>.
+                Determines how the {floatingComponentText ?? <TheComponentLink />} should be <strong>floating on</strong> the {targetComponentText ?? <strong>target DOM reference</strong>}.
             </p>
             {children}
         </Section>
@@ -673,8 +676,8 @@ export const DropdownButtonFloatingOnProperty = ({children: preview, targetCompo
             <CodeFloatingOn floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} floatingPlacement={floatingPlacement} floatingOffset={floatingOffset} floatingShift={floatingShift} />
         </>}>
             <p>
-                Determines the <strong>target DOM reference</strong> where the {dropdown.packageLink} component inside the <TheComponentLink /> should be <strong>floating on</strong>.<br />
-                If not set (<code>undefined</code>), the {dropdown.packageLink} floating on the {toggleButton.packageLink} inside the <TheComponentLink />.
+                Determines the <strong>target DOM reference</strong> where the {dropdown.packageLink} of <TheComponentLink /> should be <strong>floating on</strong>.<br />
+                If not set (<code>undefined</code>), the {dropdown.packageLink} floating on the {toggleButton.packageLink} of <TheComponentLink />.
             </p>
         </PropertySection>
     );
