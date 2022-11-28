@@ -40,7 +40,10 @@ export const ActionCtrlProperty = ({children: preview}: PreviewProps) => {
 
 
 
-export const LazyProperty = ({children: preview}: PreviewProps) => {
+export interface LazyPropertyProps extends PreviewProps {
+    childrenText ?: React.ReactNode
+}
+export const LazyProperty = ({children: preview, childrenText}: LazyPropertyProps) => {
     const {component} = useComponentInfo();
     
     return (
@@ -53,18 +56,18 @@ export const LazyProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        The <TheComponentLink />&apos;s <code>children</code> <strong>always</strong> be rendered.
+                        The {childrenText ?? <><TheComponentLink />&apos;s <code>children</code></>} <strong>always</strong> be rendered.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        The <TheComponentLink />&apos;s <code>children</code> <strong>conditionally</strong> be rendered when the <code>{`<${component.componentName} expanded={true}>`}</code>.
+                        The {childrenText ?? <><TheComponentLink />&apos;s <code>children</code></>} <strong>conditionally</strong> be rendered when the <code>{`<${component.componentName} expanded={true}>`}</code>.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Determines whenever the <TheComponentLink />&apos;s <code>children</code> should be rendered or not when the <code>{`<${component.componentName} expanded={false}>`}</code>.
+                Determines whenever the {childrenText ?? <><TheComponentLink />&apos;s <code>children</code></>} should be rendered or not when the <code>{`<${component.componentName} expanded={false}>`}</code>.
             </p>
             <Tips>
                 <p>

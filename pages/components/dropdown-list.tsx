@@ -190,7 +190,7 @@ ${DummyListItemsText()}
                     ).join('')}
                 </TypeScriptCode>
             </OrientationProperty>
-            <LazyProperty />
+            <LazyProperty childrenText={list.packageDisplay} />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
                 <FloatingPlacementProperty floatingComponent={<DropdownList>
