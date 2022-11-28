@@ -52,7 +52,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<Dropdown expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <Dropdown expanded={isFlip} orientation='block' floatingAutoFlip={false} floatingAutoShift={false} />
+            <Dropdown expanded={isFlip} orientation='block' />
         </CardBody>
     );
 }
@@ -66,7 +66,7 @@ const DemoOrientation = () => {
             <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
                 {orientationOptions.map((orientation, index) =>
                     <div key={index} style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                        <Dropdown expanded={isFlip} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                        <Dropdown expanded={isFlip} orientation={orientation} />
                     </div>
                 )}
             </div>

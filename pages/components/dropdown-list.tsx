@@ -2,11 +2,11 @@ import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { collapse, list, dropdownList } from '../../packages/packageList'
+import { collapse, list, dropdownList, listItem } from '../../packages/packageList'
 import { orientationOptions, OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { DropdownList as OriDropdownList, DropdownListProps, List, ListItem, CardBody } from '@reusable-ui/components'
+import { DropdownList as OriDropdownList, DropdownListProps, List, ListItem, CardBody, ListSeparatorItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
@@ -14,12 +14,41 @@ import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
-import { DummyUiBig } from '../../components/DummyUi'
+import { DropdownOrientationProperty } from '../../properties/sections/componentProperties'
 
 
 
-const DropdownList = (props: Partial<DropdownListProps>) => <OriDropdownList {...props} expanded={props.expanded ?? true}>
-    {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
+const DummyListItems = () => {
+    return [
+        <ListItem key={0}>
+            A first item
+        </ListItem>,
+        <ListItem key={1}>
+            A second item
+        </ListItem>,
+        <ListSeparatorItem key={2} />,
+        <ListItem key={3} enabled={false}>
+            A disabled item
+        </ListItem>,
+    ];
+}
+const DummyListItemsText = () => {
+    return (
+`    <ListItem>
+        A first item
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListSeparatorItem />
+    <ListItem enabled={false}>
+        A disabled item
+    </ListItem>`
+    );
+}
+
+const DropdownList = (props: Partial<DropdownListProps>) => <OriDropdownList {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true}>
+    {React.isValidElement(props.children) ? props.children : DummyListItems()}
 </OriDropdownList>
 
 const defaultFloatingChildren = '    <YourComponent />'
@@ -32,12 +61,12 @@ const DemoDropdownList = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start'}}>
-            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
-                <DropdownList expanded={isFlip} orientation='block' />
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
+            <div style={{boxSizing: 'border-box', inlineSize: '9rem', blockSize: '7rem'}}>
+                <DropdownList expanded={isFlip} dropdownOrientation='block' />
             </div>
-            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
-                <DropdownList expanded={isFlip} orientation='inline' />
+            <div style={{boxSizing: 'border-box', inlineSize: '9rem', blockSize: '7rem'}}>
+                <DropdownList expanded={isFlip} dropdownOrientation='inline' />
             </div>
         </CardBody>
     );
@@ -52,7 +81,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<DropdownList expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <DropdownList expanded={isFlip} orientation='block' floatingAutoFlip={false} floatingAutoShift={false} />
+            <DropdownList expanded={isFlip} dropdownOrientation='block' />
         </CardBody>
     );
 }
@@ -62,11 +91,11 @@ const DemoOrientation = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
             <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
                 {orientationOptions.map((orientation, index) =>
-                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                        <DropdownList expanded={isFlip} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '9rem', blockSize: '7rem'}}>
+                        <DropdownList expanded={isFlip} dropdownOrientation={orientation} />
                     </div>
                 )}
             </div>
@@ -78,8 +107,8 @@ const DemoOrientation = () => {
 
 const DropdownListPage: NextPage = () => {
     return (<ComponentContextProvider component={dropdownList} baseComponents={list} componentFactory={
-        <DropdownList orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}>
-            <DummyUiBig />
+        <DropdownList orientation='block' floatingAutoFlip={false} floatingAutoShift={false} size='sm' theme='primary'>
+            DummyUiBig()
         </DropdownList>
     }>
         <Head>
@@ -96,7 +125,7 @@ const DropdownListPage: NextPage = () => {
                     Once closed, the <TheComponentLink /> restores the focus to the previously focused element.
                 </p>
                 <p>
-                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside the <TheComponentLink />.
+                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable {listItem.packageDisplay} inside the <TheComponentLink />.
                 </p>
                 <p>
                     Here the demo:
@@ -104,7 +133,6 @@ const DropdownListPage: NextPage = () => {
                 <Preview display='right' stretch={false} cardBodyComponent={<DemoDropdownList />} />
             </HeroSection>
             <ComponentInstallation />
-            <DropdownUiProperty />
             <ExpandedProperty>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
@@ -112,15 +140,16 @@ const DropdownListPage: NextPage = () => {
 `
 <DropdownList
     expanded={true}
-    orientation='block'
+    dropdownOrientation='block'
+    theme='primary'
 >
-    <YourComponent />
+${DummyListItemsText()}
 </DropdownList>
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
             <OnExpandedChangeProperty />
-            <OrientationProperty>
+            <DropdownOrientationProperty>
                 <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
@@ -128,14 +157,15 @@ const DropdownListPage: NextPage = () => {
 `
 <DropdownList
     expanded={true}
-    orientation='${orientation}'
+    dropdownOrientation='${orientation}'
+    theme='primary'
 >
-    <YourComponent />
+${DummyListItemsText()}
 </DropdownList>
 `
                     ).join('\n\n')
                 }</TypeScriptCode>
-            </OrientationProperty>
+            </DropdownOrientationProperty>
             <LazyProperty />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
