@@ -67,7 +67,7 @@ const DemoTooltip = () => {
     
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '10rem', overflow: 'hidden'}}>
-            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} />
+            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} buttonStyle={{marginRight: '12rem'}} />
         </CardBody>
     );
 }
@@ -81,7 +81,7 @@ const DemoExpanded = () => {
             <p>
                 <code>{`<Tooltip expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} buttonStyle={{marginRight: '9rem'}} />
+            <Tooltip expanded={isFlip} floatingAutoFlip={true} floatingAutoShift={true} buttonStyle={{marginRight: '12rem'}} />
         </CardBody>
     );
 }
@@ -145,6 +145,7 @@ const TooltipPage: NextPage = () => {
                             <Tooltip
                                 key={index}
                                 size={sizeName}
+                                buttonStyle={{marginRight: '14rem'}}
                             >
                                 <p>
                                     A {'<Tooltip>'} with {sizeName} size
@@ -177,6 +178,7 @@ const TooltipPage: NextPage = () => {
                             <Tooltip
                                 key={index}
                                 theme={themeName}
+                                buttonStyle={{marginRight: '14rem'}}
                             >
                                 <p>
                                     A {'<Tooltip>'} with {themeName} theme
@@ -209,6 +211,7 @@ const TooltipPage: NextPage = () => {
                                 key={index}
                                 gradient={true}
                                 theme={themeName}
+                                buttonStyle={{marginRight: '14rem'}}
                             >
                                 <p>
                                     A {'<Tooltip>'} with gradient mode
@@ -242,6 +245,7 @@ const TooltipPage: NextPage = () => {
                                 key={index}
                                 outlined={true}
                                 theme={themeName}
+                                buttonStyle={{marginRight: '14rem'}}
                             >
                                 <p>
                                     A {'<Tooltip>'} with outlined mode
@@ -275,6 +279,7 @@ const TooltipPage: NextPage = () => {
                                 key={index}
                                 mild={false}
                                 theme={themeName}
+                                buttonStyle={{marginRight: '14rem'}}
                             >
                                 <p>
                                     A {'<Tooltip>'} without mild mode
@@ -308,6 +313,7 @@ const TooltipPage: NextPage = () => {
                                 key={index}
                                 nude={true}
                                 theme={themeName}
+                                buttonStyle={{marginRight: '14rem'}}
                             >
                                 <p>
                                     A {'<Tooltip>'} with nude mode

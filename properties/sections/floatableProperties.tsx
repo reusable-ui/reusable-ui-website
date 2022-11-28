@@ -794,8 +794,10 @@ export const FloatingAutoShiftProperty = ({possibleValues, children: preview, fl
     );
 }
 export interface FloatingOffsetPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+    targetComponentText   ?: React.ReactNode
+    floatingComponentText ?: React.ReactNode
 }
-export const FloatingOffsetProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingOffsetPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingOffsetProperty = ({possibleValues, children: preview, targetComponentText, floatingComponentText, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingOffsetPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingOffset} possibleValues={possibleValues ??
             <Accordion>
@@ -806,17 +808,17 @@ export const FloatingOffsetProperty = ({possibleValues, children: preview, targe
                 </AccordionItem>
                 <AccordionItem label={<code>0</code>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>touch</strong> the <strong>target DOM reference</strong>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} <strong>touch</strong> the {targetComponentText ?? <strong>target DOM reference</strong>}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<strong>positive number</strong>}>
                     <p>
-                        Makes a <strong>gap</strong> between the <TheComponentLink /> and the <strong>target DOM reference</strong>.
+                        Makes a <strong>gap</strong> between the {floatingComponentText ?? <TheComponentLink />} and the {targetComponentText ?? <strong>target DOM reference</strong>}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<strong>negative number</strong>}>
                     <p>
-                        Makes the <TheComponentLink /> <strong>inside</strong> the <strong>target DOM reference</strong>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} <strong>inside</strong> the {targetComponentText ?? <strong>target DOM reference</strong>}.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -826,14 +828,15 @@ export const FloatingOffsetProperty = ({possibleValues, children: preview, targe
             <CodeFloatingOffset floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
         </>}>
             <p>
-                The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>target DOM reference</strong>.
+                The <strong>distance</strong> (in pixel) between the {floatingComponentText ?? <TheComponentLink />} and the {targetComponentText ?? <strong>target DOM reference</strong>}.
             </p>
         </PropertySection>
     );
 }
 export interface FloatingShiftPropertyProps extends PreviewProps, Pick<PropertySectionProps, 'possibleValues'> {
+    floatingComponentText ?: React.ReactNode
 }
-export const FloatingShiftProperty = ({possibleValues, children: preview, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
+export const FloatingShiftProperty = ({possibleValues, children: preview, floatingComponentText, targetComponent, targetTag, targetChildren, floatingComponent, floatingChildren}: FloatingShiftPropertyProps & DemoFloatingProps & CodeFloatingProps) => {
     return (
         <PropertySection property={properties.floatingShift} possibleValues={possibleValues ??
             <Accordion>
@@ -844,17 +847,17 @@ export const FloatingShiftProperty = ({possibleValues, children: preview, target
                 </AccordionItem>
                 <AccordionItem label={<code>0</code>}>
                     <p>
-                        Makes the <TheComponentLink /> placed <strong>at</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} placed <strong>at</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<strong>positive number</strong>}>
                     <p>
-                        Makes the <TheComponentLink /> placed <strong>before</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} placed <strong>before</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<strong>negative number</strong>}>
                     <p>
-                        Makes the <TheComponentLink /> placed <strong>after</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                        Makes the {floatingComponentText ?? <TheComponentLink />} placed <strong>after</strong> the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -864,16 +867,20 @@ export const FloatingShiftProperty = ({possibleValues, children: preview, target
             <CodeFloatingShift floatingComponent={floatingComponent} targetTag={targetTag} targetChildren={targetChildren} floatingChildren={floatingChildren} />
         </>}>
             <p>
-                The <strong>distance</strong> (in pixel) between the <TheComponentLink /> and the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
+                The <strong>distance</strong> (in pixel) between the {floatingComponentText ?? <TheComponentLink />} and the <strong>default {properties.floatingPlacement.propertyShortDisplay} location</strong>.
             </p>
         </PropertySection>
     );
 }
-export const OnFloatingUpdateProperty = ({children: preview}: PreviewProps) => {
+export interface OnFloatingUpdatePropertyProps extends PreviewProps {
+    targetComponentText   ?: React.ReactNode
+    floatingComponentText ?: React.ReactNode
+}
+export const OnFloatingUpdateProperty = ({children: preview, targetComponentText, floatingComponentText}: OnFloatingUpdatePropertyProps) => {
     return (
         <PropertySection property={properties.onFloatingUpdate} preview={preview}>
             <p>
-                Sets a <strong>callback function</strong> to be called when the <TheComponentLink /> <strong>updates the position</strong> relative to the <strong>target DOM reference</strong>.
+                Sets a <strong>callback function</strong> to be called when the {floatingComponentText ?? <TheComponentLink />} <strong>updates the position</strong> relative to the {targetComponentText ?? <strong>target DOM reference</strong>}.
             </p>
             <p>
                 The callback function parameters:

@@ -180,17 +180,25 @@ const DropdownButtonPage: NextPage = () => {
                         <DummyUiBig />
                     </DropdownButton>}
                 />
-                <FloatingOffsetProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
+                <FloatingOffsetProperty
+                    floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                    targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
+                    targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
                     <DropdownButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
                         <DummyUiBig />
                     </DropdownButton>}
                 />
-                <FloatingShiftProperty targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
+                <FloatingShiftProperty
+                    floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                    targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
                     <DropdownButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
                         <DummyUiBig />
                     </DropdownButton>}
                 />
-                <OnFloatingUpdateProperty />
+                <OnFloatingUpdateProperty
+                    floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
+                    targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
+                />
             </FloatingProperties>
             <VariantProperties>
                 <SizeProperty>
