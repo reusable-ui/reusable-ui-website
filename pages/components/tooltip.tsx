@@ -89,8 +89,9 @@ const DemoExpanded = () => {
 
 
 const TooltipPage: NextPage = () => {
-    return (<ComponentContextProvider component={tooltip} baseComponents={popup} componentFactory={<OriTooltip theme='warning' size='md' floatingAutoFlip={false} floatingAutoShift={false} />}
-    >
+    return (<ComponentContextProvider component={tooltip} baseComponents={popup} componentFactory={
+        <OriTooltip theme='warning' size='md' floatingAutoFlip={false} floatingAutoShift={false} />
+    }>
         <Head>
             <title>{`${tooltip.componentTag} Component`}</title>
             <meta name="description" content={`${tooltip.componentTag} represents advisory information related to the element it belongs.`} />

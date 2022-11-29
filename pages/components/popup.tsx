@@ -51,7 +51,9 @@ const DemoExpanded = () => {
 
 
 const PopupPage: NextPage = () => {
-    return (<ComponentContextProvider component={popup} baseComponents={basic} componentFactory={<Popup />}>
+    return (<ComponentContextProvider component={popup} baseComponents={basic} componentFactory={
+        <Popup theme='primary' size='md' />
+    }>
         <Head>
             <title>{`${popup.componentTag} Component`}</title>
             <meta name="description" content={`${popup.componentTag} is a generic element with dynamic visibility (show/hide) in popup fashion.`} />

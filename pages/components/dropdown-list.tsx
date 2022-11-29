@@ -48,7 +48,7 @@ const DummyListItemsText = () => {
 }
 
 const DropdownList = (props: Partial<DropdownListProps>) => <OriDropdownList {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true}>
-    {React.isValidElement(props.children) ? props.children : DummyListItems()}
+    {[props.children].flat().every((child) => React.isValidElement(child)) ? props.children : DummyListItems()}
 </OriDropdownList>
 
 const defaultFloatingChildren = DummyListItemsText();
@@ -107,9 +107,7 @@ const DemoOrientation = () => {
 
 const DropdownListPage: NextPage = () => {
     return (<ComponentContextProvider component={dropdownList} baseComponents={list} componentFactory={
-        <DropdownList floatingAutoFlip={false} floatingAutoShift={false} size='sm' theme='primary'>
-            DummyUiBig()
-        </DropdownList>
+        <DropdownList dropdownOrientation='block' size='sm' theme='primary' floatingAutoFlip={false} floatingAutoShift={false} />
     }>
         <Head>
             <title>{`${dropdownList.componentTag} Component`}</title>
@@ -193,10 +191,16 @@ ${defaultFloatingChildren}
             <LazyProperty childrenText={list.packageDisplay} />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />
-                <FloatingPlacementProperty floatingComponent={<DropdownList>
-                    {/* eslint-disable @next/next/no-img-element */}
-                    <img alt='<YourComponent />' src='/images/lorem-image-1.svg' width={32} height={32} />
-                </DropdownList>} />
+                <FloatingPlacementProperty floatingComponent={
+                    <DropdownList dropdownOrientation='block' size='sm' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
+                        <ListItem>
+                            A first item
+                        </ListItem>
+                        <ListItem>
+                            A second item
+                        </ListItem>
+                    </DropdownList>
+                } />
                 <FloatingStrategyProperty />
                 <FloatingAutoFlipProperty floatingChildren={defaultFloatingChildren} />
                 <FloatingAutoShiftProperty floatingChildren={defaultFloatingChildren} />

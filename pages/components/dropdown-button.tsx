@@ -99,9 +99,7 @@ const DemoOrientation = () => {
 
 const DropdownButtonPage: NextPage = () => {
     return (<ComponentContextProvider component={dropdownButton} baseComponents={toggleButton} componentFactory={
-        <DropdownButton orientation='block-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
-            <DummyUiBig />
-        </DropdownButton>
+        <DropdownButton orientation='block-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false} />
     }>
         <Head>
             <title>{`${dropdownButton.componentTag} Component`}</title>
@@ -126,8 +124,8 @@ const DropdownButtonPage: NextPage = () => {
 `
 <DropdownButton
     expanded={true}
-    theme='primary'
     orientation='block-end'
+    theme='primary'
     buttonChildren={
         'Show Menu'
     }

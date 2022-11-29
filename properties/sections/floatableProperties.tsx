@@ -79,8 +79,8 @@ const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropert
     const componentOrientation            = floatingComponent?.props.orientation ?? undefined;
     const componentOrientationStr         = (componentOrientation !== undefined) ? `\n    orientation='${componentOrientation}'` : '';
     
-    const componentDropdownOrientation    = floatingComponent?.props.dropdownDropdownOrientation ?? undefined;
-    const componentDropdownOrientationStr = (componentDropdownOrientation !== undefined) ? `\n    dropdownDropdownOrientation='${componentDropdownOrientation}'` : '';
+    const componentDropdownOrientation    = floatingComponent?.props.dropdownOrientation ?? undefined;
+    const componentDropdownOrientationStr = (componentDropdownOrientation !== undefined) ? `\n    dropdownOrientation='${componentDropdownOrientation}'` : '';
     
     const componentSize                   = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : undefined;
     const componentSizeStr                = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
