@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -96,10 +96,10 @@ export const ButtonRefProperty = ({children: preview} : ButtonRefPropertyProps) 
     );
 }
 
-export interface ButtonRefPropertyProps {
+export interface ButtonOrientationPropertyProps {
     children ?: React.ReactNode
 }
-export const ButtonOrientationProperty = ({children: preview} : ButtonRefPropertyProps) => {
+export const ButtonOrientationProperty = ({children: preview} : ButtonOrientationPropertyProps) => {
     const {component: {componentName}} = useComponentInfo();
     
     return (
@@ -119,30 +119,6 @@ export const ButtonOrientationProperty = ({children: preview} : ButtonRefPropert
         </PropertySection>
     );
 }
-
-/*export interface ButtonStylePropertyProps {
-    children ?: React.ReactNode
-}
-export const ButtonStyleProperty = ({children: preview} : ButtonStylePropertyProps) => {
-    const {component: {componentName}} = useComponentInfo();
-    
-    return (
-        <PropertySection property={properties.buttonStyle} preview={preview}>
-            <p>
-                Sets the <strong>alternative appearance</strong> of the internal {button.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
-            </p>
-            <TypeScriptCode collapsible={false}>{
-`<${componentName} buttonStyle='link' />`
-            }</TypeScriptCode>
-            is equivalent to:
-            <TypeScriptCode collapsible={false}>{
-`<${componentName} buttonComponent={
-    <Button buttonStyle='link' />
-} />`
-            }</TypeScriptCode>
-        </PropertySection>
-    );
-}*/
 
 export interface ButtonChildrenPropertyProps {
     children ?: React.ReactNode
@@ -609,6 +585,123 @@ export const DropdownOrientationProperty = ({children: preview} : DropdownRefPro
             <TypeScriptCode collapsible={false}>{
 `<${componentName} dropdownComponent={
     <Dropdown orientation='inline' />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+
+export interface ListComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const ListComponentProperty = ({children: preview} : ListComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.listComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {list.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listComponent={
+    <MyCustomList />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface ListRefPropertyProps {
+    children ?: React.ReactNode
+}
+export const ListRefProperty = ({children: preview} : ListRefPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.listRef} preview={preview}>
+            <p>
+                Gets the <strong>DOM reference</strong> of the internal {list.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listRef={fooListRef} />`
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listComponent={
+    <List elmRef={fooListRef} />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface ListOrientationPropertyProps {
+    children ?: React.ReactNode
+}
+export const ListOrientationProperty = ({children: preview} : ListOrientationPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.listOrientation} preview={preview}>
+            <p>
+                Sets the <strong>orientation</strong> of the internal {list.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listOrientation='inline' />`
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listComponent={
+    <List orientation='inline' />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface ListItemsPropertyProps {
+    children ?: React.ReactNode
+}
+export const ListItemsProperty = ({children: preview} : ListItemsPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.listItems} preview={preview}>
+            <p>
+                Defines the <strong>nested element</strong> of the internal {list.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listItems={
+    <ListItem>
+        A first item
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListSeparatorItem />
+    <ListItem enabled={false}>
+        A disabled item
+    </ListItem>
+} />`}
+            </TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listComponent={
+    <List>
+        <ListItem>
+            A first item
+        </ListItem>
+        <ListItem>
+            A second item
+        </ListItem>
+        <ListSeparatorItem />
+        <ListItem enabled={false}>
+            A disabled item
+        </ListItem>
+    </List>
 } />`
             }</TypeScriptCode>
         </PropertySection>

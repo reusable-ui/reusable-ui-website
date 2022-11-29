@@ -1,20 +1,18 @@
 import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { collapse, list, dropdownList, listItem } from '../../packages/packageList'
 import { orientationOptions, OrientationProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { AccordionItem, Accordion } from '../../components/Accordion'
-import { DropdownList as OriDropdownList, DropdownListProps, List, ListItem, CardBody, ListSeparatorItem } from '@reusable-ui/components'
+import { DropdownList as OriDropdownList, DropdownListProps, ListItem, CardBody, ListSeparatorItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
-import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
-import { DropdownOrientationProperty } from '../../properties/sections/componentProperties'
+import { ComponentProperties, DropdownComponentProperty, DropdownOrientationProperty, DropdownRefProperty, ListComponentProperty } from '../../properties/sections/componentProperties'
 
 
 
@@ -208,6 +206,12 @@ ${defaultFloatingChildren}
                 <FloatingShiftProperty floatingChildren={defaultFloatingChildren} />
                 <OnFloatingUpdateProperty />
             </FloatingProperties>
+            <ComponentProperties>
+                <ListComponentProperty />
+                
+                <DropdownComponentProperty />
+                <DropdownRefProperty />
+            </ComponentProperties>
             <InheritedProperties />
         </Main>
     </ComponentContextProvider>);

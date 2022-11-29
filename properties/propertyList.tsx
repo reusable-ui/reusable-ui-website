@@ -156,6 +156,11 @@ export const dropdownComponent     = new PropertyInfo('dropdownComponent')
 export const dropdownRef           = new PropertyInfo('dropdownRef')
 export const dropdownOrientation   = new PropertyInfo('dropdownOrientation')
 
+export const listComponent         = new PropertyInfo('listComponent')
+export const listRef               = new PropertyInfo('listRef')
+export const listOrientation       = new PropertyInfo('listOrientation')
+export const listItems             = new PropertyInfo('listItems')
+
 
 
 // children:
