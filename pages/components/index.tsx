@@ -270,7 +270,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.dropdownListButton}>
                         <p>
-                            A {packages.button.packageLink} component with a {packages.dropdownList.packageLink} as context menu.
+                            A {packages.toggleButton.packageLink} component with a {packages.dropdown.packageLink} of {packages.list.packageLink}.
                         </p>
                     </PackageItem>
                 </Accordion>
