@@ -78,7 +78,7 @@ const DemoOrientation = () => {
 
 const DropdownPage: NextPage = () => {
     return (<ComponentContextProvider component={dropdown} baseComponents={collapse} componentFactory={
-        <Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false} {...({size: undefined, theme: undefined} as {})}>
+        <Dropdown orientation='block' floatingAutoFlip={false} floatingAutoShift={false}>
             <DummyUiBig />
         </Dropdown>
     }>

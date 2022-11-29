@@ -100,7 +100,7 @@ const DemoOrientation = () => {
 
 const CollapsePage: NextPage = () => {
     return (<ComponentContextProvider component={collapse} baseComponents={generic} componentFactory={
-        <Collapse orientation='block' {...({size: undefined, theme: undefined} as {})}>
+        <Collapse orientation='block'>
             <DummyUiBig />
         </Collapse>
     }>

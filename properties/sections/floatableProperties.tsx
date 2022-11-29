@@ -76,25 +76,30 @@ const useComponentProperties = ({overrideFloatingComponent}: UseComponentPropert
     const {component: {componentName: floatingTag}, componentFactory} = useComponentInfo();
     const floatingComponent = overrideFloatingComponent ?? componentFactory;
     
-    const componentOrientation        = floatingComponent?.props.orientation ?? undefined;
-    const componentOrientationStr     = (componentOrientation !== undefined) ? `\n    orientation='${componentOrientation}'` : '';
+    const componentOrientation            = floatingComponent?.props.orientation ?? undefined;
+    const componentOrientationStr         = (componentOrientation !== undefined) ? `\n    orientation='${componentOrientation}'` : '';
     
-    const componentSize        = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : 'md';
-    const componentSizeStr     = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
+    const componentDropdownOrientation    = floatingComponent?.props.dropdownDropdownOrientation ?? undefined;
+    const componentDropdownOrientationStr = (componentDropdownOrientation !== undefined) ? `\n    dropdownDropdownOrientation='${componentDropdownOrientation}'` : '';
     
-    const componentTheme       = ('theme' in floatingComponent?.props) ? floatingComponent?.props.theme : 'danger';
-    const componentThemeStr    = (componentTheme !== undefined) ? `\n    theme='${componentTheme}'` : '';
+    const componentSize                   = ('size'  in floatingComponent?.props) ? floatingComponent?.props.size  : undefined;
+    const componentSizeStr                = (componentSize !== undefined) ? `\n    size='${componentSize}'` : '';
     
-    const componentOutlined    = floatingComponent?.props.outlined ?? undefined;
-    const componentOutlinedStr = (componentOutlined !== undefined) ? `\n    outlined={${componentOutlined}}` : '';
+    const componentTheme                  = ('theme' in floatingComponent?.props) ? floatingComponent?.props.theme : undefined;
+    const componentThemeStr               = (componentTheme !== undefined) ? `\n    theme='${componentTheme}'` : '';
     
-    const componentNude        = floatingComponent?.props.nude     ?? undefined;
-    const componentNudeStr     = (componentNude !== undefined) ? `\n    nude={${componentNude}}` : '';
+    const componentOutlined               = floatingComponent?.props.outlined ?? undefined;
+    const componentOutlinedStr            = (componentOutlined !== undefined) ? `\n    outlined={${componentOutlined}}` : '';
+    
+    const componentNude                   = floatingComponent?.props.nude     ?? undefined;
+    const componentNudeStr                = (componentNude !== undefined) ? `\n    nude={${componentNude}}` : '';
     
     return ({
         floatingTag,
         floatingProperties: (
             componentOrientationStr
+            +
+            componentDropdownOrientationStr
             +
             componentSizeStr
             +
@@ -130,8 +135,8 @@ const DemoFloatingOn = ({floatingComponent: overrideFloatingComponent, targetCom
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
-        theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'md',
+        theme    : floatingComponent.props.theme    ?? undefined,
+        size     : floatingComponent.props.size     ?? undefined,
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -224,8 +229,8 @@ const DemoFloatingPlacement = ({floatingComponent: overrideFloatingComponent, ta
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
-        theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'md',
+        theme    : floatingComponent.props.theme    ?? undefined,
+        size     : floatingComponent.props.size     ?? undefined,
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -268,8 +273,8 @@ const DemoAutoFlip = ({floatingComponent: overrideFloatingComponent, targetCompo
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
-        theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'md',
+        theme    : floatingComponent.props.theme    ?? undefined,
+        size     : floatingComponent.props.size     ?? undefined,
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -380,8 +385,8 @@ const DemoAutoShift = ({floatingComponent: overrideFloatingComponent, targetComp
     }, ((targetChildren === false) ? false : targetChildren.split('<br />').flatMap((child, index, arr) => (index < (arr.length - 1) ? [child, <br key={index} />] : [child]))));
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
-        theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'md',
+        theme    : floatingComponent.props.theme    ?? undefined,
+        size     : floatingComponent.props.size     ?? undefined,
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -490,8 +495,8 @@ const DemoFloatingOffset = ({floatingComponent: overrideFloatingComponent, targe
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
-        theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'md',
+        theme    : floatingComponent.props.theme    ?? undefined,
+        size     : floatingComponent.props.size     ?? undefined,
     }, floatingComponent.props.children ?? floatingChildren);
     
     
@@ -576,8 +581,8 @@ const DemoFloatingShift = ({floatingComponent: overrideFloatingComponent, target
     }, targetComponent.props.children ?? targetChildren);
     floatingComponent = React.cloneElement(floatingComponent, {
         expanded : floatingComponent.props.expanded ?? true,
-        theme    : floatingComponent.props.theme    ?? 'danger',
-        size     : floatingComponent.props.size     ?? 'md',
+        theme    : floatingComponent.props.theme    ?? undefined,
+        size     : floatingComponent.props.size     ?? undefined,
     }, floatingComponent.props.children ?? floatingChildren);
     
     

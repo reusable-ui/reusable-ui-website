@@ -51,7 +51,7 @@ const DropdownList = (props: Partial<DropdownListProps>) => <OriDropdownList {..
     {React.isValidElement(props.children) ? props.children : DummyListItems()}
 </OriDropdownList>
 
-const defaultFloatingChildren = '    <YourComponent />'
+const defaultFloatingChildren = DummyListItemsText();
 
 
 
@@ -107,7 +107,7 @@ const DemoOrientation = () => {
 
 const DropdownListPage: NextPage = () => {
     return (<ComponentContextProvider component={dropdownList} baseComponents={list} componentFactory={
-        <DropdownList orientation='block' floatingAutoFlip={false} floatingAutoShift={false} size='sm' theme='primary'>
+        <DropdownList floatingAutoFlip={false} floatingAutoShift={false} size='sm' theme='primary'>
             DummyUiBig()
         </DropdownList>
     }>
@@ -143,7 +143,7 @@ const DropdownListPage: NextPage = () => {
     dropdownOrientation='block'
     theme='primary'
 >
-${DummyListItemsText()}
+${defaultFloatingChildren}
 </DropdownList>
 `
                     }</TypeScriptCode>
@@ -160,7 +160,7 @@ ${DummyListItemsText()}
     dropdownOrientation='${orientation}'
     theme='primary'
 >
-${DummyListItemsText()}
+${defaultFloatingChildren}
 </DropdownList>
 `
                     ).join('\n\n')
@@ -184,7 +184,7 @@ ${DummyListItemsText()}
     orientation='${orientationName}'
     theme='primary'
 >
-${DummyListItemsText()}
+${defaultFloatingChildren}
 </DropdownList>
 `
                     ).join('')}

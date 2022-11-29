@@ -68,8 +68,9 @@ const DemoExpanded = () => {
 
 
 const AlertPage: NextPage = () => {
-    return (<ComponentContextProvider component={alert} baseComponents={popup} componentFactory={<Alert theme='danger' size='sm' />}
-    >
+    return (<ComponentContextProvider component={alert} baseComponents={popup} componentFactory={
+        <Alert theme='primary' size='sm' />
+    }>
         <Head>
             <title>{`${alert.componentTag} Component`}</title>
             <meta name="description" content={`${alert.componentTag} is a UI for displaying feedback messages.`} />

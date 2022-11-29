@@ -73,7 +73,9 @@ const DemoExpanded = () => {
 
 
 const BadgePage: NextPage = () => {
-    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={<Badge size='md' />}>
+    return (<ComponentContextProvider component={badge} baseComponents={popup} componentFactory={
+        <Badge theme='danger' size='md' />
+    }>
         <Head>
             <title>{`${badge.componentTag} Component`}</title>
             <meta name="description" content={`${badge.componentTag} represents counters or labels.`} />
@@ -97,7 +99,9 @@ const BadgePage: NextPage = () => {
 <Badge
     expanded={true}
     theme='danger'
-/>
+>
+    2
+</Badge>
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
