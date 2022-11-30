@@ -282,7 +282,7 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <PackageItem package={packages.modal}>
                         <p>
-                            Overlays a dialog to the entire site&apos;s page.
+                            Overlays a dialog to the entire site&apos;s page or entire specified section.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.modalCard}>
