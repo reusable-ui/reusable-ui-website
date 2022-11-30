@@ -369,7 +369,7 @@ ${defaultFloatingChildren}
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                         ).join('')}
@@ -394,7 +394,7 @@ ${defaultFloatingChildren}
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                         ).join('')}
@@ -421,7 +421,7 @@ ${defaultFloatingChildren}
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                         ).join('')}
@@ -448,7 +448,7 @@ ${defaultFloatingChildren}
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                         ).join('')}
@@ -475,7 +475,7 @@ ${defaultFloatingChildren}
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                         ).join('')}
@@ -504,7 +504,7 @@ ${defaultFloatingChildren}
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                         ).join('')}
@@ -534,7 +534,7 @@ ${defaultFloatingChildren}
             'Show Menu'
         }
     >
-        <YourComponent />
+${defaultFloatingChildren}
     </DropdownListButton>
 </Control>
 `
