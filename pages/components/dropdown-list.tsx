@@ -59,11 +59,31 @@ const DemoDropdownList = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
-            <div style={{boxSizing: 'border-box', inlineSize: '9rem', blockSize: '7rem'}}>
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '9rem',
+                blockSize    : '7rem',
+                alignContent : 'start',
+                
+                whiteSpace: 'nowrap',
+            }}>
                 <DropdownList expanded={isFlip} dropdownOrientation='block' />
             </div>
-            <div style={{boxSizing: 'border-box', inlineSize: '9rem', blockSize: '7rem'}}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '9rem',
+                blockSize    : '7rem',
+                alignContent : 'start',
+                
+                whiteSpace: 'nowrap',
+            }}>
                 <DropdownList expanded={isFlip} dropdownOrientation='inline' />
             </div>
         </CardBody>
@@ -75,33 +95,46 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef}>
             <p>
                 <code>{`<DropdownList expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <DropdownList expanded={isFlip} dropdownOrientation='block' />
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '9rem',
+                blockSize    : '7rem',
+                alignContent : 'start',
+                
+                whiteSpace: 'nowrap',
+            }}>
+                <DropdownList expanded={isFlip} dropdownOrientation='block' />
+            </div>
         </CardBody>
     );
 }
 const DemoOrientation = () => {
     return (
-        <CardBody style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
+        <CardBody>
             {orientationOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',
                     
-                    boxSizing : 'content-box',
                     ...((orientation === 'inline') ? {
-                        inlineSize     : '23rem',
-                        blockSize      : '3rem',
-                        alignContent   : 'start',
+                        inlineSize   : '23rem',
+                        blockSize    : '3rem',
+                        alignContent : 'start',
                     } : {
-                        inlineSize     : '9rem',
-                        blockSize      : '7rem',
-                        alignContent   : 'start',
+                        inlineSize   : '9rem',
+                        blockSize    : '7rem',
+                        alignContent : 'start',
                     }),
+                    
+                    whiteSpace: 'nowrap',
                 }}>
                     <DropdownList expanded={true} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
@@ -115,7 +148,7 @@ const DemoDropdownOrientation = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
+        <CardBody elmRef={viewportRef}>
             {orientationOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
@@ -125,6 +158,8 @@ const DemoDropdownOrientation = () => {
                     inlineSize   : '9rem',
                     blockSize    : '7rem',
                     alignContent : 'start',
+                    
+                    whiteSpace: 'nowrap',
                 }}>
                     <DropdownList expanded={isFlip} dropdownOrientation={orientation} />
                 </div>
@@ -178,7 +213,7 @@ ${defaultFloatingChildren}
             </ExpandedProperty>
             <OnExpandedChangeProperty />
             <OrientationProperty>
-            <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
+            <Preview display='right' stretch={false} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>
                     {orientationOptions.map((orientationName) =>
@@ -195,7 +230,7 @@ ${defaultFloatingChildren}
                 </TypeScriptCode>
             </OrientationProperty>
             <DropdownOrientationProperty>
-                <Preview display='right' stretch={true} cardBodyComponent={<DemoDropdownOrientation />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoDropdownOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
                     orientationOptions.map((orientation) =>

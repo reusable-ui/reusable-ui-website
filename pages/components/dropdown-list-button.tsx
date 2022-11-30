@@ -74,9 +74,21 @@ const DemoDropdownListButton = () => {
     
     
     return (
-        <DropdownCardBody elmRef={viewportRef}>
-            <DropdownListButton expanded={expanded} onExpandedChange={handleExpandedChange} focused={false} orientation='block-end' />
-        </DropdownCardBody>
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '9rem',
+                blockSize    : 'calc(7rem + 3rem)',
+                alignContent : 'start',
+                
+                whiteSpace   : 'nowrap',
+            }}>
+                <DropdownListButton expanded={expanded} onExpandedChange={handleExpandedChange} focused={false} orientation='block-end' />
+            </div>
+        </CardBody>
     );
 }
 const DemoExpanded = () => {
@@ -85,24 +97,35 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '15rem', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef}>
             <p>
                 <code>{`<DropdownListButton expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <DropdownListButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} />
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '9rem',
+                blockSize    : 'calc(7rem + 3rem)',
+                alignContent : 'start',
+                
+                whiteSpace   : 'nowrap',
+            }}>
+                <DropdownListButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} />
+            </div>
         </CardBody>
     );
 }
 const DemoOrientation = () => {
     return (
-        <CardBody style={{boxSizing: 'content-box', blockSize: 'calc(3rem + 7rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
+        <CardBody>
             {orientationWithDirectionOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',
                     
-                    boxSizing : 'content-box',
                     ...(orientation.startsWith('inline') ? {
                         inlineSize     : 'calc(8rem + 9rem)',
                         blockSize      : '10rem',
@@ -112,6 +135,8 @@ const DemoOrientation = () => {
                         blockSize      : 'calc(3rem + 7rem)',
                         alignContent   : orientation.endsWith('start') ? 'end' : 'start',
                     }),
+                    
+                    whiteSpace   : 'nowrap',
                 }}>
                     <DropdownListButton expanded={true} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
@@ -121,14 +146,13 @@ const DemoOrientation = () => {
 }
 const DemoListOrientation = () => {
     return (
-        <CardBody style={{boxSizing: 'content-box', blockSize: 'calc(3rem + 7rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
+        <CardBody>
             {orientationOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',
                     
-                    boxSizing : 'content-box',
                     ...((orientation === 'inline') ? {
                         inlineSize     : '23rem',
                         blockSize      : 'calc(3rem + 3rem)',
@@ -138,6 +162,8 @@ const DemoListOrientation = () => {
                         blockSize      : 'calc(3rem + 7rem)',
                         alignContent   : 'start',
                     }),
+                    
+                    whiteSpace   : 'nowrap',
                 }}>
                     <DropdownListButton expanded={true} listOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
@@ -151,7 +177,7 @@ const DemoDropdownOrientation = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: 'calc(3rem + 7rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
+        <CardBody elmRef={viewportRef}>
             {orientationOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
@@ -161,6 +187,8 @@ const DemoDropdownOrientation = () => {
                     inlineSize   : '9rem',
                     blockSize    : 'calc(3rem + 7rem)',
                     alignContent : 'start',
+                    
+                    whiteSpace   : 'nowrap',
                 }}>
                     <DropdownListButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
@@ -211,7 +239,7 @@ ${defaultFloatingChildren}
             <DefaultExpandedProperty />
             <OnExpandedChangeProperty />
             <OrientationWithDirectionProperty>
-                <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
                     orientationWithDirectionOptions.map((orientation) =>
@@ -231,7 +259,7 @@ ${defaultFloatingChildren}
                 }</TypeScriptCode>
             </OrientationWithDirectionProperty>
             <ListOrientationProperty>
-                <Preview display='right' stretch={true} cardBodyComponent={<DemoListOrientation />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoListOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
                     orientationOptions.map((orientation) =>
@@ -251,7 +279,7 @@ ${defaultFloatingChildren}
                 }</TypeScriptCode>
             </ListOrientationProperty>
             <DropdownOrientationProperty>
-                <Preview display='right' stretch={true} cardBodyComponent={<DemoDropdownOrientation />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoDropdownOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
                     orientationOptions.map((orientation) =>

@@ -32,11 +32,27 @@ const DemoDropdown = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start'}}>
-            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '128px',
+                blockSize    : '128px',
+                alignContent : 'start',
+            }}>
                 <Dropdown expanded={isFlip} orientation='block' />
             </div>
-            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '128px',
+                blockSize    : '128px',
+                alignContent : 'start',
+            }}>
                 <Dropdown expanded={isFlip} orientation='inline' />
             </div>
         </CardBody>
@@ -48,11 +64,21 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef}>
             <p>
                 <code>{`<Dropdown expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <Dropdown expanded={isFlip} orientation='block' />
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '128px',
+                blockSize    : '128px',
+                alignContent : 'start',
+            }}>
+                <Dropdown expanded={isFlip} orientation='block' />
+            </div>
         </CardBody>
     );
 }
@@ -62,14 +88,20 @@ const DemoOrientation = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
-            <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
-                {orientationOptions.map((orientation, index) =>
-                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                        <Dropdown expanded={isFlip} orientation={orientation} />
-                    </div>
-                )}
-            </div>
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start', whiteSpace: 'nowrap'}}>
+            {orientationOptions.map((orientation, index) =>
+                <div style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    inlineSize   : '128px',
+                    blockSize    : '128px',
+                    alignContent : 'start',
+                }}>
+                    <Dropdown expanded={isFlip} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                </div>
+            )}
         </CardBody>
     );
 }
@@ -122,7 +154,7 @@ const DropdownPage: NextPage = () => {
             </ExpandedProperty>
             <OnExpandedChangeProperty />
             <OrientationProperty>
-                <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>{
                     orientationOptions.map((orientation) =>
