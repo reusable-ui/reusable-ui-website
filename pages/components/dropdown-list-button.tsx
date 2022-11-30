@@ -6,7 +6,7 @@ import { dropdownButton, dropdownListButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { DropdownListButton as OriDropdownListButton, DropdownListButtonProps, Control, CardBody, DropdownExpandedChangeEvent, ListItem, ListSeparatorItem } from '@reusable-ui/components'
+import { DropdownListButton as OriDropdownListButton, DropdownListButtonProps, Control, CardBody, DropdownExpandedChangeEvent, ListItem, ListSeparatorItem, Button } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
@@ -308,9 +308,17 @@ ${defaultFloatingChildren}
                 <FloatingPlacementProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
                     targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
-                    targetComponent={false} targetTag={false} floatingComponent={<DropdownListButton theme='primary'>
-                    <DummyUiSmall />
-                </DropdownListButton>} />
+                    targetComponent={false} targetTag={false} floatingComponent={
+                        <DropdownListButton orientation='block-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false} buttonComponent={<Button size='lg'>Show Featured Menu</Button>}>
+                            <ListItem>
+                                A first item
+                            </ListItem>
+                            <ListItem>
+                                A second item
+                            </ListItem>
+                        </DropdownListButton>
+                    }
+                />
                 <FloatingStrategyProperty floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>} />
                 <FloatingAutoFlipProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
@@ -319,24 +327,21 @@ ${defaultFloatingChildren}
                 <FloatingAutoShiftProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
                     targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
-                    <DropdownListButton orientation='inline-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
-                        <DummyUiBig />
-                    </DropdownListButton>}
+                        <DropdownListButton orientation='inline-end' theme='primary' floatingAutoFlip={false} floatingAutoShift={false} />
+                    }
                 />
                 <FloatingOffsetProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
                     targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
                     targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
-                    <DropdownListButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
-                        <DummyUiBig />
-                    </DropdownListButton>}
+                        <DropdownListButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false} />
+                    }
                 />
                 <FloatingShiftProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
                     targetComponent={false} targetTag={false} floatingChildren={defaultFloatingChildren} floatingComponent={
-                    <DropdownListButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false}>
-                        <DummyUiBig />
-                    </DropdownListButton>}
+                        <DropdownListButton orientation='block-start' theme='primary' floatingAutoFlip={false} floatingAutoShift={false} />
+                    }
                 />
                 <OnFloatingUpdateProperty
                     floatingComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}
