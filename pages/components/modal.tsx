@@ -17,7 +17,7 @@ import { DummyUiBig } from '../../components/DummyUi'
 
 
 
-const Modal = (props: Partial<ModalProps>) => <OriModal {...props} expanded={props.expanded ?? true}>
+const Modal = (props: Partial<ModalProps>) => <OriModal {...props} expanded={props.expanded ?? true} setFocus={false} restoreFocus={false}>
     {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
 </OriModal>
 
