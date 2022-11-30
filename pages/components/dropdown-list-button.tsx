@@ -4,14 +4,14 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { dropdownButton, dropdownListButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { DropdownListButton as OriDropdownListButton, DropdownListButtonProps, Control, CardBody, DropdownExpandedChangeEvent } from '@reusable-ui/components'
+import { DropdownListButton as OriDropdownListButton, DropdownListButtonProps, Control, CardBody, DropdownExpandedChangeEvent, ListItem, ListSeparatorItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { OnClickPropertyOfButton } from '../../properties/sections/actionProperties'
-import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, DropdownComponentProperty, DropdownOrientationProperty, DropdownRefProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
+import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, DropdownComponentProperty, DropdownOrientationProperty, DropdownRefProperty, ListComponentProperty, ListOrientationProperty, ListRefProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { EventHandler, useEvent } from '@reusable-ui/core'
 import { DummyUiBig, DummyUiSmall } from '../../components/DummyUi'
@@ -22,13 +22,42 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 
 
+const DummyListItems = () => {
+    return [
+        <ListItem key={0}>
+            A first item
+        </ListItem>,
+        <ListItem key={1}>
+            A second item
+        </ListItem>,
+        <ListSeparatorItem key={2} />,
+        <ListItem key={3} enabled={false}>
+            A disabled item
+        </ListItem>,
+    ];
+}
+const DummyListItemsText = () => {
+    return (
+`    <ListItem>
+        A first item
+    </ListItem>
+    <ListItem>
+        A second item
+    </ListItem>
+    <ListSeparatorItem />
+    <ListItem enabled={false}>
+        A disabled item
+    </ListItem>`
+    );
+}
+
 const DropdownListButton = (props: Partial<DropdownListButtonProps>) => <OriDropdownListButton {...props} theme={props.theme ?? 'primary'} buttonChildren={
     'Show Menu'
 }>
-    {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
+    {[props.children].flat().every((child) => React.isValidElement(child)) ? props.children : DummyListItems()}
 </OriDropdownListButton>
 
-const defaultFloatingChildren = '    <YourComponent />'
+const defaultFloatingChildren = DummyListItemsText();
 
 
 
@@ -65,30 +94,75 @@ const DemoExpanded = () => {
     );
 }
 const DemoOrientation = () => {
-    const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
-    
-    
-    
     return (
-        <CardBody elmRef={viewportRef}>
+        <CardBody style={{boxSizing: 'content-box', blockSize: 'calc(3rem + 7rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
             {orientationWithDirectionOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',
                     
-                    boxSizing : 'border-box',
+                    boxSizing : 'content-box',
                     ...(orientation.startsWith('inline') ? {
-                        inlineSize     : 'calc(128px + 8rem)',
-                        blockSize      : '128px',
+                        inlineSize     : 'calc(8rem + 9rem)',
+                        blockSize      : '10rem',
                         justifyContent : orientation.endsWith('start') ? 'end' : 'start',
                     } : {
-                        blockSize      : 'calc(128px + 3rem)',
-                        inlineSize     : '128px',
+                        inlineSize     : '9rem',
+                        blockSize      : 'calc(3rem + 7rem)',
                         alignContent   : orientation.endsWith('start') ? 'end' : 'start',
                     }),
                 }}>
-                    <DropdownListButton expanded={isFlip} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                    <DropdownListButton expanded={true} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                </div>
+            )}
+        </CardBody>
+    );
+}
+const DemoListOrientation = () => {
+    return (
+        <CardBody style={{boxSizing: 'content-box', blockSize: 'calc(3rem + 7rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
+            {orientationOptions.map((orientation, index) =>
+                <div key={index} style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    boxSizing : 'content-box',
+                    ...((orientation === 'inline') ? {
+                        inlineSize     : '23rem',
+                        blockSize      : 'calc(3rem + 3rem)',
+                        alignContent   : 'start',
+                    } : {
+                        inlineSize     : '9rem',
+                        blockSize      : 'calc(3rem + 7rem)',
+                        alignContent   : 'start',
+                    }),
+                }}>
+                    <DropdownListButton expanded={true} listOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                </div>
+            )}
+        </CardBody>
+    );
+}
+const DemoDropdownOrientation = () => {
+    const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: 'calc(3rem + 7rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
+            {orientationOptions.map((orientation, index) =>
+                <div key={index} style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    inlineSize   : '9rem',
+                    blockSize    : 'calc(3rem + 7rem)',
+                    alignContent : 'start',
+                }}>
+                    <DropdownListButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
             )}
         </CardBody>
@@ -116,7 +190,6 @@ const DropdownListButtonPage: NextPage = () => {
                 <Preview display='right' stretch={false} cardBodyComponent={<DemoDropdownListButton />} />
             </HeroSection>
             <ComponentInstallation />
-            <DropdownUiProperty />
             <ExpandedProperty collapsibleComponentText={<>{packages.dropdown.packageLink} of <TheComponentLink /></>}>
                     <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
@@ -130,7 +203,7 @@ const DropdownListButtonPage: NextPage = () => {
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                     }</TypeScriptCode>
@@ -144,18 +217,59 @@ const DropdownListButtonPage: NextPage = () => {
                     orientationWithDirectionOptions.map((orientation) =>
 `
 <DropdownListButton
+    expanded={true}
     orientation='${orientation}'
     theme='primary'
     buttonChildren={
         'Show Menu'
     }
 >
-    <YourComponent />
+${defaultFloatingChildren}
 </DropdownListButton>
 `
                     ).join('\n\n')
                 }</TypeScriptCode>
             </OrientationWithDirectionProperty>
+            <ListOrientationProperty>
+                <Preview display='right' stretch={true} cardBodyComponent={<DemoListOrientation />} />
+                <p></p>
+                <TypeScriptCode>{
+                    orientationOptions.map((orientation) =>
+`
+<DropdownListButton
+    expanded={true}
+    listOrientation='${orientation}'
+    theme='primary'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+${defaultFloatingChildren}
+</DropdownListButton>
+`
+                    ).join('\n\n')
+                }</TypeScriptCode>
+            </ListOrientationProperty>
+            <DropdownOrientationProperty>
+                <Preview display='right' stretch={true} cardBodyComponent={<DemoDropdownOrientation />} />
+                <p></p>
+                <TypeScriptCode>{
+                    orientationOptions.map((orientation) =>
+`
+<DropdownListButton
+    expanded={true}
+    dropdownOrientation='${orientation}'
+    theme='primary'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+${defaultFloatingChildren}
+</DropdownListButton>
+`
+                    ).join('\n\n')
+                }</TypeScriptCode>
+            </DropdownOrientationProperty>
             <LazyProperty />
             <OnClickPropertyOfButton tips={false} />
             <FloatingProperties
@@ -405,7 +519,9 @@ const DropdownListButtonPage: NextPage = () => {
                 
                 <DropdownComponentProperty />
                 <DropdownRefProperty />
-                <DropdownOrientationProperty />
+                
+                <ListComponentProperty />
+                <ListRefProperty />
             </ComponentProperties>
             <InheritedProperties />
         </Main>

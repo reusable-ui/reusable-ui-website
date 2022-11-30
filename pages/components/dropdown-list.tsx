@@ -84,19 +84,51 @@ const DemoExpanded = () => {
     );
 }
 const DemoOrientation = () => {
+    return (
+        <CardBody style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
+            {orientationOptions.map((orientation, index) =>
+                <div key={index} style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    boxSizing : 'content-box',
+                    ...((orientation === 'inline') ? {
+                        inlineSize     : '23rem',
+                        blockSize      : '3rem',
+                        alignContent   : 'start',
+                    } : {
+                        inlineSize     : '9rem',
+                        blockSize      : '7rem',
+                        alignContent   : 'start',
+                    }),
+                }}>
+                    <DropdownList expanded={true} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                </div>
+            )}
+        </CardBody>
+    );
+}
+const DemoDropdownOrientation = () => {
     const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
     
     
     
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '7rem', alignItems: 'start', whiteSpace: 'nowrap'}}>
-            <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
-                {orientationOptions.map((orientation, index) =>
-                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '9rem', blockSize: '7rem'}}>
-                        <DropdownList expanded={isFlip} dropdownOrientation={orientation} />
-                    </div>
-                )}
-            </div>
+            {orientationOptions.map((orientation, index) =>
+                <div key={index} style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    inlineSize   : '9rem',
+                    blockSize    : '7rem',
+                    alignContent : 'start',
+                }}>
+                    <DropdownList expanded={isFlip} dropdownOrientation={orientation} />
+                </div>
+            )}
         </CardBody>
     );
 }
@@ -145,32 +177,8 @@ ${defaultFloatingChildren}
                     }</TypeScriptCode>
             </ExpandedProperty>
             <OnExpandedChangeProperty />
-            <DropdownOrientationProperty>
-                <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
-                <p></p>
-                <TypeScriptCode>{
-                    orientationOptions.map((orientation) =>
-`
-<DropdownList
-    expanded={true}
-    dropdownOrientation='${orientation}'
-    theme='primary'
->
-${defaultFloatingChildren}
-</DropdownList>
-`
-                    ).join('\n\n')
-                }</TypeScriptCode>
-            </DropdownOrientationProperty>
             <OrientationProperty>
-                <Preview display='right' stretch={false}>
-                    {orientationOptions.map((orientationName, index) =>
-                        <DropdownList
-                            key={index}
-                            orientation={orientationName}
-                        />
-                    )}
-                </Preview>
+            <Preview display='right' stretch={true} cardBodyComponent={<DemoOrientation />} />
                 <p></p>
                 <TypeScriptCode>
                     {orientationOptions.map((orientationName) =>
@@ -186,6 +194,23 @@ ${defaultFloatingChildren}
                     ).join('')}
                 </TypeScriptCode>
             </OrientationProperty>
+            <DropdownOrientationProperty>
+                <Preview display='right' stretch={true} cardBodyComponent={<DemoDropdownOrientation />} />
+                <p></p>
+                <TypeScriptCode>{
+                    orientationOptions.map((orientation) =>
+`
+<DropdownList
+    expanded={true}
+    dropdownOrientation='${orientation}'
+    theme='primary'
+>
+${defaultFloatingChildren}
+</DropdownList>
+`
+                    ).join('\n\n')
+                }</TypeScriptCode>
+            </DropdownOrientationProperty>
             <LazyProperty childrenText={list.packageDisplay} />
             <FloatingProperties>
                 <FloatingOnProperty floatingChildren={defaultFloatingChildren} floatingPlacement='top-end' floatingOffset={-10} floatingShift={20} />

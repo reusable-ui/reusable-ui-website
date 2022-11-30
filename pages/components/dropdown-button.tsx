@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { toggleButton, dropdownButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { DropdownButton as OriDropdownButton, DropdownButtonProps, Control, CardBody, DropdownExpandedChangeEvent } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
@@ -65,30 +65,49 @@ const DemoExpanded = () => {
     );
 }
 const DemoOrientation = () => {
-    const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
-    
-    
-    
     return (
-        <CardBody elmRef={viewportRef}>
+        <CardBody style={{boxSizing: 'content-box', blockSize: 'calc(128px + 3rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
             {orientationWithDirectionOptions.map((orientation, index) =>
                 <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',
                     
-                    boxSizing : 'border-box',
+                    boxSizing : 'content-box',
                     ...(orientation.startsWith('inline') ? {
                         inlineSize     : 'calc(128px + 8rem)',
-                        blockSize      : '128px',
+                        blockSize      : '10rem',
                         justifyContent : orientation.endsWith('start') ? 'end' : 'start',
                     } : {
+                        inlineSize     : '9rem',
                         blockSize      : 'calc(128px + 3rem)',
-                        inlineSize     : '128px',
                         alignContent   : orientation.endsWith('start') ? 'end' : 'start',
                     }),
                 }}>
-                    <DropdownButton expanded={isFlip} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                    <DropdownButton expanded={true} orientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                </div>
+            )}
+        </CardBody>
+    );
+}
+const DemoDropdownOrientation = () => {
+    const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: 'calc(128px + 3rem)', alignItems: 'start', whiteSpace: 'nowrap'}}>
+            {orientationOptions.map((orientation, index) =>
+                <div key={index} style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    inlineSize   : '9rem',
+                    blockSize    : 'calc(128px + 3rem)',
+                    alignContent : 'start',
+                }}>
+                    <DropdownButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
             )}
         </CardBody>
@@ -144,6 +163,7 @@ const DropdownButtonPage: NextPage = () => {
                     orientationWithDirectionOptions.map((orientation) =>
 `
 <DropdownButton
+    expanded={true}
     orientation='${orientation}'
     theme='primary'
     buttonChildren={
@@ -156,6 +176,26 @@ const DropdownButtonPage: NextPage = () => {
                     ).join('\n\n')
                 }</TypeScriptCode>
             </OrientationWithDirectionProperty>
+            <DropdownOrientationProperty>
+                <Preview display='right' stretch={true} cardBodyComponent={<DemoDropdownOrientation />} />
+                <p></p>
+                <TypeScriptCode>{
+                    orientationOptions.map((orientation) =>
+`
+<DropdownButton
+    expanded={true}
+    dropdownOrientation='${orientation}'
+    theme='primary'
+    buttonChildren={
+        'Show Menu'
+    }
+>
+    <YourComponent />
+</DropdownButton>
+`
+                    ).join('\n\n')
+                }</TypeScriptCode>
+            </DropdownOrientationProperty>
             <LazyProperty />
             <OnClickPropertyOfButton tips={false} />
             <FloatingProperties
@@ -405,7 +445,6 @@ const DropdownButtonPage: NextPage = () => {
                 
                 <DropdownComponentProperty />
                 <DropdownRefProperty />
-                <DropdownOrientationProperty />
             </ComponentProperties>
             <InheritedProperties />
         </Main>
