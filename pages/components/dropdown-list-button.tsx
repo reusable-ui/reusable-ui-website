@@ -112,7 +112,7 @@ const DemoExpanded = () => {
                 
                 whiteSpace   : 'nowrap',
             }}>
-                <DropdownListButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} />
+                <DropdownListButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} focused={false} />
             </div>
         </CardBody>
     );
@@ -190,7 +190,7 @@ const DemoDropdownOrientation = () => {
                     
                     whiteSpace   : 'nowrap',
                 }}>
-                    <DropdownListButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
+                    <DropdownListButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} focused={false} />
                 </div>
             )}
         </CardBody>
