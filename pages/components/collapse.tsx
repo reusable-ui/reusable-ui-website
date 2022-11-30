@@ -54,11 +54,27 @@ const DemoCollapse = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start'}}>
-            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '128px',
+                blockSize    : '128px',
+                alignContent : 'start',
+            }}>
                 <Collapse expanded={isFlip} orientation='block' />
             </div>
-            <div style={{boxSizing: 'border-box', inlineSize: '128px', blockSize: '128px'}}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '128px',
+                blockSize    : '128px',
+                alignContent : 'start',
+            }}>
                 <Collapse expanded={isFlip} orientation='inline' />
             </div>
         </CardBody>
@@ -70,11 +86,21 @@ const DemoExpanded = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '12rem', justifyContent: 'start'}}>
+        <CardBody elmRef={viewportRef}>
             <p>
                 <code>{`<Collapse expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
-            <Collapse expanded={isFlip} orientation='block' />
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                inlineSize   : '128px',
+                blockSize    : '128px',
+                alignContent : 'start',
+            }}>
+                <Collapse expanded={isFlip} orientation='block' />
+            </div>
         </CardBody>
     );
 }
@@ -84,14 +110,20 @@ const DemoOrientation = () => {
     
     
     return (
-        <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '8rem', alignItems: 'start'}}>
-            <div style={{display: 'flex', gap: 'inherit', justifyContent: 'center', alignSelf: 'stretch'}}>
-                {orientationOptions.map((orientation, index) =>
-                    <div key={index} style={{boxSizing: 'border-box', inlineSize: '8rem', blockSize: '8rem'}}>
-                        <Collapse expanded={isFlip} orientation={orientation} />
-                    </div>
-                )}
-            </div>
+        <CardBody elmRef={viewportRef}>
+            {orientationOptions.map((orientation, index) =>
+                <div style={{
+                    display      : 'grid',
+                    justifyItems : 'center',
+                    alignItems   : 'center',
+                    
+                    inlineSize   : '128px',
+                    blockSize    : '128px',
+                    alignContent : 'start',
+                }}>
+                    <Collapse expanded={isFlip} orientation={orientation} />
+                </div>
+            )}
         </CardBody>
     );
 }
