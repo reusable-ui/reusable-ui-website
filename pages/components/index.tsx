@@ -282,7 +282,8 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <PackageItem package={packages.modal}>
                         <p>
-                            Overlays a dialog to the entire site&apos;s page or entire specified section.
+                            Overlays a dialog to the entire site&apos;s page or entire specified section.<br />
+                            You need to place a (dialog) component inside the {packages.modal.packageLink} in order to make the interactive UI.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.modalCard}>
