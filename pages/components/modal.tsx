@@ -30,7 +30,27 @@ const DemoModal = () => {
     
     return (
         <CardBody elmRef={viewportRef}>
-            <Modal expanded={isFlip} />
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                blockSize    : 'calc(128px + 2rem)',
+                alignContent : 'start',
+                
+                overflow     : 'hidden',
+            }}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <Modal expanded={isFlip} modalViewport={viewportRef} />
+            </div>
         </CardBody>
     );
 }
@@ -49,11 +69,21 @@ const DemoExpanded = () => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                inlineSize   : '128px',
-                blockSize    : '128px',
+                blockSize    : 'calc(128px + 2rem)',
                 alignContent : 'start',
+                
+                overflow     : 'hidden',
             }}>
-                <Modal expanded={isFlip} />
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <Modal expanded={isFlip} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
@@ -87,17 +117,18 @@ const ModalPage: NextPage = () => {
                 <p>
                     Here the demo:
                 </p>
-                <Preview display='right' stretch={false} cardBodyComponent={<DemoModal />} />
+                <Preview display='right' stretch={false} transpMask={false} cardBodyComponent={<DemoModal />} />
             </HeroSection>
             <ComponentInstallation />
             <ModalUiProperty />
             <ExpandedProperty>
-                    <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
+                    <Preview display='down' stretch={false} transpMask={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `
 <Modal
     expanded={true}
+    modalViewport={cardBodyRef}
 >
     <YourComponent />
 </Modal>
