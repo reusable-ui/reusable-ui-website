@@ -212,7 +212,7 @@ const ModalPage: NextPage = () => {
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentLink /> overlays a dialog to the entire site&apos;s page or entire specified section.<br />
-                    You need to place a (dialog) component inside the <TheComponentLink /> in order to make an interactive UI.
+                    You need to place <code>{'<YourComponent>'}</code> inside the <TheComponentLink /> in order to make an interactive UI.
                 </p>
                 <p>
                     <TheComponentLink /> handles <kbd>esc</kbd> key to close itself.
