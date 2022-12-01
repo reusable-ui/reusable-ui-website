@@ -57,7 +57,9 @@ export const usePreviewStyleSheet = dynamicStyleSheet(() => {
 
 
 
-export interface PreviewProps extends Omit<CardProps, 'children'> {
+export interface PreviewProps extends Omit<CardProps, 'children'|'title'> {
+    title             ?: React.ReactNode
+    
     display           ?: 'down'|'right'|'block'
     stretch           ?: boolean
     preventShift      ?: boolean
@@ -68,7 +70,7 @@ export interface PreviewProps extends Omit<CardProps, 'children'> {
     
     children          ?: React.ReactNode | ((isLoaded: boolean) => React.ReactNode)
 }
-export const Preview = (props: PreviewProps) => {
+export const Preview = ({title, ...props}: PreviewProps) => {
     const {
         display      = 'down',
         stretch      = true,
@@ -153,7 +155,7 @@ export const Preview = (props: PreviewProps) => {
             style={style}
         >
             <CardHeader>
-                Preview
+                Preview{title ? <>: {title}</> : undefined}
             </CardHeader>
             {React.cloneElement(cardBodyComponent, undefined,
                 // children:

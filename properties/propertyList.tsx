@@ -46,6 +46,7 @@ export const checkStyle            = new PropertyInfo('checkStyle')
 export const listStyle             = new PropertyInfo('listStyle')
 export const cardStyle             = new PropertyInfo('cardStyle')
 export const badgeStyle            = new PropertyInfo('badgeStyle')
+export const backdropStyle         = new PropertyInfo('backdropStyle')
 
 
 

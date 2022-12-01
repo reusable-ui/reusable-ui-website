@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
 
 
 
@@ -29,6 +29,7 @@ export const checkStyleOptions               : CheckStyle[]                     
 export const listStyleOptions                : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
 export const cardStyleOptions                : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
 export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
+export const backdropStyleOptions            : BackdropStyle[]                  = ['regular', 'hidden', 'interactive', 'static'];
 
 
 
@@ -644,6 +645,50 @@ export const BadgeStyleProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const BackdropStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.backdropStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> behavior setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        <strong>Shows</strong> the <TheComponentLink />&apos;s backdrop and <strong>weakly blocks</strong> the user to interact with the background UI.
+                    </p>
+                    <p>
+                        If the user <strong>clicks</strong> the <TheComponentLink />&apos;s backdrop, the <TheComponentLink /> <strong>closes</strong> itself.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'hidden'</code>}>
+                    <p>
+                        <strong>Hides</strong> the <TheComponentLink />&apos;s backdrop and <strong>allows</strong> the user to interact with the background UI.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'interactive'</code>}>
+                    <p>
+                        <strong>Shows</strong> the <TheComponentLink />&apos;s backdrop but <strong>allows</strong> the user to interact with the background UI.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'static'</code>}>
+                    <p>
+                        <strong>Shows</strong> the <TheComponentLink />&apos;s backdrop and <strong>strongly blocks</strong> the user to interact with the background UI.
+                    </p>
+                    <p>
+                        If the user <strong>clicks</strong> the <TheComponentLink />&apos;s backdrop, the user interaction <strong>blocked</strong> from reaching background UI.
+                        The user need to <strong>explicitly close</strong> the <TheComponentLink /> in order to <strong>interact back</strong> to the background UI.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative behaviors</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );

@@ -1,11 +1,11 @@
-import React, {  } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { collapse, modal } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Modal as OriModal, ModalProps, List, ListItem, CardBody } from '@reusable-ui/components'
+import { Modal as OriModal, ModalProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
@@ -14,6 +14,8 @@ import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { ModalUiProperty } from '../../properties/sections/modalProperties'
 import { DummyUiBig } from '../../components/DummyUi'
+import { backdropStyleOptions, BackdropStyleProperty } from '../../properties/sections/variantProperties'
+import { EventHandler } from '@reusable-ui/core'
 
 
 
@@ -89,6 +91,58 @@ const DemoExpanded = () => {
     );
 }
 
+interface DemoBackdropProps {
+    backdropStyle : BackdropStyle
+}
+const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
+    const viewportRef = useRef<HTMLElement>(null);
+    const [expanded, setExpanded] = useState<boolean>(true);
+    let cancelReset : ReturnType<typeof setTimeout>|undefined = undefined;
+    
+    const handleClose : EventHandler<ModalExpandedChangeEvent> = () => {
+        setExpanded(false);
+        
+        clearTimeout(cancelReset);
+        cancelReset = setTimeout(() => {
+            setExpanded(true);
+        }, 2000);
+    };
+    useEffect(() => {
+        // cleanups:
+        return () => {
+            clearTimeout(cancelReset);
+        };
+    }, [])
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                blockSize    : 'calc(128px + 2rem)',
+                alignContent : 'start',
+                
+                overflow     : 'hidden',
+            }}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <Modal expanded={expanded} onExpandedChange={handleClose} backdropStyle={backdropStyle} modalViewport={viewportRef} />
+            </div>
+        </CardBody>
+    );
+}
+
 
 
 const ModalPage: NextPage = () => {
@@ -105,7 +159,7 @@ const ModalPage: NextPage = () => {
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentLink /> overlays a dialog to the entire site&apos;s page or entire specified section.<br />
-                    You need to place a (dialog) component inside the <TheComponentLink /> in order to make the interactive UI.
+                    You need to place a (dialog) component inside the <TheComponentLink /> in order to make an interactive UI.
                 </p>
                 <p>
                     <TheComponentLink /> handles <kbd>esc</kbd> key to close itself.
@@ -137,6 +191,12 @@ const ModalPage: NextPage = () => {
             </ExpandedProperty>
             <OnExpandedChangeProperty />
             <LazyProperty />
+            <BackdropStyleProperty>
+                {backdropStyleOptions.map((backdropStyle, index) => <>
+                    {(index !== 0) && <p></p>}
+                    <Preview key={index} display='right' stretch={false} transpMask={false} title={<code>{`backdropStyle='${backdropStyle}'`}</code>} cardBodyComponent={<DemoBackdrop backdropStyle={backdropStyle} />} />
+                </>)}
+            </BackdropStyleProperty>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>

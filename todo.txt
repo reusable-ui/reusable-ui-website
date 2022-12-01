@@ -7,6 +7,7 @@
 * docs <Masonry orientation='inline|block'> warning 'block' influenced by vertical scrollbar width and 'inline' should have max-height & horz scrollbar
 * docs <Popup|Badge|Busy|Alert|Tooltip floatingMiddleware>
 * docs <Dropdown|Modal setFocus restoreFocus>
+* specific TExpandedChange for <Collapse|Modal|Dropdown|etc>
 
 * add guide-using-component
 * add guide-create-component
