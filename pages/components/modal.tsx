@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { collapse, modal } from '../../packages/packageList'
+import { generic, modal } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Modal as OriModal, ModalProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button } from '@reusable-ui/components'
@@ -199,7 +199,7 @@ const DemoModalViewport = ({bodyViewport}: DemoModalViewportProps) => {
 
 
 const ModalPage: NextPage = () => {
-    return (<ComponentContextProvider component={modal} baseComponents={collapse} componentFactory={
+    return (<ComponentContextProvider component={modal} baseComponents={generic} componentFactory={
         <Modal>
             <DummyUiBig />
         </Modal>
