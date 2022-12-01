@@ -109,15 +109,20 @@ export const end                   = new PropertyInfo('end')
 
 
 // floatable:
-export const floatingOn           = new PropertyInfo('floatingOn')
-export const floatingPlacement    = new PropertyInfo('floatingPlacement')
-export const floatingMiddleware   = new PropertyInfo('floatingMiddleware')
-export const floatingStrategy     = new PropertyInfo('floatingStrategy')
-export const floatingAutoFlip     = new PropertyInfo('floatingAutoFlip')
-export const floatingAutoShift    = new PropertyInfo('floatingAutoShift')
-export const floatingOffset       = new PropertyInfo('floatingOffset')
-export const floatingShift        = new PropertyInfo('floatingShift')
-export const onFloatingUpdate     = new PropertyInfo('onFloatingUpdate')
+export const floatingOn            = new PropertyInfo('floatingOn')
+export const floatingPlacement     = new PropertyInfo('floatingPlacement')
+export const floatingMiddleware    = new PropertyInfo('floatingMiddleware')
+export const floatingStrategy      = new PropertyInfo('floatingStrategy')
+export const floatingAutoFlip      = new PropertyInfo('floatingAutoFlip')
+export const floatingAutoShift     = new PropertyInfo('floatingAutoShift')
+export const floatingOffset        = new PropertyInfo('floatingOffset')
+export const floatingShift         = new PropertyInfo('floatingShift')
+export const onFloatingUpdate      = new PropertyInfo('onFloatingUpdate')
+
+
+
+// modals:
+export const modalViewport         = new PropertyInfo('modalViewport')
 
 
 

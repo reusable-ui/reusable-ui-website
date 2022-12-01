@@ -12,7 +12,7 @@ import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sec
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
-import { ModalUiProperty } from '../../properties/sections/modalProperties'
+import { ModalUiProperty, ModalViewportProperty } from '../../properties/sections/modalProperties'
 import { DummyUiBig } from '../../components/DummyUi'
 import { backdropStyleOptions, BackdropStyleProperty } from '../../properties/sections/variantProperties'
 import { EventHandler } from '@reusable-ui/core'
@@ -190,6 +190,9 @@ const ModalPage: NextPage = () => {
                     }</TypeScriptCode>
             </ExpandedProperty>
             <OnExpandedChangeProperty />
+            <ModalViewportProperty>
+                //......
+            </ModalViewportProperty>
             <LazyProperty />
             <BackdropStyleProperty>
                 {backdropStyleOptions.map((backdropStyle, index) => <>
