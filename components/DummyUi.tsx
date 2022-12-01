@@ -3,12 +3,41 @@ import Image from 'next/image'
 import { Generic, GenericProps } from '@reusable-ui/components'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { stripoutFocusableElement, useMergeClasses } from '@reusable-ui/core'
+import { children } from '@cssfn/core'
 
 
 
 const useDummyUiStyleSheet = dynamicStyleSheet(() => ({
     ...stripoutFocusableElement(),
-    display: 'flex',
+    display    : 'flex',
+    
+    position   : 'relative',
+    
+    background : [
+        'url("/images/lorem-image-1.svg") 0%/cover',
+    ],
+    
+    ...children('.overlay', {
+        display        : 'grid',
+        justifyContent : 'center',
+        alignContent   : 'center',
+        
+        position       : 'absolute',
+        inset          : 0,
+        
+        padding        : '0.5rem',
+        
+        ...children('p', {
+            textAlign     : 'start',
+            textAlignLast : 'end',
+        }),
+        ...children('code:first-child', {
+            textAlign     : 'start',
+        }),
+        ...children('code:last-child', {
+            textAlign     : 'end',
+        }),
+    }),
 }), { id: 'y5awjqfgx3' });
 
 
@@ -19,7 +48,7 @@ export interface DummyUiProps extends GenericProps {
     width     : number
     height    : number
 }
-export const DummyUi = ({tabIndex, width, height, children, ...restGenericProps}: DummyUiProps) => {
+export const DummyUi = ({tabIndex, width, height, children = true, ...restGenericProps}: DummyUiProps) => {
     const styleSheet = useDummyUiStyleSheet();
     const mergedClasses = useMergeClasses(
         styleSheet.main,
@@ -29,18 +58,16 @@ export const DummyUi = ({tabIndex, width, height, children, ...restGenericProps}
     return (
         <Generic
             {...restGenericProps}
-            tag='span'
+            tag='div'
             {...{tabIndex: (tabIndex ?? -1)} as {}}
             classes={mergedClasses}
+            style={{width: `${width}px`, height: `${height}px`}}
         >
-            <Image
-                alt='<YourComponent />'
-                src='/images/lorem-image-1.svg'
-                width={width}
-                height={height}
-            />
-            {children && <div style={{position: 'absolute', inset: 0, padding: '1rem'}}>
-                {children}
+            {children && <div className='overlay'>
+                {((children !== true) && children) || <>
+                    <code>{'<Your'}</code>
+                    <code>{'Component>'}</code>
+                </>}
             </div>}
         </Generic>
     );
