@@ -14,9 +14,7 @@ import { OnClickPropertyOfButton } from '../../properties/sections/actionPropert
 import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, DropdownComponentProperty, DropdownOrientationProperty, DropdownRefProperty, ListComponentProperty, ListOrientationProperty, ListRefProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { EventHandler, useEvent } from '@reusable-ui/core'
-import { DummyUiBig, DummyUiSmall } from '../../components/DummyUi'
 import { DropdownCardBody } from '../../components/DropdownCardBody'
-import { DropdownUiProperty } from '../../properties/sections/dropdownProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, DropdownButtonFloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 
