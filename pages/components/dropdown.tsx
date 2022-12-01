@@ -122,14 +122,14 @@ const DropdownPage: NextPage = () => {
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentLink /> is a non-visual context menu container with dynamic visibility (show/hide) in sliding fashion.<br />
-                    You need to place a visual (styled) component inside the <TheComponentLink /> in order to make the appearance.
+                    You need to place <code>{'<YourComponent>'}</code> inside the <TheComponentLink /> in order to make the appearance.
                 </p>
                 <p>
                     <TheComponentLink /> is similar to {collapse.packageLink} with additional handling of <kbd>esc</kbd> key and <strong>blur</strong> event to close itself.
                     Once closed, the <TheComponentLink /> restores the focus to the previously focused element.
                 </p>
                 <p>
-                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside the <TheComponentLink />.
+                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside <code>{'<YourComponent>'}</code>.
                 </p>
                 <p>
                     Here the demo:

@@ -144,7 +144,7 @@ const CollapsePage: NextPage = () => {
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentLink /> is a non-visual container with dynamic visibility (show/hide) in sliding fashion.<br />
-                    You need to place a visual (styled) component inside the <TheComponentLink /> in order to make the appearance.
+                    You need to place <code>{'<YourComponent>'}</code> inside the <TheComponentLink /> in order to make the appearance.
                 </p>
                 <p>
                     Here the demo:

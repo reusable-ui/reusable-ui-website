@@ -219,7 +219,7 @@ const ModalPage: NextPage = () => {
                     Once closed, the <TheComponentLink /> restores the focus to the previously focused element.
                 </p>
                 <p>
-                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside the <TheComponentLink />.
+                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside <code>{'<YourComponent>'}</code>.
                 </p>
                 <p>
                     Here the demo:

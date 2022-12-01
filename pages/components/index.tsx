@@ -242,13 +242,13 @@ const Components: NextPage = () => {
                     <PackageItem package={packages.collapse}>
                         <p>
                             A non-visual container with dynamic visibility (show/hide) in sliding fashion.<br />
-                            You need to place a visual (styled) component inside the {packages.collapse.packageLink} in order to make the appearance.
+                            You need to place <code>{'<YourComponent>'}</code> inside the {packages.collapse.packageLink} in order to make the appearance.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.dropdown}>
                         <p>
                             A non-visual context menu container with dynamic visibility (show/hide) in sliding fashion.<br />
-                            You need to place a visual (styled) component inside the {packages.collapse.packageLink} in order to make the appearance.
+                            You need to place <code>{'<YourComponent>'}</code> inside the {packages.collapse.packageLink} in order to make the appearance.
                         </p>
                         <p>
                             {packages.dropdown.packageLink} is similar to {packages.collapse.packageLink} with additional handling of <kbd>esc</kbd> key and <strong>blur</strong> event to close itself.
