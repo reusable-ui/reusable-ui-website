@@ -193,13 +193,13 @@ const ModalPage: NextPage = () => {
             <ModalViewportProperty>
                 //......
             </ModalViewportProperty>
-            <LazyProperty />
             <BackdropStyleProperty>
-                {backdropStyleOptions.map((backdropStyle, index) => <>
+                {backdropStyleOptions.map((backdropStyle, index) => <React.Fragment key={index}>
                     {(index !== 0) && <p></p>}
-                    <Preview key={index} display='right' stretch={false} transpMask={false} title={<code>{`backdropStyle='${backdropStyle}'`}</code>} cardBodyComponent={<DemoBackdrop backdropStyle={backdropStyle} />} />
-                </>)}
+                    <Preview display='right' stretch={false} transpMask={false} title={<code>{`backdropStyle='${backdropStyle}'`}</code>} cardBodyComponent={<DemoBackdrop backdropStyle={backdropStyle} />} />
+                </React.Fragment>)}
             </BackdropStyleProperty>
+            <LazyProperty />
             <InheritedProperties />
             <Variables variables={
                 <Accordion>

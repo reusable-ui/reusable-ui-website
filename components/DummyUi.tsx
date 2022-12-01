@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { GenericProps } from '@reusable-ui/components'
+import { Generic, GenericProps } from '@reusable-ui/components'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
-import { stripoutFocusableElement } from '@reusable-ui/core'
+import { stripoutFocusableElement, useMergeClasses } from '@reusable-ui/core'
 
 
 
@@ -13,21 +13,25 @@ const useDummyUiStyleSheet = dynamicStyleSheet(() => ({
 
 
 
-export interface DummyUiProps {
+export interface DummyUiProps extends GenericProps {
     tabIndex ?: React.HTMLAttributes<HTMLElement>['tabIndex']
-    elmRef   ?: GenericProps<HTMLElement>['elmRef'],
     
     width     : number
     height    : number
 }
-export const DummyUi = ({tabIndex, elmRef, width, height}: DummyUiProps) => {
+export const DummyUi = ({tabIndex, width, height, ...restGenericProps}: DummyUiProps) => {
     const styleSheet = useDummyUiStyleSheet();
+    const mergedClasses = useMergeClasses(
+        styleSheet.main,
+        restGenericProps.classes,
+    );
     
     return (
-        <span
-            ref={elmRef}
-            tabIndex={tabIndex ?? -1}
-            className={styleSheet.main}
+        <Generic
+            {...restGenericProps}
+            tag='span'
+            {...{tabIndex: (tabIndex ?? -1)} as {}}
+            classes={mergedClasses}
         >
             <Image
                 alt='<YourComponent />'
@@ -35,7 +39,7 @@ export const DummyUi = ({tabIndex, elmRef, width, height}: DummyUiProps) => {
                 width={width}
                 height={height}
             />
-        </span>
+        </Generic>
     );
 }
 
