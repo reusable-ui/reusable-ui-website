@@ -228,7 +228,9 @@ const DropdownButtonPage: NextPage = () => {
                     targetComponentText={<>{packages.toggleButton.packageLink} of <TheComponentLink /></>}
                     targetComponent={false} targetTag={false} floatingComponent={
                         <DropdownButton theme='primary'>
-                            <DummyUiSmall />
+                            <DummyUiSmall>
+                                {false}
+                            </DummyUiSmall>
                         </DropdownButton>
                     }
                 />
