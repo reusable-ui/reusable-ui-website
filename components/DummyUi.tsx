@@ -19,7 +19,7 @@ export interface DummyUiProps extends GenericProps {
     width     : number
     height    : number
 }
-export const DummyUi = ({tabIndex, width, height, ...restGenericProps}: DummyUiProps) => {
+export const DummyUi = ({tabIndex, width, height, children, ...restGenericProps}: DummyUiProps) => {
     const styleSheet = useDummyUiStyleSheet();
     const mergedClasses = useMergeClasses(
         styleSheet.main,
@@ -39,9 +39,13 @@ export const DummyUi = ({tabIndex, width, height, ...restGenericProps}: DummyUiP
                 width={width}
                 height={height}
             />
+            {children && <div style={{position: 'absolute', inset: 0, padding: '1rem'}}>
+                {children}
+            </div>}
         </Generic>
     );
 }
 
-export const DummyUiSmall = (props: Omit<DummyUiProps, 'width'|'height'>) => <DummyUi {...props} width={48} height={48} />
-export const DummyUiBig   = (props: Omit<DummyUiProps, 'width'|'height'>) => <DummyUi {...props} width={128} height={128} />
+export const DummyUiSmall  = (props: Omit<DummyUiProps, 'width'|'height'>) => <DummyUi {...props} width={48} height={48} />
+export const DummyUiBig    = (props: Omit<DummyUiProps, 'width'|'height'>) => <DummyUi {...props} width={128} height={128} />
+export const DummyUiBigger = (props: Omit<DummyUiProps, 'width'|'height'>) => <DummyUi {...props} width={256} height={256} />

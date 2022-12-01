@@ -5,21 +5,20 @@ import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variable
 import { collapse, modal } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Modal as OriModal, ModalProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle } from '@reusable-ui/components'
+import { Modal as OriModal, ModalProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProperty, FloatingOnProperty, FloatingPlacementProperty, FloatingProperties, FloatingShiftProperty, FloatingStrategyProperty, OnFloatingUpdateProperty } from '../../properties/sections/floatableProperties'
 import { ModalUiProperty, ModalViewportProperty } from '../../properties/sections/modalProperties'
-import { DummyUiBig } from '../../components/DummyUi'
+import { DummyUiBig, DummyUiBigger } from '../../components/DummyUi'
 import { backdropStyleOptions, BackdropStyleProperty } from '../../properties/sections/variantProperties'
 import { EventHandler } from '@reusable-ui/core'
 
 
 
-const Modal = (props: Partial<ModalProps>) => <OriModal {...props} expanded={props.expanded ?? true} setFocus={false} restoreFocus={false}>
+const Modal = (props: Partial<ModalProps>) => <OriModal {...props} expanded={props.expanded ?? true} setFocus={props.setFocus ?? false} restoreFocus={props.restoreFocus ?? false}>
     {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
 </OriModal>
 
@@ -99,7 +98,7 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
     const [expanded, setExpanded] = useState<boolean>(true);
     let cancelReset : ReturnType<typeof setTimeout>|undefined = undefined;
     
-    const handleClose : EventHandler<ModalExpandedChangeEvent> = () => {
+    const handleClose = () => {
         setExpanded(false);
         
         clearTimeout(cancelReset);
@@ -138,6 +137,60 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
                 <Modal expanded={expanded} onExpandedChange={handleClose} backdropStyle={backdropStyle} modalViewport={viewportRef} />
+            </div>
+        </CardBody>
+    );
+}
+
+interface DemoModalViewportProps {
+    bodyViewport : boolean
+}
+const DemoModalViewport = ({bodyViewport}: DemoModalViewportProps) => {
+    const viewportRef = useRef<HTMLElement>(null);
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const handleOpen = () => {
+        setExpanded(true);
+    };
+    const handleClose = () => {
+        setExpanded(false);
+    };
+    const handleExpandedChange : EventHandler<ModalExpandedChangeEvent> = (event) => {
+        setExpanded(event.expanded);
+    };
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                blockSize    : 'calc(256px + 2rem)',
+                alignContent : 'start',
+                
+                overflow     : 'hidden',
+            }}>
+                <Button theme='primary' gradient={true} onClick={handleOpen}>
+                    Show Modal Covering <strong>The Whole {bodyViewport ? 'Page' : 'Section'}</strong>
+                </Button>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <Modal expanded={expanded} onExpandedChange={handleExpandedChange} modalViewport={bodyViewport ? null : viewportRef} setFocus={true} restoreFocus={true}>
+                    <DummyUiBigger>
+                        <p>
+                            Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <TheComponentLink />.
+                        </p>
+                    </DummyUiBigger>
+                </Modal>
             </div>
         </CardBody>
     );
@@ -191,7 +244,72 @@ const ModalPage: NextPage = () => {
             </ExpandedProperty>
             <OnExpandedChangeProperty />
             <ModalViewportProperty>
-                //......
+                <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalViewport={null}`}</code>} cardBodyComponent={<DemoModalViewport bodyViewport={true} />} />
+                <p></p>
+                <TypeScriptCode>{
+`
+const [expanded, setExpanded] = useState(false);
+const handleOpen = () => {
+    setExpanded(true);
+};
+const handleClose = () => {
+    setExpanded(false);
+};
+const handleExpandedChange = (event) => {
+    setExpanded(event.expanded);
+};
+
+/* ... */
+
+<Button theme='primary' onClick={handleOpen}>Open</Button>
+<Modal
+    expanded={expanded}
+    onExpandedChange={handleExpandedChange}
+    modalViewport={null}
+>
+    <YourComponent>
+        <p>
+            Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the {'<Modal>'}.
+        </p>
+    </YourComponent>
+</Modal>
+`
+                }</TypeScriptCode>
+                <hr />
+                <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalViewport={fooSectionRef}`}</code>} cardBodyComponent={<DemoModalViewport bodyViewport={false} />} />
+                <p></p>
+                <TypeScriptCode>{
+`
+const fooSectionRef = useRef(null);
+const [expanded, setExpanded] = useState(false);
+const handleOpen = () => {
+    setExpanded(true);
+};
+const handleClose = () => {
+    setExpanded(false);
+};
+const handleExpandedChange = (event) => {
+    setExpanded(event.expanded);
+};
+
+/* ... */
+
+<section ref={fooSectionRef}>
+    <Button theme='primary' onClick={handleOpen}>Open</Button>
+    <Modal
+        expanded={expanded}
+        onExpandedChange={handleExpandedChange}
+        modalViewport={fooSectionRef}
+    >
+        <YourComponent>
+            <p>
+                Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the {'<Modal>'}.
+            </p>
+        </YourComponent>
+    </Modal>
+</section>
+`
+                }</TypeScriptCode>
             </ModalViewportProperty>
             <BackdropStyleProperty>
                 {backdropStyleOptions.map((backdropStyle, index) => <React.Fragment key={index}>
