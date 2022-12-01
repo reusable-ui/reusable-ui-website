@@ -112,7 +112,7 @@ const DemoOrientation = () => {
     return (
         <CardBody elmRef={viewportRef}>
             {orientationOptions.map((orientation, index) =>
-                <div style={{
+                <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',
