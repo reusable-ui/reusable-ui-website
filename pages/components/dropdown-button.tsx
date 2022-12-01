@@ -22,7 +22,7 @@ import { FloatingAutoFlipProperty, FloatingAutoShiftProperty, FloatingOffsetProp
 
 
 
-const DropdownButton = (props: Partial<DropdownButtonProps>) => <OriDropdownButton {...props} theme={props.theme ?? 'primary'} buttonChildren={
+const DropdownButton = (props: Partial<DropdownButtonProps>) => <OriDropdownButton {...props} theme={props.theme ?? 'primary'} setFocus={false} restoreFocus={false} buttonChildren={
     'Show Menu'
 }>
     {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
@@ -56,7 +56,7 @@ const DemoDropdownButton = () => {
                 blockSize    : 'calc(128px + 3rem)',
                 alignContent : 'start',
             }}>
-                <DropdownButton expanded={expanded} onExpandedChange={handleExpandedChange} focused={false} orientation='block-end' />
+                <DropdownButton expanded={expanded} onExpandedChange={handleExpandedChange} orientation='block-end' />
             </div>
         </CardBody>
     );

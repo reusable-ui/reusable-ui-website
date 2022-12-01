@@ -45,7 +45,7 @@ const DummyListItemsText = () => {
     );
 }
 
-const DropdownList = (props: Partial<DropdownListProps>) => <OriDropdownList {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true}>
+const DropdownList = (props: Partial<DropdownListProps>) => <OriDropdownList {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} setFocus={false} restoreFocus={false}>
     {[props.children].flat().every((child) => React.isValidElement(child)) ? props.children : DummyListItems()}
 </OriDropdownList>
 

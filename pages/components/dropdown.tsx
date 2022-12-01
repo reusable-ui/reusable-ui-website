@@ -18,7 +18,7 @@ import { DummyUiBig } from '../../components/DummyUi'
 
 
 
-const Dropdown = (props: Partial<DropdownProps>) => <OriDropdown {...props} expanded={props.expanded ?? true}>
+const Dropdown = (props: Partial<DropdownProps>) => <OriDropdown {...props} expanded={props.expanded ?? true} setFocus={false} restoreFocus={false}>
     {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
 </OriDropdown>
 
@@ -90,7 +90,7 @@ const DemoOrientation = () => {
     return (
         <CardBody elmRef={viewportRef} style={{boxSizing: 'content-box', blockSize: '128px', alignItems: 'start', whiteSpace: 'nowrap'}}>
             {orientationOptions.map((orientation, index) =>
-                <div style={{
+                <div key={index} style={{
                     display      : 'grid',
                     justifyItems : 'center',
                     alignItems   : 'center',

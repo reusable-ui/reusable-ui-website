@@ -51,7 +51,7 @@ const DummyListItemsText = () => {
     );
 }
 
-const DropdownListButton = (props: Partial<DropdownListButtonProps>) => <OriDropdownListButton {...props} theme={props.theme ?? 'primary'} buttonChildren={
+const DropdownListButton = (props: Partial<DropdownListButtonProps>) => <OriDropdownListButton {...props} theme={props.theme ?? 'primary'} setFocus={false} restoreFocus={false} buttonChildren={
     'Show Menu'
 }>
     {[props.children].flat().every((child) => React.isValidElement(child)) ? props.children : DummyListItems()}
@@ -86,7 +86,7 @@ const DemoDropdownListButton = () => {
                 
                 whiteSpace   : 'nowrap',
             }}>
-                <DropdownListButton expanded={expanded} onExpandedChange={handleExpandedChange} focused={false} orientation='block-end' />
+                <DropdownListButton expanded={expanded} onExpandedChange={handleExpandedChange} orientation='block-end' />
             </div>
         </CardBody>
     );
@@ -112,7 +112,7 @@ const DemoExpanded = () => {
                 
                 whiteSpace   : 'nowrap',
             }}>
-                <DropdownListButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} focused={false} />
+                <DropdownListButton expanded={isFlip} orientation='block-end' floatingAutoFlip={false} floatingAutoShift={false} />
             </div>
         </CardBody>
     );
@@ -190,7 +190,7 @@ const DemoDropdownOrientation = () => {
                     
                     whiteSpace   : 'nowrap',
                 }}>
-                    <DropdownListButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} focused={false} />
+                    <DropdownListButton expanded={isFlip} dropdownOrientation={orientation} floatingAutoFlip={false} floatingAutoShift={false} />
                 </div>
             )}
         </CardBody>
