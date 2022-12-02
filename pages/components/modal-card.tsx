@@ -397,39 +397,23 @@ const handleExpandedChange = (event) => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                    <AccordionItem label='Positions'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>backg</code>
-                                <p>The background of <TheComponentLink />.</p>
+                                <code>horzAlign</code>
+                                <p>The default <strong>horizontal alignment</strong> of the {card.packageLink} on the <TheComponentLink />&apos;s backdrop.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>vertAlign</code>
+                                <p>The default <strong>vertical alignment</strong> of the {card.packageLink} on the <TheComponentLink />&apos;s backdrop.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Animations'>
+                    <AccordionItem label='Spacings'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>animExpand</code>
-                                <p>Represents <strong>expanding animation</strong>, a transition from <code>{`expanded={false}`}</code> to <code>{`expanded={true}`}</code>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>animCollapse</code>
-                                <p>Represents <strong>collapsing animation</strong>, a transition from <code>{`expanded={true}`}</code> to <code>{`expanded={false}`}</code>.</p>
-                            </ListItem>
-                        </List>
-                    </AccordionItem>
-                    <AccordionItem label='ModalCard UIs'>
-                        <List listStyle='flush'>
-                            <ListItem>
-                                <code>modalCardUiFilter</code>
-                                <p>A <code>filter</code> to apply to the <TheComponentLink />&apos;s <strong>ModalCard UI</strong>.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>modalCardUiFilterExcite</code>
-                                <p>A <code>filter</code> to apply to the <TheComponentLink />&apos;s <strong>ModalCard UI</strong> when <em>excited</em> - when a user try to interact something <em>outside</em> the <TheComponentLink />.</p>
-                            </ListItem>
-                            <ListItem>
-                                <code>modalCardUiAnimExcite</code>
-                                <p>Represents <strong>exciting animation</strong> - when a user try to interact something <em>outside</em> the <TheComponentLink />.</p>
+                                <code>cardCaptionGap</code>
+                                <p>The <strong>spacing</strong> between items in the <code>{'<CardHeader>'}</code> and <code>{'<CardFooter>'}</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
@@ -439,7 +423,7 @@ const handleExpandedChange = (event) => {
 `
 // put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
 
-import {modalCards, modalCardValues} from '@reusable-ui/modalCard';
+import {modalCards, modalCardValues} from '@reusable-ui/modal-card';
 
 modalCards.opacity = 0.5;
 console.log('opacity variable name: ', modalCards.opacity);
