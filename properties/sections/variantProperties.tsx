@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardProps, ModalCardStyle } from '@reusable-ui/components'
 
 
 
@@ -31,6 +31,8 @@ export const cardStyleOptions                : CardStyle[]                      
 export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 export const backdropStyleOptions            : BackdropStyle[]                  = ['regular', 'hidden', 'interactive', 'static'];
 export const modalCardStyleOptions           : ModalCardStyle[]                 = ['regular', 'scrollable'];
+export const horzAlignOptions                : Extract<ModalCardProps['horzAlign'], string>[] = ['start', 'center', 'end'];
+export const vertAlignOptions                : Extract<ModalCardProps['vertAlign'], string>[] = ['start', 'center', 'end'];
 
 
 

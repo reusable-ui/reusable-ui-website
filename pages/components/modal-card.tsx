@@ -11,8 +11,8 @@ import { ComponentContextProvider, TheComponentLink } from '../../packages/compo
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { ModalViewportProperty } from '../../properties/sections/modalProperties'
-import { backdropStyleOptions, BackdropStyleProperty, modalCardStyleOptions, ModalCardStyleProperty } from '../../properties/sections/variantProperties'
+import { HorzAlignProperty, ModalViewportProperty, VertAlignProperty } from '../../properties/sections/modalProperties'
+import { backdropStyleOptions, BackdropStyleProperty, horzAlignOptions, modalCardStyleOptions, ModalCardStyleProperty, vertAlignOptions } from '../../properties/sections/variantProperties'
 import { ActiveChangeEvent, EventHandler } from '@reusable-ui/core'
 import { CardComponentProperty, ComponentProperties, ModalComponentProperty, ModalRefProperty, PopupComponentProperty } from '../../properties/sections/componentProperties'
 
@@ -314,6 +314,56 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
 }
 
 
+interface DemoAlignmentProps extends Pick<ModalCardProps, 'horzAlign'|'vertAlign'> {}
+const DemoAlignment = ({horzAlign, vertAlign}: DemoAlignmentProps) => {
+    const viewportRef = useRef<HTMLElement>(null);
+    
+    return (
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                blockSize    : '24rem',
+                alignContent : 'start',
+                
+                overflow     : 'hidden',
+            }}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <ModalCard expanded={true} modalViewport={viewportRef} horzAlign={horzAlign} vertAlign={vertAlign}>
+                    <CardHeader>
+                        Test Card
+                        <CloseButton />
+                    </CardHeader>
+                    <CardBody>
+                        <p>
+                            Lorem ipsum dolor sit amet.
+                        </p>
+                        <p>
+                            Explicabo aut deserunt nulla.
+                        </p>
+                    </CardBody>
+                    <CardFooter>
+                        <Button>
+                            Close
+                        </Button>
+                    </CardFooter>
+                </ModalCard>
+            </div>
+        </CardBody>
+    );
+}
+
+
 
 const ModalCardPage: NextPage = () => {
     return (<ComponentContextProvider component={modalCard} baseComponents={card} componentFactory={<ModalCard />}>
@@ -471,6 +521,22 @@ const handleExpandedChange = (event) => {
                     <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalCardStyle='${modalCardStyle}'`}</code>} cardBodyComponent={<DemoModalCardStyle modalCardStyle={modalCardStyle} />} />
                 </React.Fragment>)}
             </ModalCardStyleProperty>
+            <HorzAlignProperty>
+                {horzAlignOptions.map((horzAlign, index) =>
+                    <React.Fragment key={index}>
+                        {(index > 0) && <p></p>}
+                        <Preview key={index} display='right' stretch={false} transpMask={false} cardBodyComponent={<DemoAlignment horzAlign={horzAlign} />} />
+                    </React.Fragment>
+                )}
+            </HorzAlignProperty>
+            <VertAlignProperty>
+                {vertAlignOptions.map((vertAlign, index) =>
+                    <React.Fragment key={index}>
+                        {(index > 0) && <p></p>}
+                        <Preview key={index} display='right' stretch={false} transpMask={false} cardBodyComponent={<DemoAlignment vertAlign={vertAlign} />} />
+                    </React.Fragment>
+                )}
+            </VertAlignProperty>
             <BackdropStyleProperty>
                 {backdropStyleOptions.map((backdropStyle, index) => <React.Fragment key={index}>
                     {(index !== 0) && <p></p>}
