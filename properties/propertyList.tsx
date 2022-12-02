@@ -177,6 +177,7 @@ export const cardOrientation       = new PropertyInfo('cardOrientation')
 export const cardChildren          = new PropertyInfo('cardChildren')
 
 export const popupComponent        = new PropertyInfo('popupComponent')
+export const collapseComponent     = new PropertyInfo('collapseComponent')
 
 export const modalComponent         = new PropertyInfo('modalComponent')
 export const modalRef               = new PropertyInfo('modalRef')

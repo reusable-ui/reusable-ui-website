@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -746,6 +746,28 @@ export const PopupComponentProperty = ({children: preview} : PopupComponentPrope
             <TypeScriptCode collapsible={false}>{
 `<${componentName} popupComponent={
     <MyCustomPopup />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface CollapseComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const CollapseComponentProperty = ({children: preview} : CollapseComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.collapseComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {collapse.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} collapseComponent={
+    <MyCustomCollapse />
 } />`
             }</TypeScriptCode>
         </PropertySection>

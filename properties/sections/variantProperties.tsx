@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardProps, ModalCardStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle } from '@reusable-ui/components'
 
 
 
@@ -33,6 +33,7 @@ export const backdropStyleOptions            : BackdropStyle[]                  
 export const modalCardStyleOptions           : ModalCardStyle[]                 = ['regular', 'scrollable'];
 export const horzAlignOptions                : Extract<ModalCardProps['horzAlign'], string>[] = ['start', 'center', 'end'];
 export const vertAlignOptions                : Extract<ModalCardProps['vertAlign'], string>[] = ['start', 'center', 'end'];
+export const modalSideStyleOptions           : ModalSideStyle[]                 = ['inlineStart', 'inlineEnd', 'blockStart', 'blockEnd'];
 
 
 
@@ -719,6 +720,38 @@ export const ModalCardStyleProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Sets the <strong>alternative behaviors</strong> of the {card.packageLink} of <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const ModalSideStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.modalSideStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>'inlineStart'</code>}>
+                    <p>
+                        Sets the side location to the <strong>left</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'inlineEnd'</code>}>
+                    <p>
+                        Sets the side location to the <strong>right</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'blockStart'</code>}>
+                    <p>
+                        Sets the side location to the <strong>top</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'blockEnd'</code>}>
+                    <p>
+                        Sets the side location to the <strong>bottom</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>side location</strong> of the {card.packageLink} of <TheComponentLink />.
             </p>
         </PropertySection>
     );
