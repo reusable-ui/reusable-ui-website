@@ -2,29 +2,53 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { generic, modal } from '../../packages/packageList'
+import { generic, modalCard } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Modal as OriModal, ModalProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button } from '@reusable-ui/components'
+import { ModalCard as OriModalCard, ModalCardProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { ModalUiProperty, ModalViewportProperty } from '../../properties/sections/modalProperties'
-import { DummyUiBig, DummyUiBigger } from '../../components/DummyUi'
+import { ModalViewportProperty } from '../../properties/sections/modalProperties'
 import { backdropStyleOptions, BackdropStyleProperty } from '../../properties/sections/variantProperties'
 import { EventHandler } from '@reusable-ui/core'
 
 
 
-const Modal = (props: Partial<ModalProps>) => <OriModal {...props} expanded={props.expanded ?? true} setFocus={props.setFocus ?? false} restoreFocus={props.restoreFocus ?? false}>
-    {React.isValidElement(props.children) ? props.children : <DummyUiBig />}
-</OriModal>
+interface CardSampleItemsProps {
+    onClose ?: () => void
+}
+const cardSampleItems = ({onClose: handleClose}: CardSampleItemsProps = {}) => {
+    return [
+        <CardHeader key={0}>
+            Test Card
+            <CloseButton onClick={handleClose} />
+        </CardHeader>,
+        <CardBody key={1}>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <p>
+                Explicabo aut deserunt nulla iusto quod a est debitis.
+            </p>
+        </CardBody>,
+        <CardFooter key={2}>
+            <Button onClick={handleClose}>
+                Close
+            </Button>
+        </CardFooter>,
+    ];
+}
+
+const ModalCard = (props: Partial<ModalCardProps> & CardSampleItemsProps) => <OriModalCard {...props} theme={props.theme ?? 'primary'} expanded={props.expanded ?? true} modalCardStyle={props.modalCardStyle ?? 'scrollable'} setFocus={props.setFocus ?? false} restoreFocus={props.restoreFocus ?? false}>
+    {[props.children].flat().every((child) => React.isValidElement(child)) ? props.children : cardSampleItems(props)}
+</OriModalCard>
 
 
 
-const DemoModal = () => {
+const DemoModalCard = () => {
     const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
     
     
@@ -36,7 +60,7 @@ const DemoModal = () => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : 'calc(128px + 2rem)',
+                blockSize    : '16rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
@@ -50,7 +74,7 @@ const DemoModal = () => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <Modal expanded={isFlip} modalViewport={viewportRef} />
+                <ModalCard expanded={isFlip} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
@@ -63,14 +87,14 @@ const DemoExpanded = () => {
     return (
         <CardBody elmRef={viewportRef}>
             <p>
-                <code>{`<Modal expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
+                <code>{`<ModalCard expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
             </p>
             <div style={{
                 display      : 'grid',
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : 'calc(128px + 2rem)',
+                blockSize    : '16rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
@@ -84,16 +108,16 @@ const DemoExpanded = () => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <Modal expanded={isFlip} modalViewport={viewportRef} />
+                <ModalCard expanded={isFlip} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
 }
 
-interface DemoModalViewportProps {
+interface DemoModalCardViewportProps {
     bodyViewport : boolean
 }
-const DemoModalViewport = ({bodyViewport}: DemoModalViewportProps) => {
+const DemoModalCardViewport = ({bodyViewport}: DemoModalCardViewportProps) => {
     const viewportRef = useRef<HTMLElement>(null);
     const [expanded, setExpanded] = useState<boolean>(false);
     const handleOpen = () => {
@@ -121,7 +145,7 @@ const DemoModalViewport = ({bodyViewport}: DemoModalViewportProps) => {
                 overflow     : 'hidden',
             }}>
                 <Button theme='primary' gradient={true} onClick={handleOpen}>
-                    Show Modal Covering <strong>The Whole {bodyViewport ? 'Page' : 'Section'}</strong>
+                    Show ModalCard Covering <strong>The Whole {bodyViewport ? 'Page' : 'Section'}</strong>
                 </Button>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
@@ -132,13 +156,25 @@ const DemoModalViewport = ({bodyViewport}: DemoModalViewportProps) => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <Modal expanded={expanded} onExpandedChange={handleExpandedChange} modalViewport={bodyViewport ? null : viewportRef} setFocus={true} restoreFocus={true}>
-                    <DummyUiBigger>
+                <ModalCard expanded={expanded} onExpandedChange={handleExpandedChange} onClose={handleClose} modalViewport={bodyViewport ? null : viewportRef} setFocus={true} restoreFocus={true}>
+                    <CardHeader>
+                        Test Card
+                        <CloseButton onClick={handleClose} />
+                    </CardHeader>
+                    <CardBody>
                         <p>
                             Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <TheComponentLink />.
                         </p>
-                    </DummyUiBigger>
-                </Modal>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                    </CardBody>
+                    <CardFooter>
+                        <Button onClick={handleClose}>
+                            Close
+                        </Button>
+                    </CardFooter>
+                </ModalCard>
             </div>
         </CardBody>
     );
@@ -179,7 +215,7 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : 'calc(128px + 2rem)',
+                blockSize    : '16rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
@@ -193,7 +229,7 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <Modal expanded={expanded} onExpandedChange={handleExpandedChange} backdropStyle={backdropStyle} modalViewport={viewportRef} />
+                <ModalCard expanded={expanded} onExpandedChange={handleExpandedChange} onClose={handleClose} backdropStyle={backdropStyle} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
@@ -201,11 +237,11 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
 
 
 
-const ModalPage: NextPage = () => {
-    return (<ComponentContextProvider component={modal} baseComponents={generic} componentFactory={<Modal />}>
+const ModalCardPage: NextPage = () => {
+    return (<ComponentContextProvider component={modalCard} baseComponents={generic} componentFactory={<ModalCard />}>
         <Head>
-            <title>{`${modal.componentTag} Component`}</title>
-            <meta name="description" content={`${modal.componentTag} overlays a dialog to the entire site's page or entire specified section.`} />
+            <title>{`${modalCard.componentTag} Component`}</title>
+            <meta name="description" content={`${modalCard.componentTag} overlays a dialog to the entire site's page or entire specified section.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
@@ -223,27 +259,26 @@ const ModalPage: NextPage = () => {
                 <p>
                     Here the demo:
                 </p>
-                <Preview display='right' stretch={false} transpMask={false} cardBodyComponent={<DemoModal />} />
+                <Preview display='right' stretch={false} transpMask={false} cardBodyComponent={<DemoModalCard />} />
             </HeroSection>
             <ComponentInstallation />
-            <ModalUiProperty />
             <ExpandedProperty>
                     <Preview display='down' stretch={false} transpMask={false} cardBodyComponent={<DemoExpanded />} />
                     <p></p>
                     <TypeScriptCode>{
 `
-<Modal
+<ModalCard
     expanded={true}
     modalViewport={cardBodyRef}
 >
     <YourComponent />
-</Modal>
+</ModalCard>
 `
                     }</TypeScriptCode>
             </ExpandedProperty>
             <OnExpandedChangeProperty />
             <ModalViewportProperty>
-                <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalViewport={null}`}</code>} cardBodyComponent={<DemoModalViewport bodyViewport={true} />} />
+                <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalViewport={null}`}</code>} cardBodyComponent={<DemoModalCardViewport bodyViewport={true} />} />
                 <p></p>
                 <TypeScriptCode>{
 `
@@ -261,21 +296,21 @@ const handleExpandedChange = (event) => {
 /* ... */
 
 <Button theme='primary' onClick={handleOpen}>Open</Button>
-<Modal
+<ModalCard
     expanded={expanded}
     onExpandedChange={handleExpandedChange}
     modalViewport={null}
 >
     <YourComponent>
         <p>
-            Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<Modal>'}</code>.
+            Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<ModalCard>'}</code>.
         </p>
     </YourComponent>
-</Modal>
+</ModalCard>
 `
                 }</TypeScriptCode>
                 <hr />
-                <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalViewport={fooSectionRef}`}</code>} cardBodyComponent={<DemoModalViewport bodyViewport={false} />} />
+                <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalViewport={fooSectionRef}`}</code>} cardBodyComponent={<DemoModalCardViewport bodyViewport={false} />} />
                 <p></p>
                 <TypeScriptCode>{
 `
@@ -295,17 +330,17 @@ const handleExpandedChange = (event) => {
 
 <section ref={fooSectionRef}>
     <Button theme='primary' onClick={handleOpen}>Open</Button>
-    <Modal
+    <ModalCard
         expanded={expanded}
         onExpandedChange={handleExpandedChange}
         modalViewport={fooSectionRef}
     >
         <YourComponent>
             <p>
-                Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<Modal>'}</code>.
+                Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<ModalCard>'}</code>.
             </p>
         </YourComponent>
-    </Modal>
+    </ModalCard>
 </section>
 `
                 }</TypeScriptCode>
@@ -340,18 +375,18 @@ const handleExpandedChange = (event) => {
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='Modal UIs'>
+                    <AccordionItem label='ModalCard UIs'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>modalUiFilter</code>
-                                <p>A <code>filter</code> to apply to the <TheComponentLink />&apos;s <strong>Modal UI</strong>.</p>
+                                <code>modalCardUiFilter</code>
+                                <p>A <code>filter</code> to apply to the <TheComponentLink />&apos;s <strong>ModalCard UI</strong>.</p>
                             </ListItem>
                             <ListItem>
-                                <code>modalUiFilterExcite</code>
-                                <p>A <code>filter</code> to apply to the <TheComponentLink />&apos;s <strong>Modal UI</strong> when <em>excited</em> - when a user try to interact something <em>outside</em> the <TheComponentLink />.</p>
+                                <code>modalCardUiFilterExcite</code>
+                                <p>A <code>filter</code> to apply to the <TheComponentLink />&apos;s <strong>ModalCard UI</strong> when <em>excited</em> - when a user try to interact something <em>outside</em> the <TheComponentLink />.</p>
                             </ListItem>
                             <ListItem>
-                                <code>modalUiAnimExcite</code>
+                                <code>modalCardUiAnimExcite</code>
                                 <p>Represents <strong>exciting animation</strong> - when a user try to interact something <em>outside</em> the <TheComponentLink />.</p>
                             </ListItem>
                         </List>
@@ -362,11 +397,11 @@ const handleExpandedChange = (event) => {
 `
 // put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
 
-import {modals, modalValues} from '@reusable-ui/modal';
+import {modalCards, modalCardValues} from '@reusable-ui/modalCard';
 
-modals.opacity = 0.5;
-console.log('opacity variable name: ', modals.opacity);
-console.log('opacity variable value: ', modalValues.opacity);
+modalCards.opacity = 0.5;
+console.log('opacity variable name: ', modalCards.opacity);
+console.log('opacity variable value: ', modalCardValues.opacity);
 `
                 }</TypeScriptCode>
             </Variables>
@@ -374,4 +409,4 @@ console.log('opacity variable value: ', modalValues.opacity);
     </ComponentContextProvider>);
 }
 
-export default ModalPage
+export default ModalCardPage
