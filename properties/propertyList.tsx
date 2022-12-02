@@ -167,6 +167,16 @@ export const listRef               = new PropertyInfo('listRef')
 export const listOrientation       = new PropertyInfo('listOrientation')
 export const listItems             = new PropertyInfo('listItems')
 
+export const cardComponent         = new PropertyInfo('cardComponent')
+export const cardRef               = new PropertyInfo('cardRef')
+export const cardOrientation       = new PropertyInfo('cardOrientation')
+export const cardChildren          = new PropertyInfo('cardChildren')
+
+export const popupComponent        = new PropertyInfo('popupComponent')
+
+export const modalComponent         = new PropertyInfo('modalComponent')
+export const modalRef               = new PropertyInfo('modalRef')
+
 
 
 // children:

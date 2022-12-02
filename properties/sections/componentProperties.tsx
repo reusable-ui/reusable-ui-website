@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -702,6 +702,97 @@ export const ListItemsProperty = ({children: preview} : ListItemsPropertyProps) 
             A disabled item
         </ListItem>
     </List>
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface CardComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const CardComponentProperty = ({children: preview} : CardComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.cardComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {card.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} cardComponent={
+    <MyCustomCard />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface PopupComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const PopupComponentProperty = ({children: preview} : PopupComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.popupComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {popup.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} popupComponent={
+    <MyCustomPopup />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+
+export interface ModalComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const ModalComponentProperty = ({children: preview} : ModalComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.modalComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {modal.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} modalComponent={
+    <MyCustomModal />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface ModalRefPropertyProps {
+    children ?: React.ReactNode
+}
+export const ModalRefProperty = ({children: preview} : ModalRefPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.modalRef} preview={preview}>
+            <p>
+                Gets the <strong>DOM reference</strong> of the internal {modal.packageLink} component used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} modalRef={fooModalRef} />`
+            }</TypeScriptCode>
+            is equivalent to:
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} modalComponent={
+    <Modal elmRef={fooModalRef} />
 } />`
             }</TypeScriptCode>
         </PropertySection>

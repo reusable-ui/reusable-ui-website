@@ -14,6 +14,7 @@ import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ModalViewportProperty } from '../../properties/sections/modalProperties'
 import { backdropStyleOptions, BackdropStyleProperty } from '../../properties/sections/variantProperties'
 import { EventHandler } from '@reusable-ui/core'
+import { CardComponentProperty, ComponentProperties, ModalComponentProperty, ModalRefProperty, PopupComponentProperty } from '../../properties/sections/componentProperties'
 
 
 
@@ -394,6 +395,12 @@ const handleExpandedChange = (event) => {
                 </React.Fragment>)}
             </BackdropStyleProperty>
             <LazyProperty />
+            <ComponentProperties>
+                <CardComponentProperty />
+                <PopupComponentProperty />
+                <ModalComponentProperty />
+                <ModalRefProperty />
+            </ComponentProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
