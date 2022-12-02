@@ -82,7 +82,7 @@ const DemoModalSide = () => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <ModalSide modalSideStyle='blockStart' expanded={isFlip} modalViewport={viewportRef} />
+                <ModalSide modalSideStyle='inlineStart' expanded={isFlip} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
