@@ -5,7 +5,7 @@ import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variable
 import { card, modalSide } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { ModalSide as OriModalSide, ModalSideProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton, ModalSideStyle, Check } from '@reusable-ui/components'
+import { ModalSide as OriModalSide, ModalSideProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton, ModalSideStyle } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
@@ -13,7 +13,7 @@ import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ModalViewportProperty } from '../../properties/sections/modalProperties'
 import { backdropStyleOptions, BackdropStyleProperty, modalSideStyleOptions, ModalSideStyleProperty } from '../../properties/sections/variantProperties'
-import { ActiveChangeEvent, EventHandler } from '@reusable-ui/core'
+import { EventHandler } from '@reusable-ui/core'
 import { CardComponentProperty, ComponentProperties, ModalComponentProperty, ModalRefProperty, CollapseComponentProperty } from '../../properties/sections/componentProperties'
 
 
@@ -82,7 +82,7 @@ const DemoModalSide = () => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <ModalSide modalSideStyle='inlineStart' expanded={isFlip} modalViewport={viewportRef} />
+                <ModalSide modalSideStyle='blockStart' expanded={isFlip} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
@@ -207,10 +207,6 @@ interface DemoModalSideStyleProps {
 }
 const DemoModalSideStyle = ({modalSideStyle}: DemoModalSideStyleProps) => {
     const viewportRef = useRef<HTMLElement>(null);
-    const [simulateWideContent, setSimulateWideContent] = useState<boolean>(false);
-    const [simulateTallContent, setSimulateTallContent] = useState<boolean>(false);
-    const handleChangeSimulateWideContent : EventHandler<ActiveChangeEvent> = (event) => setSimulateWideContent(event.active);
-    const handleChangeSimulateTallContent : EventHandler<ActiveChangeEvent> = (event) => setSimulateTallContent(event.active);
     
     
     return (
@@ -234,46 +230,7 @@ const DemoModalSideStyle = ({modalSideStyle}: DemoModalSideStyleProps) => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
-                <ModalSide expanded={true} modalSideStyle={modalSideStyle} modalViewport={viewportRef}>
-                    <CardHeader>
-                        Test Card
-                        <CloseButton />
-                    </CardHeader>
-                    <CardBody style={{whiteSpace: 'nowrap'}}>
-                        <p>
-                            <Check checkStyle='switch' active={simulateWideContent} onActiveChange={handleChangeSimulateWideContent}>Simulate wide content</Check>
-                            <br />
-                            <Check checkStyle='switch' active={simulateTallContent} onActiveChange={handleChangeSimulateTallContent}>Simulate tall content</Check>
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            {simulateWideContent && <> 
-                                {' '}Distinctio,_aliquid_in!_Veritatis_ipsa_nisi_non_doloremque_saepe_officia_pariatur_quisquam_reiciendis_ipsum,_assumenda,_doloribus_illum?_Adipisci_pariatur_cumque_odio_rem?
-                            </>}
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            {simulateTallContent && <>
-                                {        
-                                    'Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?'
-                                    .split(' ')
-                                    .map((word, index) =>
-                                        <React.Fragment key={index}>
-                                            <br />
-                                            {word}
-                                        </React.Fragment>
-                                    )
-                                }
-                            </>
-                            }
-                        </p>
-                    </CardBody>
-                    <CardFooter>
-                        <Button>
-                            Close
-                        </Button>
-                    </CardFooter>
-                </ModalSide>
+                <ModalSide expanded={true} modalSideStyle={modalSideStyle} modalViewport={viewportRef} />
             </div>
         </CardBody>
     );
