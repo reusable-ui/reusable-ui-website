@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { card, generic, modalCard } from '../../packages/packageList'
+import { card, modalCard } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ModalCard as OriModalCard, ModalCardProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton } from '@reusable-ui/components'
@@ -238,7 +238,7 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
 
 
 const ModalCardPage: NextPage = () => {
-    return (<ComponentContextProvider component={modalCard} baseComponents={generic} componentFactory={<ModalCard />}>
+    return (<ComponentContextProvider component={modalCard} baseComponents={card} componentFactory={<ModalCard />}>
         <Head>
             <title>{`${modalCard.componentTag} Component`}</title>
             <meta name="description" content={`${modalCard.componentTag} overlays a ${card.componentTag} to the entire site's page or entire specified section.`} />
@@ -253,7 +253,7 @@ const ModalCardPage: NextPage = () => {
                     Once closed, the <TheComponentLink /> restores the focus to the previously focused element.
                 </p>
                 <p>
-                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside <code>{'<YourComponent>'}</code>.
+                    <TheComponentLink /> also handles <kbd>tab</kbd> key to <strong>switch focus</strong> only for the focusable elements inside the {card.packageLink}.
                 </p>
                 <p>
                     Here the demo:
