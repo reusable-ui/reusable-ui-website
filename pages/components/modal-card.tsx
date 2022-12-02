@@ -245,11 +245,11 @@ const DemoModalCardStyle = ({modalCardStyle}: DemoModalCardStyleProps) => {
                                 {        
                                     'Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?'
                                     .split(' ')
-                                    .map((word) =>
-                                        <>
+                                    .map((word, index) =>
+                                        <React.Fragment key={index}>
                                             <br />
                                             {word}
-                                        </>
+                                        </React.Fragment>
                                     )
                                 }
                             </>
