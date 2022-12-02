@@ -340,12 +340,12 @@ const ModalSidePage: NextPage = () => {
     return (<ComponentContextProvider component={modalSide} baseComponents={card} componentFactory={<ModalSide modalSideStyle='inlineStart' />}>
         <Head>
             <title>{`${modalSide.componentTag} Component`}</title>
-            <meta name="description" content={`${modalSide.componentTag} overlays a ${card.componentTag} to the entire site's page or entire specified section.`} />
+            <meta name="description" content={`${modalSide.componentTag} overlays a ${card.componentTag} to the side of site's page or the side of specified section.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> overlays a {card.packageLink} to the entire site&apos;s page or entire specified section.
+                    <TheComponentLink /> overlays a {card.packageLink} to the side of site&apos;s page or the side of specified section.
                 </p>
                 <p>
                     <TheComponentLink /> handles <kbd>esc</kbd> key to close itself.
