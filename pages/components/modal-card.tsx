@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { generic, modalCard } from '../../packages/packageList'
+import { card, generic, modalCard } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { ModalCard as OriModalCard, ModalCardProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton } from '@reusable-ui/components'
@@ -241,13 +241,12 @@ const ModalCardPage: NextPage = () => {
     return (<ComponentContextProvider component={modalCard} baseComponents={generic} componentFactory={<ModalCard />}>
         <Head>
             <title>{`${modalCard.componentTag} Component`}</title>
-            <meta name="description" content={`${modalCard.componentTag} overlays a dialog to the entire site's page or entire specified section.`} />
+            <meta name="description" content={`${modalCard.componentTag} overlays a ${card.componentTag} to the entire site's page or entire specified section.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> overlays a dialog to the entire site&apos;s page or entire specified section.<br />
-                    You need to place <code>{'<YourComponent>'}</code> inside the <TheComponentLink /> in order to make an interactive UI.
+                    <TheComponentLink /> overlays a {card.packageLink} to the entire site&apos;s page or entire specified section.
                 </p>
                 <p>
                     <TheComponentLink /> handles <kbd>esc</kbd> key to close itself.
@@ -270,8 +269,25 @@ const ModalCardPage: NextPage = () => {
 <ModalCard
     expanded={true}
     modalViewport={cardBodyRef}
+    theme='primary'
 >
-    <YourComponent />
+    <CardHeader>
+        Test Card
+        <CloseButton onClick={handleClose} />
+    </CardHeader>
+    <CardBody>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <p>
+            Explicabo aut deserunt nulla iusto quod a est debitis.
+        </p>
+    </CardBody>
+    <CardFooter>
+        <Button onClick={handleClose}>
+            Close
+        </Button>
+    </CardFooter>
 </ModalCard>
 `
                     }</TypeScriptCode>
@@ -300,12 +316,25 @@ const handleExpandedChange = (event) => {
     expanded={expanded}
     onExpandedChange={handleExpandedChange}
     modalViewport={null}
+    theme='primary'
 >
-    <YourComponent>
+    <CardHeader>
+        Test Card
+        <CloseButton onClick={handleClose} />
+    </CardHeader>
+    <CardBody>
         <p>
             Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<ModalCard>'}</code>.
         </p>
-    </YourComponent>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+    </CardBody>
+    <CardFooter>
+        <Button onClick={handleClose}>
+            Close
+        </Button>
+    </CardFooter>
 </ModalCard>
 `
                 }</TypeScriptCode>
@@ -334,12 +363,25 @@ const handleExpandedChange = (event) => {
         expanded={expanded}
         onExpandedChange={handleExpandedChange}
         modalViewport={fooSectionRef}
+        theme='primary'
     >
-        <YourComponent>
+        <CardHeader>
+            Test Card
+            <CloseButton onClick={handleClose} />
+        </CardHeader>
+        <CardBody>
             <p>
                 Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<ModalCard>'}</code>.
             </p>
-        </YourComponent>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+        </CardBody>
+        <CardFooter>
+            <Button onClick={handleClose}>
+                Close
+            </Button>
+        </CardFooter>
     </ModalCard>
 </section>
 `

@@ -288,12 +288,12 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.modalCard}>
                         <p>
-                            Overlays a {packages.card.packageLink} as dialog to the entire site&apos;s page.
+                            Overlays a {packages.card.packageLink} to the entire site&apos;s page or entire specified section.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.modalSide}>
                         <p>
-                            Overlays a {packages.card.packageLink} as dialog to the side of site&apos;s page.
+                            Overlays a {packages.card.packageLink} to the side of site&apos;s page or the side of specified section.
                         </p>
                     </PackageItem>
                 </Accordion>
