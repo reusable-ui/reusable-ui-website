@@ -39,6 +39,8 @@ export const gradient              = new PropertyInfo('gradient')
 export const outlined              = new PropertyInfo('outlined')
 export const mild                  = new PropertyInfo('mild')
 export const nude                  = new PropertyInfo('nude')
+export const horzAlign             = new PropertyInfo('horzAlign')
+export const vertAlign             = new PropertyInfo('vertAlign')
 
 export const labelStyle            = new PropertyInfo('labelStyle')
 export const buttonStyle           = new PropertyInfo('buttonStyle')
@@ -47,6 +49,8 @@ export const listStyle             = new PropertyInfo('listStyle')
 export const cardStyle             = new PropertyInfo('cardStyle')
 export const badgeStyle            = new PropertyInfo('badgeStyle')
 export const backdropStyle         = new PropertyInfo('backdropStyle')
+export const modalCardStyle        = new PropertyInfo('modalCardStyle')
+export const modalSideStyle        = new PropertyInfo('modalSideStyle')
 
 
 

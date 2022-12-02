@@ -5,10 +5,10 @@ import type { SizeName as ButtonIconSizeName } from '@reusable-ui/button-icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { background, foreground, border, padding, themable, colorable, carousel, content, button } from '../../packages/packageList'
+import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardStyle } from '@reusable-ui/components'
 
 
 
@@ -30,6 +30,7 @@ export const listStyleOptions                : ListStyle[]                      
 export const cardStyleOptions                : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
 export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 export const backdropStyleOptions            : BackdropStyle[]                  = ['regular', 'hidden', 'interactive', 'static'];
+export const modalCardStyleOptions           : ModalCardStyle[]                 = ['regular', 'scrollable'];
 
 
 
@@ -688,7 +689,34 @@ export const BackdropStyleProperty = ({children: preview}: PreviewProps) => {
             </Accordion>
         }>
             <p>
-                Sets the <strong>alternative behaviors</strong> of the <TheComponentLink />.
+                Sets the <strong>alternative behaviors</strong> of the <TheComponentLink />&apos; backdrop.
+            </p>
+        </PropertySection>
+    );
+}
+export const ModalCardStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.modalCardStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> behavior setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Shows a <strong>scrollbar</strong> on the <TheComponentLink />&apos;s backdrop when the <code>{'<CardBody>'}</code> contains wide/tall content.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'scrollable'</code>}>
+                    <p>
+                        Shows a <strong>scrollbar</strong> on the <code>{'<CardBody>'}</code> when the <code>{'<CardBody>'}</code> contains wide/tall content.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative behaviors</strong> of the {card.packageLink} of <TheComponentLink />.
             </p>
         </PropertySection>
     );

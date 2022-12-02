@@ -5,15 +5,15 @@ import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variable
 import { card, modalCard } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { ModalCard as OriModalCard, ModalCardProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton } from '@reusable-ui/components'
+import { ModalCard as OriModalCard, ModalCardProps, List, ListItem, CardBody, ModalExpandedChangeEvent, BackdropStyle, Button, CardHeader, CardFooter, CloseButton, ModalCardStyle, Check } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ModalViewportProperty } from '../../properties/sections/modalProperties'
-import { backdropStyleOptions, BackdropStyleProperty } from '../../properties/sections/variantProperties'
-import { EventHandler } from '@reusable-ui/core'
+import { backdropStyleOptions, BackdropStyleProperty, modalCardStyleOptions, ModalCardStyleProperty } from '../../properties/sections/variantProperties'
+import { ActiveChangeEvent, EventHandler } from '@reusable-ui/core'
 import { CardComponentProperty, ComponentProperties, ModalComponentProperty, ModalRefProperty, PopupComponentProperty } from '../../properties/sections/componentProperties'
 
 
@@ -172,6 +172,83 @@ const DemoModalCardViewport = ({bodyViewport}: DemoModalCardViewportProps) => {
                     </CardBody>
                     <CardFooter>
                         <Button onClick={handleClose}>
+                            Close
+                        </Button>
+                    </CardFooter>
+                </ModalCard>
+            </div>
+        </CardBody>
+    );
+}
+
+interface DemoModalCardStyleProps {
+    modalCardStyle : ModalCardStyle
+}
+const DemoModalCardStyle = ({modalCardStyle}: DemoModalCardStyleProps) => {
+    const viewportRef = useRef<HTMLElement>(null);
+    const [simulateWideContent, setSimulateWideContent] = useState<boolean>(false);
+    const [simulateTallContent, setSimulateTallContent] = useState<boolean>(true);
+    const handleChangeSimulateWideContent : EventHandler<ActiveChangeEvent> = (event) => setSimulateWideContent(event.active);
+    const handleChangeSimulateTallContent : EventHandler<ActiveChangeEvent> = (event) => setSimulateTallContent(event.active);
+    
+    
+    return (
+        <CardBody elmRef={viewportRef}>
+            <div style={{
+                display      : 'grid',
+                justifyItems : 'center',
+                alignItems   : 'center',
+                
+                blockSize    : '24rem',
+                alignContent : 'start',
+                
+                overflow     : 'hidden',
+            }}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
+                <ModalCard expanded={true} modalCardStyle={modalCardStyle} modalViewport={viewportRef}>
+                    <CardHeader>
+                        Test Card
+                        <CloseButton />
+                    </CardHeader>
+                    <CardBody style={{whiteSpace: 'nowrap'}}>
+                        <p>
+                            <Check checkStyle='switch' active={simulateWideContent} onActiveChange={handleChangeSimulateWideContent}>Simulate wide content</Check>
+                            <br />
+                            <Check checkStyle='switch' active={simulateTallContent} onActiveChange={handleChangeSimulateTallContent}>Simulate tall content</Check>
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            {simulateWideContent && <> 
+                                {' '}Distinctio,_aliquid_in!_Veritatis_ipsa_nisi_non_doloremque_saepe_officia_pariatur_quisquam_reiciendis_ipsum,_assumenda,_doloribus_illum?_Adipisci_pariatur_cumque_odio_rem?
+                            </>}
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            {simulateTallContent && <>
+                                {        
+                                    'Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?'
+                                    .split(' ')
+                                    .map((word) =>
+                                        <>
+                                            <br />
+                                            {word}
+                                        </>
+                                    )
+                                }
+                            </>
+                            }
+                        </p>
+                    </CardBody>
+                    <CardFooter>
+                        <Button>
                             Close
                         </Button>
                     </CardFooter>
@@ -388,6 +465,12 @@ const handleExpandedChange = (event) => {
 `
                 }</TypeScriptCode>
             </ModalViewportProperty>
+            <ModalCardStyleProperty>
+                {modalCardStyleOptions.map((modalCardStyle, index) => <React.Fragment key={index}>
+                    {(index !== 0) && <p></p>}
+                    <Preview display='right' stretch={false} transpMask={false} title={<code>{`modalCardStyle='${modalCardStyle}'`}</code>} cardBodyComponent={<DemoModalCardStyle modalCardStyle={modalCardStyle} />} />
+                </React.Fragment>)}
+            </ModalCardStyleProperty>
             <BackdropStyleProperty>
                 {backdropStyleOptions.map((backdropStyle, index) => <React.Fragment key={index}>
                     {(index !== 0) && <p></p>}
