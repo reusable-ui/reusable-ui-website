@@ -61,11 +61,14 @@ const DemoModalCard = () => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : '16rem',
+                blockSize    : '20rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
             }}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
@@ -95,11 +98,14 @@ const DemoExpanded = () => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : '16rem',
+                blockSize    : '20rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
             }}>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
@@ -140,7 +146,7 @@ const DemoModalCardViewport = ({bodyViewport}: DemoModalCardViewportProps) => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : 'calc(256px + 2rem)',
+                blockSize    : '20rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
@@ -148,6 +154,9 @@ const DemoModalCardViewport = ({bodyViewport}: DemoModalCardViewportProps) => {
                 <Button theme='primary' gradient={true} onClick={handleOpen}>
                     Show ModalCard Covering <strong>The Whole {bodyViewport ? 'Page' : 'Section'}</strong>
                 </Button>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
+                </p>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, aliquid in! Veritatis ipsa nisi non doloremque saepe officia pariatur quisquam reiciendis ipsum, assumenda, doloribus illum? Adipisci pariatur cumque odio rem?
                 </p>
@@ -199,7 +208,7 @@ const DemoModalCardStyle = ({modalCardStyle}: DemoModalCardStyleProps) => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : '24rem',
+                blockSize    : '25rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
@@ -293,7 +302,7 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : '16rem',
+                blockSize    : '20rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
@@ -325,7 +334,7 @@ const DemoAlignment = ({horzAlign, vertAlign}: DemoAlignmentProps) => {
                 justifyItems : 'center',
                 alignItems   : 'center',
                 
-                blockSize    : '24rem',
+                blockSize    : '32rem',
                 alignContent : 'start',
                 
                 overflow     : 'hidden',
