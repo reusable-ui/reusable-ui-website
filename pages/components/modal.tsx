@@ -269,7 +269,7 @@ const handleExpandedChange = (event) => {
 >
     <YourComponent>
         <p>
-            Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the {'<Modal>'}.
+            Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<Modal>'}</code>.
         </p>
     </YourComponent>
 </Modal>
@@ -303,7 +303,7 @@ const handleExpandedChange = (event) => {
     >
         <YourComponent>
             <p>
-                Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the {'<Modal>'}.
+                Press <kbd>esc</kbd> key or <Button theme='primary' size='sm' onClick={handleClose}>Close</Button> to close the <code>{'<Modal>'}</code>.
             </p>
         </YourComponent>
     </Modal>
