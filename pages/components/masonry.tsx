@@ -24,12 +24,19 @@ const masonryStyleInline : React.CSSProperties = {
 }
 const Masonry = (props: MasonryProps) => <OriMasonry {...props} theme={props.theme ?? 'primary'} style={props.style ?? ((props.orientation === 'inline') ? masonryStyleInline : masonryStyle)}>
     {props.children ?? [
+        /* eslint-disable @next/next/no-img-element */
         <img key={0} alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />,
+        /* eslint-disable @next/next/no-img-element */
         <img key={1} alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />,
+        /* eslint-disable @next/next/no-img-element */
         <img key={2} alt='lorem image' src='/images/lorem-img/building-800x500.jpg' />,
+        /* eslint-disable @next/next/no-img-element */
         <img key={3} alt='lorem image' src='/images/lorem-img/street-800x800.jpg' />,
+        /* eslint-disable @next/next/no-img-element */
         <img key={4} alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />,
+        /* eslint-disable @next/next/no-img-element */
         <img key={5} alt='lorem image' src='/images/lorem-img/water-500x800.jpg' />,
+        /* eslint-disable @next/next/no-img-element */
         <img key={6} alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />,
     ]}
 </OriMasonry>
