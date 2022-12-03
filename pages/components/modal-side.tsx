@@ -392,7 +392,7 @@ const handleExpandedChange = (event) => {
             <br />
             <Button theme='primary' size='sm' onClick={handleClose}>Close</Button>
             <br />
-            to close the <TheComponentLink />.
+            to close the <code>{'<ModalSide>'}</code>.
         </p>
         <p>
             Lorem ipsum dolor sit amet
@@ -448,7 +448,7 @@ const handleExpandedChange = (event) => {
                 <br />
                 <Button theme='primary' size='sm' onClick={handleClose}>Close</Button>
                 <br />
-                to close the <TheComponentLink />.
+                to close the <code>{'<ModalSide>'}</code>.
             </p>
             <p>
                 Lorem ipsum dolor sit amet
