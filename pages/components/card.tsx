@@ -24,6 +24,7 @@ const cardSampleItems = ({cardStyle: _cardStyle}: CardSampleItemsProps = {}) => 
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
             </p>
+            {/* eslint-disable @next/next/no-img-element */}
             <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '150px' }} />
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aut deserunt nulla iusto quod a est debitis tenetur dolorem? Molestiae unde nulla amet odio eveniet, quis eum libero aperiam natus?
