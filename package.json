@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "rd /s /q .next & next dev",
     "build": "rd /s /q .next & next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,6 +16,7 @@
     "@reusable-ui/components": "^5.0.2",
     "@reusable-ui/core": "^5.0.1",
     "next": "^13.0.5",
+    "next-sitemap": "^3.1.32",
     "pascal-case": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
