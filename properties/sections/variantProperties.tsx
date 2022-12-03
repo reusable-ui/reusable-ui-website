@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
 
 
 
@@ -34,6 +34,8 @@ export const modalCardStyleOptions           : ModalCardStyle[]                 
 export const horzAlignOptions                : Extract<ModalCardProps['horzAlign'], string>[] = ['start', 'center', 'end'];
 export const vertAlignOptions                : Extract<ModalCardProps['vertAlign'], string>[] = ['start', 'center', 'end'];
 export const modalSideStyleOptions           : ModalSideStyle[]                 = ['inlineStart', 'inlineEnd', 'blockStart', 'blockEnd'];
+export const progressStyleOptions            : ProgressStyle[]                  = ['regular', 'flat', 'flush', 'joined'];
+export const progressBarStyleOptions         : ProgressBarStyle[]               = ['regular', 'striped'];
 
 
 
@@ -752,6 +754,60 @@ export const ModalSideStyleProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Sets the <strong>side location</strong> of the {card.packageLink} of <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const ProgressStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.progressStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'content'</code>}>
+                    <p>
+                        Makes the <TheComponentLink />&apos;s layout <strong>partially match</strong> to {content.packageLink}&apos;s layout.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
+export const ProgressBarStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.progressBarStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'content'</code>}>
+                    <p>
+                        Makes the <TheComponentLink />&apos;s layout <strong>partially match</strong> to {content.packageLink}&apos;s layout.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );

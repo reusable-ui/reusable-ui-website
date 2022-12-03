@@ -305,7 +305,7 @@ const Components: NextPage = () => {
                 <Accordion theme='primary'>
                     <PackageItem package={packages.progress}>
                         <p>
-                            A custom progress bar featuring support for stacked bars, animated backgrounds, text labels, and horizontal/vertical orientation.
+                            A custom progress bar featuring support for multi bars, animated running progress, text labels, and horizontal/vertical orientation.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.group}>

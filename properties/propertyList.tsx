@@ -51,6 +51,8 @@ export const badgeStyle            = new PropertyInfo('badgeStyle')
 export const backdropStyle         = new PropertyInfo('backdropStyle')
 export const modalCardStyle        = new PropertyInfo('modalCardStyle')
 export const modalSideStyle        = new PropertyInfo('modalSideStyle')
+export const progressStyle         = new PropertyInfo('progressStyle')
+export const progressBarStyle      = new PropertyInfo('progressBarStyle')
 
 
 
