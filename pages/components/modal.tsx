@@ -155,7 +155,7 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
     const handleClose = () => {
         setExpanded(false);
         
-        clearTimeout(cancelReset);
+        if (cancelReset) clearTimeout(cancelReset);
         cancelReset = setTimeout(() => {
             setExpanded(true);
         }, 2000);
@@ -164,11 +164,16 @@ const DemoBackdrop = ({backdropStyle}: DemoBackdropProps) => {
         handleClose();
     };
     useEffect(() => {
+        // conditions:
+        if (!cancelReset) return; // nothing to cancel
+        
+        
+        
         // cleanups:
         return () => {
             clearTimeout(cancelReset);
         };
-    }, [])
+    }, [cancelReset])
     
     
     
