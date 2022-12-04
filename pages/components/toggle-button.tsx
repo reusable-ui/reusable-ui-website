@@ -103,6 +103,7 @@ const ToggleButtonPage: NextPage = () => {
 `
 <ToggleButton
     orientation='${orientationName}'
+    theme='primary'
 >
     <span>A {'<ToggleButton>'}</span>
     <span>with</span>

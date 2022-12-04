@@ -102,6 +102,7 @@ const ButtonPage: NextPage = () => {
 `
 <Button
     orientation='${orientationName}'
+    theme='primary'
 >
     <span>A {'<Button>'}</span>
     <span>with</span>

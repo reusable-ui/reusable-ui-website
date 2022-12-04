@@ -103,6 +103,7 @@ const NavButtonPage: NextPage = () => {
 `
 <NavButton
     orientation='${orientationName}'
+    theme='primary'
 >
     <span>A {'<NavButton>'}</span>
     <span>with</span>

@@ -117,6 +117,7 @@ const CloseButtonPage: NextPage = () => {
 `
 <CloseButton
     orientation='${orientationName}'
+    theme='primary'
 >
     <span>A {'<CloseButton>'}</span>
     <span>with</span>
