@@ -809,15 +809,15 @@ export const ProgressBarStyleProperty = ({children: preview}: PreviewProps) => {
                         Uses <strong>regular</strong> appearance.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>'content'</code>}>
+                <AccordionItem label={<code>'striped'</code>}>
                     <p>
-                        Makes the <TheComponentLink />&apos;s layout <strong>partially match</strong> to {content.packageLink}&apos;s layout.
+                        Makes the <TheNestedComponentDisplay /> has an <strong>alternating striped pattern</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+                Sets the <strong>alternative appearances</strong> of the <TheNestedComponentDisplay />.
             </p>
         </PropertySection>
     );

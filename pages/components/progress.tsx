@@ -4,12 +4,13 @@ import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { basic, progress, progressBar } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ProgressStyleProperty, progressStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ProgressStyleProperty, progressStyleOptions, OrientationProperty, orientationOptions, ProgressBarStyleProperty, progressBarStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Button, Group, List, ListItem, ListSeparatorItem, Progress as OriProgress, ProgressBar, ProgressProps, Radio, TextInput } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
+import { RunningProperty } from '../../properties/sections/stateProperties'
 
 
 
@@ -83,6 +84,57 @@ const ProgressPage: NextPage = () => {
                         ).join('')}
                     </TypeScriptCode>
                 </ProgressStyleProperty>
+                <ProgressBarStyleProperty>
+                    <Preview>
+                        {progressBarStyleOptions.map((progressBarStyle, index) =>
+                            <Progress
+                                key={index}
+                            >
+                                <ProgressBar progressBarStyle={progressBarStyle} value={30}>30%</ProgressBar>
+                            </Progress>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {progressBarStyleOptions.map((progressBarStyle) =>
+`
+<Progress
+    theme='primary'
+>
+    <ProgressBar
+        progressBarStyle='${progressBarStyle}'
+        value={30}
+    >
+        30%
+    </ProgressBar>
+</Progress>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </ProgressBarStyleProperty>
+                <RunningProperty>
+                    <Preview>
+                        <Progress>
+                            <ProgressBar running={true} progressBarStyle='striped' value={30}>30%</ProgressBar>
+                        </Progress>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Progress
+    theme='primary'
+>
+    <ProgressBar
+        running={true}
+        progressBarStyle='striped'
+        value={30}
+    >
+        30%
+    </ProgressBar>
+</Progress>
+`
+                    }</TypeScriptCode>
+                </RunningProperty>
                 <OrientationProperty>
                     <Preview stretch={false}>
                         {orientationOptions.map((orientationName, index) =>

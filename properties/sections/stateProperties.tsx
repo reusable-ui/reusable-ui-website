@@ -33,6 +33,41 @@ export const StateProperties = ({children} : StatePropertiesProps) => {
 
 
 
+export const RunningProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.running} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> running state.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>true</code>}>
+                    <p>
+                        The <TheNestedComponentDisplay /> is <strong>running</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>false</code>}>
+                    <p>
+                        The <TheNestedComponentDisplay /> is <strong>stopped</strong>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Defines the <strong>running/stopped state</strong> of the <TheNestedComponentDisplay />.
+            </p>
+            <Warning>
+                <p>
+                    You need to set <code>{`progressBarStyle='striped'`}</code> on the <TheNestedComponentDisplay /> in order to make a <strong>visual appearance</strong> of running activity.
+                </p>
+            </Warning>
+        </PropertySection>
+    );
+}
+
+
+
 export const EnabledProperty = ({children: preview}: PreviewProps) => {
     const {nestedComponent, nestedProperties} = useComponentInfo();
     

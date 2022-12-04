@@ -59,6 +59,8 @@ export const progressBarStyle      = new PropertyInfo('progressBarStyle')
 // states:
 export const excited               = new PropertyInfo('excited')
 
+export const running               = new PropertyInfo('running')
+
 export const expanded              = new PropertyInfo('expanded')
 export const defaultExpanded       = new PropertyInfo('defaultExpanded')
 export const onExpandedChange      = new PropertyInfo('onExpandedChange')
