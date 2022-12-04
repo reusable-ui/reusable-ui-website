@@ -310,7 +310,10 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.group}>
                         <p>
-                            Groups a list of components as a single component.
+                            Merges a list of components to a single composite component.
+                        </p>
+                        <p>
+                            {packages.group.packageLink} supports of (virtually) unlimited of nested {packages.group.packageLink}s.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.nav}>

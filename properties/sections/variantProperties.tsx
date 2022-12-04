@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListBasicStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
 
 
 
@@ -27,6 +27,7 @@ export const labelStyleOptions               : LabelStyle[]                     
 export const buttonStyleOptions              : ButtonStyle[]                    = ['regular', 'link', 'ghost'];
 export const checkStyleOptions               : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
 export const listStyleOptions                : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
+export const listBasicStyleOptions           : ListBasicStyle[]                 = ['regular', 'flat', 'flush', 'joined'];
 export const cardStyleOptions                : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
 export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 export const backdropStyleOptions            : BackdropStyle[]                  = ['regular', 'hidden', 'interactive', 'static'];
@@ -34,7 +35,7 @@ export const modalCardStyleOptions           : ModalCardStyle[]                 
 export const horzAlignOptions                : Extract<ModalCardProps['horzAlign'], string>[] = ['start', 'center', 'end'];
 export const vertAlignOptions                : Extract<ModalCardProps['vertAlign'], string>[] = ['start', 'center', 'end'];
 export const modalSideStyleOptions           : ModalSideStyle[]                 = ['inlineStart', 'inlineEnd', 'blockStart', 'blockEnd'];
-export const progressStyleOptions            : ProgressStyle[]                  = ['regular', 'flat', 'flush', 'joined'];
+export const progressStyleOptions            : ProgressStyle[]                  = listBasicStyleOptions;
 export const progressBarStyleOptions         : ProgressBarStyle[]               = ['regular', 'striped'];
 
 

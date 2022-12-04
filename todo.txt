@@ -8,6 +8,7 @@
 * docs <Popup|Badge|Busy|Alert|Tooltip floatingMiddleware>
 * docs <Dropdown|Modal setFocus restoreFocus>
 * docs <ProgressBar min max value>
+* docs <Group label>
 * specific TExpandedChange for <Collapse|Modal|Dropdown|etc>
 
 * add guide-using-component
