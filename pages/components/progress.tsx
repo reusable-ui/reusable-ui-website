@@ -7,9 +7,9 @@ import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ProgressStyleProperty, progressStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Button, Group, Progress as OriProgress, ProgressBar, ProgressProps, Radio, TextInput } from '@reusable-ui/components'
+import { Button, Group, List, ListItem, ListSeparatorItem, Progress as OriProgress, ProgressBar, ProgressProps, Radio, TextInput } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
-import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
+import { ComponentContextProvider, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
 
 
 
@@ -330,7 +330,133 @@ const ProgressPage: NextPage = () => {
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
-                    <AccordionItem label='No variable yet' enabled={false}>
+                    <AccordionItem label='Sizes'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>minInlineSize</code>
+                                <p>A default <strong>minimum width</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>minBlockSize</code>
+                                <p>A default <strong>minimum height</strong>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>minInlineSizeBlock</code>
+                                <p>A <strong>minimum width</strong> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>minBlockSizeBlock</code>
+                                <p>A <strong>minimum height</strong> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            
+                            
+                            
+                            <ListItem>
+                                <code>barBoxSizing</code>
+                                <p>The <strong>final height</strong> of the whole <TheNestedComponentDisplay />, including <strong>borders</strong> and <strong>paddings</strong>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>barMinInlineSize</code>
+                                <p>A default <strong>minimum width</strong> on the <TheNestedComponentDisplay />.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barMinBlockSize</code>
+                                <p>A default <strong>minimum height</strong> on the <TheNestedComponentDisplay />.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barMinBlockSizeSm</code>
+                                <p>A <strong>minimum height</strong> on the <TheNestedComponentDisplay /> when <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barMinBlockSizeLg</code>
+                                <p>A <strong>minimum height</strong> on the <TheNestedComponentDisplay /> when <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>barMinBlockSizeBlock</code>
+                                <p>A default <strong>minimum height</strong> on the <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barMinInlineSizeBlock</code>
+                                <p>A default <strong>minimum width</strong> on the <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barMinInlineSizeBlockSm</code>
+                                <p>A default <strong>minimum width</strong> on the <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code> and <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barMinInlineSizeBlockLg</code>
+                                <p>A default <strong>minimum width</strong> on the <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code> and <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>backgGrad</code>
+                                <p>The <strong>background gradient</strong> when <code>{`gradient={true}`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>backgGradBlock</code>
+                                <p>The <strong>background gradient</strong> when <code>{`gradient={true}`}</code> and  <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                            
+                            
+                            
+                            <ListItem>
+                                <code>barBackgStripedImg</code>
+                                <p>A <strong>background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barBackgStripedWidth</code>
+                                <p>A default <strong>width of background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barBackgStripedWidthSm</code>
+                                <p>A <strong>width of background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code> and <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barBackgStripedWidthLg</code>
+                                <p>A <strong>width of background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code> and <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barBackgStripedHeight</code>
+                                <p>A default <strong>height of background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barBackgStripedHeightSm</code>
+                                <p>A <strong>height of background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code> and <code>{`size='sm'`}</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barBackgStripedHeightLg</code>
+                                <p>A <strong>height of background image</strong> to show on the <TheNestedComponentDisplay /> when <code>{`progressBarStyle='striped'`}</code> and <code>{`size='lg'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Animations'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>barAnimRunning</code>
+                                <p>Represents default <strong>running animation</strong> of the <TheNestedComponentDisplay />.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>barAnimRunningBlock</code>
+                                <p>Represents <strong>running animation</strong> of the <TheNestedComponentDisplay /> when <code>{`orientation='block'`}</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Spacings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>paddingInline</code>
+                                <p>The default <strong>inner spacing</strong> on the <strong>left &amp; right</strong> of the <TheNestedComponentDisplay />.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>paddingBlock</code>
+                                <p>The default <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> of the <TheNestedComponentDisplay />.</p>
+                            </ListItem>
+                        </List>
                     </AccordionItem>
                 </Accordion>
             }>
