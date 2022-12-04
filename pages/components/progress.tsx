@@ -84,14 +84,13 @@ const ProgressPage: NextPage = () => {
                     </TypeScriptCode>
                 </ProgressStyleProperty>
                 <OrientationProperty>
-                    <Preview>
+                    <Preview stretch={false}>
                         {orientationOptions.map((orientationName, index) =>
-                            <div key={index} style={{display: 'grid'}}>
-                                <Progress
-                                    orientation={orientationName}
-                                    style={(orientationName === 'block') ? {justifySelf: 'center'} : undefined}
-                                />
-                            </div>
+                            <Progress
+                                key={index}
+                                orientation={orientationName}
+                                style={(orientationName === 'block') ? {justifySelf: 'center'} : undefined}
+                            />
                         )}
                     </Preview>
                     <p></p>
