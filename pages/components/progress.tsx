@@ -3,11 +3,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { basic, progress, progressBar } from '../../packages/packageList'
-import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, ProgressStyleProperty, progressStyleOptions, OrientationProperty, orientationOptions, ProgressBarStyleProperty, progressBarStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Button, Group, List, ListItem, ListSeparatorItem, Progress as OriProgress, ProgressBar, ProgressProps, Radio, TextInput } from '@reusable-ui/components'
+import { List, ListItem, Progress as OriProgress, ProgressBar, ProgressProps } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink, TheNestedComponentDisplay } from '../../packages/componentContext'
 import { RunningProperty } from '../../properties/sections/stateProperties'
@@ -254,8 +253,8 @@ const ProgressPage: NextPage = () => {
                         themeOptions.map((themeName) =>
 `
 <Progress
-    theme='${themeName}'
     gradient={true}
+    theme='${themeName}'
 >
     <ProgressBar value={30}>30%</ProgressBar>
 </Progress>
@@ -293,8 +292,8 @@ const ProgressPage: NextPage = () => {
                         themeOptions.map((themeName) =>
 `
 <Progress
-    theme='${themeName}'
     outlined={true}
+    theme='${themeName}'
 >
     <ProgressBar value={30}>30%</ProgressBar>
 </Progress>
@@ -319,7 +318,7 @@ const ProgressPage: NextPage = () => {
                             <Progress
                                 key={index}
                                 theme={themeName}
-                                mild={false}
+                                mild={true}
                             />
                         )}
                         <Progress mild={true}>
@@ -333,8 +332,8 @@ const ProgressPage: NextPage = () => {
                         themeOptions.map((themeName) =>
 `
 <Progress
+    mild={true}
     theme='${themeName}'
-    mild={false}
 >
     <ProgressBar value={30}>30%</ProgressBar>
 </Progress>
@@ -368,8 +367,8 @@ const ProgressPage: NextPage = () => {
                         {themeOptions.map((themeName) =>
 `
 <Progress
-    theme='${themeName}'
     nude={true}
+    theme='${themeName}'
 >
     <ProgressBar value={30}>30%</ProgressBar>
 </Progress>
