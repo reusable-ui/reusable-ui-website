@@ -59,7 +59,7 @@ export const LazyProperty = ({children: preview, childrenText}: LazyPropertyProp
                         The {childrenText ?? <><TheComponentLink />&apos;s <code>children</code></>} <strong>always</strong> be rendered.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>false</code>}>
+                <AccordionItem label={<code>true</code>}>
                     <p>
                         The {childrenText ?? <><TheComponentLink />&apos;s <code>children</code></>} <strong>conditionally</strong> be rendered when the <code>{`<${component.componentName} expanded={true}>`}</code>.
                     </p>
