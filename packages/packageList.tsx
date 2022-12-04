@@ -124,6 +124,7 @@ export const modalSide              = new ComponentInfo('modal-side')
 
 // composite-components:
 export const progress               = new ComponentInfo('progress')
+export const progressBar            = new ComponentInfo('progressBar')
 export const group                  = new ComponentInfo('group')
 export const nav                    = new ComponentInfo('nav')
 export const navscroll              = new ComponentInfo('navscroll')

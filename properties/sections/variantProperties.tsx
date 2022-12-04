@@ -772,9 +772,19 @@ export const ProgressStyleProperty = ({children: preview}: PreviewProps) => {
                         Uses <strong>regular</strong> appearance.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>'content'</code>}>
+                <AccordionItem label={<code>'flat'</code>}>
                     <p>
-                        Makes the <TheComponentLink />&apos;s layout <strong>partially match</strong> to {content.packageLink}&apos;s layout.
+                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'flush'</code>}>
+                    <p>
+                        Removes the <strong>surrounding border</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'joined'</code>}>
+                    <p>
+                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
                     </p>
                 </AccordionItem>
             </Accordion>
