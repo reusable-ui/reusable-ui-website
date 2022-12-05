@@ -53,8 +53,8 @@ const listSampleItems = ({mixVaraints = true, listStyle}: ListSampleItemsProps =
 
 interface SampleListProps extends ListProps, ListSampleItemsProps {
 }
-const List = (props: SampleListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
-    {props.children ?? listSampleItems(props)}
+const List = ({mixVaraints, ...props}: SampleListProps) => <OriList {...props} theme={props.theme ?? 'primary'}>
+    {props.children ?? listSampleItems({mixVaraints, ...props})}
 </OriList>
 
 interface ListSampleItemsArrayProps {
