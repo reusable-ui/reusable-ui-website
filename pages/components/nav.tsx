@@ -19,7 +19,7 @@ import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOf
 interface NavSampleItemsProps extends Pick<NavProps, 'listStyle'> {
     mixVaraints ?: boolean
 }
-const listSampleItems = ({mixVaraints = true, listStyle}: NavSampleItemsProps = {}) => {
+const listSampleItems = ({mixVaraints = false, listStyle}: NavSampleItemsProps = {}) => {
     return ((listStyle === 'bullet') ? [
         <NavItem key={0}>
             <Link href='/' />
@@ -55,9 +55,8 @@ const Nav = ({mixVaraints, ...props}: SampleNavProps) => <OriNav {...props} them
 
 interface NavSampleItemsArrayProps {
     indents     ?: number
-    mixVaraints ?: boolean
 }
-const navSampleItemsArray = ({indents = 1, mixVaraints = true} : NavSampleItemsArrayProps = {}) => {
+const navSampleItemsArray = ({indents = 1} : NavSampleItemsArrayProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return ([
 (prop?: string) => `${tabs}<NavItem${prop ? ` ${prop}` : ''}>
@@ -75,7 +74,7 @@ ${tabs}    <Link href='/components'>
 ${tabs}        Components
 ${tabs}    </Link>
 ${tabs}</NavItem>`,
-(prop?: string) => `${tabs}<NavItem href='https://github.com/reusable-ui'${mixVaraints ? " theme='danger'" : ""}${prop ? ` ${prop}` : ''}>
+(prop?: string) => `${tabs}<NavItem href='https://github.com/reusable-ui'${prop ? ` ${prop}` : ''}>
 ${tabs}    GitHub
 ${tabs}</NavItem>`
     ]);
@@ -98,7 +97,7 @@ ${tabs}</NavItem>
 ${tabs}<NavItem>
 ${tabs}    <Link href='/components' />
 ${tabs}</NavItem>
-${tabs}<NavItem href='https://github.com/reusable-ui' theme='danger' />`
+${tabs}<NavItem href='https://github.com/reusable-ui' />`
     );
 }
 
@@ -206,7 +205,7 @@ ${navSampleItemsString()}
                                     Components
                                 </Link>
                             </NavItem>
-                            <NavItem size='lg' href='https://github.com/reusable-ui' theme='danger'>
+                            <NavItem size='lg' href='https://github.com/reusable-ui'>
                                 GitHub
                             </NavItem>
                         </Nav>
@@ -243,7 +242,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem size='lg' href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem size='lg' href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -301,7 +300,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -355,7 +354,7 @@ ${navSampleItemsString()}
                                     Components
                                 </Link>
                             </NavItem>
-                            <NavItem gradient={true} href='https://github.com/reusable-ui' theme='danger'>
+                            <NavItem gradient={true} href='https://github.com/reusable-ui'>
                                 GitHub
                             </NavItem>
                         </Nav>
@@ -382,7 +381,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -405,7 +404,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem gradient={true} href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem gradient={true} href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -433,7 +432,7 @@ ${navSampleItemsString()}
                                     Components
                                 </Link>
                             </NavItem>
-                            <NavItem outlined={false} href='https://github.com/reusable-ui' theme='danger'>
+                            <NavItem outlined={false} href='https://github.com/reusable-ui'>
                                 GitHub
                             </NavItem>
                         </Nav>
@@ -460,7 +459,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -484,7 +483,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem outlined={false} href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem outlined={false} href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -512,7 +511,7 @@ ${navSampleItemsString()}
                                     Components
                                 </Link>
                             </NavItem>
-                            <NavItem mild={true} href='https://github.com/reusable-ui' theme='danger'>
+                            <NavItem mild={true} href='https://github.com/reusable-ui'>
                                 GitHub
                             </NavItem>
                         </Nav>
@@ -539,7 +538,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -563,7 +562,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem mild={true} href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem mild={true} href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
@@ -595,7 +594,7 @@ ${navSampleItemsString()}
                                     Components
                                 </Link>
                             </NavItem>
-                            <NavItem enabled={true} href='https://github.com/reusable-ui' theme='danger'>
+                            <NavItem enabled={true} href='https://github.com/reusable-ui'>
                                 GitHub
                             </NavItem>
                         </Nav>
@@ -628,7 +627,7 @@ ${navSampleItemsString()}
             Components
         </Link>
     </NavItem>
-    <NavItem enabled={true} href='https://github.com/reusable-ui' theme='danger'>
+    <NavItem enabled={true} href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
