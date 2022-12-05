@@ -123,9 +123,9 @@ const ListPage: NextPage = () => {
                     Here the demo:
                 </p>
                 <Preview display='right' stretch={false}>
-                    <List theme='primary' />
-                    <List theme='primary' mild={false} />
-                    <List theme='primary' outlined={true} />
+                    <List />
+                    <List mild={false} />
+                    <List outlined={true} />
                 </Preview>
             </HeroSection>
             <ComponentInstallation />

@@ -117,6 +117,8 @@ const NavPage: NextPage = () => {
                 </p>
                 <Preview display='right' stretch={false}>
                     <Nav />
+                    <Nav mild={false} />
+                    <Nav outlined={true} />
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
