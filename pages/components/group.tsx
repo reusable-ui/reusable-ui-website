@@ -36,13 +36,13 @@ const GroupPage: NextPage = () => {
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> merges a list of components to a single composite component.
+                    <TheComponentLink /> merges a list of components to form a single composite component.
                 </p>
                 <p>
                     Almost all our {components.packageLink} can be <TheComponentLink />-ed, with a few exceptions like {modal.packageLink}, {popup.packageLink}, {dropdown.packageLink}, and <strong>non-static</strong> positioned components.
                 </p>
                 <p>
-                    <TheComponentLink /> supports of (virtually) unlimited of nested <TheComponentLink />s.
+                    <TheComponentLink /> supports of (virtually) <strong>unlimited depth</strong> of nested <TheComponentLink />s.
                 </p>
                 <p>
                     Here the demo:
