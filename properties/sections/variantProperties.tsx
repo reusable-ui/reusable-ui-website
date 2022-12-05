@@ -7,7 +7,7 @@ import { PreviewProps, PropertySection, PropertySectionProps, Section } from '..
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
-import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
+import { TheComponentLink, TheNestedComponentDisplay, TheNestedComponentDisplayProps, useComponentInfo } from '../../packages/componentContext'
 import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListBasicStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
 
 
@@ -496,7 +496,9 @@ export const CheckStyleProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
-export const ListStyleProperty = ({children: preview}: PreviewProps) => {
+export const ListStyleProperty = ({children: preview, ...nestedComponentDisplayProps}: PreviewProps & TheNestedComponentDisplayProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.listStyle} preview={preview} possibleValues={
             <Accordion>
@@ -512,7 +514,7 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'flat'</code>}>
                     <p>
-                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay {...nestedComponentDisplayProps} />{nestedComponent ? 's' : ''}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'flush'</code>}>
@@ -522,17 +524,17 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'joined'</code>}>
                     <p>
-                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay {...nestedComponentDisplayProps} />{nestedComponent ? 's' : ''}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'content'</code>}>
                     <p>
-                        Makes the <TheNestedComponentDisplay />&apos;s layout <strong>match</strong> to {content.packageLink}&apos;s layout.
+                        Makes the <TheNestedComponentDisplay {...nestedComponentDisplayProps} />&apos;s layout <strong>match</strong> to {content.packageLink}&apos;s layout.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'button'</code>}>
                     <p>
-                        Makes the <TheNestedComponentDisplay />&apos;s layout <strong>match</strong> to {button.packageLink}&apos;s layout.
+                        Makes the <TheNestedComponentDisplay {...nestedComponentDisplayProps} />&apos;s layout <strong>match</strong> to {button.packageLink}&apos;s layout.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'tab'</code>}>
@@ -547,15 +549,15 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'bullet'</code>}>
                     <p>
-                        Makes the <TheNestedComponentDisplay />&apos;s layout like a <strong>bullet</strong>.
+                        Makes the <TheNestedComponentDisplay {...nestedComponentDisplayProps} />&apos;s layout like a <strong>bullet</strong>.
                     </p>
                     <p>
-                        Note: Requires each <TheNestedComponentDisplay /> have an <strong>empty children</strong>.
+                        Note: Requires each <TheNestedComponentDisplay {...nestedComponentDisplayProps} /> have an <strong>empty children</strong>.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'numbered'</code>}>
                     <p>
-                        Makes each <TheNestedComponentDisplay /> have a <strong>numbered counter</strong>.
+                        Makes each <TheNestedComponentDisplay {...nestedComponentDisplayProps} /> have a <strong>numbered counter</strong>.
                     </p>
                 </AccordionItem>
             </Accordion>
@@ -576,7 +578,9 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
-export const ListBasicStyleProperty = ({children: preview}: PreviewProps) => {
+export const ListBasicStyleProperty = ({children: preview, ...nestedComponentDisplayProps}: PreviewProps & TheNestedComponentDisplayProps) => {
+    const {nestedComponent} = useComponentInfo();
+    
     return (
         <PropertySection property={properties.listStyle} preview={preview} possibleValues={
             <Accordion>
@@ -592,7 +596,7 @@ export const ListBasicStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'flat'</code>}>
                     <p>
-                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay {...nestedComponentDisplayProps} />{nestedComponent ? 's' : ''}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>'flush'</code>}>
@@ -602,7 +606,7 @@ export const ListBasicStyleProperty = ({children: preview}: PreviewProps) => {
                 </AccordionItem>
                 <AccordionItem label={<code>'joined'</code>}>
                     <p>
-                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay {...nestedComponentDisplayProps} />{nestedComponent ? 's' : ''}.
                     </p>
                 </AccordionItem>
             </Accordion>

@@ -77,9 +77,12 @@ export const TheComponentLink = () : React.ReactElement => {
     return <>{component.packageLink}</>;
 }
 
-export const TheNestedComponentDisplay = () : React.ReactElement => {
+export interface TheNestedComponentDisplayProps {
+    alternateNestedComponent ?: React.ReactNode
+}
+export const TheNestedComponentDisplay = ({alternateNestedComponent} : TheNestedComponentDisplayProps) : React.ReactElement => {
     const {nestedComponent} = useComponentInfo();
-    if (!nestedComponent) return <></>;
+    if (!nestedComponent) return <>{alternateNestedComponent}</>;
     if (Array.isArray(nestedComponent)) return <CommaSeparated components={
         nestedComponent.map((nestedComponent) => nestedComponent.packageDisplay)
     } />;

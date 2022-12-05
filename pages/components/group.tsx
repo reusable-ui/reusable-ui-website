@@ -71,7 +71,7 @@ const GroupPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
-                <ListBasicStyleProperty>
+                <ListBasicStyleProperty alternateNestedComponent={<><TheComponentLink />&apos;s <strong>children</strong></>}>
                     <Preview display='right' stretch={false}>
                         {listBasicStyleOptions.map((listStyle, index) =>
                             <Group
