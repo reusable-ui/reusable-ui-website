@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { list, group } from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListStyleProperty, listBasicStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListBasicStyleProperty, listBasicStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { Group as OriGroup, GroupProps, TextInput, Label, Button, Radio } from '@reusable-ui/components'
@@ -68,7 +68,7 @@ const GroupPage: NextPage = () => {
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
-                <ListStyleProperty>
+                <ListBasicStyleProperty>
                     <Preview display='right' stretch={false}>
                         {listBasicStyleOptions.map((listStyle, index) =>
                             <Group
@@ -97,7 +97,7 @@ const GroupPage: NextPage = () => {
 `
                         ).join('')}
                     </TypeScriptCode>
-                </ListStyleProperty>
+                </ListBasicStyleProperty>
                 <OrientationProperty>
                     <Preview display='down' stretch={false}>
                         {orientationOptions.map((orientationName, index) =>
@@ -138,9 +138,14 @@ const GroupPage: NextPage = () => {
                             />
                         )}
                         <Group>
-                            <Button size='sm'>Left</Button>
-                            <Button size='md'>Center</Button>
-                            <Button size='lg'>Right</Button>
+                            <TextInput size='sm' placeholder='Username' />
+                            <Label>
+                                @
+                            </Label>
+                            <TextInput size='md' placeholder='Server' />
+                            <Button size='lg'>
+                                Submit
+                            </Button>
                         </Group>
                     </Preview>
                     <p></p>
@@ -167,9 +172,14 @@ const GroupPage: NextPage = () => {
 <Group
     theme='primary'
 >
-    <Button size='sm'>Left</Button>
-    <Button size='md'>Center</Button>
-    <Button size='lg'>Right</Button>
+    <TextInput size='sm' placeholder='Username' />
+    <Label>
+        @
+    </Label>
+    <TextInput size='md' placeholder='Server' />
+    <Button size='lg'>
+        Submit
+    </Button>
 </Group>
 `
                     }</TypeScriptCode>
@@ -183,9 +193,14 @@ const GroupPage: NextPage = () => {
                             />
                         )}
                         <Group>
-                            <Button                >Left</Button>
-                            <Button theme='success'>Center</Button>
-                            <Button theme='danger' >Right</Button>
+                            <TextInput theme='success' placeholder='Username' />
+                            <Label theme='primary'>
+                                @
+                            </Label>
+                            <TextInput theme='danger' placeholder='Server' />
+                            <Button theme='warning'>
+                                Submit
+                            </Button>
                         </Group>
                     </Preview>
                     <p></p>
@@ -211,9 +226,14 @@ const GroupPage: NextPage = () => {
 <Group
     theme='primary'
 >
-    <Button                >Left</Button>
-    <Button theme='success'>Center</Button>
-    <Button theme='danger' >Right</Button>
+    <TextInput theme='success' placeholder='Username' />
+    <Label theme='primary'>
+        @
+    </Label>
+    <TextInput theme='danger' placeholder='Server' />
+    <Button theme='warning'>
+        Submit
+    </Button>
 </Group>
 `
                     }</TypeScriptCode>
@@ -228,9 +248,14 @@ const GroupPage: NextPage = () => {
                             />
                         )}
                         <Group>
-                            <Button                >Left</Button>
-                            <Button gradient={true}>Center</Button>
-                            <Button                >Right</Button>
+                            <TextInput gradient={true} placeholder='Username' />
+                            <Label gradient={false}>
+                                @
+                            </Label>
+                            <TextInput gradient={true} placeholder='Server' />
+                            <Button gradient={false}>
+                                Submit
+                            </Button>
                         </Group>
                     </Preview>
                     <p></p>
@@ -257,9 +282,14 @@ const GroupPage: NextPage = () => {
 <Group
     theme='primary'
 >
-    <Button                >Left</Button>
-    <Button gradient={true}>Center</Button>
-    <Button                >Right</Button>
+    <TextInput gradient={true} placeholder='Username' />
+    <Label gradient={false}>
+        @
+    </Label>
+    <TextInput gradient={true} placeholder='Server' />
+    <Button gradient={false}>
+        Submit
+    </Button>
 </Group>
 `
                     }</TypeScriptCode>
@@ -274,9 +304,14 @@ const GroupPage: NextPage = () => {
                             />
                         )}
                         <Group outlined={true}>
-                            <Button                 >Left</Button>
-                            <Button outlined={false}>Center</Button>
-                            <Button                 >Right</Button>
+                            <TextInput outlined={true} placeholder='Username' />
+                            <Label outlined={false}>
+                                @
+                            </Label>
+                            <TextInput outlined={true} placeholder='Server' />
+                            <Button outlined={false}>
+                                Submit
+                            </Button>
                         </Group>
                     </Preview>
                     <p></p>
@@ -304,9 +339,14 @@ const GroupPage: NextPage = () => {
     outlined={true}
     theme='primary'
 >
-    <Button                 >Left</Button>
-    <Button outlined={false}>Center</Button>
-    <Button                 >Right</Button>
+    <TextInput outlined={true} placeholder='Username' />
+    <Label outlined={false}>
+        @
+    </Label>
+    <TextInput outlined={true} placeholder='Server' />
+    <Button outlined={false}>
+        Submit
+    </Button>
 </Group>
 `
                     }</TypeScriptCode>
@@ -321,9 +361,14 @@ const GroupPage: NextPage = () => {
                             />
                         )}
                         <Group mild={true}>
-                            <Button             >Left</Button>
-                            <Button mild={false}>Center</Button>
-                            <Button             >Right</Button>
+                            <TextInput mild={false} placeholder='Username' />
+                            <Label mild={true}>
+                                @
+                            </Label>
+                            <TextInput mild={false} placeholder='Server' />
+                            <Button mild={true}>
+                                Submit
+                            </Button>
                         </Group>
                     </Preview>
                     <p></p>
@@ -351,9 +396,14 @@ const GroupPage: NextPage = () => {
     mild={true}
     theme='primary'
 >
-    <Button             >Left</Button>
-    <Button mild={false}>Center</Button>
-    <Button             >Right</Button>
+    <TextInput mild={false} placeholder='Username' />
+    <Label mild={true}>
+        @
+    </Label>
+    <TextInput mild={false} placeholder='Server' />
+    <Button mild={true}>
+        Submit
+    </Button>
 </Group>
 `
                     }</TypeScriptCode>

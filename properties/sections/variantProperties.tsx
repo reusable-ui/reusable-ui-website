@@ -576,6 +576,43 @@ export const ListStyleProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
+export const ListBasicStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.listStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'flat'</code>}>
+                    <p>
+                        Removes the <strong>surrounding border</strong> and removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'flush'</code>}>
+                    <p>
+                        Removes the <strong>surrounding border</strong>.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'joined'</code>}>
+                    <p>
+                        Removes <strong>separator borders</strong> between <TheNestedComponentDisplay />s.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
+            </p>
+        </PropertySection>
+    );
+}
 export const CardStyleProperty = ({children: preview}: PreviewProps) => {
     return (
         <PropertySection property={properties.cardStyle} preview={preview} possibleValues={
