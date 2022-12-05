@@ -6,10 +6,11 @@ import { list, nav, activatable, navItem } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListStyleProperty, listStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Nav as OriNav, NavProps, NavItem } from '@reusable-ui/components'
+import { Nav as OriNav, NavProps, NavItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import Link from 'next/link'
+import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 
 
 
@@ -559,6 +560,93 @@ ${navSampleItemsString()}
                     }</TypeScriptCode>
                 </MildProperty>
             </VariantProperties>
+            <StateProperties>
+                <EnabledProperty>
+                    <Preview display='right' stretch={false}>
+                        <Nav
+                            enabled={false}
+                        />
+                        <Nav
+                            mixVaraints={false}
+                        >
+                            <NavItem enabled={false}>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </NavItem>
+                            <NavItem enabled={false}>
+                                <Link href='/core'>
+                                    Core
+                                </Link>
+                            </NavItem>
+                            <NavItem enabled={true}>
+                                <Link href='/components'>
+                                    Components
+                                </Link>
+                            </NavItem>
+                            <NavItem enabled={true} href='https://github.com/reusable-ui' theme='danger'>
+                                GitHub
+                            </NavItem>
+                        </Nav>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Nav
+    enabled={false}
+    theme='primary'
+>
+${navSampleItemsString()}
+</Nav>
+
+<Nav
+    theme='primary'
+>
+    <NavItem enabled={false}>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem enabled={false}>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem enabled={true}>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem enabled={true} href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
+</Nav>
+`
+                    }</TypeScriptCode>
+                </EnabledProperty>
+                <InheritEnabledProperty>
+                    <Preview display='right' stretch={false}>
+                        <Control theme='primary' enabled={false}>
+                            <Nav
+                                inheritEnabled={true}
+                            />
+                        </Control>
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Control theme='primary' enabled={false}>
+    <Nav
+        inheritEnabled={true}
+        theme='primary'
+    >
+${navSampleItemsString({indents: 2})}
+    </Nav>
+</Control>
+`
+                    }</TypeScriptCode>
+                </InheritEnabledProperty>
+            </StateProperties>
             <InheritedProperties />
             <Variables variables={
                 <Accordion>
