@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { list, group } from '../../packages/packageList'
+import { list, group, components, modal, popup, dropdown } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListBasicStyleProperty, listBasicStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
@@ -37,6 +37,9 @@ const GroupPage: NextPage = () => {
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
                     <TheComponentLink /> merges a list of components to a single composite component.
+                </p>
+                <p>
+                    Almost all our {components.packageLink} can be <TheComponentLink />-ed, with a few exceptions like {modal.packageLink}, {popup.packageLink}, {dropdown.packageLink}, and <strong>non-static</strong> positioned components.
                 </p>
                 <p>
                     <TheComponentLink /> supports of (virtually) unlimited of nested <TheComponentLink />s.

@@ -313,7 +313,7 @@ const Components: NextPage = () => {
                             Merges a list of components to a single composite component.
                         </p>
                         <p>
-                            {packages.group.packageLink} supports of (virtually) unlimited of nested {packages.group.packageLink}s.
+                            Almost all our {packages.components.packageLink} can be {packages.group.packageLink}-ed, with a few exceptions like {packages.modal.packageLink}, {packages.popup.packageLink}, {packages.dropdown.packageLink}, and <strong>non-static</strong> positioned components.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.nav}>
