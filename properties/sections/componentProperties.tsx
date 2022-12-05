@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -702,6 +702,29 @@ export const ListItemsProperty = ({children: preview} : ListItemsPropertyProps) 
             A disabled item
         </ListItem>
     </List>
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+
+export interface ListItemComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const ListItemComponentProperty = ({children: preview} : ListItemComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.listItemComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {listItem.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} listItemComponent={
+    <MyCustomListItem />
 } />`
             }</TypeScriptCode>
         </PropertySection>

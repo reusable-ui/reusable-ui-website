@@ -11,6 +11,7 @@ import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import Link from 'next/link'
 import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { ComponentProperties, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
 
 
 
@@ -647,25 +648,13 @@ ${navSampleItemsString({indents: 2})}
                     }</TypeScriptCode>
                 </InheritEnabledProperty>
             </StateProperties>
+            <ComponentProperties>
+                <ListComponentProperty />
+                <ComponentContextProvider component={navItem}>
+                    <ListItemComponentProperty />
+                </ComponentContextProvider>
+            </ComponentProperties>
             <InheritedProperties />
-            <Variables variables={
-                <Accordion>
-                    <AccordionItem label='No variable yet' enabled={false}>
-                    </AccordionItem>
-                </Accordion>
-            }>
-                <TypeScriptCode>{
-`
-// put this code on the main code: 'App.js' (React app) -or- '_app.js' (Next js)
-
-import {navs, navValues} from '@reusable-ui/nav';
-
-navs.opacity = 0.5;
-console.log('opacity variable name: ', navs.opacity);
-console.log('opacity variable value: ', navValues.opacity);
-`
-                }</TypeScriptCode>
-            </Variables>
         </Main>
     </ComponentContextProvider>);
 }

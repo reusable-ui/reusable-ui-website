@@ -175,6 +175,8 @@ export const listRef               = new PropertyInfo('listRef')
 export const listOrientation       = new PropertyInfo('listOrientation')
 export const listItems             = new PropertyInfo('listItems')
 
+export const listItemComponent     = new PropertyInfo('listItemComponent')
+
 export const cardComponent         = new PropertyInfo('cardComponent')
 export const cardRef               = new PropertyInfo('cardRef')
 export const cardOrientation       = new PropertyInfo('cardOrientation')
