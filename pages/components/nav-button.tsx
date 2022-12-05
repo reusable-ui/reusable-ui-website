@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
-import { button, navButton } from '../../packages/packageList'
+import { activatable, button, navButton } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, OrientationProperty, orientationOptions, ButtonStyleProperty, buttonStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { NavButton as OriNavButton, NavButtonProps, Control } from '@reusable-ui/components'
@@ -25,12 +25,12 @@ const NavButtonPage: NextPage = () => {
     return (<ComponentContextProvider component={navButton} baseComponents={button}>
         <Head>
             <title>{`${navButton.componentTag} Component`}</title>
-            <meta name="description" content={`${navButton.componentTag} is a ${button.componentTag} component with managed ${active.propertyName} state depends on current page URL.`} />
+            <meta name="description" content={`${navButton.componentTag} is a button for (client-side/normal) navigation with automatically toggling-on the ${activatable.packageShortName} at correspoding URL.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a {button.packageLink} component with managed {active.propertyShortLink} state depends on <strong>current page URL</strong>.
+                    <TheComponentLink /> is a button for (client-side/normal) navigation with automatically toggling-on the {activatable.packageShortLink} at <em>correspoding URL</em>.
                 </p>
                 <p>
                     If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentLink /> becomes <em>useless</em>.

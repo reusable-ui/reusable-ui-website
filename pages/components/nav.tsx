@@ -108,12 +108,12 @@ const NavPage: NextPage = () => {
     return (<ComponentContextProvider component={nav} nestedComponent={navItem} baseComponents={list}>
         <Head>
             <title>{`${nav.componentTag} Component`}</title>
-            <meta name="description" content={`${nav.componentTag} is a list of (client-side/normal) navigation with automatically toggling-on the ${navItem.componentTag}'s ${activatable.shortName} at correspoding url.`} />
+            <meta name="description" content={`${nav.componentTag} is a list of (client-side/normal) navigation with automatically toggling-on the ${navItem.componentTag}'s ${activatable.shortName} at correspoding URL.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a list of (client-side/normal) navigation with automatically toggling-on the {navItem.packageDisplay}&apos;s {activatable.packageShortLink} at correspoding <em>url</em>.
+                    <TheComponentLink /> is a list of (client-side/normal) navigation with automatically toggling-on the {navItem.packageDisplay}&apos;s {activatable.packageShortLink} at <em>correspoding URL</em>.
                 </p>
                 <p>
                     Here the demo:
