@@ -12,6 +12,8 @@ import { ComponentContextProvider, TheComponentLink } from '../../packages/compo
 import Link from 'next/link'
 import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
+import { CaseSensitiveProperty, EndProperty, NavigationProperties } from '../../properties/sections/navigationProperties'
+import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfRoleButton } from '../../properties/sections/actionProperties'
 
 
 
@@ -124,6 +126,15 @@ const NavPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <ComponentContextProvider component={navItem}>
+                <NavigationProperties>
+                    <CaseSensitiveProperty />
+                    <EndProperty />
+                </NavigationProperties>
+                <ClientSideLinkPropertyOfButton />
+                <HrefPropertyOfButton />
+                <OnClickPropertyOfRoleButton />
+            </ComponentContextProvider>
             <VariantProperties>
                 <ListStyleProperty>
                     <Preview display='right' stretch={false}>

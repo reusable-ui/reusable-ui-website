@@ -51,7 +51,7 @@ export const ClientSideLinkProperty = ({tips, children: preview} : ClientSideLin
 
 // during render phase:
 // for illustration purpose, the actuall is not this way
-<Link to='/about'>
+<Link to='/about' legacyBehavior={true}>
     <${componentName}>
         please
         visit
@@ -77,7 +77,7 @@ export const ClientSideLinkProperty = ({tips, children: preview} : ClientSideLin
 }
 export const ClientSideLinkPropertyOfButton = ({tips, ...rest} : ClientSideLinkPropertyProps) => {
     return (
-        <ClientSideLinkProperty {...rest} tips={tips ?? <TipsAutoTagToAnchorForHref />} />
+        <ClientSideLinkProperty {...rest} tips={tips ?? <TipsAutoTagToAnchorForHref conditionText={<>there is a <code>{`<Link>`}</code> inside the <TheComponentLink /></>} />} />
     )
 }
 
@@ -102,7 +102,7 @@ export const HrefProperty = ({tips, children: preview}: HrefPropertyProps) => {
 }
 export const HrefPropertyOfButton = ({tips, ...rest}: HrefPropertyProps) => {
     return (
-        <HrefProperty {...rest} tips={tips ?? <TipsAutoTagToAnchorForHref />} />
+        <HrefProperty {...rest} tips={tips ?? <TipsAutoTagToAnchorForHref conditionText={<>you assign the <code>{`href`}</code> property of the <TheComponentLink /></>} />} />
     );
 }
 
@@ -130,6 +130,11 @@ export const OnClickPropertyOfButton = ({tips, ...rest}: OnClickPropertyProps) =
         <OnClickProperty {...rest} tips={tips ?? <TipsButtonTag />} />
     );
 }
+export const OnClickPropertyOfRoleButton = ({tips, ...rest}: OnClickPropertyProps) => {
+    return (
+        <OnClickProperty {...rest} tips={tips ?? <TipsButtonRole />} />
+    );
+}
 
 
 
@@ -144,9 +149,12 @@ const TipsAutoTagToAnchorForLink = () => <Tips>
     <ParagraphChangeTagRole />
 </Tips>
 
-const TipsAutoTagToAnchorForHref = () => <Tips>
+interface TipsAutoTagToAnchorForHrefProps {
+    conditionText : React.ReactNode
+}
+const TipsAutoTagToAnchorForHref = ({conditionText}: TipsAutoTagToAnchorForHrefProps) => <Tips>
     <p>
-        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if you assign the <code>{`href`}</code> property.
+        The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>automatically</strong> changed to <code>{`<a>`}</code> if {conditionText}.
     </p>
     <ParagraphChangeTagRole />
 </Tips>
@@ -154,6 +162,14 @@ const TipsAutoTagToAnchorForHref = () => <Tips>
 const TipsButtonTag = () => <Tips>
     <p>
         The <TheComponentLink />&apos;s default {tag.propertyShortLink} will <strong>remain</strong> to <code>{`<button>`}</code>,
+        as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentLink />.
+    </p>
+    <ParagraphChangeTagRole />
+</Tips>
+
+const TipsButtonRole = () => <Tips>
+    <p>
+        The <TheComponentLink />&apos;s default {role.propertyShortLink} will <strong>remain</strong> to <code>{`role='button'`}</code>,
         as long as you don&apos;t assign the <code>{`href`}</code> property and there is no a client-side <code>{`<Link>`}</code> component inside the <TheComponentLink />.
     </p>
     <ParagraphChangeTagRole />
