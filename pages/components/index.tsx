@@ -318,7 +318,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.nav}>
                         <p>
-                            A list of client-side navigation with automatically toggling-on the {packages.navItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at correspoding <em>url</em>.
+                            A list of (client-side/normal) navigation with automatically toggling-on the {packages.navItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at correspoding <em>url</em>.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.navscroll}>

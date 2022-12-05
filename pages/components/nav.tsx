@@ -2,11 +2,11 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { list, nav, components, modal, popup, dropdown, activatable, navItem } from '../../packages/packageList'
+import { list, nav, activatable, navItem } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListStyleProperty, listStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { Nav as OriNav, NavProps, TextInput, Label, Button, Radio, NavItem } from '@reusable-ui/components'
+import { Nav as OriNav, NavProps, NavItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import Link from 'next/link'
@@ -102,15 +102,15 @@ ${tabs}<NavItem href='https://github.com/reusable-ui' theme='danger' />`
 
 
 const NavPage: NextPage = () => {
-    return (<ComponentContextProvider component={nav} baseComponents={list}>
+    return (<ComponentContextProvider component={nav} nestedComponent={navItem} baseComponents={list}>
         <Head>
             <title>{`${nav.componentTag} Component`}</title>
-            <meta name="description" content={`${nav.componentTag} is a list of client-side navigation with automatically toggling-on the ${navItem.componentTag}'s ${activatable.shortName} at correspoding url.`} />
+            <meta name="description" content={`${nav.componentTag} is a list of (client-side/normal) navigation with automatically toggling-on the ${navItem.componentTag}'s ${activatable.shortName} at correspoding url.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a list of client-side navigation with automatically toggling-on the {navItem.packageDisplay}&apos;s {activatable.packageShortLink} at correspoding <em>url</em>.
+                    <TheComponentLink /> is a list of (client-side/normal) navigation with automatically toggling-on the {navItem.packageDisplay}&apos;s {activatable.packageShortLink} at correspoding <em>url</em>.
                 </p>
                 <p>
                     Here the demo:
@@ -164,14 +164,7 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
     orientation='${orientationName}'
     theme='primary'
 >
-    <TextInput placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput placeholder='Server' />
-    <Button>
-        Submit
-    </Button>
+${navSampleItemsString()}
 </Nav>
 `
                         ).join('')}
@@ -186,14 +179,24 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
                             />
                         )}
                         <Nav>
-                            <TextInput size='sm' placeholder='Username' />
-                            <Label>
-                                @
-                            </Label>
-                            <TextInput size='md' placeholder='Server' />
-                            <Button size='lg'>
-                                Submit
-                            </Button>
+                            <NavItem>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </NavItem>
+                            <NavItem size='sm'>
+                                <Link href='/core'>
+                                    Core
+                                </Link>
+                            </NavItem>
+                            <NavItem size='md'>
+                                <Link href='/components'>
+                                    Components
+                                </Link>
+                            </NavItem>
+                            <NavItem size='lg' href='https://github.com/reusable-ui' theme='danger'>
+                                GitHub
+                            </NavItem>
                         </Nav>
                     </Preview>
                     <p></p>
@@ -204,14 +207,7 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
     size='${sizeName}'
     theme='primary'
 >
-    <TextInput placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput placeholder='Server' />
-    <Button>
-        Submit
-    </Button>
+${navSampleItemsString()}
 </Nav>
 `
                         ).join('')
@@ -220,14 +216,24 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
 <Nav
     theme='primary'
 >
-    <TextInput size='sm' placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput size='md' placeholder='Server' />
-    <Button size='lg'>
-        Submit
-    </Button>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem size='sm'>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem size='md'>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem size='lg' href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
 </Nav>
 `
                     }</TypeScriptCode>
@@ -241,14 +247,24 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
                             />
                         )}
                         <Nav>
-                            <TextInput theme='success' placeholder='Username' />
-                            <Label theme='primary'>
-                                @
-                            </Label>
-                            <TextInput theme='danger' placeholder='Server' />
-                            <Button theme='warning'>
-                                Submit
-                            </Button>
+                            <NavItem>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </NavItem>
+                            <NavItem theme='success'>
+                                <Link href='/core'>
+                                    Core
+                                </Link>
+                            </NavItem>
+                            <NavItem theme='danger'>
+                                <Link href='/components'>
+                                    Components
+                                </Link>
+                            </NavItem>
+                            <NavItem theme='warning' href='https://github.com/reusable-ui'>
+                                GitHub
+                            </NavItem>
                         </Nav>
                     </Preview>
                     <p></p>
@@ -258,14 +274,24 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
 <Nav
     theme='${themeName}'
 >
-    <TextInput placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput placeholder='Server' />
-    <Button>
-        Submit
-    </Button>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
 </Nav>
 `
                         ).join('')
@@ -274,184 +300,260 @@ ${(listStyle === 'bullet') ? navSampleEmptyItemsString() : navSampleItemsString(
 <Nav
     theme='primary'
 >
-    <TextInput theme='success' placeholder='Username' />
-    <Label theme='primary'>
-        @
-    </Label>
-    <TextInput theme='danger' placeholder='Server' />
-    <Button theme='warning'>
-        Submit
-    </Button>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem theme='success'>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem theme='danger'>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem theme='warning' href='https://github.com/reusable-ui'>
+        GitHub
+    </NavItem>
 </Nav>
 `
                     }</TypeScriptCode>
                 </ThemeProperty>
                 <GradientProperty>
                     <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) =>
-                            <Nav
-                                key={index}
-                                theme={themeName}
-                                gradient={true}
-                            />
-                        )}
+                        <Nav
+                            gradient={true}
+                        />
                         <Nav>
-                            <TextInput gradient={true} placeholder='Username' />
-                            <Label gradient={false}>
-                                @
-                            </Label>
-                            <TextInput gradient={true} placeholder='Server' />
-                            <Button gradient={false}>
-                                Submit
-                            </Button>
+                            <NavItem gradient={false}>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </NavItem>
+                            <NavItem gradient={true}>
+                                <Link href='/core'>
+                                    Core
+                                </Link>
+                            </NavItem>
+                            <NavItem gradient={true}>
+                                <Link href='/components'>
+                                    Components
+                                </Link>
+                            </NavItem>
+                            <NavItem gradient={true} href='https://github.com/reusable-ui' theme='danger'>
+                                GitHub
+                            </NavItem>
                         </Nav>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
-                        themeOptions.map((themeName) =>
 `
 <Nav
     gradient={true}
-    theme='${themeName}'
+    theme='primary'
 >
-    <TextInput placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput placeholder='Server' />
-    <Button>
-        Submit
-    </Button>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
 </Nav>
-`
-                        ).join('')
-                        +
-`
+
 <Nav
     theme='primary'
 >
-    <TextInput gradient={true} placeholder='Username' />
-    <Label gradient={false}>
-        @
-    </Label>
-    <TextInput gradient={true} placeholder='Server' />
-    <Button gradient={false}>
-        Submit
-    </Button>
+    <NavItem gradient={false}>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem gradient={true}>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem gradient={true}>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem gradient={true} href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
 </Nav>
 `
                     }</TypeScriptCode>
                 </GradientProperty>
                 <OutlinedProperty>
                     <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) =>
-                            <Nav
-                                key={index}
-                                theme={themeName}
-                                outlined={true}
-                            />
-                        )}
+                        <Nav
+                            outlined={true}
+                        />
                         <Nav outlined={true}>
-                            <TextInput outlined={true} placeholder='Username' />
-                            <Label outlined={false}>
-                                @
-                            </Label>
-                            <TextInput outlined={true} placeholder='Server' />
-                            <Button outlined={false}>
-                                Submit
-                            </Button>
+                            <NavItem>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </NavItem>
+                            <NavItem outlined={false}>
+                                <Link href='/core'>
+                                    Core
+                                </Link>
+                            </NavItem>
+                            <NavItem outlined={false}>
+                                <Link href='/components'>
+                                    Components
+                                </Link>
+                            </NavItem>
+                            <NavItem outlined={false} href='https://github.com/reusable-ui' theme='danger'>
+                                GitHub
+                            </NavItem>
                         </Nav>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
-                        themeOptions.map((themeName) =>
-`
-<Nav
-    outlined={true}
-    theme='${themeName}'
->
-    <TextInput placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput placeholder='Server' />
-    <Button>
-        Submit
-    </Button>
-</Nav>
-`
-                        ).join('')
-                        +
 `
 <Nav
     outlined={true}
     theme='primary'
 >
-    <TextInput outlined={true} placeholder='Username' />
-    <Label outlined={false}>
-        @
-    </Label>
-    <TextInput outlined={true} placeholder='Server' />
-    <Button outlined={false}>
-        Submit
-    </Button>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
+</Nav>
+
+<Nav
+    outlined={true}
+    theme='primary'
+>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem outlined={false}>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem outlined={false}>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem outlined={false} href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
 </Nav>
 `
                     }</TypeScriptCode>
                 </OutlinedProperty>
                 <MildProperty>
                     <Preview display='right' stretch={false}>
-                        {themeOptions.map((themeName, index) =>
-                            <Nav
-                                key={index}
-                                theme={themeName}
-                                mild={true}
-                            />
-                        )}
-                        <Nav mild={true}>
-                            <TextInput mild={false} placeholder='Username' />
-                            <Label mild={true}>
-                                @
-                            </Label>
-                            <TextInput mild={false} placeholder='Server' />
-                            <Button mild={true}>
-                                Submit
-                            </Button>
+                        <Nav
+                            mild={true}
+                        />
+                        <Nav mild={false}>
+                            <NavItem>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link href='/core'>
+                                    Core
+                                </Link>
+                            </NavItem>
+                            <NavItem mild={true}>
+                                <Link href='/components'>
+                                    Components
+                                </Link>
+                            </NavItem>
+                            <NavItem mild={true} href='https://github.com/reusable-ui' theme='danger'>
+                                GitHub
+                            </NavItem>
                         </Nav>
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
-                        themeOptions.map((themeName) =>
-`
-<Nav
-    mild={true}
-    theme='${themeName}'
->
-    <TextInput placeholder='Username' />
-    <Label>
-        @
-    </Label>
-    <TextInput placeholder='Server' />
-    <Button>
-        Submit
-    </Button>
-</Nav>
-`
-                        ).join('')
-                        +
 `
 <Nav
     mild={true}
     theme='primary'
 >
-    <TextInput mild={false} placeholder='Username' />
-    <Label mild={true}>
-        @
-    </Label>
-    <TextInput mild={false} placeholder='Server' />
-    <Button mild={true}>
-        Submit
-    </Button>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
+</Nav>
+
+<Nav
+    mild={true}
+    theme='primary'
+>
+    <NavItem>
+        <Link href='/'>
+            Home
+        </Link>
+    </NavItem>
+    <NavItem>
+        <Link href='/core'>
+            Core
+        </Link>
+    </NavItem>
+    <NavItem mild={true}>
+        <Link href='/components'>
+            Components
+        </Link>
+    </NavItem>
+    <NavItem mild={true} href='https://github.com/reusable-ui' theme='danger'>
+        GitHub
+    </NavItem>
 </Nav>
 `
                     }</TypeScriptCode>
