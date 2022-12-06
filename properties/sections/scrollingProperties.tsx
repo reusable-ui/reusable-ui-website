@@ -4,7 +4,7 @@ import { PreviewProps, PropertySection, PropertySectionProps, Section } from '..
 import * as properties from '../propertyList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 import { BasicProps, CardBody, List, ListItem } from '@reusable-ui/components'
-import { Warning } from '../../components/Warning'
+import { Tips, Warning } from '../../components/Warning'
 import { CollapsibleProps, FloatableProps } from '@reusable-ui/core'
 import { TypeScriptCode } from '../../components/Code'
 import { Preview } from '../../components/Preview'
@@ -92,7 +92,7 @@ export const ScrollingSelectorProperty = ({children: preview}: PreviewProps) => 
     return (
         <PropertySection property={properties.scrollingSelector} preview={preview}>
             <p>
-                Filters the <strong>desired</strong> <code>{`<section>`}</code>s or <code>{`<whatever_element>`}</code>s you wish to be the <strong>corresponding sections</strong>.
+                Filters the <strong>desired</strong> <code>{`<section>`}</code>s or <code>{`<whatever_element>`}</code>s you wish to be the <strong>corresponding sections</strong> by providing a <strong>valid CSS selector expression</strong>.
             </p>
             <p>
                 The default is <code>{`scrollingSelector='*'`}</code>, so <strong>any elements</strong> will be treated as the <em>corresponding sections</em>.
@@ -100,6 +100,26 @@ export const ScrollingSelectorProperty = ({children: preview}: PreviewProps) => 
             <p>
                 You can also set something like <code>{`<${componentName} scrollingSelector='section, div, .section'>`}</code> or whatever selector you want, depending on the project you&apos;re working on.
             </p>
+        </PropertySection>
+    );
+}
+
+export const ScrollingFilterProperty = ({children: preview}: PreviewProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.scrollingFilter} preview={preview}>
+            <p>
+                Filters the <strong>desired</strong> <code>{`<section>`}</code>s or <code>{`<whatever_element>`}</code>s you wish to be the <strong>corresponding sections</strong> by providing a <strong>JavaScript callback function</strong>.
+            </p>
+            <p>
+                The callback function will receive a <code>HTMLElement</code> object and then should return a <code>boolean</code> value indicating the selection was passed (<code>true</code>) or not (<code>false</code>).
+            </p>
+            <Tips>
+                <p>
+                    For a relatively simple selection, prefer to use {properties.scrollingSelector.propertyDisplay} property.
+                </p>
+            </Tips>
         </PropertySection>
     );
 }

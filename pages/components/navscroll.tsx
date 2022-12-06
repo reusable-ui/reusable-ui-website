@@ -16,7 +16,7 @@ import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOf
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style, children, rule, descendants } from '@cssfn/core'
-import { NestedSubSections, ScrollingOfProperty, ScrollingProperties, ScrollingSelectorProperty } from '../../properties/sections/scrollingProperties'
+import { NestedSubSections, ScrollingFilterProperty, ScrollingOfProperty, ScrollingProperties, ScrollingSelectorProperty } from '../../properties/sections/scrollingProperties'
 
 
 
@@ -521,6 +521,7 @@ const scrollableArticleRef = useRef(null);
                     </NestedSubSections>
                 </ScrollingOfProperty>
                 <ScrollingSelectorProperty />
+                <ScrollingFilterProperty />
             </ScrollingProperties>
             <VariantProperties>
                 <ListStyleProperty>
