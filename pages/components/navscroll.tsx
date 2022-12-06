@@ -538,6 +538,7 @@ const scrollableArticleRef = useRef(null);
                         {listStyleOptions.map((listStyle) =>
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     listStyle='${listStyle}'
     theme='primary'
 >
@@ -572,6 +573,7 @@ ${(listStyle === 'bullet') ? navscrollSampleEmptyItemsString() : navscrollSample
                         {orientationOptions.map((orientationName) =>
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     orientation='${orientationName}'
     theme='primary'
 >
@@ -623,6 +625,7 @@ ${(listStyle === 'bullet') ? navscrollSampleEmptyItemsString() : navscrollSample
                         sizeOptions.map((sizeName) =>
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     size='${sizeName}'
     theme='primary'
 >
@@ -633,6 +636,7 @@ ${navscrollSampleItemsString()}
                         +
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     theme='primary'
 >
     <ListItem size='sm'>
@@ -691,6 +695,7 @@ ${navscrollSampleItemsString()}
                         themeOptions.map((themeName) =>
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     theme='${themeName}'
 >
     <ListItem>
@@ -717,6 +722,7 @@ ${navscrollSampleItemsString()}
                         +
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     theme='primary'
 >
     <ListItem theme='primary'>
@@ -771,6 +777,7 @@ ${navscrollSampleItemsString()}
                     <TypeScriptCode>{
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     gradient={true}
     theme='primary'
 >
@@ -795,6 +802,7 @@ ${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     theme='primary'
 >
     <ListItem gradient={false}>
@@ -849,6 +857,7 @@ ${navscrollSampleItemsString()}
                     <TypeScriptCode>{
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     outlined={true}
     theme='primary'
 >
@@ -873,6 +882,7 @@ ${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     outlined={true}
     theme='primary'
 >
@@ -928,6 +938,7 @@ ${navscrollSampleItemsString()}
                     <TypeScriptCode>{
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     mild={true}
     theme='primary'
 >
@@ -952,6 +963,7 @@ ${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     mild={true}
     theme='primary'
 >
@@ -1011,6 +1023,7 @@ ${navscrollSampleItemsString()}
                     <TypeScriptCode>{
 `
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     enabled={false}
     theme='primary'
 >
@@ -1018,6 +1031,7 @@ ${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
+    scrollingOf={scrollableArticleRef}
     theme='primary'
 >
     <ListItem enabled={false}>
@@ -1055,6 +1069,7 @@ ${navscrollSampleItemsString()}
 `
 <Control theme='primary' enabled={false}>
     <Navscroll
+        scrollingOf={scrollableArticleRef}
         inheritEnabled={true}
         theme='primary'
     >
