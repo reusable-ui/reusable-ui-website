@@ -16,7 +16,7 @@ import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOf
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style, children, rule, descendants } from '@cssfn/core'
-import { ScrollingOfProperty, ScrollingProperties } from '../../properties/sections/scrollingProperties'
+import { NestedSubSections, ScrollingOfProperty, ScrollingProperties } from '../../properties/sections/scrollingProperties'
 
 
 
@@ -254,6 +254,102 @@ const DemoNavscroll = () => {
         </CardBody>
     );
 }
+const DemoNestedNavscroll = () => {
+    const dummyArticleStyleSheet = useDummyArticleStyleSheet();
+    const scrollableArticleRef = useRef<HTMLElement>(null);
+    
+    return (
+        <CardBody>
+            <article
+                ref={scrollableArticleRef}
+                
+                className={dummyArticleStyleSheet.main}
+            >
+                <section>
+                    <h1>First section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Second section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Third section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Fourth section</h1>
+                    <ParagraphLorem words={8} />
+                    <section>
+                        <h2>Fourth sub section 1</h2>
+                        <ParagraphLorem words={8} />
+                    </section>
+                    <section>
+                        <h2> Fourth sub section 2</h2>
+                        <ParagraphLorem words={8} />
+                    </section>
+                    <section>
+                        <h2>Fourth sub section 3</h2>
+                        <ParagraphLorem words={8} />
+                    </section>
+                    <section>
+                        <h2>Fourth sub section 4</h2>
+                        <ParagraphLorem words={8} />
+                    </section>
+                </section>
+                <section>
+                    <h1>Fifth section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Last section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+            </article>
+            
+            <Navscroll dummyHighlight={false} scrollingOf={scrollableArticleRef} scrollingSelector='section'>
+                <ListItem>
+                    First section
+                </ListItem>
+                <ListItem>
+                    Second section
+                </ListItem>
+                <ListItem>
+                    Third section
+                </ListItem>
+                <ListItem>
+                    Fourth section
+                    <OriNavscroll>
+                        <ListItem>
+                            Sub 4-1
+                        </ListItem>
+                        <ListItem>
+                            Sub 4-2
+                        </ListItem>
+                        <ListItem>
+                            Sub 4-3
+                        </ListItem>
+                        <ListItem>
+                            Sub 4-4
+                        </ListItem>
+                    </OriNavscroll>
+                </ListItem>
+                <ListItem>
+                    Fifth section
+                </ListItem>
+                <ListItem>
+                    Last section
+                </ListItem>
+            </Navscroll>
+        </CardBody>
+    );
+}
 
 
 
@@ -335,6 +431,94 @@ const scrollableArticleRef = useRef(null);
 </Navscroll>
 `
                     }</TypeScriptCode>
+                    
+                    <NestedSubSections>
+                        <Preview display='right' stretch={false} cardBodyComponent={<DemoNestedNavscroll />} />
+                        <p></p>
+                        <TypeScriptCode>{
+`
+const scrollableArticleRef = useRef(null);
+
+/* ... */
+
+<article
+    ref={scrollableArticleRef}
+>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+        <section>
+            ...
+        </section>
+        <section>
+            ...
+        </section>
+        <section>
+            ...
+        </section>
+        <section>
+            ...
+        </section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+</article>
+
+<Navscroll
+    scrollingOf={scrollableArticleRef}
+    scrollingSelector='section'
+    theme='primary'
+>
+    <ListItem>
+        First section
+    </ListItem>
+    <ListItem>
+        Second section
+    </ListItem>
+    <ListItem>
+        Third section
+    </ListItem>
+    <ListItem>
+        Fourth section
+        
+        <Navscroll>
+            <ListItem>
+                Sub 4-1
+            </ListItem>
+            <ListItem>
+                Sub 4-2
+            </ListItem>
+            <ListItem>
+                Sub 4-3
+            </ListItem>
+            <ListItem>
+                Sub 4-4
+            </ListItem>
+        </Navscroll>
+    </ListItem>
+    <ListItem>
+        Fifth section
+    </ListItem>
+    <ListItem>
+        Last section
+    </ListItem>
+</Navscroll>
+`
+                        }</TypeScriptCode>
+                    </NestedSubSections>
                 </ScrollingOfProperty>
             </ScrollingProperties>
             <VariantProperties>

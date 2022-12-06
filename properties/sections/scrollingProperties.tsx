@@ -44,8 +44,44 @@ export const ScrollingOfProperty = ({children: preview}: PreviewProps) => {
                 Determines the <strong>scrollable container</strong> of <em>correspoding sections</em> where the <TheNestedComponentDisplay />s of <TheComponentLink /> should be <strong>highlighted</strong>.
             </p>
             <p>
-                The structure of the <TheNestedComponentDisplay />s should be <strong>match to</strong> the structure of the <code>{`<scrollable_container>`}</code>&apos;s children (<code>{`<section>`}</code>s or <code>{`<div>`}</code>s or any <code>{`<element>`}</code>s).
+                The structure of <TheNestedComponentDisplay />s should be <strong>match to</strong> the structure of the <code>{`<scrollable_container>`}</code>&apos;s children (<code>{`<section>`}</code>s or <code>{`<div>`}</code>s or any <code>{`<element>`}</code>s).
             </p>
         </PropertySection>
     );
+}
+
+export interface NestedSubSectionsProps {
+    children ?: React.ReactNode
+}
+export const NestedSubSections = ({children : preview}: NestedSubSectionsProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <Section title='Nested Sub Sections'>
+            <p>
+                <TheComponentLink /> supports mapping <strong>nested sub sections</strong>.
+            </p>
+            <p>
+                Place another <code>{`<${componentName} scrollingOf={undefined}>...</${componentName}>`}</code> in the corresponding <TheNestedComponentDisplay />, with the same structure of <TheNestedComponentDisplay />s <strong>match to</strong> the structure of the <code>{`<nested_section>`}</code>s.
+            </p>
+            <Warning>
+                <p>
+                    At the root of <TheComponentLink/>, you need to set <code>{`<${componentName} scrollingSelector='section'>`}</code> to <strong>distinguish</strong> between the <code>{`<section>`}</code>, sub <code>{`<section>`}</code>, and the <code>{`<another_element>`}</code>.
+                </p>
+                <p>
+                    The default is <code>{`scrollingSelector='*'`}</code>, so <strong>any elements</strong> will be treated as the correspoding <code>{`<section>`}</code>s.
+                </p>
+                <p>
+                    You can also set something like <code>{`<${componentName} scrollingSelector='section, div, .section'>`}</code> or whatever selector you want, depending on the project you&apos;re working on.
+                </p>
+            </Warning>
+            {preview && <>
+                <hr />
+                <p>
+                    Here the preview:
+                </p>
+                {preview}
+            </>}
+        </Section>
+    )
 }
