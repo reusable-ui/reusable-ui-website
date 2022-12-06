@@ -16,6 +16,7 @@ import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOf
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style, children, rule, descendants } from '@cssfn/core'
+import { ScrollingOfProperty, ScrollingProperties } from '../../properties/sections/scrollingProperties'
 
 
 
@@ -276,6 +277,66 @@ const NavscrollPage: NextPage = () => {
                 <Preview display='right' stretch={false} cardBodyComponent={<DemoNavscroll />} />
             </HeroSection>
             <ComponentInstallation />
+            <ScrollingProperties>
+                <ScrollingOfProperty>
+                    <Preview display='right' stretch={false} cardBodyComponent={<DemoNavscroll />} />
+                    <p></p>
+                    <TypeScriptCode>{
+`
+const scrollableArticleRef = useRef(null);
+
+/* ... */
+
+<article
+    ref={scrollableArticleRef}
+>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+    <section>
+        ...
+    </section>
+</article>
+
+<Navscroll
+    scrollingOf={scrollableArticleRef}
+    theme='primary'
+>
+    <ListItem>
+        First section
+    </ListItem>
+    <ListItem>
+        Second section
+    </ListItem>
+    <ListItem>
+        Third section
+    </ListItem>
+    <ListItem>
+        Fourth section
+    </ListItem>
+    <ListItem>
+        Fifth section
+    </ListItem>
+    <ListItem>
+        Last section
+    </ListItem>
+</Navscroll>
+`
+                    }</TypeScriptCode>
+                </ScrollingOfProperty>
+            </ScrollingProperties>
             <VariantProperties>
                 <ListStyleProperty>
                     <Preview display='right' stretch={false}>

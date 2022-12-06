@@ -129,6 +129,11 @@ export const onFloatingUpdate      = new PropertyInfo('onFloatingUpdate')
 
 
 
+// scrolls:
+export const scrollingOf           = new PropertyInfo('scrollingOf')
+
+
+
 // modals:
 export const modalViewport         = new PropertyInfo('modalViewport')
 
