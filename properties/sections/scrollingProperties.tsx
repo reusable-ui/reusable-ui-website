@@ -142,7 +142,7 @@ export const ScrollingInterpolationProperty = ({children: preview, possibleValue
             </Accordion>
         }>
             <p>
-                Determines how the <strong>highlighting transition</strong> between <em>corresponding sections</em> performed.
+                Determines how the <strong>highlighting transition</strong> between <em>corresponding sections</em> is performed.
             </p>
         </PropertySection>
     );
