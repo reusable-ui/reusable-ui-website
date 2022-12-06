@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
 import { nav, navscroll, activatable, listItem } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListStyleProperty, listStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { Navscroll as OriNavscroll, NavscrollProps, ListItem, Control } from '@reusable-ui/components'
+import { Navscroll as OriNavscroll, NavscrollProps, ListItem, Control, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import Link from 'next/link'
@@ -13,6 +13,9 @@ import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../
 import { ComponentProperties, ListComponentProperty, ListItemComponentProperty, NavComponentProperty, NavscrollComponentProperty } from '../../properties/sections/componentProperties'
 import { CaseSensitiveProperty, EndProperty, NavigationProperties } from '../../properties/sections/navigationProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfRoleButton } from '../../properties/sections/actionProperties'
+import { ParagraphLorem } from '../../components/ParagraphLorem'
+import { dynamicStyleSheet } from '@cssfn/cssfn-react'
+import { style, children, rule, descendants } from '@cssfn/core'
 
 
 
@@ -21,28 +24,30 @@ interface NavscrollSampleItemsProps extends Pick<NavscrollProps, 'listStyle'> {
 }
 const listSampleItems = ({mixVaraints = false, listStyle}: NavscrollSampleItemsProps = {}) => {
     return ((listStyle === 'bullet') ? [
-        <ListItem key={0}>
-            <Link href='/' />
-        </ListItem>,
-        <ListItem key={1}>
-            <Link href='/core' />
-        </ListItem>,
-        <ListItem key={2}>
-            <Link href='/components' />
-        </ListItem>,
-        <ListItem key={3} href='https://github.com/reusable-ui' />,
+        <ListItem />,
+        <ListItem />,
+        <ListItem />,
+        <ListItem />,
+        <ListItem {...(mixVaraints ? { theme: 'danger' } : undefined)} />,
+        <ListItem />,
     ] : [
-        <ListItem key={0}>
-            <Link href='/'>Home</Link>
+        <ListItem>
+            First section
         </ListItem>,
-        <ListItem key={1}>
-            <Link href='/core'>Core</Link>
+        <ListItem>
+            Second section
         </ListItem>,
-        <ListItem key={2}>
-            <Link href='/components'>Components</Link>
+        <ListItem>
+            Third section
         </ListItem>,
-        <ListItem key={3} href='https://github.com/reusable-ui' {...(mixVaraints ? { theme: 'danger' } : undefined)}>
-            GitHub
+        <ListItem>
+            Fourth section
+        </ListItem>,
+        <ListItem {...(mixVaraints ? { theme: 'danger' } : undefined)}>
+            Fifth section
+        </ListItem>,
+        <ListItem>
+            Last section
         </ListItem>,
     ]);
 }
@@ -60,22 +65,22 @@ const navscrollSampleItemsArray = ({indents = 1} : NavscrollSampleItemsArrayProp
     const tabs = (new Array(indents).fill('    ')).join('');
     return ([
 (prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
-${tabs}    <Link href='/'>
-${tabs}        Home
-${tabs}    </Link>
+${tabs}    First section
 ${tabs}</ListItem>`,
 (prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
-${tabs}    <Link href='/core'>
-${tabs}        Core
-${tabs}    </Link>
+${tabs}    Second section
 ${tabs}</ListItem>`,
 (prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
-${tabs}    <Link href='/components'>
-${tabs}        Components
-${tabs}    </Link>
+${tabs}    Third section
 ${tabs}</ListItem>`,
-(prop?: string) => `${tabs}<ListItem href='https://github.com/reusable-ui'${prop ? ` ${prop}` : ''}>
-${tabs}    GitHub
+(prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
+${tabs}    Fourth section
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
+${tabs}    Fifth section
+${tabs}</ListItem>`,
+(prop?: string) => `${tabs}<ListItem${prop ? ` ${prop}` : ''}>
+${tabs}    Last section
 ${tabs}</ListItem>`
     ]);
 }
@@ -88,16 +93,163 @@ const navscrollSampleItemsString = (options : NavscrollSampleItemsStringProps = 
 const navscrollSampleEmptyItemsString = (indents: number = 1) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return (
-`${tabs}<ListItem>
-${tabs}    <Link href='/' />
-${tabs}</ListItem>
-${tabs}<ListItem>
-${tabs}    <Link href='/core' />
-${tabs}</ListItem>
-${tabs}<ListItem>
-${tabs}    <Link href='/components' />
-${tabs}</ListItem>
-${tabs}<ListItem href='https://github.com/reusable-ui' />`
+`${tabs}<ListItem />
+${tabs}<ListItem />
+${tabs}<ListItem />
+${tabs}<ListItem />
+${tabs}<ListItem />
+${tabs}<ListItem />`
+    );
+}
+
+
+
+const useDummyArticleStyleSheet = dynamicStyleSheet(() => style({
+    border: 'solid 1px black',
+    background : 'hsl(200, 90%, 75%)',
+    
+    
+    ...children(['&', 'section:nth-of-type(4)'], {
+        display       : 'flex',
+        flexDirection : 'column',
+        gap           : 0,
+        overflowY     : 'auto',
+        
+        padding       : '10px',
+        
+        ...children('section', {
+            flex      : [[0, 0, 'auto']],
+            padding   : '10px',
+        }),
+    }),
+    height            : '250px',
+    ...children('section:nth-of-type(4)', {
+        height        : '200px',
+    }),
+    
+    
+    ...children('section', {
+        ...rule(':nth-of-type(3n+1)', {
+            background : 'hsl(350, 90%, 75%)',
+        }),
+        ...rule(':nth-of-type(3n+2)', {
+            background : 'hsl(120, 90%, 75%)',
+        }),
+        ...rule(':nth-of-type(3n+3)', {
+            background : 'hsl(39, 90%, 75%)',
+        }),
+        ...rule(':nth-of-type(4)', {
+            ...children('section', {
+                ...rule(':nth-of-type(3n+1)', {
+                    background : 'hsl(084, 90%, 75%)',
+                }),
+                ...rule(':nth-of-type(3n+2)', {
+                    background : 'hsl(260, 90%, 75%)',
+                }),
+                ...rule(':nth-of-type(3n+3)', {
+                    background : 'hsl(028, 90%, 75%)',
+                }),
+            }),
+        }),
+    }),
+    
+    
+    ...descendants('section', {
+        overflow: 'hidden',
+    }),
+    ...descendants(['h1', 'h2'], {
+        textAlign: 'center',
+    }),
+    ...descendants('h1', {
+        fontSize: '1.25rem',
+    }),
+    ...descendants('h2', {
+        fontSize: '1rem',
+    }),
+    ...descendants('p', {
+        fontSize: '0.5rem',
+        textOverflow: 'ellipsis'
+    }),
+    
+    
+    ...children('section:nth-of-type(1)', {
+        height : '80px',
+    }),
+    ...children('section:nth-of-type(2)', {
+        height : '200px',
+    }),
+    ...children('section:nth-of-type(3)', {
+        height : '400px',
+    }),
+    ...children('section:nth-of-type(4)', {
+        ...children('section:nth-of-type(1)', {
+            height: '200px',
+        }),
+        ...children('section:nth-of-type(2)', {
+            height: '100px',
+        }),
+        ...children('section:nth-of-type(3)', {
+            height: '150px',
+        }),
+        ...children('section:nth-of-type(4)', {
+            height: '100px',
+        }),
+    }),
+    ...children('section:nth-of-type(5)', {
+        height : '300px',
+    }),
+    ...children('section:nth-of-type(6)', {
+        height : '100px',
+    }),
+}));
+
+
+
+const DemoNavscroll = () => {
+    const dummyArticleStyleSheet = useDummyArticleStyleSheet();
+    const scrollableArticleRef = useRef<HTMLElement>(null);
+    
+    return (
+        <CardBody>
+            <article
+                ref={scrollableArticleRef}
+                
+                className={dummyArticleStyleSheet.main}
+            >
+                <section>
+                    <h1>First section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Second section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Third section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Fourth section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Fifth section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Last section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+            </article>
+            
+            <Navscroll scrollingOf={scrollableArticleRef} />
+        </CardBody>
     );
 }
 
@@ -115,13 +267,12 @@ const NavscrollPage: NextPage = () => {
                     <TheComponentLink /> is a list of scrollable sections with automatically toggling-on the {listItem.packageDisplay}&apos;s {activatable.packageShortLink} at <em>correspoding scrolling position</em>.
                 </p>
                 <p>
+                    <TheComponentLink /> supports of (virtually) <strong>unlimited depth</strong> of nested <TheComponentLink />s.
+                </p>
+                <p>
                     Here the demo:
                 </p>
-                <Preview display='right' stretch={false}>
-                    <Navscroll />
-                    <Navscroll mild={false} />
-                    <Navscroll outlined={true} />
-                </Preview>
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoNavscroll />} />
             </HeroSection>
             <ComponentInstallation />
             <VariantProperties>
