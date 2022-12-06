@@ -177,6 +177,10 @@ export const listItems             = new PropertyInfo('listItems')
 
 export const listItemComponent     = new PropertyInfo('listItemComponent')
 
+export const navComponent          = new PropertyInfo('navComponent')
+
+export const navscrollComponent    = new PropertyInfo('navscrollComponent')
+
 export const cardComponent         = new PropertyInfo('cardComponent')
 export const cardRef               = new PropertyInfo('cardRef')
 export const cardOrientation       = new PropertyInfo('cardOrientation')

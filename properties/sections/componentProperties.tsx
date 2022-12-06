@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -593,7 +593,6 @@ export const DropdownOrientationProperty = ({children: preview} : DropdownRefPro
 
 
 
-
 export interface ListComponentPropertyProps {
     children ?: React.ReactNode
 }
@@ -710,7 +709,6 @@ export const ListItemsProperty = ({children: preview} : ListItemsPropertyProps) 
 
 
 
-
 export interface ListItemComponentPropertyProps {
     children ?: React.ReactNode
 }
@@ -726,6 +724,59 @@ export const ListItemComponentProperty = ({children: preview} : ListItemComponen
 `<${componentName} listItemComponent={
     <MyCustomListItem />
 } />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface NavComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const NavComponentProperty = ({children: preview} : NavComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.navComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {nav.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} navComponent={
+    <MyCustomNav />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface NavscrollComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const NavscrollComponentProperty = ({children: preview} : NavscrollComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.navscrollComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {navscroll.packageLink} component</strong> used as the <strong>detection</strong> of nested <TheComponentLink />.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`
+export const MyCustomNavscroll = (props: NavscrollProps) => {
+    
+    /* ... */
+    
+    return (
+        <${componentName} {...props} navscrollComponent={
+            <MyCustomNavscroll />
+        } />
+    );
+}
+`
             }</TypeScriptCode>
         </PropertySection>
     );
@@ -796,7 +847,6 @@ export const CollapseComponentProperty = ({children: preview} : CollapseComponen
         </PropertySection>
     );
 }
-
 
 
 

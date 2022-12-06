@@ -323,7 +323,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.navscroll}>
                         <p>
-                            A navigation component to navigate within current page, based on scroll position.
+                            A list of scrollable sections with automatically toggling-on the {packages.listItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at <em>correspoding scrolling position</em>.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.accordion}>
