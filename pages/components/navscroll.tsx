@@ -21,32 +21,33 @@ import { style, children, rule, descendants } from '@cssfn/core'
 
 interface NavscrollSampleItemsProps extends Pick<NavscrollProps, 'listStyle'> {
     mixVaraints ?: boolean
+    dummyHighlight ?: boolean
 }
-const listSampleItems = ({mixVaraints = false, listStyle}: NavscrollSampleItemsProps = {}) => {
+const listSampleItems = ({mixVaraints = false, dummyHighlight = true, listStyle}: NavscrollSampleItemsProps = {}) => {
     return ((listStyle === 'bullet') ? [
-        <ListItem />,
-        <ListItem />,
-        <ListItem />,
-        <ListItem />,
-        <ListItem {...(mixVaraints ? { theme: 'danger' } : undefined)} />,
-        <ListItem />,
+        <ListItem key={0} />,
+        <ListItem key={1} {...(dummyHighlight ? { active: true } : undefined)} />,
+        <ListItem key={2} />,
+        <ListItem key={3} />,
+        <ListItem key={4} {...(mixVaraints ? { theme: 'danger' } : undefined)} />,
+        <ListItem key={5} />,
     ] : [
-        <ListItem>
+        <ListItem key={0}>
             First section
         </ListItem>,
-        <ListItem>
+        <ListItem key={1} {...(dummyHighlight ? { active: true } : undefined)}>
             Second section
         </ListItem>,
-        <ListItem>
+        <ListItem key={2}>
             Third section
         </ListItem>,
-        <ListItem>
+        <ListItem key={3}>
             Fourth section
         </ListItem>,
-        <ListItem {...(mixVaraints ? { theme: 'danger' } : undefined)}>
+        <ListItem key={4} {...(mixVaraints ? { theme: 'danger' } : undefined)}>
             Fifth section
         </ListItem>,
-        <ListItem>
+        <ListItem key={5}>
             Last section
         </ListItem>,
     ]);
@@ -54,8 +55,8 @@ const listSampleItems = ({mixVaraints = false, listStyle}: NavscrollSampleItemsP
 
 interface SampleNavscrollProps extends NavscrollProps, NavscrollSampleItemsProps {
 }
-const Navscroll = ({mixVaraints, ...props}: SampleNavscrollProps) => <OriNavscroll {...props} theme={props.theme ?? 'primary'}>
-    {props.children ?? listSampleItems({mixVaraints, ...props})}
+const Navscroll = ({mixVaraints, dummyHighlight, ...props}: SampleNavscrollProps) => <OriNavscroll {...props} theme={props.theme ?? 'primary'}>
+    {props.children ?? listSampleItems({mixVaraints, dummyHighlight, ...props})}
 </OriNavscroll>
 
 interface NavscrollSampleItemsArrayProps {
@@ -248,7 +249,7 @@ const DemoNavscroll = () => {
                 </section>
             </article>
             
-            <Navscroll scrollingOf={scrollableArticleRef} />
+            <Navscroll dummyHighlight={false} scrollingOf={scrollableArticleRef} />
         </CardBody>
     );
 }
@@ -306,7 +307,17 @@ ${(listStyle === 'bullet') ? navscrollSampleEmptyItemsString() : navscrollSample
                                 key={index}
                                 orientation={orientationName}
                                 style={(orientationName === 'block') ? {justifySelf: 'center'} : undefined}
-                            />
+                            >
+                                <ListItem>
+                                    First section
+                                </ListItem>
+                                <ListItem active={true}>
+                                    Second section
+                                </ListItem>
+                                <ListItem>
+                                    Third section
+                                </ListItem>
+                            </Navscroll>
                         )}
                     </Preview>
                     <p></p>
@@ -317,7 +328,15 @@ ${(listStyle === 'bullet') ? navscrollSampleEmptyItemsString() : navscrollSample
     orientation='${orientationName}'
     theme='primary'
 >
-${navscrollSampleItemsString()}
+    <ListItem>
+        First section
+    </ListItem>
+    <ListItem>
+        Second section
+    </ListItem>
+    <ListItem>
+        Third section
+    </ListItem>
 </Navscroll>
 `
                         ).join('')}
@@ -332,23 +351,23 @@ ${navscrollSampleItemsString()}
                             />
                         )}
                         <Navscroll>
-                            <ListItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
-                            </ListItem>
                             <ListItem size='sm'>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                                First section
                             </ListItem>
-                            <ListItem size='md'>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <ListItem size='md' active={true}>
+                                Second section
                             </ListItem>
-                            <ListItem size='lg' href='https://github.com/reusable-ui'>
-                                GitHub
+                            <ListItem size='lg'>
+                                Third section
+                            </ListItem>
+                            <ListItem>
+                                Fourth section
+                            </ListItem>
+                            <ListItem>
+                                Fifth section
+                            </ListItem>
+                            <ListItem>
+                                Last section
                             </ListItem>
                         </Navscroll>
                     </Preview>
@@ -369,23 +388,23 @@ ${navscrollSampleItemsString()}
 <Navscroll
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </ListItem>
     <ListItem size='sm'>
-        <Link href='/core'>
-            Core
-        </Link>
+        First section
     </ListItem>
     <ListItem size='md'>
-        <Link href='/components'>
-            Components
-        </Link>
+        Second section
     </ListItem>
-    <ListItem size='lg' href='https://github.com/reusable-ui'>
-        GitHub
+    <ListItem size='lg'>
+        Third section
+    </ListItem>
+    <ListItem>
+        Fourth section
+    </ListItem>
+    <ListItem>
+        Fifth section
+    </ListItem>
+    <ListItem>
+        Last section
     </ListItem>
 </Navscroll>
 `
@@ -400,23 +419,23 @@ ${navscrollSampleItemsString()}
                             />
                         )}
                         <Navscroll>
-                            <ListItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <ListItem theme='primary'>
+                                First section
+                            </ListItem>
+                            <ListItem theme='secondary' active={true}>
+                                Second section
                             </ListItem>
                             <ListItem theme='success'>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                                Third section
+                            </ListItem>
+                            <ListItem theme='info'>
+                                Fourth section
+                            </ListItem>
+                            <ListItem theme='warning'>
+                                Fifth section
                             </ListItem>
                             <ListItem theme='danger'>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
-                            </ListItem>
-                            <ListItem theme='warning' href='https://github.com/reusable-ui'>
-                                GitHub
+                                Last section
                             </ListItem>
                         </Navscroll>
                     </Preview>
@@ -453,23 +472,23 @@ ${navscrollSampleItemsString()}
 <Navscroll
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <ListItem theme='primary'>
+        First section
+    </ListItem>
+    <ListItem theme='secondary'>
+        Second section
     </ListItem>
     <ListItem theme='success'>
-        <Link href='/core'>
-            Core
-        </Link>
+        Third section
+    </ListItem>
+    <ListItem theme='info'>
+        Fourth section
+    </ListItem>
+    <ListItem theme='warning'>
+        Fifth section
     </ListItem>
     <ListItem theme='danger'>
-        <Link href='/components'>
-            Components
-        </Link>
-    </ListItem>
-    <ListItem theme='warning' href='https://github.com/reusable-ui'>
-        GitHub
+        Last section
     </ListItem>
 </Navscroll>
 `
@@ -482,22 +501,22 @@ ${navscrollSampleItemsString()}
                         />
                         <Navscroll>
                             <ListItem gradient={false}>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                                First section
+                            </ListItem>
+                            <ListItem gradient={false} active={true}>
+                                Second section
+                            </ListItem>
+                            <ListItem gradient={false}>
+                                Third section
                             </ListItem>
                             <ListItem gradient={true}>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                                Fourth section
                             </ListItem>
                             <ListItem gradient={true}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                                Fifth section
                             </ListItem>
-                            <ListItem gradient={true} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <ListItem gradient={true}>
+                                Last section
                             </ListItem>
                         </Navscroll>
                     </Preview>
@@ -532,22 +551,22 @@ ${navscrollSampleItemsString()}
     theme='primary'
 >
     <ListItem gradient={false}>
-        <Link href='/'>
-            Home
-        </Link>
+        First section
+    </ListItem>
+    <ListItem gradient={false}>
+        Second section
+    </ListItem>
+    <ListItem gradient={false}>
+        Third section
     </ListItem>
     <ListItem gradient={true}>
-        <Link href='/core'>
-            Core
-        </Link>
+        Fourth section
     </ListItem>
     <ListItem gradient={true}>
-        <Link href='/components'>
-            Components
-        </Link>
+        Fifth section
     </ListItem>
-    <ListItem gradient={true} href='https://github.com/reusable-ui'>
-        GitHub
+    <ListItem gradient={true}>
+        Last section
     </ListItem>
 </Navscroll>
 `
@@ -559,23 +578,23 @@ ${navscrollSampleItemsString()}
                             outlined={true}
                         />
                         <Navscroll outlined={true}>
-                            <ListItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <ListItem outlined={true}>
+                                First section
+                            </ListItem>
+                            <ListItem outlined={true} active={true}>
+                                Second section
+                            </ListItem>
+                            <ListItem outlined={true}>
+                                Third section
                             </ListItem>
                             <ListItem outlined={false}>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                                Fourth section
                             </ListItem>
                             <ListItem outlined={false}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                                Fifth section
                             </ListItem>
-                            <ListItem outlined={false} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <ListItem outlined={false}>
+                                Last section
                             </ListItem>
                         </Navscroll>
                     </Preview>
@@ -610,23 +629,23 @@ ${navscrollSampleItemsString()}
     outlined={true}
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <ListItem outlined={true}>
+        First section
+    </ListItem>
+    <ListItem outlined={true}>
+        Second section
+    </ListItem>
+    <ListItem outlined={true}>
+        Third section
     </ListItem>
     <ListItem outlined={false}>
-        <Link href='/core'>
-            Core
-        </Link>
+        Fourth section
     </ListItem>
     <ListItem outlined={false}>
-        <Link href='/components'>
-            Components
-        </Link>
+        Fifth section
     </ListItem>
-    <ListItem outlined={false} href='https://github.com/reusable-ui'>
-        GitHub
+    <ListItem outlined={false}>
+        Last section
     </ListItem>
 </Navscroll>
 `
@@ -638,23 +657,23 @@ ${navscrollSampleItemsString()}
                             mild={true}
                         />
                         <Navscroll mild={false}>
-                            <ListItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <ListItem mild={false}>
+                                First section
                             </ListItem>
-                            <ListItem>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <ListItem mild={false} active={true}>
+                                Second section
+                            </ListItem>
+                            <ListItem mild={false}>
+                                Third section
                             </ListItem>
                             <ListItem mild={true}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                                Fourth section
                             </ListItem>
-                            <ListItem mild={true} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <ListItem mild={true}>
+                                Fifth section
+                            </ListItem>
+                            <ListItem mild={true}>
+                                Last section
                             </ListItem>
                         </Navscroll>
                     </Preview>
@@ -689,23 +708,23 @@ ${navscrollSampleItemsString()}
     mild={true}
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <ListItem mild={false}>
+        First section
     </ListItem>
-    <ListItem>
-        <Link href='/core'>
-            Core
-        </Link>
+    <ListItem mild={false}>
+        Second section
+    </ListItem>
+    <ListItem mild={false}>
+        Third section
     </ListItem>
     <ListItem mild={true}>
-        <Link href='/components'>
-            Components
-        </Link>
+        Fourth section
     </ListItem>
-    <ListItem mild={true} href='https://github.com/reusable-ui'>
-        GitHub
+    <ListItem mild={true}>
+        Fifth section
+    </ListItem>
+    <ListItem mild={true}>
+        Last section
     </ListItem>
 </Navscroll>
 `
@@ -722,22 +741,22 @@ ${navscrollSampleItemsString()}
                             mixVaraints={false}
                         >
                             <ListItem enabled={false}>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                                First section
+                            </ListItem>
+                            <ListItem enabled={false} active={true}>
+                                Second section
                             </ListItem>
                             <ListItem enabled={false}>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                                Third section
                             </ListItem>
                             <ListItem enabled={true}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                                Fourth section
                             </ListItem>
-                            <ListItem enabled={true} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <ListItem enabled={true}>
+                                Fifth section
+                            </ListItem>
+                            <ListItem enabled={true}>
+                                Last section
                             </ListItem>
                         </Navscroll>
                     </Preview>
@@ -755,22 +774,22 @@ ${navscrollSampleItemsString()}
     theme='primary'
 >
     <ListItem enabled={false}>
-        <Link href='/'>
-            Home
-        </Link>
+        First section
     </ListItem>
     <ListItem enabled={false}>
-        <Link href='/core'>
-            Core
-        </Link>
+        Second section
+    </ListItem>
+    <ListItem enabled={false}>
+        Third section
     </ListItem>
     <ListItem enabled={true}>
-        <Link href='/components'>
-            Components
-        </Link>
+        Fourth section
     </ListItem>
-    <ListItem enabled={true} href='https://github.com/reusable-ui'>
-        GitHub
+    <ListItem enabled={true}>
+        Fifth section
+    </ListItem>
+    <ListItem enabled={true}>
+        Last section
     </ListItem>
 </Navscroll>
 `
