@@ -28,7 +28,7 @@ export const ScrollingProperties = ({targetComponentText, scrollingComponentText
     return (
         <Section title='Scrolling Properties'>
             <p>
-                Determines how the {scrollingComponentText ?? <><TheNestedComponentDisplay />s of <TheComponentLink /></>} should be <strong>highlighted</strong> to reflect the {targetComponentText ?? <strong>correspoding visible section</strong>}.
+                Determines how the {scrollingComponentText ?? <><TheNestedComponentDisplay />s of <TheComponentLink /></>} should be <strong>highlighted</strong> to reflect the {targetComponentText ?? <strong>corresponding visible section</strong>}.
             </p>
             {children}
         </Section>
@@ -41,7 +41,7 @@ export const ScrollingOfProperty = ({children: preview}: PreviewProps) => {
     return (
         <PropertySection property={properties.scrollingOf} preview={preview}>
             <p>
-                Determines the <strong>scrollable container</strong> of <em>correspoding sections</em> where the <TheNestedComponentDisplay />s of <TheComponentLink /> should be <strong>highlighted</strong>.
+                Determines the <strong>scrollable container</strong> of <em>corresponding sections</em> where the <TheNestedComponentDisplay />s of <TheComponentLink /> should be <strong>highlighted</strong>.
             </p>
             <p>
                 The structure of <TheNestedComponentDisplay />s should be <strong>match to</strong> the structure of the <code>{`<scrollable_container>`}</code>&apos;s children (<code>{`<section>`}</code>s or <code>{`<div>`}</code>s or any <code>{`<element>`}</code>s).
@@ -69,7 +69,7 @@ export const NestedSubSections = ({children : preview}: NestedSubSectionsProps) 
                     At the root of <TheComponentLink/>, you need to set <code>{`<${componentName} scrollingSelector='section'>`}</code> to <strong>distinguish</strong> between the <code>{`<section>`}</code>, sub <code>{`<section>`}</code>, and the <code>{`<another_element>`}</code>.
                 </p>
                 <p>
-                    The default is <code>{`scrollingSelector='*'`}</code>, so <strong>any elements</strong> will be treated as the correspoding <code>{`<section>`}</code>s.
+                    The default is <code>{`scrollingSelector='*'`}</code>, so <strong>any elements</strong> will be treated as the <em>corresponding sections</em>.
                 </p>
                 <p>
                     You can also set something like <code>{`<${componentName} scrollingSelector='section, div, .section'>`}</code> or whatever selector you want, depending on the project you&apos;re working on.
@@ -84,4 +84,22 @@ export const NestedSubSections = ({children : preview}: NestedSubSectionsProps) 
             </>}
         </Section>
     )
+}
+
+export const ScrollingSelectorProperty = ({children: preview}: PreviewProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.scrollingSelector} preview={preview}>
+            <p>
+                Filters the <strong>desired</strong> <code>{`<section>`}</code>s or <code>{`<whatever_element>`}</code>s you wish to be the <strong>corresponding sections</strong>.
+            </p>
+            <p>
+                The default is <code>{`scrollingSelector='*'`}</code>, so <strong>any elements</strong> will be treated as the <em>corresponding sections</em>.
+            </p>
+            <p>
+                You can also set something like <code>{`<${componentName} scrollingSelector='section, div, .section'>`}</code> or whatever selector you want, depending on the project you&apos;re working on.
+            </p>
+        </PropertySection>
+    );
 }

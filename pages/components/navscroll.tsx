@@ -16,7 +16,7 @@ import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOf
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style, children, rule, descendants } from '@cssfn/core'
-import { NestedSubSections, ScrollingOfProperty, ScrollingProperties } from '../../properties/sections/scrollingProperties'
+import { NestedSubSections, ScrollingOfProperty, ScrollingProperties, ScrollingSelectorProperty } from '../../properties/sections/scrollingProperties'
 
 
 
@@ -357,12 +357,12 @@ const NavscrollPage: NextPage = () => {
     return (<ComponentContextProvider component={navscroll} nestedComponent={listItem} baseComponents={nav}>
         <Head>
             <title>{`${navscroll.componentTag} Component`}</title>
-            <meta name="description" content={`${navscroll.componentTag} is a list of scrollable sections with automatically toggling-on the ${listItem.componentTag}'s ${activatable.shortName} at correspoding scrolling position.`} />
+            <meta name="description" content={`${navscroll.componentTag} is a list of scrollable sections with automatically toggling-on the ${listItem.componentTag}'s ${activatable.shortName} at corresponding scrolling position.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a list of scrollable sections with automatically toggling-on the {listItem.packageDisplay}&apos;s {activatable.packageShortLink} at <em>correspoding scrolling position</em>.
+                    <TheComponentLink /> is a list of scrollable sections with automatically toggling-on the {listItem.packageDisplay}&apos;s {activatable.packageShortLink} at <em>corresponding scrolling position</em>.
                 </p>
                 <p>
                     <TheComponentLink /> supports of (virtually) <strong>unlimited depth</strong> of nested <TheComponentLink />s.
@@ -520,6 +520,7 @@ const scrollableArticleRef = useRef(null);
                         }</TypeScriptCode>
                     </NestedSubSections>
                 </ScrollingOfProperty>
+                <ScrollingSelectorProperty />
             </ScrollingProperties>
             <VariantProperties>
                 <ListStyleProperty>

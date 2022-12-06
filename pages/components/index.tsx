@@ -128,7 +128,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.navButton}>
                         <p>
-                            A button for (client-side/normal) navigation with automatically toggling-on the {packages.activatable.packageShortLink} at <em>correspoding URL</em>.
+                            A button for (client-side/normal) navigation with automatically toggling-on the {packages.activatable.packageShortLink} at <em>corresponding URL</em>.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.buttonIcon}>
@@ -318,12 +318,12 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.nav}>
                         <p>
-                            A list of (client-side/normal) navigation with automatically toggling-on the {packages.navItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at <em>correspoding URL</em>.
+                            A list of (client-side/normal) navigation with automatically toggling-on the {packages.navItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at <em>corresponding URL</em>.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.navscroll}>
                         <p>
-                            A list of scrollable sections with automatically toggling-on the {packages.listItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at <em>correspoding scrolling position</em>.
+                            A list of scrollable sections with automatically toggling-on the {packages.listItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at <em>corresponding scrolling position</em>.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.accordion}>

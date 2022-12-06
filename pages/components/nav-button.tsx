@@ -25,12 +25,12 @@ const NavButtonPage: NextPage = () => {
     return (<ComponentContextProvider component={navButton} baseComponents={button}>
         <Head>
             <title>{`${navButton.componentTag} Component`}</title>
-            <meta name="description" content={`${navButton.componentTag} is a button for (client-side/normal) navigation with automatically toggling-on the ${activatable.packageShortName} at correspoding URL.`} />
+            <meta name="description" content={`${navButton.componentTag} is a button for (client-side/normal) navigation with automatically toggling-on the ${activatable.packageShortName} at corresponding URL.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a button for (client-side/normal) navigation with automatically toggling-on the {activatable.packageShortLink} at <em>correspoding URL</em>.
+                    <TheComponentLink /> is a button for (client-side/normal) navigation with automatically toggling-on the {activatable.packageShortLink} at <em>corresponding URL</em>.
                 </p>
                 <p>
                     If you want to handle the {active.propertyShortLink} property programatically, thus the <TheComponentLink /> becomes <em>useless</em>.
