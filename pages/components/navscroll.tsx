@@ -8,15 +8,12 @@ import { Preview } from '../../components/Preview'
 import { Navscroll as OriNavscroll, NavscrollProps, ListItem, Control, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import Link from 'next/link'
 import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ComponentProperties, ListComponentProperty, ListItemComponentProperty, NavComponentProperty, NavscrollComponentProperty } from '../../properties/sections/componentProperties'
-import { CaseSensitiveProperty, EndProperty, NavigationProperties } from '../../properties/sections/navigationProperties'
-import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfRoleButton } from '../../properties/sections/actionProperties'
+import { ComponentProperties, NavComponentProperty, NavscrollComponentProperty } from '../../properties/sections/componentProperties'
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style, children, rule, descendants } from '@cssfn/core'
-import { NestedSubSections, ScrollingFilterProperty, ScrollingOfProperty, ScrollingProperties, ScrollingSelectorProperty } from '../../properties/sections/scrollingProperties'
+import { NestedSubSections, ScrollingFilterProperty, ScrollingInterpolationProperty, ScrollingOfProperty, ScrollingProperties, ScrollingSelectorProperty } from '../../properties/sections/scrollingProperties'
 
 
 
@@ -350,6 +347,60 @@ const DemoNestedNavscroll = () => {
         </CardBody>
     );
 }
+const DemoInterpolation = () => {
+    const dummyArticleStyleSheet = useDummyArticleStyleSheet();
+    const scrollableArticleRef = useRef<HTMLElement>(null);
+    
+    return (
+        <CardBody>
+            <article
+                ref={scrollableArticleRef}
+                
+                className={dummyArticleStyleSheet.main}
+            >
+                <section>
+                    <h1>First section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Second section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Third section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Fourth section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Fifth section</h1>
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                    <ParagraphLorem words={8} />
+                </section>
+                <section>
+                    <h1>Last section</h1>
+                    <ParagraphLorem words={8} />
+                </section>
+            </article>
+            
+            <div style={{display: 'grid', justifyItems: 'center'}}>
+                <code>{`scrollingInterpolation={false}`}</code>
+                <Navscroll dummyHighlight={false} scrollingOf={scrollableArticleRef} scrollingInterpolation={false} />
+            </div>
+            <div style={{display: 'grid', justifyItems: 'center'}}>
+                <code>{`scrollingInterpolation={true}`}</code>
+                <Navscroll dummyHighlight={false} scrollingOf={scrollableArticleRef} scrollingInterpolation={true} />
+            </div>
+        </CardBody>
+    );
+}
 
 
 
@@ -522,6 +573,9 @@ const scrollableArticleRef = useRef(null);
                 </ScrollingOfProperty>
                 <ScrollingSelectorProperty />
                 <ScrollingFilterProperty />
+                <ScrollingInterpolationProperty>
+                    <Preview display='right' stretch={false} cardBodyComponent={<DemoInterpolation />} />
+                </ScrollingInterpolationProperty>
             </ScrollingProperties>
             <VariantProperties>
                 <ListStyleProperty>

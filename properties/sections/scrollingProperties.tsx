@@ -1,20 +1,9 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, {  } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
 import * as properties from '../propertyList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { BasicProps, CardBody, List, ListItem } from '@reusable-ui/components'
 import { Tips, Warning } from '../../components/Warning'
-import { CollapsibleProps, FloatableProps } from '@reusable-ui/core'
-import { TypeScriptCode } from '../../components/Code'
-import { Preview } from '../../components/Preview'
-import { useFlipFlop } from '../../hooks/flipFlop'
-import { useInViewport } from '../../hooks/inViewport'
-import { dropdown, toggleButton } from '../../packages/packageList'
-
-const Button = React.lazy(() => import(/* webpackChunkName: 'Button' */'@reusable-ui/button'));
-const Range  = React.lazy(() => import(/* webpackChunkName: 'Range'  */'@reusable-ui/range'));
-
 
 
 
@@ -105,7 +94,7 @@ export const ScrollingSelectorProperty = ({children: preview}: PreviewProps) => 
 }
 
 export const ScrollingFilterProperty = ({children: preview}: PreviewProps) => {
-    const {component: {componentName}} = useComponentInfo();
+    const {} = useComponentInfo();
     
     return (
         <PropertySection property={properties.scrollingFilter} preview={preview}>
@@ -120,6 +109,41 @@ export const ScrollingFilterProperty = ({children: preview}: PreviewProps) => {
                     For a relatively simple selection, prefer to use {properties.scrollingSelector.propertyDisplay} property.
                 </p>
             </Tips>
+        </PropertySection>
+    );
+}
+
+export const ScrollingInterpolationProperty = ({children: preview, possibleValues}: PreviewProps & Pick<PropertySectionProps, 'possibleValues'>) => {
+    return (
+        <PropertySection property={properties.scrollingInterpolation} preview={preview} possibleValues={possibleValues ??
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> transition.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`false`}</code>}>
+                    <p>
+                        Uses <strong>first visible</strong> algorithm.
+                    </p>
+                    <p>
+                        The first visible of <em>corresponding sections</em> in the <em>scrollable sections</em> wins, even if the intersecting area is 0x0 only pixel wide.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>{`true`}</code>}>
+                    <p>
+                        Uses <strong>most dominant</strong> algorithm.
+                    </p>
+                    <p>
+                        The first visible widest area of <em>corresponding sections</em> in the <em>scrollable sections</em> wins.
+                        The exception is for the <code>{`<first_section>`}</code> and <code>{`<last_section>`}</code>, when the scrollbar reaches the beginning/end of the range, it wins.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Determines how the <strong>highlighting transition</strong> between <em>corresponding sections</em> performed.
+            </p>
         </PropertySection>
     );
 }
