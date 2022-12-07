@@ -143,6 +143,7 @@ export const modalViewport          = new PropertyInfo('modalViewport')
 
 
 // components:
+export const contentComponent       = new PropertyInfo('contentComponent')
 export const controlComponent       = new PropertyInfo('controlComponent')
 
 export const buttonComponent        = new PropertyInfo('buttonComponent')

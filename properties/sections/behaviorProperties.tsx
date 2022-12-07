@@ -44,7 +44,7 @@ export interface LazyPropertyProps extends PreviewProps {
     childrenText ?: React.ReactNode
 }
 export const LazyProperty = ({children: preview, childrenText}: LazyPropertyProps) => {
-    const {component} = useComponentInfo();
+    const {component, nestedComponent, nestedProperties} = useComponentInfo();
     
     return (
         <PropertySection property={properties.lazy} preview={preview} possibleValues={
@@ -69,6 +69,9 @@ export const LazyProperty = ({children: preview, childrenText}: LazyPropertyProp
             <p>
                 Determines whenever the {childrenText ?? <><TheComponentLink />&apos;s <code>children</code></>} should be rendered or not when the <code>{`<${component.componentName} expanded={false}>`}</code>.
             </p>
+            {!!nestedComponent && nestedProperties && <p>
+                You can set the <code>lazy</code> <strong>individually</strong> for each <TheNestedComponentDisplay />.
+            </p>}
             <Tips>
                 <p>
                     Useful in combination with <strong>React Lazy</strong> and <strong>React Suspense</strong>.

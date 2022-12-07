@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, TheNestedComponentDisplayProps, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListBasicStyle, ListStyle, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListBasicStyle, ListStyle, ListStyleLimited, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
 
 
 
@@ -28,6 +28,7 @@ export const buttonStyleOptions              : ButtonStyle[]                    
 export const checkStyleOptions               : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
 export const listStyleOptions                : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
 export const listBasicStyleOptions           : ListBasicStyle[]                 = ['regular', 'flat', 'flush', 'joined'];
+export const listStyleLimitedOptions         : ListStyleLimited[]               = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'breadcrumb', 'numbered'];
 export const cardStyleOptions                : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
 export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 export const backdropStyleOptions            : BackdropStyle[]                  = ['regular', 'hidden', 'interactive', 'static'];
