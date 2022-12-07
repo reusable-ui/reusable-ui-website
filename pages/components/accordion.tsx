@@ -632,8 +632,8 @@ ${accordionSampleItemsString({indents: 2})}
             <ComponentProperties>
                 <ListComponentProperty />
                 <ComponentContextProvider component={accordionItem}>
-                    <ListItemComponentProperty />
-                    <ContentComponentProperty content={listItem} />
+                    <ListItemComponentProperty componentOf={<>{accordionItem.packageDisplay}&apos;s <strong>header</strong></>} />
+                    <ContentComponentProperty content={listItem} componentOf={<>{accordionItem.packageDisplay}&apos;s <strong>content</strong></>} />
                 </ComponentContextProvider>
             </ComponentProperties>
             <InheritedProperties />

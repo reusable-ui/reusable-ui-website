@@ -30,16 +30,17 @@ export const ComponentProperties = ({children} : ComponentPropertiesProps) => {
 
 
 export interface ContentComponentPropertyProps {
-    content  ?: ComponentInfo
-    children ?: React.ReactNode
+    content     ?: ComponentInfo
+    componentOf ?: React.ReactNode
+    children    ?: React.ReactNode
 }
-export const ContentComponentProperty = ({children: preview, content: specificContent} : ContentComponentPropertyProps) => {
+export const ContentComponentProperty = ({children: preview, content: specificContent, componentOf: specificComponent} : ContentComponentPropertyProps) => {
     const {component: {componentName}} = useComponentInfo();
     
     return (
         <PropertySection property={properties.contentComponent} preview={preview}>
             <p>
-                Overwrites the <strong>internal {(specificContent ?? content).packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Overwrites the <strong>internal {(specificContent ?? content).packageLink} component</strong> used as the <strong>composition</strong> of {specificComponent ?? <><TheComponentLink /> component</>}.
             </p>
             <TypeScriptCode collapsible={false}>{
 `<${componentName} contentComponent={
@@ -733,15 +734,16 @@ export const ListItemsProperty = ({children: preview} : ListItemsPropertyProps) 
 
 
 export interface ListItemComponentPropertyProps {
-    children ?: React.ReactNode
+    componentOf ?: React.ReactNode
+    children    ?: React.ReactNode
 }
-export const ListItemComponentProperty = ({children: preview} : ListItemComponentPropertyProps) => {
+export const ListItemComponentProperty = ({children: preview, componentOf: specificComponent} : ListItemComponentPropertyProps) => {
     const {component: {componentName}} = useComponentInfo();
     
     return (
         <PropertySection property={properties.listItemComponent} preview={preview}>
             <p>
-                Overwrites the <strong>internal {listItem.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+                Overwrites the <strong>internal {listItem.packageLink} component</strong> used as the <strong>composition</strong> of {specificComponent ?? <><TheComponentLink /> component</>}.
             </p>
             <TypeScriptCode collapsible={false}>{
 `<${componentName} listItemComponent={
