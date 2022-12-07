@@ -8,15 +8,13 @@ import { Preview } from '../../components/Preview'
 import { Accordion as OriAccordion, AccordionProps, AccordionItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import Link from 'next/link'
 import { DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, ContentComponentProperty, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
-import { CaseSensitiveProperty, EndProperty, NavigationProperties } from '../../properties/sections/navigationProperties'
-import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfRoleButton } from '../../properties/sections/actionProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
-import { ParagraphLorem } from '../../components/ParagraphLorem'
+import { ParagraphLorem as OriParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
-import { style, children, rule, descendants } from '@cssfn/core'
+import { style, children, rule } from '@cssfn/core'
+
 
 
 const useAccordionDemoStyle = dynamicStyleSheet(() => style({
@@ -34,6 +32,8 @@ const useAccordionDemoStyle = dynamicStyleSheet(() => style({
     }),
 }), { id: '8po43ak0ox' });
 
+const ParagraphLorem = () => <OriParagraphLorem words={8} />
+
 
 
 interface AccordionSampleItemsProps {
@@ -45,32 +45,32 @@ const listSampleItems = ({mixVaraints = true}: AccordionSampleItemsProps = {}) =
             A first item
         </span>}>
             <div>
-                <ParagraphLorem words={8} />
-                <ParagraphLorem words={8} />
+                <ParagraphLorem />
+                <ParagraphLorem />
             </div>
         </AccordionItem>,
         <AccordionItem key={1} label={<span>
             A second item
         </span>}>
             <div>
-                <ParagraphLorem words={8} />
-                <ParagraphLorem words={8} />
+                <ParagraphLorem />
+                <ParagraphLorem />
             </div>
         </AccordionItem>,
         <AccordionItem key={2} label={<span>
             A third item
         </span>}>
             <div>
-                <ParagraphLorem words={8} />
-                <ParagraphLorem words={8} />
+                <ParagraphLorem />
+                <ParagraphLorem />
             </div>
         </AccordionItem>,
         <AccordionItem key={3} {...(mixVaraints ? { theme: 'danger' } : undefined)} label={<span>
             A fourth item
         </span>}>
             <div>
-                <ParagraphLorem words={8} />
-                <ParagraphLorem words={8} />
+                <ParagraphLorem />
+                <ParagraphLorem />
             </div>
         </AccordionItem>,
     ];
@@ -93,23 +93,29 @@ interface AccordionSampleItemsArrayProps {
 const accordionSampleItemsArray = ({indents = 1} : AccordionSampleItemsArrayProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return ([
-(prop?: string) => `${tabs}<AccordionItem${prop ? ` ${prop}` : ''}>
-${tabs}    <Link href='/'>
-${tabs}        Home
-${tabs}    </Link>
+(prop?: string) => `${tabs}<AccordionItem defaultExpanded={true}${prop ? ` ${prop}` : ''} label={<>
+${tabs}    A first item
+${tabs}</>}>
+${tabs}    <p>...</p>
+${tabs}    <p>...</p>
 ${tabs}</AccordionItem>`,
-(prop?: string) => `${tabs}<AccordionItem${prop ? ` ${prop}` : ''}>
-${tabs}    <Link href='/core'>
-${tabs}        Core
-${tabs}    </Link>
+(prop?: string) => `${tabs}<AccordionItem${prop ? ` ${prop}` : ''} label={<>
+${tabs}    A second item
+${tabs}</>}>
+${tabs}    <p>...</p>
+${tabs}    <p>...</p>
 ${tabs}</AccordionItem>`,
-(prop?: string) => `${tabs}<AccordionItem${prop ? ` ${prop}` : ''}>
-${tabs}    <Link href='/components'>
-${tabs}        Components
-${tabs}    </Link>
+(prop?: string) => `${tabs}<AccordionItem${prop ? ` ${prop}` : ''} label={<>
+${tabs}    A third item
+${tabs}</>}>
+${tabs}    <p>...</p>
+${tabs}    <p>...</p>
 ${tabs}</AccordionItem>`,
-(prop?: string) => `${tabs}<AccordionItem href='https://github.com/reusable-ui'${prop ? ` ${prop}` : ''}>
-${tabs}    GitHub
+(prop?: string) => `${tabs}<AccordionItem theme='danger'${prop ? ` ${prop}` : ''} label={<>
+${tabs}    A fourth item
+${tabs}</>}>
+${tabs}    <p>...</p>
+${tabs}    <p>...</p>
 ${tabs}</AccordionItem>`
     ]);
 }
@@ -126,12 +132,12 @@ const AccordionPage: NextPage = () => {
     return (<ComponentContextProvider component={accordion} nestedComponent={accordionItem} baseComponents={list}>
         <Head>
             <title>{`${accordion.componentTag} Component`}</title>
-            <meta name="description" content={`${accordion.componentTag} is a list of (client-side/normal) navigation with automatically toggling-on the ${accordionItem.componentTag}'s ${activatable.shortName} at corresponding URL.`} />
+            <meta name="description" content={`${accordion.componentTag} represents a series of toggleable collapsing content.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> is a list of (client-side/normal) navigation with automatically toggling-on the {accordionItem.packageDisplay}&apos;s {activatable.packageShortLink} at <em>corresponding URL</em>.
+                    <TheComponentLink /> represents a series of toggleable collapsing content.
                 </p>
                 <p>
                     Here the demo:
@@ -204,23 +210,29 @@ ${accordionSampleItemsString()}
                             />
                         )}
                         <Accordion>
-                            <AccordionItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <AccordionItem size='sm' defaultExpanded={true} label={<>
+                                A first item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem size='sm'>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <AccordionItem size='md' label={<>
+                                A second item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem size='md'>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <AccordionItem size='lg' label={<>
+                                A third item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem size='lg' href='https://github.com/reusable-ui'>
-                                GitHub
+                            <AccordionItem theme='danger' label={<>
+                                A fourth item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
                         </Accordion>
                     </Preview>
@@ -241,23 +253,29 @@ ${accordionSampleItemsString()}
 <Accordion
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <AccordionItem size='sm' defaultExpanded={true} label={<>
+        A first item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem size='sm'>
-        <Link href='/core'>
-            Core
-        </Link>
+    <AccordionItem size='md' label={<>
+        A second item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem size='md'>
-        <Link href='/components'>
-            Components
-        </Link>
+    <AccordionItem size='lg' label={<>
+        A third item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem size='lg' href='https://github.com/reusable-ui'>
-        GitHub
+    <AccordionItem theme='danger' label={<>
+        A fourth item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
 </Accordion>
 `
@@ -272,23 +290,29 @@ ${accordionSampleItemsString()}
                             />
                         )}
                         <Accordion>
-                            <AccordionItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <AccordionItem theme='primary' defaultExpanded={true} label={<>
+                                A first item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem theme='success'>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <AccordionItem theme='secondary' label={<>
+                                A second item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem theme='danger'>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <AccordionItem theme='success' label={<>
+                                A third item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem theme='warning' href='https://github.com/reusable-ui'>
-                                GitHub
+                            <AccordionItem theme='info' label={<>
+                                A fourth item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
                         </Accordion>
                     </Preview>
@@ -299,24 +323,7 @@ ${accordionSampleItemsString()}
 <Accordion
     theme='${themeName}'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </AccordionItem>
-    <AccordionItem href='https://github.com/reusable-ui'>
-        GitHub
-    </AccordionItem>
+${accordionSampleItemsString()}
 </Accordion>
 `
                         ).join('')
@@ -325,23 +332,29 @@ ${accordionSampleItemsString()}
 <Accordion
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <AccordionItem theme='primary' defaultExpanded={true} label={<>
+        A first item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem theme='success'>
-        <Link href='/core'>
-            Core
-        </Link>
+    <AccordionItem theme='secondary' label={<>
+        A second item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem theme='danger'>
-        <Link href='/components'>
-            Components
-        </Link>
+    <AccordionItem theme='success' label={<>
+        A third item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem theme='warning' href='https://github.com/reusable-ui'>
-        GitHub
+    <AccordionItem theme='info' label={<>
+        A fourth item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
 </Accordion>
 `
@@ -353,23 +366,29 @@ ${accordionSampleItemsString()}
                             gradient={true}
                         />
                         <Accordion>
-                            <AccordionItem gradient={false}>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <AccordionItem gradient={false} defaultExpanded={true} label={<>
+                                A first item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem gradient={true}>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <AccordionItem gradient={false} label={<>
+                                A second item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem gradient={true}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <AccordionItem gradient={true} label={<>
+                                A third item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem gradient={true} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <AccordionItem gradient={true} theme='danger' label={<>
+                                A fourth item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
                         </Accordion>
                     </Preview>
@@ -380,46 +399,35 @@ ${accordionSampleItemsString()}
     gradient={true}
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </AccordionItem>
-    <AccordionItem href='https://github.com/reusable-ui'>
-        GitHub
-    </AccordionItem>
+${accordionSampleItemsString()}
 </Accordion>
 
 <Accordion
     theme='primary'
 >
-    <AccordionItem gradient={false}>
-        <Link href='/'>
-            Home
-        </Link>
+    <AccordionItem gradient={false} defaultExpanded={true} label={<>
+        A first item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem gradient={true}>
-        <Link href='/core'>
-            Core
-        </Link>
+    <AccordionItem gradient={false} label={<>
+        A second item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem gradient={true}>
-        <Link href='/components'>
-            Components
-        </Link>
+    <AccordionItem gradient={true} label={<>
+        A third item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem gradient={true} href='https://github.com/reusable-ui'>
-        GitHub
+    <AccordionItem gradient={true} theme='danger' label={<>
+        A fourth item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
 </Accordion>
 `
@@ -431,23 +439,29 @@ ${accordionSampleItemsString()}
                             outlined={true}
                         />
                         <Accordion outlined={true}>
-                            <AccordionItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <AccordionItem outlined={false} defaultExpanded={true} label={<>
+                                A first item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem outlined={false}>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <AccordionItem outlined={false} label={<>
+                                A second item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem outlined={false}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <AccordionItem outlined={true} label={<>
+                                A third item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem outlined={false} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <AccordionItem outlined={true} theme='danger' label={<>
+                                A fourth item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
                         </Accordion>
                     </Preview>
@@ -458,47 +472,36 @@ ${accordionSampleItemsString()}
     outlined={true}
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </AccordionItem>
-    <AccordionItem href='https://github.com/reusable-ui'>
-        GitHub
-    </AccordionItem>
+${accordionSampleItemsString()}
 </Accordion>
 
 <Accordion
     outlined={true}
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <AccordionItem outlined={false} defaultExpanded={true} label={<>
+        A first item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem outlined={false}>
-        <Link href='/core'>
-            Core
-        </Link>
+    <AccordionItem outlined={false} label={<>
+        A second item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem outlined={false}>
-        <Link href='/components'>
-            Components
-        </Link>
+    <AccordionItem outlined={true} label={<>
+        A third item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem outlined={false} href='https://github.com/reusable-ui'>
-        GitHub
+    <AccordionItem outlined={true} theme='danger' label={<>
+        A fourth item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
 </Accordion>
 `
@@ -510,23 +513,29 @@ ${accordionSampleItemsString()}
                             mild={true}
                         />
                         <Accordion mild={false}>
-                            <AccordionItem>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <AccordionItem mild={false} defaultExpanded={true} label={<>
+                                A first item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <AccordionItem mild={false} label={<>
+                                A second item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem mild={true}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <AccordionItem mild={true} label={<>
+                                A third item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem mild={true} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <AccordionItem mild={true} theme='danger' label={<>
+                                A fourth item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
                         </Accordion>
                     </Preview>
@@ -537,47 +546,36 @@ ${accordionSampleItemsString()}
     mild={true}
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </AccordionItem>
-    <AccordionItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </AccordionItem>
-    <AccordionItem href='https://github.com/reusable-ui'>
-        GitHub
-    </AccordionItem>
+${accordionSampleItemsString()}
 </Accordion>
 
 <Accordion
     mild={true}
     theme='primary'
 >
-    <AccordionItem>
-        <Link href='/'>
-            Home
-        </Link>
+    <AccordionItem mild={false} defaultExpanded={true} label={<>
+        A first item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem>
-        <Link href='/core'>
-            Core
-        </Link>
+    <AccordionItem mild={false} label={<>
+        A second item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem mild={true}>
-        <Link href='/components'>
-            Components
-        </Link>
+    <AccordionItem mild={true} label={<>
+        A third item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem mild={true} href='https://github.com/reusable-ui'>
-        GitHub
+    <AccordionItem mild={true} theme='danger' label={<>
+        A fourth item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
 </Accordion>
 `
@@ -593,23 +591,29 @@ ${accordionSampleItemsString()}
                         <Accordion
                             mixVaraints={false}
                         >
-                            <AccordionItem enabled={false}>
-                                <Link href='/'>
-                                    Home
-                                </Link>
+                            <AccordionItem enabled={false} defaultExpanded={true} label={<>
+                                A first item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem enabled={false}>
-                                <Link href='/core'>
-                                    Core
-                                </Link>
+                            <AccordionItem enabled={false} label={<>
+                                A second item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem enabled={true}>
-                                <Link href='/components'>
-                                    Components
-                                </Link>
+                            <AccordionItem enabled={true} label={<>
+                                A third item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
-                            <AccordionItem enabled={true} href='https://github.com/reusable-ui'>
-                                GitHub
+                            <AccordionItem enabled={true} theme='danger' label={<>
+                                A fourth item
+                            </>}>
+                                <ParagraphLorem />
+                                <ParagraphLorem />
                             </AccordionItem>
                         </Accordion>
                     </Preview>
@@ -626,23 +630,29 @@ ${accordionSampleItemsString()}
 <Accordion
     theme='primary'
 >
-    <AccordionItem enabled={false}>
-        <Link href='/'>
-            Home
-        </Link>
+    <AccordionItem enabled={false} defaultExpanded={true} label={<>
+        A first item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem enabled={false}>
-        <Link href='/core'>
-            Core
-        </Link>
+    <AccordionItem enabled={false} label={<>
+        A second item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem enabled={true}>
-        <Link href='/components'>
-            Components
-        </Link>
+    <AccordionItem enabled={true} label={<>
+        A third item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
-    <AccordionItem enabled={true} href='https://github.com/reusable-ui'>
-        GitHub
+    <AccordionItem enabled={true} theme='danger' label={<>
+        A fourth item
+    </>}>
+        <p>...</p>
+        <p>...</p>
     </AccordionItem>
 </Accordion>
 `
