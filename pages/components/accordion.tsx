@@ -106,7 +106,7 @@ const AccordionPage: NextPage = () => {
             </ComponentContextProvider>
             <LazyProperty />
             <VariantProperties>
-                <ListStyleProperty>
+                <ListStyleProperty listStyleLimited={true}>
                     <Preview display='right' stretch={false}>
                         {listStyleLimitedOptions.map((listStyle, index) =>
                             <Accordion

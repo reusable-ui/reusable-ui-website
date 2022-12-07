@@ -28,7 +28,7 @@ export const buttonStyleOptions              : ButtonStyle[]                    
 export const checkStyleOptions               : CheckStyle[]                     = ['regular', 'switch', 'button', 'toggleButton'];
 export const listStyleOptions                : ListStyle[]                      = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'tab', 'breadcrumb', 'bullet', 'numbered'];
 export const listBasicStyleOptions           : ListBasicStyle[]                 = ['regular', 'flat', 'flush', 'joined'];
-export const listStyleLimitedOptions         : ListStyleLimited[]               = ['regular', 'flat', 'flush', 'joined', 'content', 'button', 'breadcrumb', 'numbered'];
+export const listStyleLimitedOptions         : ListStyleLimited[]               = ['regular', 'flat', 'flush', 'joined', 'content', 'button',        'breadcrumb',           'numbered'];
 export const cardStyleOptions                : CardStyle[]                      = ['regular', 'flat', 'flush', 'joined'];
 export const badgeStyleOptions               : BadgeStyle[]                     = ['regular', 'pill', 'square', 'circle'];
 export const backdropStyleOptions            : BackdropStyle[]                  = ['regular', 'hidden', 'interactive', 'static'];
@@ -497,7 +497,10 @@ export const CheckStyleProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
-export const ListStyleProperty = ({children: preview, ...nestedComponentDisplayProps}: PreviewProps & TheNestedComponentDisplayProps) => {
+export interface ListStylePropertyProps extends PreviewProps {
+    listStyleLimited ?: boolean
+}
+export const ListStyleProperty = ({children: preview, listStyleLimited = false, ...nestedComponentDisplayProps}: ListStylePropertyProps & TheNestedComponentDisplayProps) => {
     const {nestedComponent} = useComponentInfo();
     
     return (
@@ -538,24 +541,24 @@ export const ListStyleProperty = ({children: preview, ...nestedComponentDisplayP
                         Makes the <TheNestedComponentDisplay {...nestedComponentDisplayProps} />&apos;s layout <strong>match</strong> to {button.packageLink}&apos;s layout.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>'tab'</code>}>
+                {!listStyleLimited && <AccordionItem label={<code>'tab'</code>}>
                     <p>
                         Makes the <TheComponentLink />&apos;s layout like a <strong>tabular header</strong> layout.
                     </p>
-                </AccordionItem>
+                </AccordionItem>}
                 <AccordionItem label={<code>'breadcrumb'</code>}>
                     <p>
                         Makes the <TheComponentLink />&apos;s layout like a <strong>navigation breadcrumb</strong> layout.
                     </p>
                 </AccordionItem>
-                <AccordionItem label={<code>'bullet'</code>}>
+                {!listStyleLimited && <AccordionItem label={<code>'bullet'</code>}>
                     <p>
                         Makes the <TheNestedComponentDisplay {...nestedComponentDisplayProps} />&apos;s layout like a <strong>bullet</strong>.
                     </p>
                     <p>
                         Note: Requires each <TheNestedComponentDisplay {...nestedComponentDisplayProps} /> have an <strong>empty children</strong>.
                     </p>
-                </AccordionItem>
+                </AccordionItem>}
                 <AccordionItem label={<code>'numbered'</code>}>
                     <p>
                         Makes each <TheNestedComponentDisplay {...nestedComponentDisplayProps} /> have a <strong>numbered counter</strong>.
