@@ -55,7 +55,16 @@ export const NestedSubSections = ({children : preview}: NestedSubSectionsProps) 
             </p>
             <Warning>
                 <p>
-                    At the root of <TheComponentLink/>, you need to set <code>{`<${componentName} scrollingSelector='section'>`}</code> to <strong>distinguish</strong> between the <code>{`<section>`}</code>, sub <code>{`<section>`}</code>, and the <code>{`<another_element>`}</code>.
+                    The <strong>nested</strong> <TheComponentLink /> must have <code>{`scrollingOf={undefined}`}</code> or must omit the <code>scrollingOf</code> property in order to becomes <strong>nested</strong>-able.
+                </p>
+                <p>
+                    Assigning the <code>scrollingOf</code> with a value other than <code>undefined</code> causes the <TheComponentLink /> to become a <strong>root</strong> <TheComponentLink />.
+                </p>
+            </Warning>
+            <p></p>
+            <Warning>
+                <p>
+                    At the <strong>root</strong> of <TheComponentLink/>, you need to set <code>{`<${componentName} scrollingSelector='section'>`}</code> to <strong>distinguish</strong> between the <code>{`<section>`}</code>, the sub <code>{`<section>`}</code>, and the <code>{`<another_element>`}</code>.
                 </p>
                 <p>
                     The default is <code>{`scrollingSelector='*'`}</code>, so <strong>any elements</strong> will be treated as the <em>corresponding sections</em>.
