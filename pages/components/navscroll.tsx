@@ -752,24 +752,7 @@ ${navscrollSampleItemsString()}
     scrollingOf={scrollableArticleRef}
     theme='${themeName}'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </ListItem>
-    <ListItem href='https://github.com/reusable-ui'>
-        GitHub
-    </ListItem>
+${navscrollSampleItemsString()}
 </Navscroll>
 `
                         ).join('')
@@ -835,24 +818,7 @@ ${navscrollSampleItemsString()}
     gradient={true}
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </ListItem>
-    <ListItem href='https://github.com/reusable-ui'>
-        GitHub
-    </ListItem>
+${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
@@ -915,24 +881,7 @@ ${navscrollSampleItemsString()}
     outlined={true}
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </ListItem>
-    <ListItem href='https://github.com/reusable-ui'>
-        GitHub
-    </ListItem>
+${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
@@ -965,9 +914,9 @@ ${navscrollSampleItemsString()}
                 <MildProperty>
                     <Preview display='right' stretch={false}>
                         <Navscroll
-                            mild={true}
+                            mild={false}
                         />
-                        <Navscroll mild={false}>
+                        <Navscroll>
                             <ListItem mild={false}>
                                 First section
                             </ListItem>
@@ -993,32 +942,14 @@ ${navscrollSampleItemsString()}
 `
 <Navscroll
     scrollingOf={scrollableArticleRef}
-    mild={true}
+    mild={false}
     theme='primary'
 >
-    <ListItem>
-        <Link href='/'>
-            Home
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/core'>
-            Core
-        </Link>
-    </ListItem>
-    <ListItem>
-        <Link href='/components'>
-            Components
-        </Link>
-    </ListItem>
-    <ListItem href='https://github.com/reusable-ui'>
-        GitHub
-    </ListItem>
+${navscrollSampleItemsString()}
 </Navscroll>
 
 <Navscroll
     scrollingOf={scrollableArticleRef}
-    mild={true}
     theme='primary'
 >
     <ListItem mild={false}>
