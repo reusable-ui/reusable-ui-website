@@ -80,6 +80,9 @@ styleSheet(() => style({
             padding : '0px',
             margin  : '0px',
         }),
+        ...rule('body', {
+            maxInlineSize: '100vw',
+        }),
         ...rule('body>*>header', {
             zIndex          : 1020,
             position        : 'sticky',
