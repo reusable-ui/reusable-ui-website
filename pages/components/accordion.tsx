@@ -14,34 +14,78 @@ import { ComponentProperties, ContentComponentProperty, ListComponentProperty, L
 import { CaseSensitiveProperty, EndProperty, NavigationProperties } from '../../properties/sections/navigationProperties'
 import { ClientSideLinkPropertyOfButton, HrefPropertyOfButton, OnClickPropertyOfRoleButton } from '../../properties/sections/actionProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
+import { ParagraphLorem } from '../../components/ParagraphLorem'
+import { dynamicStyleSheet } from '@cssfn/cssfn-react'
+import { style, children, rule, descendants } from '@cssfn/core'
+
+
+const useAccordionDemoStyle = dynamicStyleSheet(() => style({
+    ...rule(':not(.inline)', {
+        inlineSize: '20rem',
+    }),
+    ...rule('.inline', {
+        blockSize: '20rem',
+        
+        ...children('li>*>*', {
+            writingMode: 'vertical-rl',
+            rotate: '180deg',
+            height: '100%',
+        }),
+    }),
+}), { id: '8po43ak0ox' });
 
 
 
-interface AccordionSampleItemsProps extends Pick<AccordionProps, 'listStyle'> {
+interface AccordionSampleItemsProps {
     mixVaraints ?: boolean
 }
-const listSampleItems = ({mixVaraints = false, listStyle}: AccordionSampleItemsProps = {}) => {
+const listSampleItems = ({mixVaraints = true}: AccordionSampleItemsProps = {}) => {
     return [
-        <AccordionItem key={0}>
-            <Link href='/'>Home</Link>
+        <AccordionItem key={0} defaultExpanded={true} label={<span>
+            A first item
+        </span>}>
+            <div>
+                <ParagraphLorem words={8} />
+                <ParagraphLorem words={8} />
+            </div>
         </AccordionItem>,
-        <AccordionItem key={1}>
-            <Link href='/core'>Core</Link>
+        <AccordionItem key={1} label={<span>
+            A second item
+        </span>}>
+            <div>
+                <ParagraphLorem words={8} />
+                <ParagraphLorem words={8} />
+            </div>
         </AccordionItem>,
-        <AccordionItem key={2}>
-            <Link href='/components'>Components</Link>
+        <AccordionItem key={2} label={<span>
+            A third item
+        </span>}>
+            <div>
+                <ParagraphLorem words={8} />
+                <ParagraphLorem words={8} />
+            </div>
         </AccordionItem>,
-        <AccordionItem key={3} href='https://github.com/reusable-ui' {...(mixVaraints ? { theme: 'danger' } : undefined)}>
-            GitHub
+        <AccordionItem key={3} {...(mixVaraints ? { theme: 'danger' } : undefined)} label={<span>
+            A fourth item
+        </span>}>
+            <div>
+                <ParagraphLorem words={8} />
+                <ParagraphLorem words={8} />
+            </div>
         </AccordionItem>,
     ];
 }
 
 interface SampleAccordionProps extends AccordionProps, AccordionSampleItemsProps {
 }
-const Accordion = ({mixVaraints, ...props}: SampleAccordionProps) => <OriAccordion {...props} theme={props.theme ?? 'primary'}>
-    {props.children ?? listSampleItems({mixVaraints, ...props})}
-</OriAccordion>
+const Accordion = ({mixVaraints, ...props}: SampleAccordionProps) => {
+    const accordionDemoStyle = useAccordionDemoStyle();
+    return (
+        <OriAccordion {...props} theme={props.theme ?? 'primary'} className={accordionDemoStyle.main}>
+            {props.children ?? listSampleItems({mixVaraints, ...props})}
+        </OriAccordion>
+    );
+}
 
 interface AccordionSampleItemsArrayProps {
     indents     ?: number
@@ -94,8 +138,6 @@ const AccordionPage: NextPage = () => {
                 </p>
                 <Preview display='right' stretch={false}>
                     <Accordion />
-                    <Accordion mild={false} />
-                    <Accordion outlined={true} />
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
