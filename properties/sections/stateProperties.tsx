@@ -567,18 +567,18 @@ export const ExpandedProperty = ({children: preview, uncontrollableBehavior, col
                 </AccordionItem>
                 <AccordionItem label={<code>true</code>}>
                     <p>
-                        <strong>Expands</strong> the <strong>size</strong> or <strong>shows</strong> the <strong>visibility</strong> of the {collapsibleComponentText ?? <TheComponentLink />}.
+                        <strong>Expands</strong> the {collapsibleComponentText ?? <TheComponentLink />}.
                     </p>
                 </AccordionItem>
                 <AccordionItem label={<code>false</code>}>
                     <p>
-                        <strong>Collapses</strong> the <strong>size</strong> or <strong>hides</strong> the <strong>visibility</strong> of the {collapsibleComponentText ?? <TheComponentLink />}.
+                        <strong>Collapses</strong> the {collapsibleComponentText ?? <TheComponentLink />}.
                     </p>
                 </AccordionItem>
             </Accordion>
         }>
             <p>
-                <strong>Expands</strong>/<strong>Collapses</strong> the <strong>size</strong> or <strong>shows</strong>/<strong>hides</strong> the <strong>visibility</strong> of the {collapsibleComponentText ?? <TheComponentLink />}.
+                <strong>Expands</strong>/<strong>Collapses</strong> the {collapsibleComponentText ?? <TheComponentLink />}.
             </p>
         </PropertySection>
     );
