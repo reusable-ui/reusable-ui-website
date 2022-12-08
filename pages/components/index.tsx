@@ -348,7 +348,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.details}>
                         <p>
-                            A foldable content widget.
+                            A foldable content widget. Supports customization of themes, sizes, and other variants.
                         </p>
                     </PackageItem>
                 </Accordion>

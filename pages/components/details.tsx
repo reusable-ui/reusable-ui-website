@@ -5,7 +5,7 @@ import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variable
 import { basic, button, details, toggleButton } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ButtonStyleProperty, DetailsStyleProperty, detailsStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { Details as OriDetails, DetailsProps, AccordionItem, Accordion, List, ListItem } from '@reusable-ui/components'
+import { Details as OriDetails, DetailsProps, AccordionItem, Accordion, List, ListItem, CardBody } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedProperty, ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
@@ -14,6 +14,7 @@ import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style } from '@cssfn/core'
+import { useFlipFlop } from '../../hooks/flipFlop'
 
 
 
@@ -60,16 +61,37 @@ const detailsSampleItemsString = (options : DetailsSampleItemsStringProps = {}) 
 
 
 
+const DemoExpanded = () => {
+    const [viewportRef, isFlip] = useFlipFlop<boolean, HTMLDivElement>({defaultState: true});
+    
+    
+    
+    return (
+        <CardBody elmRef={viewportRef}>
+            <p>
+                <code>{`<Details expanded={${isFlip}}>`}{isFlip && <>&nbsp;</>}</code>
+            </p>
+            <div style={{
+                minBlockSize: '17rem',
+            }}>
+                <Details expanded={isFlip} />
+            </div>
+        </CardBody>
+    );
+}
+
+
+
 const DetailsPage: NextPage = () => {
     return (<ComponentContextProvider component={details} baseComponents={basic}>
         <Head>
             <title>{`${details.componentTag} Component`}</title>
-            <meta name="description" content={`${details.componentTag} represents a series of toggleable collapsing content.`} />
+            <meta name="description" content={`${details.componentTag} is a foldable content widget. Supports customization of themes, sizes, and other variants.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> represents a series of toggleable collapsing content.
+                    <TheComponentLink /> is a foldable content widget. Supports customization of themes, sizes, and other variants.
                 </p>
                 <p>
                     Here the demo:
@@ -84,7 +106,23 @@ const DetailsPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
-            <ExpandedProperty />
+            <ExpandedProperty>
+                <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
+                <p></p>
+                <TypeScriptCode>{
+`
+<Details
+    expanded={true}
+    theme='primary'
+    label={<>
+        Show Details
+    </>}
+>
+${detailsSampleItemsString()}
+</Details>
+`
+                }</TypeScriptCode>
+            </ExpandedProperty>
             <DefaultExpandedProperty />
             <OnExpandedChangeProperty />
             <LazyProperty />
