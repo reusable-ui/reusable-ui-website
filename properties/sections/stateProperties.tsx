@@ -610,11 +610,16 @@ export const DefaultExpandedProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
-export const OnExpandedChangeProperty = ({children: preview}: PreviewProps) => {
+
+export type UserExpandedAction = 'opens'|'closes'
+export interface OnExpandedChangePropertyProps extends PreviewProps {
+    userExpandedAction ?: UserExpandedAction[]
+}
+export const OnExpandedChangeProperty = ({children: preview, userExpandedAction = ['closes']}: OnExpandedChangePropertyProps) => {
     return (
         <PropertySection property={properties.onExpandedChange} preview={preview}>
             <p>
-                Sets a <strong>callback function</strong> to be called when <strong>the user closes</strong> the <TheComponentLink />.
+                Sets a <strong>callback function</strong> to be called when <strong>the user {userExpandedAction.join('/')}</strong> the <TheComponentLink />.
             </p>
             <p>
                 The callback function parameters:

@@ -124,7 +124,7 @@ ${detailsSampleItemsString()}
                 }</TypeScriptCode>
             </ExpandedProperty>
             <DefaultExpandedProperty />
-            <OnExpandedChangeProperty />
+            <OnExpandedChangeProperty userExpandedAction={['opens', 'closes']} />
             <LazyProperty />
             <VariantProperties>
                 <DetailsStyleProperty>
