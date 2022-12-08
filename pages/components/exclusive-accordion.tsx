@@ -132,12 +132,12 @@ const ExclusiveAccordionPage: NextPage = () => {
     return (<ComponentContextProvider component={exclusiveAccordion} nestedComponent={accordionItem} baseComponents={accordion}>
         <Head>
             <title>{`${exclusiveAccordion.componentTag} Component`}</title>
-            <meta name="description" content={`${exclusiveAccordion.componentTag} represents a series of toggleable collapsing content.`} />
+            <meta name="description" content={`${exclusiveAccordion.componentTag} represents a series of toggleable collapsing content with only one expanded content allowed.`} />
         </Head>
         <Main nude={true}>
             <HeroSection title={<><TheComponentLink /> Component</>} theme='secondary'>
                 <p>
-                    <TheComponentLink /> represents a series of toggleable collapsing content.
+                    <TheComponentLink /> represents a series of toggleable collapsing content with only one expanded content allowed.
                 </p>
                 <p>
                     Here the demo:

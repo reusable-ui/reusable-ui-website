@@ -333,7 +333,7 @@ const Components: NextPage = () => {
                     </PackageItem>
                     <PackageItem package={packages.exclusiveAccordion}>
                         <p>
-                            Represents a series of toggleable collapsing content with only one expanding content allowed.
+                            Represents a series of toggleable collapsing content with only one expanded content allowed.
                         </p>
                     </PackageItem>
                     <PackageItem package={packages.carousel}>
