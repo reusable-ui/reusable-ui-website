@@ -152,7 +152,9 @@ const AccordionPage: NextPage = () => {
                 <DefaultExpandedProperty />
                 <OnExpandedChangeProperty />
             </ComponentContextProvider>
-            <LazyProperty />
+            <ComponentContextProvider component={accordionItem} nestedComponent={accordionItem}>
+                <LazyProperty />
+            </ComponentContextProvider>
             <VariantProperties>
                 <ListStyleProperty listStyleLimited={true}>
                     <Preview display='right' stretch={false}>
@@ -510,9 +512,11 @@ ${accordionSampleItemsString()}
                 <MildProperty>
                     <Preview display='right' stretch={false}>
                         <Accordion
-                            mild={true}
+                            mild={false}
                         />
-                        <Accordion mild={false}>
+                        <Accordion
+                            mild={false}
+                        >
                             <AccordionItem mild={false} defaultExpanded={true} label={<>
                                 A first item
                             </>}>
@@ -543,14 +547,14 @@ ${accordionSampleItemsString()}
                     <TypeScriptCode>{
 `
 <Accordion
-    mild={true}
+    mild={false}
     theme='primary'
 >
 ${accordionSampleItemsString()}
 </Accordion>
 
 <Accordion
-    mild={true}
+    mild={false}
     theme='primary'
 >
     <AccordionItem mild={false} defaultExpanded={true} label={<>

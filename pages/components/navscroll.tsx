@@ -916,7 +916,9 @@ ${navscrollSampleItemsString()}
                         <Navscroll
                             mild={false}
                         />
-                        <Navscroll>
+                        <Navscroll
+                            mild={false}
+                        >
                             <ListItem mild={false}>
                                 First section
                             </ListItem>
@@ -950,6 +952,7 @@ ${navscrollSampleItemsString()}
 
 <Navscroll
     scrollingOf={scrollableArticleRef}
+    mild={false}
     theme='primary'
 >
     <ListItem mild={false}>

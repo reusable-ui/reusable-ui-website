@@ -493,25 +493,27 @@ ${navSampleItemsString()}
                 <MildProperty>
                     <Preview display='right' stretch={false}>
                         <Nav
-                            mild={true}
+                            mild={false}
                         />
-                        <Nav mild={false}>
-                            <NavItem>
+                        <Nav
+                            mild={false}
+                        >
+                            <NavItem mild={true}>
                                 <Link href='/'>
                                     Home
                                 </Link>
                             </NavItem>
-                            <NavItem>
+                            <NavItem mild={true}>
                                 <Link href='/core'>
                                     Core
                                 </Link>
                             </NavItem>
-                            <NavItem mild={true}>
+                            <NavItem mild={false}>
                                 <Link href='/components'>
                                     Components
                                 </Link>
                             </NavItem>
-                            <NavItem mild={true} href='https://github.com/reusable-ui'>
+                            <NavItem mild={false} href='https://github.com/reusable-ui'>
                                 GitHub
                             </NavItem>
                         </Nav>
@@ -520,7 +522,7 @@ ${navSampleItemsString()}
                     <TypeScriptCode>{
 `
 <Nav
-    mild={true}
+    mild={false}
     theme='primary'
 >
     <NavItem>
@@ -544,25 +546,25 @@ ${navSampleItemsString()}
 </Nav>
 
 <Nav
-    mild={true}
+    mild={false}
     theme='primary'
 >
-    <NavItem>
+    <NavItem mild={true}>
         <Link href='/'>
             Home
         </Link>
     </NavItem>
-    <NavItem>
+    <NavItem mild={true}>
         <Link href='/core'>
             Core
         </Link>
     </NavItem>
-    <NavItem mild={true}>
+    <NavItem mild={false}>
         <Link href='/components'>
             Components
         </Link>
     </NavItem>
-    <NavItem mild={true} href='https://github.com/reusable-ui'>
+    <NavItem mild={false} href='https://github.com/reusable-ui'>
         GitHub
     </NavItem>
 </Nav>
