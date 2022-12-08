@@ -9,7 +9,7 @@
 * docs <Dropdown|Modal setFocus restoreFocus>
 * docs <ProgressBar min max value>
 * docs <Group|Nav|NavItem|Accordion|AccordionItem label>
-* specific TExpandedChange for <Collapse|Modal|Dropdown|etc>
+* specific TExpandedChange for <Collapse|Modal|Dropdown|ExclusiveAccordion|etc>
 
 * add guide-using-component
 * add guide-create-component

@@ -8,7 +8,7 @@ import { Preview } from '../../components/Preview'
 import { ExclusiveAccordion as OriExclusiveAccordion, ExclusiveAccordionProps, AccordionItem, Control } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
+import { DefaultExpandedListIndexProperty, EnabledProperty, ExpandedListIndexProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, ContentComponentProperty, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem as OriParagraphLorem } from '../../components/ParagraphLorem'
@@ -147,9 +147,9 @@ const ExclusiveAccordionPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <ExpandedListIndexProperty />
+            <DefaultExpandedListIndexProperty />
             <ComponentContextProvider component={accordionItem}>
-                <ExpandedProperty />
-                <DefaultExpandedProperty />
                 <OnExpandedChangeProperty />
             </ComponentContextProvider>
             <ComponentContextProvider component={accordionItem} nestedComponent={accordionItem}>

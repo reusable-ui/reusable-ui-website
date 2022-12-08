@@ -634,3 +634,79 @@ export const OnExpandedChangeProperty = ({children: preview}: PreviewProps) => {
         </PropertySection>
     );
 }
+
+
+
+export interface ExpandedListIndexPropertyProps extends PreviewProps {
+    uncontrollableBehavior ?: React.ReactNode
+    collapsibleComponentText   ?: React.ReactNode
+}
+export const ExpandedListIndexProperty = ({children: preview, uncontrollableBehavior, collapsibleComponentText}: ExpandedListIndexPropertyProps) => {
+    return (
+        <PropertySection property={properties.expandedListIndex} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    {uncontrollableBehavior ?? <p>
+                        Uses <strong>default</strong> expanded index setting.
+                    </p>}
+                </AccordionItem>
+                <AccordionItem label={<code>-1</code>}>
+                    <p>
+                        <strong>Collapses</strong> all of {collapsibleComponentText ?? <><TheNestedComponentDisplay />s</>}.
+                    </p>
+                    <p>
+                        You can use <strong>any negative number</strong>, but <code>-1</code> is preferred.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<><code>0</code> or <strong>positive number</strong></>}>
+                    <p>
+                        <strong>Expands</strong> one of {collapsibleComponentText ?? <><TheNestedComponentDisplay /></>}.
+                    </p>
+                    <p>
+                        The starting index of {collapsibleComponentText ?? <><TheNestedComponentDisplay /></>} is <code>0</code>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                <strong>Expands</strong> one of {collapsibleComponentText ?? <><TheNestedComponentDisplay /></>}.
+            </p>
+        </PropertySection>
+    );
+}
+export interface DefaultExpandedListIndexPropertyProps extends PreviewProps {
+    collapsibleComponentText   ?: React.ReactNode
+}
+export const DefaultExpandedListIndexProperty = ({children: preview, collapsibleComponentText}: DefaultExpandedListIndexPropertyProps) => {
+    return (
+        <PropertySection property={properties.defaultExpandedListIndex} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> initial expanded index setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>-1</code>}>
+                    <p>
+                        Initially <strong>collapses</strong> all of {collapsibleComponentText ?? <><TheNestedComponentDisplay />s</>}.
+                    </p>
+                    <p>
+                        You can use <strong>any negative number</strong>, but <code>-1</code> is preferred.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<><code>0</code> or <strong>positive number</strong></>}>
+                    <p>
+                        Initially <strong>expands</strong> one of {collapsibleComponentText ?? <><TheNestedComponentDisplay /></>}.
+                    </p>
+                    <p>
+                        The starting index of {collapsibleComponentText ?? <><TheNestedComponentDisplay /></>} is <code>0</code>.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                <strong>Defines</strong> the <strong>initial</strong> {properties.expandedListIndex.propertyShortLink} when the <TheComponentLink /> is <strong>first loaded</strong>.
+            </p>
+        </PropertySection>
+    );
+}
