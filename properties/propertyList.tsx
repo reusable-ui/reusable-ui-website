@@ -53,6 +53,7 @@ export const modalCardStyle           = new PropertyInfo('modalCardStyle')
 export const modalSideStyle           = new PropertyInfo('modalSideStyle')
 export const progressStyle            = new PropertyInfo('progressStyle')
 export const progressBarStyle         = new PropertyInfo('progressBarStyle')
+export const detailsStyle             = new PropertyInfo('detailsStyle')
 
 
 

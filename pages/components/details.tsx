@@ -2,8 +2,8 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { basic, details, toggleButton } from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ButtonStyleProperty } from '../../properties/sections/variantProperties'
+import { basic, button, details, toggleButton } from '../../packages/packageList'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ButtonStyleProperty, DetailsStyleProperty, detailsStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { Details as OriDetails, DetailsProps, AccordionItem, Accordion, List, ListItem } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
@@ -89,6 +89,41 @@ const DetailsPage: NextPage = () => {
             <OnExpandedChangeProperty />
             <LazyProperty />
             <VariantProperties>
+                <DetailsStyleProperty>
+                    <Preview display='right' stretch={false}>
+                        {detailsStyleOptions.map((detailsStyle, index) =>
+                            <div style={{minBlockSize: '21rem'}}>
+                                <Details
+                                    key={index}
+                                    detailsStyle={detailsStyle}
+                                >
+                                    <ParagraphLorem words={15} />
+                                    {/* eslint-disable @next/next/no-img-element */}
+                                    <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '100px' }} />
+                                    <ParagraphLorem words={10} />
+                                </Details>
+                            </div>
+                        )}
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>
+                        {detailsStyleOptions.map((detailsStyle) =>
+`
+<Details
+    detailsStyle='${detailsStyle}'
+    theme='primary'
+    label={<>
+        Show Details
+    </>}
+>
+    <p>...</p>
+    <img alt='lorem image' src='/images/lorem-image-1.svg' style={{ height: '100px' }} />
+    <p>...</p>
+</Details>
+`
+                        ).join('')}
+                    </TypeScriptCode>
+                </DetailsStyleProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
@@ -224,12 +259,14 @@ ${detailsSampleItemsString()}
                 <ButtonComponentProperty />
                 <ButtonRefProperty />
                 <ButtonOrientationProperty />
-                <ButtonStyleProperty />
+                <ComponentContextProvider component={button}>
+                    <ButtonStyleProperty />
+                </ComponentContextProvider>
                 <ButtonChildrenProperty />
                 
                 <ToggleButtonComponentProperty />
                 
-                <ContentComponentProperty />
+                <ContentComponentProperty content={basic} />
             </ComponentProperties>
             <InheritedProperties />
             <Variables variables={

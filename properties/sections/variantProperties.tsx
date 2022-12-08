@@ -8,7 +8,7 @@ import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'
 import { TheComponentLink, TheNestedComponentDisplay, TheNestedComponentDisplayProps, useComponentInfo } from '../../packages/componentContext'
-import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, IconPosition, LabelStyle, ListBasicStyle, ListStyle, ListStyleLimited, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
+import { BackdropStyle, BadgeStyle, ButtonStyle, CardStyle, CheckStyle, DetailsStyle, IconPosition, LabelStyle, ListBasicStyle, ListStyle, ListStyleLimited, ModalCardProps, ModalCardStyle, ModalSideStyle, ProgressBarStyle, ProgressStyle } from '@reusable-ui/components'
 
 
 
@@ -38,6 +38,7 @@ export const vertAlignOptions                : Extract<ModalCardProps['vertAlign
 export const modalSideStyleOptions           : ModalSideStyle[]                 = ['inlineStart', 'inlineEnd', 'blockStart', 'blockEnd'];
 export const progressStyleOptions            : ProgressStyle[]                  = listBasicStyleOptions;
 export const progressBarStyleOptions         : ProgressBarStyle[]               = ['regular', 'striped'];
+export const detailsStyleOptions             : DetailsStyle[]                   = ['regular', 'content'];
 
 
 
@@ -864,6 +865,33 @@ export const ProgressBarStyleProperty = ({children: preview}: PreviewProps) => {
         }>
             <p>
                 Sets the <strong>alternative appearances</strong> of the <TheNestedComponentDisplay />.
+            </p>
+        </PropertySection>
+    );
+}
+export const DetailsStyleProperty = ({children: preview}: PreviewProps) => {
+    return (
+        <PropertySection property={properties.detailsStyle} preview={preview} possibleValues={
+            <Accordion>
+                <AccordionItem label={<code>undefined</code>}>
+                    <p>
+                        Uses <strong>default</strong> appearance setting.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'regular'</code>}>
+                    <p>
+                        Uses <strong>regular</strong> appearance.
+                    </p>
+                </AccordionItem>
+                <AccordionItem label={<code>'content'</code>}>
+                    <p>
+                        Makes the <TheComponentLink />&apos;s layout <strong>match</strong> to {content.packageLink}&apos;s layout.
+                    </p>
+                </AccordionItem>
+            </Accordion>
+        }>
+            <p>
+                Sets the <strong>alternative appearances</strong> of the <TheComponentLink />.
             </p>
         </PropertySection>
     );
