@@ -30,7 +30,7 @@ const useExclusiveAccordionDemoStyle = dynamicStyleSheet(() => style({
             height: '100%',
         }),
     }),
-}), { id: '8po43ak0ox' });
+}), { id: 'er9y1tvr28' });
 
 const ParagraphLorem = () => <OriParagraphLorem words={8} />
 
