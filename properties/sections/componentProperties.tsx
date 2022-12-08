@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll, content } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll, content, accordion } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -802,6 +802,28 @@ export const MyCustomNavscroll = (props: NavscrollProps) => {
     );
 }
 `
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface AccordionComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const AccordionComponentProperty = ({children: preview} : AccordionComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.accordionComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {accordion.packageLink} component</strong> used as the <strong>composition</strong> of <TheComponentLink /> component.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} accordionComponent={
+    <MyCustomAccordion />
+} />`
             }</TypeScriptCode>
         </PropertySection>
     );

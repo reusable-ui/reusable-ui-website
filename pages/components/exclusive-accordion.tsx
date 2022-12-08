@@ -9,7 +9,7 @@ import { ExclusiveAccordion as OriExclusiveAccordion, ExclusiveAccordionProps, A
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedListIndexProperty, EnabledProperty, ExpandedListIndexProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ComponentProperties, ContentComponentProperty, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
+import { AccordionComponentProperty, ComponentProperties, ContentComponentProperty, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem as OriParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
@@ -702,6 +702,7 @@ ${exclusiveAccordionSampleItemsString({indents: 2})}
             </StateProperties>
             <ComponentProperties>
                 <ListComponentProperty />
+                <AccordionComponentProperty />
                 <ComponentContextProvider component={accordionItem}>
                     <ListItemComponentProperty componentOf={<>{accordionItem.packageDisplay}&apos;s <strong>header</strong></>} />
                     <ContentComponentProperty content={listItem} componentOf={<>{accordionItem.packageDisplay}&apos;s <strong>content</strong></>} />

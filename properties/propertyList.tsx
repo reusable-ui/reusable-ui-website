@@ -193,6 +193,8 @@ export const navComponent             = new PropertyInfo('navComponent')
 
 export const navscrollComponent       = new PropertyInfo('navscrollComponent')
 
+export const accordionComponent       = new PropertyInfo('accordionComponent')
+
 export const cardComponent            = new PropertyInfo('cardComponent')
 export const cardRef                  = new PropertyInfo('cardRef')
 export const cardOrientation          = new PropertyInfo('cardOrientation')
