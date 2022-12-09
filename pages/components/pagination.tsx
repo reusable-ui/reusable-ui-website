@@ -18,11 +18,13 @@ interface PaginationSampleItemsProps {
     setSelection : (selection: number) => void
 }
 const listSampleItems = ({selection, setSelection}: PaginationSampleItemsProps) => {
-    const items : ReturnType<typeof ListItem>[] = new Array<ReturnType<typeof ListItem>>(30);
-    for (let i = 1; i <= items.length; i++) {
-        items[i - 1] = <ListItem key={i} active={selection === i} onClick={() => setSelection(i)}>{i}</ListItem>
-    } // for
-    return items;
+    return Array.from(
+        (function* () {
+            for (let num = 1; num <= 30; num++) {
+                yield <ListItem key={num} active={selection === num} onClick={() => setSelection(num)}>{num}</ListItem>
+            }
+        })()
+    );
 }
 
 const Pagination = (props: PaginationProps) => {
@@ -35,24 +37,20 @@ const Pagination = (props: PaginationProps) => {
     );
 }
 
-interface PaginationSampleItemsArrayProps {
-    indents     ?: number
-}
-const paginationSampleItemsArray = ({indents = 1} : PaginationSampleItemsArrayProps = {}) => {
-    const tabs = (new Array(indents).fill('    ')).join('');
-    return ([
-`${tabs}<ListItem active={selection ===  1} onClick={() => setSelection( 1)}>1</ListItem>`,
-`${tabs}<ListItem active={selection ===  2} onClick={() => setSelection( 2)}>2</ListItem>`,
-`${tabs}{/* ... */}`,
-`${tabs}<ListItem active={selection === 29} onClick={() => setSelection(29)}>29</ListItem>`,
-`${tabs}<ListItem active={selection === 30} onClick={() => setSelection(30)}>30</ListItem>`
-    ]);
-}
-
-interface PaginationSampleItemsStringProps extends PaginationSampleItemsArrayProps {
+interface PaginationSampleItemsStringProps {
+    indents ?: number
 }
 const paginationSampleItemsString = (options : PaginationSampleItemsStringProps = {}) => {
-    return paginationSampleItemsArray(options).join('\n');
+    const tabs = (new Array(options.indents ?? 1).fill('    ')).join('');
+    return (
+`${tabs}{Array.from(
+${tabs}    (function* () {
+${tabs}        for (let num = 1; num <= 30; num++) {
+${tabs}            yield <ListItem key={num} active={selection === num} onClick={() => setSelection(num)}>{num}</ListItem>
+${tabs}        }
+${tabs}    })()
+${tabs})}`
+    );
 }
 
 
