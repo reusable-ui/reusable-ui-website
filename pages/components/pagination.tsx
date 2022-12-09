@@ -35,11 +35,11 @@ interface PaginationSampleItemsArrayProps {
 const paginationSampleItemsArray = ({indents = 1} : PaginationSampleItemsArrayProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return ([
-`${tabs}<ListItem>1</ListItem>`,
-`${tabs}<ListItem>2</ListItem>`,
+`${tabs}<ListItem active={selection === 1 } onActiveChange={() => setSelection(1 )}>1</ListItem>`,
+`${tabs}<ListItem active={selection === 2 } onActiveChange={() => setSelection(2 )}>2</ListItem>`,
 `${tabs}{/* ... */}`,
-`${tabs}<ListItem>29</ListItem>`,
-`${tabs}<ListItem>30</ListItem>`
+`${tabs}<ListItem active={selection === 29} onActiveChange={() => setSelection(29)}>29</ListItem>`,
+`${tabs}<ListItem active={selection === 30} onActiveChange={() => setSelection(30)}>30</ListItem>`
     ]);
 }
 
@@ -91,8 +91,14 @@ const PaginationPage: NextPage = () => {
                         )}
                     </Preview>
                     <p></p>
-                    <TypeScriptCode>
-                        {orientationOptions.map((orientationName) =>
+                    <TypeScriptCode>{
+`
+const [selection, setSelection] = useState(12);
+
+/* ... */
+`
+                        +
+                        orientationOptions.map((orientationName) =>
 `
 <Pagination
     itemsLimit={5}
@@ -105,8 +111,8 @@ const PaginationPage: NextPage = () => {
 ${paginationSampleItemsString()}
 </Pagination>
 `
-                        ).join('')}
-                    </TypeScriptCode>
+                        ).join('')
+                    }</TypeScriptCode>
                 </OrientationProperty>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
@@ -119,6 +125,12 @@ ${paginationSampleItemsString()}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
+`
+const [selection, setSelection] = useState(12);
+
+/* ... */
+`
+                        +
                         sizeOptions.map((sizeName) =>
 `
 <Pagination
@@ -146,6 +158,12 @@ ${paginationSampleItemsString()}
                     </Preview>
                     <p></p>
                     <TypeScriptCode>{
+`
+const [selection, setSelection] = useState(12);
+
+/* ... */
+`
+                        +
                         themeOptions.map((themeName) =>
 `
 <Pagination
@@ -170,6 +188,10 @@ ${paginationSampleItemsString()}
                     <p></p>
                     <TypeScriptCode>{
 `
+const [selection, setSelection] = useState(12);
+
+/* ... */
+s
 <Pagination
     itemsLimit={7}
     gradient={true}
@@ -192,6 +214,10 @@ ${paginationSampleItemsString()}
                     <p></p>
                     <TypeScriptCode>{
 `
+const [selection, setSelection] = useState(12);
+
+/* ... */
+
 <Pagination
     itemsLimit={7}
     outlined={true}
@@ -214,6 +240,10 @@ ${paginationSampleItemsString()}
                     <p></p>
                     <TypeScriptCode>{
 `
+const [selection, setSelection] = useState(12);
+
+/* ... */
+
 <Pagination
     itemsLimit={7}
     mild={false}
@@ -238,6 +268,10 @@ ${paginationSampleItemsString()}
                     <p></p>
                     <TypeScriptCode>{
 `
+const [selection, setSelection] = useState(12);
+
+/* ... */
+
 <Pagination
     itemsLimit={7}
     enabled={false}
@@ -262,6 +296,10 @@ ${paginationSampleItemsString()}
                     <p></p>
                     <TypeScriptCode>{
 `
+const [selection, setSelection] = useState(12);
+
+/* ... */
+
 <Control theme='primary' enabled={false}>
     <Pagination
         itemsLimit={7}
