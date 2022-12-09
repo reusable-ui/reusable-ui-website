@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
@@ -14,20 +14,26 @@ import { ComponentProperties, NavComponentProperty } from '../../properties/sect
 
 
 interface PaginationSampleItemsProps {
+    selection    : number
+    setSelection : (selection: number) => void
 }
-const listSampleItems = () => {
+const listSampleItems = ({selection, setSelection}: PaginationSampleItemsProps) => {
     const items : ReturnType<typeof ListItem>[] = new Array<ReturnType<typeof ListItem>>(30);
     for (let i = 1; i <= items.length; i++) {
-        items[i - 1] = <ListItem key={i} active={i === 12}>{i}</ListItem>
+        items[i - 1] = <ListItem key={i} active={selection === i} onClick={() => setSelection(i)}>{i}</ListItem>
     } // for
     return items;
 }
 
-interface SamplePaginationProps extends PaginationProps, PaginationSampleItemsProps {
+const Pagination = (props: PaginationProps) => {
+    const [selection, setSelection] = useState<number>(12);
+    
+    return (
+        <OriPagination {...props} itemsLimit={props.itemsLimit ?? 7} theme={props.theme ?? 'primary'} prevItems={<NavPrevItem onClick={() => setSelection( 1)} />} nextItems={<NavNextItem onClick={() => setSelection(30)} />}>
+            {props.children ?? listSampleItems({selection, setSelection})}
+        </OriPagination>
+    );
 }
-const Pagination = (props: SamplePaginationProps) => <OriPagination {...props} itemsLimit={props.itemsLimit ?? 7} theme={props.theme ?? 'primary'} prevItems={<NavPrevItem />} nextItems={<NavNextItem />}>
-    {props.children ?? listSampleItems()}
-</OriPagination>
 
 interface PaginationSampleItemsArrayProps {
     indents     ?: number
@@ -35,11 +41,11 @@ interface PaginationSampleItemsArrayProps {
 const paginationSampleItemsArray = ({indents = 1} : PaginationSampleItemsArrayProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return ([
-`${tabs}<ListItem active={selection === 1 } onActiveChange={() => setSelection(1 )}>1</ListItem>`,
-`${tabs}<ListItem active={selection === 2 } onActiveChange={() => setSelection(2 )}>2</ListItem>`,
+`${tabs}<ListItem active={selection ===  1} onClick={() => setSelection( 1)}>1</ListItem>`,
+`${tabs}<ListItem active={selection ===  2} onClick={() => setSelection( 2)}>2</ListItem>`,
 `${tabs}{/* ... */}`,
-`${tabs}<ListItem active={selection === 29} onActiveChange={() => setSelection(29)}>29</ListItem>`,
-`${tabs}<ListItem active={selection === 30} onActiveChange={() => setSelection(30)}>30</ListItem>`
+`${tabs}<ListItem active={selection === 29} onClick={() => setSelection(29)}>29</ListItem>`,
+`${tabs}<ListItem active={selection === 30} onClick={() => setSelection(30)}>30</ListItem>`
     ]);
 }
 
@@ -105,8 +111,8 @@ const [selection, setSelection] = useState(12);
     orientation='${orientationName}'
     theme='primary'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -138,8 +144,8 @@ const [selection, setSelection] = useState(12);
     size='${sizeName}'
     theme='primary'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -170,8 +176,8 @@ const [selection, setSelection] = useState(12);
     itemsLimit={7}
     theme='${themeName}'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -197,8 +203,8 @@ s
     gradient={true}
     theme='primary'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -223,8 +229,8 @@ const [selection, setSelection] = useState(12);
     outlined={true}
     theme='primary'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -249,8 +255,8 @@ const [selection, setSelection] = useState(12);
     mild={false}
     theme='primary'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -277,8 +283,8 @@ const [selection, setSelection] = useState(12);
     enabled={false}
     theme='primary'
     
-    prevItems={<NavPrevItem />}
-    nextItems={<NavNextItem />}
+    prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+    nextItems={<NavNextItem onClick={() => setSelection(30)} />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -306,8 +312,8 @@ const [selection, setSelection] = useState(12);
         inheritEnabled={true}
         theme='primary'
         
-        prevItems={<NavPrevItem />}
-        nextItems={<NavNextItem />}
+        prevItems={<NavPrevItem onClick={() => setSelection( 1)} />}
+        nextItems={<NavNextItem onClick={() => setSelection(30)} />}
     >
 ${paginationSampleItemsString({indents: 2})}
     </Pagination>
