@@ -141,6 +141,13 @@ export const scrollingInterpolation   = new PropertyInfo('scrollingInterpolation
 
 
 
+// paginations:
+export const itemsLimit               = new PropertyInfo('itemsLimit')
+export const prevItems                = new PropertyInfo('prevItems')
+export const nextItems                = new PropertyInfo('nextItems')
+
+
+
 // modals:
 export const modalViewport            = new PropertyInfo('modalViewport')
 

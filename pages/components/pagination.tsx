@@ -10,6 +10,7 @@ import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { EnabledProperty, InheritEnabledProperty, StateProperties } from '../../properties/sections/stateProperties'
 import { ComponentProperties, NavComponentProperty } from '../../properties/sections/componentProperties'
+import { ItemsLimitProperty, NextItemsProperty, PrevItemsProperty } from '../../properties/sections/paginationProperties'
 
 
 
@@ -82,6 +83,9 @@ const PaginationPage: NextPage = () => {
                 <Preview display='right' stretch={false} cardBodyComponent={<DemoPagination />} />
             </HeroSection>
             <ComponentInstallation />
+            <ItemsLimitProperty />
+            <PrevItemsProperty />
+            <NextItemsProperty />
             <VariantProperties>
                 <OrientationProperty>
                     <Preview display='right' stretch={false}>
