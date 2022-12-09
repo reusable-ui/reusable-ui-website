@@ -195,7 +195,7 @@ ${paginationSampleItemsString()}
 const [selection, setSelection] = useState(12);
 
 /* ... */
-s
+
 <Pagination
     itemsLimit={7}
     gradient={true}
