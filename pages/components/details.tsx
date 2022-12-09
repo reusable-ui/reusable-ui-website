@@ -130,9 +130,8 @@ ${detailsSampleItemsString()}
                 <DetailsStyleProperty>
                     <Preview display='right' stretch={false}>
                         {detailsStyleOptions.map((detailsStyle, index) =>
-                            <div style={{minBlockSize: '21rem'}}>
+                            <div key={index} style={{minBlockSize: '21rem'}}>
                                 <Details
-                                    key={index}
                                     detailsStyle={detailsStyle}
                                 >
                                     <ParagraphLorem words={15} />
@@ -165,7 +164,7 @@ ${detailsSampleItemsString()}
                 <SizeProperty>
                     <Preview display='right' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
-                            <div style={{minBlockSize: (() => {
+                            <div key={index} style={{minBlockSize: (() => {
                                 switch (sizeName) {
                                     case 'sm': return '14rem';
                                     case 'lg': return '25rem';
@@ -173,7 +172,6 @@ ${detailsSampleItemsString()}
                                 }
                             })()}}>
                                 <Details
-                                    key={index}
                                     size={sizeName}
                                 />
                             </div>
@@ -199,9 +197,8 @@ ${detailsSampleItemsString()}
                 <ThemeProperty>
                     <Preview display='right' stretch={false}>
                         {themeOptions.map((themeName, index) =>
-                            <div style={{minBlockSize: '17rem'}}>
+                            <div key={index} style={{minBlockSize: '17rem'}}>
                                 <Details
-                                    key={index}
                                     theme={themeName}
                                 />
                             </div>
