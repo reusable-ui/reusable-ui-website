@@ -326,6 +326,11 @@ const Components: NextPage = () => {
                             A list of scrollable sections with automatically toggling-on the {packages.listItem.packageDisplay}&apos;s {packages.activatable.packageShortLink} at <em>corresponding scrolling position</em>.
                         </p>
                     </PackageItem>
+                    <PackageItem package={packages.pagination}>
+                        <p>
+                            A list of huge page numbers with limited displayed list.
+                        </p>
+                    </PackageItem>
                     <PackageItem package={packages.accordion}>
                         <p>
                             Represents a series of toggleable collapsing content.

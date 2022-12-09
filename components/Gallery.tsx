@@ -142,7 +142,7 @@ const Gallery = (props: GalleryProps) => {
         )}</ResponsiveProvider>
     );
     const pageNav = (
-        <ResponsiveProvider fallbacks={[null, 9, 5]}>{(limit) => (
+        <ResponsiveProvider fallbacks={[undefined, 9, 5]}>{(limit) => (
             <div className='panel'>
                 <Pagination
                     size='sm'
