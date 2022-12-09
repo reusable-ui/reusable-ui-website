@@ -1070,7 +1070,20 @@ ${navscrollSampleItemsString({indents: 2})}
             </StateProperties>
             <ComponentProperties>
                 <NavComponentProperty />
-                <NavscrollComponentProperty />
+                <NavscrollComponentProperty componentOf={<>the <strong>detection</strong> of nested <TheComponentLink /></>} code={
+`
+export const MyCustomNavscroll = (props: NavscrollProps) => {
+    
+    /* ... */
+    
+    return (
+        <Navscroll {...props} navscrollComponent={
+            <MyCustomNavscroll />
+        } />
+    );
+}
+`
+                } />
             </ComponentProperties>
             <InheritedProperties />
         </Main>
