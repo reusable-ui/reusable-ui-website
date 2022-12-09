@@ -98,6 +98,9 @@ const PaginationPage: NextPage = () => {
     itemsLimit={5}
     orientation='${orientationName}'
     theme='primary'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -122,6 +125,9 @@ ${paginationSampleItemsString()}
     itemsLimit={7}
     size='${sizeName}'
     theme='primary'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -145,6 +151,9 @@ ${paginationSampleItemsString()}
 <Pagination
     itemsLimit={7}
     theme='${themeName}'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -165,6 +174,9 @@ ${paginationSampleItemsString()}
     itemsLimit={7}
     gradient={true}
     theme='primary'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -184,6 +196,9 @@ ${paginationSampleItemsString()}
     itemsLimit={7}
     outlined={true}
     theme='primary'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -203,6 +218,9 @@ ${paginationSampleItemsString()}
     itemsLimit={7}
     mild={false}
     theme='primary'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -224,6 +242,9 @@ ${paginationSampleItemsString()}
     itemsLimit={7}
     enabled={false}
     theme='primary'
+    
+    prevItems={<NavPrevItem />}
+    nextItems={<NavNextItem />}
 >
 ${paginationSampleItemsString()}
 </Pagination>
@@ -246,6 +267,9 @@ ${paginationSampleItemsString()}
         itemsLimit={7}
         inheritEnabled={true}
         theme='primary'
+        
+        prevItems={<NavPrevItem />}
+        nextItems={<NavNextItem />}
     >
 ${paginationSampleItemsString({indents: 2})}
     </Pagination>
