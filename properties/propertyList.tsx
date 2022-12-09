@@ -164,6 +164,9 @@ export const buttonChildren           = new PropertyInfo('buttonChildren')
 
 export const toggleButtonComponent    = new PropertyInfo('toggleButtonComponent')
 
+export const prevButtonComponent      = new PropertyInfo('prevButtonComponent')
+export const nextButtonComponent      = new PropertyInfo('nextButtonComponent')
+
 export const iconComponent            = new PropertyInfo('iconComponent')
 
 export const trackComponent           = new PropertyInfo('trackComponent')

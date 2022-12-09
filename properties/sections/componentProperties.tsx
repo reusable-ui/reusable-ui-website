@@ -40,7 +40,7 @@ export const ContentComponentProperty = ({children: preview, content: specificCo
     return (
         <PropertySection property={properties.contentComponent} preview={preview}>
             <p>
-                Overwrites the <strong>internal {(specificContent ?? content).packageLink} component</strong> used as the <strong>composition</strong> of {specificComponent ?? <><TheComponentLink /> component</>}.
+                Overwrites the <strong>internal {(specificContent ?? content).packageLink} component</strong> used as {specificComponent ?? <>the <strong>composition</strong> of <TheComponentLink /> component</>}.
             </p>
             <TypeScriptCode collapsible={false}>{
 `<${componentName} contentComponent={
@@ -188,6 +188,48 @@ export const ToggleButtonComponentProperty = ({children: preview} : ToggleButton
             <TypeScriptCode collapsible={false}>{
 `<${componentName} toggleButtonComponent={
     <MyCustomToggleButton />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+
+
+export interface PrevButtonComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const PrevButtonComponentProperty = ({children: preview} : PrevButtonComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.prevButtonComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {button.packageLink} component</strong> used as the <TheComponentLink />&apos;s prev button.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} prevButtonComponent={
+    <MyCustomPrevButton />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
+    );
+}
+
+export interface NextButtonComponentPropertyProps {
+    children ?: React.ReactNode
+}
+export const NextButtonComponentProperty = ({children: preview} : NextButtonComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.nextButtonComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {button.packageLink} component</strong> used as the <TheComponentLink />&apos;s next button.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} nextButtonComponent={
+    <MyCustomNextButton />
 } />`
             }</TypeScriptCode>
         </PropertySection>
@@ -743,7 +785,7 @@ export const ListItemComponentProperty = ({children: preview, componentOf: speci
     return (
         <PropertySection property={properties.listItemComponent} preview={preview}>
             <p>
-                Overwrites the <strong>internal {listItem.packageLink} component</strong> used as the <strong>composition</strong> of {specificComponent ?? <><TheComponentLink /> component</>}.
+                Overwrites the <strong>internal {listItem.packageLink} component</strong> used as {specificComponent ?? <>the <strong>composition</strong> of <TheComponentLink /> component</>}.
             </p>
             <TypeScriptCode collapsible={false}>{
 `<${componentName} listItemComponent={
@@ -779,29 +821,22 @@ export const NavComponentProperty = ({children: preview} : NavComponentPropertyP
 
 
 export interface NavscrollComponentPropertyProps {
-    children ?: React.ReactNode
+    componentOf ?: React.ReactNode
+    code        ?: string
+    children    ?: React.ReactNode
 }
-export const NavscrollComponentProperty = ({children: preview} : NavscrollComponentPropertyProps) => {
+export const NavscrollComponentProperty = ({children: preview, componentOf: specificComponent, code: specificCode} : NavscrollComponentPropertyProps) => {
     const {component: {componentName}} = useComponentInfo();
     
     return (
         <PropertySection property={properties.navscrollComponent} preview={preview}>
             <p>
-                Overwrites the <strong>internal {navscroll.packageLink} component</strong> used as the <strong>detection</strong> of nested <TheComponentLink />.
+                Overwrites the <strong>internal {navscroll.packageLink} component</strong> used as {specificComponent ?? <>the <strong>composition</strong> of <TheComponentLink /> component</>}.
             </p>
-            <TypeScriptCode collapsible={false}>{
-`
-export const MyCustomNavscroll = (props: NavscrollProps) => {
-    
-    /* ... */
-    
-    return (
-        <${componentName} {...props} navscrollComponent={
-            <MyCustomNavscroll />
-        } />
-    );
-}
-`
+            <TypeScriptCode collapsible={false}>{specificCode ??
+`<${componentName} navscrollComponent={
+    <MyCustomNavscroll />
+} />`
             }</TypeScriptCode>
         </PropertySection>
     );
