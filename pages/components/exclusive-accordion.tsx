@@ -705,7 +705,7 @@ ${exclusiveAccordionSampleItemsString({indents: 2})}
                 <AccordionComponentProperty />
                 <ComponentContextProvider component={accordionItem}>
                     <ListItemComponentProperty componentOf={<>{accordionItem.packageDisplay}&apos;s <strong>header</strong></>} />
-                    <ContentComponentProperty content={listItem} componentOf={<>{accordionItem.packageDisplay}&apos;s <strong>content</strong></>} />
+                    <ContentComponentProperty content={listItem} componentOf={<>the <strong>composition</strong> of {accordionItem.packageDisplay}&apos;s <strong>content</strong></>} />
                 </ComponentContextProvider>
             </ComponentProperties>
             <InheritedProperties />
