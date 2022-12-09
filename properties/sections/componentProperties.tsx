@@ -3,7 +3,7 @@ import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-
 import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection, Section } from '../../components/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll, content, accordion } from '../../packages/packageList'
+import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll, content, accordion, basic } from '../../packages/packageList'
 import { Tips, Warning } from '../../components/Warning'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
@@ -24,6 +24,30 @@ export const ComponentProperties = ({children} : ComponentPropertiesProps) => {
             </p>
             {children}
         </Section>
+    );
+}
+
+
+
+export interface BasicComponentPropertyProps {
+    basic       ?: ComponentInfo
+    componentOf ?: React.ReactNode
+    children    ?: React.ReactNode
+}
+export const BasicComponentProperty = ({children: preview, basic: specificBasic, componentOf: specificComponent} : BasicComponentPropertyProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.basicComponent} preview={preview}>
+            <p>
+                Overwrites the <strong>internal {(specificBasic ?? basic).packageLink} component</strong> used as {specificComponent ?? <>the <strong>composition</strong> of <TheComponentLink /> component</>}.
+            </p>
+            <TypeScriptCode collapsible={false}>{
+`<${componentName} basicComponent={
+    <MyCustom${(specificBasic ?? basic).componentName} />
+} />`
+            }</TypeScriptCode>
+        </PropertySection>
     );
 }
 

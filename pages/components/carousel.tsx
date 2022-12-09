@@ -9,7 +9,7 @@ import { Carousel as OriCarousel, CarouselProps, AccordionItem, Accordion, List,
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedProperty, ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
-import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, ContentComponentProperty, NavscrollComponentProperty, NextButtonComponentProperty, PrevButtonComponentProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
+import { BasicComponentProperty, ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, ContentComponentProperty, NavscrollComponentProperty, NextButtonComponentProperty, PrevButtonComponentProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
@@ -194,6 +194,8 @@ ${carouselSampleItemsString()}
                 </MildProperty>
             </VariantProperties>
             <ComponentProperties>
+                <BasicComponentProperty componentOf={<>the <strong>base</strong> of <TheComponentLink /> component</>} />
+                
                 <PrevButtonComponentProperty />
                 <NextButtonComponentProperty />
                 
