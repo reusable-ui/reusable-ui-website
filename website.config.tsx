@@ -73,15 +73,13 @@ styleSheet(() => style({
         // }),
         
         ...rule('html', {
+            inlineSize: '100vw',
             blockSize: '100%',
             scrollPaddingTop: siteVars.headerHeight,
         }),
         ...rule(['html', 'body'], {
             padding : '0px',
             margin  : '0px',
-        }),
-        ...rule('body', {
-            maxInlineSize: '100vw',
         }),
         ...rule('body>*>header', {
             zIndex          : 1020,
