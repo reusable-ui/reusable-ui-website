@@ -153,6 +153,12 @@ export const modalViewport            = new PropertyInfo('modalViewport')
 
 
 
+// carousel:
+export const infiniteLoop             = new PropertyInfo('infiniteLoop')
+export const scrollingRef             = new PropertyInfo('scrollingRef')
+
+
+
 // components:
 export const basicComponent           = new PropertyInfo('basicComponent')
 export const contentComponent         = new PropertyInfo('contentComponent')

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
@@ -13,13 +13,18 @@ import { BasicComponentProperty, ButtonChildrenProperty, ButtonComponentProperty
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
-import { style } from '@cssfn/core'
+import { style, children } from '@cssfn/core'
 import { useFlipFlop } from '../../hooks/flipFlop'
+import { InfiniteLoopProperty, ScrollingRefProperty } from '../../properties/sections/carouselProperties'
 
 
 
 const useCarouselDemoStyle = dynamicStyleSheet(() => style({
     inlineSize: '20rem',
+    ...children('ul>li>article', {
+        padding: '1rem',
+        overflow: 'hidden',
+    }),
 }), { id: 'zerha4340z' });
 
 
@@ -27,17 +32,21 @@ const useCarouselDemoStyle = dynamicStyleSheet(() => style({
 const carouselSampleItems = () => {
     return [
         /* eslint-disable @next/next/no-img-element */
-        <img alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />,
+        <img key={0} alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />,
+        <img key={1} alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />,
+        <article key={2}>
+            <ParagraphLorem words={10} />
+            <ParagraphLorem words={10} />
+        </article>,
         /* eslint-disable @next/next/no-img-element */
-        <img alt='lorem image' src='/images/lorem-img/building-800x500.jpg' />,
+        <img key={3} alt='lorem image' src='/images/lorem-img/building-800x500.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img alt='lorem image' src='/images/lorem-img/street-800x800.jpg' />,
+        <img key={4} alt='lorem image' src='/images/lorem-img/street-800x800.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />,
+        <img key={5} alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />,
+        <img key={6} alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />,
     ];
 }
 
@@ -60,10 +69,38 @@ const carouselSampleItemsString = ({indents = 1} : CarouselSampleItemsStringProp
     return (
 `${tabs}<img alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />
 ${tabs}<img alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />
+${tabs}<article>...</article>
 ${tabs}{/* ... */}
 ${tabs}<img alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />
-${tabs}<img alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />
-`
+${tabs}<img alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />`
+    );
+}
+
+
+
+const DemoScrollingRef = () => {
+    const carouselScrollingRef = useRef<HTMLElement>(null);
+    
+    
+    
+    return (
+        <CardBody>
+            <Carousel
+                scrollingRef={carouselScrollingRef}
+            />
+            <Navscroll
+                scrollingOf={carouselScrollingRef}
+                theme='primary'
+            >
+                <ListItem>Waves</ListItem>
+                <ListItem>Leaf</ListItem>
+                <ListItem>Lorem Ipsum</ListItem>
+                <ListItem>Building</ListItem>
+                <ListItem>Street</ListItem>
+                <ListItem>Flower</ListItem>
+                <ListItem>Wood</ListItem>
+            </Navscroll>
+        </CardBody>
     );
 }
 
@@ -88,6 +125,55 @@ const CarouselPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <InfiniteLoopProperty>
+                <Preview display='right' stretch={false}>
+                    <Carousel
+                        infiniteLoop={true}
+                    />
+                </Preview>
+                <p></p>
+                <TypeScriptCode>{
+`
+<Carousel
+    infiniteLoop={true}
+    theme='primary'
+>
+${carouselSampleItemsString()}
+</Carousel>
+`
+                }</TypeScriptCode>
+            </InfiniteLoopProperty>
+            <ScrollingRefProperty>
+                <Preview display='right' stretch={false} cardBodyComponent={<DemoScrollingRef />} />
+                <p></p>
+                <TypeScriptCode>{
+`
+const carouselScrollingRef = useRef<HTMLElement>(null);
+
+/* ... */
+
+<Carousel
+    scrollingRef={carouselScrollingRef}
+    theme='primary'
+>
+${carouselSampleItemsString()}
+</Carousel>
+
+<Navscroll
+    scrollingOf={carouselScrollingRef}
+    theme='primary'
+>
+    <ListItem>Waves</ListItem>
+    <ListItem>Leaf</ListItem>
+    <ListItem>Lorem Ipsum</ListItem>
+    <ListItem>Building</ListItem>
+    <ListItem>Street</ListItem>
+    <ListItem>Flower</ListItem>
+    <ListItem>Wood</ListItem>
+</Navscroll>
+`
+                }</TypeScriptCode>
+            </ScrollingRefProperty>
             <VariantProperties>
                 <SizeProperty>
                     <Preview display='right' stretch={false}>

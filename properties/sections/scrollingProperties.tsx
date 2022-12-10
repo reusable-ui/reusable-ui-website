@@ -103,8 +103,6 @@ export const ScrollingSelectorProperty = ({children: preview}: PreviewProps) => 
 }
 
 export const ScrollingFilterProperty = ({children: preview}: PreviewProps) => {
-    const {} = useComponentInfo();
-    
     return (
         <PropertySection property={properties.scrollingFilter} preview={preview}>
             <p>
