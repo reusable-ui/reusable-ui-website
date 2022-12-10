@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
 import { basic, carousel } from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty } from '../../properties/sections/variantProperties'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { Carousel as OriCarousel, CarouselProps, AccordionItem, Accordion, List, ListItem, CardBody, Navscroll } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
@@ -275,6 +275,24 @@ ${carouselSampleItemsString()}
 `
                     }</TypeScriptCode>
                 </MildProperty>
+                <NudeProperty>
+                    <Preview display='right' stretch={false}>
+                        <Carousel
+                            nude={true}
+                        />
+                    </Preview>
+                    <p></p>
+                    <TypeScriptCode>{
+`
+<Carousel
+    nude={true}
+    theme='primary'
+>
+${carouselSampleItemsString()}
+</Carousel>
+`
+                    }</TypeScriptCode>
+                </NudeProperty>
             </VariantProperties>
             <ComponentProperties>
                 <BasicComponentProperty componentOf={<>the <strong>base</strong> of <TheComponentLink /> component</>} />
