@@ -2,19 +2,16 @@ import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { basic, button, carousel, toggleButton } from '../../packages/packageList'
-import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ButtonStyleProperty } from '../../properties/sections/variantProperties'
+import { basic, carousel } from '../../packages/packageList'
+import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
 import { Carousel as OriCarousel, CarouselProps, AccordionItem, Accordion, List, ListItem, CardBody, Navscroll } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
-import { DefaultExpandedProperty, ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
-import { BasicComponentProperty, ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, ContentComponentProperty, NavscrollComponentProperty, NextButtonComponentProperty, PrevButtonComponentProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
-import { LazyProperty } from '../../properties/sections/behaviorProperties'
+import { BasicComponentProperty, ComponentProperties, NavscrollComponentProperty, NextButtonComponentProperty, PrevButtonComponentProperty } from '../../properties/sections/componentProperties'
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style, children } from '@cssfn/core'
-import { useFlipFlop } from '../../hooks/flipFlop'
 import { InfiniteLoopProperty, ScrollingRefProperty } from '../../properties/sections/carouselProperties'
 
 
@@ -32,21 +29,21 @@ const useCarouselDemoStyle = dynamicStyleSheet(() => style({
 const carouselSampleItems = () => {
     return [
         /* eslint-disable @next/next/no-img-element */
-        <img key={0} alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />,
+        <img key={0} alt='waves'    src='/images/lorem-img/waves-800x600.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img key={1} alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />,
+        <img key={1} alt='leaf'     src='/images/lorem-img/leaf-800x700.jpg' />,
         <article key={2}>
             <ParagraphLorem words={10} />
             <ParagraphLorem words={10} />
         </article>,
         /* eslint-disable @next/next/no-img-element */
-        <img key={3} alt='lorem image' src='/images/lorem-img/building-800x500.jpg' />,
+        <img key={3} alt='building' src='/images/lorem-img/building-800x500.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img key={4} alt='lorem image' src='/images/lorem-img/street-800x800.jpg' />,
+        <img key={4} alt='street'   src='/images/lorem-img/street-800x800.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img key={5} alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />,
+        <img key={5} alt='flower'   src='/images/lorem-img/flower-700x400.jpg' />,
         /* eslint-disable @next/next/no-img-element */
-        <img key={6} alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />,
+        <img key={6} alt='wood'     src='/images/lorem-img/wood-700x600.jpg' />,
     ];
 }
 
@@ -67,12 +64,12 @@ interface CarouselSampleItemsStringProps {
 const carouselSampleItemsString = ({indents = 1} : CarouselSampleItemsStringProps = {}) => {
     const tabs = (new Array(indents).fill('    ')).join('');
     return (
-`${tabs}<img alt='lorem image' src='/images/lorem-img/waves-800x600.jpg' />
-${tabs}<img alt='lorem image' src='/images/lorem-img/leaf-800x700.jpg' />
+`${tabs}<img alt='waves'  src='/images/lorem-img/waves-800x600.jpg' />
+${tabs}<img alt='leaf'   src='/images/lorem-img/leaf-800x700.jpg' />
 ${tabs}<article>...</article>
 ${tabs}{/* ... */}
-${tabs}<img alt='lorem image' src='/images/lorem-img/flower-700x400.jpg' />
-${tabs}<img alt='lorem image' src='/images/lorem-img/wood-700x600.jpg' />`
+${tabs}<img alt='flower' src='/images/lorem-img/flower-700x400.jpg' />
+${tabs}<img alt='wood'   src='/images/lorem-img/wood-700x600.jpg' />`
     );
 }
 
@@ -148,7 +145,7 @@ ${carouselSampleItemsString()}
                 <p></p>
                 <TypeScriptCode>{
 `
-const carouselScrollingRef = useRef<HTMLElement>(null);
+const carouselScrollingRef = useRef(null);
 
 /* ... */
 
