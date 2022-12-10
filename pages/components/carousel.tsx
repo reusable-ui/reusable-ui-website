@@ -261,7 +261,7 @@ ${carouselSampleItemsString()}
                         <Carousel
                             mild={false}
                             
-                            navscrollComponent={<Navscroll mild={true} outlined={false} orientation='inline' listStyle='bullet' />}
+                            navscrollComponent={<Navscroll mild={true} outlined={false} />}
                         />
                     </Preview>
                     <p></p>
@@ -271,7 +271,7 @@ ${carouselSampleItemsString()}
     mild={false}
     theme='primary'
     
-    navscrollComponent={<Navscroll mild={true} outlined={false} orientation='inline' listStyle='bullet' />}
+    navscrollComponent={<Navscroll mild={true} outlined={false} />}
 >
 ${carouselSampleItemsString()}
 </Carousel>
