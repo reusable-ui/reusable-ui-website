@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { bodyElm, Card, CardBody, CardHeader, CardProps, headerElm, useResposiveResizeObserver } from '@reusable-ui/components'
+import { bodyElm, Card, CardBody, CardHeader, CardProps, headerElm, useResponsiveResizeObserver } from '@reusable-ui/components'
 import { style, children, rule } from '@cssfn/core'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { usesPadding, colors, spacers, useMergeRefs, useMergeClasses, useMergeStyles } from '@reusable-ui/core';
@@ -113,7 +113,7 @@ export const Preview = ({title, ...props}: PreviewProps) => {
         } // if
     }, [isLoaded, preventShift]);
     
-    useResposiveResizeObserver(cardRef, () => {
+    useResponsiveResizeObserver(cardRef, () => {
         const body = cardRef.current?.getElementsByClassName('.body')?.[0];
         if (body && (body.scrollWidth > body.clientWidth)) {
             setLoaded(false);
