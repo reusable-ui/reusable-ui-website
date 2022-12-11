@@ -5,7 +5,7 @@ import '../website.config';
 
 import '../styles/Site.global.scss'
 
-import React, { useRef } from 'react';
+import React, { Suspense, useRef } from 'react';
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -16,9 +16,9 @@ import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reu
 import { Section } from '../components/Section';
 import { ExtLink } from '../components/ExtLink';
 import { GoogleAnalytics } from '../components/GoogleAnalytics';
-import SiteNavbar from '../components/SiteNavbar';
+// import SiteNavbar from '../components/SiteNavbar';
 
-// const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
+const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
 
 
 
@@ -41,7 +41,7 @@ const Header = () => {
                         This site is <strong>under construction</strong>.
                     </p>
                 </Container>
-                {/* <Suspense fallback={
+                <Suspense fallback={
                     <Container
                         className='siteNavbar lazy'
                         theme='primary'
@@ -49,8 +49,8 @@ const Header = () => {
                         gradient={true}
                     />
                 }>
-                </Suspense> */}
-                <SiteNavbar />
+                    <SiteNavbarLazy />
+                </Suspense>
             </header>
             <UseElementCssSize elementRef={headerRef} varBlockSize={siteVars.headerHeight} />
         </>
