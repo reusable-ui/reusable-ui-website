@@ -16,6 +16,7 @@ import { style } from '@cssfn/core'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import Link from 'next/link'
 import { Tips } from '../../components/Warning'
+import { BreakpointProperty } from '../../properties/sections/behaviorProperties'
 
 
 
@@ -159,6 +160,7 @@ ${navbarSampleItemsString()}
 `
                 }</TypeScriptCode>
             </ExpandedProperty>
+            <BreakpointProperty />
             <VariantProperties>
                 <SizeProperty>
                     <Preview display='down' stretch={false}>

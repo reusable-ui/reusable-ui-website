@@ -105,6 +105,7 @@ export const actionCtrl               = new PropertyInfo('actionCtrl')
 export const lazy                     = new PropertyInfo('lazy')
 export const expandDelay              = new PropertyInfo('expandDelay')
 export const collapseDelay            = new PropertyInfo('collapseDelay')
+export const breakpoint               = new PropertyInfo('breakpoint')
 
 
 

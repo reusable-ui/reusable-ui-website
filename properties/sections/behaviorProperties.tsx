@@ -3,7 +3,8 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { PreviewProps, PropertySection } from '../../components/Section'
 import * as properties from '../propertyList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { Tips } from '../../components/Warning'
+import { Tips, Warning } from '../../components/Warning'
+import { breakpoints, responsiveProvider } from '../../packages/packageList'
 
 
 
@@ -102,6 +103,31 @@ export const CollapseDelayProperty = ({children: preview}: PreviewProps) => {
             <p>
                 Defines the <strong>minimum duration</strong> (in milliseconds) of the user for <strong>leaving</strong>/<strong>un-focusing</strong> of the corresponding component to <strong>hide</strong> the <TheComponentLink />.
             </p>
+        </PropertySection>
+    );
+}
+
+
+
+export const BreakpointProperty = ({children: preview}: PreviewProps) => {
+    const {component: {componentName}} = useComponentInfo();
+    
+    return (
+        <PropertySection property={properties.breakpoint} preview={preview}>
+            <p>
+                Statically defines the <strong>minimum width</strong> (as defined in {breakpoints.packageLink}) of the <TheComponentLink /> to <strong>responsively</strong> expand itself based on the available browser&apos;s width.
+            </p>
+            <p>
+                If not defined (or <code>{`<${componentName} breakpoint={undefined}>`}</code>), the <TheComponentLink /> uses {responsiveProvider.packageLink} to dynamically detect the occurrence of <em>overflowed elements</em> and determines the best widest mode without causing overflowed.
+            </p>
+            <Warning>
+                <p>
+                    If possible, statically define the <code>breakpoint</code> property.
+                </p>
+                <p>
+                    Our <em>automatic detection</em> is a bit inefficient to <em>try &amp; error</em> to find the best mode, several re-render may occur.
+                </p>
+            </Warning>
         </PropertySection>
     );
 }
