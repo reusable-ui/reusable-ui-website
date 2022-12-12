@@ -31,12 +31,12 @@ const navbarSampleItems = ({
     handleClickAsToggleMenu,
 } : NavbarParams) => {
     return [
-        <Link href='/'>
+        <Link key={0} href='/'>
             <Icon icon='reusable-ui' size='lg' />
         </Link>,
-        (!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />),
+        (!navbarExpanded && <HamburgerMenuButton key={1} {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />),
         
-        <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
+        <Collapse key={2} className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
             <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat' gradient={navbarExpanded ? 'inherit' : false}>
                 <NavItem><Link href='/'>Home</Link></NavItem>
                 <NavItem><Link href='/core'>Core</Link></NavItem>
@@ -152,6 +152,7 @@ ${navbarSampleItemsString()}
                     <Preview display='down' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
                             <Navbar
+                                key={index}
                                 size={sizeName}
                             />
                         )}
@@ -174,6 +175,7 @@ ${navbarSampleItemsString()}
                     <Preview display='down' stretch={false}>
                         {themeOptions.map((themeName, index) =>
                             <Navbar
+                                key={index}
                                 theme={themeName}
                             />
                         )}
