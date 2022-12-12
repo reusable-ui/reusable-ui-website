@@ -15,12 +15,15 @@ import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style } from '@cssfn/core'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import Link from 'next/link'
+import { Tips } from '../../components/Warning'
 
 
 
 const useNavbarDemoStyle = dynamicStyleSheet(() => style({
-    minInlineSize: '30rem',
-}), { id: 'c0ufoebbgw' });
+    boxSizing     : 'border-box',
+    minInlineSize : '26rem',
+    paddingInline : '1.5rem',
+}), { id: 'c0ufoebbgw', specificityWeight: 2 });
 
 
 
@@ -133,7 +136,16 @@ const NavbarPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
-            <ExpandedProperty>
+            <ExpandedProperty uncontrollableBehavior={<p><strong>Responsively</strong> expand/collapse the <TheComponentLink /> based on the available browser&apos;s width.</p>} description={<>
+                <p>
+                    Programatically <strong>controls</strong> the <TheComponentLink /> to show the expanded/collapsed mode.
+                </p>
+                <Tips>
+                    <p>
+                        In <em>most cases</em>, you don&apos;t need to assign this property. The <TheComponentLink /> will <strong>responsively</strong> adapt the best mode based on the available browser&apos;s width.
+                    </p>
+                </Tips>
+            </>}>
                 <Preview display='down' stretch={false} cardBodyComponent={<DemoExpanded />} />
                 <p></p>
                 <TypeScriptCode>{
@@ -151,10 +163,15 @@ ${navbarSampleItemsString()}
                 <SizeProperty>
                     <Preview display='down' stretch={false}>
                         {sizeOptions.map((sizeName, index) =>
-                            <Navbar
+                            <OriNavbar
                                 key={index}
                                 size={sizeName}
-                            />
+                                theme='primary'
+                            >
+                                {(navbarParams) =>
+                                    navbarSampleItems(navbarParams)
+                                }
+                            </OriNavbar>
                         )}
                     </Preview>
                     <p></p>
@@ -257,41 +274,113 @@ ${navbarSampleItemsString()}
                     <AccordionItem label='Layouts'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>togglerDisplay</code>
-                                <p>The <strong>display mode</strong> to apply to the <TheComponentLink />&apos;s {toggleButton.packageLink}.</p>
+                                <code>display</code>
+                                <p>The <strong>display mode</strong> of the <TheComponentLink />.</p>
+                                <p>The default is <code>grid</code> but you can change to <code>flex</code> or whatever you want.</p>
                             </ListItem>
                             <ListItem>
-                                <code>togglerTextAlign</code>
-                                <p>The <strong>text alignment</strong> to apply to the <TheComponentLink />&apos;s {toggleButton.packageLink}.</p>
+                                <code>gridAutoFlow</code>
+                                <p>The <strong>placement</strong> of each items (logo, toggler, etc).</p>
+                                <p>The default is placed to the next <code>column</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gridAutoColumns</code>
+                                <p>The <strong>width</strong> of each items (logo, toggler, etc) should take a space.</p>
+                                <p>The default is <code>auto</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gridTemplateRows</code>
+                                <p>The <strong>placeholder</strong> of rows.</p>
+                                <p>The default is single row of <code>1fr</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>justifyContent</code>
+                                <p>Specifies how the <strong>extra horizontal space</strong> should be distributed between the items (logo, toggler, etc).</p>
+                                <p>The default is <code>space-between</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>alignContent</code>
+                                <p>Specifies how the <strong>extra vertical space</strong> should be distributed between the items (logo, toggler, etc).</p>
+                                <p>The default is <code>center</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>justifyItems</code>
+                                <p>Specifies the default <strong>horizontal alignment</strong> for each items (logo, toggler, etc).</p>
+                                <p>The default is <code>center</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>alignItems</code>
+                                <p>Specifies the default <strong>vertical alignment</strong> for each items (logo, toggler, etc).</p>
+                                <p>The default is <code>center</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='positions'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>zIndex</code>
+                                <p>Specifies the <strong>overlapping importance weight</strong> when the <TheComponentLink /> overlaps to another elements.</p>
+                                <p>The default is <code>1020</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>position</code>
+                                <p>Specifies how the <TheComponentLink /> <strong>flows</strong> to the document.</p>
+                                <p>The default is <code>sticky</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>insetBlockStart</code>
+                                <p>Specifies where the <TheComponentLink /> should be <strong>sticky</strong> to the document.</p>
+                                <p>The default is <code>0px</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='sizes'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>boxSizing</code>
+                                <p>Specifies the <strong>measusing method</strong> of the <TheComponentLink />&apos;s size.</p>
+                                <p>The default is <code>content-box</code> (excluding the padding &amp; borderWidth).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>blockSize</code>
+                                <p>The <strong>height</strong> of the whole <TheComponentLink />.</p>
+                                <p>The default is <code>auto</code>.</p>
                             </ListItem>
                         </List>
                     </AccordionItem>
                     <AccordionItem label='Backgrounds, Foregrounds, Borders, &amp; Rings'>
                         <List listStyle='flush'>
                             <ListItem>
-                                <code>borderStyle</code>
-                                <p>The shape of border (stroke).</p>
-                            </ListItem>
-                            <ListItem>
                                 <code>borderWidth</code>
                                 <p>The thickness of border (stroke).</p>
                             </ListItem>
-                            <ListItem>
-                                <code>borderColor</code>
-                                <p>The un-themed color of border (stroke).</p>
-                            </ListItem>
-                            
                             <ListItem>
                                 <code>borderRadius</code>
                                 <p>The default rounded corner radius.</p>
                             </ListItem>
                             <ListItem>
-                                <code>borderRadiusSm</code>
-                                <p>The rounded corner radius when <code>{`size='sm'`}</code>.</p>
+                                <code>boxShadow</code>
+                                <p>The <code>boxShadow</code> to apply, so that the <TheComponentLink /> appears hovering on the top of content.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label='Spacings'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>paddingInline</code>
+                                <p>The <strong>inner spacing</strong> on the <strong>left &amp; right</strong> of the <TheComponentLink />.</p>
                             </ListItem>
                             <ListItem>
-                                <code>borderRadiusLg</code>
-                                <p>The rounded corner radius when <code>{`size='lg'`}</code>.</p>
+                                <code>paddingBlock</code>
+                                <p>The <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> of the <TheComponentLink />.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapInline</code>
+                                <p>The <strong>horizontal spacing</strong> between the items (logo, toggler, etc).</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gapBlock</code>
+                                <p>The <strong>vertical spacing</strong> between the items (logo, toggler, etc).</p>
                             </ListItem>
                         </List>
                     </AccordionItem>

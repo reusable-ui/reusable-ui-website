@@ -553,10 +553,11 @@ export const InheritValidationProperty = ({children: preview}: PreviewProps) => 
 
 
 export interface ExpandedPropertyProps extends PreviewProps {
-    uncontrollableBehavior ?: React.ReactNode
-    collapsibleComponentText   ?: React.ReactNode
+    uncontrollableBehavior   ?: React.ReactNode
+    collapsibleComponentText ?: React.ReactNode
+    description              ?: React.ReactNode
 }
-export const ExpandedProperty = ({children: preview, uncontrollableBehavior, collapsibleComponentText}: ExpandedPropertyProps) => {
+export const ExpandedProperty = ({children: preview, uncontrollableBehavior, collapsibleComponentText, description}: ExpandedPropertyProps) => {
     return (
         <PropertySection property={properties.expanded} preview={preview} possibleValues={
             <Accordion>
@@ -577,9 +578,9 @@ export const ExpandedProperty = ({children: preview, uncontrollableBehavior, col
                 </AccordionItem>
             </Accordion>
         }>
-            <p>
+            {description ?? <p>
                 <strong>Expands</strong>/<strong>Collapses</strong> the {collapsibleComponentText ?? <TheComponentLink />}.
-            </p>
+            </p>}
         </PropertySection>
     );
 }

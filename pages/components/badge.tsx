@@ -301,11 +301,11 @@ ${defaultFloatingChildren}
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>paddingInline</code>
-                                <p>The default <strong>inner spacing</strong> on the <strong>left &amp; right</strong>.</p>
+                                <p>The default <strong>inner spacing</strong> on the <strong>left &amp; right</strong> of the <TheComponentLink />.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingBlock</code>
-                                <p>The default <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong>.</p>
+                                <p>The default <strong>inner spacing</strong> on the <strong>top &amp; bottom</strong> of the <TheComponentLink />.</p>
                             </ListItem>
                             <ListItem>
                                 <code>paddingInlineSm</code>

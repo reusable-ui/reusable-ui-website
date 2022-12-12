@@ -361,7 +361,7 @@ ${cardSampleItemsString({indents: 2})}
                             
                             <ListItem>
                                 <code>borderRadius</code>
-                                <p>The default rounded corner radius.</p>
+                                <p>The rounded corner radius.</p>
                             </ListItem>
                             <ListItem>
                                 <code>borderRadiusSm</code>
@@ -389,7 +389,7 @@ ${cardSampleItemsString({indents: 2})}
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>boxSizing</code>
-                                <p>The <strong>final height</strong> of the whole <TheComponentLink />, including <strong>borders</strong> and <strong>paddings</strong>.</p>
+                                <p>Specifies the <strong>measusing method</strong> of the <TheComponentLink />&apos;s size.</p>
                             </ListItem>
                             <ListItem>
                                 <code>blockSize</code>

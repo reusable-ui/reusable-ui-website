@@ -403,7 +403,7 @@ const ProgressPage: NextPage = () => {
                             
                             <ListItem>
                                 <code>barBoxSizing</code>
-                                <p>The <strong>final height</strong> of the whole <TheNestedComponentDisplay />, including <strong>borders</strong> and <strong>paddings</strong>.</p>
+                                <p>Specifies the <strong>measusing method</strong> of the <TheNestedComponentDisplay />&apos;s size.</p>
                             </ListItem>
                             
                             <ListItem>
