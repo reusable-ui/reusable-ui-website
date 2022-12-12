@@ -442,6 +442,75 @@ ${navbarSampleItemsString()}
                             </ListItem>
                         </List>
                     </AccordionItem>
+                    
+                    <AccordionItem label='(floating) Lists'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>listPosition</code>
+                                <p>Specifies how the <TheComponentLink />&apos;s list <strong>flows</strong> to the document when on <em>mobile mode</em>.</p>
+                                <p>The default is <code>absolute</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listPositionExpand</code>
+                                <p>Specifies how the <TheComponentLink />&apos;s list <strong>flows</strong> to the document when on <em>desktop mode</em>.</p>
+                                <p>The default is <code>unset</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listInsetInline</code>
+                                <p>Specifies where the <TheComponentLink />&apos;s list should be <strong>positioned horizontally</strong> to the document when on <em>mobile mode</em>.</p>
+                                <p>The default is <code>0px</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listInsetInlineExpand</code>
+                                <p>Specifies where the <TheComponentLink />&apos;s list should be <strong>positioned horizontally</strong> to the document when on <em>desktop mode</em>.</p>
+                                <p>The default is <code>unset</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listInsetBlockStart</code>
+                                <p>Specifies where the <TheComponentLink />&apos;s list should be <strong>top positioned</strong> to the document when on <em>mobile mode</em>.</p>
+                                <p>The default is <code>0px</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listInsetBlockStartExpand</code>
+                                <p>Specifies where the <TheComponentLink />&apos;s list should be <strong>top positioned</strong> to the document when on <em>desktop mode</em>.</p>
+                                <p>The default is <code>unset</code>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    
+                    <AccordionItem label='Menus'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>menuDisplay</code>
+                                <p>The <strong>display mode</strong> of the <TheComponentLink />&apos;s menu (the clickable navigation).</p>
+                                <p>The default is <code>flex</code> but you can change to <code>grid</code> or whatever you want.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>menuFlexDirection</code>
+                                <p>The <strong>flex direction</strong> of the <TheComponentLink />&apos;s menu.</p>
+                                <p>The default is <code>row</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>menuJustifyContent</code>
+                                <p>Specifies how the <strong>extra horizontal space</strong> should be distributed between the children of the <TheComponentLink />&apos;s menu.</p>
+                                <p>The default is <code>center</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>menuAlignItems</code>
+                                <p>Specifies the default <strong>vertical alignment</strong> for each child of the <TheComponentLink />&apos;s menu.</p>
+                                <p>The default is <code>center</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>menuFlexWrap</code>
+                                <p>Specifies whether the children of the <TheComponentLink />&apos;s menu can be forced onto one line or can wrap onto multiple lines.</p>
+                                <p>The default is <code>nowrap</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>menuWhiteSpace</code>
+                                <p>Defines how a <strong>white space</strong> inside the child of the <TheComponentLink />&apos;s menu is handled.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
                 </Accordion>
             }>
                 <TypeScriptCode>{
