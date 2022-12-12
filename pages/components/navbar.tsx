@@ -384,6 +384,64 @@ ${navbarSampleItemsString()}
                             </ListItem>
                         </List>
                     </AccordionItem>
+                    
+                    <AccordionItem label='Lists'>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>listGridArea</code>
+                                <p>Defines the <code>gridArea</code> of the <TheComponentLink />&apos;s list (the container of the {nav.packageLink} - responsible for showing/hidding the {nav.packageLink}) when on <em>mobile mode</em>.</p>
+                                <p>The default is <code>2/1/2/3</code>, which means spanning from the logo to the toggler and placed at the second (implicit) row.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listGridAreaExpand</code>
+                                <p>Defines the <code>gridArea</code> of the <TheComponentLink />&apos;s list (the container of the {nav.packageLink}) when on <em>desktop mode</em>.</p>
+                                <p>The default is <code>unset</code>, which means placed as defined inside the <TheComponentLink />.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>listDisplay</code>
+                                <p>The <strong>display mode</strong> of the <TheComponentLink />&apos;s list.</p>
+                                <p>The default is <code>flex</code> but you can change to <code>grid</code> or whatever you want.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listFlexDirection</code>
+                                <p>The <strong>flex direction</strong> of the <TheComponentLink />&apos;s list when on <em>mobile mode</em>.</p>
+                                <p>The default is <code>column</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listFlexDirectionExpand</code>
+                                <p>The <strong>flex direction</strong> of the <TheComponentLink />&apos;s list when on <em>desktop mode</em>.</p>
+                                <p>The default is <code>row</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listJustifySelf</code>
+                                <p>Specifies the <strong>horizontal alignment</strong> of the <TheComponentLink />&apos;s list.</p>
+                                <p>The default is <code>stretch</code>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listAlignSelf</code>
+                                <p>Specifies the <strong>vertical alignment</strong> of the <TheComponentLink />&apos;s list.</p>
+                                <p>The default is <code>stretch</code>.</p>
+                            </ListItem>
+                            
+                            <ListItem>
+                                <code>listMarginInline</code>
+                                <p>The <strong>outer spacing</strong> on the <strong>left &amp; right</strong> of the <TheComponentLink />&apos;s list when on <em>mobile mode</em>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listMarginInlineExpand</code>
+                                <p>The <strong>outer spacing</strong> on the <strong>left &amp; right</strong> of the <TheComponentLink />&apos;s list when on <em>desktop mode</em>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listMarginBlock</code>
+                                <p>The <strong>outer spacing</strong> on the <strong>top &amp; bottom</strong> of the <TheComponentLink />&apos;s list when on <em>mobile mode</em>.</p>
+                            </ListItem>
+                            <ListItem>
+                                <code>listMarginBlockExpand</code>
+                                <p>The <strong>outer spacing</strong> on the <strong>top &amp; bottom</strong> of the <TheComponentLink />&apos;s list when on <em>desktop mode</em>.</p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
                 </Accordion>
             }>
                 <TypeScriptCode>{
