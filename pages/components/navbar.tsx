@@ -426,7 +426,7 @@ ${navbarSampleItemsString()}
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='positions'>
+                    <AccordionItem label='Positions'>
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>zIndex</code>
@@ -445,7 +445,7 @@ ${navbarSampleItemsString()}
                             </ListItem>
                         </List>
                     </AccordionItem>
-                    <AccordionItem label='sizes'>
+                    <AccordionItem label='Sizes'>
                         <List listStyle='flush'>
                             <ListItem>
                                 <code>boxSizing</code>
