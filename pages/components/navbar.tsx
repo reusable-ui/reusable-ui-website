@@ -1,46 +1,52 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
-import { basic, content, hamburgerMenuButton, nav, navbar, toggleButton } from '../../packages/packageList'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Section, Variables } from '../../components/Section'
+import { basic, content, hamburgerMenuButton, nav, navbar } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
-import { Navbar as OriNavbar, NavbarProps, AccordionItem, Accordion, List, ListItem, CardBody, Icon, Collapse, Nav, NavItem, NavbarParams, HamburgerMenuButton } from '@reusable-ui/components'
+import { Navbar as OriNavbar, NavbarProps, navbars, AccordionItem, Accordion, List, ListItem, CardBody, Icon, Collapse, Nav, NavItem, NavbarParams, HamburgerMenuButton } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { ExpandedProperty } from '../../properties/sections/stateProperties'
 import { BasicComponentProperty, ComponentProperties } from '../../properties/sections/componentProperties'
-import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
 import { style } from '@cssfn/core'
 import { useFlipFlop } from '../../hooks/flipFlop'
 import Link from 'next/link'
 import { Tips } from '../../components/Warning'
 import { BreakpointProperty } from '../../properties/sections/behaviorProperties'
+import { active, expanded, gradient, mild, outlined, size, theme } from '../../properties/propertyList'
+import { usesPadding } from '@reusable-ui/core'
 
 
 
-const useNavbarDemoStyle = dynamicStyleSheet(() => style({
-    boxSizing     : 'border-box',
-    minInlineSize : '26rem',
-    paddingInline : '1.5rem',
-}), { id: 'c0ufoebbgw', specificityWeight: 2 });
+const useNavbarDemoStyle = dynamicStyleSheet(() => {
+    const {paddingVars} = usesPadding();
+    
+    return style({
+        boxSizing                   : 'border-box',
+        minInlineSize               : '26rem',
+        [paddingVars.paddingInline] : '1.5rem',
+        [navbars.listMarginInline ] : `calc(0px - ${paddingVars.paddingInline})`,
+    });
+}, { id: 'c0ufoebbgw', specificityWeight: 2 });
 
 
 
 const navbarSampleItems = ({
     basicVariantProps,
     navbarExpanded,
-    menuExpanded,
-    handleClickAsToggleMenu,
+    listExpanded,
+    handleClickToToggleList,
 } : NavbarParams) => {
     return [
         <Link key={0} href='/'>
             <Icon icon='reusable-ui' size='lg' />
         </Link>,
-        (!navbarExpanded && <HamburgerMenuButton key={1} {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />),
+        (!navbarExpanded && <HamburgerMenuButton key={1} {...basicVariantProps} className='toggler' active={listExpanded} onClick={handleClickToToggleList} />),
         
-        <Collapse key={2} className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
+        <Collapse key={2} className='list' mainClass={navbarExpanded ? '' : undefined} expanded={listExpanded}>
             <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat' gradient={navbarExpanded ? 'inherit' : false}>
                 <NavItem><Link href='/'>Home</Link></NavItem>
                 <NavItem><Link href='/core'>Core</Link></NavItem>
@@ -74,15 +80,15 @@ const navbarSampleItemsString = ({indents = 1} : NavbarSampleItemsStringProps = 
 `    {({
         basicVariantProps,
         navbarExpanded,
-        menuExpanded,
-        handleClickAsToggleMenu,
+        listExpanded,
+        handleClickToToggleList,
     }) => <>
         <Link href='/'>
             <Icon icon='reusable-ui' size='lg' />
         </Link>
-        {!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />}
+        {!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={listExpanded} onClick={handleClickToToggleList} />}
         
-        <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
+        <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={listExpanded}>
             <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat' gradient={navbarExpanded ? 'inherit' : false}>
                 <NavItem><Link href='/'>Home</Link></NavItem>
                 <NavItem><Link href='/core'>Core</Link></NavItem>
@@ -137,6 +143,88 @@ const NavbarPage: NextPage = () => {
                 </Preview>
             </HeroSection>
             <ComponentInstallation />
+            <Section title='Defines the Navbar-ed UI'>
+                <p>
+                    The <TheComponentLink /> should have one <strong>render function</strong> to dynamically generate nested components based on <TheComponentLink />&apos;s state.
+                </p>
+                <p>
+                    The <strong>render function</strong> will receive a <code>props</code> containing these properties:
+                </p>
+                <Accordion theme='primary'>
+                    <AccordionItem label={<code>basicVariantProps: BasicVariantProps</code>}>
+                        <List listStyle='flush'>
+                            <ListItem>
+                                <code>size</code>
+                                <p>
+                                    The current {size.propertyLink} of the <TheComponentLink />.
+                                </p>
+                            </ListItem>
+                            <ListItem>
+                                <code>theme</code>
+                                <p>
+                                    The current {theme.propertyLink} of the <TheComponentLink />.
+                                </p>
+                            </ListItem>
+                            <ListItem>
+                                <code>gradient</code>
+                                <p>
+                                    The current {gradient.propertyLink} of the <TheComponentLink />.
+                                </p>
+                            </ListItem>
+                            <ListItem>
+                                <code>outlined</code>
+                                <p>
+                                    The current {outlined.propertyLink} of the <TheComponentLink />.
+                                </p>
+                            </ListItem>
+                            <ListItem>
+                                <code>mild</code>
+                                <p>
+                                    The current {mild.propertyLink} of the <TheComponentLink />.
+                                </p>
+                            </ListItem>
+                        </List>
+                    </AccordionItem>
+                    <AccordionItem label={<code>navbarExpanded: boolean</code>}>
+                        <p>
+                            The current {expanded.propertyLink} state of the <TheComponentLink />.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={<code>listExpanded: boolean</code>}>
+                        <p>
+                            The current {expanded.propertyLink} state of the <TheComponentLink />&apos;s list.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={<code>{`toggleList: EventHandler<boolean|undefined>`}</code>}>
+                        <p>
+                            A callback function to toggle or set the {expanded.propertyLink} state of the <TheComponentLink />&apos;s list.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={<code>{`handleActiveChange: EventHandler<ActiveChangeEvent>`}</code>}>
+                        <p>
+                            A callback function to sync the {active.propertyLink} state to the {expanded.propertyLink} state of the <TheComponentLink />&apos;s list.
+                        </p>
+                    </AccordionItem>
+                    <AccordionItem label={<code>{`handleClickToToggleList: React.MouseEventHandler<Element>`}</code>}>
+                        <p>
+                            A callback function to handle click event from {hamburgerMenuButton.packageLink} (or any clickable elements) to toggle the {expanded.propertyLink} state of the <TheComponentLink />&apos;s list.
+                        </p>
+                        <p>
+                            The <code>event</code> will automatically ignored if <code>defaultPrevented === true</code> and will automatically <code>preventDefault()</code> after the toggling state was performed.
+                        </p>
+                    </AccordionItem>
+                </Accordion>
+                <p>
+                    Then the <strong>render function</strong> should return a <strong>JSX Element</strong> for displaying the desired components. See the code example below:
+                </p>
+                <TypeScriptCode>{
+`
+<Navbar>
+${navbarSampleItemsString()}
+</Navbar>
+`
+                }</TypeScriptCode>
+            </Section>
             <ExpandedProperty uncontrollableBehavior={<p><strong>Responsively</strong> expand/collapse the <TheComponentLink /> based on the available browser&apos;s width.</p>} description={<>
                 <p>
                     Programatically <strong>controls</strong> the <TheComponentLink /> to show the expanded/collapsed mode.
@@ -193,10 +281,16 @@ ${navbarSampleItemsString()}
                 <ThemeProperty>
                     <Preview display='down' stretch={false}>
                         {themeOptions.map((themeName, index) =>
-                            <Navbar
-                                key={index}
-                                theme={themeName}
-                            />
+                            <React.Fragment key={index}>
+                                <Navbar
+                                    theme={themeName}
+                                    expanded={false}
+                                />
+                                <Navbar
+                                    theme={themeName}
+                                    expanded={true}
+                                />
+                            </React.Fragment>
                         )}
                     </Preview>
                     <p></p>
@@ -216,6 +310,11 @@ ${navbarSampleItemsString()}
                     <Preview display='down' stretch={false}>
                         <Navbar
                             gradient={true}
+                            expanded={false}
+                        />
+                        <Navbar
+                            gradient={true}
+                            expanded={true}
                         />
                     </Preview>
                     <p></p>
@@ -234,6 +333,11 @@ ${navbarSampleItemsString()}
                     <Preview display='down' stretch={false}>
                         <Navbar
                             outlined={true}
+                            expanded={false}
+                        />
+                        <Navbar
+                            outlined={true}
+                            expanded={true}
                         />
                     </Preview>
                     <p></p>
@@ -252,6 +356,11 @@ ${navbarSampleItemsString()}
                     <Preview display='down' stretch={false}>
                         <Navbar
                             mild={true}
+                            expanded={false}
+                        />
+                        <Navbar
+                            mild={true}
+                            expanded={true}
                         />
                     </Preview>
                     <p></p>
