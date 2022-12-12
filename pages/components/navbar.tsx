@@ -67,7 +67,13 @@ const navbarSampleItemsString = ({indents = 1} : NavbarSampleItemsStringProps = 
     const tabs = (new Array(indents).fill('    ')).join('');
     
     return (
-`        <Link href='/'>
+`    {({
+        basicVariantProps,
+        navbarExpanded,
+        menuExpanded,
+        handleClickAsToggleMenu,
+    }) => <>
+        <Link href='/'>
             <Icon icon='reusable-ui' size='lg' />
         </Link>
         {!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />}
@@ -79,7 +85,8 @@ const navbarSampleItemsString = ({indents = 1} : NavbarSampleItemsStringProps = 
                 <NavItem><Link href='/components'>Components</Link></NavItem>
                 <NavItem href='https://github.com/reusable-ui' target='_blank'>GitHub</NavItem>
             </Nav>
-        </Collapse>`
+        </Collapse>
+    </>}`
     );
 }
 
