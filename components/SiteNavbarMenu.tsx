@@ -14,15 +14,15 @@ const SiteLogo = () => {
 const SiteNavbarMenu = ({
         basicVariantProps,
         navbarExpanded,
-        menuExpanded,
-        handleClickAsToggleMenu,
+        listExpanded,
+        handleClickToToggleList,
     } : NavbarParams) => {
     return (
         <>
             <SiteLogo />
-            {!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={menuExpanded} onClick={handleClickAsToggleMenu} />}
+            {!navbarExpanded && <HamburgerMenuButton {...basicVariantProps} className='toggler' active={listExpanded} onClick={handleClickToToggleList} />}
             
-            <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={menuExpanded}>
+            <Collapse className='list' mainClass={navbarExpanded ? '' : undefined} expanded={listExpanded}>
                 <Nav tag='ul' role='' {...basicVariantProps} orientation={navbarExpanded ? 'inline' : 'block'} listStyle='flat' gradient={navbarExpanded ? 'inherit' : false}>
                     <NavItem><Link href='/'>Home</Link></NavItem>
                     <NavItem><Link href='/core'>Core</Link></NavItem>
