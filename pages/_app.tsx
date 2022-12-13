@@ -16,9 +16,9 @@ import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reu
 import { Section } from '../components/Section';
 import { ExtLink } from '../components/ExtLink';
 import { GoogleAnalytics } from '../components/GoogleAnalytics';
-// import SiteNavbar from '../components/SiteNavbar';
+import SiteNavbar from '../components/SiteNavbar';
 
-const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
+// const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
 
 
 
@@ -41,7 +41,7 @@ const Header = () => {
                         This site is <strong>under construction</strong>.
                     </p>
                 </Container>
-                <Suspense fallback={
+                {/* <Suspense fallback={
                     <Container
                         className='siteNavbar lazy'
                         theme='primary'
@@ -50,7 +50,8 @@ const Header = () => {
                     />
                 }>
                     <SiteNavbarLazy />
-                </Suspense>
+                </Suspense> */}
+                <SiteNavbar />
             </header>
             <UseElementCssSize elementRef={headerRef} varBlockSize={siteVars.headerHeight} />
         </>
