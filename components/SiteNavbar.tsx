@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { EventHandler } from 'react';
 
 import { Navbar, navbarValues } from '@reusable-ui/components'
 import SiteNavbarMenu from './SiteNavbarMenu';
@@ -9,21 +9,30 @@ import SiteNavbarMenu from './SiteNavbarMenu';
 if (typeof(window) !== 'undefined') { // run on client_side only, do nothing on server_side
     const scrollElm = document.scrollingElement;
     if (scrollElm) {
-        scrollElm.scrollTop = 0;
+        if (scrollElm.scrollTop !== 0) scrollElm.scrollTop = 0;
         
         
         
-        document.addEventListener('scroll', () => {
-            scrollElm.scrollTop = 0;
-        }, { once: true, passive: true }); // run *once* to prevent unpleasant accessibility in case of the 'DOMContentLoaded' is *never* triggered
+        const handleScroll = () => {
+            if (scrollElm.scrollTop !== 0) scrollElm.scrollTop = 0;
+        };
+        document.addEventListener('scroll', handleScroll);
         
         
         
-        window.addEventListener('DOMContentLoaded', () => {
-            requestAnimationFrame(() => {
-                scrollElm.scrollTop = 0;
-            });
-        }, { once: true });
+        let remainingWaiting = 15;
+        const handleTimeout = () => {
+            // conditions:
+            if (!remainingWaiting--) {
+                // actions:
+                document.removeEventListener('scroll', handleScroll);
+            }
+            else {
+                // re-wait:
+                setTimeout(handleTimeout, 0);
+            } // if
+        };
+        handleTimeout();
     } // if
 } // if
 //#endregion reset scrollbar to the top on the first full page load
