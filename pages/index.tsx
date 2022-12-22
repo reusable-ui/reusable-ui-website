@@ -10,7 +10,11 @@ import { ExtLink } from '../components/ExtLink'
 
 if (typeof(document) !== 'undefined') {
     const scrollElm = document.scrollingElement;
-    if (scrollElm) scrollElm.scrollTop = 0;
+    if (scrollElm) {
+        requestAnimationFrame(() => {
+            scrollElm.scrollTop = 0;
+        });
+    }
 }
 
 
