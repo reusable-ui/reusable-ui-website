@@ -20,4 +20,8 @@
     align-items: stretch;
     
     gap: 2rem;
+    
+    &>section {
+        padding: 2rem;
+    }
 }
