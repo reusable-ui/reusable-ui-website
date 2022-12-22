@@ -5,6 +5,17 @@ import SiteNavbarMenu from './SiteNavbarMenu';
 
 
 
+if (typeof(document) !== 'undefined') {
+    const scrollElm = document.scrollingElement;
+    if (scrollElm) {
+        requestAnimationFrame(() => {
+            scrollElm.scrollTop = 0;
+        });
+    } // if
+} // if
+
+
+
 navbarValues.boxSizing = 'border-box';
 navbarValues.blockSize = '3.25rem';
 

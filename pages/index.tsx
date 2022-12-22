@@ -8,17 +8,6 @@ import { ExtLink } from '../components/ExtLink'
 
 
 
-if (typeof(document) !== 'undefined') {
-    const scrollElm = document.scrollingElement;
-    if (scrollElm) {
-        requestAnimationFrame(() => {
-            scrollElm.scrollTop = 0;
-        });
-    }
-}
-
-
-
 const Home: NextPage = () => {
     return (<>
         <Head>
