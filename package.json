@@ -10,9 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cssfn/core": "^2.0.12",
-    "@cssfn/cssfn-dom": "^2.0.18",
-    "@cssfn/cssfn-react": "^2.0.24",
+    "@cssfn/core": "^2.0.13",
+    "@cssfn/cssfn-dom": "^2.0.19",
+    "@cssfn/cssfn-react": "^2.0.25",
     "@reusable-ui/components": "^5.0.14",
     "@reusable-ui/core": "^5.0.14",
     "next": "^13.1.1",
