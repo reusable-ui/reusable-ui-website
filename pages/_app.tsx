@@ -17,8 +17,20 @@ import { Section } from '../components/Section';
 import { ExtLink } from '../components/ExtLink';
 import { GoogleAnalytics } from '../components/GoogleAnalytics';
 import SiteNavbar from '../components/SiteNavbar';
+import { globalScope, rule, styleSheets } from '@cssfn/core';
 
 // const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
+
+
+
+styleSheets([
+    globalScope({
+        ...rule('body', {
+            // layouts:
+            display: 'block',
+        }, { specificityWeight: 2 }),
+    }),
+]);
 
 
 
