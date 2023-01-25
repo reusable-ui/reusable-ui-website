@@ -2,6 +2,7 @@
   "name": "reusable-ui-website",
   "version": "0.1.0",
   "private": true,
+  "sideEffects": false,
   "scripts": {
     "dev": "rd /s /q .next & next dev",
     "build": "rd /s /q .next & next build",
