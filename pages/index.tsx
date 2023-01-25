@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.scss'
-import { HeroSection, Main, Section } from '../components/Section'
+import { HeroSection, Main, Section } from '../components/sections/sections'
 import { ButtonIcon as Button } from '@reusable-ui/components'
 import { ExtLink } from '../components/ExtLink'
 

@@ -1,7 +1,7 @@
 import React, {  } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { InheritedProperties, ComponentInstallation, Variables, HeroSection, Main } from '../../../components/Section'
+import { InheritedProperties, ComponentInstallation, Variables, HeroSection, Main } from '../../../components/sections/sections'
 import { generic, icon } from '../../../packages/packageList'
 import * as packages from '../../../packages/packageList'
 import { iconSizeOptions as sizeOptions, ThemeProperty, themeOptions, VariantProperties, ContextualMildProperty } from '../../../properties/sections/variantProperties'

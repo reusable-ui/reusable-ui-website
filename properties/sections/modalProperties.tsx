@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext';
-import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/sections/sections'
 import { TypeScriptCode } from '../../components/Code'
 import { card, generic } from '../../packages/packageList'
 import * as properties from '../propertyList'

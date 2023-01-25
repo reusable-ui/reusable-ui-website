@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PropertySection, Section } from '../../components/Section'
+import { PropertySection, Section } from '../../components/sections/sections'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
 import { BusyBar } from '../../components/BusyBar'

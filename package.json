@@ -13,6 +13,7 @@
     "@cssfn/core": "^2.0.14",
     "@cssfn/cssfn-dom": "^2.0.20",
     "@cssfn/cssfn-react": "^2.0.26",
+    "@next/bundle-analyzer": "^13.1.5",
     "@reusable-ui/components": "^5.0.14",
     "@reusable-ui/core": "^5.0.14",
     "next": "^13.1.1",

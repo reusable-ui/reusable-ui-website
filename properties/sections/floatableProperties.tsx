@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/sections/sections'
 import * as properties from '../propertyList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { BasicProps, CardBody, List, ListItem } from '@reusable-ui/components'

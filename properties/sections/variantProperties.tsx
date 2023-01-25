@@ -3,7 +3,7 @@ import { OrientationName, OrientationWithDirectionName, SizeName, ThemeName, the
 import type { SizeName as IconSizeName } from '@reusable-ui/icon'
 import type { SizeName as ButtonIconSizeName } from '@reusable-ui/button-icon'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/sections/sections'
 import * as properties from '../propertyList'
 import { background, foreground, border, padding, themable, colorable, carousel, content, button, card } from '../../packages/packageList'
 import { Tips } from '../../components/Warning'

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/sections/sections'
 import { card, modalSide } from '../../packages/packageList'
 import { Preview } from '../../components/Preview'
 import { AccordionItem, Accordion } from '../../components/Accordion'

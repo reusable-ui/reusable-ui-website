@@ -1,6 +1,6 @@
 import React from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection } from '../../components/Section'
+import { PreviewProps, PropertySection } from '../../components/sections/sections'
 import * as properties from '../propertyList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 import { Tips, Warning } from '../../components/Warning'

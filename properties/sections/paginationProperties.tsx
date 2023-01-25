@@ -1,5 +1,5 @@
 import React, {  } from 'react'
-import { PreviewProps, PropertySection } from '../../components/Section'
+import { PreviewProps, PropertySection } from '../../components/sections/sections'
 import * as properties from '../propertyList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection, Section } from '../../components/Section'
+import { PreviewProps, PropertySection, Section } from '../../components/sections/sections'
 import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/sections/sections'
 import { nav, navscroll, activatable, listItem } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, ListStyleProperty, listStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'

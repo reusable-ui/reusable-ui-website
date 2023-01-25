@@ -6,7 +6,7 @@ import { Tooltip } from '@reusable-ui/components'
 import { ExtLink } from '../components/ExtLink'
 import { TypeScriptCode } from '../components/Code'
 import styles from '../styles/About.module.scss'
-import { Main, Section } from '../components/Section'
+import { Main, Section } from '../components/sections/sections'
 
 
 

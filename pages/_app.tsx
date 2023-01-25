@@ -13,7 +13,7 @@ import { siteVars } from '../website.config';
 
 import { ButtonIcon, Container, UseElementCssSize, UseWindowCssSize } from '@reusable-ui/components'
 
-import { Section } from '../components/Section';
+import { Section } from '../components/sections/sections';
 import { ExtLink } from '../components/ExtLink';
 import { GoogleAnalytics } from '../components/GoogleAnalytics';
 import SiteNavbar from '../components/SiteNavbar';

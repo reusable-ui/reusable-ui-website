@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/sections/sections'
 import { indicator, card, cardHeader, cardBody, cardFooter } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, CardStyleProperty, cardStyleOptions, OrientationProperty, orientationOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'

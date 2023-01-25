@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main } from '../../components/sections/sections'
 import { dropdownButton, dropdownListButton } from '../../packages/packageList'
 import * as packages from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, orientationWithDirectionOptions, OrientationWithDirectionProperty, orientationOptions } from '../../properties/sections/variantProperties'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { PropertySection, Section } from '../../components/Section'
+import { PropertySection, Section } from '../../components/sections/sections'
 import { ExtLink } from '../../components/ExtLink'
 import * as properties from '../propertyList'
 import { TheComponentLink } from '../../packages/componentContext'

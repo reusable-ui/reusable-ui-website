@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/Section'
+import { ComponentInstallation, HeroSection, InheritedProperties, Main, Variables } from '../../components/sections/sections'
 import { popup, badge } from '../../packages/packageList'
 import { SizeProperty, sizeOptions, ThemeProperty, themeOptions, VariantProperties, GradientProperty, OutlinedProperty, MildProperty, NudeProperty, BadgeStyleProperty, badgeStyleOptions } from '../../properties/sections/variantProperties'
 import { Preview } from '../../components/Preview'
