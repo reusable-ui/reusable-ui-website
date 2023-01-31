@@ -1,9 +1,8 @@
 import React, {  } from 'react'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/sections/sections'
+import { PreviewProps, PropertySection, PropertySectionProps } from '../../components/sections/PropertySection'
 import * as properties from '../propertyList'
-import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
-import { Tips, Warning } from '../../components/Warning'
+import { TheComponentLink } from '../../packages/componentContext'
 import { navscroll } from '../../packages/packageList'
 
 

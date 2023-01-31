@@ -1,14 +1,14 @@
 import React from 'react'
 import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
 import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection, Section } from '../../components/sections/sections'
+import { PreviewProps, PropertySection } from '../../components/sections/PropertySection'
+import { Section } from '../../components/sections/Section'
 import * as properties from '../propertyList'
 import { outlineable, mildable, activatable, disableable, invalidable } from '../../packages/packageList'
 import { Warning } from '../../components/Warning'
 import { icon, form } from '../../packages/packageList'
 import { TheComponentLink, TheNestedComponentDisplay, useComponentInfo } from '../../packages/componentContext'
 import { List, ListItem } from '@reusable-ui/components'
-import { ComponentInfo } from '../../packages/packageInfo'
 
 
 

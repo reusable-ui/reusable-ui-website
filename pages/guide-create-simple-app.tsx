@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import { Main, Section } from '../components/sections/sections'
+import { Main } from '../components/sections/Main'
+import { Section } from '../components/sections/Section'
 
 
 

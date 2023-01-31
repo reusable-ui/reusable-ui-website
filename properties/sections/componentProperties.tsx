@@ -1,14 +1,11 @@
 import React from 'react'
-import { SizeName, ThemeName, themeOptions as getThemeOptions } from '@reusable-ui/core'
-import { AccordionItem, Accordion } from '../../components/Accordion'
-import { PreviewProps, PropertySection, Section } from '../../components/sections/sections'
+import { PropertySection } from '../../components/sections/PropertySection'
+import { Section } from '../../components/sections/Section'
 import * as properties from '../propertyList'
-import { outlineable, mildable, activatable, disableable, editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll, content, accordion, basic } from '../../packages/packageList'
-import { Tips, Warning } from '../../components/Warning'
+import { editableControl, generic, editableActionControl, control, toggleButton, dropdown, list, card, popup, modal, collapse, listItem, nav, navscroll, content, accordion, basic } from '../../packages/packageList'
 import { button, icon } from '../../packages/packageList'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext'
 import { TypeScriptCode } from '../../components/Code'
-import {tag, role} from '../propertyList'
 import { ComponentInfo } from '../../packages/packageInfo'
 
 

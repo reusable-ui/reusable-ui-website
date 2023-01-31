@@ -4,7 +4,8 @@ import { AccordionItem, Accordion } from '../../components/Accordion'
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext';
 import { SizeProperty, SizePropertyProps } from "./variantProperties";
 import { Preview } from '../../components/Preview'
-import { PreviewProps, PropertySection, PropertySectionProps, Section } from '../../components/sections/sections'
+import { PreviewProps, PropertySection, PropertySectionProps } from '../../components/sections/PropertySection'
+import { Section } from '../../components/sections/Section'
 import * as properties from '../propertyList'
 import { Details, ExclusiveAccordion } from '@reusable-ui/components'
 import { TypeScriptCode } from '../../components/Code'

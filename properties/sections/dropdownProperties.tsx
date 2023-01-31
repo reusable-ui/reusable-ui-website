@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TheComponentLink, useComponentInfo } from '../../packages/componentContext';
-import { Section } from '../../components/sections/sections'
+import { Section } from '../../components/sections/Section'
 import { TypeScriptCode } from '../../components/Code'
 import { generic } from '../../packages/packageList'
 
