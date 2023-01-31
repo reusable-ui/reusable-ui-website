@@ -23,6 +23,14 @@ import { globalScope, rule, styleSheets } from '@cssfn/core';
 
 
 
+// if ((typeof(window) !== 'undefined')) {
+//     requestAnimationFrame(() => {
+//         const messageChannel = new MessageChannel();
+//         messageChannel.port1.onmessage = () => {
+//         };
+//         messageChannel.port2.postMessage(undefined);
+//     })
+// };
 styleSheets([
     globalScope({
         ...rule('body', {
@@ -30,7 +38,7 @@ styleSheets([
             display: 'block',
         }, { specificityWeight: 2 }),
     }),
-]);
+], { id: 'bodyShow' });
 
 
 
