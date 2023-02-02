@@ -17,28 +17,8 @@ import { Section } from '../components/sections/Section';
 import { ExtLink } from '../components/ExtLink';
 import { GoogleAnalytics } from '../components/GoogleAnalytics';
 import SiteNavbar from '../components/SiteNavbar';
-import { globalScope, rule, styleSheets } from '@cssfn/core';
 
 // const SiteNavbarLazy = React.lazy(() => import(/* webpackChunkName: 'SiteNavbar' */'../components/SiteNavbar'));
-
-
-
-// if ((typeof(window) !== 'undefined')) {
-//     requestAnimationFrame(() => {
-//         const messageChannel = new MessageChannel();
-//         messageChannel.port1.onmessage = () => {
-//         };
-//         messageChannel.port2.postMessage(undefined);
-//     })
-// };
-styleSheets([
-    globalScope({
-        ...rule('body', {
-            // layouts:
-            display: 'block',
-        }, { specificityWeight: 2 }),
-    }),
-], { id: 'bodyShow' });
 
 
 
