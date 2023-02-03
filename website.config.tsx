@@ -93,7 +93,7 @@ styleSheet(() => style({
             }),
         ]),
     }),
-}));
+}), { id: 'site-css' });
 
 
 
