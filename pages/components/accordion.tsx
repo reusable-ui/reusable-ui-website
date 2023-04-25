@@ -13,7 +13,7 @@ import { Accordion as OriAccordion, AccordionProps, AccordionItem, Control } fro
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedProperty, EnabledProperty, ExpandedProperty, InheritEnabledProperty, OnExpandedChangeProperty, StateProperties } from '../../properties/sections/stateProperties'
-import { ComponentProperties, ContentComponentProperty, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
+import { ComponentProperties, BodyComponentProperty, ListComponentProperty, ListItemComponentProperty } from '../../properties/sections/componentProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem as OriParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
@@ -693,7 +693,7 @@ ${accordionSampleItemsString({indents: 2})}
                 <ListComponentProperty />
                 <ComponentContextProvider component={accordionItem}>
                     <ListItemComponentProperty componentOf={<>the <strong>composition</strong> of {accordionItem.packageDisplay}&apos;s <strong>header</strong></>} />
-                    <ContentComponentProperty content={listItem} componentOf={<>the <strong>composition</strong> of {accordionItem.packageDisplay}&apos;s <strong>content</strong></>} />
+                    <BodyComponentProperty content={listItem} componentOf={<>the <strong>composition</strong> of {accordionItem.packageDisplay}&apos;s <strong>content</strong></>} />
                 </ComponentContextProvider>
             </ComponentProperties>
             <InheritedProperties />

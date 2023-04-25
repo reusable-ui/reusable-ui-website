@@ -50,21 +50,21 @@ export const BasicComponentProperty = ({children: preview, basic: specificBasic,
 
 
 
-export interface ContentComponentPropertyProps {
+export interface BodyComponentPropertyProps {
     content     ?: ComponentInfo
     componentOf ?: React.ReactNode
     children    ?: React.ReactNode
 }
-export const ContentComponentProperty = ({children: preview, content: specificContent, componentOf: specificComponent} : ContentComponentPropertyProps) => {
+export const BodyComponentProperty = ({children: preview, content: specificContent, componentOf: specificComponent} : BodyComponentPropertyProps) => {
     const {component: {componentName}} = useComponentInfo();
     
     return (
-        <PropertySection property={properties.contentComponent} preview={preview}>
+        <PropertySection property={properties.bodyComponent} preview={preview}>
             <p>
                 Overwrites the <strong>internal {(specificContent ?? content).packageLink} component</strong> used as {specificComponent ?? <>the <strong>composition</strong> of <TheComponentLink /> component</>}.
             </p>
             <TypeScriptCode collapsible={false}>{
-`<${componentName} contentComponent={
+`<${componentName} bodyComponent={
     <MyCustom${(specificContent ?? content).componentName} />
 } />`
             }</TypeScriptCode>

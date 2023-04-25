@@ -13,7 +13,7 @@ import { Details as OriDetails, DetailsProps, AccordionItem, Accordion, List, Li
 import { TypeScriptCode } from '../../components/Code'
 import { ComponentContextProvider, TheComponentLink } from '../../packages/componentContext'
 import { DefaultExpandedProperty, ExpandedProperty, OnExpandedChangeProperty } from '../../properties/sections/stateProperties'
-import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, ContentComponentProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
+import { ButtonChildrenProperty, ButtonComponentProperty, ButtonOrientationProperty, ButtonRefProperty, ComponentProperties, BodyComponentProperty, ToggleButtonComponentProperty } from '../../properties/sections/componentProperties'
 import { LazyProperty } from '../../properties/sections/behaviorProperties'
 import { ParagraphLorem } from '../../components/ParagraphLorem'
 import { dynamicStyleSheet } from '@cssfn/cssfn-react'
@@ -305,7 +305,7 @@ ${detailsSampleItemsString()}
                 
                 <ToggleButtonComponentProperty />
                 
-                <ContentComponentProperty content={basic} />
+                <BodyComponentProperty content={basic} />
             </ComponentProperties>
             <InheritedProperties />
             <Variables variables={

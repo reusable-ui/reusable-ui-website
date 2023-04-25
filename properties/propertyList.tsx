@@ -162,7 +162,7 @@ export const scrollingRef             = new PropertyInfo('scrollingRef')
 
 // components:
 export const basicComponent           = new PropertyInfo('basicComponent')
-export const contentComponent         = new PropertyInfo('contentComponent')
+export const bodyComponent         = new PropertyInfo('bodyComponent')
 export const controlComponent         = new PropertyInfo('controlComponent')
 
 export const buttonComponent          = new PropertyInfo('buttonComponent')
