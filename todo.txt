@@ -3,6 +3,7 @@
 * added onExpand(Start|End) & onCollapse(Start|End) to <ExpandableComponents>
 * add <Tab> component
 * changed contentComponent to bodyComponent
+* renamed themable to themeable
 * docs <Button label>
 * docs <ValidationProperties> & <FormProperties>
 * docs <EditableControl|Form onValidation customValidator>
