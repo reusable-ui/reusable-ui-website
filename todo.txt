@@ -3,7 +3,9 @@
 * added onExpand(Start|End) & onCollapse(Start|End) to <ExpandableComponents>
 * add <Tab> component
 * changed contentComponent to bodyComponent
+* changed baseComponent of <Navbar> to <Basic> and <Carousel> to <Basic>
 * renamed themable to themeable
+* added global-stackable
 * docs <Button label>
 * docs <ValidationProperties> & <FormProperties>
 * docs <EditableControl|Form onValidation customValidator>
